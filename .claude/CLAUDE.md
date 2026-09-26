@@ -22,7 +22,6 @@ every fetch ─→ logs/fetch/<YYYY>/<YYYY-MM>.jsonl ─→ log-summary.mjs (run
 
 - **No build step and no npm dependencies in the repo.** `index.html` works straight from disk, because the data ships as `.js` files that set `window.ADVISORY_DATA` and `window.WORLD_TOPO`. d3 v7 and topojson-client are vendored in `vendor/`. Scripts use only Node built-ins (Node 22+).
 - **Generated files: never edit by hand.** These are `data/advisories.js`, `data/world.js`, `data/history.json` and the log `.jsonl` files. Change the scripts and run `node scripts/build-data.mjs`.
-- `travel_advisories.md` is the original hand-made U.S. export. It is no longer used.
 
 ## Where the logic lives
 
