@@ -5,10 +5,11 @@
 // Why the API: the travel.state.gov page sits behind a bot check, and the RSS feed
 // lags the page for some countries. The API matches the page's levels and dates.
 //
-// The API is inconsistent between calls: a response can leave out a few advisories or
-// spell a name differently. So each run is merged into the previous snapshot: names are
-// matched to the ones already on file, and an advisory missing from a response is kept
-// until it has been unseen for MISSING_GRACE_DAYS.
+// The API is inconsistent between calls: a response can leave out a few advisories, spell
+// a name differently, or serve an outdated copy of an advisory. So each run is merged into
+// the previous snapshot: names are matched to the ones already on file, an entry older than
+// the saved one is ignored, and an advisory missing from a response is kept until it has
+// been unseen for MISSING_GRACE_DAYS.
 //
 // Usage: node scripts/fetch-us.mjs
 
@@ -64,6 +65,19 @@ await withRunLog('us', async (log) => {
   if (byName.size < 150) throw new Error(`Parsed only ${byName.size} advisories; the API format may have changed.`);
   const fromApi = byName.size;
 
+  // The API sometimes serves an outdated copy of an advisory (e.g. an old level from months
+  // ago). Advisories only move forward in time, so an entry older than the one on file is
+  // stale: keep the saved one.
+  const stale = [];
+  for (const prev of previous) {
+    const cur = byName.get(prev.name);
+    if (cur && cur.updated < prev.updated) {
+      byName.set(prev.name, { ...prev, lastSeen: today });
+      stale.push(`${prev.name} (got ${cur.updated} L${cur.level}, kept ${prev.updated} L${prev.level})`);
+    }
+  }
+  if (stale.length) log.warn(`Ignored outdated API copies: ${stale.join('; ')}`);
+
   // Keep advisories this response left out, unless they've been gone too long.
   const carried = [];
   const dropped = [];
@@ -106,6 +120,7 @@ await withRunLog('us', async (log) => {
     duplicates,
     fromApi,
     advisories: entries.length,
+    staleIgnored: stale.length,
     keptFromPrevious: carried,
     droppedMissing: dropped,
     changeNotes: notesMatched,

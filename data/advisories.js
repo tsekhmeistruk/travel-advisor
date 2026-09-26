@@ -200,10 +200,9 @@ window.ADVISORY_DATA = {
     },
     {
      "name": "Bangladesh",
-     "level": 3,
-     "updated": "2026-01-20",
-     "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/bangladesh-travel-advisory.html",
-     "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
+     "level": 2,
+     "updated": "2026-07-30",
+     "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bgd.html",
      "shapes": [
       "Bangladesh"
      ]
