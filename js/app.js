@@ -224,8 +224,9 @@
   const spherePath = viewport.append('path').attr('class', 'sphere');
   const graticulePath = viewport.append('path').attr('class', 'graticule');
   const countryLayer = viewport.append('g').attr('class', 'countries');
-  const selectOutline = viewport.append('path').attr('class', 'select-outline');
+  // Selection above hover, so a click shows its outline while the pointer is still on the country.
   const hoverOutline = viewport.append('path').attr('class', 'hover-outline');
+  const selectOutline = viewport.append('path').attr('class', 'select-outline');
   const overlay = svg.append('g').attr('class', 'overlay');
   const dotLayer = overlay.append('g').attr('class', 'dots');
   const pulseLayer = overlay.append('g').attr('class', 'pulses');
@@ -253,6 +254,9 @@
 
   const zoom = d3.zoom()
     .scaleExtent([1, 24])
+    // By default any movement between press and release counts as a drag and swallows the
+    // click; allow normal hand jitter so a click on a country always selects it.
+    .clickDistance(6)
     .on('zoom', (event) => { transform = event.transform; applyTransform(); });
   svg.call(zoom).on('dblclick.zoom', null);
   svg.on('click', (event) => {
