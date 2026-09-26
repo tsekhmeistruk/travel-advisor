@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/build-data.mjs)",
+      "Bash(node scripts/log-summary.mjs:*)",
+      "Bash(node scripts/fetch-canada.mjs)",
+      "Bash(node --check:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git pull:*)",
+      "Bash(git show:*)"
+    ],
+    "ask": [
+      "Bash(node scripts/fetch-us.mjs)"
+    ]
+  }
+}

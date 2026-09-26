@@ -1,80 +1,102 @@
 # Travel Risk Map
 
-World map of travel advisory levels from the U.S. State Department and the Government of Canada. A switch at the top of the map flips between the two sources. The map highlights advisories that were updated recently.
+A world map of official travel advisory levels from the **U.S. State Department** and the **Government of Canada**. It shows at a glance where the risk is and where the situation changed recently. The data refreshes automatically every day.
 
-## Run
+**Live site: https://tsekhmeistruk.github.io/travel-advisor/**
 
-Open `index.html` in a browser. No server or build step is needed.
+## What it shows
 
-## Update the data
+- **Risk level by colour.** Each country is filled by its advisory level, from 1 (normal precautions) to 4 (do not travel). Countries with no advisory are grey.
+- **U.S. / Canada switch** at the top of the map. Each source uses its own level wording, links and data.
+- **Recent changes.** Countries with a real update in the last 7, 30 or 90 days pulse on the map. Updates that are only wording edits or routine reissues don't count.
+- **Change feed.** The "Updated in the last N days" list says what changed, in the source's own words, e.g. "Risk levels section – avoid all travel to Afar".
+- **Details panel.** Hover or tap a country to see its level, what the level means, when it was last updated, what changed, whether regional advisories apply, and a link to the official advisory.
+- **Settings:** show or hide levels, pick the recent-update window, fade countries without recent updates, and switch between light, dark and auto themes. Settings are remembered in the browser.
+- **Search, zoom and pan.** Small islands and microstates get a dot you can hover. The layout works on phones.
 
-GitHub Actions updates the data automatically every day (see below). To update by hand:
+## Data sources
 
-```sh
-node scripts/fetch-us.mjs       # U.S. State Department data API -> data/sources/us.json
-node scripts/fetch-canada.mjs   # travel.gc.ca advisory table    -> data/sources/canada.json
-node scripts/build-data.mjs     # rebuild data/advisories.js (both sources) and data/world.js
-```
+| Source | Where the data comes from | Notes |
+|---|---|---|
+| 🇺🇸 U.S. State Department | [Data API](https://cadataapi.state.gov/api/TravelAdvisories) for levels and dates; [RSS feed](https://travel.state.gov/_res/rss/TAsTWs.xml) for "what changed" notes | The website itself is behind a bot check. The API is sometimes inconsistent, so each day's result is merged with the previous one (see below). |
+| 🇨🇦 Government of Canada | [travel.gc.ca advisory table](https://travel.gc.ca/travelling/advisories), plus each destination's "Latest updates" line | Canada sometimes re-dates all destinations at once for an editorial change. The per-destination note tells real changes apart from those. |
 
-- **U.S.:** `fetch-us.mjs` reads `cadataapi.state.gov/api/TravelAdvisories`. The travel.state.gov page is behind a bot check, and its RSS feed lags the page for some countries. The API matches the page's levels, and its dates match to within a day.
-  - The API's responses vary from call to call: advisories can be missing or spelled differently. Each run is merged into the previous snapshot. A missing advisory is kept for up to 7 days, and names are matched to the ones already on file.
-  - The API rate-limits repeated calls (HTTP 429 or a Cloudflare challenge), so avoid running the script many times in a row.
-  - The "what changed" note comes from the RSS feed, and is used only when the feed's date matches the API's.
-- **Canada:** `fetch-canada.mjs` reads the table on travel.gc.ca. For destinations whose timestamp changed since the last run, it also reads the "Latest updates" note from the destination's page. Usually that's only a few pages a day.
-- **Minor updates:** `build-data.mjs` flags updates whose note is only an editorial change or a routine reissue (`MINOR_CHANGE`). These don't count as recent updates.
-- **Failures:** both fetch scripts fail loudly if the source's format changes.
-- **Unmatched names:** `build-data.mjs` fails and lists any advisory name it can't place on the map. Add the name to `SHAPE_ALIASES`.
+Advisory levels are simplified to 1–4 for both countries. Always read the full official advisory before you travel.
 
-`travel_advisories.md` was the original hand-made U.S. export. It is no longer used.
+## How the daily update works
 
-## Daily automatic updates
+The workflow in `.github/workflows/update-advisories.yml` runs every day:
 
-`.github/workflows/update-advisories.yml` refreshes both sources once a day at a random time and commits the result:
+1. **At a random time.** A small check runs every hour and lets the update through once per UTC day, at a pseudo-random hour (00:00–21:59 UTC) plus a random 0–39 minutes. If that run is delayed or fails, a later hour the same day catches up.
+2. **Fetch:** `scripts/fetch-us.mjs` and `scripts/fetch-canada.mjs` download each source. If one fails, the other still updates, and the failed one keeps its previous data.
+3. **Build:** `scripts/build-data.mjs` joins both sources to the map shapes, decides which updates are real and which are minor, and records level changes in `data/history.json`.
+4. **Commit and deploy:** the bot commits the new data and fetch logs, and GitHub Pages redeploys the site.
 
-- **Hourly check:** a small check job runs every hour. It lets the update through once per UTC day, at a pseudo-random hour picked from the date (00:00–21:59 UTC).
-- **Random minute:** the on-time run then waits a random 0–39 minutes before fetching.
-- **Catch-up:** if a run is delayed, dropped or fails, a later hour the same day retries without waiting. `data/last-run.txt` records the last day both sources refreshed.
-- **Partial failures:** if one source fails, the other still updates. The run is marked failed, so GitHub emails you.
-- **Manual run:** use **Actions → Update advisories → Run workflow**. It updates immediately.
+If anything fails, the run is marked failed, which sends you an email, and the next hourly check retries. To update immediately, use **Actions → Update advisories → Run workflow**.
 
-### Logs
+### Keeping the data trustworthy
 
-Every fetch run is logged to `logs/fetch/<year>/<year-month>.jsonl`, and the daily run commits it with the data. Each line records every HTTP request, with status, timing, retries and any Cloudflare challenge, plus what the run produced. Each GitHub run's summary page shows the same information as a **Fetch results** table.
+- **The U.S. API is inconsistent between calls.** It can leave advisories out, spell names differently, or return an outdated copy of an advisory. Each response is merged into the previous snapshot:
+  - names are matched to the ones already on file;
+  - an entry older than the saved one is ignored;
+  - a missing advisory is kept for 7 days before it's dropped.
+- **Minor updates don't count as recent.** Notes such as "Editorial change" or "Reissued after periodic review without changes" are marked as minor (`MINOR_CHANGE` in `build-data.mjs`).
+- **Level changes are tracked over time.** When an advisory's level differs from the previous snapshot, the site shows it as "Level 2 → 3" and counts it as a recent update.
+
+## Logs
+
+Every fetch is logged in `logs/fetch/<year>/<year-month>.jsonl`, one line per source per run. A line records every HTTP request (status, timing, retries, Cloudflare challenges) and what the run produced. Each Actions run also shows a **Fetch results** table on its summary page.
 
 ```sh
 node scripts/log-summary.mjs --days 30   # table of the last 30 days
 ```
 
-`logs/README.md` describes the log format.
+The format is described in [`logs/README.md`](logs/README.md).
 
-**Setup:** push the project to a GitHub repository. Then set **Settings → Actions → General → Workflow permissions** to **Read and write**, so the workflow can commit. Scheduled workflows only run on the default branch.
+## Run locally
 
-**Cost:** free on public repositories. On private repositories, each hourly check bills about 1 minute, and the daily update bills up to about 40 minutes. That adds up to roughly 1,500 of the 2,000 free minutes a month. For a private repository, reduce the random wait (`RANDOM % 40`) or the check frequency.
+Open `index.html` in a browser. There's no build step and nothing to install; the data ships as JavaScript files.
 
-**Hosting:** to publish the site, enable **Settings → Pages → Deploy from a branch** (`main`, `/ (root)`). The daily commits then redeploy it automatically.
+To refresh the data by hand (Node 22 or newer):
 
-### Level history
+```sh
+node scripts/fetch-us.mjs       # U.S. -> data/sources/us.json      (don't repeat it quickly: the API rate-limits)
+node scripts/fetch-canada.mjs   # Canada -> data/sources/canada.json
+node scripts/build-data.mjs     # -> data/advisories.js, data/world.js, data/history.json
+```
 
-Each build appends any level change to `data/history.json`. Commit this file so the history builds up over time. Once an advisory has two snapshots with different levels, the site shows the change (for example "Level 2 → 3") and counts it as a recent update.
+If a source adds a name the map can't place, `build-data.mjs` stops and lists it. Add it to `SHAPE_ALIASES` in that script.
 
-Canada stamps the same "last updated" date on nearly every destination whenever the whole site is republished. The build treats a date shared by over 40% of entries as a bulk republish. It doesn't count those dates as recent updates, so for Canada, the level history is the reliable change signal.
-
-## Layout
+## Project layout
 
 | Path | Purpose |
 |---|---|
 | `index.html`, `css/styles.css`, `js/app.js` | The site |
-| `scripts/fetch-us.mjs` | Downloads U.S. advisories from the State Department API |
-| `scripts/fetch-canada.mjs` | Downloads and parses Canada's advisories |
-| `.github/workflows/update-advisories.yml` | Daily update at a random time |
-| `data/sources/us.json` | Latest U.S. snapshot |
-| `scripts/build-data.mjs` | Joins both sources to map shapes and tracks level history |
-| `scripts/lib/fetch-log.mjs` | Shared request logging for the fetch scripts |
-| `scripts/log-summary.mjs` | Renders the fetch log as a table (GitHub run page or terminal) |
-| `logs/fetch/` | Fetch log, one file per month |
-| `data/sources/canada.json` | Latest Canadian snapshot |
-| `data/history.json` | Level history per source and advisory |
-| `data/countries-50m.json` | Map geometry from [world-atlas](https://github.com/topojson/world-atlas) (Natural Earth, public domain) |
+| `scripts/fetch-us.mjs`, `scripts/fetch-canada.mjs` | Download each source |
+| `scripts/build-data.mjs` | Match advisories to map shapes, classify updates, track level history |
+| `scripts/lib/fetch-log.mjs`, `scripts/log-summary.mjs` | Request logging, and the log table |
+| `data/sources/*.json` | Latest snapshot per source (generated) |
+| `data/advisories.js`, `data/world.js` | What the site loads (generated) |
+| `data/history.json` | Level history per source (generated; keep it committed) |
+| `data/countries-50m.json` | Map geometry from [world-atlas](https://github.com/topojson/world-atlas) |
+| `logs/fetch/` | Fetch logs, one file per month |
 | `vendor/` | d3 v7 and topojson-client, bundled so the page works offline |
+| `.github/workflows/update-advisories.yml` | Daily update |
+| `.claude/` | Project guide and site checks for Claude Code sessions |
 
-Split shapes: the base map merges some places that have their own advisory. `SPLITS` in `js/app.js` separates Gaza and the West Bank; French Guiana, Martinique, Guadeloupe, Réunion and Mayotte from France; Bonaire, Saba and Sint Eustatius from the Netherlands; the Azores from Portugal; and the Canary Islands from Spain.
+Some places with their own advisory are merged into another country in the base map. `SPLITS` in `js/app.js` separates them: Gaza and the West Bank; French Guiana, Martinique, Guadeloupe, Réunion and Mayotte (from France); Bonaire, Saba and Sint Eustatius (from the Netherlands); the Azores (from Portugal); and the Canary Islands (from Spain).
+
+## Setting up your own copy
+
+1. Push the repository to GitHub.
+2. Go to **Settings → Actions → General → Workflow permissions** and choose **Read and write**, so the daily job can commit.
+3. Go to **Settings → Pages**, choose **Deploy from a branch**, and select `main` and `/ (root)`.
+4. Run **Actions → Update advisories → Run workflow** once, and check the **Fetch results** table.
+
+**Cost:** free on public repositories. On a private repository, the hourly checks and the random wait use about 1,500 of GitHub's 2,000 free Actions minutes a month. To reduce that, shorten the wait (`RANDOM % 40` in the workflow).
+
+## Credits
+
+- **Advisory data:** [U.S. Department of State](https://travel.state.gov/) and the [Government of Canada](https://travel.gc.ca/). This site isn't affiliated with either government. For decisions, rely on the official advisories.
+- **Map geometry:** [Natural Earth](https://www.naturalearthdata.com/) via [world-atlas](https://github.com/topojson/world-atlas) (public domain).
+- **Libraries:** [d3](https://d3js.org/) and [topojson-client](https://github.com/topojson/topojson-client) (ISC licence).
