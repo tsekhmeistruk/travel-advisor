@@ -1,0 +1,194 @@
+// Browser tests: drive headless Chrome/Edge over index.html and check the behaviour that
+// caught real bugs in this project. Screenshots go to test-output/ (git-ignored).
+//
+// Needs `npm ci` (puppeteer-core) and a local Chrome or Edge; set CHROME_PATH to override.
+
+import { test, describe, before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import { existsSync, mkdirSync } from 'node:fs';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import puppeteer from 'puppeteer-core';
+
+const PAGE = pathToFileURL(fileURLToPath(new URL('../../index.html', import.meta.url))).href;
+const OUT = fileURLToPath(new URL('../../test-output/', import.meta.url));
+mkdirSync(OUT, { recursive: true });
+
+const executablePath = [
+  process.env.CHROME_PATH,
+  'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser',
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+].filter(Boolean).find(p => existsSync(p));
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+let browser;
+
+before(async () => {
+  assert.ok(executablePath, 'No Chrome/Edge found; set CHROME_PATH.');
+  browser = await puppeteer.launch({ executablePath, headless: true, args: ['--no-sandbox'] });
+});
+after(async () => { await browser?.close(); });
+
+// Open the site with the given settings and collect console errors.
+async function open({ width = 1440, height = 860, scheme = 'dark', settings = {} } = {}) {
+  const page = await browser.newPage();
+  page.errors = [];
+  page.on('pageerror', e => page.errors.push(e.message));
+  page.on('console', m => { if (m.type() === 'error') page.errors.push(m.text()); });
+  await page.setViewport({ width, height });
+  await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
+  await page.goto(PAGE);
+  await page.evaluate((s) => { localStorage.clear(); localStorage.setItem('travel-risk-map:settings', JSON.stringify(s)); }, settings);
+  await page.reload({ waitUntil: 'load' });
+  return page;
+}
+
+const anchorOf = (page, mapName) => page.evaluate((n) => {
+  const el = [...document.querySelectorAll('path.country')].find(e => e.__data__.mapName === n);
+  const r = document.getElementById('map').getBoundingClientRect();
+  return { x: r.left + el.__data__.anchor[0], y: r.top + el.__data__.anchor[1] };
+}, mapName);
+const isSelected = (page) => page.evaluate(() => {
+  const s = document.querySelector('.select-outline');
+  return s.getAttribute('display') !== 'none' && !!s.getAttribute('d');
+});
+const clearSelection = (page) => page.evaluate(() => document.getElementById('map').dispatchEvent(new MouseEvent('click', { bubbles: true })));
+
+// Hover every country and dot; measure the details card each time.
+const measureCards = (page) => page.evaluate(() => {
+  const card = document.getElementById('details');
+  const heights = new Set(), overflow = [], cut = [];
+  const measure = (label) => {
+    heights.add(card.offsetHeight);
+    const last = [...card.children].at(-1);
+    if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(label);
+    for (const el of card.querySelectorAll('h3, .badge')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
+  };
+  measure('overview');
+  for (const el of document.querySelectorAll('path.country, .dot')) {
+    el.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'touch' }));
+    measure(el.__data__.name);
+    el.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'touch' }));
+  }
+  return {
+    shapes: document.querySelectorAll('path.country').length,
+    colored: [...document.querySelectorAll('path.country')].filter(e => e.__data__.advisory).length,
+    pulses: document.querySelectorAll('.pulse').length,
+    recent: document.querySelectorAll('#recentList button').length,
+    heights: [...heights], overflow: [...new Set(overflow)], cut: [...new Set(cut)],
+    scrollWidth: document.documentElement.scrollWidth,
+  };
+});
+
+for (const source of ['us', 'ca']) {
+  for (const [width, height] of [[1440, 860], [390, 844]]) {
+    describe(`${source} at ${width}px`, () => {
+      let page, stats;
+      before(async () => {
+        page = await open({ width, height, settings: { source, recentDays: 90 } });
+        stats = await measureCards(page);
+        await page.screenshot({ path: `${OUT}${source}-${width}.png` });
+      });
+      after(async () => { await page?.close(); });
+
+      test('renders countries coloured by advisory', () => {
+        assert.ok(stats.shapes > 200, `${stats.shapes} shapes`);
+        assert.ok(stats.colored > 200, `${stats.colored} coloured`);
+      });
+      test('lists every pulsing country in the recent feed', () => {
+        assert.ok(stats.recent >= stats.pulses, `${stats.recent} listed, ${stats.pulses} pulses`);
+      });
+      test('keeps the details card one fixed height for every country', () => {
+        assert.equal(stats.heights.length, 1, `heights: ${stats.heights.join(', ')}`);
+      });
+      test('fits the details card content without overflow or cut-off', () => {
+        assert.deepEqual([...stats.overflow, ...stats.cut], []);
+      });
+      test('has no horizontal page scroll', () => {
+        assert.ok(stats.scrollWidth <= width, `scrollWidth ${stats.scrollWidth}`);
+      });
+      test('logs no console errors', () => {
+        assert.deepEqual(page.errors, []);
+      });
+    });
+  }
+}
+
+describe('map interaction', () => {
+  let page;
+  before(async () => { page = await open(); });
+  after(async () => { await page?.close(); });
+
+  for (const jitter of [0, 3, 5]) {
+    test(`a click with ${jitter}px of movement selects the country`, async () => {
+      const { x, y } = await anchorOf(page, 'Brazil');
+      await page.mouse.move(x, y);
+      await page.mouse.down();
+      if (jitter) await page.mouse.move(x + jitter, y + jitter / 2, { steps: 2 });
+      await page.mouse.up();
+      await sleep(150);
+      assert.equal(await isSelected(page), true);
+      await clearSelection(page);
+    });
+  }
+
+  test('draws the selection outline above the hover outline', async () => {
+    const order = await page.evaluate(() => [...document.querySelector('.viewport').children].map(c => c.classList[0]));
+    assert.ok(order.indexOf('select-outline') > order.indexOf('hover-outline'), order.join(' > '));
+  });
+
+  test('a drag pans the map and does not select', async () => {
+    await page.click('#zoomIn');
+    await sleep(500);
+    const before = await page.evaluate(() => document.querySelector('.viewport').getAttribute('transform'));
+    await page.mouse.move(500, 400);
+    await page.mouse.down();
+    await page.mouse.move(620, 440, { steps: 8 });
+    await page.mouse.up();
+    await sleep(200);
+    const after = await page.evaluate(() => document.querySelector('.viewport').getAttribute('transform'));
+    assert.notEqual(after, before);
+    assert.equal(await isSelected(page), false);
+  });
+});
+
+describe('panel', () => {
+  test('the source switch changes header and level names, and persists', async () => {
+    const page = await open({ settings: { source: 'us' } });
+    const header = () => page.evaluate(() => document.getElementById('asOf').textContent);
+    const usHeader = await header();
+    await page.click('#sourceToggle button[data-source="ca"]');
+    await sleep(400);
+    assert.notEqual(await header(), usHeader);
+    assert.match(await header(), /Canada/);
+    assert.match(await page.evaluate(() => document.getElementById('levelChips').innerText), /Avoid all/);
+    await page.reload();
+    await sleep(300);
+    assert.equal(await page.evaluate(() => document.querySelector('#sourceToggle [aria-checked="true"]')?.dataset.source), 'ca');
+    await page.close();
+  });
+
+  test('search selects and shows the country', async () => {
+    const page = await open();
+    await page.type('#search', 'japan');
+    await page.keyboard.press('Enter');
+    await sleep(900);
+    assert.equal(await page.evaluate(() => document.querySelector('#details h3')?.textContent), 'Japan');
+    assert.equal(await isSelected(page), true);
+    await page.close();
+  });
+
+  test('the recent-update window filters the change feed', async () => {
+    const page = await open({ settings: { source: 'us', recentDays: 90 } });
+    const count = () => page.evaluate(() => document.querySelectorAll('#recentList button').length);
+    const wide = await count();
+    await page.click('#recentSeg button[data-days="7"]');
+    await sleep(200);
+    assert.ok(await count() <= wide);
+    await page.click('#recentSeg button[data-days="0"]');
+    await sleep(200);
+    assert.equal(await page.evaluate(() => document.querySelector('.recent').hidden), true, 'feed hidden when highlighting is off');
+    await page.close();
+  });
+});

@@ -3,226 +3,59 @@
 //   data/sources/canada.json    (Government of Canada)   ├-> data/advisories.js  (window.ADVISORY_DATA)
 //   data/history.json           (level history, updated) ┘
 //   data/countries-50m.json     -> data/world.js          (window.WORLD_TOPO)
-// Output is plain JS (not JSON) so index.html also works when opened straight from disk.
+// The logic is in scripts/lib/build.mjs; this script only reads and writes files.
 //
 // Usage: node scripts/build-data.mjs   (run scripts/fetch-us.mjs and fetch-canada.mjs first to refresh)
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSources, mapNamesFrom, renderAdvisoriesJs, renderWorldJs } from './lib/build.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SOURCE_FILES = {
-  us: join(root, 'data', 'sources', 'us.json'),
-  ca: join(root, 'data', 'sources', 'canada.json'),
-};
-const WORLD_JSON = join(root, 'data', 'countries-50m.json');
-const HISTORY_JSON = join(root, 'data', 'history.json');
-
-// Advisory name -> map shape name(s), where they differ. Keys are unique across
-// both sources, so one table serves both. Shapes named Gaza, West Bank, French Guiana,
-// Martinique, Guadeloupe, Réunion, Mayotte, Bonaire, Saba and Sint Eustatius, Azores and
-// Canary Islands don't exist in the raw map; js/app.js splits them out at load time.
-const SHAPE_ALIASES = {
-  // Shared spellings
-  'Antigua and Barbuda': 'Antigua and Barb.',
-  'Bosnia and Herzegovina': 'Bosnia and Herz.',
-  'British Virgin Islands': 'British Virgin Is.',
-  'Burma': 'Myanmar',
-  'Cayman Islands': 'Cayman Is.',
-  'Central African Republic': 'Central African Rep.',
-  'Dominican Republic': 'Dominican Rep.',
-  'Equatorial Guinea': 'Eq. Guinea',
-  'Eswatini': 'eSwatini',
-  'French Polynesia': 'Fr. Polynesia',
-  'Marshall Islands': 'Marshall Is.',
-  'North Macedonia': 'Macedonia',
-  'Saint Kitts and Nevis': 'St. Kitts and Nevis',
-  'Solomon Islands': 'Solomon Is.',
-  'South Sudan': 'S. Sudan',
-  'Turks and Caicos Islands': 'Turks and Caicos Is.',
-  // U.S. spellings
-  'Côte d’Ivoire': "Côte d'Ivoire",
-  'Democratic Republic of the Congo': 'Dem. Rep. Congo',
-  'Federated States of Micronesia': 'Micronesia',
-  'French Saint Martin': 'St-Martin',
-  'Kingdom of Denmark': 'Denmark',
-  'Macau': 'Macao',
-  'Republic of the Congo': 'Congo',
-  'Saint Barthelemy': 'St-Barthélemy',
-  'Saint Vincent and the Grenadines': 'St. Vin. and Gren.',
-  'São Tomé and Príncipe': 'São Tomé and Principe',
-  'The Bahamas': 'Bahamas',
-  'The Gambia': 'Gambia',
-  'The Kyrgyz Republic': 'Kyrgyzstan',
-  // Canadian spellings
-  "Côte d'Ivoire (Ivory Coast)": "Côte d'Ivoire",
-  'Democratic Republic of Congo (Kinshasa)': 'Dem. Rep. Congo',
-  'Republic of Congo (Brazzaville)': 'Congo',
-  'Falkland Islands': 'Falkland Is.',
-  'Cook Islands': 'Cook Is.',
-  'Gambia, The': 'Gambia',
-  'Israel and Palestine': ['Israel', 'Gaza', 'West Bank'],
-  'Micronesia (FSM)': 'Micronesia',
-  'Northern Marianas': 'N. Mariana Is.',
-  'Saint Martin': 'St-Martin',
-  'Saint Vincent & the Grenadines': 'St. Vin. and Gren.',
-  'Saint-Barthélemy': 'St-Barthélemy',
-  'Saint-Pierre-et-Miquelon': 'St. Pierre and Miquelon',
-  'Sao Tome and Principe': 'São Tomé and Principe',
-  'Timor-Leste (East Timor)': 'Timor-Leste',
-  'Türkiye': 'Turkey',
-  'United States': 'United States of America',
-  'Virgin Islands (U.S.)': 'U.S. Virgin Is.',
-};
-
-// Places too small to exist in the map data; drawn as a dot at [lon, lat].
-const POINT_ONLY = {
-  'Tuvalu': [179.2, -8.5],
-  'Gibraltar': [-5.35, 36.14],
-  'Tokelau': [-171.85, -9.2],
-};
-
-// Advisories that cover several places which already have their own advisories.
-const NO_SHAPE_NOTES = {
-  'French West Indies': 'See also Guadeloupe, Martinique, Saint Barthélemy, Saint Martin.',
-};
-
-const SPLIT_SHAPES = ['Gaza', 'West Bank', 'French Guiana', 'Martinique', 'Guadeloupe', 'Réunion', 'Mayotte',
-  'Bonaire', 'Saba and Sint Eustatius', 'Azores', 'Canary Islands'];
-
-const SOURCES = {
-  us: {
-    label: 'United States',
-    agency: 'U.S. State Department',
-    link: 'https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html',
-    home: 'United States of America',
-    // Map shapes with no advisory of their own that fall under another advisory.
-    coveredBy: {
-      'Somaliland': 'Somalia', 'N. Cyprus': 'Cyprus', 'Faeroe Is.': 'Kingdom of Denmark', 'Åland': 'Finland',
-      'Azores': 'Portugal', 'Canary Islands': 'Spain', 'Réunion': 'France', 'Mayotte': 'France',
-    },
-    territories: ['Puerto Rico', 'Guam', 'U.S. Virgin Is.', 'American Samoa', 'N. Mariana Is.'],
-    levels: {
-      1: { name: 'Exercise normal precautions', short: 'Normal', desc: 'The lowest advisory level. Some safety and security risk exists in any international travel.' },
-      2: { name: 'Exercise increased caution', short: 'Caution', desc: 'Be aware of heightened risks to safety and security.' },
-      3: { name: 'Reconsider travel', short: 'Reconsider', desc: 'Avoid travel due to serious risks to safety and security.' },
-      4: { name: 'Do not travel', short: 'Do not travel', desc: 'Greater likelihood of life-threatening risks. The U.S. government may have very limited ability to help.' },
-    },
+export const PATHS = {
+  sources: {
+    us: join(root, 'data', 'sources', 'us.json'),
+    ca: join(root, 'data', 'sources', 'canada.json'),
   },
-  ca: {
-    label: 'Canada',
-    agency: 'Government of Canada',
-    link: 'https://travel.gc.ca/travelling/advisories',
-    home: 'Canada',
-    coveredBy: { 'Somaliland': 'Somalia', 'N. Cyprus': 'Cyprus', 'Faeroe Is.': 'Denmark', 'Åland': 'Finland' },
-    territories: [],
-    levels: {
-      1: { name: 'Take normal security precautions', short: 'Normal', desc: 'Take similar precautions to those you would take in Canada.' },
-      2: { name: 'Exercise a high degree of caution', short: 'High caution', desc: 'There are identifiable safety and security concerns, or the situation could change quickly. Be very cautious at all times.' },
-      3: { name: 'Avoid non-essential travel', short: 'Non-essential', desc: 'Specific safety and security concerns could put you at risk. Think about whether you really need to travel.' },
-      4: { name: 'Avoid all travel', short: 'Avoid all', desc: 'You should not travel here. Your personal safety and security are at great risk.' },
-    },
-  },
+  world: join(root, 'data', 'countries-50m.json'),
+  history: join(root, 'data', 'history.json'),
+  advisoriesJs: join(root, 'data', 'advisories.js'),
+  worldJs: join(root, 'data', 'world.js'),
 };
 
-// Attach map placement: shape(s), a point, or a note. Drops fetch-only bookkeeping fields.
-function place({ stamp, lastSeen, ...a }) {
-  if (POINT_ONLY[a.name]) return { ...a, point: POINT_ONLY[a.name] };
-  if (NO_SHAPE_NOTES[a.name]) return { ...a, note: NO_SHAPE_NOTES[a.name] };
-  const shapes = SHAPE_ALIASES[a.name] ?? a.name;
-  return { ...a, shapes: Array.isArray(shapes) ? shapes : [shapes] };
-}
-
-// Change notes that mean "nothing about the risk changed". Each ';'-separated part
-// of a note must match for the update to count as minor.
-const MINOR_CHANGE = [
-  /editorial change/i,                                                  // Canada
-  /health section was updated - travel health information/i,           // Canada: generic health-info refresh
-  /(reissued|updated) after periodic review,? (without changes|with minor edits)\.?$/i, // U.S.
-  /reissued with obsolete .*links? removed/i,                           // U.S.
-];
-function isMinorChange(text) {
-  const parts = text.split(/;\s*/).filter(Boolean);
-  return parts.length > 0 && parts.every(p => MINOR_CHANGE.some(re => re.test(p)));
-}
-
-// Decide which "last updated" dates count as real updates. With a change note, minor edits
-// are flagged. Without one, fall back to spotting bulk republishes: a site that re-stamps
-// every page at once leaves one date on most entries, so a date shared by over 40% of a
-// source is treated as a republish, not a content change.
-function classifyUpdates(advisories) {
-  const counts = {};
-  for (const a of advisories) counts[a.updated] = (counts[a.updated] || 0) + 1;
-  for (const a of advisories) {
-    if (a.change) { if (isMinorChange(a.change)) a.minorUpdate = true; }
-    else if (counts[a.updated] > advisories.length * 0.4) a.minorUpdate = true;
+// Source snapshots as buildSources() expects them: { key: { asOf, advisories } }.
+export function readRawSources() {
+  const raw = {};
+  for (const [key, file] of Object.entries(PATHS.sources)) {
+    if (!existsSync(file)) { console.warn(`Missing ${file}; skipping ${key}. Run its fetch script first.`); continue; }
+    const src = JSON.parse(readFileSync(file, 'utf8'));
+    raw[key] = { asOf: src.fetchedAt.slice(0, 10), advisories: src.entries };
   }
+  return raw;
 }
 
-// Record each advisory's level per snapshot date; report the latest level change.
-function trackHistory(history, sourceKey, asOf, advisories) {
-  const book = (history[sourceKey] ??= {});
-  for (const a of advisories) {
-    const log = (book[a.name] ??= []);
-    const last = log[log.length - 1];
-    if (!last || (last.level !== a.level && asOf > last.date)) log.push({ date: asOf, level: a.level });
-    if (log.length >= 2) {
-      const [prev, cur] = log.slice(-2);
-      a.levelChange = { date: cur.date, from: prev.level, to: cur.level };
-    }
+// Run only when executed directly (tests import PATHS and readRawSources).
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  const topo = JSON.parse(readFileSync(PATHS.world, 'utf8'));
+  const history = existsSync(PATHS.history) ? JSON.parse(readFileSync(PATHS.history, 'utf8')) : {};
+  const raw = readRawSources();
+  if (!raw.us) { console.error('U.S. data is required (run scripts/fetch-us.mjs).'); process.exit(1); }
+
+  const { sources, problems } = buildSources(raw, history, mapNamesFrom(topo));
+  if (problems.length) {
+    console.error(problems.join('\n'));
+    process.exit(1);
   }
-}
 
-// ---- Load inputs
-const topo = JSON.parse(readFileSync(WORLD_JSON, 'utf8'));
-const mapNames = new Set(topo.objects.countries.geometries.map(g => g.properties.name));
-for (const s of SPLIT_SHAPES) mapNames.add(s);
+  writeFileSync(PATHS.history, JSON.stringify(history, null, 1) + '\n');
+  writeFileSync(PATHS.advisoriesJs, renderAdvisoriesJs(sources));
+  writeFileSync(PATHS.worldJs, renderWorldJs(topo));
 
-const history = existsSync(HISTORY_JSON) ? JSON.parse(readFileSync(HISTORY_JSON, 'utf8')) : {};
-
-const raw = {};
-for (const [key, file] of Object.entries(SOURCE_FILES)) {
-  if (!existsSync(file)) { console.warn(`Missing ${file}; skipping ${key}. Run its fetch script first.`); continue; }
-  const src = JSON.parse(readFileSync(file, 'utf8'));
-  raw[key] = { asOf: src.fetchedAt.slice(0, 10), advisories: src.entries };
-}
-if (!raw.us) { console.error('U.S. data is required (run scripts/fetch-us.mjs).'); process.exit(1); }
-
-// ---- Build each source, with sanity checks
-const problems = [];
-const sources = {};
-for (const [key, { asOf, advisories }] of Object.entries(raw)) {
-  const meta = SOURCES[key];
-  const placed = advisories.map(place);
-  classifyUpdates(placed);
-  trackHistory(history, key, asOf, placed);
-
-  const names = new Set(placed.map(a => a.name));
-  for (const a of placed) for (const s of a.shapes || []) {
-    if (!mapNames.has(s)) problems.push(`[${key}] No map shape "${s}" for advisory "${a.name}"`);
+  for (const [key, s] of Object.entries(sources)) {
+    const counts = [1, 2, 3, 4].map(l => `L${l}: ${s.advisories.filter(a => a.level === l).length}`).join(', ');
+    const notes = s.advisories.filter(a => a.change).length;
+    const minor = s.advisories.filter(a => a.minorUpdate).length;
+    console.log(`${key}: ${s.advisories.length} advisories (${counts}), as of ${s.asOf}; ${notes} with change notes, ${minor} latest updates minor.`);
   }
-  for (const [shape, adv] of Object.entries(meta.coveredBy)) {
-    if (!mapNames.has(shape)) problems.push(`[${key}] coveredBy shape "${shape}" not in map`);
-    if (!names.has(adv)) problems.push(`[${key}] coveredBy advisory "${adv}" not in data`);
-  }
-  sources[key] = { ...meta, asOf, advisories: placed };
-}
-if (problems.length) {
-  console.error(problems.join('\n'));
-  process.exit(1);
-}
-
-// ---- Write outputs
-writeFileSync(HISTORY_JSON, JSON.stringify(history, null, 1) + '\n');
-writeFileSync(join(root, 'data', 'advisories.js'),
-  `// Generated by scripts/build-data.mjs. Do not edit by hand.\nwindow.ADVISORY_DATA = ${JSON.stringify({ sources }, null, 1)};\n`);
-writeFileSync(join(root, 'data', 'world.js'),
-  `// Generated by scripts/build-data.mjs from world-atlas countries-50m (Natural Earth, public domain).\nwindow.WORLD_TOPO = ${JSON.stringify(topo)};\n`);
-
-for (const [key, s] of Object.entries(sources)) {
-  const counts = [1, 2, 3, 4].map(l => `L${l}: ${s.advisories.filter(a => a.level === l).length}`).join(', ');
-  const notes = s.advisories.filter(a => a.change).length;
-  const minor = s.advisories.filter(a => a.minorUpdate).length;
-  console.log(`${key}: ${s.advisories.length} advisories (${counts}), as of ${s.asOf}; ${notes} with change notes, ${minor} latest updates minor.`);
 }

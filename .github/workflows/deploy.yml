@@ -1,0 +1,89 @@
+name: Test and deploy
+
+# Every deploy of the live site goes through here, and only happens if all tests pass:
+#   - pushes to main (code changes)
+#   - the daily "Update advisories" run, which calls this workflow after committing new data
+#     (its commits are made with GITHUB_TOKEN, which doesn't trigger push workflows)
+#   - the "Run workflow" button
+# If a test fails, nothing is deployed and the site keeps serving the last good version.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      ref:
+        description: Git ref to test and deploy
+        type: string
+        default: main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # A daily-update call passes "main" so the new data commit is tested, not the
+          # commit that started that run.
+          ref: ${{ inputs.ref || github.sha }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Unit and data tests
+        run: npm test
+
+      - name: Browser tests
+        run: npm run test:e2e
+
+      - name: Keep screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: screenshots
+          path: test-output/
+          retention-days: 14
+          if-no-files-found: ignore
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref || github.sha }}
+
+      # Publish only what the site loads, not scripts, logs or source snapshots.
+      - name: Stage site files
+        run: |
+          mkdir -p _site/data
+          cp -r index.html css js vendor _site/
+          cp data/advisories.js data/world.js _site/data/
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v5

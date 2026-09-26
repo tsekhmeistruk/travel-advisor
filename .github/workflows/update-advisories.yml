@@ -63,6 +63,8 @@ jobs:
     if: needs.gate.outputs.run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    outputs:
+      pushed: ${{ steps.commit.outputs.pushed }}
     steps:
       - name: Wait a random time
         if: needs.gate.outputs.jitter == 'true'
@@ -100,6 +102,7 @@ jobs:
 
       # Runs even after a failure, so the fetch log records it.
       - name: Commit and push
+        id: commit
         if: always()
         env:
           US: ${{ steps.us.outcome }}
@@ -116,9 +119,23 @@ jobs:
           if git diff --cached --quiet; then echo "No changes to commit"; exit 0; fi
           git commit -m "Update advisories $(date -u +%F)"
           git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
 
       - name: Report failures
         if: steps.us.outcome == 'failure' || steps.ca.outcome == 'failure' || steps.build.outcome == 'failure'
         run: |
           echo "::error::U.S. fetch: ${{ steps.us.outcome }}, Canada fetch: ${{ steps.ca.outcome }}, build: ${{ steps.build.outcome }}. Failed sources kept their previous data; the next hourly run will retry. See the Fetch results table above and logs/fetch/."
           exit 1
+
+  # New data goes live only if all tests pass on it. Runs even when one source failed,
+  # so the other source's update still ships.
+  deploy:
+    needs: update
+    if: always() && needs.update.outputs.pushed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: main

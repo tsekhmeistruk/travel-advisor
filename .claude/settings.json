@@ -9,7 +9,12 @@
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git pull:*)",
-      "Bash(git show:*)"
+      "Bash(git show:*)",
+      "Bash(npm test)",
+      "Bash(npm run test:e2e)",
+      "Bash(npm run test:all)",
+      "Bash(npm run build)",
+      "Bash(npm ci)"
     ],
     "ask": [
       "Bash(node scripts/fetch-us.mjs)"
