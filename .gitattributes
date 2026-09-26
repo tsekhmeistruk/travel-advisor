@@ -1,0 +1,10 @@
+# Same line endings on Windows and on the GitHub Actions runner
+* text=auto eol=lf
+
+# Generated or vendored: collapsed in diffs, excluded from language stats
+data/advisories.js     linguist-generated
+data/world.js          linguist-generated
+data/sources/*.json    linguist-generated
+data/history.json      linguist-generated
+logs/fetch/**/*.jsonl  linguist-generated
+vendor/**              linguist-vendored
