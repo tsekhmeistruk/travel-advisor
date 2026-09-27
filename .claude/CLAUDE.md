@@ -69,6 +69,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **The API is inconsistent between calls:**
   - it leaves advisories out (216–228 items);
   - it changes spellings ("Cote d Ivoire");
+  - it **splits or combines entries**: "Saba and Sint Eustatius" one day, "Saba" and "Sint Eustatius" the next. A new name stops the build, and the deploy gate keeps the live site on its last good data. Add the name to `aliases` in `config/providers/us.json`;
   - it serves **outdated copies**: one run returned 37, including Bangladesh at Level 3 from January instead of Level 2 from July;
   - it once served a **bogus new record**: Ethiopia at Level 1, "updated" the fetch day, while the advisory was Level 3. The older-date rule alone would then have locked the wrong level in for good.
 

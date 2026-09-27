@@ -64,7 +64,8 @@ export default {
 
 async function get(log, url, sleep, attempt = 1) {
   try {
-    const res = await log.request('list', url, { headers: HEADERS, signal: AbortSignal.timeout(60000) });
+    // Counted, not listed per attempt: two pages must not look like a retry in the log.
+    const res = await log.request('list', url, { headers: HEADERS, signal: AbortSignal.timeout(60000) }, { detail: false });
     if (res.challenge) throw new Error('Cloudflare challenge page instead of data');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     if (!/^\s*[[{]/.test(res.body)) throw new Error('non-JSON response');

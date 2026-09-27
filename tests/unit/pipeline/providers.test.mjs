@@ -23,8 +23,8 @@ after(() => restoreConsole());
  */
 function fakeLog(responses) {
   const log = { warnings: [], requests: [] };
-  log.request = async (call, url) => {
-    log.requests.push({ call, url });
+  log.request = async (call, url, init, opts) => {
+    log.requests.push({ call, url, opts });
     const q = responses[call];
     const r = typeof q === 'function' ? q(url) : q.shift();
     if (r instanceof Error) throw r;
@@ -143,6 +143,8 @@ describe('Netherlands fetcher', () => {
     assert.equal(stats.advisories, 226);
     assert.deepEqual(log.requests.map(r => new URL(r.url).searchParams.get('offset')), ['0', '200']);
     assert.equal(entries[0].level, 1);
+    // Pages are counted, not listed as attempts, so the run log doesn't report them as a retry.
+    assert.ok(log.requests.every(r => r.opts?.detail === false));
   });
 
   test('holds a level change until a later fetch confirms it (levels come from prose)', async () => {
