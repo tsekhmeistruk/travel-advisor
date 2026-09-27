@@ -24,8 +24,8 @@ The browser tests show **real scrollbars**, even headless, like Windows and Linu
 | `unit/pipeline/` | **Pure pipeline logic:** parsers (`us`, `ca`, `nl`), build rules and the level history, text helpers.<br>**Fetchers** (`providers.test.mjs`): run against a scripted fake request log, covering retries, Cloudflare challenges and fallbacks between sources. Waits are recorded, not slept.<br>**Infrastructure** (`infrastructure.test.mjs`): run log, storage, fetch runner, log summary, and the local server, including path-traversal checks. These tests write only to temp folders. |
 | `unit/site/` | **Site modules that don't need a browser:** i18n, settings, data client, DOM helpers, search ranking, map splits.<br>**The travel-advisories dataset** (`dataset.test.mjs`): uses a fake provider file and real English messages, and covers styles, details cards, escaping, links, feed and search. |
 | `data/` | **`data.test.mjs`:** published data equals a fresh build; the registry, manifest, records, history and translations are consistent.<br>**`project.test.mjs`:** each provider is wired up everywhere (config, module, flag, workflow); every translation key the code uses exists; the deploy gate is intact; no secrets are committed. |
-| `e2e/` | **Browser tests over the served site.** `helpers.mjs` holds the shared setup; `site.test.mjs` covers rendering and core flows; `controls.test.mjs` covers every control, error states, accessibility, and languages (via a fake second locale). |
-| `fixtures/` | **Real responses from the sources,** trimmed. Refresh a fixture only from a real response. |
+| `e2e/` | **Browser tests over the served site.** `helpers.mjs` holds the shared setup, including `withLevelChanges()`, which serves a provider's real file with level changes 1, 3, 10 and 40 days old; `site.test.mjs` covers rendering and core flows; `controls.test.mjs` covers every control, error states, accessibility, and languages (via a fake second locale). |
+| `fixtures/` | **Real responses from the sources,** trimmed: `us-api.json`, `canada-feed.json`, `canada-table.html`, `netherlands-list.json`. Refresh a fixture only from a real response. |
 
 ## Conventions
 
@@ -33,4 +33,5 @@ The browser tests show **real scrollbars**, even headless, like Windows and Linu
 - **Keep logic pure,** so it can be unit-tested. Inject what's slow or external (`fetch`, `sleep`, storage, the clock, the log folder) instead of calling it directly.
 - **No real network in unit tests.** Tests never write into the repo; use `mkdtemp` folders.
 - **Browser tests use stable hooks:** element IDs, `__data__.key` (place ID) on map elements, and CSS classes like `l1`–`l4`, `is-muted`, `is-dim`. They avoid visible text wherever the language could change it.
+- **Never depend on real level changes in the deploy gate.** They are rare, so a quiet month would block deploys. Inject them with `withLevelChanges()`.
 - **Screenshots** are saved to `test-output/` (git-ignored), and CI keeps them as the `screenshots` artifact.

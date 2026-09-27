@@ -1,10 +1,10 @@
 # Architecture
 
-This project is a map of the world that shows **data about places**. Today the data is official travel-advisory levels from the U.S. and Canada. The code is built so that more **providers** (other governments), other **datasets** (flights, statistics), more **languages** and a **database** can be added without restructuring.
+This project is a map of the world that shows **data about places**. Today the data is official travel-advisory levels from the U.S., Canada and the Netherlands. The code is built so that more **providers** (other governments), other **datasets** (flights, statistics), more **languages** and a **database** can be added without restructuring.
 
 ## Principles
 
-- **Data is facts, text is translations.** Published data holds IDs, numbers, dates and the source's own notes. All interface text, including each provider's level wording, lives in `site/i18n/<locale>.json`.
+- **Data is facts, text is translations.** Published data holds IDs, levels, dates and the level history. All interface text, including each provider's level wording, lives in `site/i18n/<locale>.json`.
 - **Everything refers to places by ID.** The place registry (`config/places.json`) is shared by every dataset.
 - **The map is generic.** It draws places and asks the active dataset how each one should look. It knows nothing about advisories.
 - **Pure logic, thin I/O.** Parsing, merging, level history and view rules are pure functions with unit tests. Scripts and UI glue only read, write and render.
@@ -15,9 +15,9 @@ This project is a map of the world that shows **data about places**. Today the d
 
 | Concept | What it is | Where |
 |---|---|---|
-| **Place** | Something drawn on the map: a country, territory or split region. It has a stable `id` (`fr`, `gaza`), an English `name`, an optional ISO `iso2` code, and a map `shape` or a `point` | `config/places.json`, published as `site/data/places.json` |
+| **Place** | Something drawn on the map: a country, territory or split region. It has a stable `id` (`fr`, `gaza`), an English `name`, optional ISO codes (`iso2`, `iso3`), and a map `shape` or a `point` | `config/places.json`, published as `site/data/places.json` |
 | **Dataset** | A kind of data shown on the map, e.g. `travel-advisories`. It defines its scale, its providers and its settings | `config/datasets/<id>.json`, plus a site module in `site/js/datasets/<id>/` |
-| **Provider** | One source within a dataset, e.g. `us` or `ca` | `config/providers/<id>.json` and `scripts/providers/<id>/` |
+| **Provider** | One source within a dataset, e.g. `us`, `ca` or `nl` | `config/providers/<id>.json` and `scripts/providers/<id>/` |
 | **Record** | One item from a provider, e.g. one advisory. It refers to its places by ID | `site/data/<dataset>/<provider>.json` |
 | **Target** | What the user is pointing at: `{ placeId }` or `{ recordKey }` (a record with no place, e.g. "French West Indies") | `site/js/main.js` |
 | **Locale** | A language file | `site/i18n/<code>.json` |
@@ -28,7 +28,7 @@ This project is a map of the world that shows **data about places**. Today the d
 config/                        hand-edited configuration (future: reference tables)
   places.json                  place registry (generated once by scripts/tools/generate-places.mjs, then reviewed)
   datasets/<id>.json           dataset definition: scale, providers, settings options
-  providers/<id>.json          provider mapping: home, territories, coveredBy, aliases, list-only entries
+  providers/<id>.json          provider mapping: home, territories, coveredBy, aliases, codes, list-only entries
 data/                          pipeline state (future: database tables)
   snapshots/<dataset>/<p>.json latest fetch of each provider
   history/<dataset>.json       level history per provider and record
@@ -39,7 +39,9 @@ scripts/                       the data pipeline (Node 22, no dependencies)
   build.mjs                    build site/data from config + snapshots + history
   serve.mjs                    local static server for site/
   log-summary.mjs              fetch log as a table
-  lib/                         pure logic: build.mjs, text.mjs; I/O boundary: store.mjs; logging: fetch-log.mjs
+  lib/                         pure logic: build.mjs (matching, level history), merge.mjs (merge with the previous
+                               snapshot, level-change confirmation), text.mjs; I/O boundary: store.mjs;
+                               logging: fetch-log.mjs, log-summary.mjs (Fetch results table)
   providers/<id>/              index.mjs (network), parse.mjs (pure parsing)
   tools/generate-places.mjs    regenerates config/places.json
 site/                          the published website: deployed as-is
@@ -55,7 +57,7 @@ site/                          the published website: deployed as-is
 tests/
   unit/pipeline, unit/site     pure logic, with real-response fixtures in tests/fixtures/
   data/                        published data vs a fresh build, config and translation checks
-  e2e/                         headless browser over the served site
+  e2e/                         headless browser over the served site (real data plus injected level changes)
 ```
 
 ## Data flow
@@ -69,7 +71,7 @@ tests/
                                                                    └──────────────────────────┘
 ```
 
-1. **Fetch** (`scripts/fetch.mjs <provider>`) loads the provider module, gives it the previous snapshot, and saves the new one. Each provider decides how to fetch and how to merge. For example, the U.S. provider ignores stale API copies, applies a level change only once a fetch on a later day confirms it, and keeps advisories that are temporarily missing. Every request is logged.
+1. **Fetch** (`scripts/fetch.mjs <provider>`) loads the provider module, gives it the previous snapshot, and saves the new one. Each provider decides how to fetch and how to merge. The U.S. and the Netherlands merge through `lib/merge.mjs`: stale copies are ignored, a level change applies only once a fetch on a later day confirms it, and advisories missing for up to 7 days are kept. Canada combines its feed and live table, and applies its official levels at once. Every request is logged.
 2. **Build** (`scripts/build.mjs` → `buildSite()` in `lib/build.mjs`) does two things:
    - matches each record to places: the provider's `listOnly` entries and title `aliases` first, then its code aliases (`codes`, for codes that aren't one place, e.g. `PSE`), then an automatic match on the **ISO code** (alpha-2 or alpha-3), then on the place's name or map shape, ignoring accents and punctuation;
    - updates the level history (`trackHistory()`), which is the **only** source of "what changed": a change is a different level than the last snapshot's, on a later day. Each record gets its last three `levelChanges` and `trackedSince`, the first snapshot that had it. A log may begin with changes a source announced before tracking began (`source: "note"`; the U.S. ones were seeded once from its change notes), whose `from` is `null` when only the direction was given.
@@ -131,16 +133,17 @@ tests/
 ## How to…
 
 ### Add a provider (another government)
-1. **Fetcher:** write `scripts/providers/<id>/index.mjs`. It exports `{ id, dataset, source, fetch({ log, previous, today }) → { entries, stats } }`, with the pure parsing in `parse.mjs`. Entries are `{ name, level, updated: 'YYYY-MM-DD', url?, regional?, iso? }`. If levels come from an unreliable source, merge with `mergeWithPrevious()` (`lib/merge.mjs`) so a level change waits for a later day's confirmation. Every request goes through `log.request()`.
+1. **Fetcher:** write `scripts/providers/<id>/index.mjs`. It exports `{ id, dataset, source, fetch({ log, previous, today }) → { entries, stats } }`, with the pure parsing in `parse.mjs`. In `stats`, report level changes as `levelChangesConfirmed` (after confirmation) or `levelChanged` (applied at once), so the run table shows them. Entries are `{ name, level, updated: 'YYYY-MM-DD', url?, regional?, iso? }`. If levels come from an unreliable source, merge with `mergeWithPrevious()` (`lib/merge.mjs`) so a level change waits for a later day's confirmation. Every request goes through `log.request()`.
 2. **Registry:** add the module to `scripts/providers/index.mjs`.
-3. **Config:** add `config/providers/<id>.json`. It sets `home` and `territories` (place IDs), `links.list`, `flag` (an ISO code, with the file `site/assets/flags/<flag>.svg`), `coveredBy`, `aliases` and `listOnly`.
+3. **Config:** add `config/providers/<id>.json`. It sets `home` and `territories` (place IDs), `links.list`, `flag` (an ISO code, with the file `site/assets/flags/<flag>.svg`), `coveredBy`, `aliases` (by title), `codes` (by source code, for codes that aren't one place) and `listOnly`.
 4. **Dataset:** list the provider in `config/datasets/<dataset>.json`.
 5. **Translations:** add `datasets.<dataset>.providers.<id>` (name, short, agency, levels, notes) to **every** locale.
 6. **Workflow:** add a `node scripts/fetch.mjs <id>` step to `.github/workflows/update-advisories.yml`, with `continue-on-error` and an `id`. Include it in the `last-run.txt` and failure conditions.
 7. **Fetch and build:**
    - run `node scripts/fetch.mjs <id>`, then `npm run build`;
    - the build lists every title it can't place, so add those to `aliases`;
-   - add a real-response fixture and unit tests for `parse.mjs`.
+   - add a real-response fixture and unit tests for `parse.mjs`, and fetcher tests in `providers.test.mjs`;
+   - the browser tests read providers from the manifest, so the new one is tested at desktop and phone widths automatically.
 
 ### Add a dataset (e.g. flights) and a dataset menu
 1. **Scale:** decide the dataset's value scale. It may not be levels 1–4. Colour classes are the dataset's choice; add CSS tokens for them.
@@ -168,7 +171,7 @@ The published and pipeline files are already shaped like tables, keyed by stable
 | `config/places.json` | `places(id PK, name, iso2, iso3, shape, point)` |
 | translations of place names | `place_names(place_id, locale, name)` (optional; Intl covers most) |
 | `config/datasets/*.json` | `datasets(id PK, scale, recent_windows, default_recent_window)` |
-| `config/providers/*.json` | `providers(id PK, dataset_id, flag, home_place_id, list_url)` plus `provider_aliases(provider_id, title, place_id)`, `provider_territories`, `provider_covered_by(provider_id, place_id, title)` |
+| `config/providers/*.json` | `providers(id PK, dataset_id, flag, home_place_id, list_url)` plus `provider_aliases(provider_id, title, place_id)`, `provider_codes(provider_id, code, place_id)`, `provider_territories`, `provider_covered_by(provider_id, place_id, title)` |
 | `data/snapshots/…` | `snapshots(provider_id, fetched_at, payload)`, or keep only records |
 | `site/data/<dataset>/<provider>.json` | `records(provider_id, title, level, updated, url, regional)` plus `record_places(record_id, place_id, role: own/covers)` |
 | `data/history/*.json` | `level_history(provider_id, title, date, level, from_level, up, source)`; `levelChanges` and `trackedSince` become a query |
@@ -183,7 +186,7 @@ Steps:
 
 See the README's **Tests** section. In short:
 - `npm run test:coverage` runs the unit and data tests, failing below the coverage thresholds;
-- `npm run test:e2e` runs the browser tests;
+- `npm run test:e2e` runs the browser tests. Real level changes are rare, so tests of pulses and the feed inject them with `withLevelChanges()` (`tests/e2e/helpers.mjs`) and never depend on the world having had one lately;
 - `.github/workflows/deploy.yml` runs both and deploys `site/` only if they pass.
 
 The daily update (`update-advisories.yml`) fetches at a random time, builds, commits, and then calls the same test-and-deploy workflow.

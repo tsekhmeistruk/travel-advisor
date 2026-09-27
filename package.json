@@ -1,7 +1,7 @@
 {
   "name": "travel-risk-map",
   "private": true,
-  "description": "World map of U.S. and Canadian travel advisory levels, updated daily",
+  "description": "World map of U.S., Canadian and Dutch travel advisory levels, updated daily",
   "type": "module",
   "engines": {
     "node": ">=22"

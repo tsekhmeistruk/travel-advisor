@@ -19,7 +19,7 @@ node scripts/log-summary.mjs            # table of the last 7 days
 npm run logs                            # last 30 days
 ```
 
-Each GitHub Actions run also shows its own table on the run's summary page.
+Each GitHub Actions run also shows its own table on the run's summary page. When a level moved, the run's line starts with "🔔 level changed: …" (from `levelChanged` or `levelChangesConfirmed`).
 
 ### Line format
 

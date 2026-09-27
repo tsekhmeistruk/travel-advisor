@@ -65,13 +65,13 @@ Every deploy is gated by these tests (292 in total). Coverage is enforced: deplo
 |---|---|---|
 | Unit | `npm test` | **Parsers** for every source, against real saved responses (`tests/fixtures/`).<br>**Fetchers:** retries, Cloudflare challenges and fallbacks between sources, against scripted responses.<br>**Rules:** merging and confirming level changes, level history, name-to-place matching.<br>**Infrastructure:** run log, storage, log summary, and the local server's path safety.<br>**Site modules:** languages, settings, search, and the advisory dataset's views, including escaping hostile source text and rejecting unsafe links. |
 | Data | `npm test` | **Current data:** the published data must equal a fresh build.<br>**Configuration:** the place registry and the configs are consistent.<br>**Plausible sources:** each has ≥150 records and every level.<br>**Translations:** every language has every key, and every key the code uses exists.<br>**Wiring:** every provider is set up everywhere it must be, including the daily workflow.<br>**Deploy gate:** it's intact.<br>**Secrets:** none are committed. |
-| Browser | `npm run test:e2e` | **Both sources** on desktop and phone.<br>**Details card:** stays one fixed size.<br>**Every control:** clicks with small hand movement, drag, zoom buttons, tooltip, theme, panel, level filter, fading, feed, keyboard search.<br>**Error states:** the load-error message.<br>**Accessibility:** every control has an accessible label.<br>**Languages:** a fake second, right-to-left locale proves the language picker, persistence, and translated names and dates. |
+| Browser | `npm run test:e2e` | **Every source** (read from the manifest) on desktop and phone, with injected level changes of known ages, so pulses and the feed are always tested.<br>**Details card:** stays one fixed size.<br>**Every control:** clicks with small hand movement, drag, zoom buttons, tooltip, theme, panel, level filter, fading, feed, keyboard search.<br>**Error states:** the load-error message.<br>**Accessibility:** every control has an accessible label.<br>**Languages:** a fake second, right-to-left locale proves the language picker, persistence, and translated names and dates. |
 
 The browser tests use a local Chrome or Edge (set `CHROME_PATH` to override) and save screenshots to `test-output/`.
 
 ## Logs
 
-Every fetch is logged in `logs/fetch/<year>/<year-month>.jsonl`. Each line records every HTTP request (status, timing, retries, Cloudflare challenges) and what the run produced. Each update run's page on GitHub shows the same information as a **Fetch results** table.
+Every fetch is logged in `logs/fetch/<year>/<year-month>.jsonl`. Each line records every HTTP request (status, timing, retries, Cloudflare challenges) and what the run produced. Each update run's page on GitHub shows the same information as a **Fetch results** table, which starts with "🔔 level changed: …" when a source's level moved.
 
 ```sh
 npm run logs        # table of the last 30 days
@@ -102,7 +102,7 @@ npm run logs        # table of the last 30 days
 
 ## Credits
 
-- **Advisory data:** [U.S. Department of State](https://travel.state.gov/) and [Government of Canada](https://travel.gc.ca/). This site isn't affiliated with either government.
+- **Advisory data:** [U.S. Department of State](https://travel.state.gov/), [Government of Canada](https://travel.gc.ca/) and the [Dutch Ministry of Foreign Affairs](https://www.nederlandwereldwijd.nl/reisadvies) (open data, CC0). This site isn't affiliated with any of these governments.
 - **Map geometry:** [Natural Earth](https://www.naturalearthdata.com/) via [world-atlas](https://github.com/topojson/world-atlas) (public domain).
 - **Country codes:** ISO 3166-1, mapped with [i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) (MIT, used only to generate the place registry).
 - **Libraries:** [d3](https://d3js.org/) and [topojson-client](https://github.com/topojson/topojson-client) (ISC licence).
