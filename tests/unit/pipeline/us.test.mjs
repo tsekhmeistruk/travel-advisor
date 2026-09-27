@@ -67,11 +67,67 @@ describe('mergeWithPrevious', () => {
     assert.equal(stale.length, 1);
   });
 
-  test('accepts a newer entry over the saved one', () => {
-    const byName = new Map([['Chad', { name: 'Chad', level: 4, updated: '2026-09-20', lastSeen: TODAY }]]);
-    const { entries, stale } = mergeWithPrevious(byName, [prevEntry('Chad', '2026-04-28', 3)], TODAY, 7);
-    assert.equal(entries[0].level, 4);
-    assert.equal(stale.length, 0);
+  test('accepts a newer date at the same level immediately', () => {
+    const byName = new Map([['Chad', { name: 'Chad', level: 3, updated: '2026-09-20', lastSeen: TODAY }]]);
+    const { entries, stale, unconfirmed } = mergeWithPrevious(byName, [prevEntry('Chad', '2026-04-28', 3)], TODAY, 7);
+    assert.equal(entries[0].updated, '2026-09-20');
+    assert.deepEqual([stale.length, unconfirmed.length], [0, 0]);
+  });
+
+  describe('level changes need confirmation on a later day', () => {
+    const DAY2 = '2026-09-28';
+    const apiSays = (level, updated) => new Map([['Chad', { name: 'Chad', level, updated, lastSeen: TODAY, url: 'u' }]]);
+
+    test('a new level is held: the saved entry stays and the candidate is pending', () => {
+      const { entries, unconfirmed } = mergeWithPrevious(apiSays(4, '2026-09-20'), [prevEntry('Chad', '2026-04-28', 3)], TODAY, 7);
+      assert.equal(entries[0].level, 3);
+      assert.equal(entries[0].updated, '2026-04-28');
+      assert.deepEqual(entries[0].pending, { level: 4, updated: '2026-09-20', url: 'u', firstSeen: TODAY });
+      assert.match(unconfirmed[0], /Chad L3 → L4/);
+    });
+
+    test('seeing it again the same day does not confirm it', () => {
+      const first = mergeWithPrevious(apiSays(4, '2026-09-20'), [prevEntry('Chad', '2026-04-28', 3)], TODAY, 7).entries;
+      const { entries } = mergeWithPrevious(apiSays(4, '2026-09-20'), first, TODAY, 7);
+      assert.equal(entries[0].level, 3);
+      assert.equal(entries[0].pending.firstSeen, TODAY);
+    });
+
+    test('seeing it again on a later day confirms and applies it', () => {
+      const first = mergeWithPrevious(apiSays(4, '2026-09-20'), [prevEntry('Chad', '2026-04-28', 3)], TODAY, 7).entries;
+      const { entries, confirmed } = mergeWithPrevious(apiSays(4, '2026-09-20'), first, DAY2, 7);
+      assert.equal(entries[0].level, 4);
+      assert.equal(entries[0].pending, undefined);
+      assert.match(confirmed[0], /Chad L3 → L4 \(first seen 2026-09-27\)/);
+    });
+
+    test('regression: a one-off bogus "updated today" level is never applied (Ethiopia)', () => {
+      // Saved: Level 3 from Aug 27. One response says Level 1, dated the fetch day.
+      const saved = [{ name: 'Ethiopia', level: 3, updated: '2026-08-27', lastSeen: '2026-09-26', url: 'u' }];
+      const bogus = new Map([['Ethiopia', { name: 'Ethiopia', level: 1, updated: TODAY, lastSeen: TODAY, url: 'u' }]]);
+      const day1 = mergeWithPrevious(bogus, saved, TODAY, 7).entries;
+      assert.equal(day1[0].level, 3);
+      // Next day the API is correct again (Level 3, Aug 27): accepted, and the candidate is gone.
+      const correct = new Map([['Ethiopia', { name: 'Ethiopia', level: 3, updated: '2026-08-27', lastSeen: DAY2, url: 'u' }]]);
+      const day2 = mergeWithPrevious(correct, day1, DAY2, 7);
+      assert.equal(day2.entries[0].level, 3);
+      assert.equal(day2.entries[0].pending, undefined);
+      assert.deepEqual(day2.stale, [], 'the correct data must not be rejected as stale');
+    });
+
+    test('a different candidate restarts the wait', () => {
+      const first = mergeWithPrevious(apiSays(4, '2026-09-20'), [prevEntry('Chad', '2026-04-28', 3)], TODAY, 7).entries;
+      const { entries } = mergeWithPrevious(apiSays(2, '2026-09-21'), first, DAY2, 7);
+      assert.equal(entries[0].level, 3);
+      assert.deepEqual([entries[0].pending.level, entries[0].pending.firstSeen], [2, DAY2]);
+    });
+
+    test('a pending candidate survives stale copies and missing responses, then expires', () => {
+      const first = mergeWithPrevious(apiSays(4, '2026-09-20'), [prevEntry('Chad', '2026-04-28', 3)], TODAY, 7).entries;
+      assert.ok(mergeWithPrevious(apiSays(3, '2026-01-01'), first, DAY2, 7).entries[0].pending, 'kept through a stale copy');
+      assert.ok(mergeWithPrevious(new Map(), first, DAY2, 7).entries[0].pending, 'kept while missing');
+      assert.equal(mergeWithPrevious(apiSays(3, '2026-01-01'), first, '2026-10-10', 7).entries[0].pending, undefined, 'expired');
+    });
   });
 
   test('keeps an advisory missing from the response within the grace period', () => {

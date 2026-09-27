@@ -628,17 +628,13 @@
   },
   {
    "title": "Ethiopia",
-   "level": 1,
-   "updated": "2026-09-27",
+   "level": 3,
+   "updated": "2026-08-27",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.eth.html",
+   "change": "There was no change to the advisory level or risk indicators. Areas of increased risk were modified to reflect current travel restrictions for U.S. embassy personnel. Advisory summary was updated.",
    "places": [
     "et"
-   ],
-   "levelChange": {
-    "date": "2026-09-27",
-    "from": 3,
-    "to": 1
-   }
+   ]
   },
   {
    "title": "Federated States of Micronesia",

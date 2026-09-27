@@ -123,6 +123,12 @@ describe('buildProvider', () => {
     assert.equal(data.records.find(r => r.title === 'France').minorUpdate, true);
     assert.equal(data.records.find(r => r.title === 'French West Indies').noteKey, 'frenchWestIndies');
   });
+  test('publishes only record fields, never fetch bookkeeping (lastSeen, stamp, pending)', () => {
+    const entries = [{ name: 'France', level: 2, updated: '2026-09-01', lastSeen: '2026-09-26', stamp: 's', pending: { level: 4, firstSeen: '2026-09-26' } }];
+    const [record] = run(entries).data.records;
+    for (const field of ['lastSeen', 'stamp', 'pending', 'name']) assert.equal(field in record, false, field);
+  });
+
   test('attaches covered places to the covering record', () => {
     assert.deepEqual(run().data.records.find(r => r.title === 'Somalia').covers, ['somaliland']);
   });

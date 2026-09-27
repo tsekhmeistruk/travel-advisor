@@ -69,9 +69,12 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **The API is inconsistent between calls:**
   - it leaves advisories out (216–228 items);
   - it changes spellings ("Cote d Ivoire");
-  - it serves **outdated copies**: one run returned 37, including Bangladesh at Level 3 from January instead of Level 2 from July.
+  - it serves **outdated copies**: one run returned 37, including Bangladesh at Level 3 from January instead of Level 2 from July;
+  - it once served a **bogus new record**: Ethiopia at Level 1, "updated" the fetch day, while the advisory was Level 3. The older-date rule alone would then have locked the wrong level in for good.
 
-  `providers/us/parse.mjs` merges each response with the previous snapshot: names are canonicalized, older copies are ignored, and missing advisories are kept for 7 days.
+  `providers/us/parse.mjs` merges each response with the previous snapshot:
+  - names are canonicalized, older copies are ignored, and missing advisories are kept for 7 days;
+  - **a level change is applied only when a fetch on a later day confirms it.** Until then it waits in the snapshot as `pending`, and the log warns "Unconfirmed level changes". Real level changes therefore show up one day late.
 - **The API rate-limits bursts** (HTTP 429 or a Cloudflare challenge, for 20+ minutes). **Don't run `npm run fetch us` repeatedly.** The daily single call from GitHub Actions works.
 
 **Canada** comes from the table on travel.gc.ca.

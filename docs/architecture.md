@@ -69,7 +69,7 @@ tests/
                                                                    └──────────────────────────┘
 ```
 
-1. **Fetch** (`scripts/fetch.mjs <provider>`) loads the provider module, gives it the previous snapshot, and saves the new one. Each provider decides how to fetch and how to merge. For example, the U.S. provider ignores stale API copies and keeps advisories that are temporarily missing. Every request is logged.
+1. **Fetch** (`scripts/fetch.mjs <provider>`) loads the provider module, gives it the previous snapshot, and saves the new one. Each provider decides how to fetch and how to merge. For example, the U.S. provider ignores stale API copies, applies a level change only once a fetch on a later day confirms it, and keeps advisories that are temporarily missing. Every request is logged.
 2. **Build** (`scripts/build.mjs` → `buildSite()` in `lib/build.mjs`) does three things:
    - matches each record's title to places: the provider's `listOnly` entries first, then its `aliases`, then an automatic match on the place's name or map shape, ignoring accents and punctuation;
    - flags minor updates using the provider's `minorChange` patterns, with a bulk-date fallback;

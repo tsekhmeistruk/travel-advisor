@@ -101,6 +101,17 @@ describe('U.S. fetcher', () => {
     await assert.rejects(us.fetch({ log, previous: [], today: TODAY, sleep: async () => {} }), /Parsed only \d+ advisories/);
   });
 
+  test('holds an unconfirmed level change and says so in the log', async () => {
+    const previous = [{ name: 'Suriname', level: 3, updated: '2026-09-01', lastSeen: '2026-09-26', url: 'u' }];
+    const log = fakeLog({ api: [{ body: apiBody }], rss: [{ body: '' }] });   // the API says Level 1
+    const { entries, stats } = await us.fetch({ log, previous, today: TODAY, sleep: async () => {} });
+    const suriname = entries.find(e => e.name === 'Suriname');
+    assert.equal(suriname.level, 3);
+    assert.equal(suriname.pending.level, 1);
+    assert.equal(stats.levelChangesPending, 1);
+    assert.match(log.warnings.join(), /Unconfirmed level changes \(waiting for a later fetch\): Suriname L3 → L1/);
+  });
+
   test('warns about outdated copies and keeps the saved entry', async () => {
     const previous = [{ name: 'Bangladesh', level: 2, updated: '2026-08-01', lastSeen: '2026-09-26', url: 'u' }];
     const stale = JSON.stringify([...JSON.parse(apiBody).filter(i => !/Bangladesh/.test(i.Title)),

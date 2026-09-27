@@ -30,8 +30,10 @@ export default {
     if (byName.size < 150) throw new Error(`Parsed only ${byName.size} advisories; the API format may have changed.`);
     const fromApi = byName.size;
 
-    const { entries, stale, carried, dropped } = mergeWithPrevious(byName, previous, today, MISSING_GRACE_DAYS);
+    const { entries, stale, carried, dropped, unconfirmed, confirmed } = mergeWithPrevious(byName, previous, today, MISSING_GRACE_DAYS);
     if (stale.length) log.warn(`Ignored outdated API copies: ${stale.join('; ')}`);
+    if (unconfirmed.length) log.warn(`Unconfirmed level changes (waiting for a later fetch): ${unconfirmed.join('; ')}`);
+    if (confirmed.length) console.log(`Confirmed level changes: ${confirmed.join('; ')}`);
     if (carried.length) console.log(`Kept from previous snapshot (missing from this response): ${carried.join(', ')}`);
     if (dropped.length) log.warn(`Dropped after ${MISSING_GRACE_DAYS} days missing from the API: ${dropped.join(', ')}`);
 
@@ -52,6 +54,8 @@ export default {
         fromApi,
         advisories: entries.length,
         staleIgnored: stale.length,
+        levelChangesPending: unconfirmed.length,
+        levelChangesConfirmed: confirmed,
         keptFromPrevious: carried,
         droppedMissing: dropped,
         changeNotes: notesMatched,
