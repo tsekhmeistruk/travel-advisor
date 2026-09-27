@@ -43,6 +43,11 @@ describe('risk data', () => {
     assert.match(manifest.risk.asOf, ISO_TIME);
   });
 
+  test('every source behind the levels is named with a link, for attribution', () => {
+    const { sources, categories } = risk('current');
+    for (const id of Object.values(categories).flatMap(c => c.sources)) assert.match(sources[id]?.url ?? '', /^https:\/\//, `${id}: link`);
+  });
+
   test('signals are on known places and categories, at known levels, with known facts as basis', () => {
     const current = risk('current');
     const eventIds = new Set(store.sourceIds().flatMap(id => (store.events(id)?.events ?? []).map(e => e.id)));

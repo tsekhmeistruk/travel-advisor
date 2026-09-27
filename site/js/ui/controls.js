@@ -22,6 +22,22 @@ export function createProviderSwitch(el, { onChange }) {
   };
 }
 
+/** Segmented control of the map's modes (Travel, Highest, Disasters, Changes). */
+export function createModeSwitch(el, { onChange }) {
+  el.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-mode]');
+    if (btn && btn.getAttribute('aria-checked') !== 'true') onChange(btn.dataset.mode);
+  });
+  return {
+    render(modes, activeId, label) {
+      el.setAttribute('aria-label', label);
+      el.hidden = modes.length < 2;
+      el.innerHTML = modes.map(m =>
+        `<button role="radio" data-mode="${esc(m.id)}" aria-checked="${m.id === activeId}" title="${esc(m.title)}">${esc(m.label)}</button>`).join('');
+    },
+  };
+}
+
 const THEME_ICONS = {
   auto: '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>',
   light: '<svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',

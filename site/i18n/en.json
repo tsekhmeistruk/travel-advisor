@@ -193,5 +193,134 @@
    }
   }
  },
+ "modes": {
+  "label": "Map mode",
+  "travel": {
+   "label": "Travel",
+   "title": "Official travel advisories, one government at a time"
+  },
+  "highest": {
+   "label": "Highest",
+   "title": "The highest risk level of any category"
+  },
+  "disaster": {
+   "label": "Disasters",
+   "title": "Natural disasters: GDACS alerts for earthquakes, cyclones, floods, volcanoes and droughts"
+  },
+  "changes": {
+   "label": "Changes",
+   "title": "Where a risk level changed recently"
+  }
+ },
+ "risk": {
+  "levels": {
+   "1": "Normal",
+   "2": "Elevated",
+   "3": "High",
+   "4": "Critical"
+  },
+  "noData": "No data",
+  "categories": {
+   "travel": "Travel",
+   "disaster": "Disaster",
+   "wildfire": "Wildfire",
+   "security": "Security",
+   "unrest": "Unrest",
+   "health": "Health",
+   "humanitarian": "Humanitarian",
+   "infrastructure": "Infrastructure"
+  },
+  "eventTypes": {
+   "earthquake": "earthquake",
+   "cyclone": "tropical cyclone",
+   "flood": "flood",
+   "volcano": "volcano",
+   "drought": "drought",
+   "wildfire": "forest fire"
+  },
+  "alerts": {
+   "Green": "Green",
+   "Orange": "Orange",
+   "Red": "Red"
+  },
+  "sources": {
+   "gdacs": "GDACS"
+  },
+  "status": {
+   "delayed": "delayed",
+   "error": "unavailable"
+  },
+  "window": {
+   "day": "24 hours",
+   "days": "{days} days"
+  },
+  "mapLabel": "World map coloured by risk level ({mode})",
+  "header": "Risk Monitor · updated {age}",
+  "headerIssue": "Risk Monitor · updated {age} · {source} {status}",
+  "footer": "Risk levels are our summary of {sources}, not official levels. Always check the sources before you travel.",
+  "overview": {
+   "eyebrow": "World overview · {mode}",
+   "above": {
+    "one": "{count} place above Normal",
+    "other": "{count} places above Normal"
+   },
+   "changes": "In the last {window}: {up} raised, {down} lowered.",
+   "hint": "Hover or tap a country for its risk by category."
+  },
+  "card": {
+   "eyebrow": "Risk by category",
+   "highest": "{level}",
+   "highestBy": "{level} · {categories}",
+   "categoryLevel": "{category} · {level}",
+   "raised24": "Raised in the last 24 hours",
+   "lowered24": "Lowered in the last 24 hours",
+   "travelBasis": {
+    "one": "{agree} of {count} government",
+    "other": "{agree} of {count} governments"
+   },
+   "eventBasis": "{source} {alert} {type}",
+   "more": "{text} +{count}",
+   "notCovered": "No advisory",
+   "unavailable": "Source unavailable",
+   "later": "Security, unrest and health: coming later",
+   "history": "Recent changes",
+   "noChanges": "No changes in the last {days} days.",
+   "report": "{source} report ↗"
+  },
+  "change": {
+   "level": "{category}: {from} → {to}",
+   "advisory": "{provider}: Level {from} → {to}",
+   "advisoryUp": "{provider}: raised to Level {to}",
+   "advisoryDown": "{provider}: lowered to Level {to}",
+   "eventNew": "New {source} {alert} alert: {type}",
+   "eventUp": "{source} {type} alert raised to {alert}",
+   "eventDown": "{source} {type} alert lowered to {alert}",
+   "raised": "Raised",
+   "lowered": "Lowered"
+  },
+  "tooltip": {
+   "change": "{change} · {age}"
+  },
+  "settings": {
+   "levels": "Risk levels",
+   "window": "Changes in the last",
+   "hours24": "24 h",
+   "days": "{days} days",
+   "direction": "Direction",
+   "all": "All",
+   "up": "Raised",
+   "down": "Lowered",
+   "dim": "Fade places without a recent change"
+  },
+  "feed": {
+   "title": "Changes in the last {window}",
+   "empty": "No changes in this period.",
+   "more": "and {count} more"
+  },
+  "legend": {
+   "none": "No data",
+   "recent": "Level changed ≤ {window}"
+  }
+ },
  "places": {}
 }

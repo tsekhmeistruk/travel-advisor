@@ -424,6 +424,35 @@ h1, h2 { margin: 0; }
 .overview-grid b { color: var(--text); font-weight: 600; margin-left: auto; }
 .hint { display: flex; align-items: center; gap: 6px; margin-top: 12px !important; font-size: 12.5px !important; }
 
+/* Risk summary card: one row per category (fixed slots, like the travel card) */
+.details .trend {
+  display: flex; align-items: baseline; gap: 6px;
+  height: 20px; margin-top: 6px; width: 100%;
+  font-size: 12.5px; color: var(--text-2);
+  white-space: nowrap; overflow: hidden;
+}
+.risk-rows { list-style: none; margin: 6px 0 0; padding: 0; width: 100%; }
+.risk-rows li {
+  display: flex; align-items: center; gap: 8px;
+  height: 26px; font-size: 13px;
+  border-bottom: 1px solid var(--line);
+}
+.risk-rows li:last-child { border-bottom: 0; }
+.risk-rows .swatch { border-radius: 50%; }
+.risk-rows .cat { flex: none; width: 70px; color: var(--text-2); }
+.risk-rows .lvl { flex: none; font-weight: 600; }
+.risk-rows li.is-focus .cat { color: var(--text); font-weight: 600; }
+.risk-rows .basis {
+  min-width: 0; margin-left: auto; font-size: 12px; color: var(--text-2);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.details .later { margin: 4px 0 0; height: 18px; font-size: 12px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+.details .moves { display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap; }
+
+.mode-switch { margin-top: -6px; }
+.mode-switch[hidden] { display: none; }
+.mode-switch button { font-size: 13px; font-weight: 600; }
+
 /* Settings */
 .section h2 {
   display: flex; align-items: center; gap: 8px;

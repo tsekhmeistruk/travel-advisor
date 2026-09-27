@@ -318,8 +318,13 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
 
   const sortedPlaces = Object.fromEntries(Object.keys(places).sort().map(id => [id, places[id]]));
   const categoriesOut = Object.fromEntries(catIds.filter(c => catMeta[c]).map(c => [c, catMeta[c]]));
+  // Who the levels come from, for attribution: risk sources first, then the governments.
+  const sourcesOut = {
+    ...Object.fromEntries(Object.entries(sources).map(([id, { config }]) => [id, { url: config.links?.home, terms: config.links?.terms }])),
+    ...Object.fromEntries(Object.entries(advisories.files).map(([id, d]) => [id, { url: d.links?.list }])),
+  };
   const files = {
-    'risk/current.json': { asOf, scale: categories.scale, categories: categoriesOut, places: sortedPlaces },
+    'risk/current.json': { asOf, scale: categories.scale, categories: categoriesOut, sources: sourcesOut, places: sortedPlaces },
     'risk/changes.json': { asOf, windowDays: CHANGE_WINDOW_DAYS, changes: recent },
     'risk/events.json': { asOf, events: events.sort((a, b) => b.startedAt.localeCompare(a.startedAt) || a.id.localeCompare(b.id)) },
     'risk/health.json': { asOf, sources: health },

@@ -53,6 +53,18 @@ export function createI18n({ locale, messages, fallback = null, today = new Date
       if (days < 45) return relShort.format(-days, 'day');
       return relShort.format(-Math.round(days / 30.44), 'month');
     },
+    /** An age in hours, for data that changes within a day: "25 minutes ago", "5 hours ago", then relativeAge. */
+    relativeHours(hours) {
+      if (hours < 1) return relLong.format(-Math.floor(hours * 60), 'minute');
+      if (hours < 24) return relLong.format(-Math.floor(hours), 'hour');
+      return this.relativeAge(Math.floor(hours / 24));
+    },
+    /** Compact relativeHours for lists: "25m ago", "5h ago", then shortAge. */
+    shortHours(hours) {
+      if (hours < 1) return relShort.format(-Math.floor(hours * 60), 'minute');
+      if (hours < 24) return relShort.format(-Math.floor(hours), 'hour');
+      return this.shortAge(Math.floor(hours / 24));
+    },
     /**
      * A place's display name: a translation in the locale file (places.<id>), then the
      * registry's curated English name for English, then the browser's name for its ISO code.

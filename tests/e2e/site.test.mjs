@@ -6,7 +6,7 @@
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, OUT, click, detailsTitle, withLevelChanges } from './helpers.mjs';
+import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, OUT, click, detailsTitle, withLevelChanges, measureCards } from './helpers.mjs';
 
 useBrowser();
 
@@ -15,34 +15,6 @@ const PROVIDER_IDS = JSON.parse(readFileSync(new URL('../../site/data/manifest.j
   .datasets.find(d => d.id === 'travel-advisories').providers.map(p => p.id);
 
 const clearSelection = (page) => page.evaluate(() => document.getElementById('map').dispatchEvent(new MouseEvent('click', { bubbles: true })));
-
-// Hover every country and dot; measure the details card each time.
-const measureCards = (page) => page.evaluate(() => {
-  const card = document.getElementById('details');
-  const heights = new Set(), overflow = [], cut = [];
-  const measure = (label) => {
-    heights.add(card.offsetHeight);
-    const last = [...card.children].at(-1);
-    if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(label);
-    // Also the "Last updated" value, the level history rows and the link: they may be shortened
-    // with an ellipsis, but English must fit.
-    for (const el of card.querySelectorAll('h3, .badge, .meta dd, .history-list li, .link')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
-  };
-  measure('overview');
-  for (const el of document.querySelectorAll('path.country, .dot')) {
-    el.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'touch' }));
-    measure(el.__data__.key);
-    el.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'touch' }));
-  }
-  return {
-    shapes: document.querySelectorAll('path.country').length,
-    colored: [...document.querySelectorAll('path.country')].filter(e => /\bl[1-4]\b/.test(e.getAttribute('class'))).length,
-    pulses: document.querySelectorAll('.pulse').length,
-    recent: document.querySelectorAll('#recentList button').length,
-    heights: [...heights], overflow: [...new Set(overflow)], cut: [...new Set(cut)],
-    scrollWidth: document.documentElement.scrollWidth,
-  };
-});
 
 for (const source of PROVIDER_IDS) {
   for (const [width, height] of [[1440, 860], [390, 844]]) {

@@ -45,6 +45,14 @@ describe('i18n', () => {
     assert.equal(en.shortAge(11), '11d ago');
     assert.equal(en.formatDate('2026-09-26'), 'Sep 26, 2026');
   });
+  test('formats ages in hours for data that changes within a day', () => {
+    assert.equal(en.relativeHours(0.4), '24 minutes ago');
+    assert.equal(en.relativeHours(5.9), '5 hours ago');
+    assert.equal(en.relativeHours(30), 'yesterday');
+    assert.equal(en.shortHours(0.4), '24m ago');
+    assert.equal(en.shortHours(5), '5h ago');
+    assert.equal(en.shortHours(24 * 11), '11d ago');
+  });
   test('formats ages in other languages via Intl', () => {
     assert.equal(uk.relativeAge(1), 'учора');
     assert.notEqual(uk.relativeAge(11), en.relativeAge(11));
@@ -107,6 +115,19 @@ describe('data client', () => {
     await client.file('places.json');
     await client.messages('en');
     assert.deepEqual(calls, ['data/manifest.json', 'data/places.json', 'i18n/en.json']);
+  });
+  test('always revalidates the manifest, and versions a file by its as-of time so a new one is never served stale', async () => {
+    const calls = [];
+    const fetchFn = async (url, init) => { calls.push([url, init?.cache]); return { ok: true, json: async () => ({}) }; };
+    const client = createDataClient({ fetchFn });
+    await client.manifest();
+    await client.file('risk/current.json', '2026-09-27T16:41:22.739Z');
+    await client.file('risk/current.json', '2026-09-27T17:41:22.739Z');
+    assert.deepEqual(calls, [
+      ['data/manifest.json', 'no-cache'],
+      ['data/risk/current.json?v=2026-09-27T16%3A41%3A22.739Z', undefined],
+      ['data/risk/current.json?v=2026-09-27T17%3A41%3A22.739Z', undefined],
+    ]);
   });
   test('rejects on HTTP errors and does not cache failures', async () => {
     let fail = true;

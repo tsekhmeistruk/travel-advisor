@@ -59,7 +59,7 @@ export function useBrowser() {
  * Open the site with the given saved settings (raw, as stored) and collect errors.
  * @param opts.intercept  optional (request) => handled?; lets a test replace responses
  */
-export async function openRaw({ width = 1440, height = 860, scheme = 'dark', stored = {}, intercept } = {}) {
+export async function openRaw({ width = 1440, height = 860, scheme = 'dark', stored = {}, intercept, hash = '' } = {}) {
   const page = await env.browser.newPage();
   page.errors = [];
   page.on('pageerror', e => page.errors.push(e.message));
@@ -71,7 +71,7 @@ export async function openRaw({ width = 1440, height = 860, scheme = 'dark', sto
   }
   await page.setViewport({ width, height });
   await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
-  await page.goto(env.url);
+  await page.goto(env.url + hash);
   await page.evaluate((key, s) => { localStorage.clear(); localStorage.setItem(key, JSON.stringify(s)); }, SETTINGS_KEY, stored);
   await page.reload({ waitUntil: 'networkidle0' });
   return page;
@@ -104,10 +104,64 @@ export function withLevelChanges(provider = 'us') {
     { date: day(400), from: null, to: 2, up: false },
   );
   const body = JSON.stringify(data);
-  const intercept = (req) => (req.url().endsWith(`/data/${DATASET}/${provider}.json`)
+  const intercept = (req) => (isData(req, `${DATASET}/${provider}.json`)
     ? (req.respond({ status: 200, contentType: 'application/json', body }), true) : false);
   return Object.assign(intercept, { changed });
 }
+
+/** Whether a request is for a published data file (data files carry a ?v= version). */
+export const isData = (req, path) => new URL(req.url()).pathname.endsWith(`/data/${path}`);
+
+/**
+ * An `intercept` for the risk modes, like withLevelChanges: serves the real risk change log
+ * with changes of known ages added. Disaster level changes 1 hour, 3, 10 and 40 days ago (one
+ * to each level, and one a fall), an advisory level change 5 days ago, and a new GDACS event
+ * 2 hours ago. Returns the places that changed, newest first.
+ */
+export function withRiskChanges() {
+  const data = JSON.parse(readFileSync(new URL('../../site/data/risk/changes.json', import.meta.url), 'utf8'));
+  const ago = (hours) => new Date(Date.now() - hours * 36e5).toISOString();
+  const level = (placeId, hours, from, to) => ({ id: `${placeId}:disaster:${ago(hours)}`, at: ago(hours), kind: 'level', category: 'disaster', placeId, from, to, up: to > from, basis: [], sources: ['gdacs'] });
+  const added = [
+    level('jp', 1, 1, 4),
+    { id: 'test:event', at: ago(2), kind: 'event', category: 'disaster', source: 'gdacs', eventId: 'gdacs:EQ:0', type: 'earthquake', placeIds: ['cl'], to: 3, native: 'Orange', new: true },
+    level('ph', 72, 1, 3),
+    { id: 'test:advisory', at: ago(120).slice(0, 10), kind: 'advisory', category: 'travel', source: 'us', title: 'Peru', placeIds: ['pe'], from: 1, to: 2, up: true },
+    level('it', 240, 3, 2),
+    level('tr', 960, 1, 2),
+  ];
+  const body = JSON.stringify({ ...data, changes: [...added, ...data.changes] });
+  const intercept = (req) => (isData(req, 'risk/changes.json') ? (req.respond({ status: 200, contentType: 'application/json', body }), true) : false);
+  return Object.assign(intercept, { places: ['jp', 'cl', 'ph', 'pe', 'it', 'tr'] });
+}
+
+/** Hover every country and dot, measuring the details card each time, plus map and feed counts. */
+export const measureCards = (page) => page.evaluate(() => {
+  const card = document.getElementById('details');
+  const heights = new Set(), overflow = [], cut = [];
+  const measure = (label) => {
+    heights.add(card.offsetHeight);
+    const last = [...card.children].at(-1);
+    if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(label);
+    // Also the "Last updated" value, the level history rows and the link: they may be shortened
+    // with an ellipsis, but English must fit. (A risk row's basis may be shortened on purpose.)
+    for (const el of card.querySelectorAll('h3, .badge, .meta dd, .history-list li, .link, .risk-rows .lvl, .trend')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
+  };
+  measure('overview');
+  for (const el of document.querySelectorAll('path.country, .dot')) {
+    el.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'touch' }));
+    measure(el.__data__.key);
+    el.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'touch' }));
+  }
+  return {
+    shapes: document.querySelectorAll('path.country').length,
+    colored: [...document.querySelectorAll('path.country')].filter(e => /\bl[1-4]\b/.test(e.getAttribute('class'))).length,
+    pulses: document.querySelectorAll('.pulse').length,
+    recent: document.querySelectorAll('#recentList button').length,
+    heights: [...heights], overflow: [...new Set(overflow)], cut: [...new Set(cut)],
+    scrollWidth: document.documentElement.scrollWidth,
+  };
+});
 
 /** Open with travel-advisory settings, e.g. { provider: 'ca', recentDays: 90 }, and wait for the map. */
 export async function open({ settings = {}, ...opts } = {}) {

@@ -1,18 +1,21 @@
-// App entry point: loads data and language, creates the active dataset and the map, and wires
-// the panel. The map and panel are generic; everything dataset-specific comes from the
-// dataset module (see datasets/registry.js).
+// App entry point: loads data and language, creates the active mode's dataset and the map, and
+// wires the panel. The map and panel are generic; everything mode-specific comes from the
+// dataset module (see datasets/registry.js). Switching modes swaps the dataset in place: the
+// map, its zoom and the selected place stay.
 //
 // Interaction model: a "target" is { placeId } or { recordKey }. Hovering sets a temporary
 // target, clicking sets the selected one; the details card shows hovered ?? selected.
+// The mode and the selected place are also kept in the URL (#mode=…&place=…), for links.
 
 import { $ } from './core/dom.js';
 import { createI18n, chooseLocale } from './core/i18n.js';
 import { createSettings } from './core/settings.js';
 import { createDataClient } from './core/data-client.js';
+import { parseHash, formatHash } from './core/url-state.js';
 import { WorldMap } from './map/world-map.js';
-import { DATASETS } from './datasets/registry.js';
+import { MODES, DEFAULT_MODE } from './datasets/registry.js';
 import { createSearch } from './ui/search.js';
-import { createProviderSwitch, createThemeToggle, createLanguagePicker, createTooltip } from './ui/controls.js';
+import { createProviderSwitch, createModeSwitch, createThemeToggle, createLanguagePicker, createTooltip } from './ui/controls.js';
 
 const STORAGE_KEY = 'travel-risk-map:settings';
 
@@ -24,7 +27,7 @@ main().catch((err) => {
 
 async function main() {
   const client = createDataClient();
-  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, dataset: null, locale: null });
+  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, mode: null, locale: null });
   migrateSettings(settings);
 
   // ---- language
@@ -49,21 +52,29 @@ async function main() {
     onChange: (code) => { settings.set('locale', code); location.reload(); },
   });
 
-  // ---- dataset
+  // ---- mode (the URL wins over the saved choice)
   const places = new Map(placeList.map(p => [p.id, p]));
-  const entry = manifest.datasets.find(d => d.id === settings.get('dataset')) ?? manifest.datasets[0];
-  const dataset = DATASETS[entry.id]({ i18n, settings, client, manifest: entry, places, changed: () => refresh() });
-  await dataset.load();
+  const modes = MODES.filter(m => m.entry(manifest));
+  const pickMode = (id) => modes.find(m => m.id === id) ?? modes.find(m => m.id === DEFAULT_MODE) ?? modes[0];
+  const createDataset = async (m) => {
+    const ds = m.create({ i18n, settings, client, manifest: m.entry(manifest), places, changed: () => refresh() });
+    await ds.load();
+    return ds;
+  };
+  const fromUrl = parseHash(location.hash);
+  let mode = pickMode(fromUrl.mode ?? settings.get('mode'));
+  let dataset = await createDataset(mode);
 
   // ---- panel and map
   let hovered = null;
   let selected = null;
+  const modeSwitch = createModeSwitch($('modeSwitch'), { onChange: (id) => switchMode(id, { toUrl: true }) });
   const mapArea = $('mapArea');
   const tooltip = createTooltip($('tooltip'), mapArea);
   const search = createSearch({
     input: $('search'), results: $('searchResults'),
     noMatchesText: () => i18n.t('search.noMatches'),
-    onChoose: (target) => select(target, { zoom: true }),
+    onChoose: (target) => select(target, { zoom: true, toUrl: true }),
   });
   const providerSwitch = createProviderSwitch($('providerSwitch'), {
     onChange: async (id) => {
@@ -88,7 +99,7 @@ async function main() {
       else tooltip.hide();
     },
     onMove: (event) => { if (event.pointerType === 'mouse') tooltip.move(event); },
-    onSelect: (region) => select(region && selected?.placeId !== region.key ? { placeId: region.key } : null),
+    onSelect: (region) => select(region && selected?.placeId !== region.key ? { placeId: region.key } : null, { toUrl: true }),
   });
 
   $('zoomIn').onclick = () => map.zoomBy(1.6);
@@ -98,7 +109,7 @@ async function main() {
   const feed = $('recentList');
   feed.addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-key]');
-    if (btn) select(dataset.feedTarget(btn.dataset.key), { zoom: true });
+    if (btn) select(dataset.feedTarget(btn.dataset.key), { zoom: true, toUrl: true });
   });
   feed.addEventListener('pointerover', (e) => {
     const btn = e.target.closest('button[data-key]');
@@ -119,12 +130,38 @@ async function main() {
     map.setHovered(target?.placeId ?? null);
     renderDetails();
   }
-  function select(target, { zoom = false } = {}) {
+  function select(target, { zoom = false, toUrl = false } = {}) {
     selected = target;
     map.setSelected(target?.placeId ?? null);
     renderDetails();
     if (zoom && target?.placeId) map.zoomTo(target.placeId);
+    if (toUrl) writeUrl();
   }
+
+  /** Swap in another mode's dataset (loaded first, so the map never shows half a mode). */
+  async function switchMode(id, { toUrl = false } = {}) {
+    const next = pickMode(id);
+    if (next === mode) return;
+    const ds = await createDataset(next);
+    mode = next;
+    dataset = ds;
+    settings.set('mode', mode.id);
+    hovered = null;
+    if (selected?.recordKey) selected = null;
+    refresh();
+    if (toUrl) writeUrl();
+  }
+
+  // Written on user actions only, so a plain visit keeps a plain URL.
+  function writeUrl() {
+    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId })}`);
+  }
+  window.addEventListener('hashchange', async () => {
+    const want = parseHash(location.hash);
+    if (want.mode) await switchMode(want.mode);
+    const place = want.place && places.has(want.place) ? want.place : null;
+    if (place !== (selected?.placeId ?? null)) select(place ? { placeId: place } : null, { zoom: !!place });
+  });
   function renderDetails() {
     const target = hovered ?? selected;
     $('details').innerHTML = dataset.details(target);
@@ -133,6 +170,7 @@ async function main() {
   }
 
   function refresh() {
+    modeSwitch.render(modes.map(m => ({ id: m.id, label: i18n.t(`modes.${m.id}.label`), title: i18n.t(`modes.${m.id}.title`) })), mode.id, i18n.t('modes.label'));
     $('map').setAttribute('aria-label', dataset.mapLabel());
     providerSwitch.render(dataset.providers(), dataset.provider(), dataset.providerSwitchLabel());
     $('asOf').textContent = dataset.header();
@@ -145,6 +183,7 @@ async function main() {
     renderDetails();
   }
   refresh();
+  if (fromUrl.place && places.has(fromUrl.place)) select({ placeId: fromUrl.place }, { zoom: true });
 }
 
 /** Fill elements marked with data-i18n (text) and data-i18n-<attr> (attributes). */
@@ -157,8 +196,17 @@ function translateStaticText(i18n) {
   document.title = i18n.t('app.title');
 }
 
-/** Settings saved by the previous version kept travel-advisory options at the top level. */
+/**
+ * Older saved settings:
+ *  - `dataset` named the active dataset before there were modes; travel advisories is now the
+ *    Travel mode
+ *  - the first version kept travel-advisory options at the top level
+ */
 function migrateSettings(settings) {
+  if (settings.get('dataset') !== undefined) {
+    if (settings.get('dataset') === 'travel-advisories' && !settings.get('mode')) settings.set('mode', 'travel');
+    settings.set('dataset', undefined);
+  }
   if (settings.get('source') === undefined && settings.get('levels') === undefined) return;
   const old = { provider: settings.get('source'), levels: settings.get('levels'), recentDays: settings.get('recentDays'), dimOthers: settings.get('dimOthers') };
   settings.set('travel-advisories', Object.fromEntries(Object.entries(old).filter(([, v]) => v !== undefined)));

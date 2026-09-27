@@ -116,6 +116,20 @@ describe('translation keys used by the code exist', () => {
     }
   });
 
+  test('every literal tr(\'…\') key in the risk modes, and every risk level, category and event type', () => {
+    const file = 'site/js/datasets/risk/index.js';
+    const keys = [...read(file).matchAll(/\btr\('([^'$]+)'/g)].map(m => `risk.${m[1]}`);
+    assert.ok(keys.length > 30, file);
+    assert.deepEqual(keys.filter(k => !has(k)), [], file);
+    const levels = store.categories().scale.values.map(l => `risk.levels.${l}`);
+    const categories = store.categories().categories.map(c => `risk.categories.${c.id}`);
+    const sources = store.sourceIds().flatMap(id => {
+      const cfg = store.source(id);
+      return [`risk.sources.${id}`, ...Object.values(cfg.types).map(t => `risk.eventTypes.${t.type}`), ...Object.keys(cfg.levels).map(a => `risk.alerts.${a}`)];
+    });
+    assert.deepEqual([...levels, ...categories, ...sources].filter(k => !has(k)), []);
+  });
+
   test('every locale file is valid and names itself', () => {
     for (const code of store.locales()) {
       const messages = store.locale(code);

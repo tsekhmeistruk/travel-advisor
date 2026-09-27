@@ -35,6 +35,21 @@
    "at": "2026-09-27T16:41:22.739Z"
   }
  },
+ "sources": {
+  "gdacs": {
+   "url": "https://www.gdacs.org/",
+   "terms": "https://www.gdacs.org/documents/2025/GDACS_Terms_of_use_Mar_25.pdf"
+  },
+  "us": {
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html"
+  },
+  "ca": {
+   "url": "https://travel.gc.ca/travelling/advisories"
+  },
+  "nl": {
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies"
+  }
+ },
  "places": {
   "ad": {
    "travel": {

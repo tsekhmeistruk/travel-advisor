@@ -36,7 +36,7 @@ export function createTravelAdvisories(ctx) {
 
   async function load() {
     const entry = manifest.providers.find(p => p.id === settings.get('provider'));
-    data = await client.file(entry.file);
+    data = await client.file(entry.file, entry.asOf);
     byPlace = indexByPlace(data.records);
   }
 

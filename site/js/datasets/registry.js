@@ -1,12 +1,12 @@
-// Datasets the app can show on the map. Today there is one (travel advisories); a future menu
-// can switch between several (flights, other statistics) because they all implement the same
-// interface and the map and panel only talk to that interface.
+// The map's modes. Each mode is a dataset module: the map and panel only talk to the interface
+// below, so a mode can show travel advisories, a risk category, or anything else later.
+// main.js offers the modes whose data the manifest lists, and switches between them in place.
 //
 // A dataset module exports a factory: create(ctx) -> dataset, where
-//   ctx = { i18n, settings, client, manifest (this dataset's manifest entry), places (Map id -> place), changed() }
+//   ctx = { i18n, settings, client, manifest (this mode's manifest entry), places (Map id -> place), changed() }
 // and the dataset provides:
-//   id, load()                                  load the active provider's data
-//   providers(), provider(), setProvider(id)    sources shown in the provider switch
+//   id, load()                                  load its data
+//   providers(), provider(), setProvider(id)    sources shown in the provider switch (none: hidden)
 //   mapLabel(), providerSwitchLabel(), header(), footer()
 //   style(placeId)                              how the map draws a place (see map/world-map.js)
 //   hasPlace(placeId)                           whether it has data for a place
@@ -17,7 +17,22 @@
 // A "target" is { placeId } for a place on the map, or { recordKey } for an item with no place.
 
 import { createTravelAdvisories } from './travel-advisories/index.js';
+import { createRiskMode } from './risk/index.js';
 
 export const DATASETS = {
   'travel-advisories': createTravelAdvisories,
 };
+
+const risk = (options) => (ctx) => createRiskMode({ ...ctx, ...options });
+
+/**
+ * The modes, in the order of the mode switch. `entry(manifest)` is the mode's manifest entry,
+ * or undefined when its data isn't published (the mode is then not offered).
+ */
+export const MODES = [
+  { id: 'travel', create: createTravelAdvisories, entry: (m) => m.datasets.find(d => d.id === 'travel-advisories') },
+  { id: 'highest', create: risk({ mode: 'highest', view: 'highest' }), entry: (m) => m.risk },
+  { id: 'disaster', create: risk({ mode: 'disaster', view: 'category', category: 'disaster' }), entry: (m) => m.risk },
+  { id: 'changes', create: risk({ mode: 'changes', view: 'changes' }), entry: (m) => m.risk },
+];
+export const DEFAULT_MODE = 'travel';

@@ -59,10 +59,10 @@ site/                          the published website: deployed as-is
   data/                        published data: manifest.json, places.json, <dataset>/<provider>.json, risk/, geo/
   js/
     main.js                    composition root: loads data, creates the dataset and map, wires the panel
-    core/                      i18n, settings, data client, DOM helpers (pure except dom.js)
+    core/                      i18n, settings, data client, URL state, DOM helpers (pure except dom.js)
     map/                       world-map.js (generic map), splits.js (map geometry fixes)
-    datasets/                  registry.js (dataset interface), travel-advisories/ (logic.js pure, index.js views)
-    ui/                        search, provider switch, theme, language picker, tooltip
+    datasets/                  registry.js (modes, dataset interface), travel-advisories/ and risk/ (logic.js pure, index.js views)
+    ui/                        search, mode switch, provider switch, theme, language picker, tooltip
 tests/
   unit/pipeline, unit/site     pure logic, with real-response fixtures in tests/fixtures/
   data/                        published data vs a fresh build, config and translation checks
@@ -107,7 +107,7 @@ The product is growing from a travel-advisory map into a risk monitor: several s
 - **Idempotent:** change ids are built from the place, category and fetch time (or event id and revision time), and the build's "now" is the newest fetch time in its inputs, so building the same data twice changes nothing.
 - **Health:** each provider and source is `healthy` (last success within 1.5 × its interval), `delayed`, or `error` (past its stale limit: `staleAfterHours`, or 7 days for advisories). A source in `error` publishes no levels and keeps its last state.
 
-The site doesn't show the risk layer yet; map modes and the country view come next.
+The site shows the risk layer through **map modes** (see below). Event markers and a full country view come next.
 
 ### Published formats
 
@@ -147,6 +147,7 @@ The manifest also has `risk: { asOf, current, changes, events, health }`, pointi
 { "asOf": "2026-09-27T16:25:57.372Z", "scale": { "type": "levels", "values": [1,2,3,4] },
   "categories": { "travel": { "sources": ["us","ca","nl"], "default": null },
                   "disaster": { "sources": ["gdacs"], "default": 1, "status": "healthy", "at": "2026-09-27T16:25:57.372Z" } },
+  "sources": { "gdacs": { "url": "https://www.gdacs.org/", "terms": "https://…" }, "us": { "url": "https://travel.state.gov/…" } },
   "places": { "mx": { "travel": { "level": 2, "natives": { "us": 2, "ca": 2, "nl": 2 }, "agree": 3 },
                       "disaster": { "level": 3, "since": "…", "from": 1, "basis": ["gdacs:TC:1001325"] } } } }
 
@@ -168,8 +169,21 @@ The manifest also has `risk: { asOf, current, changes, events, health }`, pointi
 
 - **`main.js`** is the composition root.
   - It loads the manifest, picks a locale (saved choice, then browser languages, then the default), and loads messages, places and map geometry.
-  - It creates the active dataset from `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
+  - It picks the **mode** (the URL hash first, then the saved choice, then Travel), creates that mode's dataset from `MODES` in `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
   - It wires hover and selection *targets* to the details card, tooltip, feed and search.
+  - Switching modes loads the new dataset first, then swaps it in place: no reload, and the map, zoom and selected place stay.
+  - On user actions it writes the mode and the selected place to the URL (`#mode=disaster&place=mx`, `core/url-state.js`), so a view can be linked. A new hash (a link, back and forward) switches to it.
+- **Modes** (`MODES` in `datasets/registry.js`), each a dataset, offered only when the manifest has their data:
+
+  | Mode | Colours places by | Module |
+  |---|---|---|
+  | Travel | one government's advisory level, with the provider switch | `datasets/travel-advisories/` |
+  | Highest | the highest level of any risk category | `datasets/risk/` (`view: 'highest'`) |
+  | Disasters | the `disaster` category (GDACS) | `datasets/risk/` (`view: 'category'`) |
+  | Changes | the highest level, fading places without a change in the window | `datasets/risk/` (`view: 'changes'`) |
+
+  The risk modes share one factory (`createRiskMode`) and one settings namespace (`risk`: levels, window 24 h / 7 / 30 / 90 days, direction, fade). Their card lists every category with its level and what set it: "2 of 3 governments", or the GDACS alert. Their feed lists every change kind (level, advisory, new or changed event). A pulse still means only a level change. A place with no data is drawn grey and never pulses.
+- **Data freshness:** `core/data-client.js` revalidates the manifest on every load and asks for each data file with its as-of time (`?v=…`), because GitHub Pages lets browsers cache files for minutes and the data changes hourly.
 - **`map/world-map.js`** is a generic map. `style(placeId)` returns `{ cls, muted, dim, dot, pulse }`, and the map draws fills, faded places, dots for tiny places and pulses. It also handles zoom, pan and click tolerance. Dataset-specific code never runs inside it.
 - **Datasets** implement the interface documented in `datasets/registry.js`:
   - `load`, plus `providers`, `provider` and `setProvider`;
@@ -207,12 +221,13 @@ The manifest also has `risk: { asOf, current, changes, events, health }`, pointi
 4. **Schedule and workflow:** `"<id>": { "everyMinutes": 60 }` in `config/schedule.json`, and a step as for providers.
 5. **Tests:** a real-response fixture, parser tests, fetcher tests in `providers.test.mjs`. `project.test.mjs` checks the wiring.
 
-### Add a dataset (e.g. flights) and a dataset menu
-1. **Scale:** decide the dataset's value scale. It may not be levels 1–4. Colour classes are the dataset's choice; add CSS tokens for them.
-2. **Pipeline:** add `config/datasets/<id>.json` and its providers, as above. If the published record shape differs, add a builder next to `buildProvider` and dispatch on the dataset in `buildSite`. The manifest already lists datasets.
-3. **Site:** create `site/js/datasets/<id>/` implementing the interface (`logic.js` pure, `index.js` views), and register it in `datasets/registry.js`.
-4. **Menu:** add a dataset menu to `index.html` and `main.js`. `settings.get('dataset')` already selects the active one. On change, save it and re-create the dataset, most simply by reloading.
-5. **Translations** under `datasets.<id>.*`, and data and browser tests.
+### Add a map mode
+- **For a risk category** (e.g. `wildfire` once it has enough data): add `{ id, create: risk({ mode, view: 'category', category }), entry: (m) => m.risk }` to `MODES` in `datasets/registry.js`, and `modes.<id>.label` and `.title` to every locale. The browser tests in `tests/e2e/risk.test.mjs` list the risk modes they check.
+- **For another dataset** (e.g. flights):
+  1. **Scale:** decide the dataset's value scale. It may not be levels 1–4. Colour classes are the dataset's choice; add CSS tokens for them.
+  2. **Pipeline:** add `config/datasets/<id>.json` and its providers, as above. If the published record shape differs, add a builder next to `buildProvider` and dispatch on the dataset in `buildSite`. The manifest already lists datasets.
+  3. **Site:** create `site/js/datasets/<id>/` implementing the interface (`logic.js` pure, `index.js` views), and add a mode for it to `MODES`, whose `entry` finds its manifest entry.
+  4. **Translations** under `datasets.<id>.*` and `modes.<id>`, and data and browser tests.
 
 ### Add a language
 1. **Messages:** copy `site/i18n/en.json` to `site/i18n/<code>.json` and translate every value. Keep the keys. `meta.name` is shown in the picker, and `meta.dir` is `rtl` for right-to-left languages.

@@ -6,6 +6,7 @@ A world map of official travel advisory levels from the **U.S. State Department*
 
 ## What it shows
 
+- **Map modes:** **Travel** (official advisories, below), **Highest** (the highest risk level of any category), **Disasters** (GDACS alerts) and **Changes** (where a risk level changed recently). The risk modes use one scale, Normal, Elevated, High and Critical, which is our summary of the sources, not an official level. Their card shows each category's level and what set it, e.g. "3 of 3 governments" or "GDACS Orange tropical cyclone". A link like `#mode=disaster&place=mx` opens a mode and a country.
 - **Risk level by colour:** each country is filled by its advisory level, from 1 (normal precautions) to 4 (do not travel). Countries with no advisory are grey.
 - **Source switch** (U.S. / Canada / Netherlands) at the top of the map. Each source uses its own level wording, links and data. On phones it shows flags only.
 - **Level changes:** a country pulses on the map when its level went up or down in the last 7, 30 or 90 days. Only the level (the colour) counts. Text edits and reissues at the same level don't, and for details the site links to the official advisory.
@@ -24,7 +25,7 @@ A world map of official travel advisory levels from the **U.S. State Department*
 
 Advisory levels are simplified to 1–4 for every source. Always read the full official advisory before you travel.
 
-**Coming next: a risk monitor.** The site is growing beyond travel advisories into several risk categories per country (disasters, wildfires, and later security, health and more), each with its own sources and level history. The data is already collected, but not shown yet:
+**Risk monitor (in progress).** The site is growing beyond travel advisories into several risk categories per country (travel and disasters today; wildfires, security, health and more later), each with its own sources and level history:
 
 | Source | Where the data comes from | Notes |
 |---|---|---|

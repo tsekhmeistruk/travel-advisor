@@ -47,14 +47,16 @@ For **every** change, however small, decide explicitly whether tests must be **a
 | Risk layer: categories, sources, signals, confirmed changes, source health, published `risk/*.json` | `config/categories.json`, `config/sources/<id>.json`; `scripts/lib/risk.mjs` (pure); event upsert in `scripts/lib/events.mjs`; GDACS in `scripts/providers/gdacs/` |
 | What is fetched when (hourly workflow) | `config/schedule.json`; `scripts/lib/schedule.mjs` (pure), `scripts/due.mjs`; `.github/workflows/update.yml` |
 | All pipeline file access | `scripts/lib/store.mjs` (`FileStore`), the seam for a future database |
-| Site bootstrap and interaction targets | `site/js/main.js` |
+| Site bootstrap, interaction targets, mode switching in place, URL state (`#mode=…&place=…`) | `site/js/main.js`; `site/js/core/url-state.js` |
+| Map modes (Travel, Highest, Disasters, Changes) | `MODES` in `site/js/datasets/registry.js` |
+| Risk modes: levels per category, the summary card, the change feed | `site/js/datasets/risk/logic.js` (pure) and `index.js` |
 | Generic map (fills, dots, pulses, zoom, `clickDistance(6)`) | `site/js/map/world-map.js` |
 | Travel-advisory rules (recency, which record covers which place) and views | `site/js/datasets/travel-advisories/logic.js` (pure) and `index.js` |
 | Dataset interface | `site/js/datasets/registry.js` |
 | All interface text | `site/i18n/<locale>.json`; `site/js/core/i18n.js` does the formatting (Intl) |
 | Site data loading | `site/js/core/data-client.js`, the seam for a future API |
 | Run log (every request, retries, challenges, stats) and the **Fetch results** table ("🔔 level changed: …" when a level moves) | `scripts/lib/fetch-log.mjs`, `scripts/lib/log-summary.mjs`; field reference in `logs/README.md` |
-| Browser-test setup, including `withLevelChanges()` (injects level changes of known ages) | `tests/e2e/helpers.mjs` |
+| Browser-test setup, including `withLevelChanges()` and `withRiskChanges()` (inject changes of known ages), `measureCards()`, `isData()` (matches data URLs, which carry `?v=`) | `tests/e2e/helpers.mjs` |
 
 ## Conventions
 
@@ -64,12 +66,13 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **Pure logic goes in `lib/`, `parse.mjs` or `logic.js`, with unit tests.** Scripts and views stay thin.
 - **The site has no runtime dependencies.** d3 and topojson are vendored. npm is used only for dev tools: `puppeteer-core` for the tests, and `i18n-iso-countries` for the place generator.
 - **Only level changes count.** A pulse, the change feed and the card's history mean the level (the colour) went up or down; nothing else. The site shows no "what changed" text and links to the official advisory instead. The level history (`trackHistory()` in `lib/build.mjs`, stored in `data/history/`) is the only source of changes; it began on Sep 26, 2026. U.S. changes before that were seeded once from its change notes (`source: "note"`, `from: null` when the note gave only the direction). **Level changes are rare**, so browser tests that need pulses or feed items inject them with `withLevelChanges()` (`tests/e2e/helpers.mjs`) instead of relying on real data.
-- **The details card has a fixed height (398px)** with fixed slots: a one-line title, a three-line description, a four-line level history (up to three changes, then "tracked since"), and a one-line status row. The panel must never jump.
-- **Settings** are stored in `localStorage` under `travel-risk-map:settings`. Each dataset keeps its own settings in a namespace. Settings in the old flat format are migrated in `main.js`.
+- **The details card has a fixed height (398px)** with fixed slots: a one-line title, a three-line description, a four-line level history (up to three changes, then "tracked since"), and a one-line status row. The risk card has its own fixed slots: title, badge, a one-line 24-hour trend, one 26px row per category, a "coming later" line, the four-line history and the link. The panel must never jump, in any mode.
+- **Settings** are stored in `localStorage` under `travel-risk-map:settings`: `mode`, theme, language, panel, and one namespace per dataset (`travel-advisories`, and `risk` shared by the risk modes). Older formats (flat options, the `dataset` key) are migrated in `main.js`. The URL hash wins over the saved mode, and is written only on user actions.
+- **Data files are requested with `?v=<asOf>`,** so e2e intercepts must match by path (`isData()` in `tests/e2e/helpers.mjs`), never with `req.url().endsWith(…)` on a data file.
 
 ## Current state and open decisions
 
-- **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). **Steps 1–2 are done:** stores, schedule, source health, the hourly workflow, and GDACS end to end into `site/data/risk/` (not shown on the site yet). **Next: step 3**, map modes (Highest risk, Disasters, Changes), the summary card and the risk feed; cache-busting of data files (`?v=`) and the i18n keys for categories come with it. Then markers and the country view, then NASA FIRMS (needs a `FIRMS_MAP_KEY` secret). ACLED waits for the owner's licence request; UCDP is the fallback.
+- **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). **Steps 1–3 are done:** stores, schedule, source health, the hourly workflow, GDACS end to end into `site/data/risk/`, and the map modes (Travel, Highest, Disasters, Changes) with the risk summary card, the change feed, URL state and cache-busting. Travel is still the default mode. **Next: step 4**, event markers (a markers layer in `world-map.js` with clustering) and the full country view (scrolling panel view, per-place history files). Then NASA FIRMS (needs a `FIRMS_MAP_KEY` secret) and the Wildfire mode. ACLED waits for the owner's licence request; UCDP is the fallback.
 - **The risk baseline was set on Sep 27, 2026:** the 13 GDACS events of the first fetch aren't "new", and the first build recorded no disaster changes.
 - **Level history began on Sep 26, 2026.** Canada and the Netherlands have no earlier history (their sources don't publish past levels, and the Internet Archive has no usable copies), so their maps show few or no pulses until real changes happen. The U.S. has 10 changes seeded from its change notes (Chad, Cyprus, Grenada, Madagascar, Mauritius, New Caledonia, Saint Lucia, Tanzania, Thailand, Vanuatu). Egypt was skipped because its note gives no direction.
 - **Offered to the user, not decided yet:**
