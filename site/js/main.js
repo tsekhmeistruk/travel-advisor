@@ -100,6 +100,17 @@ async function main() {
     },
     onMove: (event) => { if (event.pointerType === 'mouse') tooltip.move(event); },
     onSelect: (region) => select(region && selected?.placeId !== region.key ? { placeId: region.key } : null, { toUrl: true }),
+    // A marker previews and selects its event; a cluster of several zooms in to split it (at
+    // the closest zoom, where it can't split any more, it selects its first event).
+    onMarkerHover: (cluster, event) => {
+      if (!cluster) { hover(null); tooltip.hide(); return; }
+      if (cluster.items.length === 1) hover(dataset.eventTarget?.(cluster.items[0].id) ?? null);
+      if (event.pointerType === 'mouse' && dataset.markerTooltip) tooltip.show(dataset.markerTooltip(cluster.items.map(m => m.id)), event);
+    },
+    onMarkerSelect: (cluster) => {
+      if (cluster.items.length > 1 && map.canZoomIn()) map.zoomAround(cluster.x, cluster.y);
+      else select(dataset.eventTarget?.(cluster.items[0].id) ?? null, { toUrl: true });
+    },
   });
 
   $('zoomIn').onclick = () => map.zoomBy(1.6);
@@ -133,6 +144,7 @@ async function main() {
   function select(target, { zoom = false, toUrl = false } = {}) {
     selected = target;
     map.setSelected(target?.placeId ?? null);
+    map.setSelectedMarker(target?.eventId ?? null);
     renderDetails();
     if (zoom && target?.placeId) map.zoomTo(target.placeId);
     if (toUrl) writeUrl();
@@ -147,7 +159,9 @@ async function main() {
     dataset = ds;
     settings.set('mode', mode.id);
     hovered = null;
-    if (selected?.recordKey) selected = null;
+    // A record belongs to its dataset, an event to the modes that show it: keep only the place.
+    if (selected?.recordKey || selected?.eventId) selected = selected.placeId ? { placeId: selected.placeId } : null;
+    map.setSelectedMarker(null);
     refresh();
     if (toUrl) writeUrl();
   }
@@ -180,6 +194,7 @@ async function main() {
     dataset.renderFeed(feed);
     search.setEntries(dataset.searchEntries());
     map.setStyle((id) => dataset.style(id));
+    map.setMarkers(dataset.markers?.() ?? []);
     renderDetails();
   }
   refresh();

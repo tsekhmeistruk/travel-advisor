@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-27T17:18:17.168Z",
+ "fetchedAt": "2026-09-27T17:38:30.045Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -227,6 +227,96 @@
    ]
   },
   {
+   "id": "gdacs:FL:1103888",
+   "code": "FL",
+   "name": "Flood in United States",
+   "country": "United States",
+   "iso3": [
+    "USA"
+   ],
+   "point": {
+    "lon": -73.371,
+    "lat": 41.119
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 91,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-05-19T01:00:00.000Z",
+   "toDate": "2026-09-25T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1103888&episodeid=91&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104011",
+   "code": "FL",
+   "name": "Flood in Myanmar",
+   "country": "Myanmar",
+   "iso3": [
+    "MMR"
+   ],
+   "point": {
+    "lon": 98.6,
+    "lat": 10.366
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 26,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-07-04T01:00:00.000Z",
+   "toDate": "2026-09-19T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104011&episodeid=26&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104053",
+   "code": "FL",
+   "name": "Flood in Italy",
+   "country": "Italy",
+   "iso3": [
+    "ITA"
+   ],
+   "point": {
+    "lon": 14.946,
+    "lat": 37.878
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 26,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-07-26T01:00:00.000Z",
+   "toDate": "2026-09-27T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104053&episodeid=26&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
    "id": "gdacs:FL:1104081",
    "code": "FL",
    "name": "Flood in China",
@@ -253,6 +343,36 @@
     {
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Orange"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104099",
+   "code": "FL",
+   "name": "Flood in Mexico",
+   "country": "Mexico",
+   "iso3": [
+    "MEX"
+   ],
+   "point": {
+    "lon": -97.837,
+    "lat": 22.247
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 15,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-08-17T01:00:00.000Z",
+   "toDate": "2026-09-27T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104099&episodeid=15&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
     }
    ]
   },
@@ -287,6 +407,36 @@
    ]
   },
   {
+   "id": "gdacs:FL:1104122",
+   "code": "FL",
+   "name": "Flood in Thailand",
+   "country": "Thailand",
+   "iso3": [
+    "THA"
+   ],
+   "point": {
+    "lon": 99.929,
+    "lat": 15.706
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 34,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-08-18T01:00:00.000Z",
+   "toDate": "2026-09-27T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104122&episodeid=34&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
    "id": "gdacs:FL:1104124",
    "code": "FL",
    "name": "Flood in Nepal",
@@ -313,6 +463,1146 @@
     {
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Red"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104132",
+   "code": "FL",
+   "name": "Flood in Cambodia",
+   "country": "Cambodia",
+   "iso3": [
+    "KHM"
+   ],
+   "point": {
+    "lon": 104.78,
+    "lat": 10.936
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 7,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-08-28T01:00:00.000Z",
+   "toDate": "2026-09-16T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104132&episodeid=7&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104141",
+   "code": "FL",
+   "name": "Flood in Vietnam",
+   "country": "Vietnam",
+   "iso3": [
+    "VNM"
+   ],
+   "point": {
+    "lon": 106.661,
+    "lat": 10.782
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 8,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-03T01:00:00.000Z",
+   "toDate": "2026-09-24T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104141&episodeid=8&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104145",
+   "code": "FL",
+   "name": "Flood in Peru",
+   "country": "Peru",
+   "iso3": [
+    "PER"
+   ],
+   "point": {
+    "lon": -74.466,
+    "lat": -12.915
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 4,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-05T01:00:00.000Z",
+   "toDate": "2026-09-20T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104145&episodeid=4&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104151",
+   "code": "FL",
+   "name": "Flood in Spain",
+   "country": "Spain",
+   "iso3": [
+    "ESP"
+   ],
+   "point": {
+    "lon": -0.987,
+    "lat": 37.616
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 5,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-09T01:00:00.000Z",
+   "toDate": "2026-09-19T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104151&episodeid=5&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104153",
+   "code": "FL",
+   "name": "Flood in Croatia",
+   "country": "Croatia",
+   "iso3": [
+    "HRV"
+   ],
+   "point": {
+    "lon": 15.899,
+    "lat": 43.741
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-11T01:00:00.000Z",
+   "toDate": "2026-09-19T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104153&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104154",
+   "code": "FL",
+   "name": "Flood in India",
+   "country": "India",
+   "iso3": [
+    "IND"
+   ],
+   "point": {
+    "lon": 88.181,
+    "lat": 27.419
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-12T01:00:00.000Z",
+   "toDate": "2026-09-14T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104154&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104157",
+   "code": "FL",
+   "name": "Flood in Nepal",
+   "country": "Nepal",
+   "iso3": [
+    "NPL"
+   ],
+   "point": {
+    "lon": 82.169,
+    "lat": 28.87
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-12T01:00:00.000Z",
+   "toDate": "2026-09-15T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104157&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104159",
+   "code": "FL",
+   "name": "Flood in Kenya",
+   "country": "Kenya",
+   "iso3": [
+    "KEN"
+   ],
+   "point": {
+    "lon": 39.664,
+    "lat": -4.035
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-12T01:00:00.000Z",
+   "toDate": "2026-09-14T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104159&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104160",
+   "code": "FL",
+   "name": "Flood in Sri Lanka",
+   "country": "Sri Lanka",
+   "iso3": [
+    "LKA"
+   ],
+   "point": {
+    "lon": 80.64,
+    "lat": 7.214
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-14T01:00:00.000Z",
+   "toDate": "2026-09-16T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104160&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104161",
+   "code": "FL",
+   "name": "Flood in Senegal",
+   "country": "Senegal",
+   "iso3": [
+    "SEN"
+   ],
+   "point": {
+    "lon": -17.468,
+    "lat": 14.76
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-15T01:00:00.000Z",
+   "toDate": "2026-09-16T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104161&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104164",
+   "code": "FL",
+   "name": "Flood in Albania",
+   "country": "Albania",
+   "iso3": [
+    "ALB"
+   ],
+   "point": {
+    "lon": 20.082,
+    "lat": 41.113
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-12T01:00:00.000Z",
+   "toDate": "2026-09-14T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104164&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104166",
+   "code": "FL",
+   "name": "Flood in Democratic Republic of Congo",
+   "country": "Democratic Republic of Congo",
+   "iso3": [
+    "COD"
+   ],
+   "point": {
+    "lon": 28.844,
+    "lat": -2.51
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-15T01:00:00.000Z",
+   "toDate": "2026-09-17T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104166&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104167",
+   "code": "FL",
+   "name": "Flood in Ecuador",
+   "country": "Ecuador",
+   "iso3": [
+    "ECU"
+   ],
+   "point": {
+    "lon": -79.807,
+    "lat": -3.3
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-15T01:00:00.000Z",
+   "toDate": "2026-09-17T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104167&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104168",
+   "code": "FL",
+   "name": "Flood in Indonesia",
+   "country": "Indonesia",
+   "iso3": [
+    "IDN"
+   ],
+   "point": {
+    "lon": 100.613,
+    "lat": -0.583
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-16T01:00:00.000Z",
+   "toDate": "2026-09-20T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104168&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104170",
+   "code": "FL",
+   "name": "Flood in Somalia",
+   "country": "Somalia",
+   "iso3": [
+    "SOM"
+   ],
+   "point": {
+    "lon": 45.301,
+    "lat": 2.027
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-16T01:00:00.000Z",
+   "toDate": "2026-09-18T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104170&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104173",
+   "code": "FL",
+   "name": "Flood in Honduras",
+   "country": "Honduras",
+   "iso3": [
+    "HND"
+   ],
+   "point": {
+    "lon": -87.767,
+    "lat": 14.788
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 4,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-15T01:00:00.000Z",
+   "toDate": "2026-09-22T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104173&episodeid=4&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104174",
+   "code": "FL",
+   "name": "Flood in Cambodia",
+   "country": "Cambodia",
+   "iso3": [
+    "KHM"
+   ],
+   "point": {
+    "lon": 102.886,
+    "lat": 13.799
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-17T01:00:00.000Z",
+   "toDate": "2026-09-19T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104174&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104175",
+   "code": "FL",
+   "name": "Flood in Cyprus",
+   "country": "Cyprus",
+   "iso3": [
+    "CYP"
+   ],
+   "point": {
+    "lon": 33.593,
+    "lat": 34.95
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-18T01:00:00.000Z",
+   "toDate": "2026-09-20T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104175&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104176",
+   "code": "FL",
+   "name": "Flood in Philippines",
+   "country": "Philippines",
+   "iso3": [
+    "PHL"
+   ],
+   "point": {
+    "lon": 120.763,
+    "lat": 15.54
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-18T01:00:00.000Z",
+   "toDate": "2026-09-21T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104176&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104177",
+   "code": "FL",
+   "name": "Flood in South Africa",
+   "country": "South Africa",
+   "iso3": [
+    "ZAF"
+   ],
+   "point": {
+    "lon": 30.808,
+    "lat": -29.843
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-17T01:00:00.000Z",
+   "toDate": "2026-09-19T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104177&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104178",
+   "code": "FL",
+   "name": "Flood in Guinea",
+   "country": "Guinea",
+   "iso3": [
+    "GIN"
+   ],
+   "point": {
+    "lon": -10.122,
+    "lat": 9.21
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 3,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-18T01:00:00.000Z",
+   "toDate": "2026-09-25T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104178&episodeid=3&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104179",
+   "code": "FL",
+   "name": "Flood in Algeria",
+   "country": "Algeria",
+   "iso3": [
+    "DZA"
+   ],
+   "point": {
+    "lon": 8.058,
+    "lat": 34.744
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-18T01:00:00.000Z",
+   "toDate": "2026-09-20T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104179&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104180",
+   "code": "FL",
+   "name": "Flood in Tunisia",
+   "country": "Tunisia",
+   "iso3": [
+    "TUN"
+   ],
+   "point": {
+    "lon": 9.056,
+    "lat": 35.651
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-17T01:00:00.000Z",
+   "toDate": "2026-09-19T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104180&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104181",
+   "code": "FL",
+   "name": "Flood in Mali",
+   "country": "Mali",
+   "iso3": [
+    "MLI"
+   ],
+   "point": {
+    "lon": -6.866,
+    "lat": 11.53
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-17T01:00:00.000Z",
+   "toDate": "2026-09-19T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104181&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104182",
+   "code": "FL",
+   "name": "Flood in Japan",
+   "country": "Japan",
+   "iso3": [
+    "JPN"
+   ],
+   "point": {
+    "lon": 140.125,
+    "lat": 35.609
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-20T01:00:00.000Z",
+   "toDate": "2026-09-22T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104182&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104183",
+   "code": "FL",
+   "name": "Flood in Türkiye",
+   "country": "Türkiye",
+   "iso3": [
+    "TUR"
+   ],
+   "point": {
+    "lon": 31.839,
+    "lat": 41.25
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-18T01:00:00.000Z",
+   "toDate": "2026-09-25T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104183&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104184",
+   "code": "FL",
+   "name": "Flood in Malaysia",
+   "country": "Malaysia",
+   "iso3": [
+    "MYS"
+   ],
+   "point": {
+    "lon": 101.787,
+    "lat": 4.9
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-20T01:00:00.000Z",
+   "toDate": "2026-09-22T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104184&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104185",
+   "code": "FL",
+   "name": "Flood in Uganda",
+   "country": "Uganda",
+   "iso3": [
+    "UGA"
+   ],
+   "point": {
+    "lon": 30.005,
+    "lat": 0.131
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-20T01:00:00.000Z",
+   "toDate": "2026-09-22T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104185&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104186",
+   "code": "FL",
+   "name": "Flood in Nigeria",
+   "country": "Nigeria",
+   "iso3": [
+    "NGA"
+   ],
+   "point": {
+    "lon": 7.515,
+    "lat": 5.454
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 3,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-21T01:00:00.000Z",
+   "toDate": "2026-09-24T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104186&episodeid=3&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104187",
+   "code": "FL",
+   "name": "Flood in Brazil",
+   "country": "Brazil",
+   "iso3": [
+    "BRA"
+   ],
+   "point": {
+    "lon": -51.891,
+    "lat": -28.847
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-20T01:00:00.000Z",
+   "toDate": "2026-09-23T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104187&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104188",
+   "code": "FL",
+   "name": "Flood in Guatemala",
+   "country": "Guatemala",
+   "iso3": [
+    "GTM"
+   ],
+   "point": {
+    "lon": -90.561,
+    "lat": 14.557
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-21T01:00:00.000Z",
+   "toDate": "2026-09-23T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104188&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104189",
+   "code": "FL",
+   "name": "Flood in El Salvador",
+   "country": "El Salvador",
+   "iso3": [
+    "SLV"
+   ],
+   "point": {
+    "lon": -89.83,
+    "lat": 13.59
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-20T01:00:00.000Z",
+   "toDate": "2026-09-22T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104189&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104190",
+   "code": "FL",
+   "name": "Flood in Chile",
+   "country": "Chile",
+   "iso3": [
+    "CHL"
+   ],
+   "point": {
+    "lon": -73.105,
+    "lat": -42.301
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 4,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-23T01:00:00.000Z",
+   "toDate": "2026-09-26T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104190&episodeid=4&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104192",
+   "code": "FL",
+   "name": "Flood in Argentina",
+   "country": "Argentina",
+   "iso3": [
+    "ARG"
+   ],
+   "point": {
+    "lon": -71.31,
+    "lat": -41.133
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-23T01:00:00.000Z",
+   "toDate": "2026-09-25T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104192&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104193",
+   "code": "FL",
+   "name": "Flood in Ukraine",
+   "country": "Ukraine",
+   "iso3": [
+    "UKR"
+   ],
+   "point": {
+    "lon": 35.383,
+    "lat": 46.847
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-23T01:00:00.000Z",
+   "toDate": "2026-09-25T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104193&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104194",
+   "code": "FL",
+   "name": "Flood in Cote d'Ivoire",
+   "country": "Cote d'Ivoire",
+   "iso3": [
+    "CIV"
+   ],
+   "point": {
+    "lon": -6.48,
+    "lat": 7.379
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-20T01:00:00.000Z",
+   "toDate": "2026-09-22T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104194&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104195",
+   "code": "FL",
+   "name": "Flood in Libya",
+   "country": "Libya",
+   "iso3": [
+    "LBY"
+   ],
+   "point": {
+    "lon": 16.743,
+    "lat": 28.006
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-23T01:00:00.000Z",
+   "toDate": "2026-09-25T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104195&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104196",
+   "code": "FL",
+   "name": "Flood in Ghana",
+   "country": "Ghana",
+   "iso3": [
+    "GHA"
+   ],
+   "point": {
+    "lon": -0.089,
+    "lat": 8.306
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-09-23T01:00:00.000Z",
+   "toDate": "2026-09-27T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104196&episodeid=2&eventtype=FL",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
     }
    ]
   },
@@ -344,6 +1634,147 @@
     {
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Orange"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001320",
+   "code": "TC",
+   "name": "Tropical Cyclone NORBERT-26",
+   "iso3": [],
+   "point": {
+    "lon": -143.1,
+    "lat": 20.5
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 24,
+   "severity": "Tropical Depression (maximum wind speed of 102 km/h)",
+   "startedAt": "2026-09-09T21:00:00.000Z",
+   "toDate": "2026-09-15T15:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001320&episodeid=24&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001321",
+   "code": "TC",
+   "name": "Tropical Cyclone NOLO-26",
+   "country": "United States",
+   "iso3": [
+    "USA"
+   ],
+   "point": {
+    "lon": -158.3,
+    "lat": 16.2
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 28,
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 213 km/h)",
+   "startedAt": "2026-09-13T21:00:00.000Z",
+   "toDate": "2026-09-27T15:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=28&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001322",
+   "code": "TC",
+   "name": "Tropical Cyclone DUJUAN-26",
+   "country": "Japan",
+   "iso3": [
+    "JPN"
+   ],
+   "point": {
+    "lon": 150.2,
+    "lat": 39
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 28,
+   "severity": "Tropical Storm (maximum wind speed of 130 km/h)",
+   "startedAt": "2026-09-15T12:00:00.000Z",
+   "toDate": "2026-09-22T06:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001322&episodeid=28&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001323",
+   "code": "TC",
+   "name": "Tropical Cyclone FAY-26",
+   "iso3": [],
+   "point": {
+    "lon": -43.8,
+    "lat": 29.3
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 30,
+   "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
+   "startedAt": "2026-09-19T15:00:00.000Z",
+   "toDate": "2026-09-27T15:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=30&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001324",
+   "code": "TC",
+   "name": "Tropical Cyclone ODALYS-26",
+   "iso3": [],
+   "point": {
+    "lon": -123.4,
+    "lat": 22.6
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 31,
+   "severity": "Tropical Storm (maximum wind speed of 213 km/h)",
+   "startedAt": "2026-09-20T09:00:00.000Z",
+   "toDate": "2026-09-27T15:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001324&episodeid=31&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
     }
    ]
   },
@@ -408,6 +1839,96 @@
    ]
   },
   {
+   "id": "gdacs:TC:1001327",
+   "code": "TC",
+   "name": "Tropical Cyclone SURIGAE-26",
+   "country": "Japan",
+   "iso3": [
+    "JPN"
+   ],
+   "point": {
+    "lon": 129.1,
+    "lat": 25.9
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 18,
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h)",
+   "startedAt": "2026-09-23T06:00:00.000Z",
+   "toDate": "2026-09-27T12:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=18&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001328",
+   "code": "TC",
+   "name": "Tropical Cyclone GONZALO-26",
+   "country": "Cape Verde",
+   "iso3": [
+    "CPV"
+   ],
+   "point": {
+    "lon": -23.3,
+    "lat": 19.3
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 8,
+   "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
+   "startedAt": "2026-09-25T03:00:00.000Z",
+   "toDate": "2026-09-26T21:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001328&episodeid=8&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001329",
+   "code": "TC",
+   "name": "Tropical Cyclone EIGHTEEN-E-26",
+   "country": "Mexico",
+   "iso3": [
+    "MEX"
+   ],
+   "point": {
+    "lon": -98.6,
+    "lat": 12.7
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 2,
+   "severity": "Tropical Depression (maximum wind speed of 148 km/h)",
+   "startedAt": "2026-09-27T09:00:00.000Z",
+   "toDate": "2026-09-27T15:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=2&eventtype=TC",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
    "id": "gdacs:VO:1000148",
    "code": "VO",
    "name": "Eruption  Krakatau",
@@ -433,6 +1954,35 @@
     {
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Orange"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:VO:1000149",
+   "code": "VO",
+   "name": "Eruption  Chikurachki",
+   "country": "Russia",
+   "iso3": [
+    "RUS"
+   ],
+   "point": {
+    "lon": 155.461,
+    "lat": 50.324
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "startedAt": "2026-09-21T00:00:00.000Z",
+   "toDate": "2026-09-21T00:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1000149&episodeid=1&eventtype=VO",
+   "firstSeen": "2026-09-27T17:38:30.045Z",
+   "revisions": [
+    {
+     "at": "2026-09-27T17:38:30.045Z",
+     "value": "Green"
     }
    ]
   }

@@ -2,9 +2,13 @@
 // floods, volcanoes, droughts and forest fires, with Green / Orange / Red alert levels.
 //
 // Source: the public GDACS API (no key), search endpoint, newest first, pages of at most 100.
-// Only Orange and Red alerts are fetched: they are the ones that raise a level. (Green alerts
-// number several hundred a week, mostly small forest fires.) The window is the last
-// `lookbackDays` days, so ongoing events and their latest episode are always included.
+// Two queries:
+//   major  Orange and Red alerts of every type over `lookbackDays`: the ones that raise a level
+//   minor  Green alerts of `minor.types` (cyclones, floods, volcanoes) over `minor.lookbackDays`,
+//          for map markers only. Green earthquakes and forest fires are left out: several
+//          hundred a week, too many to show and too small to matter.
+// Ongoing events and their latest episode are always inside the windows. Ended minor events
+// are dropped after `minor.retainEndedDays`, major ones after `retainEndedDays`.
 // Parsing is in ./parse.mjs, the merge with stored events in lib/events.mjs.
 
 import { parseEvents } from './parse.mjs';
@@ -26,27 +30,35 @@ export default {
    */
   async fetch({ log, previous, now, config, sleep = defaultSleep }) {
     const day = (ms) => new Date(ms).toISOString().slice(0, 10);
-    const query = new URLSearchParams({
-      eventlist: Object.keys(config.types).join(';'),
-      alertlevel: 'Orange;Red',
-      fromDate: day(now - config.lookbackDays * 864e5),
-      toDate: day(+now),
-      pageSize: String(PAGE_SIZE),
-    });
+    const queries = [
+      { name: 'major', types: Object.keys(config.types), alertlevel: 'Orange;Red', days: config.lookbackDays },
+      ...(config.minor ? [{ name: 'minor', types: config.minor.types, alertlevel: 'Green', days: config.minor.lookbackDays }] : []),
+    ];
     const incoming = [];
-    for (let page = 1; page <= MAX_PAGES; page++) {
-      const batch = parseEvents(await get(log, `${SEARCH}?${query}&pageNumber=${page}`, sleep));
-      incoming.push(...batch);
-      if (batch.length < PAGE_SIZE) break;
-      if (page === MAX_PAGES) log.warn(`More than ${MAX_PAGES * PAGE_SIZE} events; the rest were not fetched.`);
+    for (const q of queries) {
+      const query = new URLSearchParams({
+        eventlist: q.types.join(';'), alertlevel: q.alertlevel, fromDate: day(now - q.days * 864e5), toDate: day(+now), pageSize: String(PAGE_SIZE),
+      });
+      for (let page = 1; page <= MAX_PAGES; page++) {
+        const batch = parseEvents(await get(log, `${SEARCH}?${query}&pageNumber=${page}`, sleep));
+        incoming.push(...batch);
+        if (batch.length < PAGE_SIZE) break;
+        if (page === MAX_PAGES) log.warn(`More than ${MAX_PAGES * PAGE_SIZE} ${q.name} events; the rest were not fetched.`);
+      }
     }
 
     const unknown = [...new Set(incoming.map(e => e.code).filter(c => !config.types[c]))];
     if (unknown.length) log.warn(`Event types not in config/sources/gdacs.json: ${unknown.join(', ')}`);
     // An empty list is possible (a quiet month), but after a busy one it more likely means trouble.
-    if (!incoming.length && previous.some(e => e.current)) log.warn('No Orange or Red events returned, although some were current last time.');
+    if (!incoming.length && previous.some(e => e.current)) log.warn('No events returned, although some were current last time.');
 
-    const { events, expired, stats } = mergeEvents(previous, incoming, { at: now.toISOString(), lookbackDays: config.lookbackDays, retainEndedDays: config.retainEndedDays });
+    const merged = mergeEvents(previous, incoming, { at: now.toISOString(), lookbackDays: config.lookbackDays, retainEndedDays: config.retainEndedDays });
+    const { stats } = merged;
+    // Ended minor (Green) events are kept a shorter time: they only ever were markers.
+    const minorCutoff = config.minor ? +now - config.minor.retainEndedDays * 864e5 : -Infinity;
+    const isOldMinor = (e) => !e.current && e.native.value === 'Green' && Date.parse(e.toDate) < minorCutoff;
+    const events = merged.events.filter(e => !isOldMinor(e));
+    const expired = [...merged.expired, ...merged.events.filter(isOldMinor)];
     if (stats.levelChanged.length) console.log(`Alert level changed: ${stats.levelChanged.join('; ')}`);
     return {
       events,
@@ -58,7 +70,7 @@ export default {
         added: stats.added,
         alertChanged: stats.levelChanged,
         closed: stats.closed,
-        archived: stats.expired,
+        archived: expired.length,
       },
     };
   },

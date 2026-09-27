@@ -164,6 +164,25 @@ export function createRiskMode(ctx) {
       ${link ? `<a class="link" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(link)}">${esc(tr('card.report', { source: sourceName('gdacs') }))}</a>` : ''}`;
   }
 
+  /** The card of one event (a marker or a feed item): the source's facts, with our level beside them. */
+  function eventHtml(e) {
+    const url = safeUrl(e.url);
+    const where = e.placeIds.length ? e.placeIds.map(placeName).join(', ') : tr('event.offshore');
+    const row = (label, value) => `<div><dt>${esc(label)}</dt><dd title="${esc(value)}">${esc(value)}</dd></div>`;
+    return `
+      <div class="eyebrow">${esc(tr('event.eyebrow', { source: sourceName(e.source), category: catName(e.category) }))}</div>
+      <h3 class="${titleSize(e.name)}" title="${esc(e.name)}">${esc(e.name)}</h3>
+      ${badge(e.level, tr('event.badge', { alert: alertName(e.native.value), level: levelName(e.level) }))}
+      <p class="desc">${esc(e.severity ?? typeName(e.type))}</p>
+      <dl class="meta">
+        ${row(tr('event.started'), i18n.formatDate(e.startedAt.slice(0, 10)))}
+        ${row(tr(e.current ? 'event.current' : 'event.ended'), i18n.formatDate(e.toDate.slice(0, 10)))}
+        ${row(tr('event.places'), where)}
+      </dl>
+      <p class="event-note">${esc(tr('event.note', { source: sourceName(e.source) }))}</p>
+      ${url ? `<a class="link" href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(tr('card.report', { source: sourceName(e.source) }))}</a>` : ''}`;
+  }
+
   // ---- the dataset interface
 
   return {
@@ -214,8 +233,35 @@ export function createRiskMode(ctx) {
     hasPlace: (placeId) => viewLevel(placeId) != null,
 
     details(target) {
+      const event = target?.eventId && events.find(e => e.id === target.eventId);
+      if (event) return eventHtml(event);
       if (!target?.placeId) return overviewHtml();
       return cardHtml(target.placeId);
+    },
+
+    /**
+     * Event markers for the map: the mode's category, or every major event (Orange and Red) in
+     * the highest mode; none in the changes mode. Hidden levels hide their markers too.
+     */
+    markers() {
+      if (view === 'changes') return [];
+      return events
+        .filter(e => e.point && (view === 'category' ? e.category === category : (e.level ?? 1) >= 3) && levels().includes(e.level ?? 1))
+        .map(e => ({ id: e.id, lon: e.point.lon, lat: e.point.lat, kind: e.type, level: e.level ?? 1 }));
+    },
+    /** A marker's selection target: the event, on its first place. */
+    eventTarget(id) {
+      const e = events.find(x => x.id === id);
+      return e ? { eventId: id, ...(e.placeIds[0] && { placeId: e.placeIds[0] }) } : null;
+    },
+    /** Tooltip for a marker, or a cluster of several. */
+    markerTooltip(ids) {
+      const list = ids.map(id => events.find(e => e.id === id)).filter(Boolean);
+      const line = (e) => `<span class="swatch" style="background:${swatch(e.level)}"></span>${esc(tr('event.badge', { alert: alertName(e.native.value), level: levelName(e.level) }))} · ${esc(typeName(e.type))}`;
+      if (list.length === 1) return `<strong>${esc(list[0].name)}</strong><div class="tt-row">${line(list[0])}</div>`;
+      const shown = list.slice(0, 4).map(e => `<div class="tt-row">${line(e)}</div>`).join('');
+      const more = list.length > 4 ? `<div class="tt-row">${esc(tr('feed.more', { count: list.length - 4 }))}</div>` : '';
+      return `<strong>${esc(tr('markers.count', { count: list.length }))}</strong>${shown}${more}`;
     },
 
     tooltip(placeId) {
@@ -229,7 +275,8 @@ export function createRiskMode(ctx) {
     legend() {
       return LEVELS.map(l => `<span class="legend-item"><span class="swatch" style="background:var(--l${l})"></span>${esc(levelName(l))}</span>`).join('')
         + `<span class="legend-item"><span class="swatch none"></span>${esc(tr('legend.none'))}</span>`
-        + `<span class="legend-item"><span class="legend-pulse"></span>${esc(tr('legend.recent', { window: windowText(windowDays()) }))}</span>`;
+        + `<span class="legend-item"><span class="legend-pulse"></span>${esc(tr('legend.recent', { window: windowText(windowDays()) }))}</span>`
+        + (view === 'changes' ? '' : `<span class="legend-item"><span class="legend-marker"></span>${esc(tr('legend.markers'))}</span>`);
     },
 
     renderSettings(container) {
@@ -294,12 +341,21 @@ export function createRiskMode(ctx) {
         : `<li class="recent-empty">${esc(tr('feed.empty'))}</li>`;
     },
 
+    /** A feed item's target: its first place, and its event when it is about one (the card then shows the event). */
     feedTarget(key) {
       const c = changes.find(x => x.id === key);
-      const id = c && changePlaces(c)[0];
-      return id ? { placeId: id } : null;
+      if (!c) return null;
+      const id = changePlaces(c)[0];
+      const event = c.eventId && events.some(e => e.id === c.eventId) ? { eventId: c.eventId } : null;
+      return id || event ? { ...event, ...(id && { placeId: id }) } : null;
     },
-    feedKeyFor: (target) => (target?.placeId ? shown().find(c => changePlaces(c).includes(target.placeId))?.id ?? null : null),
+    feedKeyFor(target) {
+      if (target?.eventId) {
+        const hit = shown().find(c => c.eventId === target.eventId);
+        if (hit) return hit.id;
+      }
+      return target?.placeId ? shown().find(c => changePlaces(c).includes(target.placeId))?.id ?? null : null;
+    },
 
     searchEntries() {
       return [...places.values()].map(place => {

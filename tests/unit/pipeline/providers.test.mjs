@@ -52,7 +52,9 @@ describe('provider registry', () => {
 });
 
 describe('GDACS fetcher', () => {
-  const config = JSON.parse(readFileSync(new URL('../../../config/sources/gdacs.json', import.meta.url), 'utf8'));
+  const fullConfig = JSON.parse(readFileSync(new URL('../../../config/sources/gdacs.json', import.meta.url), 'utf8'));
+  // Most tests look at the major (Orange and Red) query alone; the minor one has its own test.
+  const config = { ...fullConfig, minor: undefined };
   const body = fixture('gdacs-search.json');
   const NOW = new Date('2026-09-27T16:00:00Z');
   const page = (n) => JSON.stringify({ type: 'FeatureCollection', features: Array.from({ length: n }, (_, i) => ({
@@ -83,7 +85,7 @@ describe('GDACS fetcher', () => {
     const many = fakeLog({ search: () => ({ body: page(100) }) });
     await gdacs.fetch({ log: many, previous: [], now: NOW, config });
     assert.equal(many.requests.length, 5);
-    assert.match(many.warnings.join(), /More than 500 events/);
+    assert.match(many.warnings.join(), /More than 500 major events/);
   });
 
   test('HTTP 204 means no events; that is only suspicious when events were current before', async () => {
@@ -94,7 +96,7 @@ describe('GDACS fetcher', () => {
     const suspicious = fakeLog({ search: [{ status: 204 }] });
     const { events } = await gdacs.fetch({ log: suspicious, previous, now: NOW, config });
     assert.deepEqual(events, previous, 'missing is not ended');
-    assert.match(suspicious.warnings.join(), /No Orange or Red events returned/);
+    assert.match(suspicious.warnings.join(), /No events returned/);
   });
 
   test('warns about event types it has no config for', async () => {
@@ -110,6 +112,25 @@ describe('GDACS fetcher', () => {
     assert.deepEqual(waits, [30000, 60000]);
     const down = fakeLog({ search: [new Error('ECONNRESET'), { status: 500 }, { status: 502 }] });
     await assert.rejects(gdacs.fetch({ log: down, previous: [], now: NOW, config, sleep }), /Search failed after 3 attempts: HTTP 502/);
+  });
+
+  test('also fetches minor (Green) alerts of the marker types, and keeps them a shorter time after they end', async () => {
+    const green = fixture('gdacs-green.json');
+    const log = fakeLog({ search: [{ body }, { body: green }] });
+    const { events, stats } = await gdacs.fetch({ log, previous: [], now: NOW, config: fullConfig });
+    const minor = new URL(log.requests[1].url).searchParams;
+    assert.deepEqual([minor.get('alertlevel'), minor.get('eventlist'), minor.get('fromDate')], ['Green', 'TC;FL;VO', '2026-09-13']);
+    assert.equal(events.length, 13 + 12);
+    assert.ok(events.some(e => e.native.value === 'Green' && e.current));
+    assert.equal(stats.received, 25);
+
+    // An ended Green flood older than minor.retainEndedDays is archived; an ended Orange one isn't yet.
+    const old = (id, value) => ({ id, code: 'FL', native: { scheme: 'gdacs-alert', value }, current: false, toDate: '2026-09-01T00:00:00.000Z', firstSeen: 'x', revisions: [] });
+    const later = fakeLog({ search: [{ status: 204 }, { status: 204 }] });
+    const next = await gdacs.fetch({ log: later, previous: [old('gdacs:FL:1', 'Green'), old('gdacs:FL:2', 'Orange')], now: NOW, config: fullConfig });
+    assert.deepEqual(next.events.map(e => e.id), ['gdacs:FL:2']);
+    assert.deepEqual(next.expired.map(e => e.id), ['gdacs:FL:1']);
+    assert.equal(next.stats.archived, 1);
   });
 
   test('a malformed response fails the fetch, so the stored events are kept', async () => {

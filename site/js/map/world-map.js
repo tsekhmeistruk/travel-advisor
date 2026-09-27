@@ -10,12 +10,18 @@
 //     pulse: null, or 0..1 opacity of an animated "recently changed" marker
 //   }
 //
+// Point markers (events: an earthquake, a cyclone) come from setMarkers([{ id, lon, lat, kind,
+// level }]). They keep a fixed pixel size while zooming, and markers closer than a grid cell
+// on screen are drawn as one cluster with a count (see clusters.js).
+//
 // Needs d3 and topojson-client as globals (loaded by index.html).
 
 import { splitFeatures } from './splits.js';
+import { clusterMarkers, MARKER_ICONS } from './clusters.js';
 
 const DOT_AREA = 14;             // px² at zoom 1; smaller shapes also get a hoverable dot
 const POLAR = new Set(['aq']);   // drawn faded: huge on this projection, rarely relevant
+const MAX_ZOOM = 24;
 
 export class WorldMap {
   /**
@@ -24,13 +30,17 @@ export class WorldMap {
    * @param opts.places                place registry
    * @param opts.bottomInset()         px to keep clear at the bottom (e.g. the legend)
    * @param opts.onHover(region|null, event), opts.onMove(event), opts.onSelect(region|null)
+   * @param opts.onMarkerHover(cluster|null, event), opts.onMarkerSelect(cluster)
+   *   a cluster is { id, items: [markers], x, y, level }; one marker is a cluster of one
    */
-  constructor({ svg, container, topo, places, bottomInset = () => 0, onHover = () => {}, onMove = () => {}, onSelect = () => {} }) {
+  constructor({ svg, container, topo, places, bottomInset = () => 0, onHover = () => {}, onMove = () => {}, onSelect = () => {}, onMarkerHover = () => {}, onMarkerSelect = () => {} }) {
     const { d3, topojson } = globalThis;
     this.d3 = d3;
     this.container = container;
     this.bottomInset = bottomInset;
-    this.handlers = { onHover, onMove, onSelect };
+    this.handlers = { onHover, onMove, onSelect, onMarkerHover, onMarkerSelect };
+    this.markers = [];
+    this.selectedMarker = null;
     this.style = () => ({ cls: 'none' });
     this.hovered = null;
     this.selected = null;
@@ -59,6 +69,7 @@ export class WorldMap {
     this.selectOutline = this.viewport.append('path').attr('class', 'select-outline');
     const overlay = this.svg.append('g').attr('class', 'overlay');
     this.dotLayer = overlay.append('g').attr('class', 'dots');
+    this.markerLayer = overlay.append('g').attr('class', 'markers');
     this.pulseLayer = overlay.append('g').attr('class', 'pulses');
 
     this.projection = d3.geoNaturalEarth1();
@@ -73,7 +84,7 @@ export class WorldMap {
     this.#bindPointer(this.countryPaths);
 
     this.zoom = d3.zoom()
-      .scaleExtent([1, 24])
+      .scaleExtent([1, MAX_ZOOM])
       // By default any movement between press and release counts as a drag and swallows the
       // click; allow normal hand jitter so a click on a place always selects it.
       .clickDistance(6)
@@ -97,6 +108,26 @@ export class WorldMap {
 
   setHovered(placeId) { this.hovered = placeId ? this.region(placeId) : null; this.#updateOutlines(); }
   setSelected(placeId) { this.selected = placeId ? this.region(placeId) : null; this.#updateOutlines(); }
+
+  /** Point markers: [{ id, lon, lat, kind, level }]; [] removes them. */
+  setMarkers(markers) {
+    this.markers = markers.map(m => ({ ...m, xy: this.projection([m.lon, m.lat]) }));
+    this.#renderMarkers();
+  }
+  /** Highlight the marker (or the cluster holding it) with this id. */
+  setSelectedMarker(id) { this.selectedMarker = id ?? null; this.#renderMarkers(); }
+
+  /** Whether the map can zoom in further. */
+  canZoomIn() { return this.transform.k < MAX_ZOOM; }
+
+  /** Zoom in around a screen point (a cluster), keeping it under the pointer's place. */
+  zoomAround(x, y, factor = 2.5) {
+    const t = this.transform;
+    const k = Math.min(MAX_ZOOM, t.k * factor);
+    const [mx, my] = t.invert([x, y]);
+    this.svg.transition().duration(500)
+      .call(this.zoom.transform, this.d3.zoomIdentity.translate(this.width / 2 - k * mx, this.height / 2 - k * my).scale(k));
+  }
 
   zoomTo(placeId) {
     const r = this.region(placeId);
@@ -128,6 +159,7 @@ export class WorldMap {
       r.areaPx = r.feature ? this.path.area(r.feature) : 0;
       r.anchor = r.feature ? this.projection(this.d3.geoCentroid(r.main)) : this.projection(r.point);
     }
+    for (const m of this.markers) m.xy = this.projection([m.lon, m.lat]);
 
     const [[sx0, sy0], [sx1, sy1]] = this.path.bounds({ type: 'Sphere' });
     this.zoom.extent([[0, 0], [this.width, this.height]])
@@ -181,6 +213,30 @@ export class WorldMap {
       .each(function (r, i) { this.firstChild.style.animationDelay = `${-(i * 0.37) % 2.4}s`; });
   }
 
+  // Markers are clustered in screen space, so this runs on every zoom step (a few dozen markers).
+  #renderMarkers() {
+    const t = this.transform;
+    const clusters = clusterMarkers(this.markers.map(m => ({ ...m, x: t.applyX(m.xy[0]), y: t.applyY(m.xy[1]) })));
+    const sel = this.markerLayer.selectAll('.marker')
+      .data(clusters, c => c.id)
+      .join(enter => {
+        const g = enter.append('g');
+        g.append('circle').attr('class', 'disc');
+        g.append('path').attr('class', 'icon');
+        g.append('text').attr('class', 'count');
+        return g;
+      })
+      .attr('class', c => `marker ml${c.level}${c.items.some(m => m.id === this.selectedMarker) ? ' is-selected' : ''}`)
+      .attr('transform', c => `translate(${c.x},${c.y})`);
+    sel.select('.disc').attr('r', c => (c.items.length > 1 ? 9 : 7.5));
+    sel.select('.icon').attr('d', c => (c.items.length > 1 ? null : MARKER_ICONS[c.items[0].kind] ?? MARKER_ICONS.default));
+    sel.select('.count').text(c => (c.items.length > 1 ? c.items.length : ''));
+    sel.on('pointerenter', (event, c) => this.handlers.onMarkerHover(c, event))
+      .on('pointermove', (event) => this.handlers.onMove(event))
+      .on('pointerleave', (event) => this.handlers.onMarkerHover(null, event))
+      .on('click', (event, c) => { event.stopPropagation(); this.handlers.onMarkerSelect(c); });
+  }
+
   #updateOutlines() {
     const outline = (sel, r) => {
       if (r?.feature) sel.attr('d', this.path(r.feature)).attr('display', null);
@@ -204,6 +260,7 @@ export class WorldMap {
     const place = (sel) => sel.attr('transform', r => `translate(${t.applyX(r.anchor[0])},${t.applyY(r.anchor[1])})`);
     place(this.dotLayer.selectAll('.dot'));
     place(this.pulseLayer.selectAll('.pulse'));
+    this.#renderMarkers();
     // Once a tiny shape is big enough to hover directly, retire its dot.
     this.dotLayer.selectAll('.dot').attr('display', r => (r.feature && r.areaPx * t.k * t.k > DOT_AREA * 4) ? 'none' : null);
   }

@@ -207,6 +207,10 @@
    "label": "Disasters",
    "title": "Natural disasters: GDACS alerts for earthquakes, cyclones, floods, volcanoes and droughts"
   },
+  "wildfire": {
+   "label": "Wildfires",
+   "title": "Forest fires: GDACS alerts"
+  },
   "changes": {
    "label": "Changes",
    "title": "Where a risk level changed recently"
@@ -319,7 +323,21 @@
   },
   "legend": {
    "none": "No data",
-   "recent": "Level changed ≤ {window}"
+   "recent": "Level changed ≤ {window}",
+   "markers": "Alert"
+  },
+  "markers": {
+   "count": "{count} alerts here; click to zoom in"
+  },
+  "event": {
+   "eyebrow": "{source} alert · {category}",
+   "badge": "{alert} alert · {level}",
+   "started": "Started",
+   "current": "Ongoing, last update",
+   "ended": "Ended",
+   "places": "Affects",
+   "offshore": "At sea, no country",
+   "note": "{source} alerts are automatic estimates. Confirm with national authorities before acting on them."
   }
  },
  "places": {}

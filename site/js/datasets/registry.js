@@ -14,7 +14,11 @@
 //   renderSettings(el), renderFeed(el)          its settings and its list of notable items
 //   feedTarget(key), feedKeyFor(target)         map feed items to selection targets and back
 //   searchEntries()                             what the search box can find
-// A "target" is { placeId } for a place on the map, or { recordKey } for an item with no place.
+// and optionally, for point markers (events):
+//   markers()                                   [{ id, lon, lat, kind, level }] for the map
+//   eventTarget(id), markerTooltip(ids)         a marker's selection target, and its tooltip HTML
+// A "target" is { placeId } for a place on the map, { recordKey } for an item with no place, or
+// { eventId, placeId? } for an event (the card shows the event; its place is highlighted).
 
 import { createTravelAdvisories } from './travel-advisories/index.js';
 import { createRiskMode } from './risk/index.js';
@@ -33,6 +37,7 @@ export const MODES = [
   { id: 'travel', create: createTravelAdvisories, entry: (m) => m.datasets.find(d => d.id === 'travel-advisories') },
   { id: 'highest', create: risk({ mode: 'highest', view: 'highest' }), entry: (m) => m.risk },
   { id: 'disaster', create: risk({ mode: 'disaster', view: 'category', category: 'disaster' }), entry: (m) => m.risk },
+  { id: 'wildfire', create: risk({ mode: 'wildfire', view: 'category', category: 'wildfire' }), entry: (m) => m.risk },
   { id: 'changes', create: risk({ mode: 'changes', view: 'changes' }), entry: (m) => m.risk },
 ];
 export const DEFAULT_MODE = 'travel';

@@ -115,24 +115,46 @@ export const isData = (req, path) => new URL(req.url()).pathname.endsWith(`/data
 /**
  * An `intercept` for the risk modes, like withLevelChanges: serves the real risk change log
  * with changes of known ages added. Disaster level changes 1 hour, 3, 10 and 40 days ago (one
- * to each level, and one a fall), an advisory level change 5 days ago, and a new GDACS event
- * 2 hours ago. Returns the places that changed, newest first.
+ * to each level, and one a fall), a wildfire level change 2 days ago, an advisory level change
+ * 5 days ago, and a new GDACS event 2 hours ago. Also serves the real events plus three test
+ * events with positions: two close together in Japan (one cluster at world zoom), one in
+ * Chile, and two at the same point in Iceland (a cluster that never splits). Returns the places that changed, newest first, and the test events' ids.
  */
 export function withRiskChanges() {
   const data = JSON.parse(readFileSync(new URL('../../site/data/risk/changes.json', import.meta.url), 'utf8'));
+  const events = JSON.parse(readFileSync(new URL('../../site/data/risk/events.json', import.meta.url), 'utf8'));
   const ago = (hours) => new Date(Date.now() - hours * 36e5).toISOString();
   const level = (placeId, hours, from, to) => ({ id: `${placeId}:disaster:${ago(hours)}`, at: ago(hours), kind: 'level', category: 'disaster', placeId, from, to, up: to > from, basis: [], sources: ['gdacs'] });
   const added = [
     level('jp', 1, 1, 4),
     { id: 'test:event', at: ago(2), kind: 'event', category: 'disaster', source: 'gdacs', eventId: 'gdacs:EQ:0', type: 'earthquake', placeIds: ['cl'], to: 3, native: 'Orange', new: true },
+    { ...level('au', 48, 1, 2), id: `au:wildfire:${ago(48)}`, category: 'wildfire' },
     level('ph', 72, 1, 3),
     { id: 'test:advisory', at: ago(120).slice(0, 10), kind: 'advisory', category: 'travel', source: 'us', title: 'Peru', placeIds: ['pe'], from: 1, to: 2, up: true },
     level('it', 240, 3, 2),
     level('tr', 960, 1, 2),
   ];
-  const body = JSON.stringify({ ...data, changes: [...added, ...data.changes] });
-  const intercept = (req) => (isData(req, 'risk/changes.json') ? (req.respond({ status: 200, contentType: 'application/json', body }), true) : false);
-  return Object.assign(intercept, { places: ['jp', 'cl', 'ph', 'pe', 'it', 'tr'] });
+  const event = (id, lon, lat, placeIds, value, level, type) => ({
+    id, source: 'gdacs', type, category: 'disaster', level, native: { scheme: 'gdacs-alert', value }, name: `Test ${type} ${id}`,
+    severity: 'Magnitude 6.8M, Depth: 10km', placeIds, point: { lon, lat }, startedAt: ago(30), toDate: ago(2), current: true, url: 'https://www.gdacs.org/report.aspx?eventid=0',
+  });
+  const testEvents = [
+    event('gdacs:EQ:0', -71, -33, ['cl'], 'Orange', 3, 'earthquake'),
+    event('gdacs:TC:900', 139.7, 35.7, ['jp'], 'Red', 4, 'cyclone'),
+    event('gdacs:FL:901', 140.6, 36.6, ['jp'], 'Green', 1, 'flood'),
+    // Two at the very same point: a cluster that never splits.
+    event('gdacs:VO:902', -19, 64.6, ['is'], 'Orange', 3, 'volcano'),
+    event('gdacs:EQ:903', -19, 64.6, ['is'], 'Orange', 3, 'earthquake'),
+  ];
+  const bodies = {
+    'risk/changes.json': JSON.stringify({ ...data, changes: [...added, ...data.changes] }),
+    'risk/events.json': JSON.stringify({ ...events, events: [...testEvents, ...events.events] }),
+  };
+  const intercept = (req) => {
+    const path = Object.keys(bodies).find(p => isData(req, p));
+    return path ? (req.respond({ status: 200, contentType: 'application/json', body: bodies[path] }), true) : false;
+  };
+  return Object.assign(intercept, { places: ['jp', 'cl', 'au', 'ph', 'pe', 'it', 'tr'], events: testEvents.map(e => e.id) });
 }
 
 /** Hover every country and dot, measuring the details card each time, plus map and feed counts. */

@@ -7,7 +7,9 @@ import { useBrowser, open, openRaw, sleep, OUT, detailsTitle, withRiskChanges, m
 
 useBrowser();
 
-const RISK_MODES = ['highest', 'disaster', 'changes'];
+const RISK_MODES = ['highest', 'disaster', 'wildfire', 'changes'];
+// Pulses each mode must show with withRiskChanges(): its category's level changes, or all of them.
+const MIN_PULSES = { highest: 6, disaster: 4, wildfire: 1, changes: 6 };
 const saved = (page) => page.evaluate((key) => JSON.parse(localStorage.getItem(key)), SETTINGS_KEY);
 const classOf = (page, id) => page.evaluate((placeId) => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === placeId)?.getAttribute('class'), id);
 const text = (page, id) => page.$eval(`#${id}`, el => el.textContent);
@@ -30,7 +32,7 @@ for (const mode of RISK_MODES) {
         assert.ok(stats.colored > 200, `${stats.colored} coloured`);
       });
       test('pulses the level changes and lists them in the feed', () => {
-        assert.ok(stats.pulses >= (mode === 'disaster' ? 4 : 5), `${stats.pulses} pulses`);
+        assert.ok(stats.pulses >= MIN_PULSES[mode], `${stats.pulses} pulses`);
         assert.ok(stats.recent >= stats.pulses, `${stats.recent} listed, ${stats.pulses} pulses`);
       });
       test('keeps the details card one fixed height for every country', () => {
@@ -151,4 +153,91 @@ describe('risk panel', () => {
     assert.match(await page.$eval('#details', el => el.textContent), /Raised in the last 24 hours/);
     await page.close();
   });
+});
+
+describe('event markers', () => {
+  const markers = (page) => page.$$eval('.marker', els => els.map(e => ({ id: e.__data__.id, n: e.__data__.items.length, cls: e.getAttribute('class') })));
+
+  test('the disaster mode draws its events; close ones form a cluster with a count', async () => {
+    const page = await openMode('disaster', { intercept: withRiskChanges() });
+    const list = await markers(page);
+    assert.ok(list.some(m => m.id === 'gdacs:EQ:0' && m.n === 1), 'the Chile earthquake alone');
+    const japan = list.find(m => m.id.includes('gdacs:TC:900'));
+    assert.ok(japan && japan.n >= 2, 'the two Japan events clustered at world zoom');
+    assert.match(japan.cls, /\bml4\b/, 'a cluster takes its highest level');
+    assert.match(await text(page, 'legend'), /Alert/);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('hovering a marker shows its event; clicking selects it and its place', async () => {
+    const page = await openMode('disaster', { intercept: withRiskChanges() });
+    const el = await page.evaluateHandle(() => [...document.querySelectorAll('.marker')].find(e => e.__data__.id === 'gdacs:EQ:0'));
+    await el.hover();
+    assert.match(await detailsTitle(page), /Test earthquake/);
+    assert.match(await page.$eval('#tooltip', t => t.textContent), /Orange alert · High · earthquake/);
+    await el.click();
+    await sleep(300);
+    await page.hover('#footer');
+    assert.match(await detailsTitle(page), /Test earthquake/);
+    assert.match(await page.$eval('#details', d => d.textContent), /Affects\s*Chile/);
+    assert.ok((await markers(page)).find(m => m.id === 'gdacs:EQ:0').cls.includes('is-selected'));
+    assert.equal(await page.evaluate(() => location.hash), '#mode=disaster&place=cl');
+    await page.close();
+  });
+
+  test('clicking a cluster zooms in until its events are apart', async () => {
+    const page = await openMode('disaster', { intercept: withRiskChanges() });
+    const zoom = () => page.evaluate(() => document.querySelector('.viewport').getAttribute('transform'));
+    const before = await zoom();
+    for (let i = 0; i < 4; i++) {
+      const cluster = await page.evaluateHandle(() => [...document.querySelectorAll('.marker')].find(e => e.__data__.items.some(m => m.id === 'gdacs:TC:900')));
+      if ((await cluster.evaluate(e => e.__data__.items.length)) === 1) break;
+      await cluster.click();
+      await sleep(700);
+    }
+    assert.notEqual(await zoom(), before);
+    const list = await markers(page);
+    assert.ok(list.some(m => m.id === 'gdacs:TC:900') && list.some(m => m.id === 'gdacs:FL:901'), 'split apart');
+    await page.close();
+  });
+
+  test('a cluster that cannot split any more selects its first event at the closest zoom', async () => {
+    const page = await openMode('disaster', { intercept: withRiskChanges() });
+    for (let i = 0; i < 8 && !/Test (volcano|earthquake) gdacs:(VO:902|EQ:903)/.test(await detailsTitle(page) ?? ''); i++) {
+      const cluster = await page.evaluateHandle(() => [...document.querySelectorAll('.marker')].find(e => e.__data__.items.some(m => m.id === 'gdacs:VO:902')));
+      await cluster.click();
+      await sleep(700);
+      await page.hover('#footer');
+    }
+    assert.match(await detailsTitle(page), /Test earthquake gdacs:EQ:903/, 'the first of the two, by id');
+    await page.close();
+  });
+
+  test('the highest mode shows only major alerts, the changes and travel modes none; hidden levels hide markers', async () => {
+    const page = await openMode('highest', { intercept: withRiskChanges() });
+    const ids = async () => (await markers(page)).flatMap(m => m.id.replace(/^cluster:/, '').split('|'));
+    assert.ok((await ids()).includes('gdacs:TC:900'));
+    assert.ok(!(await ids()).includes('gdacs:FL:901'), 'a Green alert is not major');
+    await page.click('#riskLevelChips [data-level="4"]');
+    await sleep(200);
+    assert.ok(!(await ids()).includes('gdacs:TC:900'), 'Critical hidden');
+    await page.click('#modeSwitch [data-mode="changes"]');
+    await sleep(300);
+    assert.equal((await markers(page)).length, 0);
+    await page.click('#modeSwitch [data-mode="travel"]');
+    await sleep(300);
+    assert.equal((await markers(page)).length, 0);
+    await page.close();
+  });
+
+  for (const width of [1440, 390]) {
+    test(`at ${width}px every mode button shows its whole name`, async () => {
+      const page = await open({ width, height: 844 });
+      const cut = await page.$$eval('#modeSwitch button', els => els.filter(b => b.scrollWidth > b.clientWidth + 1).map(b => b.textContent));
+      assert.deepEqual(cut, []);
+      assert.equal(await page.$$eval('#modeSwitch button', els => els.length), 5);
+      await page.close();
+    });
+  }
 });

@@ -11,6 +11,11 @@
  "confirmFallMinutes": 120,
  "lookbackDays": 30,
  "retainEndedDays": 90,
+ "minor": {
+  "types": ["TC", "FL", "VO"],
+  "lookbackDays": 14,
+  "retainEndedDays": 14
+ },
  "scheme": "gdacs-alert",
  "levels": {
   "Green": 1,

@@ -107,7 +107,7 @@ The product is growing from a travel-advisory map into a risk monitor: several s
 - **Idempotent:** change ids are built from the place, category and fetch time (or event id and revision time), and the build's "now" is the newest fetch time in its inputs, so building the same data twice changes nothing.
 - **Health:** each provider and source is `healthy` (last success within 1.5 × its interval), `delayed`, or `error` (past its stale limit: `staleAfterHours`, or 7 days for advisories). A source in `error` publishes no levels and keeps its last state.
 
-The site shows the risk layer through **map modes** (see below). Event markers and a full country view come next.
+The site shows the risk layer through **map modes** and **event markers** (see below). A full country view comes next.
 
 ### Published formats
 
@@ -180,9 +180,11 @@ The manifest also has `risk: { asOf, current, changes, events, health }`, pointi
   | Travel | one government's advisory level, with the provider switch | `datasets/travel-advisories/` |
   | Highest | the highest level of any risk category | `datasets/risk/` (`view: 'highest'`) |
   | Disasters | the `disaster` category (GDACS) | `datasets/risk/` (`view: 'category'`) |
+| Wildfires | the `wildfire` category (GDACS forest fires) | `datasets/risk/` (`view: 'category'`) |
   | Changes | the highest level, fading places without a change in the window | `datasets/risk/` (`view: 'changes'`) |
 
   The risk modes share one factory (`createRiskMode`) and one settings namespace (`risk`: levels, window 24 h / 7 / 30 / 90 days, direction, fade). Their card lists every category with its level and what set it: "2 of 3 governments", or the GDACS alert. Their feed lists every change kind (level, advisory, new or changed event). A pulse still means only a level change. A place with no data is drawn grey and never pulses.
+- **Event markers:** a mode may return `markers()` (`[{ id, lon, lat, kind, level }]`), which the map draws with `setMarkers()`: a coloured disc per event, with an icon per kind (earthquake, cyclone, flood, volcano, drought, fire). Markers whose screen positions share a 28px cell become one cluster with a count and the highest level (`map/clusters.js`, pure); clicking a cluster zooms in to split it, and at the closest zoom selects its first event. A selected marker is the target `{ eventId, placeId }`: the card shows the event (the source's facts, our level beside them, the places it affects, a link to the source), and its place is outlined. The Disasters and Wildfires modes mark their category's events; Highest marks only Orange and Red ones; Changes and Travel none.
 - **Data freshness:** `core/data-client.js` revalidates the manifest on every load and asks for each data file with its as-of time (`?v=…`), because GitHub Pages lets browsers cache files for minutes and the data changes hourly.
 - **`map/world-map.js`** is a generic map. `style(placeId)` returns `{ cls, muted, dim, dot, pulse }`, and the map draws fills, faded places, dots for tiny places and pulses. It also handles zoom, pan and click tolerance. Dataset-specific code never runs inside it.
 - **Datasets** implement the interface documented in `datasets/registry.js`:

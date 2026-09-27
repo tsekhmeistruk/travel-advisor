@@ -10,6 +10,7 @@ import {
   countDirections, cardModel,
 } from '../../../site/js/datasets/risk/logic.js';
 import { MODES } from '../../../site/js/datasets/registry.js';
+import { clusterMarkers, MARKER_ICONS } from '../../../site/js/map/clusters.js';
 import { createI18n } from '../../../site/js/core/i18n.js';
 import { createSettings } from '../../../site/js/core/settings.js';
 import { parseHash, formatHash } from '../../../site/js/core/url-state.js';
@@ -47,11 +48,12 @@ const CHANGES = [
   { id: 'advisory:us:Kenya:2026-09-01', at: '2026-09-01', kind: 'advisory', category: 'travel', source: 'us', title: 'Kenya', placeIds: ['ke'], from: 3, to: 2, up: false },
   { id: 'advisory:us:Japan:2026-07-01', at: '2026-07-01', kind: 'advisory', category: 'travel', source: 'us', title: 'Japan', placeIds: ['jp'], from: null, to: 1, up: false, seeded: true },
 ];
+const DATES = { startedAt: '2026-09-21T03:00:00.000Z', toDate: '2026-09-27T09:00:00.000Z', current: true };
 const EVENTS = [
-  { id: 'gdacs:TC:1', source: 'gdacs', type: 'cyclone', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Tropical Cyclone <b>X</b>', placeIds: ['mx'], url: 'https://www.gdacs.org/report.aspx?eventid=1' },
-  { id: 'gdacs:EQ:2', source: 'gdacs', type: 'earthquake', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'EQ', placeIds: ['mx'], url: 'javascript:alert(1)' },
-  { id: 'gdacs:EQ:9', source: 'gdacs', type: 'earthquake', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Offshore quake', placeIds: [] },
-  { id: 'gdacs:DR:3', source: 'gdacs', type: 'drought', level: 2, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Drought', placeIds: ['so', 'ke'] },
+  { id: 'gdacs:TC:1', source: 'gdacs', ...DATES, category: 'disaster', type: 'cyclone', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Tropical Cyclone <b>X</b>', placeIds: ['mx'], url: 'https://www.gdacs.org/report.aspx?eventid=1' },
+  { id: 'gdacs:EQ:2', source: 'gdacs', ...DATES, category: 'disaster', type: 'earthquake', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'EQ', placeIds: ['mx'], url: 'javascript:alert(1)' },
+  { id: 'gdacs:EQ:9', source: 'gdacs', ...DATES, category: 'disaster', type: 'earthquake', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Offshore quake', placeIds: [] },
+  { id: 'gdacs:DR:3', source: 'gdacs', ...DATES, category: 'disaster', type: 'drought', level: 2, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Drought', placeIds: ['so', 'ke'] },
 ];
 const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json' };
 
@@ -153,7 +155,7 @@ describe('url state', () => {
 describe('modes registry', () => {
   test('offers travel always, and the risk modes only when the manifest has risk data', () => {
     const withRisk = { datasets: [{ id: 'travel-advisories' }], risk: MANIFEST };
-    assert.deepEqual(MODES.filter(m => m.entry(withRisk)).map(m => m.id), ['travel', 'highest', 'disaster', 'changes']);
+    assert.deepEqual(MODES.filter(m => m.entry(withRisk)).map(m => m.id), ['travel', 'highest', 'disaster', 'wildfire', 'changes']);
     assert.deepEqual(MODES.filter(m => m.entry({ datasets: [{ id: 'travel-advisories' }] })).map(m => m.id), ['travel']);
     for (const m of MODES) assert.ok(EN.modes[m.id]?.label && EN.modes[m.id]?.title, `${m.id}: label and title`);
   });
@@ -351,10 +353,80 @@ describe('feed', () => {
   });
   test('maps feed items to places and back', () => {
     assert.deepEqual(ds.feedTarget('advisory:us:Somalia:2026-09-20'), { placeId: 'so' });
-    assert.equal(ds.feedTarget(`gdacs:EQ:9:${hoursAgo(30)}`), null, 'offshore: nothing to select');
+    assert.deepEqual(ds.feedTarget(`gdacs:EQ:9:${hoursAgo(30)}`), { eventId: 'gdacs:EQ:9' }, 'offshore: the event itself');
     assert.equal(ds.feedTarget('nope'), null);
     assert.equal(ds.feedKeyFor({ placeId: 'mx' }), CHANGES[0].id);
     assert.equal(ds.feedKeyFor({ placeId: 'jp' }), null);
     assert.equal(ds.feedKeyFor(null), null);
+  });
+});
+
+describe('markers', () => {
+  test('clusters markers in the same screen cell, at their average position and highest level', () => {
+    const list = clusterMarkers([
+      { id: 'b', x: 10, y: 10, level: 1 }, { id: 'a', x: 20, y: 14, level: 3 }, { id: 'c', x: 100, y: 10, level: 4 }, { id: 'd', x: 5, y: 60 },
+    ]);
+    assert.deepEqual(list.map(c => [c.id, c.items.length, c.level]), [['d', 1, 1], ['cluster:a|b', 2, 3], ['c', 1, 4]], 'lowest level first, so the highest draws on top');
+    assert.deepEqual([list[1].x, list[1].y], [15, 12]);
+    assert.deepEqual(clusterMarkers([]), []);
+    for (const kind of ['earthquake', 'cyclone', 'flood', 'volcano', 'drought', 'wildfire', 'default']) assert.match(MARKER_ICONS[kind], /^M/, kind);
+  });
+
+  const withPoints = EVENTS.map((e, i) => ({ ...e, category: e.type === 'drought' || e.type === 'earthquake' || e.type === 'cyclone' ? 'disaster' : 'wildfire', point: i === 2 ? undefined : { lon: i, lat: i } }));
+  async function withEvents(opts) {
+    await create(opts);
+    // Replace the loaded events with ones that have positions (the fixture's have none).
+    const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: withPoints } };
+    const settings = createSettings('k', {}, { getItem: () => null, setItem: () => {} });
+    ds = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN, today: new Date(NOW) }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, now: () => NOW, ...opts, mode: opts.mode ?? opts.category ?? opts.view });
+    await ds.load();
+  }
+
+  test('a category mode marks its events, the highest mode only major ones, the changes mode none', async () => {
+    await withEvents({ view: 'category', category: 'disaster' });
+    assert.deepEqual(ds.markers().map(m => m.id), ['gdacs:TC:1', 'gdacs:EQ:2', 'gdacs:DR:3'], 'events without a position are left out');
+    assert.deepEqual(ds.markers()[0], { id: 'gdacs:TC:1', lon: 0, lat: 0, kind: 'cyclone', level: 3 });
+    await withEvents({ view: 'highest' });
+    assert.deepEqual(ds.markers().map(m => m.id), ['gdacs:TC:1', 'gdacs:EQ:2']);
+    await withEvents({ view: 'changes' });
+    assert.deepEqual(ds.markers(), []);
+  });
+
+  test('a marker selects its event on its first place; its tooltip names it, a cluster lists them', async () => {
+    await withEvents({ view: 'category', category: 'disaster' });
+    assert.deepEqual(ds.eventTarget('gdacs:TC:1'), { eventId: 'gdacs:TC:1', placeId: 'mx' });
+    assert.deepEqual(ds.eventTarget('gdacs:EQ:9'), { eventId: 'gdacs:EQ:9' }, 'offshore: no place');
+    assert.equal(ds.eventTarget('nope'), null);
+    assert.match(ds.markerTooltip(['gdacs:TC:1']), /<strong>Tropical Cyclone &lt;b&gt;X&lt;\/b&gt;<\/strong>.*Orange alert · High · tropical cyclone/);
+    const five = ds.markerTooltip(['gdacs:TC:1', 'gdacs:EQ:2', 'gdacs:EQ:9', 'gdacs:DR:3', 'gdacs:TC:1']);
+    assert.match(five, /5 alerts here/);
+    assert.match(five, /and 1 more/);
+  });
+
+  test('the event card shows the source\'s facts with our level, where it is, and a safe link', async () => {
+    const html = ds.details({ eventId: 'gdacs:TC:1', placeId: 'mx' });
+    assert.match(html, /GDACS alert · Disaster/);
+    assert.match(html, /Tropical Cyclone &lt;b&gt;X&lt;\/b&gt;/);
+    assert.match(html, /Orange alert · High/);
+    assert.match(html, /Affects<\/dt><dd[^>]*>Mexico/);
+    assert.match(html, /automatic estimates/);
+    assert.match(html, /href="https:\/\/www\.gdacs\.org\/report\.aspx\?eventid=1"/);
+    const offshore = ds.details({ eventId: 'gdacs:EQ:9' });
+    assert.match(offshore, /At sea, no country/);
+    assert.doesNotMatch(ds.details({ eventId: 'gdacs:EQ:2' }), /javascript:/);
+    assert.match(ds.details({ eventId: 'gone', placeId: 'mx' }), /Risk by category/, 'an event no longer active: the place card');
+  });
+
+  test('a feed item about an event targets the event, and the event finds its feed item', () => {
+    assert.deepEqual(ds.feedTarget(CHANGES[1].id), { eventId: 'gdacs:TC:1', placeId: 'mx' });
+    assert.deepEqual(ds.feedTarget(CHANGES[2].id), { eventId: 'gdacs:EQ:9' }, 'offshore events can be selected too');
+    assert.equal(ds.feedKeyFor({ eventId: 'gdacs:TC:1', placeId: 'mx' }), CHANGES[1].id);
+    assert.equal(ds.feedKeyFor({ eventId: 'gdacs:none', placeId: 'mx' }), CHANGES[0].id, 'falls back to the place');
+  });
+
+  test('the legend explains markers where there are any', async () => {
+    assert.match(ds.legend(), /legend-marker/);
+    await create({ view: 'changes' });
+    assert.doesNotMatch(ds.legend(), /legend-marker/);
   });
 });
