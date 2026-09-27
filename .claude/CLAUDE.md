@@ -13,6 +13,12 @@ A world map of **data about places**. Today it shows official travel-advisory le
 - **`git pull` first.** A bot commits data and logs to `main` every day.
 - **Pushing to `main` runs all tests, then deploys if they pass.** Run the tests locally before pushing.
 - **Local site:** `npm start` (http://localhost:8080). Opening `site/index.html` from disk doesn't work, because the site uses ES modules and fetches JSON.
+- **You may run the local server whenever it helps:**
+  - to check a change in a real browser;
+  - to take screenshots;
+  - to debug something the tests don't show.
+
+  Start it in the background (`npm start`, or `node scripts/serve.mjs <port>` if 8080 is taken), use it, and **stop it when you're done**. The browser tests start their own server on a free port, so they don't need it.
 
 ## Every change: review the tests too
 

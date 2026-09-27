@@ -15,7 +15,8 @@
       "Bash(npm ci)",
       "Bash(node scripts/build.mjs)",
       "Bash(node scripts/fetch.mjs ca)",
-      "Bash(npm start)"
+      "Bash(npm start)",
+      "Bash(node scripts/serve.mjs:*)"
     ],
     "ask": [
       "Bash(node scripts/fetch.mjs us)",
