@@ -137,6 +137,9 @@ describe('log summary', () => {
     assert.equal(describeRun(ok), '230 destinations · changed: Mexico, Japan · 1 pages failed');
     assert.equal(describeRun(retried), '217 advisories · 1 kept from previous (Chad) · 140 change notes');
     assert.match(describeRun(failed), /Error: API failed/);
+    const twoSources = { ...ok, stats: { destinations: 230, sources: ['feed', 'table'], newerThanFeed: ['Mexico'], changed: [] } };
+    assert.equal(describeRun(twoSources), '230 destinations (feed + table) · none changed · 1 newer than the feed');
+    assert.equal(callSummary({ attempts: [{ status: 200 }] }), '200');
   });
   test('formats durations and keeps table cells on one line', () => {
     assert.equal(duration(1200), '1.2 s');

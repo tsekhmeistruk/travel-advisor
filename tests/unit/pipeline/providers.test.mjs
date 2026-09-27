@@ -42,6 +42,7 @@ describe('provider registry', () => {
       assert.equal(typeof p.fetch, 'function');
       assert.ok(Array.isArray(p.minorChange) && p.minorChange.every(re => re instanceof RegExp), `${id}.minorChange`);
       assert.match(p.source, /^https:\/\//);
+      if (p.minorChangeTypes) assert.ok(p.minorChangeTypes.every(t => typeof t === 'string'), `${id}.minorChangeTypes`);
     }
   });
   test('rejects an unknown provider with the list of known ones', () => {
@@ -125,55 +126,107 @@ describe('U.S. fetcher', () => {
 });
 
 describe('Canada fetcher', () => {
-  // A plausible-size table: the real fixture's first row repeated under different names.
+  // Plausible-size sources built from real fixtures: the table's first row and the feed's
+  // Afghanistan entry, repeated as "Place 0", "Place 1", … with matching URLs.
   const row = fixture('canada-table.html').match(/<!-- Starting the row -->[\s\S]*?<\/tr>/)[0];
   const table = (n, stamp = '2026-09-24 08:53:35') => '<table><tbody>' + Array.from({ length: n }, (_, i) => row
     .replaceAll('afghanistan', `place-${i}`).replaceAll('Afghanistan', `Place ${i}`)
     .replace(/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}/, stamp)).join('\n') + '</tbody></table>';
+  const af = JSON.parse(fixture('canada-feed.json')).data.AF;
+  const feed = (n, patch = () => ({})) => JSON.stringify({
+    metadata: { generated: { date: '2026-09-26 02:00:17' } },
+    data: Object.fromEntries(Array.from({ length: n }, (_, i) => [`P${i}`, {
+      ...af, 'country-iso': `P${i}`, eng: { ...af.eng, name: `Place ${i}`, 'url-slug': `place-${i}` }, ...patch(i),
+    }])),
+  });
   const page = fixture('canada-destination.html');
+  const DOWN = [{ status: 500 }, { status: 500 }, { status: 500 }];
+  const run = (responses, previous = [], sleep = async () => {}) => {
+    const log = fakeLog(responses);
+    return ca.fetch({ log, previous, sleep }).then(r => ({ ...r, log }));
+  };
+  const pageReads = (log) => log.requests.filter(r => r.call === 'pages').length;
 
-  test('first run reads every destination page', async () => {
-    const log = fakeLog({ table: [{ body: table(160) }], pages: () => ({ body: page }) });
-    const { entries, stats } = await ca.fetch({ log, previous: [], sleep: async () => {} });
+  test('uses the feed for every destination and reads no pages when the table agrees', async () => {
+    const { entries, stats, log } = await run({ feed: [{ body: feed(160) }], table: [{ body: table(160) }] });
     assert.equal(entries.length, 160);
-    assert.equal(entries[0].change, 'Health – editorial change');
-    assert.equal(stats.pagesRead, 160);
-    assert.equal(stats.changed, '160 (first run)');
+    assert.match(entries[0].change, /The Health section was updated/);
+    assert.equal(entries[0].changeType, 'Editorial change');
+    assert.equal(entries[0].level, 4);
+    assert.deepEqual(stats.sources, ['feed', 'table']);
+    assert.equal(stats.feedGenerated, '2026-09-26 02:00:17');
+    assert.deepEqual(stats.newerThanFeed, []);
+    assert.equal(pageReads(log), 0);
+    assert.deepEqual(log.warnings, []);
   });
 
-  test('later runs reuse notes for unchanged timestamps and read only changed pages', async () => {
-    const first = await ca.fetch({ log: fakeLog({ table: [{ body: table(160) }], pages: () => ({ body: page }) }), previous: [], sleep: async () => {} });
+  test('a destination updated since the feed was built takes the table’s data and its page note', async () => {
+    const newer = table(160).replace("<div class='do-not-travel'>", "<div class='reconsider-travel'>").replace('2026-09-24 08:53:35', '2026-09-27 10:00:00');
+    const { entries, stats, log } = await run({ feed: [{ body: feed(160) }], table: [{ body: newer }], pages: () => ({ body: page }) });
+    const p0 = entries.find(e => e.name === 'Place 0');
+    assert.equal(p0.level, 3, 'level from the table');
+    assert.equal(p0.stamp, '2026-09-27 10:00:00');
+    assert.equal(p0.change, 'Health – editorial change', 'note from the page, not the outdated feed');
+    assert.equal(p0.changeType, undefined, 'no official type for a page note');
+    assert.deepEqual(stats.newerThanFeed, ['Place 0']);
+    assert.equal(pageReads(log), 1);
+  });
+
+  test('without the feed, falls back to the table and reads the pages it needs', async () => {
+    const { entries, stats, log } = await run({ feed: DOWN, table: [{ body: table(160) }], pages: () => ({ body: page }) });
+    assert.equal(entries.length, 160);
+    assert.equal(entries[0].change, 'Health – editorial change');
+    assert.deepEqual(stats.sources, ['table']);
+    assert.equal(stats.changed, '160 (first run)');
+    assert.equal(pageReads(log), 160);
+    assert.match(log.warnings.join(), /Canada feed unavailable .*used the other source/);
+  });
+
+  test('table-only runs reuse notes already on file for unchanged timestamps', async () => {
+    const first = await run({ feed: DOWN, table: [{ body: table(160) }], pages: () => ({ body: page }) });
     const changedTable = table(160).replace('2026-09-24 08:53:35', '2026-09-27 10:00:00');   // first row only
-    const log = fakeLog({ table: [{ body: changedTable }], pages: () => ({ body: page }) });
-    const { stats } = await ca.fetch({ log, previous: first.entries, sleep: async () => {} });
+    const { stats, log } = await run({ feed: DOWN, table: [{ body: changedTable }], pages: () => ({ body: page }) }, first.entries);
     assert.deepEqual(stats.changed, ['Place 0']);
-    assert.equal(stats.notesReused, 159);
-    assert.equal(log.requests.filter(r => r.call === 'pages').length, 1);
+    assert.equal(pageReads(log), 1);
+  });
+
+  test('without the table, uses the feed alone', async () => {
+    const { entries, stats, log } = await run({ feed: [{ body: feed(160) }], table: [{ challenge: true, body: CHALLENGE }, { challenge: true }, { challenge: true }] });
+    assert.equal(entries.length, 160);
+    assert.deepEqual(stats.sources, ['feed']);
+    assert.match(log.warnings.join(), /Canada table unavailable .*Cloudflare challenge/);
+  });
+
+  test('fails only when both sources fail', async () => {
+    await assert.rejects(run({ feed: DOWN, table: DOWN }), /Both sources failed\. Canada feed unavailable .* Canada table unavailable/);
+  });
+
+  test('an implausibly small or malformed feed counts as unavailable', async () => {
+    const small = await run({ feed: [{ body: feed(20) }], table: [{ body: table(160) }], pages: () => ({ body: page }) });
+    assert.match(small.log.warnings.join(), /feed unavailable \(only 20 destinations\)/);
+    const bad = await run({ feed: [{ body: feed(160, () => ({ 'advisory-state': 7 })) }], table: [{ body: table(160) }], pages: () => ({ body: page }) });
+    assert.match(bad.log.warnings.join(), /Unknown advisory-state "7"/);
+    const notJson = await run({ feed: [{ body: '<html>maintenance</html>' }], table: [{ body: table(160) }], pages: () => ({ body: page }) });
+    assert.deepEqual(notJson.stats.sources, ['table']);
+  });
+
+  test('an implausibly small table counts as unavailable', async () => {
+    const { log, stats } = await run({ feed: [{ body: feed(160) }], table: [{ body: table(20) }] });
+    assert.deepEqual(stats.sources, ['feed']);
+    assert.match(log.warnings.join(), /table unavailable \(only 20 destinations; page structure may have changed\)/);
   });
 
   test('a page that keeps failing is reported but does not fail the run', async () => {
     const { waits, sleep } = recordSleeps();
     const pages = (url) => (url.endsWith('/place-3') ? { status: 500 } : { body: page });
-    const log = fakeLog({ table: [{ body: table(160) }], pages });
-    const { stats } = await ca.fetch({ log, previous: [], sleep });
+    const { stats, log } = await run({ feed: DOWN, table: [{ body: table(160) }], pages }, [], sleep);
     assert.equal(stats.pagesFailed, 1);
     assert.match(log.warnings.join(), /Could not read what changed for: Place 3/);
     assert.ok(waits.includes(1500) && waits.includes(3000), 'retried with backoff');
   });
 
   test('a page without the "Latest updates" label counts as failed', async () => {
-    const log = fakeLog({ table: [{ body: table(160) }], pages: () => ({ body: '<p>redesigned page</p>' }) });
-    const { stats } = await ca.fetch({ log, previous: [], sleep: async () => {} });
+    const { stats } = await run({ feed: DOWN, table: [{ body: table(160) }], pages: () => ({ body: '<p>redesigned page</p>' }) });
     assert.equal(stats.pagesFailed, 160);
-  });
-
-  test('fails when the table is behind a challenge on every attempt', async () => {
-    const log = fakeLog({ table: [{ challenge: true, body: CHALLENGE }, { challenge: true }, { challenge: true }] });
-    await assert.rejects(ca.fetch({ log, previous: [], sleep: async () => {} }), /Cloudflare challenge/);
-  });
-
-  test('refuses an implausibly small table', async () => {
-    const log = fakeLog({ table: [{ body: table(20) }] });
-    await assert.rejects(ca.fetch({ log, previous: [], sleep: async () => {} }), /Parsed only 20 destinations/);
   });
 });

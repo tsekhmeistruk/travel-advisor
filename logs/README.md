@@ -50,6 +50,7 @@ Each GitHub Actions run also shows its own table on the run's summary page.
 | `trigger` | `schedule`, `workflow_dispatch`, or `local` |
 | `result` | `ok` or `error`. On `error`, `error` holds the message and the previous data was kept. |
 | `calls.<name>.attempts` | Each HTTP attempt: `status` and `ms`. `challenge: true` means Cloudflare served its bot check instead of the data. `retryAfter` is copied from the response header. `error` means a network failure or `timeout`. |
+| `calls.feed`, `calls.table` | Canada's JSON feed and advisory table, listed per attempt |
 | `calls.pages` | Canada's destination pages, counted rather than listed: `requests`, `statuses`, `errors`, `challenges`, `totalMs` |
 | `stats` | What the run produced (see below) |
 | `warnings` | Problems that didn't stop the run, e.g. RSS unavailable, pages that couldn't be read |
@@ -64,7 +65,9 @@ The fields in `stats` depend on the source:
   - `droppedMissing`: advisories removed after 7 days missing.
   - `changeNotes`: advisories with a "what changed" note.
 - **Canada:**
-  - `destinations`: number of destinations in the table.
+  - `destinations`: number of destinations.
+  - `sources`: which sources were used: `["feed", "table"]` normally, or just one if the other failed.
+  - `feedGenerated`: when the JSON feed was last rebuilt (Eastern time).
+  - `newerThanFeed`: destinations updated on the website after the feed was built. Their data came from the table.
   - `changed`: destinations whose timestamp changed since the previous run.
-  - `pagesRead` and `pagesFailed`: destination pages read, and pages that couldn't be read.
-  - `notesReused`: notes carried over unchanged.
+  - `pagesRead` and `pagesFailed`: destination pages read for "what changed", and pages that couldn't be read. Only needed for `newerThanFeed`, or when the feed is unavailable.

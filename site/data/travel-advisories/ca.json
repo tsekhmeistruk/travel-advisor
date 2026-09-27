@@ -2,7 +2,7 @@
  "dataset": "travel-advisories",
  "provider": "ca",
  "asOf": "2026-09-27",
- "source": "https://travel.gc.ca/travelling/advisories",
+ "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "links": {
   "list": "https://travel.gc.ca/travelling/advisories"
  },
@@ -14,7 +14,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/afghanistan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "af"
    ],
@@ -25,7 +25,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/albania",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "al"
    ],
@@ -36,7 +36,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/algeria",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "dz"
@@ -48,7 +48,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/american-samoa",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "as"
    ],
@@ -59,7 +59,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/andorra",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ad"
    ],
@@ -70,7 +70,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/angola",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ao"
@@ -82,7 +82,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/anguilla",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ai"
    ],
@@ -93,7 +93,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/antarctica",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "aq"
    ],
@@ -104,7 +104,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/antigua-and-barbuda",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ag"
    ],
@@ -115,7 +115,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/argentina",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ar"
@@ -127,7 +127,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/armenia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "am"
@@ -139,7 +139,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/aruba",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "aw"
    ],
@@ -150,7 +150,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/australia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "au"
    ],
@@ -161,7 +161,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/austria",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "at"
    ],
@@ -172,7 +172,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/azerbaijan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "az"
@@ -184,7 +184,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/azores",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "azores"
    ],
@@ -195,7 +195,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bahamas",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bs"
    ],
@@ -206,7 +206,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bahrain",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bh"
    ],
@@ -217,7 +217,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bangladesh",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bd"
@@ -240,7 +240,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/belarus",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "by"
    ],
@@ -251,7 +251,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/belgium",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "be"
    ],
@@ -262,7 +262,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/belize",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bz"
@@ -274,7 +274,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/benin",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bj"
@@ -286,7 +286,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bermuda",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bm"
    ],
@@ -297,7 +297,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bhutan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bt"
    ],
@@ -308,7 +308,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bolivia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bo"
@@ -320,7 +320,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bonaire",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bonaire"
    ],
@@ -331,7 +331,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bosnia-and-herzegovina",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ba"
    ],
@@ -342,7 +342,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/botswana",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bw"
    ],
@@ -353,7 +353,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/brazil",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "br"
@@ -365,7 +365,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/british-virgin-islands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vg"
    ],
@@ -376,7 +376,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/brunei",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bn"
    ],
@@ -387,7 +387,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bulgaria",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bg"
    ],
@@ -398,7 +398,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/burkina-faso",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bf"
    ],
@@ -409,7 +409,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/burundi",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bi"
@@ -421,7 +421,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cabo-verde",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cv"
    ],
@@ -432,7 +432,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cambodia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "kh"
@@ -456,7 +456,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/canary-islands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "canary-islands"
    ],
@@ -467,7 +467,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cayman-islands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ky"
    ],
@@ -478,7 +478,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/central-african-republic",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cf"
    ],
@@ -489,7 +489,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/chad",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "td"
@@ -501,7 +501,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/chile",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cl"
    ],
@@ -512,7 +512,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/china",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "cn"
@@ -535,7 +535,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/comoros",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "km"
    ],
@@ -546,7 +546,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cook-islands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ck"
    ],
@@ -557,7 +557,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/costa-rica",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cr"
    ],
@@ -568,7 +568,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cote-d-ivoire-ivory-coast",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ci"
@@ -580,7 +580,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/croatia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "hr"
    ],
@@ -591,7 +591,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cuba",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cu"
    ],
@@ -602,7 +602,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/curacao",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cw"
    ],
@@ -613,7 +613,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cyprus",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "cy"
@@ -628,7 +628,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/czechia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cz"
    ],
@@ -639,7 +639,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/congo-kinshasa",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cd"
    ],
@@ -650,7 +650,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/denmark",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "dk"
    ],
@@ -664,7 +664,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/djibouti",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "dj"
@@ -676,7 +676,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/dominica",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "dm"
    ],
@@ -687,7 +687,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/dominican-republic",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "do"
    ],
@@ -698,7 +698,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ecuador",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ec"
@@ -710,7 +710,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/egypt",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "eg"
@@ -722,7 +722,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/el-salvador",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sv"
    ],
@@ -733,7 +733,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/equatorial-guinea",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gq"
    ],
@@ -744,7 +744,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/eritrea",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "er"
@@ -756,7 +756,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/estonia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ee"
    ],
@@ -767,7 +767,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/eswatini",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sz"
    ],
@@ -789,7 +789,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/falkland-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "change": "Health – editorial change",
    "places": [
     "fk"
    ],
@@ -800,7 +800,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/fiji",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fj"
    ],
@@ -811,7 +811,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/finland",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fi"
    ],
@@ -825,7 +825,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/france",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fr"
    ],
@@ -836,7 +836,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/french-guiana",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gf"
    ],
@@ -847,7 +847,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/french-polynesia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pf"
    ],
@@ -858,7 +858,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/gabon",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ga"
    ],
@@ -869,7 +869,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/gambia-the",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gm"
    ],
@@ -892,7 +892,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/germany",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "de"
    ],
@@ -903,7 +903,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ghana",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gh"
    ],
@@ -914,7 +914,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/gibraltar",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "change": "Health – editorial change",
    "places": [
     "gi"
    ],
@@ -925,7 +925,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/greece",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gr"
    ],
@@ -936,7 +936,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/greenland",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gl"
    ],
@@ -947,7 +947,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/grenada",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gd"
    ],
@@ -958,7 +958,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guadeloupe",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gp"
    ],
@@ -969,7 +969,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guam",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gu"
    ],
@@ -980,7 +980,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guatemala",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "gt"
@@ -992,7 +992,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guinea",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gn"
    ],
@@ -1003,7 +1003,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guinea-bissau",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "gw"
@@ -1015,7 +1015,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guyana",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gy"
    ],
@@ -1026,7 +1026,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/haiti",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ht"
    ],
@@ -1037,7 +1037,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/honduras",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "hn"
@@ -1049,7 +1049,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/hong-kong",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "hk"
    ],
@@ -1060,7 +1060,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/hungary",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "hu"
    ],
@@ -1071,7 +1071,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/iceland",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "is"
    ],
@@ -1082,7 +1082,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/india",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "in"
@@ -1094,7 +1094,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/indonesia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "id"
@@ -1117,7 +1117,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/iraq",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "iq"
    ],
@@ -1128,7 +1128,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ireland",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ie"
    ],
@@ -1139,7 +1139,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/israel-and-palestine",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "il",
@@ -1153,7 +1153,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/italy",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "it"
    ],
@@ -1164,7 +1164,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/jamaica",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "jm"
    ],
@@ -1185,7 +1185,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/jordan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "jo"
@@ -1197,7 +1197,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kazakhstan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kz"
    ],
@@ -1208,7 +1208,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kenya",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ke"
@@ -1220,7 +1220,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kiribati",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ki"
    ],
@@ -1231,7 +1231,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kosovo",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "xk"
@@ -1243,7 +1243,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kuwait",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "kw"
@@ -1255,7 +1255,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kyrgyzstan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "kg"
@@ -1267,7 +1267,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/laos",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "la"
@@ -1279,7 +1279,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/latvia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lv"
    ],
@@ -1290,7 +1290,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/lebanon",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lb"
    ],
@@ -1301,7 +1301,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/lesotho",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ls"
    ],
@@ -1312,7 +1312,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/liberia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lr"
    ],
@@ -1323,7 +1323,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/libya",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ly"
    ],
@@ -1334,7 +1334,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/liechtenstein",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "li"
    ],
@@ -1345,7 +1345,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/lithuania",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lt"
    ],
@@ -1356,7 +1356,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/luxembourg",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lu"
    ],
@@ -1367,7 +1367,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/macao",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mo"
    ],
@@ -1378,7 +1378,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/madagascar",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mg"
    ],
@@ -1389,7 +1389,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/malawi",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mw"
    ],
@@ -1400,7 +1400,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/malaysia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "my"
@@ -1412,7 +1412,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/maldives",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mv"
    ],
@@ -1423,7 +1423,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mali",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ml"
    ],
@@ -1434,7 +1434,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/malta",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mt"
    ],
@@ -1445,7 +1445,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/marshall-islands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mh"
    ],
@@ -1456,7 +1456,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/martinique",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mq"
    ],
@@ -1467,7 +1467,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mauritania",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "mr"
@@ -1479,7 +1479,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mauritius",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mu"
    ],
@@ -1490,7 +1490,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mayotte",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "yt"
    ],
@@ -1512,7 +1512,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/micronesia-fsm",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fm"
    ],
@@ -1523,7 +1523,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/moldova",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "md"
@@ -1535,7 +1535,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/monaco",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mc"
    ],
@@ -1546,7 +1546,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mongolia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mn"
    ],
@@ -1557,7 +1557,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/montenegro",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "change": "Health – editorial change",
    "places": [
     "me"
    ],
@@ -1568,7 +1568,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/montserrat",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ms"
    ],
@@ -1579,7 +1579,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/morocco",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ma"
@@ -1591,7 +1591,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mozambique",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "mz"
@@ -1603,7 +1603,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/myanmar",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mm"
    ],
@@ -1614,7 +1614,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/namibia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "na"
    ],
@@ -1625,7 +1625,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nauru",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nr"
    ],
@@ -1636,7 +1636,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nepal",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "np"
@@ -1648,7 +1648,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/netherlands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nl"
    ],
@@ -1659,7 +1659,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/new-caledonia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nc"
    ],
@@ -1670,7 +1670,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/new-zealand",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nz"
    ],
@@ -1681,7 +1681,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nicaragua",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ni"
    ],
@@ -1692,7 +1692,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/niger",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ne"
    ],
@@ -1703,7 +1703,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nigeria",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ng"
@@ -1715,7 +1715,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/niue",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nu"
    ],
@@ -1726,7 +1726,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/north-korea",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kp"
    ],
@@ -1737,7 +1737,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/north-macedonia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "change": "Health – editorial change",
    "places": [
     "mk"
    ],
@@ -1748,7 +1748,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/northern-marianas",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mp"
    ],
@@ -1759,7 +1759,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/norway",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "no"
    ],
@@ -1770,7 +1770,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/oman",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "om"
    ],
@@ -1781,7 +1781,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/pakistan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "pk"
@@ -1793,7 +1793,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/palau",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pw"
    ],
@@ -1804,7 +1804,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/panama",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "pa"
@@ -1816,7 +1816,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/papua-new-guinea",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pg"
    ],
@@ -1827,7 +1827,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/paraguay",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "py"
    ],
@@ -1838,7 +1838,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/peru",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "pe"
@@ -1862,7 +1862,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/poland",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pl"
    ],
@@ -1873,7 +1873,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/portugal",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pt"
    ],
@@ -1884,7 +1884,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/puerto-rico",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pr"
    ],
@@ -1895,7 +1895,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/qatar",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "qa"
    ],
@@ -1906,7 +1906,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/congo-brazzaville",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "cg"
@@ -1918,7 +1918,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/reunion",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "re"
    ],
@@ -1929,7 +1929,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/romania",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ro"
    ],
@@ -1940,7 +1940,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/russia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ru"
    ],
@@ -1951,7 +1951,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/rwanda",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "rw"
@@ -1963,7 +1963,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-kitts-and-nevis",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kn"
    ],
@@ -1974,7 +1974,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-lucia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lc"
    ],
@@ -1985,7 +1985,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-martin",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mf"
    ],
@@ -1996,7 +1996,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-vincent-the-grenadines",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vc"
    ],
@@ -2007,7 +2007,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-barthelemy",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bl"
    ],
@@ -2018,7 +2018,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-pierre-et-miquelon",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pm"
    ],
@@ -2029,7 +2029,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/samoa",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ws"
    ],
@@ -2040,7 +2040,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/san-marino",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sm"
    ],
@@ -2051,7 +2051,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sao-tome-and-principe",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "st"
    ],
@@ -2062,7 +2062,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saudi-arabia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "sa"
@@ -2074,7 +2074,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/senegal",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sn"
    ],
@@ -2097,7 +2097,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/seychelles",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sc"
    ],
@@ -2108,7 +2108,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sierra-leone",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sl"
    ],
@@ -2119,7 +2119,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/singapore",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sg"
    ],
@@ -2130,7 +2130,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sint-maarten",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sx"
    ],
@@ -2141,7 +2141,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/slovakia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sk"
    ],
@@ -2152,7 +2152,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/slovenia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "si"
    ],
@@ -2163,7 +2163,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/solomon-islands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sb"
    ],
@@ -2174,7 +2174,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/somalia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "so"
    ],
@@ -2188,7 +2188,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/south-africa",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "za"
    ],
@@ -2199,7 +2199,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/south-korea",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kr"
    ],
@@ -2210,7 +2210,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/south-sudan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ss"
    ],
@@ -2221,7 +2221,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/spain",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "es"
    ],
@@ -2232,7 +2232,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sri-lanka",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lk"
    ],
@@ -2243,7 +2243,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sudan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sd"
    ],
@@ -2254,7 +2254,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/suriname",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sr"
    ],
@@ -2265,7 +2265,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sweden",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "se"
    ],
@@ -2276,7 +2276,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/switzerland",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ch"
    ],
@@ -2287,7 +2287,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/syria",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sy"
    ],
@@ -2298,7 +2298,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/taiwan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tw"
    ],
@@ -2309,7 +2309,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tajikistan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tj"
@@ -2321,7 +2321,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tanzania",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tz"
@@ -2333,7 +2333,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/thailand",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "th"
@@ -2345,7 +2345,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/timor-leste-east-timor",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tl"
    ],
@@ -2356,7 +2356,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/togo",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tg"
@@ -2368,7 +2368,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tokelau",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tk"
    ],
@@ -2379,7 +2379,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tonga",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "to"
    ],
@@ -2390,7 +2390,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/trinidad-and-tobago",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tt"
@@ -2402,7 +2402,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tunisia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tn"
@@ -2426,7 +2426,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/turkmenistan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tm"
@@ -2438,7 +2438,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/turks-and-caicos-islands",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tc"
    ],
@@ -2449,7 +2449,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tuvalu",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tv"
    ],
@@ -2460,7 +2460,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/uganda",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ug"
@@ -2472,7 +2472,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ukraine",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ua"
    ],
@@ -2483,7 +2483,7 @@
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/united-arab-emirates",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ae"
    ],
@@ -2515,7 +2515,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/uruguay",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "uy"
@@ -2527,7 +2527,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/uzbekistan",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "uz"
@@ -2539,7 +2539,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/vanuatu",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vu"
    ],
@@ -2550,7 +2550,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/venezuela",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ve"
    ],
@@ -2561,7 +2561,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/vietnam",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vn"
    ],
@@ -2572,7 +2572,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/virgin-islands-u-s",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vi"
    ],
@@ -2583,7 +2583,7 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/yemen",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ye"
    ],
@@ -2594,7 +2594,7 @@
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/zambia",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "zm"
@@ -2606,7 +2606,7 @@
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/zimbabwe",
-   "change": "Health – editorial change",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "zw"
    ],

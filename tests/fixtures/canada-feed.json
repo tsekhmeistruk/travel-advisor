@@ -1,0 +1,190 @@
+{
+ "metadata": {
+  "generated": {
+   "timestamp": 1790402417,
+   "date": "2026-09-26 02:00:17"
+  }
+ },
+ "data": {
+  "AF": {
+   "country-id": 1000,
+   "country-iso": "AF",
+   "country-eng": "Afghanistan",
+   "country-fra": "Afghanistan",
+   "advisory-state": 3,
+   "date-published": {
+    "timestamp": 1790254415,
+    "date": "2026-09-24 08:53:35",
+    "asp": "2026-09-24T08:53:35.8663187-04:00"
+   },
+   "has-advisory-warning": 1,
+   "has-regional-advisory": 0,
+   "has-content": 1,
+   "recent-updates-type": "Editorial change",
+   "eng": {
+    "name": "Afghanistan",
+    "url-slug": "afghanistan",
+    "friendly-date": "September 24, 2026 08:53 EDT",
+    "advisory-text": "Avoid all travel",
+    "recent-updates": "The Health section was updated - travel health information (Public Health Agency of Canada)"
+   },
+   "fra": {
+    "name": "Afghanistan",
+    "url-slug": "afghanistan",
+    "friendly-date": "24 septembre 2026 08:53 HAE",
+    "advisory-text": "Éviter tout voyage",
+    "recent-updates": "La section Santé a été mise à jour - renseignements de santé aux voyageurs (Agence de la santé publique du Canada)"
+   }
+  },
+  "DZ": {
+   "country-id": 5000,
+   "country-iso": "DZ",
+   "country-eng": "Algeria",
+   "country-fra": "Algérie",
+   "advisory-state": 1,
+   "date-published": {
+    "timestamp": 1790254413,
+    "date": "2026-09-24 08:53:33",
+    "asp": "2026-09-24T08:53:33.120000-04:00"
+   },
+   "has-advisory-warning": 0,
+   "has-regional-advisory": 1,
+   "has-content": 1,
+   "recent-updates-type": "Editorial change",
+   "eng": {
+    "name": "Algeria",
+    "url-slug": "algeria",
+    "friendly-date": "September 24, 2026 08:53 EDT",
+    "advisory-text": "Exercise a high degree of caution (with regional advisories)",
+    "recent-updates": "The Health section was updated - travel health information (Public Health Agency of Canada)"
+   },
+   "fra": {
+    "name": "Algérie",
+    "url-slug": "algerie",
+    "friendly-date": "24 septembre 2026 08:53 HAE",
+    "advisory-text": "Faire preuve d’une grande prudence (avec avertissements régionaux)",
+    "recent-updates": "La section Santé a été mise à jour - renseignements de santé aux voyageurs (Agence de la santé publique du Canada)"
+   }
+  },
+  "CI": {
+   "country-id": 137000,
+   "country-iso": "CI",
+   "country-eng": "Côte d'Ivoire (Ivory Coast)",
+   "country-fra": "Côte d'Ivoire",
+   "advisory-state": 1,
+   "date-published": {
+    "timestamp": 1790254413,
+    "date": "2026-09-24 08:53:33",
+    "asp": "2026-09-24T08:53:33.120000-04:00"
+   },
+   "has-advisory-warning": 0,
+   "has-regional-advisory": 1,
+   "has-content": 1,
+   "recent-updates-type": "Editorial change",
+   "eng": {
+    "name": "Côte d'Ivoire (Ivory Coast)",
+    "url-slug": "cote-d-ivoire-ivory-coast",
+    "friendly-date": "September 24, 2026 08:53 EDT",
+    "advisory-text": "Exercise a high degree of caution (with regional advisories)",
+    "recent-updates": "The Health section was updated - travel health information (Public Health Agency of Canada)"
+   },
+   "fra": {
+    "name": "Côte d'Ivoire",
+    "url-slug": "cote-d-ivoire",
+    "friendly-date": "24 septembre 2026 08:53 HAE",
+    "advisory-text": "Faire preuve d’une grande prudence (avec avertissements régionaux)",
+    "recent-updates": "La section Santé a été mise à jour - renseignements de santé aux voyageurs (Agence de la santé publique du Canada)"
+   }
+  },
+  "IL": {
+   "country-id": 135000,
+   "country-iso": "IL",
+   "country-eng": "Israel and Palestine",
+   "country-fra": "Israël et la Palestine",
+   "advisory-state": 2,
+   "date-published": {
+    "timestamp": 1790254414,
+    "date": "2026-09-24 08:53:34",
+    "asp": "2026-09-24T08:53:34.319929-04:00"
+   },
+   "has-advisory-warning": 1,
+   "has-regional-advisory": 1,
+   "has-content": 1,
+   "recent-updates-type": "Editorial change",
+   "eng": {
+    "name": "Israel and Palestine",
+    "url-slug": "israel-and-palestine",
+    "friendly-date": "September 24, 2026 08:53 EDT",
+    "advisory-text": "Avoid non-essential travel (with regional advisories)",
+    "recent-updates": "The Health section was updated - travel health information (Public Health Agency of Canada)"
+   },
+   "fra": {
+    "name": "Israël et la Palestine",
+    "url-slug": "israel-et-palestine",
+    "friendly-date": "24 septembre 2026 08:53 HAE",
+    "advisory-text": "Éviter tout voyage non-essentiel (avec avertissements régionaux)",
+    "recent-updates": "La section Santé a été mise à jour - renseignements de santé aux voyageurs (Agence de la santé publique du Canada)"
+   }
+  },
+  "JP": {
+   "country-id": 140000,
+   "country-iso": "JP",
+   "country-eng": "Japan",
+   "country-fra": "Japon",
+   "advisory-state": 0,
+   "date-published": {
+    "timestamp": 1790351272,
+    "date": "2026-09-25 11:47:52",
+    "asp": "2026-09-25T11:47:52.1605409-04:00"
+   },
+   "has-advisory-warning": 0,
+   "has-regional-advisory": 0,
+   "has-content": 1,
+   "recent-updates-type": "Regular text update",
+   "eng": {
+    "name": "Japan",
+    "url-slug": "japan",
+    "friendly-date": "September 25, 2026 11:47 EDT",
+    "advisory-text": "Exercise normal security precautions",
+    "recent-updates": "Natural disasters and climate section – updated information on Tropical Storm Surigae"
+   },
+   "fra": {
+    "name": "Japon",
+    "url-slug": "japon",
+    "friendly-date": "25 septembre 2026 11:47 HAE",
+    "advisory-text": "Prendre des mesures de sécurité normales",
+    "recent-updates": "Section Catastrophes naturelles et climat – mise à jour de l’information sur la tempête tropicale Surigae"
+   }
+  },
+  "MX": {
+   "country-id": 184000,
+   "country-iso": "MX",
+   "country-eng": "Mexico",
+   "country-fra": "Mexique",
+   "advisory-state": 1,
+   "date-published": {
+    "timestamp": 1790401389,
+    "date": "2026-09-26 01:43:09",
+    "asp": "2026-09-26T01:43:09.3744983-04:00"
+   },
+   "has-advisory-warning": 0,
+   "has-regional-advisory": 1,
+   "has-content": 1,
+   "recent-updates-type": "Regional advisory added",
+   "eng": {
+    "name": "Mexico",
+    "url-slug": "mexico",
+    "friendly-date": "September 26, 2026 01:43 EDT",
+    "advisory-text": "Exercise a high degree of caution (with regional advisories)",
+    "recent-updates": "Risk levels section – avoid non-essential travel to Baja California Sur, from Punta Eugenia to Santa Fe; Natural disasters and climate section – updated information on Hurricane Polo"
+   },
+   "fra": {
+    "name": "Mexique",
+    "url-slug": "mexique",
+    "friendly-date": "26 septembre 2026 01:43 HAE",
+    "advisory-text": "Faire preuve d’une grande prudence (avec avertissements régionaux)",
+    "recent-updates": "Section Niveaux de risque – évitez tout voyage non essentiel en Basse-Californie du Sud, de Punta Eugenia à Santa Fe; Section Catastrophes naturelles et climat – mise à jour de l’information sur l’ouragan Polo"
+   }
+  }
+ }
+}

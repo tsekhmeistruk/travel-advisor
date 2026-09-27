@@ -59,15 +59,18 @@ export function isMinorChange(text, patterns) {
 
 /**
  * Flag records whose latest update doesn't count as a real change (minorUpdate: true).
- * With a change note, the provider's minor patterns decide. Without one, fall back to
- * spotting bulk republishes: a site that re-stamps every page at once leaves one date on
- * most entries, so a date shared by over 40% of a provider's records counts as a republish.
+ * In order of trust:
+ *  1. the source's own change type (e.g. Canada's "Editorial change"), if it gives one;
+ *  2. the change note, matched against the provider's minor patterns;
+ *  3. without either, spot bulk republishes: a site that re-stamps every page at once leaves
+ *     one date on most entries, so a date shared by over 40% of records counts as a republish.
  */
-export function classifyUpdates(records, patterns) {
+export function classifyUpdates(records, patterns, minorTypes = []) {
   const counts = {};
   for (const r of records) counts[r.updated] = (counts[r.updated] || 0) + 1;
   for (const r of records) {
-    if (r.change) { if (isMinorChange(r.change, patterns)) r.minorUpdate = true; }
+    if (r.changeType) { if (minorTypes.includes(r.changeType)) r.minorUpdate = true; }
+    else if (r.change) { if (isMinorChange(r.change, patterns)) r.minorUpdate = true; }
     else if (counts[r.updated] > records.length * 0.4) r.minorUpdate = true;
   }
 }
@@ -97,9 +100,10 @@ export function trackHistory(history, providerId, asOf, records) {
  * @param snapshot  { fetchedAt, source, entries: [{ name, level, updated, url?, change?, regional? }] }
  * @param config    config/providers/<id>.json
  * @param minorChange  the provider module's minor-change patterns
+ * @param minorChangeTypes  change types the source uses for minor updates (optional)
  * @param history   the dataset's history (mutated)
  */
-export function buildProvider({ datasetId, config, snapshot, minorChange, index, history }) {
+export function buildProvider({ datasetId, config, snapshot, minorChange, minorChangeTypes = [], index, history }) {
   const problems = [];
   const tag = `[${config.id}]`;
   const asOf = snapshot.fetchedAt.slice(0, 10);
@@ -115,6 +119,7 @@ export function buildProvider({ datasetId, config, snapshot, minorChange, index,
       updated: e.updated,
       url: e.url,
       change: e.change,
+      changeType: e.changeType,   // used for classification only; not published
       regional: e.regional || undefined,
       places: resolved.places,
       noteKey: resolved.noteKey,
@@ -133,7 +138,8 @@ export function buildProvider({ datasetId, config, snapshot, minorChange, index,
     if (id && !index.byId.has(id)) problems.push(`${tag} home/territory refers to unknown place "${id}"`);
   }
 
-  classifyUpdates(records, minorChange);
+  classifyUpdates(records, minorChange, minorChangeTypes);
+  for (const r of records) delete r.changeType;
   trackHistory(history, config.id, asOf, records);
 
   return {
@@ -155,7 +161,7 @@ export function buildProvider({ datasetId, config, snapshot, minorChange, index,
  * Build every published file.
  * @param input {
  *   places, shapeNames: Set, locales: ['en', ...],
- *   datasets: [{ config, providers: [{ config, snapshot | null, minorChange }] }],
+ *   datasets: [{ config, providers: [{ config, snapshot | null, minorChange, minorChangeTypes? }] }],
  *   history: { [datasetId]: history }   (mutated)
  * }
  * @returns { files: { [relPath]: data }, problems }
@@ -169,9 +175,9 @@ export function buildSite({ places, shapeNames, locales, datasets, history }) {
   for (const { config: ds, providers } of datasets) {
     const entry = { id: ds.id, scale: ds.scale, recentWindows: ds.recentWindows, defaultRecentWindow: ds.defaultRecentWindow, providers: [] };
     const dsHistory = (history[ds.id] ??= {});
-    for (const { config, snapshot, minorChange } of providers) {
+    for (const { config, snapshot, minorChange, minorChangeTypes } of providers) {
       if (!snapshot) { problems.push(`[${config.id}] no snapshot yet: run node scripts/fetch.mjs ${config.id}`); continue; }
-      const built = buildProvider({ datasetId: ds.id, config, snapshot, minorChange, index, history: dsHistory });
+      const built = buildProvider({ datasetId: ds.id, config, snapshot, minorChange, minorChangeTypes, index, history: dsHistory });
       problems.push(...built.problems);
       const file = `${ds.id}/${config.id}.json`;
       files[file] = built.data;

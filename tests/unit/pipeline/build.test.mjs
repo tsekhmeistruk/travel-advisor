@@ -68,6 +68,23 @@ describe('isMinorChange with each provider\'s rules', () => {
 });
 
 describe('classifyUpdates', () => {
+  test('trusts the source\'s own change type first (Canada)', () => {
+    const list = [
+      { updated: '2026-09-24', changeType: 'Editorial change', change: 'The Health section was updated - travel health information' },
+      { updated: '2026-09-26', changeType: 'Regional advisory added', change: 'Risk levels section – avoid non-essential travel to Baja California Sur' },
+      // A real change type wins even if the note text looks editorial.
+      { updated: '2026-09-25', changeType: 'Regular text update', change: 'Editorial change' },
+    ];
+    classifyUpdates(list, ca.minorChange, ca.minorChangeTypes);
+    assert.deepEqual(list.map(r => !!r.minorUpdate), [true, false, false]);
+  });
+
+  test('falls back to the note when there is no change type', () => {
+    const list = [{ updated: '2026-09-24', change: 'Health – editorial change' }];
+    classifyUpdates(list, ca.minorChange, ca.minorChangeTypes);
+    assert.equal(list[0].minorUpdate, true);
+  });
+
   test('uses the change note when there is one', () => {
     const list = [{ updated: '2026-09-24', change: 'Health – editorial change' }, { updated: '2026-09-24', change: 'Risk levels section – avoid all travel to Afar' }];
     classifyUpdates(list, ca.minorChange);
@@ -124,9 +141,9 @@ describe('buildProvider', () => {
     assert.equal(data.records.find(r => r.title === 'French West Indies').noteKey, 'frenchWestIndies');
   });
   test('publishes only record fields, never fetch bookkeeping (lastSeen, stamp, pending)', () => {
-    const entries = [{ name: 'France', level: 2, updated: '2026-09-01', lastSeen: '2026-09-26', stamp: 's', pending: { level: 4, firstSeen: '2026-09-26' } }];
+    const entries = [{ name: 'France', level: 2, updated: '2026-09-01', lastSeen: '2026-09-26', stamp: 's', pending: { level: 4, firstSeen: '2026-09-26' }, changeType: 'Editorial change', iso: 'FR' }];
     const [record] = run(entries).data.records;
-    for (const field of ['lastSeen', 'stamp', 'pending', 'name']) assert.equal(field in record, false, field);
+    for (const field of ['lastSeen', 'stamp', 'pending', 'name', 'changeType', 'iso']) assert.equal(field in record, false, field);
   });
 
   test('attaches covered places to the covering record', () => {

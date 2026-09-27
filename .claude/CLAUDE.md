@@ -77,10 +77,15 @@ For **every** change, however small, decide explicitly whether tests must be **a
   - **a level change is applied only when a fetch on a later day confirms it.** Until then it waits in the snapshot as `pending`, and the log warns "Unconfirmed level changes". Real level changes therefore show up one day late.
 - **The API rate-limits bursts** (HTTP 429 or a Cloudflare challenge, for 20+ minutes). **Don't run `npm run fetch us` repeatedly.** The daily single call from GitHub Actions works.
 
-**Canada** comes from the table on travel.gc.ca.
-- **Canada sometimes re-stamps every page at once.** On Sep 24, 2026, 223 of 230 destinations got a "Health – editorial change". The "Latest updates" line on each destination page says what changed.
-  - The fetcher re-reads only the pages whose timestamp changed.
-  - Editorial-only notes are minor (`minorChange` in `providers/ca/index.mjs`).
+**Canada** comes from two sources, combined in `providers/ca/`:
+- **Primary: the official open-data JSON feed** (`data.international.gc.ca/travel-voyage/index-updated.json`, Open Government Licence – Canada; catalogue entry open.canada.ca dataset `bef2ebb3-…`).
+  - It has all ~230 destinations in one request: ISO code, level (`advisory-state` 0–3 = levels 1–4), regional flag, timestamp, "what changed" (`recent-updates`) and an **official change type** (`recent-updates-type`: "Editorial change", "Regular text update", "Regional advisory added", …).
+  - French fields exist too, but they're deliberately unused for now.
+  - It's **rebuilt about once a day** (~06:00 UTC), so it can lag the website.
+- **Also: the live advisory table** on travel.gc.ca. Destinations with a newer timestamp than the feed take the table's data, and only those pages are read for their "Latest updates" note. That's usually 0–3 pages.
+- **Either source alone is enough.** If one fails, the log warns and the other is used.
+- **Canada sometimes re-stamps every page at once.** On Sep 24, 2026, 223 of 230 destinations got an editorial health update. Minor updates are decided by the change type (`minorChangeTypes: ['Editorial change']`), and by note-text patterns (`minorChange`) for page notes, which have no type.
+- **Feed names and URLs match the table's exactly.** History and aliases depend on this, and a unit test checks it.
 - Canada's single "Israel and Palestine" advisory covers three places: `il`, `gaza` and `west-bank`.
 
 ## Verifying changes

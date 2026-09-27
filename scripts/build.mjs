@@ -22,6 +22,7 @@ export function readBuildInput(store = new FileStore()) {
         config: store.provider(pid),
         snapshot: store.snapshot(id, pid),
         minorChange: getProvider(pid).minorChange,
+        minorChangeTypes: getProvider(pid).minorChangeTypes ?? [],
       })),
     };
   });

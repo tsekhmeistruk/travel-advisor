@@ -19,7 +19,7 @@ A world map of official travel advisory levels from the **U.S. State Department*
 | Source | Where the data comes from | Notes |
 |---|---|---|
 | 🇺🇸 U.S. State Department | [Data API](https://cadataapi.state.gov/api/TravelAdvisories) for levels and dates; [RSS feed](https://travel.state.gov/_res/rss/TAsTWs.xml) for "what changed" notes | The website is behind a bot check. The API is sometimes inconsistent, so each day's result is merged with the previous one: outdated copies are ignored, a **level change is applied only when the next day's fetch confirms it**, and missing advisories are kept for 7 days. |
-| 🇨🇦 Government of Canada | [travel.gc.ca advisory table](https://travel.gc.ca/travelling/advisories), plus each destination's "Latest updates" line | Canada sometimes re-dates every destination at once for an editorial change. The per-destination note tells real changes apart from those. |
+| 🇨🇦 Government of Canada | [Official open-data JSON feed](https://open.canada.ca/data/dataset/bef2ebb3-ca9a-485f-aaff-5dc36eb89426) (Global Affairs Canada, Open Government Licence – Canada), plus the live [advisory table](https://travel.gc.ca/travelling/advisories) | The feed gives every destination in one request, with "what changed" and Canada's own change type, e.g. "Editorial change". It's rebuilt about once a day, so the live table catches anything newer. Either source alone is enough. |
 
 Advisory levels are simplified to 1–4 for both countries. Always read the full official advisory before you travel.
 

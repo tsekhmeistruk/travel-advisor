@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { logFile } from './fetch-log.mjs';
 
-const CALL_LABELS = { api: 'API', rss: 'RSS', table: 'Table', pages: 'Pages' };
+const CALL_LABELS = { api: 'API', rss: 'RSS', feed: 'Feed', table: 'Table', pages: 'Pages' };
 
 /** Log entries at or after `sinceMs`, reading each monthly file from then until `now`. */
 export function readEntries(sinceMs, { root, now = new Date() } = {}) {
@@ -100,7 +100,7 @@ export function describe(e) {
   const s = e.stats ?? {};
   const parts = [];
   if (s.advisories != null) parts.push(`${s.advisories} advisories`);
-  if (s.destinations != null) parts.push(`${s.destinations} destinations`);
+  if (s.destinations != null) parts.push(`${s.destinations} destinations${s.sources ? ` (${s.sources.join(' + ')})` : ''}`);
   if (s.keptFromPrevious?.length) parts.push(`${s.keptFromPrevious.length} kept from previous (${s.keptFromPrevious.join(', ')})`);
   if (s.changeNotes != null) parts.push(`${s.changeNotes} change notes`);
   if (s.changed !== undefined) {
@@ -108,6 +108,7 @@ export function describe(e) {
       ? (s.changed.length === 0 ? 'none changed' : s.changed.length <= 6 ? `changed: ${s.changed.join(', ')}` : `${s.changed.length} changed`)
       : `${s.changed} read`);
   }
+  if (s.newerThanFeed?.length) parts.push(`${s.newerThanFeed.length} newer than the feed`);
   if (s.pagesFailed) parts.push(`${s.pagesFailed} pages failed`);
   if (e.error) parts.push(`Error: ${e.error}`);
   for (const w of e.warnings ?? []) parts.push(`⚠ ${w}`);
