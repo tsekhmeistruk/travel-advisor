@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-09-27T03:26:32.827Z",
+ "fetchedAt": "2026-09-27T04:25:14.268Z",
  "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "entries": [
   {
@@ -9,8 +9,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/afghanistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AF"
   },
   {
@@ -20,8 +18,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/albania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AL"
   },
   {
@@ -31,8 +27,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/algeria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "DZ"
   },
   {
@@ -42,8 +36,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/american-samoa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AS"
   },
   {
@@ -53,8 +45,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/andorra",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AD"
   },
   {
@@ -64,8 +54,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/angola",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AO"
   },
   {
@@ -75,8 +63,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/anguilla",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AI"
   },
   {
@@ -86,8 +72,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/antarctica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AQ"
   },
   {
@@ -97,8 +81,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/antigua-and-barbuda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AG"
   },
   {
@@ -108,8 +90,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/argentina",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AR"
   },
   {
@@ -119,8 +99,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/armenia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AM"
   },
   {
@@ -130,8 +108,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/aruba",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AW"
   },
   {
@@ -141,8 +117,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/australia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AU"
   },
   {
@@ -152,8 +126,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/austria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AT"
   },
   {
@@ -163,8 +135,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/azerbaijan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AZ"
   },
   {
@@ -174,8 +144,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/azores",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PT-20"
   },
   {
@@ -185,8 +153,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/bahamas",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BS"
   },
   {
@@ -196,8 +162,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/bahrain",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BH"
   },
   {
@@ -207,8 +171,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/bangladesh",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BD"
   },
   {
@@ -218,8 +180,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 11:44:32",
    "url": "https://travel.gc.ca/destinations/barbados",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "BB"
   },
   {
@@ -229,8 +189,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/belarus",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BY"
   },
   {
@@ -240,8 +198,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/belgium",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BE"
   },
   {
@@ -251,8 +207,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/belize",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BZ"
   },
   {
@@ -262,8 +216,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/benin",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BJ"
   },
   {
@@ -273,8 +225,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/bermuda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BM"
   },
   {
@@ -284,8 +234,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/bhutan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BT"
   },
   {
@@ -295,8 +243,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/bolivia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BO"
   },
   {
@@ -306,8 +252,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/bonaire",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BQ"
   },
   {
@@ -317,8 +261,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/bosnia-and-herzegovina",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BA"
   },
   {
@@ -328,8 +270,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/botswana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BW"
   },
   {
@@ -339,8 +279,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/brazil",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BR"
   },
   {
@@ -350,8 +288,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/british-virgin-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "VG"
   },
   {
@@ -361,8 +297,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/brunei",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BN"
   },
   {
@@ -372,8 +306,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/bulgaria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BG"
   },
   {
@@ -383,8 +315,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/burkina-faso",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BF"
   },
   {
@@ -394,8 +324,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/burundi",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BI"
   },
   {
@@ -405,8 +333,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/cabo-verde",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CV"
   },
   {
@@ -416,8 +342,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/cambodia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KH"
   },
   {
@@ -427,8 +351,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 11:45:43",
    "url": "https://travel.gc.ca/destinations/cameroon",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "CM"
   },
   {
@@ -438,8 +360,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/canary-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "IC"
   },
   {
@@ -449,8 +369,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/cayman-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KY"
   },
   {
@@ -460,8 +378,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/central-african-republic",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CF"
   },
   {
@@ -471,8 +387,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/chad",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TD"
   },
   {
@@ -482,8 +396,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/chile",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CL"
   },
   {
@@ -493,8 +405,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/china",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CN"
   },
   {
@@ -504,8 +414,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 12:40:53",
    "url": "https://travel.gc.ca/destinations/colombia",
-   "change": "Safety and security section – updated information on the security situation in Santa Marta and disruptions on the Troncal del Caribe (Route 90)",
-   "changeType": "Regular text update",
    "iso": "CO"
   },
   {
@@ -515,8 +423,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/comoros",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KM"
   },
   {
@@ -526,8 +432,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/cook-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CK"
   },
   {
@@ -537,8 +441,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/costa-rica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CR"
   },
   {
@@ -548,8 +450,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/cote-d-ivoire-ivory-coast",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CI"
   },
   {
@@ -559,8 +459,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/croatia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "HR"
   },
   {
@@ -570,8 +468,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/cuba",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CU"
   },
   {
@@ -581,8 +477,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/curacao",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CW"
   },
   {
@@ -592,8 +486,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/cyprus",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CY"
   },
   {
@@ -603,8 +495,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/czechia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CZ"
   },
   {
@@ -614,8 +504,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/congo-kinshasa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CD"
   },
   {
@@ -625,8 +513,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/denmark",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "DK"
   },
   {
@@ -636,8 +522,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/djibouti",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "DJ"
   },
   {
@@ -647,8 +531,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/dominica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "DM"
   },
   {
@@ -658,8 +540,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/dominican-republic",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "DO"
   },
   {
@@ -669,8 +549,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/ecuador",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "EC"
   },
   {
@@ -680,8 +558,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/egypt",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "EG"
   },
   {
@@ -691,8 +567,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/el-salvador",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SV"
   },
   {
@@ -702,8 +576,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/equatorial-guinea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GQ"
   },
   {
@@ -713,8 +585,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/eritrea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ER"
   },
   {
@@ -724,8 +594,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/estonia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "EE"
   },
   {
@@ -735,8 +603,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/eswatini",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SZ"
   },
   {
@@ -746,8 +612,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 13:03:24",
    "url": "https://travel.gc.ca/destinations/ethiopia",
-   "change": "Risk levels section – avoid all travel to Afar; safety and security section – added information on the security situation in northern Ethiopia",
-   "changeType": "Regular text update",
    "iso": "ET"
   },
   {
@@ -757,8 +621,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/falkland-islands",
-   "change": "Health – editorial change",
-   "changeType": "Editorial change",
    "iso": "FK"
   },
   {
@@ -768,8 +630,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/fiji",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "FJ"
   },
   {
@@ -779,8 +639,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/finland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "FI"
   },
   {
@@ -790,8 +648,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/france",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "FR"
   },
   {
@@ -801,8 +657,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/french-guiana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GF"
   },
   {
@@ -812,8 +666,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/french-polynesia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PF"
   },
   {
@@ -823,8 +675,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/gabon",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GA"
   },
   {
@@ -834,8 +684,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/gambia-the",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GM"
   },
   {
@@ -845,8 +693,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 11:19:55",
    "url": "https://travel.gc.ca/destinations/georgia",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "GE"
   },
   {
@@ -856,8 +702,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/germany",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "DE"
   },
   {
@@ -867,8 +711,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/ghana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GH"
   },
   {
@@ -878,8 +720,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/gibraltar",
-   "change": "Health – editorial change",
-   "changeType": "Editorial change",
    "iso": "GI"
   },
   {
@@ -889,8 +729,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/greece",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GR"
   },
   {
@@ -900,8 +738,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/greenland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GL"
   },
   {
@@ -911,8 +747,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/grenada",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GD"
   },
   {
@@ -922,8 +756,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/guadeloupe",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GP"
   },
   {
@@ -933,8 +765,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/guam",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GU"
   },
   {
@@ -944,8 +774,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/guatemala",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GT"
   },
   {
@@ -955,8 +783,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/guinea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GN"
   },
   {
@@ -966,8 +792,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/guinea-bissau",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GW"
   },
   {
@@ -977,8 +801,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/guyana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "GY"
   },
   {
@@ -988,8 +810,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/haiti",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "HT"
   },
   {
@@ -999,8 +819,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/honduras",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "HN"
   },
   {
@@ -1010,8 +828,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/hong-kong",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "HK"
   },
   {
@@ -1021,8 +837,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/hungary",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "HU"
   },
   {
@@ -1032,8 +846,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/iceland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "IS"
   },
   {
@@ -1043,8 +855,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/india",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "IN"
   },
   {
@@ -1054,8 +864,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/indonesia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ID"
   },
   {
@@ -1065,8 +873,6 @@
    "updated": "2026-09-25",
    "stamp": "2026-09-25 09:36:55",
    "url": "https://travel.gc.ca/destinations/iran",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "IR"
   },
   {
@@ -1076,8 +882,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/iraq",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "IQ"
   },
   {
@@ -1087,8 +891,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/ireland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "IE"
   },
   {
@@ -1098,8 +900,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/israel-and-palestine",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "IL"
   },
   {
@@ -1109,8 +909,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/italy",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "IT"
   },
   {
@@ -1120,8 +918,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/jamaica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "JM"
   },
   {
@@ -1131,8 +927,6 @@
    "updated": "2026-09-25",
    "stamp": "2026-09-25 11:47:52",
    "url": "https://travel.gc.ca/destinations/japan",
-   "change": "Natural disasters and climate section – updated information on Tropical Storm Surigae",
-   "changeType": "Regular text update",
    "iso": "JP"
   },
   {
@@ -1142,8 +936,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/jordan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "JO"
   },
   {
@@ -1153,8 +945,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/kazakhstan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KZ"
   },
   {
@@ -1164,8 +954,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/kenya",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KE"
   },
   {
@@ -1175,8 +963,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/kiribati",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KI"
   },
   {
@@ -1186,8 +972,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/kosovo",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "XK"
   },
   {
@@ -1197,8 +981,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/kuwait",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KW"
   },
   {
@@ -1208,8 +990,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/kyrgyzstan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KG"
   },
   {
@@ -1219,8 +999,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/laos",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LA"
   },
   {
@@ -1230,8 +1008,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/latvia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LV"
   },
   {
@@ -1241,8 +1017,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/lebanon",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LB"
   },
   {
@@ -1252,8 +1026,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/lesotho",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LS"
   },
   {
@@ -1263,8 +1035,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/liberia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LR"
   },
   {
@@ -1274,8 +1044,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/libya",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LY"
   },
   {
@@ -1285,8 +1053,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/liechtenstein",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LI"
   },
   {
@@ -1296,8 +1062,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/lithuania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LT"
   },
   {
@@ -1307,8 +1071,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/luxembourg",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LU"
   },
   {
@@ -1318,8 +1080,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/macao",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MO"
   },
   {
@@ -1329,8 +1089,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/madagascar",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MG"
   },
   {
@@ -1340,8 +1098,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/malawi",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MW"
   },
   {
@@ -1351,8 +1107,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/malaysia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MY"
   },
   {
@@ -1362,8 +1116,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/maldives",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MV"
   },
   {
@@ -1373,8 +1125,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/mali",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ML"
   },
   {
@@ -1384,8 +1134,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/malta",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MT"
   },
   {
@@ -1395,8 +1143,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/marshall-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MH"
   },
   {
@@ -1406,8 +1152,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/martinique",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MQ"
   },
   {
@@ -1417,8 +1161,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/mauritania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MR"
   },
   {
@@ -1428,8 +1170,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/mauritius",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MU"
   },
   {
@@ -1439,8 +1179,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/mayotte",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "YT"
   },
   {
@@ -1450,8 +1188,6 @@
    "updated": "2026-09-26",
    "stamp": "2026-09-26 01:43:09",
    "url": "https://travel.gc.ca/destinations/mexico",
-   "change": "Risk levels section – avoid non-essential travel to Baja California Sur, from Punta Eugenia to Santa Fe; Natural disasters and climate section – updated information on Hurricane Polo",
-   "changeType": "Regional advisory added",
    "iso": "MX"
   },
   {
@@ -1461,8 +1197,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/micronesia-fsm",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "FM"
   },
   {
@@ -1472,8 +1206,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/moldova",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MD"
   },
   {
@@ -1483,8 +1215,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/monaco",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MC"
   },
   {
@@ -1494,8 +1224,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/mongolia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MN"
   },
   {
@@ -1505,8 +1233,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/montenegro",
-   "change": "Health – editorial change",
-   "changeType": "Editorial change",
    "iso": "ME"
   },
   {
@@ -1516,8 +1242,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/montserrat",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MS"
   },
   {
@@ -1527,8 +1251,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/morocco",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MA"
   },
   {
@@ -1538,8 +1260,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/mozambique",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MZ"
   },
   {
@@ -1549,8 +1269,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/myanmar",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MM"
   },
   {
@@ -1560,8 +1278,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/namibia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NA"
   },
   {
@@ -1571,8 +1287,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/nauru",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NR"
   },
   {
@@ -1582,8 +1296,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/nepal",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NP"
   },
   {
@@ -1593,8 +1305,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/netherlands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NL"
   },
   {
@@ -1604,8 +1314,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/new-caledonia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NC"
   },
   {
@@ -1615,8 +1323,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/new-zealand",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NZ"
   },
   {
@@ -1626,8 +1332,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/nicaragua",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NI"
   },
   {
@@ -1637,8 +1341,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/niger",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NE"
   },
   {
@@ -1648,8 +1350,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/nigeria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NG"
   },
   {
@@ -1659,8 +1359,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/niue",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NU"
   },
   {
@@ -1670,8 +1368,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/north-korea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KP"
   },
   {
@@ -1681,8 +1377,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/north-macedonia",
-   "change": "Health – editorial change",
-   "changeType": "Editorial change",
    "iso": "MK"
   },
   {
@@ -1692,8 +1386,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/northern-marianas",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MP"
   },
   {
@@ -1703,8 +1395,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/norway",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "NO"
   },
   {
@@ -1714,8 +1404,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/oman",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "OM"
   },
   {
@@ -1725,8 +1413,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/pakistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PK"
   },
   {
@@ -1736,8 +1422,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/palau",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PW"
   },
   {
@@ -1747,8 +1431,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/panama",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PA"
   },
   {
@@ -1758,8 +1440,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/papua-new-guinea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PG"
   },
   {
@@ -1769,8 +1449,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/paraguay",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PY"
   },
   {
@@ -1780,8 +1458,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/peru",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PE"
   },
   {
@@ -1791,8 +1467,6 @@
    "updated": "2026-09-25",
    "stamp": "2026-09-25 07:02:51",
    "url": "https://travel.gc.ca/destinations/philippines",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "PH"
   },
   {
@@ -1802,8 +1476,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/poland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PL"
   },
   {
@@ -1813,8 +1485,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/portugal",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PT"
   },
   {
@@ -1824,8 +1494,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/puerto-rico",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PR"
   },
   {
@@ -1835,8 +1503,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/qatar",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "QA"
   },
   {
@@ -1846,8 +1512,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/congo-brazzaville",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CG"
   },
   {
@@ -1857,8 +1521,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/reunion",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "RE"
   },
   {
@@ -1868,8 +1530,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/romania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "RO"
   },
   {
@@ -1879,8 +1539,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/russia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "RU"
   },
   {
@@ -1890,8 +1548,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/rwanda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "RW"
   },
   {
@@ -1901,8 +1557,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/saint-kitts-and-nevis",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KN"
   },
   {
@@ -1912,8 +1566,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/saint-lucia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LC"
   },
   {
@@ -1923,8 +1575,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/saint-martin",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "MF"
   },
   {
@@ -1934,8 +1584,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/saint-vincent-the-grenadines",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "VC"
   },
   {
@@ -1945,8 +1593,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/saint-barthelemy",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "BL"
   },
   {
@@ -1956,8 +1602,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/saint-pierre-et-miquelon",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "PM"
   },
   {
@@ -1967,8 +1611,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/samoa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "WS"
   },
   {
@@ -1978,8 +1620,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/san-marino",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SM"
   },
   {
@@ -1989,8 +1629,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/sao-tome-and-principe",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ST"
   },
   {
@@ -2000,8 +1638,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/saudi-arabia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SA"
   },
   {
@@ -2011,8 +1647,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/senegal",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SN"
   },
   {
@@ -2022,8 +1656,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 11:47:26",
    "url": "https://travel.gc.ca/destinations/serbia",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "RS"
   },
   {
@@ -2033,8 +1665,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/seychelles",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SC"
   },
   {
@@ -2044,8 +1674,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/sierra-leone",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SL"
   },
   {
@@ -2055,8 +1683,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/singapore",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SG"
   },
   {
@@ -2066,8 +1692,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/sint-maarten",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SX"
   },
   {
@@ -2077,8 +1701,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/slovakia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SK"
   },
   {
@@ -2088,8 +1710,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/slovenia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SI"
   },
   {
@@ -2099,8 +1719,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/solomon-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SB"
   },
   {
@@ -2110,8 +1728,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/somalia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SO"
   },
   {
@@ -2121,8 +1737,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/south-africa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ZA"
   },
   {
@@ -2132,8 +1746,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:34",
    "url": "https://travel.gc.ca/destinations/south-korea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "KR"
   },
   {
@@ -2143,8 +1755,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/south-sudan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SS"
   },
   {
@@ -2154,8 +1764,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/spain",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ES"
   },
   {
@@ -2165,8 +1773,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/sri-lanka",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "LK"
   },
   {
@@ -2176,8 +1782,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/sudan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SD"
   },
   {
@@ -2187,8 +1791,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/suriname",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SR"
   },
   {
@@ -2198,8 +1800,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/sweden",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SE"
   },
   {
@@ -2209,8 +1809,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/switzerland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "CH"
   },
   {
@@ -2220,8 +1818,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/syria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "SY"
   },
   {
@@ -2231,8 +1827,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/taiwan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TW"
   },
   {
@@ -2242,8 +1836,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/tajikistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TJ"
   },
   {
@@ -2253,8 +1845,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/tanzania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TZ"
   },
   {
@@ -2264,8 +1854,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/thailand",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TH"
   },
   {
@@ -2275,8 +1863,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:33",
    "url": "https://travel.gc.ca/destinations/timor-leste-east-timor",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TL"
   },
   {
@@ -2286,8 +1872,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/togo",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TG"
   },
   {
@@ -2297,8 +1881,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/tokelau",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TK"
   },
   {
@@ -2308,8 +1890,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/tonga",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TO"
   },
   {
@@ -2319,8 +1899,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/trinidad-and-tobago",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TT"
   },
   {
@@ -2330,8 +1908,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/tunisia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TN"
   },
   {
@@ -2341,8 +1917,6 @@
    "updated": "2026-09-25",
    "stamp": "2026-09-25 10:15:52",
    "url": "https://travel.gc.ca/destinations/turkiye",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "TR"
   },
   {
@@ -2352,8 +1926,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/turkmenistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TM"
   },
   {
@@ -2363,8 +1935,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/turks-and-caicos-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TC"
   },
   {
@@ -2374,8 +1944,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/tuvalu",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "TV"
   },
   {
@@ -2385,8 +1953,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/uganda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "UG"
   },
   {
@@ -2396,8 +1962,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:36",
    "url": "https://travel.gc.ca/destinations/ukraine",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "UA"
   },
   {
@@ -2407,8 +1971,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/united-arab-emirates",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "AE"
   },
   {
@@ -2418,8 +1980,6 @@
    "updated": "2026-09-25",
    "stamp": "2026-09-25 14:50:33",
    "url": "https://travel.gc.ca/destinations/united-kingdom",
-   "change": "Editorial change",
-   "changeType": "Editorial change",
    "iso": "GB"
   },
   {
@@ -2429,8 +1989,6 @@
    "updated": "2026-09-25",
    "stamp": "2026-09-25 16:06:09",
    "url": "https://travel.gc.ca/destinations/united-states",
-   "change": "Natural disasters and climate section – updated information on Hurricane Nolo",
-   "changeType": "Regular text update",
    "iso": "US"
   },
   {
@@ -2440,8 +1998,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/uruguay",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "UY"
   },
   {
@@ -2451,8 +2007,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/uzbekistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "UZ"
   },
   {
@@ -2462,8 +2016,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/vanuatu",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "VU"
   },
   {
@@ -2473,8 +2025,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/venezuela",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "VE"
   },
   {
@@ -2484,8 +2034,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/vietnam",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "VN"
   },
   {
@@ -2495,8 +2043,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/virgin-islands-u-s",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "VI"
   },
   {
@@ -2506,8 +2052,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/yemen",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "YE"
   },
   {
@@ -2517,8 +2061,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/zambia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ZM"
   },
   {
@@ -2528,8 +2070,6 @@
    "updated": "2026-09-24",
    "stamp": "2026-09-24 08:53:35",
    "url": "https://travel.gc.ca/destinations/zimbabwe",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
-   "changeType": "Editorial change",
    "iso": "ZW"
   }
  ]
