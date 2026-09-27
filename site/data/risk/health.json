@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-27T18:04:53.636Z",
+ "asOf": "2026-09-27T18:18:00.947Z",
  "sources": {
   "ca": {
    "status": "healthy",
@@ -10,8 +10,8 @@
   },
   "gdacs": {
    "status": "healthy",
-   "lastSuccess": "2026-09-27T17:38:30.043Z",
-   "lastAttempt": "2026-09-27T17:38:30.043Z",
+   "lastSuccess": "2026-09-27T18:17:59.024Z",
+   "lastAttempt": "2026-09-27T18:17:59.024Z",
    "consecutiveFailures": 0,
    "records": 65
   },
@@ -31,8 +31,8 @@
   },
   "who": {
    "status": "healthy",
-   "lastSuccess": "2026-09-27T18:04:53.635Z",
-   "lastAttempt": "2026-09-27T18:04:53.635Z",
+   "lastSuccess": "2026-09-27T18:18:00.947Z",
+   "lastAttempt": "2026-09-27T18:18:00.947Z",
    "consecutiveFailures": 0,
    "records": 8
   }
