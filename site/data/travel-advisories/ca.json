@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "ca",
- "asOf": "2026-09-26",
+ "asOf": "2026-09-27",
  "source": "https://travel.gc.ca/travelling/advisories",
  "links": {
   "list": "https://travel.gc.ca/travelling/advisories"

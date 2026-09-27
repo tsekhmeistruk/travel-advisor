@@ -28,13 +28,13 @@
     {
      "id": "us",
      "flag": "us",
-     "asOf": "2026-09-26",
+     "asOf": "2026-09-27",
      "file": "travel-advisories/us.json"
     },
     {
      "id": "ca",
      "flag": "ca",
-     "asOf": "2026-09-26",
+     "asOf": "2026-09-27",
      "file": "travel-advisories/ca.json"
     }
    ]
