@@ -39,8 +39,9 @@ jobs:
 
       - run: npm ci
 
-      - name: Unit and data tests
-        run: npm test
+      # Unit and data tests, failing if coverage drops below the thresholds in package.json.
+      - name: Unit and data tests (with coverage)
+        run: npm run test:coverage
 
       - name: Browser tests
         run: npm run test:e2e

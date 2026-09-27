@@ -20,16 +20,17 @@ export default {
     /health section was updated - travel health information/i,   // generic health-info refresh
   ],
 
-  async fetch({ log, previous }) {
-    const entries = parseTable(await get(log, 'table', PAGE));
+  /** `sleep` is injectable for tests. */
+  async fetch({ log, previous, sleep = defaultSleep }) {
+    const entries = parseTable(await get(log, 'table', PAGE, undefined, sleep));
     // The table has ~230 rows; far fewer means the page layout changed.
     if (entries.length < 150) throw new Error(`Parsed only ${entries.length} destinations; page structure may have changed.`);
 
     const toRead = planPageReads(entries, previous);
     const failed = [];
-    await pool(toRead, 4, async (e) => {
+    await pool(toRead, 4, sleep, async (e) => {
       try {
-        const note = parseLatestUpdate(await get(log, 'pages', e.url, { detail: false }));
+        const note = parseLatestUpdate(await get(log, 'pages', e.url, { detail: false }, sleep));
         if (note === null) throw new Error('no "Latest updates" label');
         e.change = note;
       } catch (err) {
@@ -54,7 +55,7 @@ export default {
   },
 };
 
-async function get(log, call, url, opts, attempt = 1) {
+async function get(log, call, url, opts, sleep, attempt = 1) {
   try {
     const res = await log.request(call, url, { headers: HEADERS, signal: AbortSignal.timeout(30000) }, opts);
     if (res.challenge) throw new Error('Cloudflare challenge page instead of data');
@@ -63,12 +64,12 @@ async function get(log, call, url, opts, attempt = 1) {
   } catch (err) {
     if (attempt >= 3) throw new Error(`${url}: ${err.message}`);
     await sleep(1500 * attempt);
-    return get(log, call, url, opts, attempt + 1);
+    return get(log, call, url, opts, sleep, attempt + 1);
   }
 }
 
 // Run fn over items with a few requests in flight, pausing between them to stay polite.
-async function pool(items, size, fn) {
+async function pool(items, size, sleep, fn) {
   let next = 0;
   const worker = async () => {
     while (next < items.length) {
@@ -80,4 +81,4 @@ async function pool(items, size, fn) {
   await Promise.all(Array.from({ length: Math.min(size, items.length) }, worker));
 }
 
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+function defaultSleep(ms) { return new Promise(r => setTimeout(r, ms)); }

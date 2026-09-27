@@ -5,61 +5,10 @@
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, mkdirSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import puppeteer from 'puppeteer-core';
-import { serve } from '../../scripts/serve.mjs';
+import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, OUT, click, detailsTitle } from './helpers.mjs';
 
-const SETTINGS_KEY = 'travel-risk-map:settings';
-const DATASET = 'travel-advisories';
-const OUT = fileURLToPath(new URL('../../test-output/', import.meta.url));
-mkdirSync(OUT, { recursive: true });
+useBrowser();
 
-const executablePath = [
-  process.env.CHROME_PATH,
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-].filter(Boolean).find(p => existsSync(p));
-
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-let browser, server, PAGE;
-
-before(async () => {
-  assert.ok(executablePath, 'No Chrome/Edge found; set CHROME_PATH.');
-  ({ server, url: PAGE } = await serve(0));
-  browser = await puppeteer.launch({ executablePath, headless: true, args: ['--no-sandbox'] });
-});
-after(async () => { await browser?.close(); server?.close(); });
-
-// Open the site with the given saved settings (raw, as stored) and collect errors.
-async function openRaw({ width = 1440, height = 860, scheme = 'dark', stored = {} } = {}) {
-  const page = await browser.newPage();
-  page.errors = [];
-  page.on('pageerror', e => page.errors.push(e.message));
-  page.on('console', m => { if (m.type() === 'error') page.errors.push(m.text()); });
-  page.on('requestfailed', r => page.errors.push(`request failed: ${r.url()}`));
-  await page.setViewport({ width, height });
-  await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
-  await page.goto(PAGE);
-  await page.evaluate((key, s) => { localStorage.clear(); localStorage.setItem(key, JSON.stringify(s)); }, SETTINGS_KEY, stored);
-  await page.reload({ waitUntil: 'networkidle0' });
-  await page.waitForSelector('path.country');
-  return page;
-}
-// Open with travel-advisory settings, e.g. { provider: 'ca', recentDays: 90 }.
-const open = ({ settings = {}, ...opts } = {}) => openRaw({ ...opts, stored: { [DATASET]: settings } });
-
-const anchorOf = (page, placeId) => page.evaluate((id) => {
-  const el = [...document.querySelectorAll('path.country')].find(e => e.__data__.key === id);
-  const r = document.getElementById('map').getBoundingClientRect();
-  return { x: r.left + el.__data__.anchor[0], y: r.top + el.__data__.anchor[1] };
-}, placeId);
-const isSelected = (page) => page.evaluate(() => {
-  const s = document.querySelector('.select-outline');
-  return s.getAttribute('display') !== 'none' && !!s.getAttribute('d');
-});
 const clearSelection = (page) => page.evaluate(() => document.getElementById('map').dispatchEvent(new MouseEvent('click', { bubbles: true })));
 
 // Hover every country and dot; measure the details card each time.
@@ -129,12 +78,7 @@ describe('map interaction', () => {
 
   for (const jitter of [0, 3, 5]) {
     test(`a click with ${jitter}px of movement selects the country`, async () => {
-      const { x, y } = await anchorOf(page, 'br');
-      await page.mouse.move(x, y);
-      await page.mouse.down();
-      if (jitter) await page.mouse.move(x + jitter, y + jitter / 2, { steps: 2 });
-      await page.mouse.up();
-      await sleep(150);
+      await click(page, await anchorOf(page, 'br'), jitter);
       assert.equal(await isSelected(page), true);
       await clearSelection(page);
     });
@@ -182,7 +126,7 @@ describe('panel', () => {
     await page.type('#search', 'japan');
     await page.keyboard.press('Enter');
     await sleep(900);
-    assert.equal(await page.evaluate(() => document.querySelector('#details h3')?.textContent), 'Japan');
+    assert.equal(await detailsTitle(page), 'Japan');
     assert.equal(await isSelected(page), true);
     await page.close();
   });
@@ -205,7 +149,7 @@ describe('panel', () => {
     await page.type('#search', 'burma');
     await page.keyboard.press('Enter');
     await sleep(900);
-    assert.equal(await page.evaluate(() => document.querySelector('#details h3')?.textContent), 'Myanmar');
+    assert.equal(await detailsTitle(page), 'Myanmar');
     await page.close();
   });
 

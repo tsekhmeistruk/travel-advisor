@@ -40,6 +40,7 @@ Requires Node 22 or newer.
 ```sh
 npm ci              # dev tools for the tests (the site itself has no dependencies)
 npm start           # serves site/ at http://localhost:8080
+npm run test:all    # every test (see Tests)
 ```
 
 The site uses JavaScript modules and loads JSON, which browsers block when a page is opened straight from disk, so use `npm start`.
@@ -55,13 +56,13 @@ If a source uses a name the build can't match to a place, the build stops and li
 
 ## Tests
 
-Every deploy is gated by these tests.
+Every deploy is gated by these tests (237 in total). Coverage is enforced: deploys fail if unit and data tests cover less than 90% of lines. See [tests/README.md](tests/README.md) for the layout and conventions.
 
 | Suite | Command | What it checks |
 |---|---|---|
-| Unit | `npm test` | **Parsers** for both sources, against real saved responses (`tests/fixtures/`).<br>**Rules:** U.S. merging, minor-update rules, level history, name-to-place matching.<br>**Site modules:** languages and formatting, settings, advisory logic.<br>**Security helpers:** HTML escaping and link filtering. |
-| Data | `npm test` | **Current data:** the published data must equal a fresh build.<br>**Configuration:** the place registry and the configs are consistent.<br>**Plausible sources:** each has ≥150 records and every level.<br>**Translations:** every language has every key. |
-| Browser | `npm run test:e2e` | **Both sources** on desktop and phone.<br>**Details card:** stays one fixed size.<br>**Interaction:** clicks with small hand movement, drag to pan, the source switch, search (including "Burma"), and the recent-update filter.<br>**Old settings** still work, and there are no errors or failed requests. |
+| Unit | `npm test` | **Parsers** for both sources, against real saved responses (`tests/fixtures/`).<br>**Fetchers:** retries, Cloudflare challenges and failed pages, against scripted responses.<br>**Rules:** U.S. merging, minor-update rules, level history, name-to-place matching.<br>**Infrastructure:** run log, storage, log summary, and the local server's path safety.<br>**Site modules:** languages, settings, search, and the advisory dataset's views, including escaping hostile source text and rejecting unsafe links. |
+| Data | `npm test` | **Current data:** the published data must equal a fresh build.<br>**Configuration:** the place registry and the configs are consistent.<br>**Plausible sources:** each has ≥150 records and every level.<br>**Translations:** every language has every key, and every key the code uses exists.<br>**Wiring:** every provider is set up everywhere it must be, including the daily workflow.<br>**Deploy gate:** it's intact.<br>**Secrets:** none are committed. |
+| Browser | `npm run test:e2e` | **Both sources** on desktop and phone.<br>**Details card:** stays one fixed size.<br>**Every control:** clicks with small hand movement, drag, zoom buttons, tooltip, theme, panel, level filter, fading, feed, keyboard search.<br>**Error states:** the load-error message.<br>**Accessibility:** every control has an accessible label.<br>**Languages:** a fake second, right-to-left locale proves the language picker, persistence, and translated names and dates. |
 
 The browser tests use a local Chrome or Edge (set `CHROME_PATH` to override) and save screenshots to `test-output/`.
 

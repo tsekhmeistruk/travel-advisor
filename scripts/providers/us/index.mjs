@@ -22,9 +22,9 @@ export default {
     /reissued with obsolete .*links? removed/i,
   ],
 
-  /** Fetch and merge with the previous snapshot's entries. */
-  async fetch({ log, previous, today }) {
-    const items = await fetchApi(log);
+  /** Fetch and merge with the previous snapshot's entries. `sleep` is injectable for tests. */
+  async fetch({ log, previous, today, sleep = defaultSleep }) {
+    const items = await fetchApi(log, sleep);
     const { byName, duplicates, warnings } = parseApiItems(items, previous, today);
     warnings.forEach(w => log.warn(w));
     if (byName.size < 150) throw new Error(`Parsed only ${byName.size} advisories; the API format may have changed.`);
@@ -62,7 +62,7 @@ export default {
 
 // The API sits behind Cloudflare, which sometimes answers with a challenge page or
 // HTTP 429 instead of JSON (more often after several calls in a row). Wait and retry.
-async function fetchApi(log) {
+async function fetchApi(log, sleep) {
   for (let attempt = 1; ; attempt++) {
     try {
       const res = await log.request('api', API, { headers: { ...HEADERS, Accept: 'application/json' }, signal: AbortSignal.timeout(60000) });
@@ -73,10 +73,12 @@ async function fetchApi(log) {
     } catch (err) {
       if (attempt >= 3) throw new Error(`API failed after ${attempt} attempts: ${err.message}`);
       console.warn(`API attempt ${attempt} failed (${err.message}); retrying in ${attempt} min.`);
-      await new Promise(r => setTimeout(r, attempt * 60000));
+      await sleep(attempt * 60000);
     }
   }
 }
+
+function defaultSleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 async function fetchRssNotes(log) {
   const res = await log.request('rss', RSS, { headers: HEADERS, signal: AbortSignal.timeout(30000) });

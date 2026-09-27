@@ -11,9 +11,9 @@ export const LOG_ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..'
 // Cloudflare's bot-check page, served in place of the real content.
 const CHALLENGE = /<title>\s*(Just a moment|Attention Required)|challenges\.cloudflare\.com/i;
 
-export function logFile(date = new Date()) {
+export function logFile(date = new Date(), root = LOG_ROOT) {
   const iso = date.toISOString();
-  return join(LOG_ROOT, iso.slice(0, 4), `${iso.slice(0, 7)}.jsonl`);
+  return join(root, iso.slice(0, 4), `${iso.slice(0, 7)}.jsonl`);
 }
 
 // A GitHub Actions run is identified by id + attempt (a re-run gets a new attempt).
@@ -22,7 +22,8 @@ export function currentRun() {
   return id ? `${id}.${process.env.GITHUB_RUN_ATTEMPT ?? 1}` : 'local';
 }
 
-export function startRunLog(source) {
+/** @param opts.root log folder (tests use a temporary one) */
+export function startRunLog(source, { root = LOG_ROOT } = {}) {
   const started = Date.now();
   const entry = {
     time: new Date(started).toISOString(),
@@ -71,7 +72,7 @@ export function startRunLog(source) {
     fail(err) { entry.result = 'error'; entry.error = err.message; },
     write() {
       entry.durationMs = Date.now() - started;
-      const file = logFile(new Date(started));
+      const file = logFile(new Date(started), root);
       mkdirSync(dirname(file), { recursive: true });
       appendFileSync(file, JSON.stringify(entry) + '\n');
     },
@@ -80,8 +81,8 @@ export function startRunLog(source) {
 
 // Runs a fetch script's main function with logging: the log line is always written,
 // and a failure sets a non-zero exit code after it has been recorded.
-export async function withRunLog(source, main) {
-  const log = startRunLog(source);
+export async function withRunLog(source, main, opts = {}) {
+  const log = startRunLog(source, opts);
   try {
     await main(log);
   } catch (err) {

@@ -64,9 +64,11 @@ A world map of **data about places**. Today it shows official travel-advisory le
 
 - **Before every push,** use the **`verify-site`** skill, or run:
   - `npm ci` once;
-  - `npm test` for the unit and data tests, a few seconds;
-  - `npm run test:e2e` for the browser tests, about 1 minute; they serve `site/` and use local Chrome or Edge.
-- **Every bug fix or new behaviour gets a test.** The fixtures in `tests/fixtures/` are real responses.
+  - `npm run test:coverage` for the unit and data tests with enforced coverage (90% lines, 85% branches, 85% functions), a few seconds;
+  - `npm run test:e2e` for the browser tests, about 2 minutes; they serve `site/` and use local Chrome or Edge.
+
+  This is exactly what the deploy gate runs. `tests/README.md` covers the layout and conventions.
+- **Every bug fix or new behaviour gets a test, and should fail without the fix.** Inject what's slow or external (fetch, sleep, storage, clock, log folder) instead of calling it directly. The fixtures in `tests/fixtures/` are real responses.
 - **Workflows:** push, then run `gh workflow run update-advisories.yml --ref main` and `gh run watch <id>`, then `git pull`.
 - **Fetch health:** `npm run logs`, or the **Fetch results** table on each update run.
 

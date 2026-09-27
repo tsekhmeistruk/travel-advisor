@@ -9,8 +9,8 @@ These are the same tests that `.github/workflows/deploy.yml` runs before every d
 
 ```sh
 npm ci                 # once: installs puppeteer-core (dev only; the site has no dependencies)
-npm test               # unit + data tests, a few seconds
-npm run test:e2e       # browser tests: serves site/ and drives headless Chrome/Edge, ~1 min
+npm run test:coverage  # unit + data tests with enforced coverage (what CI runs), a few seconds
+npm run test:e2e       # browser tests: serves site/ and drives headless Chrome/Edge, ~2 min
 ```
 
 ## What each suite covers
@@ -24,10 +24,13 @@ npm run test:e2e       # browser tests: serves site/ and drives headless Chrome/
 - **Screenshots:** `test-output/` (git-ignored). Look at them, since layout problems don't always fail a check. In CI they're uploaded as the `screenshots` artifact.
 - **Browser:** found automatically: Chrome, then Edge on Windows, or `/usr/bin/google-chrome` on the Linux CI runner. Set `CHROME_PATH` to use a different one.
 
+See `tests/README.md` for the full layout. In short: `tests/unit/pipeline/` holds parsers, fetchers (with scripted responses), build rules and infrastructure. `tests/unit/site/` holds the site modules and the dataset's views. `tests/data/` checks published data, config, translations, wiring, the deploy gate and secrets. `tests/e2e/site.test.mjs` and `controls.test.mjs` run in the browser.
+
 ## After a failure
 
 - **"… is out of date: run `npm run build`":** config or build code changed, but the published data wasn't rebuilt. Rebuild and commit.
 - **"No place for …":** a provider uses a new name. Add it to `aliases` in `config/providers/<id>.json`.
 - **Card size failures:** look at `.details` and its children in `css/styles.css`. Every card uses fixed-height slots: the title is one line, the description three lines, "What changed" four lines, and the status one line.
 - **A parser test failing on a fixture:** the fixtures in `tests/fixtures/` are real responses. If a source changed its format, update the parser, then refresh the fixture from a real response.
-- **New behaviour or a bug fix:** add a test for it in the right suite.
+- **Coverage below threshold:** new code needs tests. Browser-only code is covered by the e2e tests instead.
+- **New behaviour or a bug fix:** add a test for it in the right suite, and check that it fails without the change.

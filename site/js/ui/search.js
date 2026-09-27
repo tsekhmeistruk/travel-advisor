@@ -4,7 +4,21 @@
 
 import { esc } from '../core/dom.js';
 
-const normalize = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const normalize = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+/** Precompute the normalized keys (label and aliases) of search entries. */
+export function prepareEntries(list) {
+  return list.map(e => ({ ...e, keys: [e.label, ...(e.aliases ?? [])].map(normalize) }));
+}
+
+/** Entries matching a query: names starting with it first, then names containing it. */
+export function rankMatches(entries, query, limit = 7) {
+  const q = normalize(query.trim());
+  if (!q) return [];
+  const starts = entries.filter(e => e.keys.some(k => k.startsWith(q)));
+  const contains = entries.filter(e => !starts.includes(e) && e.keys.some(k => k.includes(q)));
+  return [...starts, ...contains].slice(0, limit);
+}
 
 export function createSearch({ input, results, noMatchesText, onChoose }) {
   let entries = [];
@@ -12,7 +26,7 @@ export function createSearch({ input, results, noMatchesText, onChoose }) {
   let active = 0;
 
   function setEntries(list) {
-    entries = list.map(e => ({ ...e, keys: [e.label, ...(e.aliases ?? [])].map(normalize) }));
+    entries = prepareEntries(list);
   }
 
   function render() {
@@ -31,11 +45,8 @@ export function createSearch({ input, results, noMatchesText, onChoose }) {
   }
 
   input.addEventListener('input', () => {
-    const q = normalize(input.value.trim());
-    if (!q) return close();
-    const starts = entries.filter(e => e.keys.some(k => k.startsWith(q)));
-    const contains = entries.filter(e => !starts.includes(e) && e.keys.some(k => k.includes(q)));
-    matches = [...starts, ...contains].slice(0, 7);
+    matches = rankMatches(entries, input.value);
+    if (!input.value.trim()) return close();
     active = 0;
     render();
   });

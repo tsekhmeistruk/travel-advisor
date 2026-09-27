@@ -181,7 +181,7 @@ Steps:
 ## Testing and deployment
 
 See the README's **Tests** section. In short:
-- `npm test` runs the unit and data tests;
+- `npm run test:coverage` runs the unit and data tests, failing below the coverage thresholds;
 - `npm run test:e2e` runs the browser tests;
 - `.github/workflows/deploy.yml` runs both and deploys `site/` only if they pass.
 
