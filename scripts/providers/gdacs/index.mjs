@@ -52,11 +52,14 @@ export default {
     // An empty list is possible (a quiet month), but after a busy one it more likely means trouble.
     if (!incoming.length && previous.some(e => e.current)) log.warn('No events returned, although some were current last time.');
 
-    const merged = mergeEvents(previous, incoming, { at: now.toISOString(), lookbackDays: config.lookbackDays, retainEndedDays: config.retainEndedDays });
-    const { stats } = merged;
-    // Ended minor (Green) events are kept a shorter time: they only ever were markers.
+    // Ended minor (Green) events are kept a shorter time: they only ever were markers. The API's
+    // window still lists events that ended on its first day, so one already past that time is
+    // ignored, not added and archived again on every run.
     const minorCutoff = config.minor ? +now - config.minor.retainEndedDays * 864e5 : -Infinity;
     const isOldMinor = (e) => !e.current && e.native.value === 'Green' && Date.parse(e.toDate) < minorCutoff;
+    const known = new Set(previous.map(e => e.id));
+    const merged = mergeEvents(previous, incoming.filter(e => known.has(e.id) || !isOldMinor(e)), { at: now.toISOString(), lookbackDays: config.lookbackDays, retainEndedDays: config.retainEndedDays });
+    const { stats } = merged;
     const events = merged.events.filter(e => !isOldMinor(e));
     const expired = [...merged.expired, ...merged.events.filter(isOldMinor)];
     if (stats.levelChanged.length) console.log(`Alert level changed: ${stats.levelChanged.join('; ')}`);

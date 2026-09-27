@@ -134,6 +134,18 @@ describe('GDACS fetcher', () => {
     assert.equal(next.stats.archived, 1);
   });
 
+  test('a minor event the API still returns after its retention is neither added nor archived again', async () => {
+    // GDACS's window includes events that ended on its first day: an ended Green flood of
+    // exactly 14 days ago came back every hour and was archived every hour.
+    const oldGreen = JSON.stringify({ type: 'FeatureCollection', features: [{
+      type: 'Feature', geometry: { type: 'Point', coordinates: [0, 0] },
+      properties: { eventtype: 'FL', eventid: 1104155, alertlevel: 'Green', fromdate: '2026-09-01T01:00:00', todate: '2026-09-13T01:00:00', iscurrent: 'false', affectedcountries: [] },
+    }] });
+    const log = fakeLog({ search: [{ status: 204 }, { body: oldGreen }] });
+    const { events, expired, stats } = await gdacs.fetch({ log, previous: [], now: NOW, config: fullConfig });
+    assert.deepEqual([events.length, expired.length, stats.archived, stats.added], [0, 0, 0, []]);
+  });
+
   test('a malformed response fails the fetch, so the stored events are kept', async () => {
     const { sleep } = recordSleeps();
     const log = fakeLog({ search: [{ body: '{"type":"FeatureCollection"}' }] });
