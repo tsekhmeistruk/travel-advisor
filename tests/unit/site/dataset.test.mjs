@@ -126,6 +126,17 @@ describe('details card', () => {
 });
 
 describe('header, footer, tooltip, legend', () => {
+  test('the advisory link shows the domain without "www." and keeps the full URL in its title', () => {
+    const html = ds.details({ placeId: 'mm' });
+    assert.match(html, /title="https:\/\/travel\.state\.gov\/mm">Official advisory: travel\.state\.gov ↗<\/a>/);
+    US.records[0].url = 'https://www.nederlandwereldwijd.nl/reisadvies/myanmar';
+    try {
+      assert.match(ds.details({ placeId: 'mm' }), />Official advisory: nederlandwereldwijd\.nl ↗<\/a>/);
+    } finally {
+      US.records[0].url = 'https://travel.state.gov/mm';
+    }
+  });
+
   test('the footer links the agency to its list; unsafe links are dropped', async () => {
     assert.match(ds.footer(), /<a id="sourceLink" href="https:\/\/travel\.state\.gov\/list"[^>]*>U\.S\. State Department<\/a>/);
     await ds.setProvider('ca');

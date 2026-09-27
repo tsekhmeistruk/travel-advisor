@@ -124,7 +124,12 @@ export function createTravelAdvisories(ctx) {
       </dl>
       ${changeBlock(r)}
       <div class="status">${status}</div>
-      ${url ? `<a class="link" href="${esc(url)}" target="_blank" rel="noopener">${esc(tx('details.readMore', { host: new URL(url).hostname }))}</a>` : ''}`;
+      ${url ? `<a class="link" href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(tx('details.readMore', { host: displayHost(url) }))}</a>` : ''}`;
+  }
+
+  // "nederlandwereldwijd.nl", not "www.nederlandwereldwijd.nl": shorter, and the card has one line for it.
+  function displayHost(url) {
+    return new URL(url).hostname.replace(/^www\./, '');
   }
 
   function feedWhat(r) {

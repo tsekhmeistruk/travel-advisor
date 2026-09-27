@@ -140,6 +140,8 @@ describe('log summary', () => {
     const twoSources = { ...ok, stats: { destinations: 230, sources: ['feed', 'table'], newerThanFeed: ['Mexico'], changed: [] } };
     assert.equal(describeRun(twoSources), '230 destinations (feed + table) · none changed · 1 newer than the feed');
     assert.equal(callSummary({ attempts: [{ status: 200 }] }), '200');
+    const dutch = { ...ok, stats: { advisories: 226, severestFallback: ['Irak'], levelChangesPending: 2 } };
+    assert.equal(describeRun(dutch), '226 advisories · level by fallback: Irak · 2 level changes awaiting confirmation');
   });
   test('formats durations and keeps table cells on one line', () => {
     assert.equal(duration(1200), '1.2 s');

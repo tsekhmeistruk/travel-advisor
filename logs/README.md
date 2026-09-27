@@ -64,6 +64,11 @@ The fields in `stats` depend on the source:
   - `keptFromPrevious`: advisories missing from this response but kept from the previous snapshot.
   - `droppedMissing`: advisories removed after 7 days missing.
   - `changeNotes`: advisories with a "what changed" note.
+- **Netherlands:**
+  - `advisories`: number of advisories.
+  - `levelRules`: how many levels each colour rule produced (`single`, `rest`, `country`, `severest`).
+  - `severestFallback`: advisories whose level came from the most-severe-colour fallback. This should stay at a few; a jump means the Dutch wording changed.
+  - `levelChangesPending` and `levelChangesConfirmed`, `keptFromPrevious`, `droppedMissing`, `staleIgnored`: as for the U.S.
 - **Canada:**
   - `destinations`: number of destinations.
   - `sources`: which sources were used: `["feed", "table"]` normally, or just one if the other failed.

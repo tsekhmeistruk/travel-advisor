@@ -3,66 +3,77 @@
   "id": "ad",
   "name": "Andorra",
   "iso2": "AD",
+  "iso3": "AND",
   "shape": "Andorra"
  },
  {
   "id": "ae",
   "name": "United Arab Emirates",
   "iso2": "AE",
+  "iso3": "ARE",
   "shape": "United Arab Emirates"
  },
  {
   "id": "af",
   "name": "Afghanistan",
   "iso2": "AF",
+  "iso3": "AFG",
   "shape": "Afghanistan"
  },
  {
   "id": "ag",
   "name": "Antigua and Barbuda",
   "iso2": "AG",
+  "iso3": "ATG",
   "shape": "Antigua and Barb."
  },
  {
   "id": "ai",
   "name": "Anguilla",
   "iso2": "AI",
+  "iso3": "AIA",
   "shape": "Anguilla"
  },
  {
   "id": "al",
   "name": "Albania",
   "iso2": "AL",
+  "iso3": "ALB",
   "shape": "Albania"
  },
  {
   "id": "am",
   "name": "Armenia",
   "iso2": "AM",
+  "iso3": "ARM",
   "shape": "Armenia"
  },
  {
   "id": "ao",
   "name": "Angola",
   "iso2": "AO",
+  "iso3": "AGO",
   "shape": "Angola"
  },
  {
   "id": "aq",
   "name": "Antarctica",
   "iso2": "AQ",
+  "iso3": "ATA",
   "shape": "Antarctica"
  },
  {
   "id": "ar",
   "name": "Argentina",
   "iso2": "AR",
+  "iso3": "ARG",
   "shape": "Argentina"
  },
  {
   "id": "as",
   "name": "American Samoa",
   "iso2": "AS",
+  "iso3": "ASM",
   "shape": "American Samoa"
  },
  {
@@ -74,12 +85,14 @@
   "id": "at",
   "name": "Austria",
   "iso2": "AT",
+  "iso3": "AUT",
   "shape": "Austria"
  },
  {
   "id": "au",
   "name": "Australia",
   "iso2": "AU",
+  "iso3": "AUS",
   "shape": "Australia"
  },
  {
@@ -91,18 +104,21 @@
   "id": "aw",
   "name": "Aruba",
   "iso2": "AW",
+  "iso3": "ABW",
   "shape": "Aruba"
  },
  {
   "id": "ax",
   "name": "Åland Islands",
   "iso2": "AX",
+  "iso3": "ALA",
   "shape": "Åland"
  },
  {
   "id": "az",
   "name": "Azerbaijan",
   "iso2": "AZ",
+  "iso3": "AZE",
   "shape": "Azerbaijan"
  },
  {
@@ -114,78 +130,91 @@
   "id": "ba",
   "name": "Bosnia and Herzegovina",
   "iso2": "BA",
+  "iso3": "BIH",
   "shape": "Bosnia and Herz."
  },
  {
   "id": "bb",
   "name": "Barbados",
   "iso2": "BB",
+  "iso3": "BRB",
   "shape": "Barbados"
  },
  {
   "id": "bd",
   "name": "Bangladesh",
   "iso2": "BD",
+  "iso3": "BGD",
   "shape": "Bangladesh"
  },
  {
   "id": "be",
   "name": "Belgium",
   "iso2": "BE",
+  "iso3": "BEL",
   "shape": "Belgium"
  },
  {
   "id": "bf",
   "name": "Burkina Faso",
   "iso2": "BF",
+  "iso3": "BFA",
   "shape": "Burkina Faso"
  },
  {
   "id": "bg",
   "name": "Bulgaria",
   "iso2": "BG",
+  "iso3": "BGR",
   "shape": "Bulgaria"
  },
  {
   "id": "bh",
   "name": "Bahrain",
   "iso2": "BH",
+  "iso3": "BHR",
   "shape": "Bahrain"
  },
  {
   "id": "bi",
   "name": "Burundi",
   "iso2": "BI",
+  "iso3": "BDI",
   "shape": "Burundi"
  },
  {
   "id": "bj",
   "name": "Benin",
   "iso2": "BJ",
+  "iso3": "BEN",
   "shape": "Benin"
  },
  {
   "id": "bl",
   "name": "Saint Barthélemy",
   "iso2": "BL",
+  "iso3": "BLM",
   "shape": "St-Barthélemy"
  },
  {
   "id": "bm",
   "name": "Bermuda",
   "iso2": "BM",
+  "iso3": "BMU",
   "shape": "Bermuda"
  },
  {
   "id": "bn",
   "name": "Brunei",
   "iso2": "BN",
+  "iso3": "BRN",
   "shape": "Brunei"
  },
  {
   "id": "bo",
   "name": "Bolivia",
   "iso2": "BO",
+  "iso3": "BOL",
   "shape": "Bolivia"
  },
  {
@@ -197,42 +226,49 @@
   "id": "br",
   "name": "Brazil",
   "iso2": "BR",
+  "iso3": "BRA",
   "shape": "Brazil"
  },
  {
   "id": "bs",
   "name": "Bahamas",
   "iso2": "BS",
+  "iso3": "BHS",
   "shape": "Bahamas"
  },
  {
   "id": "bt",
   "name": "Bhutan",
   "iso2": "BT",
+  "iso3": "BTN",
   "shape": "Bhutan"
  },
  {
   "id": "bw",
   "name": "Botswana",
   "iso2": "BW",
+  "iso3": "BWA",
   "shape": "Botswana"
  },
  {
   "id": "by",
   "name": "Belarus",
   "iso2": "BY",
+  "iso3": "BLR",
   "shape": "Belarus"
  },
  {
   "id": "bz",
   "name": "Belize",
   "iso2": "BZ",
+  "iso3": "BLZ",
   "shape": "Belize"
  },
  {
   "id": "ca",
   "name": "Canada",
   "iso2": "CA",
+  "iso3": "CAN",
   "shape": "Canada"
  },
  {
@@ -244,216 +280,252 @@
   "id": "cd",
   "name": "Democratic Republic of the Congo",
   "iso2": "CD",
+  "iso3": "COD",
   "shape": "Dem. Rep. Congo"
  },
  {
   "id": "cf",
   "name": "Central African Republic",
   "iso2": "CF",
+  "iso3": "CAF",
   "shape": "Central African Rep."
  },
  {
   "id": "cg",
   "name": "Republic of the Congo",
   "iso2": "CG",
+  "iso3": "COG",
   "shape": "Congo"
  },
  {
   "id": "ch",
   "name": "Switzerland",
   "iso2": "CH",
+  "iso3": "CHE",
   "shape": "Switzerland"
  },
  {
   "id": "ci",
   "name": "Côte d’Ivoire",
   "iso2": "CI",
+  "iso3": "CIV",
   "shape": "Côte d'Ivoire"
  },
  {
   "id": "ck",
   "name": "Cook Islands",
   "iso2": "CK",
+  "iso3": "COK",
   "shape": "Cook Is."
  },
  {
   "id": "cl",
   "name": "Chile",
   "iso2": "CL",
+  "iso3": "CHL",
   "shape": "Chile"
  },
  {
   "id": "cm",
   "name": "Cameroon",
   "iso2": "CM",
+  "iso3": "CMR",
   "shape": "Cameroon"
  },
  {
   "id": "cn",
   "name": "China",
   "iso2": "CN",
+  "iso3": "CHN",
   "shape": "China"
  },
  {
   "id": "co",
   "name": "Colombia",
   "iso2": "CO",
+  "iso3": "COL",
   "shape": "Colombia"
  },
  {
   "id": "cr",
   "name": "Costa Rica",
   "iso2": "CR",
+  "iso3": "CRI",
   "shape": "Costa Rica"
  },
  {
   "id": "cu",
   "name": "Cuba",
   "iso2": "CU",
+  "iso3": "CUB",
   "shape": "Cuba"
  },
  {
   "id": "cv",
   "name": "Cabo Verde",
   "iso2": "CV",
+  "iso3": "CPV",
   "shape": "Cabo Verde"
  },
  {
   "id": "cw",
   "name": "Curaçao",
   "iso2": "CW",
+  "iso3": "CUW",
   "shape": "Curaçao"
  },
  {
   "id": "cy",
   "name": "Cyprus",
   "iso2": "CY",
+  "iso3": "CYP",
   "shape": "Cyprus"
  },
  {
   "id": "cz",
   "name": "Czechia",
   "iso2": "CZ",
+  "iso3": "CZE",
   "shape": "Czechia"
  },
  {
   "id": "de",
   "name": "Germany",
   "iso2": "DE",
+  "iso3": "DEU",
   "shape": "Germany"
  },
  {
   "id": "dj",
   "name": "Djibouti",
   "iso2": "DJ",
+  "iso3": "DJI",
   "shape": "Djibouti"
  },
  {
   "id": "dk",
   "name": "Denmark",
   "iso2": "DK",
+  "iso3": "DNK",
   "shape": "Denmark"
  },
  {
   "id": "dm",
   "name": "Dominica",
   "iso2": "DM",
+  "iso3": "DMA",
   "shape": "Dominica"
  },
  {
   "id": "do",
   "name": "Dominican Republic",
   "iso2": "DO",
+  "iso3": "DOM",
   "shape": "Dominican Rep."
  },
  {
   "id": "dz",
   "name": "Algeria",
   "iso2": "DZ",
+  "iso3": "DZA",
   "shape": "Algeria"
  },
  {
   "id": "ec",
   "name": "Ecuador",
   "iso2": "EC",
+  "iso3": "ECU",
   "shape": "Ecuador"
  },
  {
   "id": "ee",
   "name": "Estonia",
   "iso2": "EE",
+  "iso3": "EST",
   "shape": "Estonia"
  },
  {
   "id": "eg",
   "name": "Egypt",
   "iso2": "EG",
+  "iso3": "EGY",
   "shape": "Egypt"
  },
  {
   "id": "eh",
   "name": "Western Sahara",
   "iso2": "EH",
+  "iso3": "ESH",
   "shape": "W. Sahara"
  },
  {
   "id": "er",
   "name": "Eritrea",
   "iso2": "ER",
+  "iso3": "ERI",
   "shape": "Eritrea"
  },
  {
   "id": "es",
   "name": "Spain",
   "iso2": "ES",
+  "iso3": "ESP",
   "shape": "Spain"
  },
  {
   "id": "et",
   "name": "Ethiopia",
   "iso2": "ET",
+  "iso3": "ETH",
   "shape": "Ethiopia"
  },
  {
   "id": "fi",
   "name": "Finland",
   "iso2": "FI",
+  "iso3": "FIN",
   "shape": "Finland"
  },
  {
   "id": "fj",
   "name": "Fiji",
   "iso2": "FJ",
+  "iso3": "FJI",
   "shape": "Fiji"
  },
  {
   "id": "fk",
   "name": "Falkland Islands",
   "iso2": "FK",
+  "iso3": "FLK",
   "shape": "Falkland Is."
  },
  {
   "id": "fm",
   "name": "Micronesia",
   "iso2": "FM",
+  "iso3": "FSM",
   "shape": "Micronesia"
  },
  {
   "id": "fo",
   "name": "Faroe Islands",
   "iso2": "FO",
+  "iso3": "FRO",
   "shape": "Faeroe Is."
  },
  {
   "id": "fr",
   "name": "France",
   "iso2": "FR",
+  "iso3": "FRA",
   "shape": "France"
  },
  {
   "id": "ga",
   "name": "Gabon",
   "iso2": "GA",
+  "iso3": "GAB",
   "shape": "Gabon"
  },
  {
@@ -465,42 +537,49 @@
   "id": "gb",
   "name": "United Kingdom",
   "iso2": "GB",
+  "iso3": "GBR",
   "shape": "United Kingdom"
  },
  {
   "id": "gd",
   "name": "Grenada",
   "iso2": "GD",
+  "iso3": "GRD",
   "shape": "Grenada"
  },
  {
   "id": "ge",
   "name": "Georgia",
   "iso2": "GE",
+  "iso3": "GEO",
   "shape": "Georgia"
  },
  {
   "id": "gf",
   "name": "French Guiana",
   "iso2": "GF",
+  "iso3": "GUF",
   "shape": "French Guiana"
  },
  {
   "id": "gg",
   "name": "Guernsey",
   "iso2": "GG",
+  "iso3": "GGY",
   "shape": "Guernsey"
  },
  {
   "id": "gh",
   "name": "Ghana",
   "iso2": "GH",
+  "iso3": "GHA",
   "shape": "Ghana"
  },
  {
   "id": "gi",
   "name": "Gibraltar",
   "iso2": "GI",
+  "iso3": "GIB",
   "point": [
    -5.35,
    36.14
@@ -510,504 +589,588 @@
   "id": "gl",
   "name": "Greenland",
   "iso2": "GL",
+  "iso3": "GRL",
   "shape": "Greenland"
  },
  {
   "id": "gm",
   "name": "Gambia",
   "iso2": "GM",
+  "iso3": "GMB",
   "shape": "Gambia"
  },
  {
   "id": "gn",
   "name": "Guinea",
   "iso2": "GN",
+  "iso3": "GIN",
   "shape": "Guinea"
  },
  {
   "id": "gp",
   "name": "Guadeloupe",
   "iso2": "GP",
+  "iso3": "GLP",
   "shape": "Guadeloupe"
  },
  {
   "id": "gq",
   "name": "Equatorial Guinea",
   "iso2": "GQ",
+  "iso3": "GNQ",
   "shape": "Eq. Guinea"
  },
  {
   "id": "gr",
   "name": "Greece",
   "iso2": "GR",
+  "iso3": "GRC",
   "shape": "Greece"
  },
  {
   "id": "gs",
   "name": "South Georgia and South Sandwich Islands",
   "iso2": "GS",
+  "iso3": "SGS",
   "shape": "S. Geo. and the Is."
  },
  {
   "id": "gt",
   "name": "Guatemala",
   "iso2": "GT",
+  "iso3": "GTM",
   "shape": "Guatemala"
  },
  {
   "id": "gu",
   "name": "Guam",
   "iso2": "GU",
+  "iso3": "GUM",
   "shape": "Guam"
  },
  {
   "id": "gw",
   "name": "Guinea-Bissau",
   "iso2": "GW",
+  "iso3": "GNB",
   "shape": "Guinea-Bissau"
  },
  {
   "id": "gy",
   "name": "Guyana",
   "iso2": "GY",
+  "iso3": "GUY",
   "shape": "Guyana"
  },
  {
   "id": "hk",
   "name": "Hong Kong",
   "iso2": "HK",
+  "iso3": "HKG",
   "shape": "Hong Kong"
  },
  {
   "id": "hm",
   "name": "Heard and McDonald Islands",
   "iso2": "HM",
+  "iso3": "HMD",
   "shape": "Heard I. and McDonald Is."
  },
  {
   "id": "hn",
   "name": "Honduras",
   "iso2": "HN",
+  "iso3": "HND",
   "shape": "Honduras"
  },
  {
   "id": "hr",
   "name": "Croatia",
   "iso2": "HR",
+  "iso3": "HRV",
   "shape": "Croatia"
  },
  {
   "id": "ht",
   "name": "Haiti",
   "iso2": "HT",
+  "iso3": "HTI",
   "shape": "Haiti"
  },
  {
   "id": "hu",
   "name": "Hungary",
   "iso2": "HU",
+  "iso3": "HUN",
   "shape": "Hungary"
  },
  {
   "id": "id",
   "name": "Indonesia",
   "iso2": "ID",
+  "iso3": "IDN",
   "shape": "Indonesia"
  },
  {
   "id": "ie",
   "name": "Ireland",
   "iso2": "IE",
+  "iso3": "IRL",
   "shape": "Ireland"
  },
  {
   "id": "il",
   "name": "Israel",
   "iso2": "IL",
+  "iso3": "ISR",
   "shape": "Israel"
  },
  {
   "id": "im",
   "name": "Isle of Man",
   "iso2": "IM",
+  "iso3": "IMN",
   "shape": "Isle of Man"
  },
  {
   "id": "in",
   "name": "India",
   "iso2": "IN",
+  "iso3": "IND",
   "shape": "India"
  },
  {
   "id": "io",
   "name": "British Indian Ocean Territory",
   "iso2": "IO",
+  "iso3": "IOT",
   "shape": "Br. Indian Ocean Ter."
  },
  {
   "id": "iq",
   "name": "Iraq",
   "iso2": "IQ",
+  "iso3": "IRQ",
   "shape": "Iraq"
  },
  {
   "id": "ir",
   "name": "Iran",
   "iso2": "IR",
+  "iso3": "IRN",
   "shape": "Iran"
  },
  {
   "id": "is",
   "name": "Iceland",
   "iso2": "IS",
+  "iso3": "ISL",
   "shape": "Iceland"
  },
  {
   "id": "it",
   "name": "Italy",
   "iso2": "IT",
+  "iso3": "ITA",
   "shape": "Italy"
  },
  {
   "id": "je",
   "name": "Jersey",
   "iso2": "JE",
+  "iso3": "JEY",
   "shape": "Jersey"
  },
  {
   "id": "jm",
   "name": "Jamaica",
   "iso2": "JM",
+  "iso3": "JAM",
   "shape": "Jamaica"
  },
  {
   "id": "jo",
   "name": "Jordan",
   "iso2": "JO",
+  "iso3": "JOR",
   "shape": "Jordan"
  },
  {
   "id": "jp",
   "name": "Japan",
   "iso2": "JP",
+  "iso3": "JPN",
   "shape": "Japan"
  },
  {
   "id": "ke",
   "name": "Kenya",
   "iso2": "KE",
+  "iso3": "KEN",
   "shape": "Kenya"
  },
  {
   "id": "kg",
   "name": "Kyrgyzstan",
   "iso2": "KG",
+  "iso3": "KGZ",
   "shape": "Kyrgyzstan"
  },
  {
   "id": "kh",
   "name": "Cambodia",
   "iso2": "KH",
+  "iso3": "KHM",
   "shape": "Cambodia"
  },
  {
   "id": "ki",
   "name": "Kiribati",
   "iso2": "KI",
+  "iso3": "KIR",
   "shape": "Kiribati"
  },
  {
   "id": "km",
   "name": "Comoros",
   "iso2": "KM",
+  "iso3": "COM",
   "shape": "Comoros"
  },
  {
   "id": "kn",
   "name": "Saint Kitts and Nevis",
   "iso2": "KN",
+  "iso3": "KNA",
   "shape": "St. Kitts and Nevis"
  },
  {
   "id": "kp",
   "name": "North Korea",
   "iso2": "KP",
+  "iso3": "PRK",
   "shape": "North Korea"
  },
  {
   "id": "kr",
   "name": "South Korea",
   "iso2": "KR",
+  "iso3": "KOR",
   "shape": "South Korea"
  },
  {
   "id": "kw",
   "name": "Kuwait",
   "iso2": "KW",
+  "iso3": "KWT",
   "shape": "Kuwait"
  },
  {
   "id": "ky",
   "name": "Cayman Islands",
   "iso2": "KY",
+  "iso3": "CYM",
   "shape": "Cayman Is."
  },
  {
   "id": "kz",
   "name": "Kazakhstan",
   "iso2": "KZ",
+  "iso3": "KAZ",
   "shape": "Kazakhstan"
  },
  {
   "id": "la",
   "name": "Laos",
   "iso2": "LA",
+  "iso3": "LAO",
   "shape": "Laos"
  },
  {
   "id": "lb",
   "name": "Lebanon",
   "iso2": "LB",
+  "iso3": "LBN",
   "shape": "Lebanon"
  },
  {
   "id": "lc",
   "name": "Saint Lucia",
   "iso2": "LC",
+  "iso3": "LCA",
   "shape": "Saint Lucia"
  },
  {
   "id": "li",
   "name": "Liechtenstein",
   "iso2": "LI",
+  "iso3": "LIE",
   "shape": "Liechtenstein"
  },
  {
   "id": "lk",
   "name": "Sri Lanka",
   "iso2": "LK",
+  "iso3": "LKA",
   "shape": "Sri Lanka"
  },
  {
   "id": "lr",
   "name": "Liberia",
   "iso2": "LR",
+  "iso3": "LBR",
   "shape": "Liberia"
  },
  {
   "id": "ls",
   "name": "Lesotho",
   "iso2": "LS",
+  "iso3": "LSO",
   "shape": "Lesotho"
  },
  {
   "id": "lt",
   "name": "Lithuania",
   "iso2": "LT",
+  "iso3": "LTU",
   "shape": "Lithuania"
  },
  {
   "id": "lu",
   "name": "Luxembourg",
   "iso2": "LU",
+  "iso3": "LUX",
   "shape": "Luxembourg"
  },
  {
   "id": "lv",
   "name": "Latvia",
   "iso2": "LV",
+  "iso3": "LVA",
   "shape": "Latvia"
  },
  {
   "id": "ly",
   "name": "Libya",
   "iso2": "LY",
+  "iso3": "LBY",
   "shape": "Libya"
  },
  {
   "id": "ma",
   "name": "Morocco",
   "iso2": "MA",
+  "iso3": "MAR",
   "shape": "Morocco"
  },
  {
   "id": "mc",
   "name": "Monaco",
   "iso2": "MC",
+  "iso3": "MCO",
   "shape": "Monaco"
  },
  {
   "id": "md",
   "name": "Moldova",
   "iso2": "MD",
+  "iso3": "MDA",
   "shape": "Moldova"
  },
  {
   "id": "me",
   "name": "Montenegro",
   "iso2": "ME",
+  "iso3": "MNE",
   "shape": "Montenegro"
  },
  {
   "id": "mf",
   "name": "Saint Martin",
   "iso2": "MF",
+  "iso3": "MAF",
   "shape": "St-Martin"
  },
  {
   "id": "mg",
   "name": "Madagascar",
   "iso2": "MG",
+  "iso3": "MDG",
   "shape": "Madagascar"
  },
  {
   "id": "mh",
   "name": "Marshall Islands",
   "iso2": "MH",
+  "iso3": "MHL",
   "shape": "Marshall Is."
  },
  {
   "id": "mk",
   "name": "North Macedonia",
   "iso2": "MK",
+  "iso3": "MKD",
   "shape": "Macedonia"
  },
  {
   "id": "ml",
   "name": "Mali",
   "iso2": "ML",
+  "iso3": "MLI",
   "shape": "Mali"
  },
  {
   "id": "mm",
   "name": "Myanmar",
   "iso2": "MM",
+  "iso3": "MMR",
   "shape": "Myanmar"
  },
  {
   "id": "mn",
   "name": "Mongolia",
   "iso2": "MN",
+  "iso3": "MNG",
   "shape": "Mongolia"
  },
  {
   "id": "mo",
   "name": "Macau",
   "iso2": "MO",
+  "iso3": "MAC",
   "shape": "Macao"
  },
  {
   "id": "mp",
   "name": "Northern Mariana Islands",
   "iso2": "MP",
+  "iso3": "MNP",
   "shape": "N. Mariana Is."
  },
  {
   "id": "mq",
   "name": "Martinique",
   "iso2": "MQ",
+  "iso3": "MTQ",
   "shape": "Martinique"
  },
  {
   "id": "mr",
   "name": "Mauritania",
   "iso2": "MR",
+  "iso3": "MRT",
   "shape": "Mauritania"
  },
  {
   "id": "ms",
   "name": "Montserrat",
   "iso2": "MS",
+  "iso3": "MSR",
   "shape": "Montserrat"
  },
  {
   "id": "mt",
   "name": "Malta",
   "iso2": "MT",
+  "iso3": "MLT",
   "shape": "Malta"
  },
  {
   "id": "mu",
   "name": "Mauritius",
   "iso2": "MU",
+  "iso3": "MUS",
   "shape": "Mauritius"
  },
  {
   "id": "mv",
   "name": "Maldives",
   "iso2": "MV",
+  "iso3": "MDV",
   "shape": "Maldives"
  },
  {
   "id": "mw",
   "name": "Malawi",
   "iso2": "MW",
+  "iso3": "MWI",
   "shape": "Malawi"
  },
  {
   "id": "mx",
   "name": "Mexico",
   "iso2": "MX",
+  "iso3": "MEX",
   "shape": "Mexico"
  },
  {
   "id": "my",
   "name": "Malaysia",
   "iso2": "MY",
+  "iso3": "MYS",
   "shape": "Malaysia"
  },
  {
   "id": "mz",
   "name": "Mozambique",
   "iso2": "MZ",
+  "iso3": "MOZ",
   "shape": "Mozambique"
  },
  {
   "id": "na",
   "name": "Namibia",
   "iso2": "NA",
+  "iso3": "NAM",
   "shape": "Namibia"
  },
  {
   "id": "nc",
   "name": "New Caledonia",
   "iso2": "NC",
+  "iso3": "NCL",
   "shape": "New Caledonia"
  },
  {
   "id": "ne",
   "name": "Niger",
   "iso2": "NE",
+  "iso3": "NER",
   "shape": "Niger"
  },
  {
   "id": "nf",
   "name": "Norfolk Island",
   "iso2": "NF",
+  "iso3": "NFK",
   "shape": "Norfolk Island"
  },
  {
   "id": "ng",
   "name": "Nigeria",
   "iso2": "NG",
+  "iso3": "NGA",
   "shape": "Nigeria"
  },
  {
   "id": "ni",
   "name": "Nicaragua",
   "iso2": "NI",
+  "iso3": "NIC",
   "shape": "Nicaragua"
  },
  {
   "id": "nl",
   "name": "Netherlands",
   "iso2": "NL",
+  "iso3": "NLD",
   "shape": "Netherlands"
  },
  {
   "id": "no",
   "name": "Norway",
   "iso2": "NO",
+  "iso3": "NOR",
   "shape": "Norway"
  },
  {
@@ -1019,150 +1182,175 @@
   "id": "np",
   "name": "Nepal",
   "iso2": "NP",
+  "iso3": "NPL",
   "shape": "Nepal"
  },
  {
   "id": "nr",
   "name": "Nauru",
   "iso2": "NR",
+  "iso3": "NRU",
   "shape": "Nauru"
  },
  {
   "id": "nu",
   "name": "Niue",
   "iso2": "NU",
+  "iso3": "NIU",
   "shape": "Niue"
  },
  {
   "id": "nz",
   "name": "New Zealand",
   "iso2": "NZ",
+  "iso3": "NZL",
   "shape": "New Zealand"
  },
  {
   "id": "om",
   "name": "Oman",
   "iso2": "OM",
+  "iso3": "OMN",
   "shape": "Oman"
  },
  {
   "id": "pa",
   "name": "Panama",
   "iso2": "PA",
+  "iso3": "PAN",
   "shape": "Panama"
  },
  {
   "id": "pe",
   "name": "Peru",
   "iso2": "PE",
+  "iso3": "PER",
   "shape": "Peru"
  },
  {
   "id": "pf",
   "name": "French Polynesia",
   "iso2": "PF",
+  "iso3": "PYF",
   "shape": "Fr. Polynesia"
  },
  {
   "id": "pg",
   "name": "Papua New Guinea",
   "iso2": "PG",
+  "iso3": "PNG",
   "shape": "Papua New Guinea"
  },
  {
   "id": "ph",
   "name": "Philippines",
   "iso2": "PH",
+  "iso3": "PHL",
   "shape": "Philippines"
  },
  {
   "id": "pk",
   "name": "Pakistan",
   "iso2": "PK",
+  "iso3": "PAK",
   "shape": "Pakistan"
  },
  {
   "id": "pl",
   "name": "Poland",
   "iso2": "PL",
+  "iso3": "POL",
   "shape": "Poland"
  },
  {
   "id": "pm",
   "name": "Saint Pierre and Miquelon",
   "iso2": "PM",
+  "iso3": "SPM",
   "shape": "St. Pierre and Miquelon"
  },
  {
   "id": "pn",
   "name": "Pitcairn Islands",
   "iso2": "PN",
+  "iso3": "PCN",
   "shape": "Pitcairn Is."
  },
  {
   "id": "pr",
   "name": "Puerto Rico",
   "iso2": "PR",
+  "iso3": "PRI",
   "shape": "Puerto Rico"
  },
  {
   "id": "pt",
   "name": "Portugal",
   "iso2": "PT",
+  "iso3": "PRT",
   "shape": "Portugal"
  },
  {
   "id": "pw",
   "name": "Palau",
   "iso2": "PW",
+  "iso3": "PLW",
   "shape": "Palau"
  },
  {
   "id": "py",
   "name": "Paraguay",
   "iso2": "PY",
+  "iso3": "PRY",
   "shape": "Paraguay"
  },
  {
   "id": "qa",
   "name": "Qatar",
   "iso2": "QA",
+  "iso3": "QAT",
   "shape": "Qatar"
  },
  {
   "id": "re",
   "name": "Réunion",
   "iso2": "RE",
+  "iso3": "REU",
   "shape": "Réunion"
  },
  {
   "id": "ro",
   "name": "Romania",
   "iso2": "RO",
+  "iso3": "ROU",
   "shape": "Romania"
  },
  {
   "id": "rs",
   "name": "Serbia",
   "iso2": "RS",
+  "iso3": "SRB",
   "shape": "Serbia"
  },
  {
   "id": "ru",
   "name": "Russia",
   "iso2": "RU",
+  "iso3": "RUS",
   "shape": "Russia"
  },
  {
   "id": "rw",
   "name": "Rwanda",
   "iso2": "RW",
+  "iso3": "RWA",
   "shape": "Rwanda"
  },
  {
   "id": "sa",
   "name": "Saudi Arabia",
   "iso2": "SA",
+  "iso3": "SAU",
   "shape": "Saudi Arabia"
  },
  {
@@ -1174,42 +1362,49 @@
   "id": "sb",
   "name": "Solomon Islands",
   "iso2": "SB",
+  "iso3": "SLB",
   "shape": "Solomon Is."
  },
  {
   "id": "sc",
   "name": "Seychelles",
   "iso2": "SC",
+  "iso3": "SYC",
   "shape": "Seychelles"
  },
  {
   "id": "sd",
   "name": "Sudan",
   "iso2": "SD",
+  "iso3": "SDN",
   "shape": "Sudan"
  },
  {
   "id": "se",
   "name": "Sweden",
   "iso2": "SE",
+  "iso3": "SWE",
   "shape": "Sweden"
  },
  {
   "id": "sg",
   "name": "Singapore",
   "iso2": "SG",
+  "iso3": "SGP",
   "shape": "Singapore"
  },
  {
   "id": "sh",
   "name": "Saint Helena",
   "iso2": "SH",
+  "iso3": "SHN",
   "shape": "Saint Helena"
  },
  {
   "id": "si",
   "name": "Slovenia",
   "iso2": "SI",
+  "iso3": "SVN",
   "shape": "Slovenia"
  },
  {
@@ -1221,30 +1416,35 @@
   "id": "sk",
   "name": "Slovakia",
   "iso2": "SK",
+  "iso3": "SVK",
   "shape": "Slovakia"
  },
  {
   "id": "sl",
   "name": "Sierra Leone",
   "iso2": "SL",
+  "iso3": "SLE",
   "shape": "Sierra Leone"
  },
  {
   "id": "sm",
   "name": "San Marino",
   "iso2": "SM",
+  "iso3": "SMR",
   "shape": "San Marino"
  },
  {
   "id": "sn",
   "name": "Senegal",
   "iso2": "SN",
+  "iso3": "SEN",
   "shape": "Senegal"
  },
  {
   "id": "so",
   "name": "Somalia",
   "iso2": "SO",
+  "iso3": "SOM",
   "shape": "Somalia"
  },
  {
@@ -1256,84 +1456,98 @@
   "id": "sr",
   "name": "Suriname",
   "iso2": "SR",
+  "iso3": "SUR",
   "shape": "Suriname"
  },
  {
   "id": "ss",
   "name": "South Sudan",
   "iso2": "SS",
+  "iso3": "SSD",
   "shape": "S. Sudan"
  },
  {
   "id": "st",
   "name": "São Tomé and Príncipe",
   "iso2": "ST",
+  "iso3": "STP",
   "shape": "São Tomé and Principe"
  },
  {
   "id": "sv",
   "name": "El Salvador",
   "iso2": "SV",
+  "iso3": "SLV",
   "shape": "El Salvador"
  },
  {
   "id": "sx",
   "name": "Sint Maarten",
   "iso2": "SX",
+  "iso3": "SXM",
   "shape": "Sint Maarten"
  },
  {
   "id": "sy",
   "name": "Syria",
   "iso2": "SY",
+  "iso3": "SYR",
   "shape": "Syria"
  },
  {
   "id": "sz",
   "name": "Eswatini",
   "iso2": "SZ",
+  "iso3": "SWZ",
   "shape": "eSwatini"
  },
  {
   "id": "tc",
   "name": "Turks and Caicos Islands",
   "iso2": "TC",
+  "iso3": "TCA",
   "shape": "Turks and Caicos Is."
  },
  {
   "id": "td",
   "name": "Chad",
   "iso2": "TD",
+  "iso3": "TCD",
   "shape": "Chad"
  },
  {
   "id": "tf",
   "name": "French Southern and Antarctic Lands",
   "iso2": "TF",
+  "iso3": "ATF",
   "shape": "Fr. S. Antarctic Lands"
  },
  {
   "id": "tg",
   "name": "Togo",
   "iso2": "TG",
+  "iso3": "TGO",
   "shape": "Togo"
  },
  {
   "id": "th",
   "name": "Thailand",
   "iso2": "TH",
+  "iso3": "THA",
   "shape": "Thailand"
  },
  {
   "id": "tj",
   "name": "Tajikistan",
   "iso2": "TJ",
+  "iso3": "TJK",
   "shape": "Tajikistan"
  },
  {
   "id": "tk",
   "name": "Tokelau",
   "iso2": "TK",
+  "iso3": "TKL",
   "point": [
    -171.85,
    -9.2
@@ -1343,42 +1557,49 @@
   "id": "tl",
   "name": "Timor-Leste",
   "iso2": "TL",
+  "iso3": "TLS",
   "shape": "Timor-Leste"
  },
  {
   "id": "tm",
   "name": "Turkmenistan",
   "iso2": "TM",
+  "iso3": "TKM",
   "shape": "Turkmenistan"
  },
  {
   "id": "tn",
   "name": "Tunisia",
   "iso2": "TN",
+  "iso3": "TUN",
   "shape": "Tunisia"
  },
  {
   "id": "to",
   "name": "Tonga",
   "iso2": "TO",
+  "iso3": "TON",
   "shape": "Tonga"
  },
  {
   "id": "tr",
   "name": "Türkiye",
   "iso2": "TR",
+  "iso3": "TUR",
   "shape": "Turkey"
  },
  {
   "id": "tt",
   "name": "Trinidad and Tobago",
   "iso2": "TT",
+  "iso3": "TTO",
   "shape": "Trinidad and Tobago"
  },
  {
   "id": "tv",
   "name": "Tuvalu",
   "iso2": "TV",
+  "iso3": "TUV",
   "point": [
    179.2,
    -8.5
@@ -1388,84 +1609,98 @@
   "id": "tw",
   "name": "Taiwan",
   "iso2": "TW",
+  "iso3": "TWN",
   "shape": "Taiwan"
  },
  {
   "id": "tz",
   "name": "Tanzania",
   "iso2": "TZ",
+  "iso3": "TZA",
   "shape": "Tanzania"
  },
  {
   "id": "ua",
   "name": "Ukraine",
   "iso2": "UA",
+  "iso3": "UKR",
   "shape": "Ukraine"
  },
  {
   "id": "ug",
   "name": "Uganda",
   "iso2": "UG",
+  "iso3": "UGA",
   "shape": "Uganda"
  },
  {
   "id": "us",
   "name": "United States",
   "iso2": "US",
+  "iso3": "USA",
   "shape": "United States of America"
  },
  {
   "id": "uy",
   "name": "Uruguay",
   "iso2": "UY",
+  "iso3": "URY",
   "shape": "Uruguay"
  },
  {
   "id": "uz",
   "name": "Uzbekistan",
   "iso2": "UZ",
+  "iso3": "UZB",
   "shape": "Uzbekistan"
  },
  {
   "id": "va",
   "name": "Vatican City",
   "iso2": "VA",
+  "iso3": "VAT",
   "shape": "Vatican"
  },
  {
   "id": "vc",
   "name": "Saint Vincent and the Grenadines",
   "iso2": "VC",
+  "iso3": "VCT",
   "shape": "St. Vin. and Gren."
  },
  {
   "id": "ve",
   "name": "Venezuela",
   "iso2": "VE",
+  "iso3": "VEN",
   "shape": "Venezuela"
  },
  {
   "id": "vg",
   "name": "British Virgin Islands",
   "iso2": "VG",
+  "iso3": "VGB",
   "shape": "British Virgin Is."
  },
  {
   "id": "vi",
   "name": "U.S. Virgin Islands",
   "iso2": "VI",
+  "iso3": "VIR",
   "shape": "U.S. Virgin Is."
  },
  {
   "id": "vn",
   "name": "Vietnam",
   "iso2": "VN",
+  "iso3": "VNM",
   "shape": "Vietnam"
  },
  {
   "id": "vu",
   "name": "Vanuatu",
   "iso2": "VU",
+  "iso3": "VUT",
   "shape": "Vanuatu"
  },
  {
@@ -1477,48 +1712,56 @@
   "id": "wf",
   "name": "Wallis and Futuna",
   "iso2": "WF",
+  "iso3": "WLF",
   "shape": "Wallis and Futuna Is."
  },
  {
   "id": "ws",
   "name": "Samoa",
   "iso2": "WS",
+  "iso3": "WSM",
   "shape": "Samoa"
  },
  {
   "id": "xk",
   "name": "Kosovo",
   "iso2": "XK",
+  "iso3": "XKX",
   "shape": "Kosovo"
  },
  {
   "id": "ye",
   "name": "Yemen",
   "iso2": "YE",
+  "iso3": "YEM",
   "shape": "Yemen"
  },
  {
   "id": "yt",
   "name": "Mayotte",
   "iso2": "YT",
+  "iso3": "MYT",
   "shape": "Mayotte"
  },
  {
   "id": "za",
   "name": "South Africa",
   "iso2": "ZA",
+  "iso3": "ZAF",
   "shape": "South Africa"
  },
  {
   "id": "zm",
   "name": "Zambia",
   "iso2": "ZM",
+  "iso3": "ZMB",
   "shape": "Zambia"
  },
  {
   "id": "zw",
   "name": "Zimbabwe",
   "iso2": "ZW",
+  "iso3": "ZWE",
   "shape": "Zimbabwe"
  }
 ]

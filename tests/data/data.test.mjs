@@ -36,6 +36,8 @@ describe('place registry', () => {
       assert.ok(p.name, p.id);
       assert.ok(p.shape || p.point, p.id);
       if (p.iso2) assert.match(p.iso2, /^[A-Z]{2}$/, p.id);
+      if (p.iso2) assert.match(p.iso3 ?? '', /^[A-Z]{3}$/, `${p.id}: every ISO place also has its alpha-3 code`);
+      if (p.iso3) assert.ok(p.iso2, `${p.id}: iso3 without iso2`);
     }
   });
   test('includes every shape the map splits out', () => {

@@ -12,27 +12,34 @@ import { nameKey } from './text.mjs';
 
 // ---- places
 
-/** Lookups over the place registry: by id, and by spelling-insensitive name or map shape. */
+/**
+ * Lookups over the place registry: by id, by ISO code (alpha-2 or alpha-3), and by
+ * spelling-insensitive name or map shape.
+ */
 export function placeIndex(places) {
   const byId = new Map(places.map(p => [p.id, p]));
   const byKey = new Map();
+  const byCode = new Map();
   for (const p of places) {
     byKey.set(nameKey(p.name), p.id);
     if (p.shape) byKey.set(nameKey(p.shape), p.id);
+    if (p.iso2) byCode.set(p.iso2, p.id);
+    if (p.iso3) byCode.set(p.iso3, p.id);
   }
-  return { byId, byKey };
+  return { byId, byKey, byCode };
 }
 
 /**
- * Which places a provider's advisory title refers to.
- * Order: the provider's list-only entries, its explicit aliases, then an automatic match
- * on the place's name or map shape name. Returns null if nothing matches.
+ * Which places a provider's advisory refers to, from its title and (optional) country code.
+ * Order: the provider's list-only entries and title aliases, its code aliases (for codes
+ * that aren't a single place, e.g. "PSE" or "BQ-SA"), then automatic matches on the ISO
+ * code and on the place's name or map shape name. Returns null if nothing matches.
  */
-export function resolvePlaces(title, providerConfig, index) {
+export function resolvePlaces(title, providerConfig, index, code) {
   if (providerConfig.listOnly?.[title]) return { places: [], noteKey: providerConfig.listOnly[title] };
-  const alias = providerConfig.aliases?.[title];
+  const alias = providerConfig.aliases?.[title] ?? (code && providerConfig.codes?.[code]);
   if (alias) return { places: [].concat(alias) };
-  const id = index.byKey.get(nameKey(title));
+  const id = (code && index.byCode.get(code.toUpperCase())) || index.byKey.get(nameKey(title));
   return id ? { places: [id] } : null;
 }
 
@@ -110,7 +117,7 @@ export function buildProvider({ datasetId, config, snapshot, minorChange, minorC
 
   const records = [];
   for (const e of snapshot.entries) {
-    const resolved = resolvePlaces(e.name, config, index);
+    const resolved = resolvePlaces(e.name, config, index, e.iso);
     if (!resolved) { problems.push(`${tag} No place for "${e.name}": add it to aliases in config/providers/${config.id}.json`); continue; }
     for (const id of resolved.places) if (!index.byId.has(id)) problems.push(`${tag} "${e.name}" maps to unknown place "${id}"`);
     records.push({

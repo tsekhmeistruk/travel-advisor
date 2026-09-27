@@ -1,0 +1,31 @@
+{
+ "id": "nl",
+ "dataset": "travel-advisories",
+ "flag": "nl",
+ "links": {
+  "list": "https://www.nederlandwereldwijd.nl/reisadvies"
+ },
+ "home": "nl",
+ "territories": [],
+ "coveredBy": {
+  "somaliland": "Somalië",
+  "northern-cyprus": "Cyprus",
+  "ax": "Finland",
+  "azores": "Portugal",
+  "canary-islands": "Spanje",
+  "yt": "Frankrijk"
+ },
+ "listOnly": {
+  "Spitsbergen (Svalbard)": "svalbard"
+ },
+ "codes": {
+  "PSE": [
+   "gaza",
+   "west-bank"
+  ],
+  "BQ-BO": "bonaire",
+  "BQ-SA": "saba-and-sint-eustatius",
+  "BQ-SE": "saba-and-sint-eustatius"
+ },
+ "aliases": {}
+}

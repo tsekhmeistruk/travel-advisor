@@ -4,8 +4,9 @@
 
 import us from './us/index.mjs';
 import ca from './ca/index.mjs';
+import nl from './nl/index.mjs';
 
-export const PROVIDERS = { us, ca };
+export const PROVIDERS = { us, ca, nl };
 
 export function getProvider(id) {
   const p = PROVIDERS[id];

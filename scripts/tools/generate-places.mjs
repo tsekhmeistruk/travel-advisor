@@ -8,6 +8,7 @@
 //           ISO territory, otherwise a slug of the English name
 //   name  - English display name (other languages come from the browser via iso2)
 //   iso2  - ISO 3166-1 alpha-2 code, only when the place *is* that territory
+//   iso3  - the matching alpha-3 code (some sources, e.g. the Netherlands, use these)
 //   shape - name of the map shape that draws it; point - [lon, lat] for places too small
 //           for the base map
 //
@@ -61,6 +62,8 @@ const englishNames = new Intl.DisplayNames(['en'], { type: 'region' });
 function englishName(iso2) {
   return (NAME_OVERRIDES[iso2] ?? englishNames.of(iso2)).replace(/ & /g, ' and ').replace(/^St\. /, 'Saint ');
 }
+// Kosovo's XK is user-assigned; sources use XKX for it.
+const alpha3 = (iso2) => (iso2 === 'XK' ? 'XKX' : countries.alpha2ToAlpha3(iso2));
 const slug = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 const topo = JSON.parse(readFileSync(new URL('site/data/geo/countries-50m.json', root), 'utf8'));
@@ -75,10 +78,10 @@ for (const f of features) {
   if (shape in NO_ID_NAMES) iso2 = undefined;
   const name = iso2 ? englishName(iso2) : (NO_ID_NAMES[shape] ?? shape);
   if (iso2) usedIso.add(iso2);
-  places.push({ id: iso2 ? iso2.toLowerCase() : slug(name), name, ...(iso2 && { iso2 }), shape });
+  places.push({ id: iso2 ? iso2.toLowerCase() : slug(name), name, ...(iso2 && { iso2, iso3: alpha3(iso2) }), shape });
 }
 for (const { iso2, point } of POINT_PLACES) {
-  places.push({ id: iso2.toLowerCase(), name: englishName(iso2), iso2, point });
+  places.push({ id: iso2.toLowerCase(), name: englishName(iso2), iso2, iso3: alpha3(iso2), point });
 }
 
 places.sort((a, b) => a.id.localeCompare(b.id));

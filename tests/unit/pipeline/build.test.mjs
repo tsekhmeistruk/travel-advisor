@@ -35,6 +35,25 @@ describe('resolvePlaces', () => {
   test('matches the map shape name too', () => assert.deepEqual(resolvePlaces('Dem. Rep. Congo', CONFIG, index), { places: ['cd'] }));
   test('returns list-only entries with their note key', () => assert.deepEqual(resolvePlaces('French West Indies', CONFIG, index), { places: [], noteKey: 'frenchWestIndies' }));
   test('returns null for an unknown title', () => assert.equal(resolvePlaces('Atlantis', CONFIG, index), null));
+
+  describe('by country code', () => {
+    const coded = placeIndex([...PLACES.map(p => (p.iso2 ? { ...p, iso3: { FR: 'FRA', MM: 'MMR', SO: 'SOM', CD: 'COD', IL: 'ISR', US: 'USA', TV: 'TUV' }[p.iso2] } : p))]);
+    const cfg = { id: 'nl', codes: { PSE: ['gaza', 'west-bank'] }, aliases: { 'Birma (Myanmar)': 'mm' } };
+    test('matches ISO alpha-2 and alpha-3 codes, whatever the title says', () => {
+      assert.deepEqual(resolvePlaces('Frankrijk', cfg, coded, 'FRA'), { places: ['fr'] });
+      assert.deepEqual(resolvePlaces('Frankrijk', cfg, coded, 'fr'), { places: ['fr'] });
+    });
+    test('uses code aliases for codes that are not one place', () => {
+      assert.deepEqual(resolvePlaces('Palestijnse Gebieden', cfg, coded, 'PSE'), { places: ['gaza', 'west-bank'] });
+    });
+    test('a title alias wins over the code', () => {
+      assert.deepEqual(resolvePlaces('Birma (Myanmar)', cfg, coded, 'XXX'), { places: ['mm'] });
+    });
+    test('falls back to the name when the code is unknown', () => {
+      assert.deepEqual(resolvePlaces('Somalia', cfg, coded, 'ZZZ'), { places: ['so'] });
+      assert.equal(resolvePlaces('Nergensland', cfg, coded, 'ZZZ'), null);
+    });
+  });
 });
 
 describe('checkPlaces', () => {

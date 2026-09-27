@@ -88,6 +88,18 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **Feed names and URLs match the table's exactly.** History and aliases depend on this, and a unit test checks it.
 - Canada's single "Israel and Palestine" advisory covers three places: `il`, `gaza` and `west-bank`.
 
+**Netherlands** comes from the Ministry of Foreign Affairs' open-data API v2 (`opendata.nederlandwereldwijd.nl`, CC0), in `providers/nl/`.
+- **Paging:** the advisory list has pages of at most 200 (`rows`, `offset`), so there are about 226 advisories over 2 requests.
+- **No level field:** `classification` "is no longer supported", and the map endpoints return PNGs only. `levelFromSummary()` reads the colour code (groen, geel, oranje, rood → 1–4) from the Dutch summary. The rules, in order:
+  1. a single colour;
+  2. the "(voor) de rest van …" baseline;
+  3. an explicit whole-country statement ("voor X is [voor het grootste deel] rood.");
+  4. otherwise the most severe colour, logged as `severestFallback` (Iraq and the Palestinian territories today).
+- **The summaries contain typos,** e.g. "Vor de rest van Marokko". Match loosely, and add every case like this as a regression test.
+- **Because levels come from prose,** the shared merge (`lib/merge.mjs`) applies a level change only when a later day confirms it.
+- **Names are Dutch** ("IJsland"), so matching is by the ISO alpha-3 code (`iso3` in the place registry). Special codes are in `config/providers/nl.json` → `codes`: `PSE` covers Gaza and the West Bank; `BQ-BO`, `BQ-SA` and `BQ-SE` are Caribbean Netherlands; `SJM` (Svalbard) is list-only. Kosovo is `XKX`.
+- **No "what changed" notes:** the `modifications` field is a generic sentence.
+
 ## Verifying changes
 
 - **Before every push,** use the **`verify-site`** skill, or run:

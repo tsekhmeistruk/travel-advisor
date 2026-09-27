@@ -36,6 +36,12 @@
      "flag": "ca",
      "asOf": "2026-09-27",
      "file": "travel-advisories/ca.json"
+    },
+    {
+     "id": "nl",
+     "flag": "nl",
+     "asOf": "2026-09-27",
+     "file": "travel-advisories/nl.json"
     }
    ]
   }

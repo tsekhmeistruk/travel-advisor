@@ -424,7 +424,8 @@ h1, h2 { margin: 0; }
 }
 .fresh::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-.details .link { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 500; }
+/* One line (fixed-height card): a long domain is shortened with "…"; the full URL is in the title. */
+.details .link { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 500; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* Overview (nothing hovered) */
 .stack { display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin: 10px 0 12px; gap: 2px; }
@@ -527,6 +528,8 @@ h1, h2 { margin: 0; }
   .legend { left: 16px; right: 16px; bottom: 12px; gap: 4px 10px; font-size: 11px; }
   .map-controls { top: 12px; left: 12px; }
   .source-toggle { top: 12px; left: auto; right: 12px; transform: none; }
-  .source-toggle button { min-width: 0; padding: 6px 11px; font-size: 12.5px; }
+  .source-toggle button { min-width: 0; padding: 7px 12px; font-size: 12.5px; }
+  /* Flags only, so several providers fit beside the zoom controls; names stay in title/aria-label. */
+  .source-toggle button span { display: none; }
   .tooltip { display: none; }
 }

@@ -69,7 +69,7 @@
     "levelChangeTitle": "Level {from} → {to} on {date}",
     "regional": "Regional advisories",
     "regionalTitle": "Some areas of this destination have a different, often higher, risk level",
-    "readMore": "Read the advisory on {host} ↗"
+    "readMore": "Official advisory: {host} ↗"
    },
    "none": {
     "eyebrow": "No advisory",
@@ -163,6 +163,36 @@
       }
      },
      "notes": {}
+    },
+    "nl": {
+     "name": "Netherlands",
+     "short": "Netherlands",
+     "agency": "Dutch Ministry of Foreign Affairs",
+     "levels": {
+      "1": {
+       "name": "Green: you can travel here",
+       "short": "Green",
+       "desc": "There are no special safety risks beyond the usual ones for travel."
+      },
+      "2": {
+       "name": "Yellow: be aware of safety risks",
+       "short": "Yellow",
+       "desc": "You can travel here, but there are specific safety risks to be aware of."
+      },
+      "3": {
+       "name": "Orange: essential travel only",
+       "short": "Orange",
+       "desc": "Only travel here if it is necessary. It is not safe to go on holiday."
+      },
+      "4": {
+       "name": "Red: do not travel",
+       "short": "Red",
+       "desc": "Whatever your situation, do not travel here. It is too dangerous."
+      }
+     },
+     "notes": {
+      "svalbard": "Svalbard is part of Norway on the map, which shows Norway's own advice."
+     }
     }
    }
   }

@@ -1,0 +1,2136 @@
+{
+ "dataset": "travel-advisories",
+ "provider": "nl",
+ "asOf": "2026-09-27",
+ "source": "https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice",
+ "links": {
+  "list": "https://www.nederlandwereldwijd.nl/reisadvies"
+ },
+ "home": "nl",
+ "territories": [],
+ "records": [
+  {
+   "title": "Afghanistan",
+   "level": 4,
+   "updated": "2026-04-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/afghanistan",
+   "places": [
+    "af"
+   ]
+  },
+  {
+   "title": "Albanië",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/albanie",
+   "places": [
+    "al"
+   ]
+  },
+  {
+   "title": "Algerije",
+   "level": 2,
+   "updated": "2026-07-31",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/algerije",
+   "regional": true,
+   "places": [
+    "dz"
+   ]
+  },
+  {
+   "title": "Amerikaans-Samoa",
+   "level": 1,
+   "updated": "2026-04-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/amerikaans-samoa",
+   "places": [
+    "as"
+   ]
+  },
+  {
+   "title": "Amerikaanse Maagdeneilanden",
+   "level": 1,
+   "updated": "2026-06-12",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/amerikaanse-maagdeneilanden",
+   "places": [
+    "vi"
+   ]
+  },
+  {
+   "title": "Andorra",
+   "level": 1,
+   "updated": "2026-07-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/andorra",
+   "places": [
+    "ad"
+   ]
+  },
+  {
+   "title": "Angola",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/angola",
+   "regional": true,
+   "places": [
+    "ao"
+   ]
+  },
+  {
+   "title": "Anguilla",
+   "level": 1,
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/anguilla",
+   "places": [
+    "ai"
+   ]
+  },
+  {
+   "title": "Antarctica",
+   "level": 2,
+   "updated": "2026-08-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/antarctica",
+   "places": [
+    "aq"
+   ]
+  },
+  {
+   "title": "Antigua en Barbuda",
+   "level": 1,
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/antigua-en-barbuda",
+   "places": [
+    "ag"
+   ]
+  },
+  {
+   "title": "Argentinië",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/argentinie",
+   "places": [
+    "ar"
+   ]
+  },
+  {
+   "title": "Armenië",
+   "level": 2,
+   "updated": "2026-08-12",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/armenie",
+   "regional": true,
+   "places": [
+    "am"
+   ]
+  },
+  {
+   "title": "Aruba",
+   "level": 1,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/aruba",
+   "places": [
+    "aw"
+   ]
+  },
+  {
+   "title": "Australië",
+   "level": 1,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/australie",
+   "places": [
+    "au"
+   ]
+  },
+  {
+   "title": "Azerbeidzjan",
+   "level": 2,
+   "updated": "2026-09-03",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/azerbeidzjan",
+   "regional": true,
+   "places": [
+    "az"
+   ]
+  },
+  {
+   "title": "Bahama's",
+   "level": 2,
+   "updated": "2026-06-12",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bahamas",
+   "places": [
+    "bs"
+   ]
+  },
+  {
+   "title": "Bahrein",
+   "level": 4,
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bahrein",
+   "places": [
+    "bh"
+   ]
+  },
+  {
+   "title": "Bangladesh",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bangladesh",
+   "regional": true,
+   "places": [
+    "bd"
+   ]
+  },
+  {
+   "title": "Barbados",
+   "level": 1,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/barbados",
+   "places": [
+    "bb"
+   ]
+  },
+  {
+   "title": "Belarus (Wit-Rusland)",
+   "level": 3,
+   "updated": "2026-08-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/belarus-wit-rusland",
+   "regional": true,
+   "places": [
+    "by"
+   ]
+  },
+  {
+   "title": "België",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/belgie",
+   "places": [
+    "be"
+   ]
+  },
+  {
+   "title": "Belize",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/belize",
+   "places": [
+    "bz"
+   ]
+  },
+  {
+   "title": "Benin",
+   "level": 2,
+   "updated": "2026-07-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/benin",
+   "regional": true,
+   "places": [
+    "bj"
+   ]
+  },
+  {
+   "title": "Bhutan",
+   "level": 1,
+   "updated": "2026-06-04",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bhutan",
+   "places": [
+    "bt"
+   ]
+  },
+  {
+   "title": "Bolivia",
+   "level": 2,
+   "updated": "2026-07-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bolivia",
+   "regional": true,
+   "places": [
+    "bo"
+   ]
+  },
+  {
+   "title": "Bonaire",
+   "level": 1,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bonaire",
+   "places": [
+    "bonaire"
+   ]
+  },
+  {
+   "title": "Bosnië en Herzegovina",
+   "level": 1,
+   "updated": "2026-06-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bosnie-en-herzegovina",
+   "places": [
+    "ba"
+   ]
+  },
+  {
+   "title": "Botswana",
+   "level": 2,
+   "updated": "2026-07-01",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/botswana",
+   "places": [
+    "bw"
+   ]
+  },
+  {
+   "title": "Brazilië",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/brazilie",
+   "places": [
+    "br"
+   ]
+  },
+  {
+   "title": "Britse Maagdeneilanden",
+   "level": 1,
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/britse-maagdeneilanden",
+   "places": [
+    "vg"
+   ]
+  },
+  {
+   "title": "Brunei Darussalam",
+   "level": 2,
+   "updated": "2026-07-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/brunei-darussalam",
+   "places": [
+    "bn"
+   ]
+  },
+  {
+   "title": "Bulgarije",
+   "level": 1,
+   "updated": "2026-04-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bulgarije",
+   "places": [
+    "bg"
+   ]
+  },
+  {
+   "title": "Burkina Faso",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/burkina-faso",
+   "regional": true,
+   "places": [
+    "bf"
+   ]
+  },
+  {
+   "title": "Burundi",
+   "level": 2,
+   "updated": "2026-09-21",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/burundi",
+   "regional": true,
+   "places": [
+    "bi"
+   ]
+  },
+  {
+   "title": "Cambodja",
+   "level": 2,
+   "updated": "2026-09-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cambodja",
+   "regional": true,
+   "places": [
+    "kh"
+   ]
+  },
+  {
+   "title": "Canada",
+   "level": 1,
+   "updated": "2026-08-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/canada",
+   "places": [
+    "ca"
+   ]
+  },
+  {
+   "title": "Centraal-Afrikaanse Republiek",
+   "level": 4,
+   "updated": "2026-09-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/centraal-afrikaanse-republiek",
+   "places": [
+    "cf"
+   ]
+  },
+  {
+   "title": "Chili",
+   "level": 2,
+   "updated": "2026-08-21",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/chili",
+   "places": [
+    "cl"
+   ]
+  },
+  {
+   "title": "China",
+   "level": 2,
+   "updated": "2026-08-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/china",
+   "places": [
+    "cn"
+   ]
+  },
+  {
+   "title": "Colombia",
+   "level": 2,
+   "updated": "2026-09-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/colombia",
+   "regional": true,
+   "places": [
+    "co"
+   ]
+  },
+  {
+   "title": "Comoren",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/comoren",
+   "places": [
+    "km"
+   ]
+  },
+  {
+   "title": "Congo, de Republiek",
+   "level": 2,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/congo-de-republiek",
+   "regional": true,
+   "places": [
+    "cg"
+   ]
+  },
+  {
+   "title": "Congo, Democratische Republiek",
+   "level": 3,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/congo-democratische-republiek",
+   "regional": true,
+   "places": [
+    "cd"
+   ]
+  },
+  {
+   "title": "Cookeilanden",
+   "level": 1,
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cookeilanden",
+   "places": [
+    "ck"
+   ]
+  },
+  {
+   "title": "Costa Rica",
+   "level": 2,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/costa-rica",
+   "places": [
+    "cr"
+   ]
+  },
+  {
+   "title": "Cuba",
+   "level": 3,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cuba",
+   "places": [
+    "cu"
+   ]
+  },
+  {
+   "title": "Curaçao",
+   "level": 1,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/curacao",
+   "places": [
+    "cw"
+   ]
+  },
+  {
+   "title": "Cyprus",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cyprus",
+   "places": [
+    "cy"
+   ],
+   "covers": [
+    "northern-cyprus"
+   ]
+  },
+  {
+   "title": "Denemarken",
+   "level": 1,
+   "updated": "2026-05-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/denemarken",
+   "places": [
+    "dk"
+   ]
+  },
+  {
+   "title": "Djibouti",
+   "level": 2,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/djibouti",
+   "regional": true,
+   "places": [
+    "dj"
+   ]
+  },
+  {
+   "title": "Dominica",
+   "level": 1,
+   "updated": "2026-09-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/dominica",
+   "places": [
+    "dm"
+   ]
+  },
+  {
+   "title": "Dominicaanse Republiek",
+   "level": 2,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/dominicaanse-republiek",
+   "places": [
+    "do"
+   ]
+  },
+  {
+   "title": "Duitsland",
+   "level": 1,
+   "updated": "2026-08-27",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/duitsland",
+   "places": [
+    "de"
+   ]
+  },
+  {
+   "title": "Ecuador",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ecuador",
+   "regional": true,
+   "places": [
+    "ec"
+   ]
+  },
+  {
+   "title": "Egypte",
+   "level": 2,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/egypte",
+   "regional": true,
+   "places": [
+    "eg"
+   ]
+  },
+  {
+   "title": "El Salvador",
+   "level": 2,
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/el-salvador",
+   "places": [
+    "sv"
+   ]
+  },
+  {
+   "title": "Equatoriaal-Guinea",
+   "level": 2,
+   "updated": "2026-06-12",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/equatoriaal-guinea",
+   "places": [
+    "gq"
+   ]
+  },
+  {
+   "title": "Eritrea",
+   "level": 3,
+   "updated": "2026-04-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/eritrea",
+   "regional": true,
+   "places": [
+    "er"
+   ]
+  },
+  {
+   "title": "Estland",
+   "level": 1,
+   "updated": "2026-09-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/estland",
+   "places": [
+    "ee"
+   ]
+  },
+  {
+   "title": "Eswatini (Swaziland)",
+   "level": 2,
+   "updated": "2026-07-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/eswatini",
+   "places": [
+    "sz"
+   ]
+  },
+  {
+   "title": "Ethiopië",
+   "level": 2,
+   "updated": "2026-09-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ethiopie",
+   "regional": true,
+   "places": [
+    "et"
+   ]
+  },
+  {
+   "title": "Faeröer",
+   "level": 1,
+   "updated": "2026-07-02",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/faeroer",
+   "places": [
+    "fo"
+   ]
+  },
+  {
+   "title": "Fiji",
+   "level": 1,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/fiji",
+   "places": [
+    "fj"
+   ]
+  },
+  {
+   "title": "Filipijnen",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/filipijnen",
+   "regional": true,
+   "places": [
+    "ph"
+   ]
+  },
+  {
+   "title": "Finland",
+   "level": 1,
+   "updated": "2026-08-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/finland",
+   "places": [
+    "fi"
+   ],
+   "covers": [
+    "ax"
+   ]
+  },
+  {
+   "title": "Frankrijk",
+   "level": 2,
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/frankrijk",
+   "places": [
+    "fr"
+   ],
+   "covers": [
+    "yt"
+   ]
+  },
+  {
+   "title": "Frans-Guyana",
+   "level": 2,
+   "updated": "2026-06-01",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/frans-guyana",
+   "places": [
+    "gf"
+   ]
+  },
+  {
+   "title": "Frans-Polynesië",
+   "level": 1,
+   "updated": "2026-06-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/frans-polynesie",
+   "places": [
+    "pf"
+   ]
+  },
+  {
+   "title": "Gabon",
+   "level": 2,
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/gabon",
+   "places": [
+    "ga"
+   ]
+  },
+  {
+   "title": "Gambia",
+   "level": 2,
+   "updated": "2026-05-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/gambia",
+   "places": [
+    "gm"
+   ]
+  },
+  {
+   "title": "Georgië",
+   "level": 2,
+   "updated": "2026-06-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/georgie",
+   "regional": true,
+   "places": [
+    "ge"
+   ]
+  },
+  {
+   "title": "Ghana",
+   "level": 2,
+   "updated": "2026-06-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ghana",
+   "regional": true,
+   "places": [
+    "gh"
+   ]
+  },
+  {
+   "title": "Grenada",
+   "level": 1,
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/grenada",
+   "places": [
+    "gd"
+   ]
+  },
+  {
+   "title": "Griekenland",
+   "level": 1,
+   "updated": "2026-09-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/griekenland",
+   "places": [
+    "gr"
+   ]
+  },
+  {
+   "title": "Groenland",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/groenland",
+   "places": [
+    "gl"
+   ]
+  },
+  {
+   "title": "Guadeloupe",
+   "level": 2,
+   "updated": "2026-06-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guadeloupe",
+   "places": [
+    "gp"
+   ]
+  },
+  {
+   "title": "Guatemala",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guatemala",
+   "places": [
+    "gt"
+   ]
+  },
+  {
+   "title": "Guinee",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guinee",
+   "regional": true,
+   "places": [
+    "gn"
+   ]
+  },
+  {
+   "title": "Guinee-Bissau",
+   "level": 2,
+   "updated": "2026-06-12",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guinee-bissau",
+   "regional": true,
+   "places": [
+    "gw"
+   ]
+  },
+  {
+   "title": "Guyana",
+   "level": 2,
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guyana",
+   "places": [
+    "gy"
+   ]
+  },
+  {
+   "title": "Haïti",
+   "level": 4,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/haiti",
+   "places": [
+    "ht"
+   ]
+  },
+  {
+   "title": "Honduras",
+   "level": 2,
+   "updated": "2026-08-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/honduras",
+   "regional": true,
+   "places": [
+    "hn"
+   ]
+  },
+  {
+   "title": "Hongarije",
+   "level": 1,
+   "updated": "2026-08-31",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/hongarije",
+   "places": [
+    "hu"
+   ]
+  },
+  {
+   "title": "Hongkong SAR",
+   "level": 2,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/hongkong",
+   "places": [
+    "hk"
+   ]
+  },
+  {
+   "title": "Ierland",
+   "level": 1,
+   "updated": "2026-05-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ierland",
+   "places": [
+    "ie"
+   ]
+  },
+  {
+   "title": "IJsland",
+   "level": 1,
+   "updated": "2026-04-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ijsland",
+   "regional": true,
+   "places": [
+    "is"
+   ]
+  },
+  {
+   "title": "India",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/india",
+   "regional": true,
+   "places": [
+    "in"
+   ]
+  },
+  {
+   "title": "Indonesië",
+   "level": 2,
+   "updated": "2026-09-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/indonesie",
+   "regional": true,
+   "places": [
+    "id"
+   ]
+  },
+  {
+   "title": "Irak",
+   "level": 4,
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/irak",
+   "regional": true,
+   "places": [
+    "iq"
+   ]
+  },
+  {
+   "title": "Iran",
+   "level": 4,
+   "updated": "2026-09-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/iran",
+   "places": [
+    "ir"
+   ]
+  },
+  {
+   "title": "Israël",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/israel",
+   "regional": true,
+   "places": [
+    "il"
+   ]
+  },
+  {
+   "title": "Italië",
+   "level": 1,
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/italie",
+   "places": [
+    "it"
+   ]
+  },
+  {
+   "title": "Ivoorkust",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ivoorkust",
+   "regional": true,
+   "places": [
+    "ci"
+   ]
+  },
+  {
+   "title": "Jamaica",
+   "level": 2,
+   "updated": "2026-09-02",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/jamaica",
+   "places": [
+    "jm"
+   ]
+  },
+  {
+   "title": "Japan",
+   "level": 1,
+   "updated": "2026-08-26",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/japan",
+   "regional": true,
+   "places": [
+    "jp"
+   ]
+  },
+  {
+   "title": "Jemen",
+   "level": 4,
+   "updated": "2026-09-16",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/jemen",
+   "places": [
+    "ye"
+   ]
+  },
+  {
+   "title": "Jordanië",
+   "level": 2,
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/jordanie",
+   "regional": true,
+   "places": [
+    "jo"
+   ]
+  },
+  {
+   "title": "Kaaimaneilanden",
+   "level": 1,
+   "updated": "2026-05-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kaaimaneilanden",
+   "places": [
+    "ky"
+   ]
+  },
+  {
+   "title": "Kaapverdië",
+   "level": 2,
+   "updated": "2026-07-06",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kaapverdie",
+   "places": [
+    "cv"
+   ]
+  },
+  {
+   "title": "Kameroen",
+   "level": 2,
+   "updated": "2026-07-27",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kameroen",
+   "regional": true,
+   "places": [
+    "cm"
+   ]
+  },
+  {
+   "title": "Kazachstan",
+   "level": 2,
+   "updated": "2026-07-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kazachstan",
+   "places": [
+    "kz"
+   ]
+  },
+  {
+   "title": "Kenia",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kenia",
+   "regional": true,
+   "places": [
+    "ke"
+   ]
+  },
+  {
+   "title": "Kirgizië",
+   "level": 2,
+   "updated": "2026-07-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kirgizie",
+   "places": [
+    "kg"
+   ]
+  },
+  {
+   "title": "Kiribati",
+   "level": 1,
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kiribati",
+   "places": [
+    "ki"
+   ]
+  },
+  {
+   "title": "Koeweit",
+   "level": 3,
+   "updated": "2026-09-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/koeweit",
+   "places": [
+    "kw"
+   ]
+  },
+  {
+   "title": "Kosovo",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kosovo",
+   "places": [
+    "xk"
+   ]
+  },
+  {
+   "title": "Kroatië",
+   "level": 1,
+   "updated": "2026-08-27",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kroatie",
+   "places": [
+    "hr"
+   ]
+  },
+  {
+   "title": "Laos",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/laos",
+   "regional": true,
+   "places": [
+    "la"
+   ]
+  },
+  {
+   "title": "Lesotho",
+   "level": 2,
+   "updated": "2026-07-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/lesotho",
+   "places": [
+    "ls"
+   ]
+  },
+  {
+   "title": "Letland",
+   "level": 1,
+   "updated": "2026-06-26",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/letland",
+   "regional": true,
+   "places": [
+    "lv"
+   ]
+  },
+  {
+   "title": "Libanon",
+   "level": 4,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/libanon",
+   "places": [
+    "lb"
+   ]
+  },
+  {
+   "title": "Liberia",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/liberia",
+   "regional": true,
+   "places": [
+    "lr"
+   ]
+  },
+  {
+   "title": "Libië",
+   "level": 4,
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/libie",
+   "places": [
+    "ly"
+   ]
+  },
+  {
+   "title": "Liechtenstein",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/liechtenstein",
+   "places": [
+    "li"
+   ]
+  },
+  {
+   "title": "Litouwen",
+   "level": 1,
+   "updated": "2026-05-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/litouwen",
+   "places": [
+    "lt"
+   ]
+  },
+  {
+   "title": "Luxemburg",
+   "level": 1,
+   "updated": "2026-06-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/luxemburg",
+   "places": [
+    "lu"
+   ]
+  },
+  {
+   "title": "Macau SAR",
+   "level": 2,
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/macau-sar",
+   "places": [
+    "mo"
+   ]
+  },
+  {
+   "title": "Madagaskar",
+   "level": 2,
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/madagaskar",
+   "places": [
+    "mg"
+   ]
+  },
+  {
+   "title": "Malawi",
+   "level": 2,
+   "updated": "2026-07-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/malawi",
+   "places": [
+    "mw"
+   ]
+  },
+  {
+   "title": "Maldiven",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/maldiven",
+   "places": [
+    "mv"
+   ]
+  },
+  {
+   "title": "Maleisië",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/maleisie",
+   "regional": true,
+   "places": [
+    "my"
+   ]
+  },
+  {
+   "title": "Mali",
+   "level": 4,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mali",
+   "places": [
+    "ml"
+   ]
+  },
+  {
+   "title": "Malta",
+   "level": 1,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/malta",
+   "places": [
+    "mt"
+   ]
+  },
+  {
+   "title": "Marokko",
+   "level": 2,
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/marokko",
+   "regional": true,
+   "places": [
+    "ma"
+   ]
+  },
+  {
+   "title": "Marshalleilanden",
+   "level": 1,
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/marshalleilanden",
+   "places": [
+    "mh"
+   ]
+  },
+  {
+   "title": "Martinique",
+   "level": 2,
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/martinique",
+   "places": [
+    "mq"
+   ]
+  },
+  {
+   "title": "Mauritanië",
+   "level": 2,
+   "updated": "2026-05-26",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mauritanie",
+   "regional": true,
+   "places": [
+    "mr"
+   ]
+  },
+  {
+   "title": "Mauritius",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mauritius",
+   "places": [
+    "mu"
+   ]
+  },
+  {
+   "title": "Mexico",
+   "level": 2,
+   "updated": "2026-09-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mexico",
+   "regional": true,
+   "places": [
+    "mx"
+   ]
+  },
+  {
+   "title": "Micronesië",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/micronesie",
+   "places": [
+    "fm"
+   ]
+  },
+  {
+   "title": "Moldavië",
+   "level": 2,
+   "updated": "2026-09-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/moldavie",
+   "regional": true,
+   "places": [
+    "md"
+   ]
+  },
+  {
+   "title": "Monaco",
+   "level": 1,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/monaco",
+   "places": [
+    "mc"
+   ]
+  },
+  {
+   "title": "Mongolië",
+   "level": 2,
+   "updated": "2026-08-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mongolie",
+   "places": [
+    "mn"
+   ]
+  },
+  {
+   "title": "Montenegro",
+   "level": 1,
+   "updated": "2026-07-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/montenegro",
+   "places": [
+    "me"
+   ]
+  },
+  {
+   "title": "Montserrat",
+   "level": 1,
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/montserrat",
+   "regional": true,
+   "places": [
+    "ms"
+   ]
+  },
+  {
+   "title": "Mozambique",
+   "level": 2,
+   "updated": "2026-08-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mozambique",
+   "regional": true,
+   "places": [
+    "mz"
+   ]
+  },
+  {
+   "title": "Myanmar",
+   "level": 3,
+   "updated": "2026-08-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/myanmar",
+   "regional": true,
+   "places": [
+    "mm"
+   ]
+  },
+  {
+   "title": "Namibië",
+   "level": 2,
+   "updated": "2026-04-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/namibie",
+   "places": [
+    "na"
+   ]
+  },
+  {
+   "title": "Nauru",
+   "level": 1,
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nauru",
+   "places": [
+    "nr"
+   ]
+  },
+  {
+   "title": "Nepal",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nepal",
+   "places": [
+    "np"
+   ]
+  },
+  {
+   "title": "Nicaragua",
+   "level": 2,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nicaragua",
+   "places": [
+    "ni"
+   ]
+  },
+  {
+   "title": "Nieuw-Caledonië",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nieuw-caledonie",
+   "places": [
+    "nc"
+   ]
+  },
+  {
+   "title": "Nieuw-Zeeland",
+   "level": 1,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nieuw-zeeland",
+   "places": [
+    "nz"
+   ]
+  },
+  {
+   "title": "Niger",
+   "level": 4,
+   "updated": "2026-07-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/niger",
+   "places": [
+    "ne"
+   ]
+  },
+  {
+   "title": "Nigeria",
+   "level": 3,
+   "updated": "2026-07-06",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nigeria",
+   "regional": true,
+   "places": [
+    "ng"
+   ]
+  },
+  {
+   "title": "Niue",
+   "level": 1,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/niue",
+   "places": [
+    "nu"
+   ]
+  },
+  {
+   "title": "Noord-Korea",
+   "level": 4,
+   "updated": "2026-08-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/noord-korea",
+   "places": [
+    "kp"
+   ]
+  },
+  {
+   "title": "Noord-Macedonië",
+   "level": 1,
+   "updated": "2026-05-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/noord-macedonie",
+   "places": [
+    "mk"
+   ]
+  },
+  {
+   "title": "Noorwegen",
+   "level": 1,
+   "updated": "2026-07-02",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/noorwegen",
+   "places": [
+    "no"
+   ]
+  },
+  {
+   "title": "Oekraïne",
+   "level": 4,
+   "updated": "2026-08-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oekraine",
+   "places": [
+    "ua"
+   ]
+  },
+  {
+   "title": "Oezbekistan",
+   "level": 2,
+   "updated": "2026-07-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oezbekistan",
+   "regional": true,
+   "places": [
+    "uz"
+   ]
+  },
+  {
+   "title": "Oman",
+   "level": 2,
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oman",
+   "regional": true,
+   "places": [
+    "om"
+   ]
+  },
+  {
+   "title": "Oost-Timor",
+   "level": 2,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oost-timor",
+   "places": [
+    "tl"
+   ]
+  },
+  {
+   "title": "Oostenrijk",
+   "level": 1,
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oostenrijk",
+   "places": [
+    "at"
+   ]
+  },
+  {
+   "title": "Pakistan",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/pakistan",
+   "regional": true,
+   "places": [
+    "pk"
+   ]
+  },
+  {
+   "title": "Palau",
+   "level": 1,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/palau",
+   "places": [
+    "pw"
+   ]
+  },
+  {
+   "title": "Palestijnse Gebieden",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/palestijnse-gebieden",
+   "regional": true,
+   "places": [
+    "gaza",
+    "west-bank"
+   ]
+  },
+  {
+   "title": "Panama",
+   "level": 2,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/panama",
+   "regional": true,
+   "places": [
+    "pa"
+   ]
+  },
+  {
+   "title": "Papoea-Nieuw-Guinea",
+   "level": 2,
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/papoea-nieuw-guinea",
+   "regional": true,
+   "places": [
+    "pg"
+   ]
+  },
+  {
+   "title": "Paraguay",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/paraguay",
+   "places": [
+    "py"
+   ]
+  },
+  {
+   "title": "Peru",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/peru",
+   "regional": true,
+   "places": [
+    "pe"
+   ]
+  },
+  {
+   "title": "Pitcairneilanden",
+   "level": 1,
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/pitcairneilanden",
+   "places": [
+    "pn"
+   ]
+  },
+  {
+   "title": "Polen",
+   "level": 1,
+   "updated": "2026-09-16",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/polen",
+   "places": [
+    "pl"
+   ]
+  },
+  {
+   "title": "Portugal",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/portugal",
+   "places": [
+    "pt"
+   ],
+   "covers": [
+    "azores"
+   ]
+  },
+  {
+   "title": "Puerto Rico",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/puerto-rico",
+   "places": [
+    "pr"
+   ]
+  },
+  {
+   "title": "Qatar",
+   "level": 2,
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/qatar",
+   "places": [
+    "qa"
+   ]
+  },
+  {
+   "title": "Réunion",
+   "level": 1,
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/reunion",
+   "places": [
+    "re"
+   ]
+  },
+  {
+   "title": "Roemenië",
+   "level": 1,
+   "updated": "2026-09-16",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/roemenie",
+   "regional": true,
+   "places": [
+    "ro"
+   ]
+  },
+  {
+   "title": "Rusland",
+   "level": 3,
+   "updated": "2026-09-21",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/rusland",
+   "regional": true,
+   "places": [
+    "ru"
+   ]
+  },
+  {
+   "title": "Rwanda",
+   "level": 2,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/rwanda",
+   "regional": true,
+   "places": [
+    "rw"
+   ]
+  },
+  {
+   "title": "Saba",
+   "level": 1,
+   "updated": "2026-05-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saba",
+   "places": [
+    "saba-and-sint-eustatius"
+   ]
+  },
+  {
+   "title": "Saint Kitts en Nevis",
+   "level": 1,
+   "updated": "2026-06-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saint-kitts-en-nevis",
+   "places": [
+    "kn"
+   ]
+  },
+  {
+   "title": "Saint Lucia",
+   "level": 1,
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saint-lucia",
+   "places": [
+    "lc"
+   ]
+  },
+  {
+   "title": "Saint Vincent en de Grenadines",
+   "level": 1,
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saint-vincent-en-de-grenadines",
+   "places": [
+    "vc"
+   ]
+  },
+  {
+   "title": "Salomonseilanden",
+   "level": 2,
+   "updated": "2026-09-21",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/salomonseilanden",
+   "places": [
+    "sb"
+   ]
+  },
+  {
+   "title": "Samoa",
+   "level": 1,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/samoa",
+   "places": [
+    "ws"
+   ]
+  },
+  {
+   "title": "San Marino",
+   "level": 1,
+   "updated": "2026-06-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/san-marino",
+   "places": [
+    "sm"
+   ]
+  },
+  {
+   "title": "Sao Tomé en Principe",
+   "level": 2,
+   "updated": "2026-08-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sao-tome-en-principe",
+   "places": [
+    "st"
+   ]
+  },
+  {
+   "title": "Saoedi-Arabië",
+   "level": 2,
+   "updated": "2026-09-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saoedi-arabie",
+   "regional": true,
+   "places": [
+    "sa"
+   ]
+  },
+  {
+   "title": "Senegal",
+   "level": 2,
+   "updated": "2026-09-01",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/senegal",
+   "regional": true,
+   "places": [
+    "sn"
+   ]
+  },
+  {
+   "title": "Servië",
+   "level": 1,
+   "updated": "2026-07-14",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/servie",
+   "places": [
+    "rs"
+   ]
+  },
+  {
+   "title": "Seychellen",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/seychellen",
+   "places": [
+    "sc"
+   ]
+  },
+  {
+   "title": "Sierra Leone",
+   "level": 2,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sierra-leone",
+   "places": [
+    "sl"
+   ]
+  },
+  {
+   "title": "Singapore",
+   "level": 1,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/singapore",
+   "places": [
+    "sg"
+   ]
+  },
+  {
+   "title": "Sint Eustatius",
+   "level": 1,
+   "updated": "2026-05-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sint-eustatius",
+   "places": [
+    "saba-and-sint-eustatius"
+   ]
+  },
+  {
+   "title": "Sint Maarten",
+   "level": 1,
+   "updated": "2026-08-13",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sint-maarten",
+   "places": [
+    "sx"
+   ]
+  },
+  {
+   "title": "Slovenië",
+   "level": 1,
+   "updated": "2026-07-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/slovenie",
+   "places": [
+    "si"
+   ]
+  },
+  {
+   "title": "Slowakije",
+   "level": 1,
+   "updated": "2026-09-04",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/slowakije",
+   "places": [
+    "sk"
+   ]
+  },
+  {
+   "title": "Somalië",
+   "level": 4,
+   "updated": "2026-08-04",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/somalie",
+   "regional": true,
+   "places": [
+    "so"
+   ],
+   "covers": [
+    "somaliland"
+   ]
+  },
+  {
+   "title": "Spanje",
+   "level": 1,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/spanje",
+   "places": [
+    "es"
+   ],
+   "covers": [
+    "canary-islands"
+   ]
+  },
+  {
+   "title": "Spitsbergen (Svalbard)",
+   "level": 1,
+   "updated": "2026-05-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/spitsbergen",
+   "places": [],
+   "noteKey": "svalbard"
+  },
+  {
+   "title": "Sri Lanka",
+   "level": 2,
+   "updated": "2026-09-14",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sri-lanka",
+   "places": [
+    "lk"
+   ]
+  },
+  {
+   "title": "Sudan",
+   "level": 4,
+   "updated": "2026-09-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sudan",
+   "places": [
+    "sd"
+   ]
+  },
+  {
+   "title": "Suriname",
+   "level": 2,
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/suriname",
+   "places": [
+    "sr"
+   ]
+  },
+  {
+   "title": "Syrië",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/syrie",
+   "places": [
+    "sy"
+   ]
+  },
+  {
+   "title": "Tadzjikistan",
+   "level": 2,
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tadzjikistan",
+   "places": [
+    "tj"
+   ]
+  },
+  {
+   "title": "Taiwan",
+   "level": 1,
+   "updated": "2026-08-26",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/taiwan",
+   "places": [
+    "tw"
+   ]
+  },
+  {
+   "title": "Tanzania",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tanzania",
+   "regional": true,
+   "places": [
+    "tz"
+   ]
+  },
+  {
+   "title": "Thailand",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/thailand",
+   "regional": true,
+   "places": [
+    "th"
+   ]
+  },
+  {
+   "title": "Togo",
+   "level": 2,
+   "updated": "2026-06-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/togo",
+   "regional": true,
+   "places": [
+    "tg"
+   ]
+  },
+  {
+   "title": "Tokelau-eilanden",
+   "level": 1,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tokelau-eilanden",
+   "places": [
+    "tk"
+   ]
+  },
+  {
+   "title": "Tonga",
+   "level": 1,
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tonga",
+   "places": [
+    "to"
+   ]
+  },
+  {
+   "title": "Trinidad en Tobago",
+   "level": 2,
+   "updated": "2026-09-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/trinidad-en-tobago",
+   "places": [
+    "tt"
+   ]
+  },
+  {
+   "title": "Tsjaad",
+   "level": 3,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tsjaad",
+   "regional": true,
+   "places": [
+    "td"
+   ]
+  },
+  {
+   "title": "Tsjechië",
+   "level": 1,
+   "updated": "2026-09-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tsjechie",
+   "places": [
+    "cz"
+   ]
+  },
+  {
+   "title": "Tunesië",
+   "level": 2,
+   "updated": "2026-09-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tunesie",
+   "regional": true,
+   "places": [
+    "tn"
+   ]
+  },
+  {
+   "title": "Turkije",
+   "level": 2,
+   "updated": "2026-09-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/turkije",
+   "regional": true,
+   "places": [
+    "tr"
+   ]
+  },
+  {
+   "title": "Turkmenistan",
+   "level": 2,
+   "updated": "2026-07-06",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/turkmenistan",
+   "places": [
+    "tm"
+   ]
+  },
+  {
+   "title": "Turks- en Caicoseilanden",
+   "level": 1,
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/turks-en-caicoseilanden",
+   "regional": true,
+   "places": [
+    "tc"
+   ]
+  },
+  {
+   "title": "Tuvalu",
+   "level": 1,
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tuvalu",
+   "places": [
+    "tv"
+   ]
+  },
+  {
+   "title": "Uganda",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/uganda",
+   "places": [
+    "ug"
+   ]
+  },
+  {
+   "title": "Uruguay",
+   "level": 2,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/uruguay",
+   "places": [
+    "uy"
+   ]
+  },
+  {
+   "title": "Vanuatu",
+   "level": 1,
+   "updated": "2026-03-31",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/vanuatu",
+   "places": [
+    "vu"
+   ]
+  },
+  {
+   "title": "Venezuela",
+   "level": 3,
+   "updated": "2026-09-04",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/venezuela",
+   "regional": true,
+   "places": [
+    "ve"
+   ]
+  },
+  {
+   "title": "Verenigd Koninkrijk",
+   "level": 1,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/verenigd-koninkrijk",
+   "places": [
+    "gb"
+   ]
+  },
+  {
+   "title": "Verenigde Arabische Emiraten",
+   "level": 2,
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/verenigde-arabische-emiraten",
+   "regional": true,
+   "places": [
+    "ae"
+   ]
+  },
+  {
+   "title": "Verenigde Staten van Amerika",
+   "level": 1,
+   "updated": "2026-07-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/verenigde-staten-van-amerika",
+   "places": [
+    "us"
+   ]
+  },
+  {
+   "title": "Vietnam",
+   "level": 2,
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/vietnam",
+   "places": [
+    "vn"
+   ]
+  },
+  {
+   "title": "Wallis en Futuna",
+   "level": 1,
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/wallis-en-futuna",
+   "places": [
+    "wf"
+   ]
+  },
+  {
+   "title": "Zambia",
+   "level": 2,
+   "updated": "2026-05-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zambia",
+   "regional": true,
+   "places": [
+    "zm"
+   ]
+  },
+  {
+   "title": "Zimbabwe",
+   "level": 2,
+   "updated": "2026-06-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zimbabwe",
+   "places": [
+    "zw"
+   ]
+  },
+  {
+   "title": "Zuid-Afrika",
+   "level": 2,
+   "updated": "2026-07-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zuid-afrika",
+   "places": [
+    "za"
+   ]
+  },
+  {
+   "title": "Zuid-Korea",
+   "level": 1,
+   "updated": "2026-06-03",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zuid-korea",
+   "regional": true,
+   "places": [
+    "kr"
+   ]
+  },
+  {
+   "title": "Zuid-Sudan",
+   "level": 4,
+   "updated": "2026-07-31",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zuid-sudan",
+   "places": [
+    "ss"
+   ]
+  },
+  {
+   "title": "Zweden",
+   "level": 1,
+   "updated": "2026-04-16",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zweden",
+   "places": [
+    "se"
+   ]
+  },
+  {
+   "title": "Zwitserland",
+   "level": 1,
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zwitserland",
+   "places": [
+    "ch"
+   ]
+  }
+ ]
+}

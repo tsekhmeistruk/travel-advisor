@@ -5,9 +5,14 @@
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, OUT, click, detailsTitle } from './helpers.mjs';
 
 useBrowser();
+
+// Every provider in the published manifest, so new providers are tested automatically.
+const PROVIDER_IDS = JSON.parse(readFileSync(new URL('../../site/data/manifest.json', import.meta.url), 'utf8'))
+  .datasets.find(d => d.id === 'travel-advisories').providers.map(p => p.id);
 
 const clearSelection = (page) => page.evaluate(() => document.getElementById('map').dispatchEvent(new MouseEvent('click', { bubbles: true })));
 
@@ -19,8 +24,8 @@ const measureCards = (page) => page.evaluate(() => {
     heights.add(card.offsetHeight);
     const last = [...card.children].at(-1);
     if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(label);
-    // Also the "Last updated" value: it may be shortened with an ellipsis, but English must fit.
-    for (const el of card.querySelectorAll('h3, .badge, .meta dd')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
+    // Also the "Last updated" value and the link: they may be shortened with an ellipsis, but English must fit.
+    for (const el of card.querySelectorAll('h3, .badge, .meta dd, .link')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
   };
   measure('overview');
   for (const el of document.querySelectorAll('path.country, .dot')) {
@@ -38,7 +43,7 @@ const measureCards = (page) => page.evaluate(() => {
   };
 });
 
-for (const source of ['us', 'ca']) {
+for (const source of PROVIDER_IDS) {
   for (const [width, height] of [[1440, 860], [390, 844]]) {
     describe(`${source} at ${width}px`, () => {
       let page, stats;

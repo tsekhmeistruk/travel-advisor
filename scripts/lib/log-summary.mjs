@@ -5,7 +5,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { logFile } from './fetch-log.mjs';
 
-const CALL_LABELS = { api: 'API', rss: 'RSS', feed: 'Feed', table: 'Table', pages: 'Pages' };
+const CALL_LABELS = { api: 'API', rss: 'RSS', feed: 'Feed', table: 'Table', pages: 'Pages', list: 'List' };
 
 /** Log entries at or after `sinceMs`, reading each monthly file from then until `now`. */
 export function readEntries(sinceMs, { root, now = new Date() } = {}) {
@@ -110,6 +110,8 @@ export function describe(e) {
   }
   if (s.newerThanFeed?.length) parts.push(`${s.newerThanFeed.length} newer than the feed`);
   if (s.pagesFailed) parts.push(`${s.pagesFailed} pages failed`);
+  if (s.severestFallback?.length) parts.push(`level by fallback: ${s.severestFallback.join(', ')}`);
+  if (s.levelChangesPending) parts.push(`${s.levelChangesPending} level changes awaiting confirmation`);
   if (e.error) parts.push(`Error: ${e.error}`);
   for (const w of e.warnings ?? []) parts.push(`⚠ ${w}`);
   return parts.join(' · ') || '–';

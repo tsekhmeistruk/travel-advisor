@@ -15,7 +15,8 @@ export function createProviderSwitch(el, { onChange }) {
       el.style.setProperty('--n', providers.length);
       el.style.setProperty('--i', Math.max(0, providers.findIndex(p => p.id === activeId)));
       el.innerHTML = '<span class="thumb" aria-hidden="true"></span>' + providers.map(p =>
-        `<button role="radio" data-provider="${esc(p.id)}" aria-checked="${p.id === activeId}" title="${esc(p.title)}">`
+        // aria-label: on phones only the flag is visible, so the name must not depend on the text.
+        `<button role="radio" data-provider="${esc(p.id)}" aria-checked="${p.id === activeId}" aria-label="${esc(p.label)}" title="${esc(p.title)}">`
         + `${p.flag ? `<img class="flag" src="assets/flags/${esc(p.flag)}.svg" alt="" width="21" height="14">` : ''}<span>${esc(p.label)}</span></button>`).join('');
     },
   };

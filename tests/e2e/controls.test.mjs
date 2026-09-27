@@ -24,6 +24,24 @@ const scaleOf = (page) => page.evaluate(() => {
   return Number(t.match(/scale\(([\d.]+)/)?.[1] ?? 1);
 });
 
+describe('provider switch layout', () => {
+  for (const [width, height] of [[1440, 860], [390, 844], [320, 640]]) {
+    test(`at ${width}px it does not cover the zoom controls or leave the screen`, async () => {
+      const page = await open({ width, height });
+      const r = await page.evaluate(() => {
+        const box = (id) => document.querySelector(id).getBoundingClientRect();
+        const sw = box('#providerSwitch'), zoom = box('.map-controls');
+        const overlap = sw.left < zoom.right && sw.right > zoom.left && sw.top < zoom.bottom && sw.bottom > zoom.top;
+        return { overlap, inside: sw.left >= 0 && sw.right <= innerWidth, buttons: document.querySelectorAll('#providerSwitch button').length };
+      });
+      assert.ok(r.buttons >= 3, `${r.buttons} providers`);
+      assert.equal(r.overlap, false, 'switch overlaps the zoom controls');
+      assert.equal(r.inside, true, 'switch runs off the screen');
+      await page.close();
+    });
+  }
+});
+
 describe('panel controls', () => {
   test('the theme button cycles auto → light → dark and is remembered', async () => {
     const page = await open();

@@ -1,7 +1,24 @@
 {
  "id": "travel-advisories",
- "providers": ["us", "ca"],
- "scale": { "type": "levels", "values": [1, 2, 3, 4] },
- "recentWindows": [0, 7, 30, 90],
+ "providers": [
+  "us",
+  "ca",
+  "nl"
+ ],
+ "scale": {
+  "type": "levels",
+  "values": [
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "recentWindows": [
+  0,
+  7,
+  30,
+  90
+ ],
  "defaultRecentWindow": 30
 }

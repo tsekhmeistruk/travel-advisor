@@ -89,6 +89,11 @@ jobs:
         continue-on-error: true
         run: node scripts/fetch.mjs ca
 
+      - name: Fetch Dutch advisories
+        id: nl
+        continue-on-error: true
+        run: node scripts/fetch.mjs nl
+
       # Builds with whatever is available; a failed source keeps its previous snapshot.
       - name: Build site data
         id: build
@@ -107,10 +112,11 @@ jobs:
         env:
           US: ${{ steps.us.outcome }}
           CA: ${{ steps.ca.outcome }}
+          NL: ${{ steps.nl.outcome }}
           BUILD: ${{ steps.build.outcome }}
         run: |
           # Mark today done only if everything succeeded, so a failure retries next hour.
-          if [ "$US" = "success" ] && [ "$CA" = "success" ] && [ "$BUILD" = "success" ]; then
+          if [ "$US" = "success" ] && [ "$CA" = "success" ] && [ "$NL" = "success" ] && [ "$BUILD" = "success" ]; then
             date -u +%F > data/last-run.txt
           fi
           git config user.name "github-actions[bot]"
@@ -122,9 +128,9 @@ jobs:
           echo "pushed=true" >> "$GITHUB_OUTPUT"
 
       - name: Report failures
-        if: steps.us.outcome == 'failure' || steps.ca.outcome == 'failure' || steps.build.outcome == 'failure'
+        if: steps.us.outcome == 'failure' || steps.ca.outcome == 'failure' || steps.nl.outcome == 'failure' || steps.build.outcome == 'failure'
         run: |
-          echo "::error::U.S. fetch: ${{ steps.us.outcome }}, Canada fetch: ${{ steps.ca.outcome }}, build: ${{ steps.build.outcome }}. Failed sources kept their previous data; the next hourly run will retry. See the Fetch results table above and logs/fetch/."
+          echo "::error::U.S. fetch: ${{ steps.us.outcome }}, Canada fetch: ${{ steps.ca.outcome }}, Netherlands fetch: ${{ steps.nl.outcome }}, build: ${{ steps.build.outcome }}. Failed sources kept their previous data; the next hourly run will retry. See the Fetch results table above and logs/fetch/."
           exit 1
 
   # New data goes live only if all tests pass on it. Runs even when one source failed,

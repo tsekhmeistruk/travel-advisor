@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import us from '../../../scripts/providers/us/index.mjs';
 import ca from '../../../scripts/providers/ca/index.mjs';
+import nl from '../../../scripts/providers/nl/index.mjs';
 import { PROVIDERS, getProvider } from '../../../scripts/providers/index.mjs';
 
 const fixture = (f) => readFileSync(new URL(`../../fixtures/${f}`, import.meta.url), 'utf8');
@@ -122,6 +123,60 @@ describe('U.S. fetcher', () => {
     assert.equal(entries.find(e => e.name === 'Bangladesh').level, 2);
     assert.equal(stats.staleIgnored, 1);
     assert.match(log.warnings.join(), /Ignored outdated API copies: Bangladesh/);
+  });
+});
+
+describe('Netherlands fetcher', () => {
+  // A plausible-size list: the real Spain entry repeated under different names and codes.
+  const spain = JSON.parse(fixture('netherlands-list.json')).find(d => d.isocode === 'ESP');
+  const doc = (i, patch = {}) => ({ ...spain, location: `Land ${i}`, isocode: `X${String(i).padStart(2, '0')}`, ...patch });
+  const page = (from, n, patch) => ({ body: JSON.stringify(Array.from({ length: n }, (_, k) => doc(from + k, patch?.(from + k)))) });
+  const TODAY = '2026-09-27';
+  const run = (responses, previous = [], sleep = async () => {}) => {
+    const log = fakeLog(responses);
+    return nl.fetch({ log, previous, today: TODAY, sleep }).then(r => ({ ...r, log }));
+  };
+
+  test('pages through the list until a short page', async () => {
+    const { entries, stats, log } = await run({ list: [page(0, 200), page(200, 26)] });
+    assert.equal(entries.length, 226);
+    assert.equal(stats.advisories, 226);
+    assert.deepEqual(log.requests.map(r => new URL(r.url).searchParams.get('offset')), ['0', '200']);
+    assert.equal(entries[0].level, 1);
+  });
+
+  test('holds a level change until a later fetch confirms it (levels come from prose)', async () => {
+    const previous = [{ name: 'Land 0', level: 1, updated: '2026-09-15', lastSeen: '2026-09-26', url: 'u', iso: 'X00' }];
+    const redSummary = '<p>De kleurcode van het reisadvies voor Land 0 is rood.</p>';
+    const { entries, stats, log } = await run({ list: [page(0, 170, i => (i === 0 ? { introduction: redSummary, lastmodified: '2026-09-27T08:00:00Z' } : {}))] }, previous);
+    const land0 = entries.find(e => e.name === 'Land 0');
+    assert.equal(land0.level, 1);
+    assert.equal(land0.pending.level, 4);
+    assert.equal(stats.levelChangesPending, 1);
+    assert.match(log.warnings.join(), /Unconfirmed level changes .*Land 0 L1 → L4/);
+  });
+
+  test('warns about summaries without a colour, and when the fallback rule suddenly dominates', async () => {
+    const vague = '<p>De kleurcode is rood voor het noorden en oranje voor het zuiden.</p>';
+    const { stats, log } = await run({ list: [page(0, 170, i => (i < 12 ? { introduction: vague } : i === 12 ? { introduction: '<p>Geen kleur.</p>' } : {}))] });
+    assert.equal(stats.severestFallback.length, 12);
+    assert.match(log.warnings.join(), /No colour code found in the summary of: Land 12/);
+    assert.match(log.warnings.join(), /12 summaries needed the most-severe-colour fallback/);
+  });
+
+  test('retries and then fails with a clear error', async () => {
+    const { waits, sleep } = recordSleeps();
+    await assert.rejects(run({ list: [{ status: 502 }, { challenge: true }, { status: 502 }] }, [], sleep), /List failed after 3 attempts: HTTP 502/);
+    assert.deepEqual(waits, [30000, 60000]);
+  });
+
+  test('treats a non-JSON answer as a failure and retries', async () => {
+    const { entries } = await run({ list: [{ body: '<html>onderhoud</html>' }, page(0, 170)] });
+    assert.equal(entries.length, 170);
+  });
+
+  test('refuses an implausibly small list', async () => {
+    await assert.rejects(run({ list: [page(0, 40)] }), /Parsed only 40 advisories/);
   });
 });
 
