@@ -153,7 +153,7 @@ describe('deploy gate', () => {
     assert.match(updateWorkflow, /uses: \.\/\.github\/workflows\/deploy\.yml/);
   });
   test('the update runs hourly, asks the due check first, and commits the data the site loads', () => {
-    assert.match(updateWorkflow, /cron: '\d+ \* \* \* \*'/);
+    assert.match(updateWorkflow, /cron: '[\d,]+ \* \* \* \*'/, 'at least hourly');
     assert.match(updateWorkflow, /id: due\n(?:.*\n)*?\s+run: node scripts\/due\.mjs\n/);
     assert.ok(updateWorkflow.indexOf('scripts/due.mjs') < updateWorkflow.indexOf('scripts/fetch.mjs'), 'due check before the fetches');
     assert.match(updateWorkflow, /git add data logs site\/data/);

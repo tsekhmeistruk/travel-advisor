@@ -7,11 +7,15 @@ name: Update data
 #   - GDACS disaster alerts: every hour
 #   - WHO Disease Outbreak News: every 6 hours
 # Then it builds, commits, and calls the test-and-deploy workflow. A failed fetch keeps that
-# source's previous data; the next hourly run retries it.
+# source's previous data; the next run retries it.
+#
+# GitHub delays and drops scheduled runs under load (the hourly schedule ran about every 6 hours
+# on Sep 27, 2026), so it is asked twice an hour. A run with nothing due ends after the due
+# check (about 20 s) and commits nothing.
 
 on:
   schedule:
-    - cron: '17 * * * *'
+    - cron: '12,42 * * * *'
   workflow_dispatch:   # "Run workflow" button: fetches now, without waiting for a slot
     inputs:
       sources:
