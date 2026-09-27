@@ -14,6 +14,20 @@ A world map of **data about places**. Today it shows official travel-advisory le
 - **Pushing to `main` runs all tests, then deploys if they pass.** Run the tests locally before pushing.
 - **Local site:** `npm start` (http://localhost:8080). Opening `site/index.html` from disk doesn't work, because the site uses ES modules and fetches JSON.
 
+## Every change: review the tests too
+
+For **every** change, however small, decide explicitly whether tests must be **added, edited or deleted**. Do this before you consider the change done, and say what you decided when you report back.
+
+- **Add:** new behaviour, a bug fix (the test should fail without the fix), a new provider, dataset, locale, config field, setting or control, or a new failure mode that is now handled.
+- **Edit:** behaviour, text, IDs, selectors, file paths, data formats or config shapes changed, so existing tests assert the old thing. Update them to assert the new intent. Don't just loosen them until they pass.
+- **Delete:** a feature, code path or file was removed. Remove its tests, fixtures and helpers so nothing tests dead code.
+- **Check the side suites too:**
+  - `tests/data/project.test.mjs`: providers wired up, translation keys used, deploy gate, secrets.
+  - `tests/data/data.test.mjs`: published data and config.
+  - `tests/e2e/`: when the UI changed.
+  - `tests/fixtures/`: when a source's format changed.
+- **Then run** `npm run test:coverage` and, for anything visible, `npm run test:e2e`. If coverage drops below the thresholds, the change needs tests.
+
 ## Map of the code
 
 | Concern | Place |
