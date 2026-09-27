@@ -110,6 +110,7 @@ export function createTravelAdvisories(ctx) {
       note ? `<span class="note" title="${esc(note)}">${esc(note)}</span>` : '',
     ].join('');
     const url = safeUrl(r.url) ?? safeUrl(data.links?.list);
+    const updated = tx('details.updatedValue', { date: i18n.formatDate(r.updated), age: i18n.relativeAge(days) });
     return `
       <div class="eyebrow">${esc(entry && !entry.direct ? tx('details.coveredBy', { title: r.title }) : tx('details.eyebrow'))}</div>
       ${title(placeId ? placeName(placeId) : r.title)}
@@ -119,7 +120,7 @@ export function createTravelAdvisories(ctx) {
       </div>
       <p class="desc">${esc(L.desc)}</p>
       <dl class="meta">
-        <div><dt>${esc(tx('details.lastUpdated'))}</dt><dd>${esc(tx('details.updatedValue', { date: i18n.formatDate(r.updated), age: i18n.relativeAge(days) }))}</dd></div>
+        <div><dt>${esc(tx('details.lastUpdated'))}</dt><dd title="${esc(updated)}">${esc(updated)}</dd></div>
       </dl>
       ${changeBlock(r)}
       <div class="status">${status}</div>

@@ -19,7 +19,8 @@ const measureCards = (page) => page.evaluate(() => {
     heights.add(card.offsetHeight);
     const last = [...card.children].at(-1);
     if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(label);
-    for (const el of card.querySelectorAll('h3, .badge')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
+    // Also the "Last updated" value: it may be shortened with an ellipsis, but English must fit.
+    for (const el of card.querySelectorAll('h3, .badge, .meta dd')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
   };
   measure('overview');
   for (const el of document.querySelectorAll('path.country, .dot')) {

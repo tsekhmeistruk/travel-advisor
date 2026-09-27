@@ -100,6 +100,9 @@ describe('details card', () => {
     assert.match(html, /&lt;img src=x onerror=&quot;alert\(1\)&quot;&gt;/);
     assert.match(html, /href="https:\/\/travel\.state\.gov\/mm"/);
   });
+  test('the last-updated row carries its full text as a tooltip (it may be shortened on narrow panels)', () => {
+    assert.ok(ds.details({ placeId: 'mm' }).includes('<dd title="Sep 25, 2026 · 2 days ago">Sep 25, 2026 · 2 days ago</dd>'));
+  });
   test('covered and shared places say which advisory covers them', () => {
     assert.match(ds.details({ placeId: 'somaliland' }), /Covered by Somalia/);
     assert.match(ds.details({ placeId: 'gaza' }), /Covered by Israel and Palestine/);

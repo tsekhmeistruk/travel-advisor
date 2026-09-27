@@ -8,6 +8,14 @@ All tests use Node's built-in runner (`node:test`). The browser tests also use `
 | `npm run test:coverage` | the same, failing if coverage drops below **90% lines, 85% branches, 85% functions** | seconds |
 | `npm run test:e2e` | browser tests (`--test-concurrency=1`) | ~2 min |
 | `npm run test:all` | everything | ~2 min |
+| `npm run test:e2e:headed` | browser tests in a **visible** window, slowed down (`SLOWMO=<ms>`, default 40) | ~2–3 min |
+
+**Browser-test options** (environment variables):
+- `E2E_BASE_URL=http://localhost:8080/` runs the tests against an already-running server, such as `npm start`, instead of starting their own.
+- `HEADED=1` shows the browser window, and `SLOWMO=<ms>` slows it down so you can follow along.
+- `CHROME_PATH` picks the browser.
+
+The browser tests show **real scrollbars**, even headless, like Windows and Linux browsers. Headless Chrome hides them by default, and that hid a real layout bug: the panel's scrollbar made the details card overflow.
 
 ## Layout
 

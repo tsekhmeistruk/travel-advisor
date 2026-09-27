@@ -23,13 +23,34 @@ const executablePath = [
 
 export const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
+// Options from the environment (also as `npm run test:e2e --headed`):
+//   HEADED=1                 show the browser window instead of running headless
+//   SLOWMO=<ms>              pause between browser actions, to follow along (headed runs)
+//   E2E_BASE_URL=<url>       test an already-running site (e.g. http://localhost:8080/)
+//                            instead of starting a server on a free port
+const HEADED = !!(process.env.HEADED || process.env.npm_config_headed);
+const SLOWMO = Number(process.env.SLOWMO || process.env.npm_config_slowmo) || 0;
+const BASE_URL = process.env.E2E_BASE_URL;
+
 const env = {};
 /** Register before/after hooks that start the server and browser for the calling test file. */
 export function useBrowser() {
   before(async () => {
     assert.ok(executablePath, 'No Chrome/Edge found; set CHROME_PATH.');
-    ({ server: env.server, url: env.url } = await serve(0));
-    env.browser = await puppeteer.launch({ executablePath, headless: true, args: ['--no-sandbox'] });
+    if (BASE_URL) env.url = BASE_URL.endsWith('/') ? BASE_URL : `${BASE_URL}/`;
+    else ({ server: env.server, url: env.url } = await serve(0));
+    env.browser = await puppeteer.launch({
+      executablePath,
+      headless: !HEADED,
+      slowMo: SLOWMO,
+      // Headless Chrome hides scrollbars by default; real Windows/Linux browsers show classic
+      // ~15px scrollbars that take width from scrolling areas like the panel. Show them, so
+      // layout tests see what those users see (this hid a real overflow bug once).
+      ignoreDefaultArgs: ['--hide-scrollbars'],
+      // Headed: open windows at the size the tests set, so what you see matches.
+      defaultViewport: HEADED ? null : undefined,
+      args: ['--no-sandbox', ...(HEADED ? ['--window-size=1460,960'] : [])],
+    });
   });
   after(async () => { await env.browser?.close(); env.server?.close(); });
 }

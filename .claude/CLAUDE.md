@@ -88,6 +88,8 @@ For **every** change, however small, decide explicitly whether tests must be **a
   - `npm run test:e2e` for the browser tests, about 2 minutes; they serve `site/` and use local Chrome or Edge.
 
   This is exactly what the deploy gate runs. `tests/README.md` covers the layout and conventions.
+- **To watch the browser tests or test a running site,** use `E2E_BASE_URL=http://localhost:8080/ npm run test:e2e:headed`, with `npm start` running.
+- **Layout must hold with classic ~15px scrollbars (Windows).** The panel reserves a scrollbar gutter, and `--panel-w` includes it. The browser tests render scrollbars, even headless.
 - **Every bug fix or new behaviour gets a test, and should fail without the fix.** Inject what's slow or external (fetch, sleep, storage, clock, log folder) instead of calling it directly. The fixtures in `tests/fixtures/` are real responses.
 - **Workflows:** push, then run `gh workflow run update-advisories.yml --ref main` and `gh run watch <id>`, then `git pull`.
 - **Fetch health:** `npm run logs`, or the **Fetch results** table on each update run.
