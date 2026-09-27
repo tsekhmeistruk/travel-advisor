@@ -90,7 +90,9 @@ export function isActive(event, config, at) {
 
 /**
  * Places of an event: by ISO alpha-3 code (the source config's `codes` first, for codes that
- * aren't one place, e.g. PSE), else by the country names it gives. [] when it is offshore.
+ * aren't one place, e.g. PSE), else by the country names it gives (its `aliases` first, e.g.
+ * WHO's official names). A name that isn't a place but contains " and " is tried in parts
+ * ("Mauritania and Senegal"), so "Trinidad and Tobago" stays one. [] when it is offshore.
  */
 export function eventPlaces(event, config, index) {
   const ids = new Set();
@@ -100,10 +102,11 @@ export function eventPlaces(event, config, index) {
     if (hit) [].concat(hit).forEach(id => ids.add(id));
     else unknownCodes.push(code);
   }
+  const byName = (name) => config.aliases?.[name] ?? index.byKey.get(nameKey(name));
   if (!ids.size && event.country) {
     for (const name of event.country.split(/,\s*/)) {
-      const id = index.byKey.get(nameKey(name));
-      if (id) ids.add(id);
+      const hit = byName(name) ?? (/\sand\s/.test(name) ? name.split(/\s+and\s+/).map(byName).filter(Boolean).flat() : null);
+      if (hit) [].concat(hit).forEach(id => ids.add(id));
     }
   }
   return { placeIds: [...ids].sort(), unknownCodes };

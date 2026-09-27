@@ -95,7 +95,7 @@ export function countDirections(changes) {
  *   rows: [{ category, level, basis, changed }]   basis: { travel: { agree, count } } | { events: [...] } | null
  *   trend: 'up' | 'down' | null                   the latest pulsing change in the last 24 hours
  *   history: the place's latest changes (up to `historySize`)
- *   link: the first basis event's source page, or null
+ *   link, linkSource: the first basis event's source page and source id, or null
  * }
  */
 export function cardModel(placeId, { current, changes, events, now, windowDays, historySize = 3 }) {
@@ -111,6 +111,6 @@ export function cardModel(placeId, { current, changes, events, now, windowDays, 
     return { category, level: levelOf(current, placeId, category), basis, changed: change ? direction(change) : null };
   });
   const last24 = filterChanges(own, { windowDays: 1, now, pulseOnly: true })[0];
-  const link = rows.flatMap(r => r.basis?.events ?? []).find(e => e.url)?.url ?? null;
-  return { highest: highest(current, placeId), rows, trend: last24 ? direction(last24) : null, history: own.slice(0, historySize), link };
+  const linked = rows.flatMap(r => r.basis?.events ?? []).find(e => e.url);
+  return { highest: highest(current, placeId), rows, trend: last24 ? direction(last24) : null, history: own.slice(0, historySize), link: linked?.url ?? null, linkSource: linked?.source ?? null };
 }

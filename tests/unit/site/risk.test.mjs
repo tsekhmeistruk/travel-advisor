@@ -238,12 +238,12 @@ describe('details card', () => {
     assert.match(html, /Raised in the last 24 hours/);
     assert.match(html, /Travel<\/span>\s*<span class="lvl">Elevated/);
     assert.match(html, /2 of 2 governments/);
-    assert.match(html, /GDACS Orange tropical cyclone \+1/);
+    assert.match(html, /GDACS Orange alert: tropical cyclone \+1/);
     assert.match(html, /Wildfire<\/span>\s*<span class="lvl">Normal/);
     assert.match(html, /Disaster: Normal → High/);
     assert.match(html, /New GDACS Orange alert: tropical cyclone/);
     assert.match(html, /href="https:\/\/www\.gdacs\.org\/report\.aspx\?eventid=1"/);
-    assert.match(html, /Security, unrest and health: coming later/);
+    assert.match(html, /Security and unrest: coming later/);
     assert.match(html, /<button class="link link-btn" data-action="country" data-place="mx">Country details →<\/button>/);
   });
   test('a place with no data says so, and without changes says that', () => {
@@ -257,7 +257,7 @@ describe('details card', () => {
     const html = ds.details({ placeId: 'so' });
     assert.match(html, /Disaster · Elevated/);
     assert.match(html, /<li class="is-focus">[\s\S]*?Disaster/);
-    assert.match(html, /GDACS Orange drought/);
+    assert.match(html, /GDACS Orange alert: drought/);
   });
   test('advisory changes read like the travel card; a direction-only one says raised or lowered', () => {
     assert.match(ds.details({ placeId: 'so' }), /U\.S\.: Level 3 → 4/);
@@ -339,7 +339,7 @@ describe('feed', () => {
     assert.equal(f.count.textContent, 5);
     const names = [...f.el.innerHTML.matchAll(/class="name">([^<]+)</g)].map(m => m[1]);
     assert.deepEqual(names, ['Mexico', 'Mexico', 'Offshore quake', 'Somalia', 'Kenya']);
-    assert.match(f.el.innerHTML, /GDACS earthquake alert lowered to Orange/);
+    assert.match(f.el.innerHTML, /GDACS earthquake: lowered to Orange alert/);
     assert.match(f.el.innerHTML, /5h ago/);
   });
   test('filters by level, direction and the mode\'s category, and says when nothing changed', async () => {
@@ -464,7 +464,7 @@ describe('country view', () => {
     assert.match(html, /High · Disaster/);
     assert.equal((html.match(/<li class="">/g) ?? []).length + (html.match(/<li class="is-focus">/g) ?? []).length, 3, 'three category rows');
     assert.match(html, /Active alerts <span class="count">2<\/span>/);
-    assert.match(html, /Orange: Tropical Cyclone &lt;b&gt;X&lt;\/b&gt;/);
+    assert.match(html, /Orange alert: Tropical Cyclone &lt;b&gt;X&lt;\/b&gt;/);
     assert.match(html, /U\.S\.<\/span>[\s\S]*Level 2 · Exercise increased caution/);
     assert.match(html, /Level 3 · Avoid non-essential travel · under North &lt;America&gt;/, 'a covering advisory says so');
     assert.match(html, /href="https:\/\/travel\.state\.gov\/mx"/);
@@ -510,5 +510,38 @@ describe('country view', () => {
   test('an invalid saved history window falls back to 90 days', async () => {
     await create({ saved: { historyDays: 12 } });
     assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.historyDays, 90);
+  });
+});
+
+describe('WHO notices on the site', () => {
+  const NOTICE = {
+    id: 'who:DON:2026-DON618', source: 'who', type: 'outbreak', category: 'health', level: 2, native: { scheme: 'who-don', value: 'notice' },
+    name: 'Ebola disease - Mexico', placeIds: ['mx'], startedAt: '2026-09-25T15:30:18.000Z', toDate: '2026-09-25T15:30:18.000Z', current: false,
+    url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618',
+  };
+  const HEALTH = { ...CURRENT, categories: { ...CURRENT.categories, health: { sources: ['who'], default: 1, status: 'healthy' } },
+    places: { ...CURRENT.places, mx: { ...CURRENT.places.mx, health: { level: 2, basis: [NOTICE.id] } } } };
+  async function withNotice() {
+    const files = { 'risk/current.json': HEALTH, 'risk/changes.json': { changes: [] }, 'risk/events.json': { events: [NOTICE] } };
+    const settings = createSettings('k', {}, { getItem: () => null, setItem: () => {} });
+    ds = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN, today: new Date(NOW) }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'highest', view: 'highest', now: () => NOW });
+    await ds.load();
+  }
+
+  test('the card has a health row naming the notice, and its report link names WHO', async () => {
+    await withNotice();
+    const html = ds.details({ placeId: 'mx' });
+    assert.match(html, /Health<\/span>\s*<span class="lvl">Elevated[\s\S]*WHO Disease Outbreak News: disease outbreak/);
+    assert.match(html, /href="https:\/\/www\.who\.int\/emergencies\/disease-outbreak-news\/item\/2026-DON618"[^>]*>WHO report ↗/);
+  });
+  test('a notice\'s event card has one date and WHO\'s own note', async () => {
+    await withNotice();
+    const html = ds.details({ eventId: NOTICE.id });
+    assert.match(html, /WHO alert · Health/);
+    assert.match(html, /Disease Outbreak News · Elevated/);
+    assert.match(html, /Published<\/dt><dd[^>]*>Sep 25, 2026/);
+    assert.doesNotMatch(html, /Started|Ended/);
+    assert.match(html, /WHO publishes Disease Outbreak News/);
+    assert.doesNotMatch(html, /automatic estimates/);
   });
 });

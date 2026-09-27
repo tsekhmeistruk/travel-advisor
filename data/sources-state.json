@@ -26,5 +26,12 @@
   "durationMs": 1399,
   "records": 219,
   "consecutiveFailures": 0
+ },
+ "who": {
+  "lastAttempt": "2026-09-27T18:04:53.635Z",
+  "lastSuccess": "2026-09-27T18:04:53.635Z",
+  "durationMs": 442,
+  "records": 8,
+  "consecutiveFailures": 0
  }
 }

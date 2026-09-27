@@ -164,10 +164,10 @@ export function createRiskMode(ctx) {
       <div class="trend">${trendHtml(m.trend)}</div>
       <ul class="risk-rows">${rowsHtml(m.rows)}</ul>
       <p class="later">${esc(tr('card.later'))}</p>
-      <div class="history"><div class="history-label">${esc(tr('card.history'))}</div><ul class="history-list">${history}</ul></div>
+      <div class="history"><div class="history-label">${esc(tr('card.history'))}</div><ul class="history-list short">${history}</ul></div>
       <div class="card-actions">
         <button class="link link-btn" data-action="country" data-place="${esc(placeId)}">${esc(tr('card.details'))}</button>
-        ${link ? `<a class="link" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(link)}">${esc(tr('card.report', { source: sourceName('gdacs') }))}</a>` : ''}
+        ${link ? `<a class="link" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(link)}">${esc(tr('card.report', { source: sourceName(m.linkSource) }))}</a>` : ''}
       </div>`;
   }
 
@@ -241,11 +241,12 @@ export function createRiskMode(ctx) {
       ${badge(e.level, tr('event.badge', { alert: alertName(e.native.value), level: levelName(e.level) }))}
       <p class="desc">${esc(e.severity ?? typeName(e.type))}</p>
       <dl class="meta">
-        ${row(tr('event.started'), i18n.formatDate(e.startedAt.slice(0, 10)))}
-        ${row(tr(e.current ? 'event.current' : 'event.ended'), i18n.formatDate(e.toDate.slice(0, 10)))}
+        ${e.startedAt === e.toDate
+    ? row(tr('event.published'), i18n.formatDate(e.startedAt.slice(0, 10)))
+    : row(tr('event.started'), i18n.formatDate(e.startedAt.slice(0, 10))) + row(tr(e.current ? 'event.current' : 'event.ended'), i18n.formatDate(e.toDate.slice(0, 10)))}
         ${row(tr('event.places'), where)}
       </dl>
-      <p class="event-note">${esc(tr('event.note', { source: sourceName(e.source) }))}</p>
+      <p class="event-note">${esc(i18n.has(`risk.event.notes.${e.source}`) ? tr(`event.notes.${e.source}`) : tr('event.note', { source: sourceName(e.source) }))}</p>
       ${url ? `<a class="link" href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(tr('card.report', { source: sourceName(e.source) }))}</a>` : ''}`;
   }
 

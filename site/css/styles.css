@@ -447,7 +447,7 @@ h1, h2 { margin: 0; }
 .risk-rows { list-style: none; margin: 6px 0 0; padding: 0; width: 100%; }
 .risk-rows li {
   display: flex; align-items: center; gap: 8px;
-  height: 26px; font-size: 13px;
+  height: 23px; font-size: 13px;
   border-bottom: 1px solid var(--line);
 }
 .risk-rows li:last-child { border-bottom: 0; }
@@ -460,6 +460,8 @@ h1, h2 { margin: 0; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .details .later { margin: 4px 0 0; height: 18px; font-size: 12px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+/* The risk card lists at most three changes: three lines, to leave room for a row per category. */
+.details .history-list.short { height: calc(3 * 1.45em); }
 .details .event-note {
   margin: 10px 0 0 !important; font-size: 12px !important; color: var(--text-3) !important;
   height: calc(2 * 1.45em); overflow: hidden;

@@ -8,6 +8,7 @@ import us from '../../../scripts/providers/us/index.mjs';
 import ca from '../../../scripts/providers/ca/index.mjs';
 import nl from '../../../scripts/providers/nl/index.mjs';
 import gdacs from '../../../scripts/providers/gdacs/index.mjs';
+import who from '../../../scripts/providers/who/index.mjs';
 import { PROVIDERS, SOURCES, getProvider } from '../../../scripts/providers/index.mjs';
 
 const fixture = (f) => readFileSync(new URL(`../../fixtures/${f}`, import.meta.url), 'utf8');
@@ -47,7 +48,7 @@ describe('provider registry', () => {
     assert.equal(getProvider('gdacs'), gdacs, 'sources are found by id too');
   });
   test('rejects an unknown provider with the list of known ones', () => {
-    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, gdacs/);
+    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, gdacs, who/);
   });
 });
 
@@ -137,6 +138,39 @@ describe('GDACS fetcher', () => {
     const { sleep } = recordSleeps();
     const log = fakeLog({ search: [{ body: '{"type":"FeatureCollection"}' }] });
     await assert.rejects(gdacs.fetch({ log, previous: [], now: NOW, config, sleep }), /no list of features/);
+  });
+});
+
+describe('WHO fetcher', () => {
+  const config = JSON.parse(readFileSync(new URL('../../../config/sources/who.json', import.meta.url), 'utf8'));
+  const body = fixture('who-don.json');
+  const NOW = new Date('2026-09-27T16:00:00Z');
+
+  test('asks for the latest notices in one request and keeps those of the lookback window', async () => {
+    const log = fakeLog({ api: [{ body }] });
+    const { events, stats } = await who.fetch({ log, previous: [], now: NOW, config, sleep: async () => {} });
+    assert.equal(log.requests.length, 1);
+    const url = new URL(log.requests[0].url);
+    assert.equal(url.searchParams.get('$orderby'), 'PublicationDate desc');
+    assert.match(url.searchParams.get('$select'), /DonId,Title/);
+    assert.equal(stats.received, 40);
+    assert.ok(events.length > 0 && events.length < 40);
+    assert.ok(events.every(e => Date.parse(e.startedAt) >= Date.parse('2026-06-29')), '90 days');
+    assert.equal(stats.current, 0);
+  });
+
+  test('an empty list is an error (WHO publishes every month), so the stored notices are kept', async () => {
+    const log = fakeLog({ api: [{ body: '{"value":[]}' }] });
+    await assert.rejects(who.fetch({ log, previous: [], now: NOW, config }), /no notices/);
+  });
+
+  test('retries errors after 30 and 60 seconds, then gives up', async () => {
+    const { waits, sleep } = recordSleeps();
+    const log = fakeLog({ api: [{ status: 503 }, { body: CHALLENGE, challenge: true }, { body }] });
+    assert.ok((await who.fetch({ log, previous: [], now: NOW, config, sleep })).events.length > 0);
+    assert.deepEqual(waits, [30000, 60000]);
+    const down = fakeLog({ api: [{ status: 500 }, new Error('ECONNRESET'), { status: 502 }] });
+    await assert.rejects(who.fetch({ log: down, previous: [], now: NOW, config, sleep }), /API failed after 3 attempts: HTTP 502/);
   });
 });
 

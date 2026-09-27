@@ -78,7 +78,7 @@ describe('risk sources are wired up everywhere', () => {
         assert.ok(t.type && t.tailDays >= 0, `${code}: type and tailDays`);
       }
       for (const level of Object.values(cfg.levels)) assert.ok(store.categories().scale.values.includes(level), `level ${level}`);
-      assert.deepEqual(Object.values(cfg.codes ?? {}).flat().filter(p => !placeIds.has(p)), [], 'codes refer to known places');
+      assert.deepEqual([...Object.values(cfg.codes ?? {}), ...Object.values(cfg.aliases ?? {})].flat().filter(p => !placeIds.has(p)), [], 'codes and aliases refer to known places');
       assertInWorkflow(id);
     });
   }

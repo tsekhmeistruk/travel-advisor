@@ -25,10 +25,11 @@ A world map of official travel advisory levels from the **U.S. State Department*
 
 Advisory levels are simplified to 1–4 for every source. Always read the full official advisory before you travel.
 
-**Risk monitor (in progress).** The site is growing beyond travel advisories into several risk categories per country (travel and disasters today; wildfires, security, health and more later), each with its own sources and level history:
+**Risk monitor (in progress).** The site is growing beyond travel advisories into several risk categories per country (travel, disasters, wildfires and health today; security, unrest and more later), each with its own sources and level history:
 
 | Source | Where the data comes from | Notes |
 |---|---|---|
+| 🌐 WHO Disease Outbreak News | [WHO API](https://www.who.int/emergencies/disease-outbreak-news), every 6 hours | Official notices of outbreaks of international concern. A notice raises the Health category to Elevated for 30 days; the site keeps only its title, date and link, and links to WHO for the text. Global and regional notices are listed on no country. |
 | 🌐 GDACS (UN OCHA, UNOSAT and the European Commission) | [GDACS API](https://www.gdacs.org/gdacsapi/swagger/index.html), Orange and Red alerts of the last 30 days, hourly | Earthquakes, cyclones, floods, volcanoes, droughts and forest fires. GDACS alerts are automatic estimates, "purely indicative", and don't replace national authorities ([terms](https://www.gdacs.org/documents/2025/GDACS_Terms_of_use_Mar_25.pdf)). |
 
 **Level history:** the site records each source's levels once a day and compares them with the day before, so it knows about level changes from **Sep 26, 2026**, when tracking began. For the U.S., ten earlier changes were added once from the State Department's own change notes, e.g. "The advisory level was increased to 4" (Chad, Apr 28, 2026). Where a note gave only the direction, the card says "Raised to Level 4" rather than "Level 3 → 4".
@@ -110,6 +111,7 @@ npm run logs        # table of the last 30 days
 ## Credits
 
 - **Advisory data:** [U.S. Department of State](https://travel.state.gov/), [Government of Canada](https://travel.gc.ca/) and the [Dutch Ministry of Foreign Affairs](https://www.nederlandwereldwijd.nl/reisadvies) (open data, CC0). This site isn't affiliated with any of these governments.
+- **Outbreak notices:** [WHO Disease Outbreak News](https://www.who.int/emergencies/disease-outbreak-news), World Health Organization. Titles, dates and links only. Not affiliated.
 - **Disaster alerts:** [GDACS](https://www.gdacs.org/), the Global Disaster Alert and Coordination System (UN OCHA, UNOSAT and the European Commission). Not affiliated.
 - **Map geometry:** [Natural Earth](https://www.naturalearthdata.com/) via [world-atlas](https://github.com/topojson/world-atlas) (public domain).
 - **Country codes:** ISO 3166-1, mapped with [i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) (MIT, used only to generate the place registry).

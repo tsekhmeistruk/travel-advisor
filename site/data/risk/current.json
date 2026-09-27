@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-27T17:38:30.045Z",
+ "asOf": "2026-09-27T18:04:53.636Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -33,12 +33,24 @@
    "default": 1,
    "status": "healthy",
    "at": "2026-09-27T17:38:30.045Z"
+  },
+  "health": {
+   "sources": [
+    "who"
+   ],
+   "default": 1,
+   "status": "healthy",
+   "at": "2026-09-27T18:04:53.636Z"
   }
  },
  "sources": {
   "gdacs": {
    "url": "https://www.gdacs.org/",
    "terms": "https://www.gdacs.org/documents/2025/GDACS_Terms_of_use_Mar_25.pdf"
+  },
+  "who": {
+   "url": "https://www.who.int/emergencies/disease-outbreak-news",
+   "terms": "https://www.who.int/about/policies/terms-of-use"
   },
   "us": {
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html"
@@ -485,6 +497,13 @@
      "nl": 3
     },
     "agree": 2
+   },
+   "health": {
+    "level": 2,
+    "basis": [
+     "who:DON:2026-DON617",
+     "who:DON:2026-DON618"
+    ]
    }
   },
   "cf": {

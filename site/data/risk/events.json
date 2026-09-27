@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-27T17:38:30.045Z",
+ "asOf": "2026-09-27T18:04:53.636Z",
  "events": [
   {
    "id": "gdacs:TC:1001329",
@@ -25,6 +25,26 @@
    "toDate": "2026-09-27T15:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=2&eventtype=TC"
+  },
+  {
+   "id": "who:DON:2026-DON618",
+   "source": "who",
+   "type": "outbreak",
+   "category": "health",
+   "level": 2,
+   "native": {
+    "scheme": "who-don",
+    "value": "notice"
+   },
+   "name": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
+   "country": "Democratic Republic of the Congo",
+   "placeIds": [
+    "cd"
+   ],
+   "startedAt": "2026-09-25T15:30:18.000Z",
+   "toDate": "2026-09-25T15:30:18.000Z",
+   "current": false,
+   "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618"
   },
   {
    "id": "gdacs:TC:1001328",
@@ -418,6 +438,26 @@
    "toDate": "2026-09-27T15:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=28&eventtype=TC"
+  },
+  {
+   "id": "who:DON:2026-DON617",
+   "source": "who",
+   "type": "outbreak",
+   "category": "health",
+   "level": 2,
+   "native": {
+    "scheme": "who-don",
+    "value": "notice"
+   },
+   "name": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
+   "country": "Democratic Republic of the Congo",
+   "placeIds": [
+    "cd"
+   ],
+   "startedAt": "2026-09-10T08:52:02.000Z",
+   "toDate": "2026-09-10T08:52:02.000Z",
+   "current": false,
+   "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617"
   },
   {
    "id": "gdacs:FL:1104141",

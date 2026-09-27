@@ -1,0 +1,39 @@
+{
+ "id": "who",
+ "name": "WHO",
+ "type": "un-system",
+ "authority": "World Health Organization, Disease Outbreak News",
+ "links": {
+  "home": "https://www.who.int/emergencies/disease-outbreak-news",
+  "terms": "https://www.who.int/about/policies/terms-of-use"
+ },
+ "staleAfterHours": 48,
+ "confirmFallMinutes": 0,
+ "lookbackDays": 90,
+ "retainEndedDays": 90,
+ "scheme": "who-don",
+ "levels": {
+  "notice": 2
+ },
+ "types": {
+  "DON": { "type": "outbreak", "category": "health", "tailDays": 30 }
+ },
+ "aliases": {
+  "Kingdom of Saudi Arabia": "sa",
+  "United Republic of Tanzania": "tz",
+  "the Plurinational State of Bolivia": "bo",
+  "Plurinational State of Bolivia": "bo",
+  "The Republic of Rwanda": "rw",
+  "Iran (Islamic Republic of)": "ir",
+  "La Réunion": "re",
+  "United Kingdom of Great Britain and Northern Ireland": "gb",
+  "Türkiye": "tr",
+  "Republic of Korea": "kr",
+  "Democratic People's Republic of Korea": "kp",
+  "Lao People's Democratic Republic": "la",
+  "Syrian Arab Republic": "sy",
+  "Venezuela (Bolivarian Republic of)": "ve",
+  "Republic of Moldova": "md",
+  "occupied Palestinian territory": ["gaza", "west-bank"]
+ }
+}

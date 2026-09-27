@@ -13,9 +13,10 @@ import us from './us/index.mjs';
 import ca from './ca/index.mjs';
 import nl from './nl/index.mjs';
 import gdacs from './gdacs/index.mjs';
+import who from './who/index.mjs';
 
 export const PROVIDERS = { us, ca, nl };
-export const SOURCES = { gdacs };
+export const SOURCES = { gdacs, who };
 
 export function getProvider(id) {
   const p = PROVIDERS[id] ?? SOURCES[id];

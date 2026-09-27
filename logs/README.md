@@ -86,6 +86,8 @@ The fields in `stats` depend on the source:
   - `closed`: stored "current" events older than the 30-day window, so GDACS can no longer list them; they are marked ended.
   - `archived`: ended events moved to `data/archive/events/`.
 
+- **WHO** (risk source, from Sep 27, 2026): `events` (notices of the last 90 days), `received` (notices in this response, the latest 30), `added` (new notice ids), `archived`.
+
 `calls.search` is GDACS's search endpoint, counted like `calls.list`. HTTP 204 means "no events".
 
 ## `data/sources-state.json`: last success of every fetch

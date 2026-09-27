@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-27T17:38:30.045Z",
+ "asOf": "2026-09-27T18:04:53.636Z",
  "sources": {
   "ca": {
    "status": "healthy",
@@ -28,6 +28,13 @@
    "lastAttempt": "2026-09-27T04:25:11.069Z",
    "consecutiveFailures": 0,
    "records": 219
+  },
+  "who": {
+   "status": "healthy",
+   "lastSuccess": "2026-09-27T18:04:53.635Z",
+   "lastAttempt": "2026-09-27T18:04:53.635Z",
+   "consecutiveFailures": 0,
+   "records": 8
   }
  }
 }

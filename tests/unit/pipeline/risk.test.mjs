@@ -347,3 +347,35 @@ describe('placeFiles', () => {
     assert.equal(PLACE_HISTORY_DAYS, 365);
   });
 });
+
+describe('WHO notices in the risk layer', () => {
+  const WHO = {
+    id: 'who', staleAfterHours: 48, confirmFallMinutes: 0, scheme: 'who-don', levels: { notice: 2 },
+    types: { DON: { type: 'outbreak', category: 'health', tailDays: 30 } },
+    aliases: { 'United Republic of Tanzania': 'tz', 'occupied Palestinian territory': ['gaza', 'west-bank'] },
+  };
+  const idx = placeIndex([...PLACES, { id: 'tz', name: 'Tanzania', iso2: 'TZ', iso3: 'TZA', shape: 'Tanzania' }, { id: 'mr', name: 'Mauritania', iso2: 'MR', iso3: 'MRT' }, { id: 'sn', name: 'Senegal', iso2: 'SN', iso3: 'SEN' }, { id: 'tt', name: 'Trinidad and Tobago', iso2: 'TT', iso3: 'TTO' }]);
+  const notice = (country, published = hoursAfter(-24 * 5)) => ({ id: `who:DON:${country}`, code: 'DON', name: `X - ${country}`, country, iso3: [], native: { scheme: 'who-don', value: 'notice' }, startedAt: published, toDate: published, current: false });
+
+  test('places a notice by official-name aliases, and splits "X and Y" only when the whole is not a place', () => {
+    const places = (country) => eventPlaces(notice(country), WHO, idx).placeIds;
+    assert.deepEqual(places('United Republic of Tanzania'), ['tz']);
+    assert.deepEqual(places('occupied Palestinian territory'), ['gaza', 'west-bank']);
+    assert.deepEqual(places('Mauritania and Senegal'), ['mr', 'sn']);
+    assert.deepEqual(places('Trinidad and Tobago'), ['tt']);
+    assert.deepEqual(places('Mexico, Guatemala'), ['gt', 'mx']);
+    assert.deepEqual(places('Atlantis and Lemuria'), []);
+  });
+
+  test('a notice raises health to Elevated for 30 days after it is published, then the fall is recorded at once', () => {
+    const data = (events, fetchedAt = T0) => ({ fetchedAt, firstFetchedAt: '2026-09-01T00:00:00.000Z', events });
+    const recent = eventSignals('who', data([notice('Mexico')]), WHO, idx);
+    assert.deepEqual(recent.byCategory.get('health').get('mx'), { level: 2, basis: ['who:DON:Mexico'] });
+    const old = eventSignals('who', data([notice('Mexico', hoursAfter(-24 * 31))]), WHO, idx);
+    assert.equal(old.byCategory.get('health').size, 0);
+    const state = updateSignals(undefined, recent.byCategory.get('health'), { category: 'health', at: T0, confirmFallMinutes: 0, sources: ['who'] }).state;
+    const fell = updateSignals(state, new Map(), { category: 'health', at: hoursAfter(1), confirmFallMinutes: 0, sources: ['who'] });
+    assert.equal(fell.changes.length, 1, 'no wait: a notice does not flap');
+    assert.equal(eventChanges('who', data([notice('Mexico')]), WHO, idx).length, 0, 'Elevated is below the level where a new event is listed');
+  });
+});

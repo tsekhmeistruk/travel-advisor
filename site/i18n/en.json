@@ -201,7 +201,7 @@
   },
   "highest": {
    "label": "Highest",
-   "title": "The highest risk level of any category"
+   "title": "The highest risk level of any category: travel, disasters, wildfires and health"
   },
   "disaster": {
    "label": "Disasters",
@@ -240,15 +240,18 @@
    "flood": "flood",
    "volcano": "volcano",
    "drought": "drought",
-   "wildfire": "forest fire"
+   "wildfire": "forest fire",
+   "outbreak": "disease outbreak"
   },
   "alerts": {
-   "Green": "Green",
-   "Orange": "Orange",
-   "Red": "Red"
+   "Green": "Green alert",
+   "Orange": "Orange alert",
+   "Red": "Red alert",
+   "notice": "Disease Outbreak News"
   },
   "sources": {
-   "gdacs": "GDACS"
+   "gdacs": "GDACS",
+   "who": "WHO"
   },
   "status": {
    "delayed": "delayed",
@@ -282,11 +285,11 @@
     "one": "{agree} of {count} government",
     "other": "{agree} of {count} governments"
    },
-   "eventBasis": "{source} {alert} {type}",
+   "eventBasis": "{source} {alert}: {type}",
    "more": "{text} +{count}",
    "notCovered": "No advisory",
    "unavailable": "Source unavailable",
-   "later": "Security, unrest and health: coming later",
+   "later": "Security and unrest: coming later",
    "history": "Recent changes",
    "noChanges": "No changes in the last {days} days.",
    "report": "{source} report ↗",
@@ -311,9 +314,9 @@
    "advisory": "{provider}: Level {from} → {to}",
    "advisoryUp": "{provider}: raised to Level {to}",
    "advisoryDown": "{provider}: lowered to Level {to}",
-   "eventNew": "New {source} {alert} alert: {type}",
-   "eventUp": "{source} {type} alert raised to {alert}",
-   "eventDown": "{source} {type} alert lowered to {alert}",
+   "eventNew": "New {source} {alert}: {type}",
+   "eventUp": "{source} {type}: raised to {alert}",
+   "eventDown": "{source} {type}: lowered to {alert}",
    "raised": "Raised",
    "lowered": "Lowered"
   },
@@ -346,13 +349,17 @@
   },
   "event": {
    "eyebrow": "{source} alert · {category}",
-   "badge": "{alert} alert · {level}",
+   "badge": "{alert} · {level}",
+   "published": "Published",
    "started": "Started",
    "current": "Ongoing, last update",
    "ended": "Ended",
    "places": "Affects",
    "offshore": "At sea, no country",
-   "note": "{source} alerts are automatic estimates. Confirm with national authorities before acting on them."
+   "note": "{source} alerts are automatic estimates. Confirm with national authorities before acting on them.",
+   "notes": {
+    "who": "WHO publishes Disease Outbreak News for outbreaks of international concern. Read the notice for WHO's advice to travellers."
+   }
   }
  },
  "places": {}
