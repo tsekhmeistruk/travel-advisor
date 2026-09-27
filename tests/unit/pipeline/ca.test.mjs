@@ -1,7 +1,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { parseTable, parseLatestUpdate, planPageReads, parseFeed, combineSources } from '../../../scripts/providers/ca/parse.mjs';
+import { parseTable, parseFeed, combineSources } from '../../../scripts/providers/ca/parse.mjs';
 
 const fixture = (f) => readFileSync(new URL(`../../fixtures/${f}`, import.meta.url), 'utf8');
 
@@ -21,13 +21,11 @@ describe('parseFeed', () => {
     assert.equal(byName.get('Afghanistan').regional, false);
   });
 
-  test('keeps the full timestamp, the date, the page URL, the ISO code, the English note and the change type', () => {
+  test('keeps the full timestamp, the date, the page URL and the ISO code, and no change notes', () => {
     assert.deepEqual(byName.get('Mexico'), {
       name: 'Mexico', level: 2, regional: true, updated: '2026-09-26', stamp: '2026-09-26 01:43:09',
-      url: 'https://travel.gc.ca/destinations/mexico', change: byName.get('Mexico').change, changeType: 'Regional advisory added', iso: 'MX',
+      url: 'https://travel.gc.ca/destinations/mexico', iso: 'MX',
     });
-    assert.match(byName.get('Mexico').change, /avoid non-essential travel to Baja California Sur/);
-    assert.equal(byName.get('Japan').changeType, 'Regular text update');
   });
 
   test('uses the same names and URLs as the advisory table (history and aliases depend on it)', () => {
@@ -45,18 +43,18 @@ describe('parseFeed', () => {
 });
 
 describe('combineSources', () => {
-  const f = (name, stamp, extra = {}) => ({ name, level: 2, stamp, url: `https://travel.gc.ca/destinations/${name}`, change: `${name} note`, changeType: 'Editorial change', iso: name.toUpperCase(), ...extra });
+  const f = (name, stamp, extra = {}) => ({ name, level: 2, stamp, url: `https://travel.gc.ca/destinations/${name}`, iso: name.toUpperCase(), ...extra });
   const t = (name, stamp, extra = {}) => ({ name, level: 2, stamp, url: `https://travel.gc.ca/destinations/${name}`, ...extra });
 
   test('the feed wins when the table has the same timestamp', () => {
-    const { entries, newerInTable } = combineSources([f('a', '2026-09-24 08:00:00')], [t('a', '2026-09-24 08:00:00')]);
-    assert.equal(entries[0].change, 'a note');
+    const { entries, newerInTable } = combineSources([f('a', '2026-09-24 08:00:00', { level: 3 })], [t('a', '2026-09-24 08:00:00')]);
+    assert.equal(entries[0].level, 3);
     assert.deepEqual(newerInTable, []);
   });
 
-  test('the table wins for a newer timestamp, and its note becomes unknown', () => {
+  test('the table wins for a newer timestamp, keeping the feed\'s ISO code', () => {
     const { entries, newerInTable } = combineSources([f('a', '2026-09-24 08:00:00')], [t('a', '2026-09-27 10:00:00', { level: 4 })]);
-    assert.deepEqual([entries[0].level, entries[0].change, entries[0].changeType, entries[0].iso], [4, undefined, undefined, 'A']);
+    assert.deepEqual([entries[0].level, entries[0].stamp, entries[0].iso], [4, '2026-09-27 10:00:00', 'A']);
     assert.deepEqual(newerInTable, ['a']);
   });
 
@@ -100,48 +98,5 @@ describe('parseTable', () => {
 
   test('returns nothing for a page without the table', () => {
     assert.deepEqual(parseTable('<html>Service unavailable</html>'), []);
-  });
-});
-
-describe('parseLatestUpdate', () => {
-  test('reads the "Latest updates" line from a real destination page', () => {
-    assert.equal(parseLatestUpdate(fixture('canada-destination.html')), 'Health – editorial change');
-  });
-
-  test('decodes entities and collapses whitespace', () => {
-    assert.equal(parseLatestUpdate('<span id="lastUpdateTextLbl">Risk levels section &ndash;\n  avoid all travel</span>'), 'Risk levels section – avoid all travel');
-  });
-
-  test('returns null when the label is missing', () => {
-    assert.equal(parseLatestUpdate('<p>no label here</p>'), null);
-  });
-});
-
-describe('planPageReads', () => {
-  test('reuses notes for unchanged timestamps and reads the rest', () => {
-    const entries = [
-      { name: 'Mexico', stamp: '2026-09-26 01:43:09' },
-      { name: 'Japan', stamp: '2026-09-27 10:00:00' },
-      { name: 'New', stamp: '2026-09-27 10:00:00' },
-    ];
-    const previous = [
-      { name: 'Mexico', stamp: '2026-09-26 01:43:09', change: 'Risk levels section – …' },
-      { name: 'Japan', stamp: '2026-09-25 11:47:52', change: 'Old note' },
-    ];
-    const toRead = planPageReads(entries, previous);
-    assert.deepEqual(toRead.map(e => e.name), ['Japan', 'New']);
-    assert.equal(entries[0].change, 'Risk levels section – …');
-    assert.equal(entries[1].change, undefined, 'a changed page must not keep the old note');
-  });
-
-  test('re-reads a page whose earlier read failed (no note on file)', () => {
-    const toRead = planPageReads([{ name: 'X', stamp: 's' }], [{ name: 'X', stamp: 's' }]);
-    assert.equal(toRead.length, 1);
-  });
-
-  test('a reused note keeps its change type', () => {
-    const entries = [{ name: 'X', stamp: 's' }];
-    planPageReads(entries, [{ name: 'X', stamp: 's', change: 'n', changeType: 'Editorial change' }]);
-    assert.deepEqual([entries[0].change, entries[0].changeType], ['n', 'Editorial change']);
   });
 });

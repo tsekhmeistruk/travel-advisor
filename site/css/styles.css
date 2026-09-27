@@ -332,25 +332,27 @@ h1, h2 { margin: 0; }
   height: 398px;
   overflow: hidden;
 }
-.details .change { width: 100%; margin-top: 10px; }
-.change-label {
-  display: flex; align-items: center; gap: 6px;
+.details .history { width: 100%; margin-top: 10px; }
+.history-label {
   font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;
   color: var(--text-3);
 }
-.minor-tag {
-  padding: 1px 7px; border-radius: 999px;
-  border: 1px solid var(--line); background: var(--panel);
-  font-size: 11px; font-weight: 500; text-transform: none; letter-spacing: 0;
-  color: var(--text-2); cursor: help;
-}
-.details .change-text {
-  margin: 4px 0 0;
+/* Four one-line rows at most: up to three level changes, then "tracked since". */
+.history-list {
+  list-style: none; margin: 4px 0 0; padding: 0;
   height: calc(4 * 1.45em);
   font-size: 12.5px; line-height: 1.45; color: var(--text);
-  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+  overflow: hidden;
 }
-.details .change-text.none { color: var(--text-3); font-style: italic; }
+.history-list li { display: flex; align-items: baseline; gap: 6px; white-space: nowrap; }
+.history-list .what { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+.history-list .date { margin-left: auto; color: var(--text-2); font-variant-numeric: tabular-nums; }
+.history-list .since { color: var(--text-3); overflow: hidden; text-overflow: ellipsis; display: block; }
+.history-list .since.none { font-style: italic; white-space: normal; }
+/* Raised = towards "do not travel", lowered = towards "normal precautions". */
+.arrow { flex: none; font-size: .8em; cursor: help; }
+.arrow.up { color: var(--l4); }
+.arrow.down { color: var(--l1); }
 .details > * { flex-shrink: 0; max-width: 100%; }
 .details h3 {
   margin: 0 0 8px; height: 26px; line-height: 26px;
@@ -371,9 +373,6 @@ h1, h2 { margin: 0; }
   height: 24px; margin-top: 10px; width: 100%;
   overflow: hidden;
 }
-.details .status .fresh { margin-top: 0; flex: none; }
-.fresh.up { color: var(--l4); background: color-mix(in srgb, var(--l4) 14%, transparent); }
-.fresh.down { color: var(--l1); background: color-mix(in srgb, var(--l1) 14%, transparent); }
 .tag {
   flex: none;
   padding: 3px 9px; border-radius: 999px;
@@ -413,16 +412,6 @@ h1, h2 { margin: 0; }
 /* One line always (the details card has fixed-height slots): a longer translation is
    shortened with "…", and the full text is in the title attribute. */
 .meta dd { margin: 0; font-weight: 500; text-align: right; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-.fresh {
-  display: inline-flex; align-items: center; gap: 5px;
-  margin-top: 10px;
-  padding: 3px 9px; border-radius: 999px;
-  font-size: 12px; font-weight: 600;
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
-  color: var(--accent);
-}
-.fresh::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
 /* One line (fixed-height card): a long domain is shortened with "…"; the full URL is in the title. */
 .details .link { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 500; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -506,9 +495,10 @@ h1, h2 { margin: 0; }
 .recent-list .row { display: flex; align-items: center; gap: 9px; }
 .recent-list .name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .recent-list .what {
+  display: flex; align-items: baseline; gap: 5px;
   padding-left: 19px;
   font-size: 12px; line-height: 1.4; color: var(--text-2);
-  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  white-space: nowrap; overflow: hidden;
 }
 .recent-list button:hover, .recent-list button.is-active { background: var(--panel-2); }
 .recent-list .swatch { border-radius: 50%; background: var(--c); }

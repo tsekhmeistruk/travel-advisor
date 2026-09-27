@@ -3,12 +3,10 @@
 //
 // Two sources:
 //  - the official open-data JSON feed (data.international.gc.ca): every destination in one
-//    file, with its ISO code, level, regional flag, "what changed" and an official change
-//    type. It is rebuilt about once a day, so it can lag the website by up to a day.
-//  - the advisory table on travel.gc.ca: live, but has no "what changed", which is only on
-//    each destination's own page.
-// The feed is the base; the table overrides destinations updated since the feed was built,
-// and only those pages are read for their note.
+//    file, with its ISO code, level and regional flag. It is rebuilt about once a day, so it
+//    can lag the website by up to a day.
+//  - the advisory table on travel.gc.ca: live, with each destination's level and timestamp.
+// The feed is the base; the table overrides destinations updated since the feed was built.
 
 import { decodeEntities } from '../../lib/text.mjs';
 
@@ -36,8 +34,6 @@ export function parseFeed(json) {
       updated: stamp.slice(0, 10),
       stamp,
       url: `${SITE}/destinations/${d.eng['url-slug']}`,
-      change: d.eng['recent-updates'] || undefined,
-      changeType: d['recent-updates-type'] || undefined,
       iso: d['country-iso'],
     };
   });
@@ -75,18 +71,12 @@ export function parseTable(html) {
   return entries;
 }
 
-/** The "Latest updates" line from a destination page, or null if absent. */
-export function parseLatestUpdate(pageHtml) {
-  const m = pageHtml.match(/id="lastUpdateTextLbl">([^<]*)</);
-  return m ? decodeEntities(m[1]).replace(/\s+/g, ' ').trim() : null;
-}
-
 // ---- combining
 
 /**
  * Merge feed and table entries (matched by destination URL). The feed is the base; where
- * the table has a newer timestamp, the table's level, regional flag and date win and the
- * feed's note no longer applies (the page must be read). Destinations only in one source
+ * the table has a newer timestamp, the table's level, regional flag and date win.
+ * Destinations only in one source
  * are kept. Either list may be empty when its source failed.
  * @returns { entries, newerInTable: [names] }
  */
@@ -98,28 +88,10 @@ export function combineSources(feedEntries, tableEntries) {
     table.delete(f.url);
     if (!t || t.stamp <= f.stamp) return f;
     newerInTable.push(t.name);
-    return { ...t, iso: f.iso };   // newer on the website: note and change type unknown until its page is read
+    return { ...t, iso: f.iso };   // newer on the website
   });
   for (const t of table.values()) { entries.push(t); newerInTable.push(t.name); }
   entries.sort((a, b) => a.name.localeCompare(b.name));
   return { entries, newerInTable };
 }
 
-/**
- * Reuse notes for destinations whose timestamp is unchanged since the previous snapshot
- * (mutates entries); return the ones whose page must be read.
- */
-export function planPageReads(entries, previousEntries) {
-  const previous = new Map(previousEntries.map(e => [e.name, e]));
-  const toRead = [];
-  for (const e of entries) {
-    const prev = previous.get(e.name);
-    if (prev && prev.stamp === e.stamp && prev.change !== undefined) {
-      e.change = prev.change;
-      if (prev.changeType) e.changeType = prev.changeType;
-    } else {
-      toRead.push(e);
-    }
-  }
-  return toRead;
-}

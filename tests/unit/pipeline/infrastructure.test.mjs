@@ -134,14 +134,20 @@ describe('log summary', () => {
     assert.equal(callSummary({ requests: 0, statuses: {} }), 'none');
   });
   test('describes what a run produced, for any provider', () => {
-    assert.equal(describeRun(ok), '230 destinations · changed: Mexico, Japan · 1 pages failed');
+    assert.equal(describeRun(ok), '230 destinations · updated: Mexico, Japan · 1 pages failed');
     assert.equal(describeRun(retried), '217 advisories · 1 kept from previous (Chad) · 140 change notes');
     assert.match(describeRun(failed), /Error: API failed/);
     const twoSources = { ...ok, stats: { destinations: 230, sources: ['feed', 'table'], newerThanFeed: ['Mexico'], changed: [] } };
-    assert.equal(describeRun(twoSources), '230 destinations (feed + table) · none changed · 1 newer than the feed');
+    assert.equal(describeRun(twoSources), '230 destinations (feed + table) · none updated · 1 newer than the feed');
     assert.equal(callSummary({ attempts: [{ status: 200 }] }), '200');
     const dutch = { ...ok, stats: { advisories: 226, severestFallback: ['Irak'], levelChangesPending: 2 } };
     assert.equal(describeRun(dutch), '226 advisories · level by fallback: Irak · 2 level changes awaiting confirmation');
+  });
+  test('names level changes first, whether applied at once (Canada) or confirmed (U.S., Netherlands)', () => {
+    const canada = { ...ok, stats: { destinations: 230, levelChanged: ['Mexico L2 → L3'], changed: ['Mexico'] } };
+    assert.equal(describeRun(canada), '230 destinations · 🔔 level changed: Mexico L2 → L3 · updated: Mexico');
+    const us = { ...ok, stats: { advisories: 219, levelChangesConfirmed: ['Chad L3 → L4 (first seen 2026-09-26)'] } };
+    assert.equal(describeRun(us), '219 advisories · 🔔 level changed: Chad L3 → L4 (first seen 2026-09-26)');
   });
   test('formats durations and keeps table cells on one line', () => {
     assert.equal(duration(1200), '1.2 s');

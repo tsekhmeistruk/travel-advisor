@@ -3,7 +3,7 @@
 // ../registry.js. Pure rules are in ./logic.js; this module renders and handles input.
 
 import { esc, safeUrl } from '../../core/dom.js';
-import { indexByPlace, isRecent, recentDate, recentRecords, pulseOpacity, noAdvisoryReason, titleSize } from './logic.js';
+import { indexByPlace, isRecent, latestChange, recentRecords, pulseOpacity, noAdvisoryReason, titleSize } from './logic.js';
 
 const ID = 'travel-advisories';
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
@@ -84,28 +84,34 @@ export function createTravelAdvisories(ctx) {
       <p class="desc">${esc(text)}</p>`;
   }
 
-  // "What changed" as published by the source. Fixed height; long notes are clamped with
-  // the full text on hover.
-  function changeBlock(r) {
-    const minor = r.minorUpdate
-      ? `<span class="minor-tag" title="${esc(tx(r.change ? 'details.minorEditTitle' : 'details.siteWideTitle'))}">${esc(tx(r.change ? 'details.minorEdit' : 'details.siteWide'))}</span>`
-      : '';
-    const text = r.change
-      ? `<p class="change-text" title="${esc(r.change)}">${esc(r.change)}</p>`
-      : `<p class="change-text none">${esc(tx(r.minorUpdate ? 'details.noNoteMinor' : 'details.noNote'))}</p>`;
-    return `<div class="change"><div class="change-label">${esc(tx('details.whatChanged'))} ${minor}</div>${text}</div>`;
+  // "Level 2 → 3", or "Raised to Level 4" when the source announced only the direction.
+  function changeText(c) {
+    return c.from != null ? tx('change.fromTo', { from: c.from, to: c.to }) : tx(c.up ? 'change.up' : 'change.down', { to: c.to });
+  }
+  function arrow(c) {
+    return `<span class="arrow ${c.up ? 'up' : 'down'}" title="${esc(tx(c.up ? 'change.raised' : 'change.lowered'))}">${c.up ? '▲' : '▼'}</span>`;
+  }
+
+  // The level history: the latest changes, newest first, then since when levels are tracked.
+  // Fixed height (four lines) like every slot of the card.
+  function historyBlock(r) {
+    const rows = (r.levelChanges ?? []).map(c =>
+      `<li>${arrow(c)}<span class="what">${esc(changeText(c))}</span><span class="date">${esc(i18n.formatDate(c.date))}</span></li>`);
+    if (r.trackedSince) {
+      const date = i18n.formatDate(r.trackedSince);
+      rows.push(r.levelChanges
+        ? `<li class="since">${esc(tx('details.trackedSince', { date }))}</li>`
+        : `<li class="since none">${esc(tx('details.noChange', { date }))}</li>`);
+    }
+    return `<div class="history"><div class="history-label">${esc(tx('details.history'))}</div><ul class="history-list">${rows.join('')}</ul></div>`;
   }
 
   function recordHtml(r, placeId) {
     const entry = placeId ? byPlace.get(placeId) : null;
     const L = levelInfo(r.level);
     const days = i18n.ageDays(r.updated);
-    const change = r.levelChange;
     const note = r.noteKey ? tp(`notes.${r.noteKey}`) : null;
     const status = [
-      change
-        ? `<span class="fresh ${change.to > change.from ? 'up' : 'down'}" title="${esc(tx('details.levelChangeTitle', { from: change.from, to: change.to, date: i18n.formatDate(change.date) }))}">${esc(tx('details.levelChange', { from: change.from, to: change.to, date: i18n.formatDate(change.date) }))}</span>`
-        : recent(r) ? `<span class="fresh" title="${esc(tx('details.recentTitle', { days: windowDays() }))}">${esc(tx('details.recent'))}</span>` : '',
       r.regional ? `<span class="tag" title="${esc(tx('details.regionalTitle'))}">${esc(tx('details.regional'))}</span>` : '',
       note ? `<span class="note" title="${esc(note)}">${esc(note)}</span>` : '',
     ].join('');
@@ -122,7 +128,7 @@ export function createTravelAdvisories(ctx) {
       <dl class="meta">
         <div><dt>${esc(tx('details.lastUpdated'))}</dt><dd title="${esc(updated)}">${esc(updated)}</dd></div>
       </dl>
-      ${changeBlock(r)}
+      ${historyBlock(r)}
       <div class="status">${status}</div>
       ${url ? `<a class="link" href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(tx('details.readMore', { host: displayHost(url) }))}</a>` : ''}`;
   }
@@ -132,11 +138,6 @@ export function createTravelAdvisories(ctx) {
     return new URL(url).hostname.replace(/^www\./, '');
   }
 
-  function feedWhat(r) {
-    const change = r.levelChange && recentDate(r, windowDays(), i18n.ageDays) === r.levelChange.date
-      ? tx('feed.levelChange', { from: r.levelChange.from, to: r.levelChange.to }) : null;
-    return [change, r.change].filter(Boolean).join(' · ');
-  }
 
   // ---- the dataset interface
 
@@ -198,10 +199,8 @@ export function createTravelAdvisories(ctx) {
       const lines = [];
       if (r) {
         lines.push(`<span class="swatch" style="background:var(--l${r.level})"></span>${esc(tx('tooltip.level', { level: r.level, short: levelInfo(r.level).short }))}`);
-        const age = (iso) => i18n.relativeAge(i18n.ageDays(iso));
-        lines.push(esc(r.levelChange
-          ? tx('tooltip.levelChange', { from: r.levelChange.from, to: r.levelChange.to, age: age(r.levelChange.date) })
-          : tx(r.minorUpdate ? 'tooltip.minor' : 'tooltip.updated', { age: age(r.updated) })));
+        const c = latestChange(r);
+        if (c) lines.push(`${arrow(c)}${esc(tx('tooltip.change', { change: changeText(c), age: i18n.relativeAge(i18n.ageDays(c.date)) }))}`);
       } else {
         lines.push(esc(tx('tooltip.none')));
       }
@@ -259,14 +258,14 @@ export function createTravelAdvisories(ctx) {
       section.querySelector('#recentCount').textContent = items.length;
       container.innerHTML = items.length
         ? items.map(r => {
-          const what = feedWhat(r);
-          return `<li><button data-key="${esc(r.title)}" title="${esc(what || `${tx('search.level', { level: r.level })} · ${levelInfo(r.level).name}`)}">
+          const c = latestChange(r);
+          return `<li><button data-key="${esc(r.title)}" title="${esc(`${changeText(c)} · ${levelInfo(r.level).name}`)}">
             <span class="row">
               <span class="swatch" style="--c:var(--l${r.level})"></span>
               <span class="name">${esc(recordName(r))}</span>
-              <span class="when">${esc(i18n.shortAge(i18n.ageDays(recentDate(r, windowDays(), i18n.ageDays))))}</span>
+              <span class="when">${esc(i18n.shortAge(i18n.ageDays(c.date)))}</span>
             </span>
-            ${what ? `<span class="what">${esc(what)}</span>` : ''}
+            <span class="what">${arrow(c)}${esc(changeText(c))}</span>
           </button></li>`;
         }).join('')
         : `<li class="recent-empty">${esc(tx('feed.empty'))}</li>`;

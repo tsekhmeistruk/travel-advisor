@@ -1,6 +1,6 @@
 # Travel Risk Map
 
-A world map of official travel advisory levels from the **U.S. State Department**, the **Government of Canada** and the **Dutch Ministry of Foreign Affairs**. It shows at a glance where the risk is and where the situation changed recently. The data refreshes automatically every day.
+A world map of official travel advisory levels from the **U.S. State Department**, the **Government of Canada** and the **Dutch Ministry of Foreign Affairs**. It shows at a glance where the risk is and where the risk level changed recently. The data refreshes automatically every day.
 
 **Live site: https://tsekhmeistruk.github.io/travel-advisor/**
 
@@ -8,26 +8,28 @@ A world map of official travel advisory levels from the **U.S. State Department*
 
 - **Risk level by colour:** each country is filled by its advisory level, from 1 (normal precautions) to 4 (do not travel). Countries with no advisory are grey.
 - **Source switch** (U.S. / Canada / Netherlands) at the top of the map. Each source uses its own level wording, links and data. On phones it shows flags only.
-- **Recent changes:** countries with a real update in the last 7, 30 or 90 days pulse on the map. Updates that are only wording edits or routine reissues don't count.
-- **Change feed:** the "Updated in the last N days" list says what changed, in the source's own words.
-- **Details panel:** hover or tap a country to see its level, what the level means, when it was last updated, what changed, whether regional advisories apply, and a link to the official advisory.
-- **Settings:** show or hide levels, pick the recent-update window, fade countries without recent updates, and switch between light, dark and auto themes. Settings are remembered in the browser.
+- **Level changes:** a country pulses on the map when its level went up or down in the last 7, 30 or 90 days. Only the level (the colour) counts. Text edits and reissues at the same level don't, and for details the site links to the official advisory.
+- **Change feed:** "Level changes in the last N days" lists each change, e.g. "▲ Level 2 → 3", newest first.
+- **Details panel:** hover or tap a country to see its level, what the level means, when the source last updated it, its level history (the last three changes), whether regional advisories apply, and a link to the official advisory.
+- **Settings:** show or hide levels, pick the level-change window, fade countries without a recent level change, and switch between light, dark and auto themes. Settings are remembered in the browser.
 - **Search** by any name for a place, including a source's own name (e.g. "Burma"). **Zoom and pan.** The layout works on phones.
 
 ## Data sources
 
 | Source | Where the data comes from | Notes |
 |---|---|---|
-| 🇺🇸 U.S. State Department | [Data API](https://cadataapi.state.gov/api/TravelAdvisories) for levels and dates; [RSS feed](https://travel.state.gov/_res/rss/TAsTWs.xml) for "what changed" notes | The website is behind a bot check. The API is sometimes inconsistent, so each day's result is merged with the previous one: outdated copies are ignored, a **level change is applied only when the next day's fetch confirms it**, and missing advisories are kept for 7 days. |
-| 🇨🇦 Government of Canada | [Official open-data JSON feed](https://open.canada.ca/data/dataset/bef2ebb3-ca9a-485f-aaff-5dc36eb89426) (Global Affairs Canada, Open Government Licence – Canada), plus the live [advisory table](https://travel.gc.ca/travelling/advisories) | The feed gives every destination in one request, with "what changed" and Canada's own change type, e.g. "Editorial change". It's rebuilt about once a day, so the live table catches anything newer. Either source alone is enough. |
-| 🇳🇱 Netherlands, Ministry of Foreign Affairs | [Open-data API v2](https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice) (CC0) | The colour code is read from the Dutch summary text, because the API has no level field: green, yellow, orange and red become levels 1–4. For regional advisories, the "rest of the country" colour is the headline level. A level change is applied only when the next day's fetch confirms it. There are no "what changed" notes. |
+| 🇺🇸 U.S. State Department | [Data API](https://cadataapi.state.gov/api/TravelAdvisories) for levels and dates | The website is behind a bot check. The API is sometimes inconsistent, so each day's result is merged with the previous one: outdated copies are ignored, a **level change is applied only when the next day's fetch confirms it**, and missing advisories are kept for 7 days. |
+| 🇨🇦 Government of Canada | [Official open-data JSON feed](https://open.canada.ca/data/dataset/bef2ebb3-ca9a-485f-aaff-5dc36eb89426) (Global Affairs Canada, Open Government Licence – Canada), plus the live [advisory table](https://travel.gc.ca/travelling/advisories) | The feed gives every destination and its level in one request. It's rebuilt about once a day, so the live table catches anything newer. Either source alone is enough. |
+| 🇳🇱 Netherlands, Ministry of Foreign Affairs | [Open-data API v2](https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice) (CC0) | The colour code is read from the Dutch summary text, because the API has no level field: green, yellow, orange and red become levels 1–4. For regional advisories, the "rest of the country" colour is the headline level. A level change is applied only when the next day's fetch confirms it. |
 
-Advisory levels are simplified to 1–4 for both countries. Always read the full official advisory before you travel.
+Advisory levels are simplified to 1–4 for every source. Always read the full official advisory before you travel.
+
+**Level history:** the site records each source's levels once a day and compares them with the day before, so it knows about level changes from **Sep 26, 2026**, when tracking began. For the U.S., ten earlier changes were added once from the State Department's own change notes, e.g. "The advisory level was increased to 4" (Chad, Apr 28, 2026). Where a note gave only the direction, the card says "Raised to Level 4" rather than "Level 3 → 4".
 
 ## How it works
 
 1. **Daily, at a random time,** `.github/workflows/update-advisories.yml` runs `node scripts/fetch.mjs <provider>` for each source. A small hourly check picks a pseudo-random hour each day, adds a random 0–39 minute wait, and catches up later that day if a run fails.
-2. **Build:** `node scripts/build.mjs` matches every advisory to a place, decides which updates are real and which are minor, records level changes, and writes the site's data (`site/data/`).
+2. **Build:** `node scripts/build.mjs` matches every advisory to a place, compares each level with the level history to record changes, and writes the site's data (`site/data/`).
 3. **Commit, test and deploy:** the bot commits the data and fetch logs, then `.github/workflows/deploy.yml` runs all tests. It deploys `site/` to GitHub Pages **only if every test passes**. If a test fails, the live site keeps its last good version.
 
 If anything fails, the run is marked failed, which sends you an email, and the next hourly check retries. To update immediately, use **Actions → Update advisories → Run workflow**.
@@ -57,11 +59,11 @@ If a source uses a name the build can't match to a place, the build stops and li
 
 ## Tests
 
-Every deploy is gated by these tests (237 in total). Coverage is enforced: deploys fail if unit and data tests cover less than 90% of lines. See [tests/README.md](tests/README.md) for the layout and conventions.
+Every deploy is gated by these tests (292 in total). Coverage is enforced: deploys fail if unit and data tests cover less than 90% of lines. See [tests/README.md](tests/README.md) for the layout and conventions.
 
 | Suite | Command | What it checks |
 |---|---|---|
-| Unit | `npm test` | **Parsers** for both sources, against real saved responses (`tests/fixtures/`).<br>**Fetchers:** retries, Cloudflare challenges and failed pages, against scripted responses.<br>**Rules:** U.S. merging, minor-update rules, level history, name-to-place matching.<br>**Infrastructure:** run log, storage, log summary, and the local server's path safety.<br>**Site modules:** languages, settings, search, and the advisory dataset's views, including escaping hostile source text and rejecting unsafe links. |
+| Unit | `npm test` | **Parsers** for every source, against real saved responses (`tests/fixtures/`).<br>**Fetchers:** retries, Cloudflare challenges and fallbacks between sources, against scripted responses.<br>**Rules:** merging and confirming level changes, level history, name-to-place matching.<br>**Infrastructure:** run log, storage, log summary, and the local server's path safety.<br>**Site modules:** languages, settings, search, and the advisory dataset's views, including escaping hostile source text and rejecting unsafe links. |
 | Data | `npm test` | **Current data:** the published data must equal a fresh build.<br>**Configuration:** the place registry and the configs are consistent.<br>**Plausible sources:** each has ≥150 records and every level.<br>**Translations:** every language has every key, and every key the code uses exists.<br>**Wiring:** every provider is set up everywhere it must be, including the daily workflow.<br>**Deploy gate:** it's intact.<br>**Secrets:** none are committed. |
 | Browser | `npm run test:e2e` | **Both sources** on desktop and phone.<br>**Details card:** stays one fixed size.<br>**Every control:** clicks with small hand movement, drag, zoom buttons, tooltip, theme, panel, level filter, fading, feed, keyboard search.<br>**Error states:** the load-error message.<br>**Accessibility:** every control has an accessible label.<br>**Languages:** a fake second, right-to-left locale proves the language picker, persistence, and translated names and dates. |
 

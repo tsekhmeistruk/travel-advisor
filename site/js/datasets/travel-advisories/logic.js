@@ -19,33 +19,32 @@ export function indexByPlace(records) {
   return byPlace;
 }
 
+/** A record's latest level change ({ date, from, to, up }), or null. */
+export function latestChange(record) {
+  return record?.levelChanges?.[0] ?? null;
+}
+
 /**
- * Recent = a level change within the window, or a real (not minor) update within it.
+ * Recent = the level went up or down within the window. Nothing else counts: text edits and
+ * reissues at the same level are not tracked.
  * @param windowDays 0 turns highlighting off
  * @param ageDays    iso date -> days ago
  */
 export function isRecent(record, windowDays, ageDays) {
-  if (!record || windowDays === 0) return false;
-  if (record.levelChange && ageDays(record.levelChange.date) <= windowDays) return true;
-  return !record.minorUpdate && ageDays(record.updated) <= windowDays;
+  const change = latestChange(record);
+  return windowDays > 0 && !!change && ageDays(change.date) <= windowDays;
 }
 
-/** The date that makes a record recent: its level change if that's in the window, else its update. */
-export function recentDate(record, windowDays, ageDays) {
-  if (record.levelChange && ageDays(record.levelChange.date) <= windowDays) return record.levelChange.date;
-  return record.updated;
-}
-
-/** Records to list in the change feed, newest first (then highest level). */
+/** Records to list in the change feed, newest change first (then highest level). */
 export function recentRecords(records, { windowDays, levels, ageDays }) {
   return records
     .filter(r => isRecent(r, windowDays, ageDays) && levels.includes(r.level))
-    .sort((a, b) => recentDate(b, windowDays, ageDays).localeCompare(recentDate(a, windowDays, ageDays)) || b.level - a.level);
+    .sort((a, b) => latestChange(b).date.localeCompare(latestChange(a).date) || b.level - a.level);
 }
 
 /** Pulse opacity for a recent record: fresher changes are more prominent. */
 export function pulseOpacity(record, windowDays, ageDays) {
-  return 0.45 + 0.55 * (1 - ageDays(recentDate(record, windowDays, ageDays)) / windowDays);
+  return 0.45 + 0.55 * (1 - ageDays(latestChange(record).date) / windowDays);
 }
 
 /** Why a place has no advisory: 'home' (the provider's own country), 'territory', or 'none'. */

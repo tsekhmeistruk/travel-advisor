@@ -80,7 +80,17 @@ for (const dataset of manifest.datasets) {
           if (r.url) assert.match(r.url, /^https:\/\//, `bad url in ${where}`);
           assert.ok(r.places.length || r.noteKey, `no place for ${where}`);
           for (const id of [...r.places, ...(r.covers ?? [])]) assert.ok(placeIds.has(id), `unknown place ${id} in ${where}`);
-          if (r.levelChange) assert.notEqual(r.levelChange.from, r.levelChange.to, where);
+          assert.match(r.trackedSince ?? '', ISO_DATE, `no trackedSince in ${where}`);
+          const changes = r.levelChanges ?? [];
+          assert.ok(changes.length <= 3, `too many level changes in ${where}`);
+          assert.equal(changes[0]?.to ?? r.level, r.level, `latest change must end at the current level in ${where}`);
+          changes.forEach((c, i) => {
+            assert.match(c.date, ISO_DATE, where);
+            assert.ok(c.date <= tomorrow, `future level change in ${where}`);
+            if (i > 0) assert.ok(c.date < changes[i - 1].date, `level changes must be newest first in ${where}`);
+            if (c.from !== null) assert.equal(c.up, c.to > c.from, `direction of ${where}`);
+            assert.equal(typeof c.up, 'boolean', where);
+          });
         }
       });
 
@@ -97,14 +107,23 @@ test('level history is well formed', () => {
       for (const [title, log] of Object.entries(book)) {
         const where = `${dataset.id}/${provider}/${title}`;
         assert.ok(Array.isArray(log) && log.length > 0, where);
+        const seeds = log.filter(e => e.source);
+        const observed = log.filter(e => !e.source);
+        assert.ok(observed.length > 0, `${where}: at least one snapshot`);
+        assert.deepEqual(log, [...seeds, ...observed], `${where}: announced changes come before the first snapshot`);
         log.forEach((e, i) => {
           assert.match(e.date, ISO_DATE, where);
           assert.ok(dataset.scale.values.includes(e.level), where);
-          if (i > 0) {
-            assert.ok(e.date > log[i - 1].date, `${where}: dates must increase`);
-            assert.notEqual(e.level, log[i - 1].level, `${where}: consecutive entries must differ`);
-          }
+          if (i > 0) assert.ok(e.date > log[i - 1].date, `${where}: dates must increase`);
         });
+        observed.forEach((e, i) => {
+          if (i > 0) assert.notEqual(e.level, observed[i - 1].level, `${where}: consecutive snapshots must differ`);
+        });
+        for (const e of seeds) {
+          assert.equal(e.source, 'note', where);
+          assert.equal(typeof e.up, 'boolean', where);
+          if (e.from !== null) assert.equal(e.up, e.level > e.from, `${where}: direction matches from → to`);
+        }
       }
     }
   }

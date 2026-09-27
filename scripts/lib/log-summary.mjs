@@ -5,6 +5,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { logFile } from './fetch-log.mjs';
 
+// rss and pages: calls of earlier runs (change notes), still in the logs.
 const CALL_LABELS = { api: 'API', rss: 'RSS', feed: 'Feed', table: 'Table', pages: 'Pages', list: 'List' };
 
 /** Log entries at or after `sinceMs`, reading each monthly file from then until `now`. */
@@ -101,11 +102,14 @@ export function describe(e) {
   const parts = [];
   if (s.advisories != null) parts.push(`${s.advisories} advisories`);
   if (s.destinations != null) parts.push(`${s.destinations} destinations${s.sources ? ` (${s.sources.join(' + ')})` : ''}`);
+  // The event the site shows: a level went up or down (confirmed, for sources that need it).
+  const levelChanges = [...(s.levelChanged ?? []), ...(s.levelChangesConfirmed ?? [])];
+  if (levelChanges.length) parts.push(`🔔 level changed: ${levelChanges.join(', ')}`);
   if (s.keptFromPrevious?.length) parts.push(`${s.keptFromPrevious.length} kept from previous (${s.keptFromPrevious.join(', ')})`);
   if (s.changeNotes != null) parts.push(`${s.changeNotes} change notes`);
   if (s.changed !== undefined) {
     parts.push(Array.isArray(s.changed)
-      ? (s.changed.length === 0 ? 'none changed' : s.changed.length <= 6 ? `changed: ${s.changed.join(', ')}` : `${s.changed.length} changed`)
+      ? (s.changed.length === 0 ? 'none updated' : s.changed.length <= 6 ? `updated: ${s.changed.join(', ')}` : `${s.changed.length} updated`)
       : `${s.changed} read`);
   }
   if (s.newerThanFeed?.length) parts.push(`${s.newerThanFeed.length} newer than the feed`);

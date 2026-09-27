@@ -47,7 +47,7 @@
      "one": "{count} advisory",
      "other": "{count} advisories"
     },
-    "recent": "{count} updated in the last {days} days, marked with a pulse on the map.",
+    "recent": "{count} with a level change in the last {days} days, marked with a pulse on the map.",
     "hint": "Hover or tap a country for details."
    },
    "details": {
@@ -56,20 +56,19 @@
     "levelBadge": "Level {level} · {name}",
     "lastUpdated": "Last updated",
     "updatedValue": "{date} · {age}",
-    "whatChanged": "What changed",
-    "minorEdit": "Minor edit",
-    "minorEditTitle": "Wording or routine edit only; nothing about the risk changed",
-    "siteWide": "Site-wide republish",
-    "siteWideTitle": "Date shared by most of this source's advisories: a site-wide republish, not a content change",
-    "noNoteMinor": "No details published for this update.",
-    "noNote": "The source didn’t publish a note for this update.",
-    "recent": "Recently updated",
-    "recentTitle": "Updated in the last {days} days",
-    "levelChange": "Level {from} → {to} · {date}",
-    "levelChangeTitle": "Level {from} → {to} on {date}",
+    "history": "Level history",
+    "trackedSince": "Levels tracked since {date}",
+    "noChange": "No level change since tracking began on {date}.",
     "regional": "Regional advisories",
     "regionalTitle": "Some areas of this destination have a different, often higher, risk level",
     "readMore": "Official advisory: {host} ↗"
+   },
+   "change": {
+    "fromTo": "Level {from} → {to}",
+    "up": "Raised to Level {to}",
+    "down": "Lowered to Level {to}",
+    "raised": "Level raised",
+    "lowered": "Level lowered"
    },
    "none": {
     "eyebrow": "No advisory",
@@ -80,26 +79,23 @@
    },
    "tooltip": {
     "level": "Level {level} · {short}",
-    "levelChange": "Level {from} → {to} {age}",
-    "minor": "Minor edit {age}",
-    "updated": "Updated {age}",
+    "change": "{change} · {age}",
     "none": "No advisory"
    },
    "settings": {
     "levels": "Risk levels",
-    "recent": "Highlight recent updates",
+    "recent": "Highlight level changes",
     "off": "Off",
     "days": "{days} days",
-    "dim": "Fade countries without recent updates"
+    "dim": "Fade countries without a recent level change"
    },
    "feed": {
-    "title": "Updated in the last {days} days",
-    "empty": "No advisories updated in this period.",
-    "levelChange": "Level {from} → {to}"
+    "title": "Level changes in the last {days} days",
+    "empty": "No level changes in this period."
    },
    "legend": {
     "none": "No advisory",
-    "recent": "Updated ≤ {days} days"
+    "recent": "Level changed ≤ {days} days"
    },
    "search": {
     "level": "Level {level}",

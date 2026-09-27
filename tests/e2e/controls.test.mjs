@@ -5,7 +5,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, click, detailsTitle } from './helpers.mjs';
+import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, click, detailsTitle, withLevelChanges } from './helpers.mjs';
 
 useBrowser();
 
@@ -125,7 +125,7 @@ describe('map interaction', () => {
   });
 
   test('hovering a feed item previews that place; clicking selects and zooms to it', async () => {
-    const page = await open({ settings: { provider: 'us', recentDays: 90 } });
+    const page = await open({ settings: { provider: 'us', recentDays: 90 }, intercept: withLevelChanges() });
     const first = await page.$('#recentList button');
     const name = await first.$eval('.name', el => el.textContent);
     await first.hover();
@@ -142,7 +142,7 @@ describe('map interaction', () => {
 
 describe('settings', () => {
   test('hiding a level mutes those countries and removes them from the feed', async () => {
-    const page = await open({ settings: { provider: 'us', recentDays: 90 } });
+    const page = await open({ settings: { provider: 'us', recentDays: 90 }, intercept: withLevelChanges() });
     const feedLevels = () => page.$$eval('#recentList .swatch', els => els.map(e => e.getAttribute('style')));
     assert.ok((await feedLevels()).some(s => s.includes('--l2')), 'feed has level 2 items to begin with');
     await page.click('#levelChips [data-level="2"]');
@@ -153,11 +153,15 @@ describe('settings', () => {
     await page.close();
   });
 
-  test('fading dims countries without recent updates, and is disabled when highlighting is off', async () => {
-    const page = await open({ settings: { recentDays: 30 } });
+  test('fading dims countries without a recent level change, and is disabled when highlighting is off', async () => {
+    const changes = withLevelChanges();
+    const page = await open({ settings: { provider: 'us', recentDays: 30 }, intercept: changes });
     await page.click('.switch');
     await sleep(150);
     assert.ok(await page.$$eval('path.country.is-dim', els => els.length) > 50);
+    // The three changes within 30 days stay bright.
+    assert.equal(await page.$$eval('#recentList button', els => els.length), 3);
+    assert.ok(await page.$$eval('path.country:not(.is-dim)', els => els.filter(e => /\bl[1-4]\b/.test(e.getAttribute('class'))).length) >= 3);
     await page.click('#recentSeg [data-days="0"]');
     await sleep(150);
     assert.equal(await page.$$eval('path.country.is-dim', els => els.length), 0);

@@ -33,11 +33,10 @@ Each GitHub Actions run also shows its own table on the run's summary page.
   "durationMs": 1830,
   "calls": {
     "api": { "url": "https://cadataapi.state.gov/api/TravelAdvisories",
-             "attempts": [{ "status": 429, "ms": 812, "retryAfter": "60" }, { "status": 200, "ms": 1430 }] },
-    "rss": { "url": "https://travel.state.gov/_res/rss/TAsTWs.xml", "attempts": [{ "status": 200, "ms": 402 }] }
+             "attempts": [{ "status": 429, "ms": 812, "retryAfter": "60" }, { "status": 200, "ms": 1430 }] }
   },
   "stats": { "apiItems": 228, "duplicates": 11, "fromApi": 216, "advisories": 216,
-             "keptFromPrevious": [], "droppedMissing": [], "changeNotes": 153 },
+             "keptFromPrevious": [], "droppedMissing": [], "levelChangesPending": 0, "levelChangesConfirmed": [] },
   "warnings": []
 }
 ```
@@ -51,9 +50,10 @@ Each GitHub Actions run also shows its own table on the run's summary page.
 | `result` | `ok` or `error`. On `error`, `error` holds the message and the previous data was kept. |
 | `calls.<name>.attempts` | Each HTTP attempt: `status` and `ms`. `challenge: true` means Cloudflare served its bot check instead of the data. `retryAfter` is copied from the response header. `error` means a network failure or `timeout`. |
 | `calls.feed`, `calls.table` | Canada's JSON feed and advisory table, listed per attempt |
-| `calls.pages` | Canada's destination pages, counted rather than listed: `requests`, `statuses`, `errors`, `challenges`, `totalMs` |
+| `calls.list` | The Netherlands' advisory list pages, counted rather than listed: `requests`, `statuses`, `errors`, `challenges`, `totalMs` |
+| `calls.rss`, `calls.pages` | Runs before Sep 27, 2026 only: the U.S. RSS feed and Canada's destination pages, read for "what changed" notes, which are no longer used |
 | `stats` | What the run produced (see below) |
-| `warnings` | Problems that didn't stop the run, e.g. RSS unavailable, pages that couldn't be read |
+| `warnings` | Problems that didn't stop the run, e.g. one Canada source unavailable, unconfirmed level changes |
 
 The fields in `stats` depend on the source:
 
@@ -63,7 +63,8 @@ The fields in `stats` depend on the source:
   - `fromApi`: unique advisories in this response.
   - `keptFromPrevious`: advisories missing from this response but kept from the previous snapshot.
   - `droppedMissing`: advisories removed after 7 days missing.
-  - `changeNotes`: advisories with a "what changed" note.
+  - `levelChangesPending` and `levelChangesConfirmed`: level changes waiting for a later day's fetch, and the ones confirmed in this run.
+  - `changeNotes` (runs before Sep 27, 2026): advisories with a "what changed" note.
 - **Netherlands:**
   - `advisories`: number of advisories.
   - `levelRules`: how many levels each colour rule produced (`single`, `rest`, `country`, `severest`).
@@ -74,5 +75,6 @@ The fields in `stats` depend on the source:
   - `sources`: which sources were used: `["feed", "table"]` normally, or just one if the other failed.
   - `feedGenerated`: when the JSON feed was last rebuilt (Eastern time).
   - `newerThanFeed`: destinations updated on the website after the feed was built. Their data came from the table.
-  - `changed`: destinations whose timestamp changed since the previous run.
-  - `pagesRead` and `pagesFailed`: destination pages read for "what changed", and pages that couldn't be read. Only needed for `newerThanFeed`, or when the feed is unavailable.
+  - `changed`: destinations whose timestamp changed since the previous run (shown as "updated").
+  - `levelChanged`: destinations whose level changed since the previous run, e.g. `Mexico L2 → L3`. Canada's levels are official fields, so they apply at once, without the confirmation the U.S. and the Netherlands need.
+  - `pagesRead` and `pagesFailed` (runs before Sep 27, 2026): destination pages read for "what changed" notes.

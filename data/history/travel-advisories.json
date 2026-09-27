@@ -32,6 +32,13 @@
   ],
   "Chad": [
    {
+    "date": "2026-04-28",
+    "level": 4,
+    "from": null,
+    "up": true,
+    "source": "note"
+   },
+   {
     "date": "2026-09-26",
     "level": 4
    }
@@ -278,6 +285,13 @@
   ],
   "Tanzania": [
    {
+    "date": "2025-10-31",
+    "level": 3,
+    "from": 2,
+    "up": true,
+    "source": "note"
+   },
+   {
     "date": "2026-09-26",
     "level": 3
    }
@@ -506,6 +520,13 @@
   ],
   "Grenada": [
    {
+    "date": "2026-01-05",
+    "level": 2,
+    "from": 1,
+    "up": true,
+    "source": "note"
+   },
+   {
     "date": "2026-09-26",
     "level": 2
    }
@@ -584,6 +605,13 @@
   ],
   "Madagascar": [
    {
+    "date": "2025-12-05",
+    "level": 2,
+    "from": 3,
+    "up": false,
+    "source": "note"
+   },
+   {
     "date": "2026-09-26",
     "level": 2
    }
@@ -601,6 +629,13 @@
    }
   ],
   "Mauritius": [
+   {
+    "date": "2025-12-08",
+    "level": 2,
+    "from": 1,
+    "up": true,
+    "source": "note"
+   },
    {
     "date": "2026-09-26",
     "level": 2
@@ -650,6 +685,13 @@
   ],
   "New Caledonia": [
    {
+    "date": "2026-05-21",
+    "level": 2,
+    "from": null,
+    "up": false,
+    "source": "note"
+   },
+   {
     "date": "2026-09-26",
     "level": 2
    }
@@ -679,6 +721,13 @@
    }
   ],
   "Saint Lucia": [
+   {
+    "date": "2026-07-10",
+    "level": 2,
+    "from": 1,
+    "up": true,
+    "source": "note"
+   },
    {
     "date": "2026-09-26",
     "level": 2
@@ -913,6 +962,13 @@
    }
   ],
   "Cyprus": [
+   {
+    "date": "2026-06-01",
+    "level": 1,
+    "from": null,
+    "up": false,
+    "source": "note"
+   },
    {
     "date": "2026-09-26",
     "level": 1
@@ -1250,6 +1306,13 @@
   ],
   "Thailand": [
    {
+    "date": "2026-07-07",
+    "level": 1,
+    "from": null,
+    "up": false,
+    "source": "note"
+   },
+   {
     "date": "2026-09-26",
     "level": 1
    }
@@ -1279,6 +1342,13 @@
    }
   ],
   "Vanuatu": [
+   {
+    "date": "2025-05-22",
+    "level": 1,
+    "from": 3,
+    "up": false,
+    "source": "note"
+   },
    {
     "date": "2026-09-26",
     "level": 1

@@ -56,47 +56,40 @@ export function checkPlaces(places, shapeNames) {
   return problems;
 }
 
-// ---- update classification and history
+// ---- level history
 
-/** True if every ';'-separated part of a change note matches one of the provider's minor patterns. */
-export function isMinorChange(text, patterns) {
-  const parts = text.split(/;\s*/).filter(Boolean);
-  return parts.length > 0 && parts.every(p => patterns.some(re => re.test(p)));
-}
+// How many past level changes a record carries (the details card lists them).
+export const MAX_LEVEL_CHANGES = 3;
 
 /**
- * Flag records whose latest update doesn't count as a real change (minorUpdate: true).
- * In order of trust:
- *  1. the source's own change type (e.g. Canada's "Editorial change"), if it gives one;
- *  2. the change note, matched against the provider's minor patterns;
- *  3. without either, spot bulk republishes: a site that re-stamps every page at once leaves
- *     one date on most entries, so a date shared by over 40% of records counts as a republish.
- */
-export function classifyUpdates(records, patterns, minorTypes = []) {
-  const counts = {};
-  for (const r of records) counts[r.updated] = (counts[r.updated] || 0) + 1;
-  for (const r of records) {
-    if (r.changeType) { if (minorTypes.includes(r.changeType)) r.minorUpdate = true; }
-    else if (r.change) { if (isMinorChange(r.change, patterns)) r.minorUpdate = true; }
-    else if (counts[r.updated] > records.length * 0.4) r.minorUpdate = true;
-  }
-}
-
-/**
- * Record each record's level per snapshot date in `history[providerId][title]` (mutated),
- * and set record.levelChange to the latest change. A different level on the same date is
- * ignored, so one bad response can't flap the history.
+ * The level history is the only source of "what changed": a pulse on the map means the level
+ * went up or down, nothing else. `history[providerId][title]` (mutated) lists observations
+ * { date, level }: the first snapshot that had the advisory, then every snapshot that saw a
+ * different level. A different level on the same date is ignored, so one bad response can't
+ * flap the history.
+ *
+ * A log may start with level changes the source announced before tracking began
+ * ({ date, level, from, up, source }, seeded once from U.S. change notes; `from` is null when
+ * the note gave only the direction).
+ *
+ * Sets record.levelChanges ({ date, from, to, up }, newest first) and record.trackedSince
+ * (the first snapshot that had the advisory).
  */
 export function trackHistory(history, providerId, asOf, records) {
   const book = (history[providerId] ??= {});
   for (const r of records) {
     const log = (book[r.title] ??= []);
-    const last = log[log.length - 1];
+    const last = log.filter(e => !e.source).at(-1);
     if (!last || (last.level !== r.level && asOf > last.date)) log.push({ date: asOf, level: r.level });
-    if (log.length >= 2) {
-      const [prev, cur] = log.slice(-2);
-      r.levelChange = { date: cur.date, from: prev.level, to: cur.level };
-    }
+
+    const changes = [];
+    log.forEach((e, i) => {
+      const prev = log[i - 1];
+      if (e.source) changes.push({ date: e.date, from: e.from ?? null, to: e.level, up: e.up });
+      else if (prev && prev.level !== e.level) changes.push({ date: e.date, from: prev.level, to: e.level, up: e.level > prev.level });
+    });
+    if (changes.length) r.levelChanges = changes.reverse().slice(0, MAX_LEVEL_CHANGES);
+    r.trackedSince = log.find(e => !e.source).date;
   }
 }
 
@@ -104,13 +97,11 @@ export function trackHistory(history, providerId, asOf, records) {
 
 /**
  * Build one provider's published data.
- * @param snapshot  { fetchedAt, source, entries: [{ name, level, updated, url?, change?, regional? }] }
+ * @param snapshot  { fetchedAt, source, entries: [{ name, level, updated, url?, regional?, iso? }] }
  * @param config    config/providers/<id>.json
- * @param minorChange  the provider module's minor-change patterns
- * @param minorChangeTypes  change types the source uses for minor updates (optional)
  * @param history   the dataset's history (mutated)
  */
-export function buildProvider({ datasetId, config, snapshot, minorChange, minorChangeTypes = [], index, history }) {
+export function buildProvider({ datasetId, config, snapshot, index, history }) {
   const problems = [];
   const tag = `[${config.id}]`;
   const asOf = snapshot.fetchedAt.slice(0, 10);
@@ -125,8 +116,6 @@ export function buildProvider({ datasetId, config, snapshot, minorChange, minorC
       level: e.level,
       updated: e.updated,
       url: e.url,
-      change: e.change,
-      changeType: e.changeType,   // used for classification only; not published
       regional: e.regional || undefined,
       places: resolved.places,
       noteKey: resolved.noteKey,
@@ -145,8 +134,6 @@ export function buildProvider({ datasetId, config, snapshot, minorChange, minorC
     if (id && !index.byId.has(id)) problems.push(`${tag} home/territory refers to unknown place "${id}"`);
   }
 
-  classifyUpdates(records, minorChange, minorChangeTypes);
-  for (const r of records) delete r.changeType;
   trackHistory(history, config.id, asOf, records);
 
   return {
@@ -168,7 +155,7 @@ export function buildProvider({ datasetId, config, snapshot, minorChange, minorC
  * Build every published file.
  * @param input {
  *   places, shapeNames: Set, locales: ['en', ...],
- *   datasets: [{ config, providers: [{ config, snapshot | null, minorChange, minorChangeTypes? }] }],
+ *   datasets: [{ config, providers: [{ config, snapshot | null }] }],
  *   history: { [datasetId]: history }   (mutated)
  * }
  * @returns { files: { [relPath]: data }, problems }
@@ -182,9 +169,9 @@ export function buildSite({ places, shapeNames, locales, datasets, history }) {
   for (const { config: ds, providers } of datasets) {
     const entry = { id: ds.id, scale: ds.scale, recentWindows: ds.recentWindows, defaultRecentWindow: ds.defaultRecentWindow, providers: [] };
     const dsHistory = (history[ds.id] ??= {});
-    for (const { config, snapshot, minorChange, minorChangeTypes } of providers) {
+    for (const { config, snapshot } of providers) {
       if (!snapshot) { problems.push(`[${config.id}] no snapshot yet: run node scripts/fetch.mjs ${config.id}`); continue; }
-      const built = buildProvider({ datasetId: ds.id, config, snapshot, minorChange, minorChangeTypes, index, history: dsHistory });
+      const built = buildProvider({ datasetId: ds.id, config, snapshot, index, history: dsHistory });
       problems.push(...built.problems);
       const file = `${ds.id}/${config.id}.json`;
       files[file] = built.data;

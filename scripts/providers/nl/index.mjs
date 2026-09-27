@@ -3,8 +3,7 @@
 // Source: the open-data API v2 (CC0). The advisory list has every destination with its ISO
 // alpha-3 code, Dutch summary and last-modified date, in pages of up to 200. The colour code
 // is read from the summary (./parse.mjs), so a level change is applied only once a fetch on a
-// later day confirms it (shared merge rules in lib/merge.mjs). The source publishes no
-// "what changed" notes.
+// later day confirms it (shared merge rules in lib/merge.mjs).
 
 import { listDocuments, parseAdvisories } from './parse.mjs';
 import { mergeWithPrevious } from '../../lib/merge.mjs';
@@ -20,7 +19,6 @@ export default {
   id: 'nl',
   dataset: 'travel-advisories',
   source: LIST,
-  minorChange: [],   // no change notes: minor updates can only come from bulk re-dating
 
   /** `sleep` is injectable for tests. */
   async fetch({ log, previous, today, sleep = defaultSleep }) {

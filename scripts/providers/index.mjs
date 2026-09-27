@@ -1,5 +1,5 @@
 // Registry of data providers. To add one: create scripts/providers/<id>/index.mjs (default
-// export { id, dataset, source, minorChange, fetch }), add it here, add config/providers/<id>.json,
+// export { id, dataset, source, fetch }), add it here, add config/providers/<id>.json,
 // list it in its dataset's config, and add its names to site/i18n/*.json.
 
 import us from './us/index.mjs';

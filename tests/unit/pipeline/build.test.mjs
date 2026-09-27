@@ -1,10 +1,8 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  placeIndex, resolvePlaces, checkPlaces, isMinorChange, classifyUpdates, trackHistory, buildProvider, buildSite,
+  placeIndex, resolvePlaces, checkPlaces, trackHistory, buildProvider, buildSite, MAX_LEVEL_CHANGES,
 } from '../../../scripts/lib/build.mjs';
-import us from '../../../scripts/providers/us/index.mjs';
-import ca from '../../../scripts/providers/ca/index.mjs';
 
 const PLACES = [
   { id: 'fr', name: 'France', iso2: 'FR', shape: 'France' },
@@ -67,74 +65,60 @@ describe('checkPlaces', () => {
   });
 });
 
-describe('isMinorChange with each provider\'s rules', () => {
-  const cases = [
-    [ca, 'Health – editorial change', true],
-    [ca, 'Editorial change', true],
-    [ca, 'The Health section was updated - travel health information (Public Health Agency of Canada)', true],
-    [ca, 'Health – editorial change; Editorial change', true],
-    [ca, 'Health – editorial change; Risk levels section – avoid non-essential travel to Baja California Sur', false],
-    [ca, 'Risk levels section – avoid all travel to Afar', false],
-    [us, 'Reissued after periodic review without changes.', true],
-    [us, 'Reissued after periodic review with minor edits.', true],
-    [us, 'Reissued with obsolete COVID-19 page links removed.', true],
-    [us, 'There were no changes to the advisory level or risk indicators. Advisory summary was updated.', false],
-    [us, 'The advisory level was increased to 4. The “health” indicator was added.', false],
-  ];
-  for (const [provider, text, minor] of cases) {
-    test(`${provider.id} ${minor ? 'minor' : 'real'}: ${text.slice(0, 55)}`, () => assert.equal(isMinorChange(text, provider.minorChange), minor));
-  }
-});
-
-describe('classifyUpdates', () => {
-  test('trusts the source\'s own change type first (Canada)', () => {
-    const list = [
-      { updated: '2026-09-24', changeType: 'Editorial change', change: 'The Health section was updated - travel health information' },
-      { updated: '2026-09-26', changeType: 'Regional advisory added', change: 'Risk levels section – avoid non-essential travel to Baja California Sur' },
-      // A real change type wins even if the note text looks editorial.
-      { updated: '2026-09-25', changeType: 'Regular text update', change: 'Editorial change' },
-    ];
-    classifyUpdates(list, ca.minorChange, ca.minorChangeTypes);
-    assert.deepEqual(list.map(r => !!r.minorUpdate), [true, false, false]);
-  });
-
-  test('falls back to the note when there is no change type', () => {
-    const list = [{ updated: '2026-09-24', change: 'Health – editorial change' }];
-    classifyUpdates(list, ca.minorChange, ca.minorChangeTypes);
-    assert.equal(list[0].minorUpdate, true);
-  });
-
-  test('uses the change note when there is one', () => {
-    const list = [{ updated: '2026-09-24', change: 'Health – editorial change' }, { updated: '2026-09-24', change: 'Risk levels section – avoid all travel to Afar' }];
-    classifyUpdates(list, ca.minorChange);
-    assert.equal(list[0].minorUpdate, true);
-    assert.equal(list[1].minorUpdate, undefined);
-  });
-  test('without notes, treats a date shared by over 40% of records as a bulk republish', () => {
-    const list = [...Array.from({ length: 5 }, () => ({ updated: '2026-09-24' })), { updated: '2026-09-20' }, { updated: '2026-09-21' }];
-    classifyUpdates(list, []);
-    assert.equal(list.filter(r => r.minorUpdate).length, 5);
-  });
-});
-
 describe('trackHistory', () => {
+  const run = (log, asOf, level) => {
+    const history = { us: log ? { Chad: log } : {} };
+    const record = { title: 'Chad', level };
+    trackHistory(history, 'us', asOf, [record]);
+    return { log: history.us.Chad, record };
+  };
+
   test('records the first snapshot without reporting a change', () => {
-    const history = {};
-    const recs = [{ title: 'Chad', level: 3 }];
-    trackHistory(history, 'us', '2026-09-26', recs);
-    assert.deepEqual(history.us.Chad, [{ date: '2026-09-26', level: 3 }]);
-    assert.equal(recs[0].levelChange, undefined);
+    const { log, record } = run(null, '2026-09-26', 3);
+    assert.deepEqual(log, [{ date: '2026-09-26', level: 3 }]);
+    assert.equal(record.levelChanges, undefined);
+    assert.equal(record.trackedSince, '2026-09-26');
   });
-  test('records a later level change and reports it', () => {
-    const history = { us: { Chad: [{ date: '2026-09-26', level: 3 }] } };
-    const recs = [{ title: 'Chad', level: 4 }];
-    trackHistory(history, 'us', '2026-09-27', recs);
-    assert.deepEqual(recs[0].levelChange, { date: '2026-09-27', from: 3, to: 4 });
+  test('records a raised level and reports it', () => {
+    const { record } = run([{ date: '2026-09-26', level: 3 }], '2026-09-27', 4);
+    assert.deepEqual(record.levelChanges, [{ date: '2026-09-27', from: 3, to: 4, up: true }]);
+    assert.equal(record.trackedSince, '2026-09-26');
+  });
+  test('records a lowered level', () => {
+    assert.deepEqual(run([{ date: '2026-09-26', level: 3 }], '2026-09-27', 1).record.levelChanges, [{ date: '2026-09-27', from: 3, to: 1, up: false }]);
+  });
+  test('the same level again adds nothing: only level changes are tracked', () => {
+    const { log, record } = run([{ date: '2026-09-26', level: 3 }], '2026-10-05', 3);
+    assert.equal(log.length, 1);
+    assert.equal(record.levelChanges, undefined);
   });
   test('ignores a different level on the same day (no flapping)', () => {
-    const history = { us: { Chad: [{ date: '2026-09-26', level: 3 }] } };
-    trackHistory(history, 'us', '2026-09-26', [{ title: 'Chad', level: 4 }]);
-    assert.equal(history.us.Chad.length, 1);
+    assert.equal(run([{ date: '2026-09-26', level: 3 }], '2026-09-26', 4).log.length, 1);
+  });
+  test(`reports the latest changes newest first, at most ${MAX_LEVEL_CHANGES}`, () => {
+    const log = [1, 2, 3, 2, 1].map((level, i) => ({ date: `2026-01-0${i + 1}`, level }));
+    const { record } = run(log, '2026-02-01', 1);
+    assert.equal(record.levelChanges.length, MAX_LEVEL_CHANGES);
+    assert.deepEqual(record.levelChanges.map(c => `${c.from}→${c.to}`), ['2→1', '3→2', '2→3']);
+  });
+
+  describe('changes the source announced before tracking began (seeded from U.S. notes)', () => {
+    const seed = { date: '2026-04-28', level: 4, from: null, up: true, source: 'note' };
+    test('are reported, with only the direction when the note gave no previous level', () => {
+      const { log, record } = run([seed, { date: '2026-09-26', level: 4 }], '2026-09-27', 4);
+      assert.equal(log.length, 2);
+      assert.deepEqual(record.levelChanges, [{ date: '2026-04-28', from: null, to: 4, up: true }]);
+      assert.equal(record.trackedSince, '2026-09-26', 'tracking starts at the first snapshot, not the seed');
+    });
+    test('a later observed change follows on from the seeded level', () => {
+      const { record } = run([seed, { date: '2026-09-26', level: 4 }], '2026-10-02', 3);
+      assert.deepEqual(record.levelChanges, [{ date: '2026-10-02', from: 4, to: 3, up: false }, { date: '2026-04-28', from: null, to: 4, up: true }]);
+    });
+    test('a seed alone still gets its first snapshot recorded', () => {
+      const { log, record } = run([seed], '2026-09-26', 4);
+      assert.deepEqual(log.at(-1), { date: '2026-09-26', level: 4 });
+      assert.equal(record.trackedSince, '2026-09-26');
+    });
   });
 });
 
@@ -144,25 +128,26 @@ describe('buildProvider', () => {
     entries: [
       { name: 'Burma', level: 4, updated: '2026-05-08', url: 'https://example.test/mm' },
       { name: 'Somalia', level: 4, updated: '2026-05-21' },
-      { name: 'France', level: 2, updated: '2025-05-28', change: 'Reissued after periodic review without changes.' },
+      { name: 'France', level: 2, updated: '2025-05-28' },
       { name: 'French West Indies', level: 1, updated: '2024-08-22' },
     ],
   };
   const run = (entries = snapshot.entries, config = CONFIG) =>
-    buildProvider({ datasetId: 'travel-advisories', config, snapshot: { ...snapshot, entries }, minorChange: us.minorChange, index, history: {} });
+    buildProvider({ datasetId: 'travel-advisories', config, snapshot: { ...snapshot, entries }, index, history: {} });
 
   test('builds records that refer to places by id', () => {
     const { data, problems } = run();
     assert.deepEqual(problems, []);
     assert.equal(data.asOf, '2026-09-26');
     assert.deepEqual(data.records.find(r => r.title === 'Burma').places, ['mm']);
-    assert.equal(data.records.find(r => r.title === 'France').minorUpdate, true);
+    assert.equal(data.records.find(r => r.title === 'Burma').trackedSince, '2026-09-26');
     assert.equal(data.records.find(r => r.title === 'French West Indies').noteKey, 'frenchWestIndies');
   });
-  test('publishes only record fields, never fetch bookkeeping (lastSeen, stamp, pending)', () => {
-    const entries = [{ name: 'France', level: 2, updated: '2026-09-01', lastSeen: '2026-09-26', stamp: 's', pending: { level: 4, firstSeen: '2026-09-26' }, changeType: 'Editorial change', iso: 'FR' }];
+  test('publishes only record fields, never fetch bookkeeping or old change notes', () => {
+    // Snapshots written before notes were dropped still carry change and changeType.
+    const entries = [{ name: 'France', level: 2, updated: '2026-09-01', lastSeen: '2026-09-26', stamp: 's', pending: { level: 4, firstSeen: '2026-09-26' }, change: 'Editorial change', changeType: 'Editorial change', iso: 'FR' }];
     const [record] = run(entries).data.records;
-    for (const field of ['lastSeen', 'stamp', 'pending', 'name', 'changeType', 'iso']) assert.equal(field in record, false, field);
+    for (const field of ['lastSeen', 'stamp', 'pending', 'name', 'change', 'changeType', 'minorUpdate', 'iso']) assert.equal(field in record, false, field);
   });
 
   test('attaches covered places to the covering record', () => {
@@ -186,7 +171,7 @@ describe('buildSite', () => {
     locales: ['en'],
     datasets: [{
       config: { id: 'travel-advisories', providers: ['us'], scale: { type: 'levels', values: [1, 2, 3, 4] }, recentWindows: [0, 30], defaultRecentWindow: 30 },
-      providers: [{ config: { ...CONFIG, flag: 'us' }, minorChange: us.minorChange, snapshot: { fetchedAt: '2026-09-26T00:00:00Z', source: 's', entries: [{ name: 'France', level: 2, updated: '2026-09-01' }, { name: 'Somalia', level: 4, updated: '2026-09-01' }] } }],
+      providers: [{ config: { ...CONFIG, flag: 'us' }, snapshot: { fetchedAt: '2026-09-26T00:00:00Z', source: 's', entries: [{ name: 'France', level: 2, updated: '2026-09-01' }, { name: 'Somalia', level: 4, updated: '2026-09-01' }] } }],
     }],
     history: {},
   });
@@ -200,7 +185,7 @@ describe('buildSite', () => {
   });
   test('drops unset fields from published records', () => {
     const rec = buildSite(input()).files['travel-advisories/us.json'].records[0];
-    assert.equal('change' in rec, false);
+    assert.equal('levelChanges' in rec, false);
     assert.equal('regional' in rec, false);
   });
   test('reports a provider without a snapshot', () => {

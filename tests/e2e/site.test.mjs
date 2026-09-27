@@ -6,7 +6,7 @@
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, OUT, click, detailsTitle } from './helpers.mjs';
+import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, OUT, click, detailsTitle, withLevelChanges } from './helpers.mjs';
 
 useBrowser();
 
@@ -24,8 +24,9 @@ const measureCards = (page) => page.evaluate(() => {
     heights.add(card.offsetHeight);
     const last = [...card.children].at(-1);
     if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(label);
-    // Also the "Last updated" value and the link: they may be shortened with an ellipsis, but English must fit.
-    for (const el of card.querySelectorAll('h3, .badge, .meta dd, .link')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
+    // Also the "Last updated" value, the level history rows and the link: they may be shortened
+    // with an ellipsis, but English must fit.
+    for (const el of card.querySelectorAll('h3, .badge, .meta dd, .history-list li, .link')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
   };
   measure('overview');
   for (const el of document.querySelectorAll('path.country, .dot')) {
@@ -46,9 +47,11 @@ const measureCards = (page) => page.evaluate(() => {
 for (const source of PROVIDER_IDS) {
   for (const [width, height] of [[1440, 860], [390, 844]]) {
     describe(`${source} at ${width}px`, () => {
+      // Real data plus level changes of known ages (real ones are rare): the fullest history
+      // card and the pulses are then always part of the checks.
       let page, stats;
       before(async () => {
-        page = await open({ width, height, settings: { provider: source, recentDays: 90 } });
+        page = await open({ width, height, settings: { provider: source, recentDays: 90 }, intercept: withLevelChanges(source) });
         stats = await measureCards(page);
         await page.screenshot({ path: `${OUT}${source}-${width}.png` });
       });
@@ -58,7 +61,8 @@ for (const source of PROVIDER_IDS) {
         assert.ok(stats.shapes > 200, `${stats.shapes} shapes`);
         assert.ok(stats.colored > 200, `${stats.colored} coloured`);
       });
-      test('lists every pulsing country in the recent feed', () => {
+      test('pulses the level changes and lists every pulsing country in the feed', () => {
+        assert.ok(stats.pulses >= 4, `${stats.pulses} pulses`);
         assert.ok(stats.recent >= stats.pulses, `${stats.recent} listed, ${stats.pulses} pulses`);
       });
       test('keeps the details card one fixed height for every country', () => {
@@ -137,13 +141,17 @@ describe('panel', () => {
     await page.close();
   });
 
-  test('the recent-update window filters the change feed', async () => {
-    const page = await open({ settings: { provider: 'us', recentDays: 90 } });
-    const count = () => page.evaluate(() => document.querySelectorAll('#recentList button').length);
-    const wide = await count();
+  test('the window filters the level-change feed', async () => {
+    const changes = withLevelChanges('us');
+    const page = await open({ settings: { provider: 'us', recentDays: 90 }, intercept: changes });
+    const names = () => page.$$eval('#recentList button', els => els.map(b => b.dataset.key));
+    // Real changes may be listed too; the injected ones (1, 3, 10 and 40 days old) come in order.
+    const ours = async () => (await names()).filter(n => changes.changed.includes(n));
+    assert.deepEqual(await ours(), changes.changed, 'newest change first');
+    assert.match(await page.$eval('#recentList .what', el => el.textContent), /^▼Level 2 → 1$/);
     await page.click('#recentSeg button[data-days="7"]');
     await sleep(200);
-    assert.ok(await count() <= wide);
+    assert.deepEqual(await ours(), changes.changed.slice(0, 2));
     await page.click('#recentSeg button[data-days="0"]');
     await sleep(200);
     assert.equal(await page.evaluate(() => document.querySelector('.recent').hidden), true, 'feed hidden when highlighting is off');

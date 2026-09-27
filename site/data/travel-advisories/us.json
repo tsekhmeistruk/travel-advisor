@@ -20,40 +20,40 @@
    "level": 4,
    "updated": "2026-02-20",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.afg.html",
-   "change": "There was no change to the advisory level.",
    "places": [
     "af"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Albania",
    "level": 2,
    "updated": "2026-08-26",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/albania-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "al"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Algeria",
    "level": 2,
    "updated": "2026-08-25",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.dza.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "dz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Andorra",
    "level": 1,
    "updated": "2026-05-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/andorra-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ad"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Angola",
@@ -62,17 +62,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ago.html",
    "places": [
     "ao"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Anguilla",
    "level": 1,
    "updated": "2026-05-22",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/anguilla-travel-advisory.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ai"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Antarctica",
@@ -81,17 +82,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ata.html",
    "places": [
     "aq"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Antigua and Barbuda",
    "level": 1,
    "updated": "2026-05-20",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.atg.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ag"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Argentina",
@@ -100,18 +102,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.arg.html",
    "places": [
     "ar"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Armenia",
    "level": 2,
    "updated": "2025-09-05",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/armenia-travel-advisory.html",
-   "change": "Reissued after periodic review with minor edits.",
    "places": [
     "am"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Aruba",
@@ -120,7 +122,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.abw.html",
    "places": [
     "aw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Australia",
@@ -129,27 +132,28 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.aus.html",
    "places": [
     "au"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Austria",
    "level": 1,
    "updated": "2026-08-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/austria-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "at"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Azerbaijan",
    "level": 3,
    "updated": "2026-04-28",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.aze.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary and areas of increased risk were updated.",
    "places": [
     "az"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bahrain",
@@ -158,7 +162,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bhr.html",
    "places": [
     "bh"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bangladesh",
@@ -167,7 +172,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bgd.html",
    "places": [
     "bd"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Barbados",
@@ -176,7 +182,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.brb.html",
    "places": [
     "bb"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Belarus",
@@ -185,47 +192,48 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.blr.html",
    "places": [
     "by"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Belgium",
    "level": 2,
    "updated": "2026-07-23",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bel.html",
-   "change": "There was no change to the advisory level. The \"crime” and “unrest” risk indicators were added. Advisory summary was updated.",
    "places": [
     "be"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Belize",
    "level": 2,
    "updated": "2026-03-12",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/belizetravel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "bz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Benin",
    "level": 2,
    "updated": "2026-01-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/benin-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “unrest” risk indicator was added. Advisory summary was updated.",
    "places": [
     "bj"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bermuda",
    "level": 1,
    "updated": "2026-04-10",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/bermuda-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "bm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bhutan",
@@ -234,7 +242,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.btn.html",
    "places": [
     "bt"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bolivia",
@@ -243,17 +252,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bol.html",
    "places": [
     "bo"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bonaire",
    "level": 1,
    "updated": "2026-08-20",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bes.html",
-   "change": "There was no change to the advisory level. Advisory summary was updated.",
    "places": [
     "bonaire"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bosnia and Herzegovina",
@@ -262,17 +272,18 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/bosinia-and-herzegovina-travel-advisory.html",
    "places": [
     "ba"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Botswana",
    "level": 2,
    "updated": "2026-06-17",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/botswana-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "bw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Brazil",
@@ -281,67 +292,68 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bra.html",
    "places": [
     "br"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "British Virgin Islands",
    "level": 1,
    "updated": "2026-05-22",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.vgb.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "vg"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Brunei",
    "level": 1,
    "updated": "2026-05-14",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/brunei-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "bn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bulgaria",
    "level": 1,
    "updated": "2025-10-09",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bgr.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "bg"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Burkina Faso",
    "level": 4,
    "updated": "2026-05-04",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/burkina-faso-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “health” risk indicator was added. Advisory summary was updated.",
    "places": [
     "bf"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Burma",
    "level": 4,
    "updated": "2026-05-08",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/burma-travel-advisory.html",
-   "change": "There was no change to the advisory level. Advisory summary was updated.",
    "places": [
     "mm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Burundi",
    "level": 3,
    "updated": "2025-04-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/burundi-travel-advisory.html",
-   "change": "Updated to reflect the end of ordered departure of eligible family members and authorized departure for non-emergency employees and updates to U.S. government employee movement restrictions.",
    "places": [
     "bi"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cabo Verde",
@@ -350,7 +362,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cpv.html",
    "places": [
     "cv"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cambodia",
@@ -359,17 +372,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.khm.html",
    "places": [
     "kh"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cameroon",
    "level": 2,
    "updated": "2026-05-15",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cameroon-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "cm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Canada",
@@ -378,17 +392,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.can.html",
    "places": [
     "ca"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cayman Islands",
    "level": 1,
    "updated": "2026-05-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cayman-islands-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ky"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Central African Republic",
@@ -397,17 +412,26 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.caf.html",
    "places": [
     "cf"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Chad",
    "level": 4,
    "updated": "2026-04-28",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/chad-travel-advisory.html",
-   "change": "The advisory level was increased to 4. The “health” indicator was added. Advisory summary was updated.",
    "places": [
     "td"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2026-04-28",
+     "from": null,
+     "to": 4,
+     "up": true
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Chile",
@@ -416,7 +440,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.chl.html",
    "places": [
     "cl"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "China",
@@ -425,7 +450,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.chn.html",
    "places": [
     "cn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Colombia",
@@ -434,17 +460,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.col.html",
    "places": [
     "co"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Comoros",
    "level": 2,
    "updated": "2026-01-12",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.com.html",
-   "change": "There was no change to the advisory level. The “health” risk indicator was added. Advisory summary was updated.",
    "places": [
     "km"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Costa Rica",
@@ -453,37 +480,38 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cri.html",
    "places": [
     "cr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Côte d’Ivoire",
    "level": 2,
    "updated": "2026-02-18",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cote-d-ivoire-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ci"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Croatia",
    "level": 1,
    "updated": "2026-05-18",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.hrv.html",
-   "change": "There was no change to the advisory level. An area of increased risk was removed. Advisory summary was updated.",
    "places": [
     "hr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cuba",
    "level": 2,
    "updated": "2025-05-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cuba-travel-advisory.html",
-   "change": "Updated to reflect information on power grid failures and Department of the Treasury Office of Foreign Assets Control (OFAC) licenses for travel.",
    "places": [
     "cu"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Curaçao",
@@ -492,20 +520,29 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cuw.html",
    "places": [
     "cw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cyprus",
    "level": 1,
    "updated": "2026-06-01",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cyp.html",
-   "change": "The advisory level decreased to 1. There were no changes to the risk indicators. Advisory summary was updated to reflect changes to U.S. embassy operations.",
    "places": [
     "cy"
    ],
    "covers": [
     "northern-cyprus"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2026-06-01",
+     "from": null,
+     "to": 1,
+     "up": false
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Czechia",
@@ -514,7 +551,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cze.html",
    "places": [
     "cz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Democratic Republic of the Congo",
@@ -523,37 +561,38 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cod.html",
    "places": [
     "cd"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Djibouti",
    "level": 2,
    "updated": "2025-03-06",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.dji.html",
-   "change": "Updated to remove Crime indicator and to include area-specific Level 3 advisory for the border with Eritrea.",
    "places": [
     "dj"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Dominica",
    "level": 1,
    "updated": "2026-05-20",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/dominica-travel-advisory.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated. Exercise normal precautions in Dominica.",
    "places": [
     "dm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Dominican Republic",
    "level": 2,
    "updated": "2025-06-12",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.dom.html",
-   "change": "Updated after periodic review with minor edits. Last updated June 18, 2024.",
    "places": [
     "do"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ecuador",
@@ -562,78 +601,78 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ecu.html",
    "places": [
     "ec"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Egypt",
    "level": 2,
    "updated": "2025-07-15",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.egy.html",
-   "change": "Updated to reflect a change in Travel Advisory level.",
    "places": [
     "eg"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "El Salvador",
    "level": 1,
    "updated": "2026-06-25",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/el-salvador-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "sv"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Equatorial Guinea",
    "level": 2,
    "updated": "2025-10-07",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.gnq.html",
-   "change": "There was no change to the advisory level. The \"Other” risk indicator was added. Advisory summary was updated.",
    "places": [
     "gq"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Eritrea",
    "level": 2,
    "updated": "2023-07-31",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/eritrea-travel-advisory.html",
-   "change": "Reissued with obsolete COVID-19 page links removed.",
    "places": [
     "er"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Estonia",
    "level": 1,
    "updated": "2026-03-31",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.est.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated",
    "places": [
     "ee"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Eswatini",
    "level": 2,
    "updated": "2026-07-10",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/eswatini-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "sz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ethiopia",
    "level": 3,
    "updated": "2026-08-27",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.eth.html",
-   "change": "There was no change to the advisory level or risk indicators. Areas of increased risk were modified to reflect current travel restrictions for U.S. embassy personnel. Advisory summary was updated.",
    "places": [
     "et"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Federated States of Micronesia",
@@ -642,38 +681,37 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.fsm.html",
    "places": [
     "fm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Fiji",
    "level": 1,
    "updated": "2024-12-02",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/fiji-travel-advisory.html",
-   "change": "Reissued after periodic review without changes.",
    "places": [
     "fj"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Finland",
    "level": 1,
    "updated": "2026-03-13",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/finland-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "fi"
    ],
    "covers": [
     "ax"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "France",
    "level": 2,
    "updated": "2025-05-28",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.fra.html",
-   "change": "Reissued after periodic review with minor edits.",
    "places": [
     "fr"
    ],
@@ -681,28 +719,27 @@
     "re",
     "yt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "French Guiana",
    "level": 1,
    "updated": "2026-07-08",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/french-guiana-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. The Advisory summary was updated.",
    "places": [
     "gf"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "French Polynesia",
    "level": 1,
    "updated": "2024-12-02",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/french-polynesia-travel-advisory.html",
-   "change": "Reissued after periodic review without changes",
    "places": [
     "pf"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "French Saint Martin",
@@ -711,27 +748,27 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.maf.html",
    "places": [
     "mf"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "French West Indies",
    "level": 1,
    "updated": "2024-08-22",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/french-west-indies-travel-advisory.html",
-   "change": "Reissued after periodic review with minor edits.",
    "places": [],
    "noteKey": "frenchWestIndies",
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Gabon",
    "level": 2,
    "updated": "2026-03-30",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.gab.html",
-   "change": "Updated after periodic review. There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ga"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Gaza",
@@ -740,68 +777,76 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/Gaza.html",
    "places": [
     "gaza"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Georgia",
    "level": 1,
    "updated": "2025-03-13",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.geo.html",
-   "change": "Reissued after periodic review with minor edits.",
    "places": [
     "ge"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Germany",
    "level": 2,
    "updated": "2025-05-13",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.deu.html",
-   "change": "Reissued after periodic review with updates to Advisory Summary.",
    "places": [
     "de"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ghana",
    "level": 2,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/ghana-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “health” risk indicator was added. The “unrest” indicator was removed from the area of increased risk. Advisory summary was updated.",
    "places": [
     "gh"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Greece",
    "level": 1,
    "updated": "2025-10-23",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/greece-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "gr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Greenland",
    "level": 2,
    "updated": "2024-10-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/greenland-travel-advisory.html",
-   "change": "Updated to reflect a new separate travel advisory from the Kingdom of Denmark.",
    "places": [
     "gl"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Grenada",
    "level": 2,
    "updated": "2026-01-05",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.grd.html",
-   "change": "The advisory level was increased to 2. The “crime” risk indicator was added. Areas of increased risk were removed. Advisory summary was updated.",
    "places": [
     "gd"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2026-01-05",
+     "from": 1,
+     "to": 2,
+     "up": true
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guadeloupe",
@@ -810,37 +855,38 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.glp.html",
    "places": [
     "gp"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guatemala",
    "level": 3,
    "updated": "2026-03-12",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/guatemala-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “terrorism” risk indicator was added. Advisory summary was updated.",
    "places": [
     "gt"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guinea",
    "level": 2,
    "updated": "2026-02-25",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/guinea-travel-advisory.html",
-   "change": "There were no changes to the advisory level or indicators. The advisory summary was updated.",
    "places": [
     "gn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guinea-Bissau",
    "level": 3,
    "updated": "2025-12-11",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.gnb.html",
-   "change": "There were no changes to the advisory level. The “Crime” indicator was removed. The “Other” indicator was added. The advisory summary was updated.",
    "places": [
     "gw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guyana",
@@ -849,17 +895,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.guy.html",
    "places": [
     "gy"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Haiti",
    "level": 4,
    "updated": "2026-07-10",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/haiti-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated to reflect changes to U.S. embassy operations.",
    "places": [
     "ht"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Honduras",
@@ -868,7 +915,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.hnd.html",
    "places": [
     "hn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Hong Kong",
@@ -877,67 +925,68 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.hkg.html",
    "places": [
     "hk"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Hungary",
    "level": 1,
    "updated": "2026-04-15",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/hungary-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "hu"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Iceland",
    "level": 1,
    "updated": "2026-05-05",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/iceland-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "is"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "India",
    "level": 2,
    "updated": "2025-06-16",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ind.html",
-   "change": "Reissued after periodic review with updates to entry/exit requirements.",
    "places": [
     "in"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Indonesia",
    "level": 2,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/indonesia-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "id"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Iran",
    "level": 4,
    "updated": "2025-12-05",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.irn.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ir"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Iraq",
    "level": 4,
    "updated": "2026-08-29",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.irq.html",
-   "change": "There were no changes to the Travel Advisory Level. The “Crime” risk indicator was added. Advisory summary was updated to reflect changes to U.S. embassy operations.",
    "places": [
     "iq"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ireland",
@@ -946,17 +995,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.irl.html",
    "places": [
     "ie"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Israel",
    "level": 3,
    "updated": "2026-08-26",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/israel-west-bank-and-gaza-travel-advisory.html",
-   "change": "Reissued Statement",
    "places": [
     "il"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Italy",
@@ -965,28 +1015,28 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ita.html",
    "places": [
     "it"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Jamaica",
    "level": 2,
    "updated": "2026-06-23",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/jamaica-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “natural disaster” indicator was removed. The advisory summary was updated.",
    "places": [
     "jm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Japan",
    "level": 1,
    "updated": "2025-05-15",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.jpn.html",
-   "change": "Reissued after periodic review without changes.",
    "places": [
     "jp"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Jordan",
@@ -995,52 +1045,51 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.jor.html",
    "places": [
     "jo"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kazakhstan",
    "level": 1,
    "updated": "2026-08-18",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/kazakhstan-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "kz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kenya",
    "level": 2,
    "updated": "2026-07-28",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ken.html",
-   "change": "There was no change to the advisory level. The “other” risk indicator was added. Advisory summary was updated.",
    "places": [
     "ke"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kingdom of Denmark",
    "level": 2,
    "updated": "2024-09-17",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/denmark-travel-advisory.html",
-   "change": "Reissued after periodic review with minor edits.",
    "places": [
     "dk"
    ],
    "covers": [
     "fo"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kiribati",
    "level": 1,
    "updated": "2024-12-02",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/kiribati-travel-advisory.html",
-   "change": "Reissued after periodic review without changes.",
    "places": [
     "ki"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kosovo",
@@ -1049,37 +1098,38 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/kosovo-travel-advisory.html",
    "places": [
     "xk"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kuwait",
    "level": 3,
    "updated": "2026-08-28",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/kuwait-travel-advisory.html",
-   "change": "There were no changes to the Travel Advisory Level or the risk indicators. Advisory summary was updated to reflect changes that family members 18 years of age or older may travel to Kuwait.",
    "places": [
     "kw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Laos",
    "level": 2,
    "updated": "2026-07-28",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/laos-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary updated.",
    "places": [
     "la"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Latvia",
    "level": 1,
    "updated": "2026-04-01",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lva.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "lv"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Lebanon",
@@ -1088,27 +1138,28 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lbn.html",
    "places": [
     "lb"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Lesotho",
    "level": 2,
    "updated": "2026-06-17",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/lesotho-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “Health” risk indicator was added. Advisory summary was updated.",
    "places": [
     "ls"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Liberia",
    "level": 2,
    "updated": "2025-12-11",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/liberia-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “health” risk indictor was added. Advisory summary was updated.",
    "places": [
     "lr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Libya",
@@ -1117,7 +1168,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lby.html",
    "places": [
     "ly"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Liechtenstein",
@@ -1126,17 +1178,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lie.html",
    "places": [
     "li"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Lithuania",
    "level": 1,
    "updated": "2026-04-28",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ltu.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "lt"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Luxembourg",
@@ -1145,27 +1198,36 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/luxembourg-travel-advisory.html",
    "places": [
     "lu"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Macau",
    "level": 3,
    "updated": "2026-09-04",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/macau-travel-advisory1.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "mo"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Madagascar",
    "level": 2,
    "updated": "2025-12-05",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mdg.html",
-   "change": "The advisory level was decreased from 3 to 2. The “health” risk indicator was added. Advisory summary was updated.",
    "places": [
     "mg"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2025-12-05",
+     "from": 3,
+     "to": 2,
+     "up": false
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Malawi",
@@ -1174,57 +1236,58 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mwi.html",
    "places": [
     "mw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Malaysia",
    "level": 1,
    "updated": "2026-02-22",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mys.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated. The geographic area in Sabah State subject to Level 2 carveout with a K indicator was revised.",
    "places": [
     "my"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Maldives",
    "level": 2,
    "updated": "2025-10-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/maldives-travel-advisory.html",
-   "change": "Reissued Language: There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "mv"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mali",
    "level": 4,
    "updated": "2026-06-08",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/mali-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated to reflect changes to U.S. Embassy operations .",
    "places": [
     "ml"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Malta",
    "level": 1,
    "updated": "2026-07-09",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mlt.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "mt"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Marshall Islands",
    "level": 1,
    "updated": "2026-05-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/marshall-islands-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "mh"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Martinique",
@@ -1233,27 +1296,36 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mtq.html",
    "places": [
     "mq"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mauritania",
    "level": 3,
    "updated": "2026-08-18",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mrt.html",
-   "change": "There was no change to the advisory level. The \"health” risk indicator was added. Advisory summary was updated.",
    "places": [
     "mr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mauritius",
    "level": 2,
    "updated": "2025-12-08",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mus.html",
-   "change": "The advisory level was increased to 2. The “crime” indicator was added. Advisory summary was updated.",
    "places": [
     "mu"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2025-12-08",
+     "from": 1,
+     "to": 2,
+     "up": true
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mexico",
@@ -1262,47 +1334,48 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mex.html",
    "places": [
     "mx"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Moldova",
    "level": 2,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/moldova-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “other” risk indicator was added for landmine risk and the “unrest” indicator for Transnistria. Advisory summary was updated.",
    "places": [
     "md"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mongolia",
    "level": 1,
    "updated": "2026-07-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/mongolia-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "mn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Montenegro",
    "level": 1,
    "updated": "2026-08-27",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/montenegro-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "me"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Montserrat",
    "level": 1,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/montserrat-travel-advisory.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ms"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Morocco",
@@ -1311,7 +1384,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mar.html",
    "places": [
     "ma"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mozambique",
@@ -1320,28 +1394,28 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.moz.html",
    "places": [
     "mz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Namibia",
    "level": 2,
    "updated": "2026-05-15",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/namibia-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "na"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nauru",
    "level": 1,
    "updated": "2024-12-02",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nauru-travel-advisory.html",
-   "change": "Reissued after periodic review without changes.",
    "places": [
     "nr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nepal",
@@ -1350,7 +1424,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.npl.html",
    "places": [
     "np"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Netherlands",
@@ -1359,37 +1434,46 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.nld.html",
    "places": [
     "nl"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "New Caledonia",
    "level": 2,
    "updated": "2026-05-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/new-caledonia-travel-advisory.html",
-   "change": "The advisory level was decreased to 2. The “Unrest” risk indicator was removed. Advisory Summary was updated.",
    "places": [
     "nc"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2026-05-21",
+     "from": null,
+     "to": 2,
+     "up": false
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "New Zealand",
    "level": 1,
    "updated": "2026-04-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/new-zealand-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "nz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nicaragua",
    "level": 3,
    "updated": "2026-05-14",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nicaragua-travel-advisory.html",
-   "change": "There was no change to the advisory level. Advisory summary was updated.",
    "places": [
     "ni"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Niger",
@@ -1398,28 +1482,28 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ner.html",
    "places": [
     "ne"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nigeria",
    "level": 3,
    "updated": "2026-06-12",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nigeria-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ng"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "North Korea",
    "level": 4,
    "updated": "2025-04-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/north-korea-travel-advisory.html",
-   "change": "Reissued after periodic review with minor edits.",
    "places": [
     "kp"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "North Macedonia",
@@ -1428,17 +1512,18 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/north-macedonia-travel-advisory.html",
    "places": [
     "mk"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Norway",
    "level": 1,
    "updated": "2026-07-06",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/norway-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "no"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Oman",
@@ -1447,7 +1532,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.omn.html",
    "places": [
     "om"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Pakistan",
@@ -1456,7 +1542,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.pak.html",
    "places": [
     "pk"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Palau",
@@ -1465,38 +1552,38 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.plw.html",
    "places": [
     "pw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Panama",
    "level": 2,
    "updated": "2026-08-19",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.pan.html",
-   "change": "There was no change to the advisory level. The unrest indicator was removed. Advisory summary was updated.",
    "places": [
     "pa"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Papua New Guinea",
    "level": 3,
    "updated": "2025-04-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/papua-new-guinea-travel-advisory.html",
-   "change": "Reissued after periodic review with minor edits.",
    "places": [
     "pg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Paraguay",
    "level": 1,
    "updated": "2026-08-19",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.pry.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "py"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Peru",
@@ -1505,7 +1592,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.per.html",
    "places": [
     "pe"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Philippines",
@@ -1514,17 +1602,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.phl.html",
    "places": [
     "ph"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Poland",
    "level": 1,
    "updated": "2025-06-05",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/poland-travel-advisory.html",
-   "change": "Reissued after periodic review with minor edits. Exercise normal precautions in Poland.",
    "places": [
     "pl"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Portugal",
@@ -1536,47 +1625,48 @@
    ],
    "covers": [
     "azores"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Qatar",
    "level": 3,
    "updated": "2026-08-28",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/qatar-travel-advisory.html",
-   "change": "There were no changes to the Travel Advisory Level or risk indicators. Advisory summary was updated to reflect that family members may travel to Qatar.",
    "places": [
     "qa"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Republic of the Congo",
    "level": 2,
    "updated": "2024-10-02",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/republic-of-the-congo-travel-advisory.html",
-   "change": "Reissued after periodic review with minor updates.",
    "places": [
     "cg"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Romania",
    "level": 1,
    "updated": "2025-10-14",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/romania-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ro"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Russia",
    "level": 4,
    "updated": "2025-12-29",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.rus.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ru"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Rwanda",
@@ -1585,17 +1675,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.rwa.html",
    "places": [
     "rw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saba",
    "level": 1,
    "updated": "2026-08-20",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/saba-travel-advisory.html",
-   "change": "There was no change to the advisory level. Advisory summary was updated.",
    "places": [
     "saba-and-sint-eustatius"
-   ]
+   ],
+   "trackedSince": "2026-09-27"
   },
   {
    "title": "Saba and Sint Eustatius",
@@ -1604,7 +1695,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.xqx.html",
    "places": [
     "saba-and-sint-eustatius"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Barthelemy",
@@ -1613,47 +1705,56 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.blm.html",
    "places": [
     "bl"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Kitts and Nevis",
    "level": 1,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/saint-kitts-and-nevis-travel-advisory.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "kn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Lucia",
    "level": 2,
    "updated": "2026-07-10",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lca.html",
-   "change": "The advisory level was increased to 2. The “Crime” indicator was added. Advisory summary was updated.",
    "places": [
     "lc"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2026-07-10",
+     "from": 1,
+     "to": 2,
+     "up": true
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Vincent and the Grenadines",
    "level": 1,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.vct.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "vc"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Samoa",
    "level": 1,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/samoa-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "ws"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "São Tomé and Príncipe",
@@ -1662,7 +1763,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.stp.html",
    "places": [
     "st"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saudi Arabia",
@@ -1671,37 +1773,38 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sau.html",
    "places": [
     "sa"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Senegal",
    "level": 1,
    "updated": "2025-12-01",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/senegal-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "sn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Serbia",
    "level": 2,
    "updated": "2026-08-27",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.srb.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "rs"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Seychelles",
    "level": 1,
    "updated": "2025-12-09",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/seychelles-travel-advisory.html",
-   "change": "There was no change to the advisory level. An area of increased risk was added. Advisory summary was updated.",
    "places": [
     "sc"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sierra Leone",
@@ -1710,28 +1813,28 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sierra-leone-travel-advisory.html",
    "places": [
     "sl"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Singapore",
    "level": 1,
    "updated": "2026-03-09",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/singapore-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "sg"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sint Eustatius",
    "level": 1,
    "updated": "2026-08-20",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sint-eustatius-travel-advisory.html",
-   "change": "Reissued after periodic review without changes.",
    "places": [
     "saba-and-sint-eustatius"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-27"
   },
   {
    "title": "Sint Maarten",
@@ -1740,7 +1843,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sxm.html",
    "places": [
     "sx"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Slovakia",
@@ -1749,60 +1853,61 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.svk.html",
    "places": [
     "sk"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Slovenia",
    "level": 1,
    "updated": "2026-05-15",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/slovenia-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "si"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Solomon Islands",
    "level": 2,
    "updated": "2025-04-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/solomon-island-travel-advisory.html",
-   "change": "Reissued after periodic review with updated risk information. Exercise increased caution traveling to Solomon Islands due to risks to health, unexploded ordinance, crime and civil unrest.",
    "places": [
     "sb"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Somalia",
    "level": 4,
    "updated": "2026-05-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/somalia-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "so"
    ],
    "covers": [
     "somaliland"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "South Africa",
    "level": 2,
    "updated": "2025-05-27",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/south-africa-travel-advisory.html",
-   "change": "Updated to reflect information on driving at night and addition of the terrorism risk indicator.",
    "places": [
     "za"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "South Korea",
    "level": 1,
    "updated": "2025-05-28",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/south-korea-travel-advisory.html",
-   "change": "Updated to reflect information on demonstrations and ongoing physician shortage.",
    "places": [
     "kr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "South Sudan",
@@ -1811,7 +1916,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ssd.html",
    "places": [
     "ss"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Spain",
@@ -1823,7 +1929,8 @@
    ],
    "covers": [
     "canary-islands"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sri Lanka",
@@ -1832,37 +1939,38 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lka.html",
    "places": [
     "lk"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sudan",
    "level": 4,
    "updated": "2026-05-15",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sudan-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "sd"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Suriname",
    "level": 1,
    "updated": "2026-09-08",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/suriname-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "sr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sweden",
    "level": 2,
    "updated": "2026-05-18",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sweden-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "se"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Switzerland",
@@ -1871,7 +1979,8 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.che.html",
    "places": [
     "ch"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Syria",
@@ -1880,17 +1989,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.syr.html",
    "places": [
     "sy"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Taiwan",
    "level": 1,
    "updated": "2025-11-25",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.twn.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "tw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tajikistan",
@@ -1899,149 +2009,164 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tjk.html",
    "places": [
     "tj"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tanzania",
    "level": 3,
    "updated": "2025-10-31",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tza.html",
-   "change": "The advisory level increased from Level 2 to 3. The “unrest” risk indicator was added.",
    "places": [
     "tz"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2025-10-31",
+     "from": 2,
+     "to": 3,
+     "up": true
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Thailand",
    "level": 1,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/thailand-travel-advisory.html",
-   "change": "The advisory level was decreased to 1. There were no changes to the risk indicators. An area of increased risk was added. Advisory summary was updated.",
    "places": [
     "th"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2026-07-07",
+     "from": null,
+     "to": 1,
+     "up": false
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "The Bahamas",
    "level": 2,
    "updated": "2026-07-28",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bhs.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "bs"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "The Gambia",
    "level": 2,
    "updated": "2026-01-16",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.gmb.html",
-   "change": "There was no change to the advisory level. The “Other” risk indicator was removed, and the “Unrest” risk indicator was added. Advisory summary was updated.",
    "places": [
     "gm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "The Kyrgyz Republic",
    "level": 1,
    "updated": "2026-02-10",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/the-kyrgyz-republic-travel-advisory.html",
-   "change": "There was no change to the advisory level. The \"unrest” risk indicator was added, and the “other” risk indicator was removed. Advisory Summary was updated.",
    "places": [
     "kg"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Timor-Leste",
    "level": 2,
    "updated": "2026-05-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/timor-leste-travel-advisory.html",
-   "change": "There was no change to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "tl"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Togo",
    "level": 2,
    "updated": "2026-03-09",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/togo-travel-advisory.html",
-   "change": "There was no change to the advisory level. The \"health” risk indicator was added. Advisory summary was updated.",
    "places": [
     "tg"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tonga",
    "level": 1,
    "updated": "2024-12-02",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/tonga-travel-advisory.html",
-   "change": "Reissued after periodic review without changes.",
    "places": [
     "to"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Trinidad and Tobago",
    "level": 3,
    "updated": "2026-04-13",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/trinidad-and-tobago-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “kidnapping” indicator was removed. An area of increased risk was added. Advisory summary was updated.",
    "places": [
     "tt"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tunisia",
    "level": 2,
    "updated": "2026-05-21",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/tunisia-travel-advisory.html",
-   "change": "There was no change to the advisory level. The “Crime” and “Unrest” risk indicators were added. Advisory summary was updated.",
    "places": [
     "tn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Turkey",
    "level": 2,
    "updated": "2026-06-09",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/turkey-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. An area of increased risk was removed. Advisory summary was updated.",
    "places": [
     "tr"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Turkmenistan",
    "level": 1,
    "updated": "2026-08-21",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tkm.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "tm"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Turks and Caicos Islands",
    "level": 2,
    "updated": "2026-07-07",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tca.html",
-   "change": "There are no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "tc"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tuvalu",
    "level": 1,
    "updated": "2024-12-02",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/tuvalu-travel-advisory.html",
-   "change": "Reissued after periodic review without changes.",
    "places": [
     "tv"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Uganda",
@@ -2050,27 +2175,28 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.uga.html",
    "places": [
     "ug"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ukraine",
    "level": 4,
    "updated": "2026-08-28",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/ukraine-travel-advisory.html",
-   "change": "There was no change to the advisory level. Armed conflict risks were updated under “unrest” indicator. Advisory summary was updated.",
    "places": [
     "ua"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "United Arab Emirates",
    "level": 3,
    "updated": "2026-08-29",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/united-arab-emirates-travel-advisory.html",
-   "change": "There were no changes to the Travel Advisory Level or the risk indicators. Advisory summary was updated to reflect that family members may travel to the UAE.",
    "places": [
     "ae"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "United Kingdom",
@@ -2079,17 +2205,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.gbr.html",
    "places": [
     "gb"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Uruguay",
    "level": 2,
    "updated": "2026-07-28",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ury.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated.",
    "places": [
     "uy"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Uzbekistan",
@@ -2098,17 +2225,26 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.uzb.html",
    "places": [
     "uz"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Vanuatu",
    "level": 1,
    "updated": "2025-05-22",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/vanuatu-travel-advisory.html",
-   "change": "Updated to reflect lowering the Travel Advisory Level from Level 3 to Level 1 due to ongoing recovery efforts and removal of the Natural Disaster (N) indicator.",
    "places": [
     "vu"
-   ]
+   ],
+   "levelChanges": [
+    {
+     "date": "2025-05-22",
+     "from": 3,
+     "to": 1,
+     "up": false
+    }
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Venezuela",
@@ -2117,17 +2253,18 @@
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ven.html",
    "places": [
     "ve"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Vietnam",
    "level": 1,
    "updated": "2026-06-24",
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/vietnam-travel-advisory.html",
-   "change": "There were no changes to the advisory level or risk indicators. Advisory summary was updated. Exercise normal precautions in Vietnam.",
    "places": [
     "vn"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "West Bank",
@@ -2136,7 +2273,8 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/west-bank.html",
    "places": [
     "west-bank"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Yemen",
@@ -2145,28 +2283,28 @@
    "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/yemen-travel-advisory.html",
    "places": [
     "ye"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Zambia",
    "level": 1,
    "updated": "2023-07-31",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.zmb.html",
-   "change": "Reissued with obsolete COVID-19 page links removed.",
    "places": [
     "zm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Zimbabwe",
    "level": 2,
    "updated": "2023-06-27",
    "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.zwe.html",
-   "change": "Reissued after periodic review with updates to crime and civil unrest information.",
    "places": [
     "zw"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   }
  ]
 }

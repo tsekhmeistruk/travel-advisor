@@ -14,606 +14,553 @@
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/afghanistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "af"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Albania",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/albania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "al"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Algeria",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/algeria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "dz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "American Samoa",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/american-samoa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "as"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Andorra",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/andorra",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ad"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Angola",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/angola",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ao"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Anguilla",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/anguilla",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ai"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Antarctica",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/antarctica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "aq"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Antigua and Barbuda",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/antigua-and-barbuda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ag"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Argentina",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/argentina",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ar"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Armenia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/armenia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "am"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Aruba",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/aruba",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "aw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Australia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/australia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "au"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Austria",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/austria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "at"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Azerbaijan",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/azerbaijan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "az"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Azores",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/azores",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "azores"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bahamas",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bahamas",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bs"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bahrain",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bahrain",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bh"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bangladesh",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bangladesh",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bd"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Barbados",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/barbados",
-   "change": "Editorial change",
    "places": [
     "bb"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Belarus",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/belarus",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "by"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Belgium",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/belgium",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "be"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Belize",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/belize",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Benin",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/benin",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bj"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bermuda",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bermuda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bhutan",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bhutan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bolivia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bolivia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bo"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bonaire",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bonaire",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bonaire"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bosnia and Herzegovina",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bosnia-and-herzegovina",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ba"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Botswana",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/botswana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Brazil",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/brazil",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "br"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "British Virgin Islands",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/british-virgin-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Brunei",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/brunei",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Bulgaria",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/bulgaria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Burkina Faso",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/burkina-faso",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bf"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Burundi",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/burundi",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "bi"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cabo Verde",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cabo-verde",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cv"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cambodia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cambodia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "kh"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cameroon",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cameroon",
-   "change": "Editorial change",
    "regional": true,
    "places": [
     "cm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Canary Islands",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/canary-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "canary-islands"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cayman Islands",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cayman-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ky"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Central African Republic",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/central-african-republic",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cf"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Chad",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/chad",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "td"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Chile",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/chile",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cl"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "China",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/china",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "cn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Colombia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/colombia",
-   "change": "Safety and security section – updated information on the security situation in Santa Marta and disruptions on the Troncal del Caribe (Route 90)",
    "regional": true,
    "places": [
     "co"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Comoros",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/comoros",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "km"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cook Islands",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cook-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ck"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Costa Rica",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/costa-rica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Côte d'Ivoire (Ivory Coast)",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cote-d-ivoire-ivory-coast",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ci"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Croatia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/croatia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "hr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cuba",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cuba",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cu"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Curaçao",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/curacao",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Cyprus",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/cyprus",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "cy"
@@ -621,1996 +568,1824 @@
    "covers": [
     "northern-cyprus"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Czechia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/czechia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Democratic Republic of Congo (Kinshasa)",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/congo-kinshasa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "cd"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Denmark",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/denmark",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "dk"
    ],
    "covers": [
     "fo"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Djibouti",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/djibouti",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "dj"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Dominica",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/dominica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "dm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Dominican Republic",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/dominican-republic",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "do"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ecuador",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ecuador",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ec"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Egypt",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/egypt",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "eg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "El Salvador",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/el-salvador",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sv"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Equatorial Guinea",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/equatorial-guinea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gq"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Eritrea",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/eritrea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "er"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Estonia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/estonia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ee"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Eswatini",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/eswatini",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ethiopia",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ethiopia",
-   "change": "Risk levels section – avoid all travel to Afar; safety and security section – added information on the security situation in northern Ethiopia",
    "regional": true,
    "places": [
     "et"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Falkland Islands",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/falkland-islands",
-   "change": "Health – editorial change",
    "places": [
     "fk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Fiji",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/fiji",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fj"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Finland",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/finland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fi"
    ],
    "covers": [
     "ax"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "France",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/france",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "French Guiana",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/french-guiana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gf"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "French Polynesia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/french-polynesia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pf"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Gabon",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/gabon",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ga"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Gambia, The",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/gambia-the",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Georgia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/georgia",
-   "change": "Editorial change",
    "regional": true,
    "places": [
     "ge"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Germany",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/germany",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "de"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ghana",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ghana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gh"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Gibraltar",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/gibraltar",
-   "change": "Health – editorial change",
    "places": [
     "gi"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Greece",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/greece",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Greenland",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/greenland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gl"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Grenada",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/grenada",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gd"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guadeloupe",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guadeloupe",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gp"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guam",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guam",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gu"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guatemala",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guatemala",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "gt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guinea",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guinea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guinea-Bissau",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guinea-bissau",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "gw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Guyana",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guyana",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "gy"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Haiti",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/haiti",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ht"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Honduras",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/honduras",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "hn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Hong Kong",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/hong-kong",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "hk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Hungary",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/hungary",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "hu"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Iceland",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/iceland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "is"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "India",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/india",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "in"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Indonesia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/indonesia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "id"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Iran",
    "level": 4,
    "updated": "2026-09-25",
    "url": "https://travel.gc.ca/destinations/iran",
-   "change": "Editorial change",
    "places": [
     "ir"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Iraq",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/iraq",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "iq"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ireland",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ireland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ie"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Israel and Palestine",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/israel-and-palestine",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "il",
     "gaza",
     "west-bank"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Italy",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/italy",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "it"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Jamaica",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/jamaica",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "jm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Japan",
    "level": 1,
    "updated": "2026-09-25",
    "url": "https://travel.gc.ca/destinations/japan",
-   "change": "Natural disasters and climate section – updated information on Tropical Storm Surigae",
    "places": [
     "jp"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Jordan",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/jordan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "jo"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kazakhstan",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kazakhstan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kenya",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kenya",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ke"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kiribati",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kiribati",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ki"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kosovo",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kosovo",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "xk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kuwait",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kuwait",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "kw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Kyrgyzstan",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/kyrgyzstan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "kg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Laos",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/laos",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "la"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Latvia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/latvia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lv"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Lebanon",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/lebanon",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lb"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Lesotho",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/lesotho",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ls"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Liberia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/liberia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Libya",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/libya",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ly"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Liechtenstein",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/liechtenstein",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "li"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Lithuania",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/lithuania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Luxembourg",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/luxembourg",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lu"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Macao",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/macao",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mo"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Madagascar",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/madagascar",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Malawi",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/malawi",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Malaysia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/malaysia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "my"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Maldives",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/maldives",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mv"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mali",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mali",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ml"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Malta",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/malta",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Marshall Islands",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/marshall-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mh"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Martinique",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/martinique",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mq"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mauritania",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mauritania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "mr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mauritius",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mauritius",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mu"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mayotte",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mayotte",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "yt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mexico",
    "level": 2,
    "updated": "2026-09-26",
    "url": "https://travel.gc.ca/destinations/mexico",
-   "change": "Risk levels section – avoid non-essential travel to Baja California Sur, from Punta Eugenia to Santa Fe; Natural disasters and climate section – updated information on Hurricane Polo",
    "regional": true,
    "places": [
     "mx"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Micronesia (FSM)",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/micronesia-fsm",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "fm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Moldova",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/moldova",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "md"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Monaco",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/monaco",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mc"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mongolia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mongolia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Montenegro",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/montenegro",
-   "change": "Health – editorial change",
    "places": [
     "me"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Montserrat",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/montserrat",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ms"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Morocco",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/morocco",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ma"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Mozambique",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/mozambique",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "mz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Myanmar",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/myanmar",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Namibia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/namibia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "na"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nauru",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nauru",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nepal",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nepal",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "np"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Netherlands",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/netherlands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nl"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "New Caledonia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/new-caledonia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nc"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "New Zealand",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/new-zealand",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nicaragua",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nicaragua",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ni"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Niger",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/niger",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ne"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Nigeria",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/nigeria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ng"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Niue",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/niue",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "nu"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "North Korea",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/north-korea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kp"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "North Macedonia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/north-macedonia",
-   "change": "Health – editorial change",
    "places": [
     "mk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Northern Marianas",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/northern-marianas",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mp"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Norway",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/norway",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "no"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Oman",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/oman",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "om"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Pakistan",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/pakistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "pk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Palau",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/palau",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Panama",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/panama",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "pa"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Papua New Guinea",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/papua-new-guinea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Paraguay",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/paraguay",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "py"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Peru",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/peru",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "pe"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Philippines",
    "level": 2,
    "updated": "2026-09-25",
    "url": "https://travel.gc.ca/destinations/philippines",
-   "change": "Editorial change",
    "regional": true,
    "places": [
     "ph"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Poland",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/poland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pl"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Portugal",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/portugal",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Puerto Rico",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/puerto-rico",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Qatar",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/qatar",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "qa"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Republic of Congo (Brazzaville)",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/congo-brazzaville",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "cg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Réunion",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/reunion",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "re"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Romania",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/romania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ro"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Russia",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/russia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ru"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Rwanda",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/rwanda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "rw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Kitts and Nevis",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-kitts-and-nevis",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Lucia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-lucia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lc"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Martin",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-martin",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "mf"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint Vincent & the Grenadines",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-vincent-the-grenadines",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vc"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint-Barthélemy",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-barthelemy",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "bl"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saint-Pierre-et-Miquelon",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-pierre-et-miquelon",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "pm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Samoa",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/samoa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ws"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "San Marino",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/san-marino",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sao Tome and Principe",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sao-tome-and-principe",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "st"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Saudi Arabia",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saudi-arabia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "sa"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Senegal",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/senegal",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Serbia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/serbia",
-   "change": "Editorial change",
    "regional": true,
    "places": [
     "rs"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Seychelles",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/seychelles",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sc"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sierra Leone",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sierra-leone",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sl"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Singapore",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/singapore",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sint Maarten",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sint-maarten",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sx"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Slovakia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/slovakia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Slovenia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/slovenia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "si"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Solomon Islands",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/solomon-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sb"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Somalia",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/somalia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "so"
    ],
    "covers": [
     "somaliland"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "South Africa",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/south-africa",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "za"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "South Korea",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/south-korea",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "kr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "South Sudan",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/south-sudan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ss"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Spain",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/spain",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "es"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sri Lanka",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sri-lanka",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "lk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sudan",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sudan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sd"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Suriname",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/suriname",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Sweden",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/sweden",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "se"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Switzerland",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/switzerland",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ch"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Syria",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/syria",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "sy"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Taiwan",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/taiwan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tajikistan",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tajikistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tj"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tanzania",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tanzania",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Thailand",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/thailand",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "th"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Timor-Leste (East Timor)",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/timor-leste-east-timor",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tl"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Togo",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/togo",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tg"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tokelau",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tokelau",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tk"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tonga",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tonga",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "to"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Trinidad and Tobago",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/trinidad-and-tobago",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tt"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tunisia",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tunisia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Türkiye",
    "level": 2,
    "updated": "2026-09-25",
    "url": "https://travel.gc.ca/destinations/turkiye",
-   "change": "Editorial change",
    "regional": true,
    "places": [
     "tr"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Turkmenistan",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/turkmenistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "tm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Turks and Caicos Islands",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/turks-and-caicos-islands",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tc"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Tuvalu",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/tuvalu",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "tv"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Uganda",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/uganda",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "ug"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Ukraine",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/ukraine",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ua"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "United Arab Emirates",
    "level": 3,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/united-arab-emirates",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ae"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "United Kingdom",
    "level": 2,
    "updated": "2026-09-25",
    "url": "https://travel.gc.ca/destinations/united-kingdom",
-   "change": "Editorial change",
    "places": [
     "gb"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "United States",
    "level": 1,
    "updated": "2026-09-25",
    "url": "https://travel.gc.ca/destinations/united-states",
-   "change": "Natural disasters and climate section – updated information on Hurricane Nolo",
    "places": [
     "us"
-   ]
+   ],
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Uruguay",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/uruguay",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "uy"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Uzbekistan",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/uzbekistan",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "uz"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Vanuatu",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/vanuatu",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vu"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Venezuela",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/venezuela",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ve"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Vietnam",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/vietnam",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vn"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Virgin Islands (U.S.)",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/virgin-islands-u-s",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "vi"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Yemen",
    "level": 4,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/yemen",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "ye"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Zambia",
    "level": 1,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/zambia",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "regional": true,
    "places": [
     "zm"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   },
   {
    "title": "Zimbabwe",
    "level": 2,
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/zimbabwe",
-   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
    "places": [
     "zw"
    ],
-   "minorUpdate": true
+   "trackedSince": "2026-09-26"
   }
  ]
 }

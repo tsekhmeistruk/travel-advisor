@@ -7,7 +7,6 @@
 import { fileURLToPath } from 'node:url';
 import { buildSite } from './lib/build.mjs';
 import { FileStore } from './lib/store.mjs';
-import { getProvider } from './providers/index.mjs';
 import { SPLIT_SHAPE_NAMES } from '../site/js/map/splits.js';
 
 /** Everything buildSite() needs, read from the store. */
@@ -18,12 +17,7 @@ export function readBuildInput(store = new FileStore()) {
     const config = store.dataset(id);
     return {
       config,
-      providers: config.providers.map(pid => ({
-        config: store.provider(pid),
-        snapshot: store.snapshot(id, pid),
-        minorChange: getProvider(pid).minorChange,
-        minorChangeTypes: getProvider(pid).minorChangeTypes ?? [],
-      })),
+      providers: config.providers.map(pid => ({ config: store.provider(pid), snapshot: store.snapshot(id, pid) })),
     };
   });
   const history = Object.fromEntries(datasets.map(d => [d.config.id, store.history(d.config.id)]));
@@ -47,7 +41,7 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
       const recs = files[p.file].records;
       const counts = [1, 2, 3, 4].map(l => `L${l}: ${recs.filter(r => r.level === l).length}`).join(', ');
       console.log(`${d.id}/${p.id}: ${recs.length} records (${counts}), as of ${p.asOf}; `
-        + `${recs.filter(r => r.change).length} with change notes, ${recs.filter(r => r.minorUpdate).length} minor.`);
+        + `${recs.filter(r => r.levelChanges).length} with a recorded level change.`);
     }
   }
 }

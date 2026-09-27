@@ -1,7 +1,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { parseApiItems, mergeWithPrevious, parseRssNotes, attachNotes } from '../../../scripts/providers/us/parse.mjs';
+import { parseApiItems, mergeWithPrevious } from '../../../scripts/providers/us/parse.mjs';
 
 const fixture = (f) => readFileSync(new URL(`../../fixtures/${f}`, import.meta.url), 'utf8');
 const apiItems = JSON.parse(fixture('us-api.json'));
@@ -145,31 +145,5 @@ describe('mergeWithPrevious', () => {
   test('returns entries sorted by name', () => {
     const byName = new Map([['Zambia', { name: 'Zambia', updated: '2026-01-01' }], ['Albania', { name: 'Albania', updated: '2026-01-01' }]]);
     assert.deepEqual(mergeWithPrevious(byName, [], TODAY, 7).entries.map(e => e.name), ['Albania', 'Zambia']);
-  });
-});
-
-describe('parseRssNotes and attachNotes', () => {
-  const notes = parseRssNotes(fixture('us-rss.xml'));
-
-  test('extracts change notes from real RSS items', () => {
-    assert.match(notes.get('chad').note, /^The advisory level was increased to 4\./);
-    assert.equal(notes.get('georgia').note, 'Reissued after periodic review with minor edits.');
-    assert.equal(notes.get('tonga').date, '2024-12-02');
-  });
-
-  test('skips items whose first paragraph is advisory text, not a change note (Mexico)', () => {
-    assert.equal(notes.has('mexico'), false);
-  });
-
-  test('attaches a note only when its date matches the entry within a day', () => {
-    const entries = [
-      { name: 'Suriname', updated: '2026-09-08' },   // same date
-      { name: 'Chad', updated: '2026-04-29' },       // one day off: allowed
-      { name: 'Bangladesh', updated: '2026-07-30' }, // RSS copy is from January: stale, not attached
-    ];
-    assert.equal(attachNotes(entries, notes), 2);
-    assert.match(entries[0].change, /no changes to the advisory level/);
-    assert.ok(entries[1].change);
-    assert.equal(entries[2].change, undefined);
   });
 });

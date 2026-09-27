@@ -3,7 +3,7 @@
 
 import { before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { existsSync, mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 import { serve } from '../../scripts/serve.mjs';
@@ -75,6 +75,38 @@ export async function openRaw({ width = 1440, height = 860, scheme = 'dark', sto
   await page.evaluate((key, s) => { localStorage.clear(); localStorage.setItem(key, JSON.stringify(s)); }, SETTINGS_KEY, stored);
   await page.reload({ waitUntil: 'networkidle0' });
   return page;
+}
+
+/**
+ * An `intercept` that serves a provider's real published file with level changes of known
+ * ages added: 1, 3, 10 and 40 days ago, one per level (1–4). Real level changes are rare, so
+ * tests of pulses and the change feed must not depend on the world having had one lately.
+ * The oldest also gets the longest history the details card shows (three changes, one with
+ * only a direction, as seeded from source notes).
+ */
+export function withLevelChanges(provider = 'us') {
+  const file = `site/data/${DATASET}/${provider}.json`;
+  const data = JSON.parse(readFileSync(new URL(`../../${file}`, import.meta.url), 'utf8'));
+  const day = (n) => {   // local date n days ago, as the site counts ages in local time
+    const d = new Date();
+    d.setDate(d.getDate() - n);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  };
+  const changed = [];
+  [[1, 1], [2, 3], [3, 10], [4, 40]].forEach(([level, age]) => {
+    const r = data.records.find(x => x.level === level && x.places.length === 1);
+    const from = level === 1 ? 2 : level - 1;
+    r.levelChanges = [{ date: day(age), from, to: level, up: level > from }];
+    changed.push(r.title);
+  });
+  data.records.find(x => x.title === changed[3]).levelChanges.push(
+    { date: day(200), from: 2, to: 3, up: true },
+    { date: day(400), from: null, to: 2, up: false },
+  );
+  const body = JSON.stringify(data);
+  const intercept = (req) => (req.url().endsWith(`/data/${DATASET}/${provider}.json`)
+    ? (req.respond({ status: 200, contentType: 'application/json', body }), true) : false);
+  return Object.assign(intercept, { changed });
 }
 
 /** Open with travel-advisory settings, e.g. { provider: 'ca', recentDays: 90 }, and wait for the map. */

@@ -1,6 +1,6 @@
 # Travel Risk Map: project guide
 
-A world map of **data about places**. Today it shows official travel-advisory levels from the U.S. and Canada, with a provider switch, a change feed and a details panel. GitHub Actions refreshes the data daily, and tests gate every deploy. It's built to grow: more providers, other datasets (flights, statistics) behind a future dataset menu, more languages, and a database later.
+A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada and the Netherlands, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data daily, and tests gate every deploy. It's built to grow: more providers, other datasets (flights, statistics) behind a future dataset menu, more languages, and a database later.
 
 **Read `docs/architecture.md` first.** It covers the concepts, data flow, published formats and step-by-step guides. This file is the short version, plus hard-won knowledge.
 
@@ -42,8 +42,8 @@ For **every** change, however small, decide explicitly whether tests must be **a
 | Split map shapes (Gaza, the West Bank, French overseas departments, the Caribbean Netherlands, the Azores, the Canary Islands) | `site/js/map/splits.js`, shared by the map and the place generator |
 | Dataset definitions (scale, providers, recent windows) | `config/datasets/<id>.json` |
 | Provider → place mapping (aliases, coveredBy, home, territories, listOnly) | `config/providers/<id>.json` |
-| Fetching and merging a provider | `scripts/providers/<id>/index.mjs` (network, `minorChange` patterns) and `parse.mjs` (pure) |
-| Name matching, minor updates, level history, published formats | `scripts/lib/build.mjs` (pure); `scripts/build.mjs` does the I/O |
+| Fetching and merging a provider | `scripts/providers/<id>/index.mjs` (network) and `parse.mjs` (pure); shared merge and level-change confirmation in `scripts/lib/merge.mjs` |
+| Name matching, level history, published formats | `scripts/lib/build.mjs` (pure); `scripts/build.mjs` does the I/O |
 | All pipeline file access | `scripts/lib/store.mjs` (`FileStore`), the seam for a future database |
 | Site bootstrap and interaction targets | `site/js/main.js` |
 | Generic map (fills, dots, pulses, zoom, `clickDistance(6)`) | `site/js/map/world-map.js` |
@@ -58,14 +58,14 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **No hard-coded interface text in JS or HTML.** Add a key to **every** `site/i18n/*.json`; the test checks that all locales have the same keys. Use `esc()` for data, and `safeUrl()` for links from data.
 - **Pure logic goes in `lib/`, `parse.mjs` or `logic.js`, with unit tests.** Scripts and views stay thin.
 - **The site has no runtime dependencies.** d3 and topojson are vendored. npm is used only for dev tools: `puppeteer-core` for the tests, and `i18n-iso-countries` for the place generator.
-- **The details card has a fixed height (398px)** with fixed slots: a one-line title, a three-line description, a four-line "What changed" block, and a one-line status row. The panel must never jump.
+- **Only level changes count.** A pulse, the change feed and the card's history mean the level (the colour) went up or down; nothing else. The site shows no "what changed" text and links to the official advisory instead. The level history (`trackHistory()` in `lib/build.mjs`, stored in `data/history/`) is the only source of changes; it began on Sep 26, 2026. U.S. changes before that were seeded once from its change notes (`source: "note"`, `from: null` when the note gave only the direction). **Level changes are rare**, so browser tests that need pulses or feed items inject them with `withLevelChanges()` (`tests/e2e/helpers.mjs`) instead of relying on real data.
+- **The details card has a fixed height (398px)** with fixed slots: a one-line title, a three-line description, a four-line level history (up to three changes, then "tracked since"), and a one-line status row. The panel must never jump.
 - **Settings** are stored in `localStorage` under `travel-risk-map:settings`. Each dataset keeps its own settings in a namespace. Settings in the old flat format are migrated in `main.js`.
 
 ## Source quirks (learned the hard way)
 
 **U.S.** comes from `cadataapi.state.gov/api/TravelAdvisories`.
 - **Don't scrape the website.** The travel.state.gov page is behind Cloudflare (403 even to a single request). Don't try to get past it.
-- **The RSS feed** lags the page for some countries. It's used only for "what changed" notes, and only when its date matches the API's within a day.
 - **The API is inconsistent between calls:**
   - it leaves advisories out (216–228 items);
   - it changes spellings ("Cote d Ivoire");
@@ -80,12 +80,12 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 **Canada** comes from two sources, combined in `providers/ca/`:
 - **Primary: the official open-data JSON feed** (`data.international.gc.ca/travel-voyage/index-updated.json`, Open Government Licence – Canada; catalogue entry open.canada.ca dataset `bef2ebb3-…`).
-  - It has all ~230 destinations in one request: ISO code, level (`advisory-state` 0–3 = levels 1–4), regional flag, timestamp, "what changed" (`recent-updates`) and an **official change type** (`recent-updates-type`: "Editorial change", "Regular text update", "Regional advisory added", …).
+  - It has all ~230 destinations in one request: ISO code, level (`advisory-state` 0–3 = levels 1–4), regional flag and timestamp. It also has "what changed" notes and a change type, which aren't used (only levels count).
   - French fields exist too, but they're deliberately unused for now.
   - It's **rebuilt about once a day** (~06:00 UTC), so it can lag the website.
-- **Also: the live advisory table** on travel.gc.ca. Destinations with a newer timestamp than the feed take the table's data, and only those pages are read for their "Latest updates" note. That's usually 0–3 pages.
+- **Also: the live advisory table** on travel.gc.ca. Destinations with a newer timestamp than the feed take the table's level and date.
 - **Either source alone is enough.** If one fails, the log warns and the other is used.
-- **Canada sometimes re-stamps every page at once.** On Sep 24, 2026, 223 of 230 destinations got an editorial health update. Minor updates are decided by the change type (`minorChangeTypes: ['Editorial change']`), and by note-text patterns (`minorChange`) for page notes, which have no type.
+- **Canada sometimes re-stamps every page at once** (Sep 24, 2026: 223 of 230 destinations, an editorial health update). That's why dates alone mean nothing and only level changes are tracked.
 - **Feed names and URLs match the table's exactly.** History and aliases depend on this, and a unit test checks it.
 - Canada's single "Israel and Palestine" advisory covers three places: `il`, `gaza` and `west-bank`.
 
@@ -99,7 +99,6 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **The summaries contain typos,** e.g. "Vor de rest van Marokko". Match loosely, and add every case like this as a regression test.
 - **Because levels come from prose,** the shared merge (`lib/merge.mjs`) applies a level change only when a later day confirms it.
 - **Names are Dutch** ("IJsland"), so matching is by the ISO alpha-3 code (`iso3` in the place registry). Special codes are in `config/providers/nl.json` → `codes`: `PSE` covers Gaza and the West Bank; `BQ-BO`, `BQ-SA` and `BQ-SE` are Caribbean Netherlands; `SJM` (Svalbard) is list-only. Kosovo is `XKX`.
-- **No "what changed" notes:** the `modifications` field is a generic sentence.
 
 ## Verifying changes
 
