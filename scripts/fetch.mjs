@@ -1,32 +1,81 @@
-// Fetches one provider's data and saves it as its latest snapshot. Run scripts/build.mjs
-// afterwards. Each run is logged to logs/fetch/.
+// Fetches one provider or risk source and saves its state. Run scripts/build.mjs afterwards.
+// Each run is logged to logs/fetch/, and its outcome recorded in data/sources-state.json
+// (which the update workflow's due check and the site's source health read).
 //
-// Usage: node scripts/fetch.mjs <provider>      e.g. node scripts/fetch.mjs ca
+//   travel-advisory providers (kind "advisories", the default): entries -> data/snapshots/
+//   risk sources (kind "events", e.g. gdacs): events -> data/events/<id>.json; events that
+//     expired are moved to data/archive/events/
+//
+// Usage: node scripts/fetch.mjs <id>      e.g. node scripts/fetch.mjs ca
 
 import { fileURLToPath } from 'node:url';
 import { withRunLog } from './lib/fetch-log.mjs';
 import { FileStore } from './lib/store.mjs';
-import { getProvider, PROVIDERS } from './providers/index.mjs';
+import { getProvider, PROVIDERS, SOURCES } from './providers/index.mjs';
 
 /**
- * Fetch one provider into its snapshot, logging the run. Never throws: a failure is logged,
- * the previous snapshot is kept, and process.exitCode is set.
- * @param opts.store, opts.logRoot, opts.sleep  injectable for tests
+ * Fetch one provider into its snapshot (or one source into its events), logging the run.
+ * Never throws: a failure is logged, the previous state is kept, and process.exitCode is set.
+ * @param opts.store, opts.logRoot, opts.sleep, opts.now  injectable for tests
  */
 export async function runFetch(provider, { store = new FileStore(), logRoot, sleep, now = () => new Date() } = {}) {
+  const started = now();
+  let records = null;
+  let error = null;
   await withRunLog(provider.id, async (log) => {
-    const previous = store.snapshot(provider.dataset, provider.id)?.entries ?? [];
-    const today = now().toISOString().slice(0, 10);
-    const { entries, stats } = await provider.fetch({ log, previous, today, ...(sleep && { sleep }) });
-    store.saveSnapshot(provider.dataset, provider.id, { fetchedAt: now().toISOString(), source: provider.source, entries });
-    log.stat(stats);
-    console.log(`Saved ${entries.length} ${provider.id} entries.`);
+    try {
+      records = provider.kind === 'events'
+        ? await fetchEvents(provider, { store, log, sleep, now })
+        : await fetchAdvisories(provider, { store, log, sleep, now });
+    } catch (err) {
+      error = err;
+      throw err;
+    }
   }, logRoot ? { root: logRoot } : {});
+  recordOutcome(store, provider.id, { started, finished: now(), records, error });
+}
+
+async function fetchAdvisories(provider, { store, log, sleep, now }) {
+  const previous = store.snapshot(provider.dataset, provider.id)?.entries ?? [];
+  const today = now().toISOString().slice(0, 10);
+  const { entries, stats } = await provider.fetch({ log, previous, today, ...(sleep && { sleep }) });
+  store.saveSnapshot(provider.dataset, provider.id, { fetchedAt: now().toISOString(), source: provider.source, entries });
+  log.stat(stats);
+  console.log(`Saved ${entries.length} ${provider.id} entries.`);
+  return entries.length;
+}
+
+async function fetchEvents(provider, { store, log, sleep, now }) {
+  const saved = store.events(provider.id);
+  const at = now();
+  const config = store.source(provider.id);
+  const { events, expired = [], stats } = await provider.fetch({ log, previous: saved?.events ?? [], now: at, config, ...(sleep && { sleep }) });
+  const fetchedAt = at.toISOString();
+  store.saveEvents(provider.id, { source: provider.source, fetchedAt, firstFetchedAt: saved?.firstFetchedAt ?? fetchedAt, events });
+  if (expired.length) store.archiveEvents(provider.id, expired);
+  log.stat(stats);
+  console.log(`Saved ${events.length} ${provider.id} events${expired.length ? `, archived ${expired.length}` : ''}.`);
+  return events.length;
+}
+
+/** Update data/sources-state.json: every attempt, and the last success. */
+export function recordOutcome(store, id, { started, finished, records, error }) {
+  const state = store.sourcesState();
+  const prev = state[id] ?? {};
+  state[id] = {
+    lastAttempt: started.toISOString(),
+    lastSuccess: error ? prev.lastSuccess : started.toISOString(),
+    durationMs: finished - started,
+    records: error ? prev.records : records,
+    consecutiveFailures: error ? (prev.consecutiveFailures ?? 0) + 1 : 0,
+    ...(error && { error: error.message }),
+  };
+  store.saveSourcesState(Object.fromEntries(Object.entries(state).sort(([a], [b]) => a.localeCompare(b))));
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   if (!process.argv[2]) {
-    console.error(`Usage: node scripts/fetch.mjs <provider>   (one of: ${Object.keys(PROVIDERS).join(', ')})`);
+    console.error(`Usage: node scripts/fetch.mjs <id>   (one of: ${[...Object.keys(PROVIDERS), ...Object.keys(SOURCES)].join(', ')})`);
     process.exit(1);
   }
   await runFetch(getProvider(process.argv[2]));

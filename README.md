@@ -24,15 +24,21 @@ A world map of official travel advisory levels from the **U.S. State Department*
 
 Advisory levels are simplified to 1–4 for every source. Always read the full official advisory before you travel.
 
+**Coming next: a risk monitor.** The site is growing beyond travel advisories into several risk categories per country (disasters, wildfires, and later security, health and more), each with its own sources and level history. The data is already collected, but not shown yet:
+
+| Source | Where the data comes from | Notes |
+|---|---|---|
+| 🌐 GDACS (UN OCHA, UNOSAT and the European Commission) | [GDACS API](https://www.gdacs.org/gdacsapi/swagger/index.html), Orange and Red alerts of the last 30 days, hourly | Earthquakes, cyclones, floods, volcanoes, droughts and forest fires. GDACS alerts are automatic estimates, "purely indicative", and don't replace national authorities ([terms](https://www.gdacs.org/documents/2025/GDACS_Terms_of_use_Mar_25.pdf)). |
+
 **Level history:** the site records each source's levels once a day and compares them with the day before, so it knows about level changes from **Sep 26, 2026**, when tracking began. For the U.S., ten earlier changes were added once from the State Department's own change notes, e.g. "The advisory level was increased to 4" (Chad, Apr 28, 2026). Where a note gave only the direction, the card says "Raised to Level 4" rather than "Level 3 → 4".
 
 ## How it works
 
-1. **Daily, at a random time,** `.github/workflows/update-advisories.yml` runs `node scripts/fetch.mjs <provider>` for each source. A small hourly check picks a pseudo-random hour each day, adds a random 0–39 minute wait, and catches up later that day if a run fails.
-2. **Build:** `node scripts/build.mjs` matches every advisory to a place, compares each level with the level history to record changes, and writes the site's data (`site/data/`).
+1. **Hourly,** `.github/workflows/update.yml` asks `scripts/due.mjs` what is due (`config/schedule.json`) and runs `node scripts/fetch.mjs <id>` for it. Travel advisories are fetched once a day at a pseudo-random hour, with a random 0–39 minute wait, and caught up later that day if a fetch fails. GDACS is fetched every hour.
+2. **Build:** `node scripts/build.mjs` matches every advisory to a place, compares each level with the level history to record changes, derives the risk signals and their changes, and writes the site's data (`site/data/`).
 3. **Commit, test and deploy:** the bot commits the data and fetch logs, then `.github/workflows/deploy.yml` runs all tests. It deploys `site/` to GitHub Pages **only if every test passes**. If a test fails, the live site keeps its last good version.
 
-If anything fails, the run is marked failed, which sends you an email, and the next hourly check retries. To update immediately, use **Actions → Update advisories → Run workflow**.
+If anything fails, the run is marked failed, which sends you an email, and the next hourly run retries. To update immediately, use **Actions → Update data → Run workflow** (optionally naming only some sources, e.g. `gdacs`).
 
 The code is organized so that more providers, other datasets (e.g. flight statistics), more languages and a database can be added without restructuring. See **[docs/architecture.md](docs/architecture.md)** for the design, the data formats, and step-by-step guides for each.
 
@@ -82,13 +88,13 @@ npm run logs        # table of the last 30 days
 | Path | Purpose |
 |---|---|
 | `site/` | The published website: HTML, CSS, JavaScript modules, translations (`i18n/`), flags, and generated data (`data/`) |
-| `config/` | Hand-edited configuration: the place registry, datasets, and each provider's mapping |
-| `data/` | Pipeline state: each provider's latest snapshot, level history, last-run marker |
+| `config/` | Hand-edited configuration: the place registry, datasets, each provider's mapping, risk categories and sources, the fetch schedule |
+| `data/` | Pipeline state: each provider's latest snapshot, level history, risk events, signals and change log, each source's last success |
 | `scripts/` | The pipeline: `fetch.mjs`, `build.mjs`, `serve.mjs`, `log-summary.mjs`; providers in `providers/`; logic in `lib/` |
 | `tests/` | Unit, data and browser tests, and real-response fixtures |
 | `logs/` | Fetch logs, one file per month |
 | `docs/` | Architecture and extension guides |
-| `.github/workflows/` | `update-advisories.yml` (daily data) and `deploy.yml` (test, then deploy) |
+| `.github/workflows/` | `update.yml` (hourly data) and `deploy.yml` (test, then deploy) |
 | `.claude/` | Project guide and test skill for Claude Code sessions |
 
 ## Setting up your own copy
@@ -96,13 +102,14 @@ npm run logs        # table of the last 30 days
 1. Push the repository to GitHub.
 2. Go to **Settings → Actions → General → Workflow permissions** and choose **Read and write**.
 3. Go to **Settings → Pages** and set **Source** to **GitHub Actions**.
-4. Run **Actions → Update advisories → Run workflow** once.
+4. Run **Actions → Update data → Run workflow** once.
 
-**Cost:** free on public repositories. On a private repository, the hourly checks and the random wait use about 1,500 of GitHub's 2,000 free Actions minutes a month.
+**Cost:** free on public repositories. On a private repository, the hourly fetches, builds and test runs would use more than GitHub's 2,000 free Actions minutes a month; set GDACS to a longer interval in `config/schedule.json`.
 
 ## Credits
 
 - **Advisory data:** [U.S. Department of State](https://travel.state.gov/), [Government of Canada](https://travel.gc.ca/) and the [Dutch Ministry of Foreign Affairs](https://www.nederlandwereldwijd.nl/reisadvies) (open data, CC0). This site isn't affiliated with any of these governments.
+- **Disaster alerts:** [GDACS](https://www.gdacs.org/), the Global Disaster Alert and Coordination System (UN OCHA, UNOSAT and the European Commission). Not affiliated.
 - **Map geometry:** [Natural Earth](https://www.naturalearthdata.com/) via [world-atlas](https://github.com/topojson/world-atlas) (public domain).
 - **Country codes:** ISO 3166-1, mapped with [i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) (MIT, used only to generate the place registry).
 - **Libraries:** [d3](https://d3js.org/) and [topojson-client](https://github.com/topojson/topojson-client) (ISC licence).

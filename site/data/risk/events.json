@@ -1,0 +1,55 @@
+{
+ "asOf": "2026-09-27T16:25:57.372Z",
+ "events": [
+  {
+   "id": "gdacs:TC:1001326",
+   "source": "gdacs",
+   "type": "cyclone",
+   "category": "disaster",
+   "level": 3,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Tropical Cyclone ONE-26",
+   "country": "India",
+   "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
+   "placeIds": [
+    "in"
+   ],
+   "point": {
+    "lon": 83.7,
+    "lat": 18.1
+   },
+   "startedAt": "2026-09-22T18:00:00.000Z",
+   "toDate": "2026-09-24T00:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001326&episodeid=6&eventtype=TC"
+  },
+  {
+   "id": "gdacs:TC:1001325",
+   "source": "gdacs",
+   "type": "cyclone",
+   "category": "disaster",
+   "level": 3,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Tropical Cyclone POLO-26",
+   "country": "Mexico",
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 287 km/h)",
+   "placeIds": [
+    "mx"
+   ],
+   "point": {
+    "lon": -113.9,
+    "lat": 21.3
+   },
+   "startedAt": "2026-09-21T03:00:00.000Z",
+   "toDate": "2026-09-27T15:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=28&eventtype=TC"
+  }
+ ]
+}

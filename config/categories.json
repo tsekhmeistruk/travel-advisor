@@ -1,0 +1,21 @@
+{
+ "scale": {
+  "type": "levels",
+  "values": [
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "categories": [
+  { "id": "travel", "phase": 1 },
+  { "id": "disaster", "phase": 1 },
+  { "id": "wildfire", "phase": 1 },
+  { "id": "security", "phase": 2 },
+  { "id": "unrest", "phase": 2 },
+  { "id": "health", "phase": 2 },
+  { "id": "humanitarian", "phase": 2 },
+  { "id": "infrastructure", "phase": 2 }
+ ]
+}

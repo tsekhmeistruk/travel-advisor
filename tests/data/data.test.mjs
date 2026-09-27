@@ -4,9 +4,8 @@
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { buildSite } from '../../scripts/lib/build.mjs';
 import { FileStore } from '../../scripts/lib/store.mjs';
-import { readBuildInput } from '../../scripts/build.mjs';
+import { readBuildInput, buildAll } from '../../scripts/build.mjs';
 import { SPLIT_SHAPE_NAMES } from '../../site/js/map/splits.js';
 
 const store = new FileStore();
@@ -17,13 +16,78 @@ const tomorrow = new Date(Date.now() + 864e5).toISOString().slice(0, 10);
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 describe('published data is up to date', () => {
+  const built = buildAll(readBuildInput(store));
+
   test('every file in site/data matches a fresh build of config/ and data/', () => {
-    const input = readBuildInput(store);
-    const { files, problems } = buildSite(input);
-    assert.deepEqual(problems, []);
-    for (const [path, expected] of Object.entries(files)) {
+    assert.deepEqual(built.problems, []);
+    for (const [path, expected] of Object.entries(built.files)) {
       assert.deepEqual(store.published(path), expected, `${path} is out of date: run \`npm run build\` and commit the result.`);
     }
+  });
+
+  test('the risk signals and change log already include this data', () => {
+    assert.deepEqual(built.newChanges, [], 'changes missing from data/changes/: run `npm run build` and commit the result.');
+    assert.deepEqual(built.state, store.signals(), 'data/signals/current.json is out of date: run `npm run build`.');
+  });
+});
+
+describe('risk data', () => {
+  const risk = (name) => store.published(manifest.risk[name]);
+  const { categories: catConfig, scale } = store.categories();
+  const categoryIds = new Set(catConfig.map(c => c.id));
+  const levels = new Set(scale.values);
+  const ISO_TIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
+
+  test('the manifest points at every risk file', () => {
+    for (const name of ['current', 'changes', 'events', 'health']) assert.ok(risk(name), name);
+    assert.match(manifest.risk.asOf, ISO_TIME);
+  });
+
+  test('signals are on known places and categories, at known levels, with known facts as basis', () => {
+    const current = risk('current');
+    const eventIds = new Set(store.sourceIds().flatMap(id => (store.events(id)?.events ?? []).map(e => e.id)));
+    for (const c of Object.keys(current.categories)) assert.ok(categoryIds.has(c), `category ${c}`);
+    for (const [id, signals] of Object.entries(current.places)) {
+      assert.ok(placeIds.has(id), `unknown place ${id}`);
+      for (const [c, s] of Object.entries(signals)) {
+        assert.ok(current.categories[c], `${id}: category ${c} not listed`);
+        assert.ok(levels.has(s.level), `${id}/${c}: level ${s.level}`);
+        for (const b of s.basis ?? []) assert.ok(eventIds.has(b), `${id}/${c}: basis ${b} is not a stored event`);
+      }
+      if (signals.travel) assert.equal(signals.travel.level, Math.max(...Object.values(signals.travel.natives)), `${id}: travel is the highest government level`);
+    }
+  });
+
+  test('changes are unique, newest first, inside the window, on known places', () => {
+    const { changes, windowDays } = risk('changes');
+    const ids = new Set();
+    const oldest = new Date(Date.parse(manifest.risk.asOf) - windowDays * 864e5).toISOString().slice(0, 10);
+    changes.forEach((c, i) => {
+      assert.ok(!ids.has(c.id), `duplicate change ${c.id}`);
+      ids.add(c.id);
+      assert.ok(['level', 'advisory', 'event'].includes(c.kind), c.id);
+      assert.ok(categoryIds.has(c.category), c.id);
+      assert.ok(c.at >= oldest && c.at <= tomorrow + 'T', `${c.id} outside the window`);
+      if (i > 0) assert.ok(c.at <= changes[i - 1].at, `${c.id}: changes must be newest first`);
+      for (const id of [...(c.placeIds ?? []), ...(c.placeId ? [c.placeId] : [])]) assert.ok(placeIds.has(id), `${c.id}: unknown place ${id}`);
+      if (c.from != null && c.to != null) assert.equal(c.up, c.to > c.from, `${c.id}: direction`);
+    });
+  });
+
+  test('events are active, placed on known places, with our level beside the source level', () => {
+    for (const e of risk('events').events) {
+      assert.match(e.id, /^[a-z]+:/, e.id);
+      assert.ok(categoryIds.has(e.category), e.id);
+      assert.ok(e.level == null || levels.has(e.level), e.id);
+      assert.ok(e.native?.scheme && e.native.value, `${e.id}: native value`);
+      for (const id of e.placeIds) assert.ok(placeIds.has(id), `${e.id}: unknown place ${id}`);
+      if (e.url) assert.match(e.url, /^https:\/\//, e.id);
+    }
+  });
+
+  test('every scheduled provider and source has a health entry', () => {
+    assert.deepEqual(Object.keys(risk('health').sources).sort(), Object.keys(store.schedule()).sort());
+    for (const [id, h] of Object.entries(risk('health').sources)) assert.ok(['healthy', 'delayed', 'error'].includes(h.status), id);
   });
 });
 

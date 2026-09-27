@@ -9,15 +9,25 @@ import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FileStore } from '../../scripts/lib/store.mjs';
-import { PROVIDERS } from '../../scripts/providers/index.mjs';
+import { PROVIDERS, SOURCES } from '../../scripts/providers/index.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const read = (rel) => readFileSync(join(ROOT, rel), 'utf8');
 const store = new FileStore();
 const en = store.locale('en');
 const has = (key) => key.split('.').reduce((n, p) => (n == null ? undefined : n[p]), en) !== undefined;
-const updateWorkflow = read('.github/workflows/update-advisories.yml');
+const updateWorkflow = read('.github/workflows/update.yml');
 const deployWorkflow = read('.github/workflows/deploy.yml');
+const schedule = store.schedule();
+
+// A fetch step that runs when the due check lists the id, and counts in the failure report.
+// Whole word: "fetch.mjs ca" must not be satisfied by "fetch.mjs canada".
+function assertInWorkflow(id) {
+  assert.match(updateWorkflow, new RegExp(`node scripts/fetch\\.mjs ${id}(\\s|$)`), 'fetch step in update.yml');
+  assert.ok(updateWorkflow.includes(`contains(steps.due.outputs.due, ',${id},')`), 'the fetch step runs only when due');
+  assert.ok(updateWorkflow.includes(`steps.${id}.outcome`), 'included in the workflow failure conditions');
+  assert.ok(schedule[id], 'scheduled in config/schedule.json');
+}
 
 describe('providers are wired up everywhere', () => {
   const listed = store.datasetIds().flatMap(ds => store.dataset(ds).providers.map(p => ({ ds, p })));
@@ -30,9 +40,7 @@ describe('providers are wired up everywhere', () => {
       assert.ok(PROVIDERS[p], 'module registered in scripts/providers/index.mjs');
       assert.equal(PROVIDERS[p].dataset, ds, 'module dataset');
       assert.ok(existsSync(join(ROOT, 'site', 'assets', 'flags', `${cfg.flag}.svg`)), `flag site/assets/flags/${cfg.flag}.svg`);
-      // Whole word: "fetch.mjs ca" must not be satisfied by "fetch.mjs canada".
-      assert.match(updateWorkflow, new RegExp(`node scripts/fetch\\.mjs ${p}(\\s|$)`), 'fetch step in update-advisories.yml');
-      assert.ok(updateWorkflow.includes(`steps.${p}.outcome`), 'included in the workflow failure conditions');
+      assertInWorkflow(p);
       assert.ok(cfg.links?.list?.startsWith('https://'), 'links.list');
     });
   }
@@ -49,6 +57,38 @@ describe('providers are wired up everywhere', () => {
       const refs = [cfg.home, ...(cfg.territories ?? []), ...Object.keys(cfg.coveredBy ?? {}), ...Object.values(cfg.aliases ?? {}).flat()];
       assert.deepEqual(refs.filter(id => !ids.has(id)), [], `${p}: unknown place ids`);
     }
+  });
+});
+
+describe('risk sources are wired up everywhere', () => {
+  const categories = new Set(store.categories().categories.map(c => c.id));
+  const placeIds = new Set(store.places().map(p => p.id));
+
+  for (const id of store.sourceIds()) {
+    test(id, () => {
+      const cfg = store.source(id);
+      assert.equal(cfg.id, id, 'config id');
+      assert.ok(SOURCES[id], 'module registered in scripts/providers/index.mjs');
+      assert.equal(SOURCES[id].kind, 'events', 'module kind');
+      assert.ok(cfg.name && cfg.type && cfg.authority, 'name, type and authority');
+      assert.ok(cfg.links?.home?.startsWith('https://') && cfg.links?.terms?.startsWith('https://'), 'links to the source and its terms');
+      assert.ok(cfg.staleAfterHours > 0 && cfg.confirmFallMinutes >= 0, 'staleAfterHours, confirmFallMinutes');
+      for (const [code, t] of Object.entries(cfg.types)) {
+        assert.ok(categories.has(t.category), `${code}: category ${t.category} is in config/categories.json`);
+        assert.ok(t.type && t.tailDays >= 0, `${code}: type and tailDays`);
+      }
+      for (const level of Object.values(cfg.levels)) assert.ok(store.categories().scale.values.includes(level), `level ${level}`);
+      assert.deepEqual(Object.values(cfg.codes ?? {}).flat().filter(p => !placeIds.has(p)), [], 'codes refer to known places');
+      assertInWorkflow(id);
+    });
+  }
+
+  test('every registered source module has a config', () => {
+    assert.deepEqual(Object.keys(SOURCES).filter(id => !store.sourceIds().includes(id)), []);
+  });
+
+  test('config/schedule.json lists exactly the providers and sources', () => {
+    assert.deepEqual(Object.keys(schedule).sort(), [...Object.keys(PROVIDERS), ...Object.keys(SOURCES)].sort());
   });
 });
 
@@ -93,12 +133,15 @@ describe('deploy gate', () => {
     assert.match(JSON.parse(read('package.json')).scripts['test:coverage'], /--test-coverage-lines=\d+/, 'coverage thresholds enforced');
     assert.match(deployWorkflow, /upload-pages-artifact@[^\n]+\n\s+with:\n\s+path: site\n/);
   });
-  test('runs on pushes to main and when the daily update calls it', () => {
+  test('runs on pushes to main and when the update calls it', () => {
     assert.match(deployWorkflow, /push:\n\s+branches: \[main\]/);
     assert.match(deployWorkflow, /workflow_call:/);
     assert.match(updateWorkflow, /uses: \.\/\.github\/workflows\/deploy\.yml/);
   });
-  test('the daily update commits the data the site loads', () => {
+  test('the update runs hourly, asks the due check first, and commits the data the site loads', () => {
+    assert.match(updateWorkflow, /cron: '\d+ \* \* \* \*'/);
+    assert.match(updateWorkflow, /id: due\n(?:.*\n)*?\s+run: node scripts\/due\.mjs\n/);
+    assert.ok(updateWorkflow.indexOf('scripts/due.mjs') < updateWorkflow.indexOf('scripts/fetch.mjs'), 'due check before the fetches');
     assert.match(updateWorkflow, /git add data logs site\/data/);
   });
   test('npm scripts point at files that exist', () => {

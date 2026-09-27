@@ -1,6 +1,6 @@
 # Travel Risk Map: project guide
 
-A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada and the Netherlands, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data daily, and tests gate every deploy. It's built to grow: more providers, other datasets (flights, statistics) behind a future dataset menu, more languages, and a database later.
+A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada and the Netherlands, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data (advisories daily, GDACS disaster alerts hourly), and tests gate every deploy. It's growing into a **risk monitor**: several risk categories per place from several sources (see "The risk layer" in `docs/architecture.md`), plus more providers, languages, and a database later.
 
 **Read `docs/architecture.md` first.** It covers the concepts, data flow, published formats and step-by-step guides. This file is the short version, plus hard-won knowledge.
 
@@ -10,7 +10,7 @@ A world map of **data about places**. Today it shows official travel-advisory le
 
 ## Before you start
 
-- **`git pull` first.** A bot commits data and logs to `main` every day.
+- **`git pull` first.** A bot commits data and logs to `main` up to every hour.
 - **Pushing to `main` runs all tests, then deploys if they pass.** Run the tests locally before pushing.
 - **Local site:** `npm start` (http://localhost:8080). Opening `site/index.html` from disk doesn't work, because the site uses ES modules and fetches JSON.
 - **You may run the local server whenever it helps:**
@@ -43,7 +43,9 @@ For **every** change, however small, decide explicitly whether tests must be **a
 | Dataset definitions (scale, providers, recent windows) | `config/datasets/<id>.json` |
 | Provider → place mapping (aliases, codes, coveredBy, home, territories, listOnly) | `config/providers/<id>.json` |
 | Fetching and merging a provider | `scripts/providers/<id>/index.mjs` (network) and `parse.mjs` (pure); shared merge and level-change confirmation in `scripts/lib/merge.mjs` |
-| Name matching, level history, published formats | `scripts/lib/build.mjs` (pure); `scripts/build.mjs` does the I/O |
+| Name matching, level history, published formats | `scripts/lib/build.mjs` (pure); `scripts/build.mjs` does the I/O (`buildAll()` = advisories + risk layer) |
+| Risk layer: categories, sources, signals, confirmed changes, source health, published `risk/*.json` | `config/categories.json`, `config/sources/<id>.json`; `scripts/lib/risk.mjs` (pure); event upsert in `scripts/lib/events.mjs`; GDACS in `scripts/providers/gdacs/` |
+| What is fetched when (hourly workflow) | `config/schedule.json`; `scripts/lib/schedule.mjs` (pure), `scripts/due.mjs`; `.github/workflows/update.yml` |
 | All pipeline file access | `scripts/lib/store.mjs` (`FileStore`), the seam for a future database |
 | Site bootstrap and interaction targets | `site/js/main.js` |
 | Generic map (fills, dots, pulses, zoom, `clickDistance(6)`) | `site/js/map/world-map.js` |
@@ -56,7 +58,8 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 ## Conventions
 
-- **Generated files: never edit by hand.** These are `site/data/**` (except `geo/`), `data/history/**`, `data/snapshots/**` and the logs. Change config or code, then run `npm run build`. The data test fails if the published data doesn't match a fresh build.
+- **Generated files: never edit by hand.** These are `site/data/**` (except `geo/`), `data/history/**`, `data/snapshots/**`, `data/events/**`, `data/archive/**`, `data/signals/**`, `data/changes/**`, `data/sources-state.json` and the logs. Change config or code, then run `npm run build`. The data test fails if the published data doesn't match a fresh build, or if the signals or change log miss a change.
+- **Source fact, signal and change stay separate** (see "The risk layer" in `docs/architecture.md`). Parsers keep the source's own level as `native`; our 1–4 level is set in the build from `config/sources/<id>.json`, and is never presented as the source's. "No data" is `null`, never a level.
 - **No hard-coded interface text in JS or HTML.** Add a key to **every** `site/i18n/*.json`; the test checks that all locales have the same keys. Use `esc()` for data, and `safeUrl()` for links from data.
 - **Pure logic goes in `lib/`, `parse.mjs` or `logic.js`, with unit tests.** Scripts and views stay thin.
 - **The site has no runtime dependencies.** d3 and topojson are vendored. npm is used only for dev tools: `puppeteer-core` for the tests, and `i18n-iso-countries` for the place generator.
@@ -66,6 +69,8 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 ## Current state and open decisions
 
+- **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). **Steps 1–2 are done:** stores, schedule, source health, the hourly workflow, and GDACS end to end into `site/data/risk/` (not shown on the site yet). **Next: step 3**, map modes (Highest risk, Disasters, Changes), the summary card and the risk feed; cache-busting of data files (`?v=`) and the i18n keys for categories come with it. Then markers and the country view, then NASA FIRMS (needs a `FIRMS_MAP_KEY` secret). ACLED waits for the owner's licence request; UCDP is the fallback.
+- **The risk baseline was set on Sep 27, 2026:** the 13 GDACS events of the first fetch aren't "new", and the first build recorded no disaster changes.
 - **Level history began on Sep 26, 2026.** Canada and the Netherlands have no earlier history (their sources don't publish past levels, and the Internet Archive has no usable copies), so their maps show few or no pulses until real changes happen. The U.S. has 10 changes seeded from its change notes (Chad, Cyprus, Grenada, Madagascar, Mauritius, New Caledonia, Saint Lucia, Tanzania, Thailand, Vanuatu). Egypt was skipped because its note gives no direction.
 - **Offered to the user, not decided yet:**
   - a longer window option (180 days or 1 year), since level changes are rare and 90 days is often nearly empty;
@@ -79,7 +84,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **`String.replace` in edit scripts:** a string replacement treats `$$`, `$&`, `$'` and a dollar sign before a backtick specially (`$$eval` became `$eval`). Pass a function instead: `s.replace(a, () => b)`.
 - **Scratch files** (screenshot scripts, one-off migrations) go in the session scratchpad, never in the repo. `test-output/` is git-ignored, but keep it for screenshots.
 - **Stop background servers** you started (`npm start`) before finishing.
-- **Don't re-run the update workflow many times in a row;** each run calls the rate-limited U.S. API. One verification run after a pipeline change is fine.
+- **Don't re-run the update workflow for all sources many times in a row;** that calls the rate-limited U.S. API. A manual run with `-f sources=gdacs` doesn't. One verification run after a pipeline change is fine.
 
 ## Source quirks (learned the hard way)
 
@@ -119,6 +124,14 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **Because levels come from prose,** the shared merge (`lib/merge.mjs`) applies a level change only when a later day confirms it.
 - **Names are Dutch** ("IJsland"), so matching is by the ISO alpha-3 code (`iso3` in the place registry). Special codes are in `config/providers/nl.json` → `codes`: `PSE` covers Gaza and the West Bank; `BQ-BO`, `BQ-SA` and `BQ-SE` are Caribbean Netherlands; `SJM` (Svalbard) is list-only. Kosovo is `XKX`.
 
+**GDACS** (risk source: disasters and wildfires) comes from the public API's search endpoint (`gdacs.org/gdacsapi/api/events/geteventlist/search`, no key; Swagger at `/gdacsapi/swagger/v1/swagger.json`), in `providers/gdacs/`.
+- **Pages of at most 100, newest first,** so only Orange and Red alerts of the last 30 days are fetched (about 13 events; one request). Green alerts number several hundred a week, mostly small forest fires. `events4app` returns only the latest 100 of all levels, so it can't be used.
+- **`eventlist` accepts `EQ;TC;FL;VO;DR;WF` only.** Adding `TS` makes the API answer HTTP 204 (no content) to the whole query; tsunamis come as earthquake alerts. **204 means "no events"**, not an error.
+- **Offshore earthquakes have no country code** (`affectedcountries: []`, `country: "Off Coast Of …"`), and some on land don't either ("Solomon Islands"), so places come from alpha-3 codes, then country names; the rest stay unplaced (a warning, never a failure).
+- **Droughts are long and span dozens of countries** (one Orange drought covered 25 European countries). They cap at Elevated in `config/sources/gdacs.json`, so they can't paint a continent High.
+- **Times have no zone** (UTC). `datemodified` changes on every request and is left out, so `data/events/gdacs.json` only changes when an event does.
+- **The terms of use are disclaimers only** (alerts are automatic, "purely indicative", not a substitute for national authorities) and grant no explicit reuse licence. Asking GDACS to confirm reuse is on the owner's list.
+
 ## Verifying changes
 
 - **Before every push,** use the **`verify-site`** skill, or run:
@@ -130,7 +143,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **To watch the browser tests or test a running site,** use `E2E_BASE_URL=http://localhost:8080/ npm run test:e2e:headed`, with `npm start` running.
 - **Layout must hold with classic ~15px scrollbars (Windows).** The panel reserves a scrollbar gutter, and `--panel-w` includes it. The browser tests render scrollbars, even headless.
 - **Every bug fix or new behaviour gets a test, and should fail without the fix.** Inject what's slow or external (fetch, sleep, storage, clock, log folder) instead of calling it directly. The fixtures in `tests/fixtures/` are real responses.
-- **Workflows:** push, then run `gh workflow run update-advisories.yml --ref main` and `gh run watch <id>`, then `git pull`.
+- **Workflows:** push, then run `gh workflow run update.yml --ref main -f sources=gdacs` (or `-f sources=all`, which also calls the rate-limited U.S. API) and `gh run watch <id>`, then `git pull`. The workflow also runs by itself every hour at :17, so pull before and after.
 - **Finish the loop:** the owner expects changes to be committed, pushed and verified (the deploy run, plus an update run after pipeline changes). Report the results, including which tests were added, edited or deleted.
 - **Fetch health:** `npm run logs`, or the **Fetch results** table on each update run.
 

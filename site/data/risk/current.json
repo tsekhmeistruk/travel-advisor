@@ -1,0 +1,2663 @@
+{
+ "asOf": "2026-09-27T16:25:57.372Z",
+ "scale": {
+  "type": "levels",
+  "values": [
+   1,
+   2,
+   3,
+   4
+  ]
+ },
+ "categories": {
+  "travel": {
+   "sources": [
+    "us",
+    "ca",
+    "nl"
+   ],
+   "default": null
+  },
+  "disaster": {
+   "sources": [
+    "gdacs"
+   ],
+   "default": 1,
+   "status": "healthy",
+   "at": "2026-09-27T16:25:57.372Z"
+  },
+  "wildfire": {
+   "sources": [
+    "gdacs"
+   ],
+   "default": 1,
+   "status": "healthy",
+   "at": "2026-09-27T16:25:57.372Z"
+  }
+ },
+ "places": {
+  "ad": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ae": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "af": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "ag": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ai": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "al": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "am": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "ao": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "aq": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ar": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "as": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "at": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "au": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "aw": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ax": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "az": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "azores": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ba": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "bb": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "bd": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "be": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "bf": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "bg": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "bh": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 4
+    },
+    "agree": 1
+   }
+  },
+  "bi": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "bj": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "bl": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1
+    },
+    "agree": 2
+   }
+  },
+  "bm": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1
+    },
+    "agree": 2
+   }
+  },
+  "bn": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "bo": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "bonaire": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "br": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "bs": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "bt": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "bw": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "by": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 3
+    },
+    "agree": 2
+   }
+  },
+  "bz": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ca": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "canary-islands": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "cd": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 3
+    },
+    "agree": 2
+   }
+  },
+  "cf": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "cg": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ch": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ci": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ck": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "cl": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "cm": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "cn": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "co": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "cr": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "cu": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 2,
+     "ca": 3,
+     "nl": 3
+    },
+    "agree": 2
+   }
+  },
+  "cv": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "cw": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "cy": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "cz": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "de": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "dj": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "dk": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "dm": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "do": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "dz": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ec": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ee": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "eg": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "er": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 2,
+     "ca": 3,
+     "nl": 3
+    },
+    "agree": 2
+   }
+  },
+  "es": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "et": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "fi": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "fj": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "fk": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1
+    },
+    "agree": 1
+   }
+  },
+  "fm": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "fo": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "fr": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ga": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "gaza": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 3,
+     "nl": 4
+    },
+    "agree": 2
+   }
+  },
+  "gb": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "gd": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "ge": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "gf": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "gh": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "gi": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1
+    },
+    "agree": 1
+   }
+  },
+  "gl": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "gm": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "gn": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "gp": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "gq": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "gr": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "gt": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "gu": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1
+    },
+    "agree": 1
+   }
+  },
+  "gw": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "gy": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "hk": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "hn": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "hr": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ht": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "hu": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "id": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ie": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "il": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "in": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   },
+   "disaster": {
+    "level": 3,
+    "basis": [
+     "gdacs:TC:1001326"
+    ]
+   }
+  },
+  "iq": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "ir": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "is": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "it": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "jm": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "jo": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "jp": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ke": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "kg": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "kh": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ki": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "km": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "kn": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "kp": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "kr": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "kw": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 3
+    },
+    "agree": 3
+   }
+  },
+  "ky": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "kz": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "la": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "lb": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "lc": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "li": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "lk": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "lr": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ls": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "lt": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "lu": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "lv": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ly": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "ma": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "mc": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "md": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "me": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "mf": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1
+    },
+    "agree": 2
+   }
+  },
+  "mg": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "mh": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "mk": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ml": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "mm": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 3
+    },
+    "agree": 2
+   }
+  },
+  "mn": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "mo": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "mp": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1
+    },
+    "agree": 1
+   }
+  },
+  "mq": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "mr": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "ms": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "mt": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "mu": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "mv": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "mw": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "mx": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   },
+   "disaster": {
+    "level": 3,
+    "basis": [
+     "gdacs:TC:1001325"
+    ]
+   }
+  },
+  "my": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "mz": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "na": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "nc": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "ne": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "ng": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 3
+    },
+    "agree": 3
+   }
+  },
+  "ni": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "nl": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2
+    },
+    "agree": 2
+   }
+  },
+  "no": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "northern-cyprus": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "np": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "nr": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "nu": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "nz": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "om": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "pa": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "pe": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "pf": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "pg": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "ph": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "pk": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "pl": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "pm": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1
+    },
+    "agree": 1
+   }
+  },
+  "pn": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "pr": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "pt": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "pw": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "py": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "qa": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "re": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "ro": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "rs": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "ru": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 3
+    },
+    "agree": 2
+   }
+  },
+  "rw": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "sa": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "saba-and-sint-eustatius": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "sb": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "sc": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "sd": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "se": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "sg": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "si": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "sk": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "sl": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "sm": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "sn": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "so": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "somaliland": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "sr": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "ss": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "st": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "sv": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "sx": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "sy": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "sz": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "tc": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "td": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 3,
+     "nl": 3
+    },
+    "agree": 1
+   }
+  },
+  "tg": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "th": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "tj": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "tk": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "tl": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "tm": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "tn": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "to": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "tr": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "tt": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "tv": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "tw": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "tz": {
+   "travel": {
+    "level": 3,
+    "natives": {
+     "us": 3,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "ua": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "ug": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 3,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "us": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "uy": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "uz": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "vc": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "ve": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 3,
+     "ca": 4,
+     "nl": 3
+    },
+    "agree": 1
+   }
+  },
+  "vg": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "vi": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 2
+   }
+  },
+  "vn": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 2
+   }
+  },
+  "vu": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "west-bank": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 3,
+     "ca": 3,
+     "nl": 4
+    },
+    "agree": 1
+   }
+  },
+  "wf": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "ws": {
+   "travel": {
+    "level": 1,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 3
+   }
+  },
+  "xk": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 1,
+     "nl": 1
+    },
+    "agree": 1
+   }
+  },
+  "ye": {
+   "travel": {
+    "level": 4,
+    "natives": {
+     "us": 4,
+     "ca": 4,
+     "nl": 4
+    },
+    "agree": 3
+   }
+  },
+  "yt": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "za": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  },
+  "zm": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 1,
+     "ca": 1,
+     "nl": 2
+    },
+    "agree": 1
+   }
+  },
+  "zw": {
+   "travel": {
+    "level": 2,
+    "natives": {
+     "us": 2,
+     "ca": 2,
+     "nl": 2
+    },
+    "agree": 3
+   }
+  }
+ }
+}

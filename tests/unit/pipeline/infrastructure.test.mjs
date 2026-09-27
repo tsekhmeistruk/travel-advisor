@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { startRunLog, withRunLog, logFile } from '../../../scripts/lib/fetch-log.mjs';
 import { FileStore } from '../../../scripts/lib/store.mjs';
 import { runFetch } from '../../../scripts/fetch.mjs';
+import { runDue } from '../../../scripts/due.mjs';
 import { readEntries, renderRunSummary, renderRecent, result, callSummary, describe as describeRun, duration, cell, flagEmoji, providerLabels } from '../../../scripts/lib/log-summary.mjs';
 import { serve } from '../../../scripts/serve.mjs';
 
@@ -81,14 +82,111 @@ describe('FileStore', () => {
     assert.throws(() => store.places(), /Missing .*places\.json/);
     rmSync(root, { recursive: true });
   });
+
+  test('saves and reads events, signals, the change log by year, and the sources state', () => {
+    const root = tmp();
+    const store = new FileStore(root);
+    assert.equal(store.events('gdacs'), null);
+    assert.equal(store.signals(), null);
+    assert.deepEqual(store.changes(2026), []);
+    assert.deepEqual(store.sourcesState(), {});
+    store.saveEvents('gdacs', { events: [1] });
+    store.saveSignals({ categories: {} });
+    store.saveSourcesState({ us: { lastSuccess: 'x' } });
+    store.appendChanges([{ id: 'a', at: '2025-12-31T23:00:00Z' }, { id: 'b', at: '2026-01-01T00:00:00Z' }]);
+    store.appendChanges([{ id: 'c', at: '2026-02-01' }]);
+    store.archiveEvents('gdacs', [{ id: 'e1', toDate: '2026-03-01T00:00:00Z' }, { id: 'e2', startedAt: '2025-06-01T00:00:00Z' }]);
+    assert.deepEqual(store.events('gdacs'), { events: [1] });
+    assert.deepEqual(store.signals(), { categories: {} });
+    assert.deepEqual(store.sourcesState(), { us: { lastSuccess: 'x' } });
+    assert.deepEqual(store.changes(2025).map(c => c.id), ['a']);
+    assert.deepEqual(store.changes(2026).map(c => c.id), ['b', 'c'], 'appended, oldest first');
+    assert.match(readFileSync(join(root, 'data', 'archive', 'events', 'gdacs', '2026.jsonl'), 'utf8'), /"e1"/);
+    assert.match(readFileSync(join(root, 'data', 'archive', 'events', 'gdacs', '2025.jsonl'), 'utf8'), /"e2"/);
+    mkdirSync(join(root, 'config', 'sources'), { recursive: true });
+    writeFileSync(join(root, 'config', 'sources', 'gdacs.json'), '{"id":"gdacs"}');
+    writeFileSync(join(root, 'config', 'categories.json'), '{"categories":[]}');
+    writeFileSync(join(root, 'config', 'schedule.json'), '{"gdacs":{"everyMinutes":60}}');
+    assert.deepEqual(store.sourceIds(), ['gdacs']);
+    assert.deepEqual(store.source('gdacs'), { id: 'gdacs' });
+    assert.deepEqual(store.categories(), { categories: [] });
+    assert.deepEqual(store.schedule(), { gdacs: { everyMinutes: 60 } });
+    rmSync(root, { recursive: true });
+  });
+});
+
+describe('due check (scripts/due.mjs)', () => {
+  const store = { schedule: () => ({ us: { every: 'daily-slot' }, gdacs: { everyMinutes: 60 } }), sourcesState: () => ({ gdacs: { lastSuccess: '2026-09-27T09:20:00Z' } }) };
+
+  test('writes the due ids comma-wrapped for the workflow, with a line per id', () => {
+    const r = runDue({ store, env: { SEED: 'tsekhmeistruk/travel-advisor', EVENT: 'schedule' }, now: new Date('2026-09-27T21:17:00Z') });
+    assert.equal(r.output, 'due=,us,gdacs,\nany=true\njitter=false\n');
+    assert.deepEqual(r.lines, ['run  us: catching up', 'run  gdacs: last success 717 min ago']);
+  });
+  test('a manual run fetches only what it names', () => {
+    const r = runDue({ store, env: { EVENT: 'workflow_dispatch', SOURCES: 'gdacs' }, now: new Date('2026-09-27T09:30:00Z') });
+    assert.equal(r.output, 'due=,gdacs,\nany=true\njitter=false\n');
+  });
+  test('nothing due gives an empty list', () => {
+    const quietStore = { ...store, sourcesState: () => ({ us: { lastSuccess: '2026-09-27T05:00:00Z' }, gdacs: { lastSuccess: '2026-09-27T09:20:00Z' } }) };
+    const r = runDue({ store: quietStore, env: {}, now: new Date('2026-09-27T09:30:00Z') });
+    assert.equal(r.output, 'due=,,\nany=false\njitter=false\n');
+  });
 });
 
 describe('runFetch', () => {
-  const memoryStore = (initial = null) => {
+  const memoryStore = (initial = null, { events = null, state = {} } = {}) => {
     const saved = {};
-    return { saved, snapshot: () => initial, saveSnapshot: (ds, p, snap) => { saved[`${ds}/${p}`] = snap; } };
+    let current = state;
+    return {
+      saved,
+      get state() { return current; },
+      snapshot: () => initial, saveSnapshot: (ds, p, snap) => { saved[`${ds}/${p}`] = snap; },
+      events: () => events, saveEvents: (id, data) => { saved[`events/${id}`] = data; },
+      archiveEvents: (id, list) => { saved[`archive/${id}`] = list; },
+      source: (id) => ({ id, lookbackDays: 30 }),
+      sourcesState: () => current, saveSourcesState: (s) => { current = s; },
+    };
   };
   const provider = (fetchImpl) => ({ id: 'xx', dataset: 'ds', source: 'https://example.test', fetch: fetchImpl });
+  const clock = (...times) => { const t = times.map(x => new Date(x)); return () => t.length > 1 ? t.shift() : t[0]; };
+
+  test('records every attempt and the last success in the sources state', async () => {
+    const root = tmp();
+    const saved = process.exitCode;
+    const store = memoryStore({ entries: [] });
+    const ok = provider(async () => ({ entries: [{ name: 'a' }, { name: 'b' }], stats: {} }));
+    await runFetch(ok, { store, logRoot: root, now: clock('2026-09-27T10:00:00Z', '2026-09-27T10:00:00Z', '2026-09-27T10:00:02Z') });
+    assert.deepEqual(store.state.xx, { lastAttempt: '2026-09-27T10:00:00.000Z', lastSuccess: '2026-09-27T10:00:00.000Z', durationMs: 2000, records: 2, consecutiveFailures: 0 });
+
+    const failing = provider(async () => { throw new Error('site down'); });
+    await runFetch(failing, { store, logRoot: root, now: clock('2026-09-27T11:00:00Z') });
+    await runFetch(failing, { store, logRoot: root, now: clock('2026-09-27T12:00:00Z') });
+    assert.deepEqual(store.state.xx, {
+      lastAttempt: '2026-09-27T12:00:00.000Z', lastSuccess: '2026-09-27T10:00:00.000Z', durationMs: 0, records: 2, consecutiveFailures: 2, error: 'site down',
+    });
+    process.exitCode = saved;
+    rmSync(root, { recursive: true });
+  });
+
+  test('an events source gets its stored events and config, and keeps its first fetch time', async () => {
+    const root = tmp();
+    const store = memoryStore(null, { events: { firstFetchedAt: '2026-09-01T00:00:00.000Z', events: [{ id: 'old' }] } });
+    let seen;
+    const source = { id: 'ev', kind: 'events', source: 'https://example.test/ev', fetch: async (args) => { seen = args; return { events: [{ id: 'new' }], expired: [{ id: 'gone' }], stats: { events: 1 } }; } };
+    await runFetch(source, { store, logRoot: root, now: clock('2026-09-27T10:00:00Z') });
+    assert.deepEqual(seen.previous, [{ id: 'old' }]);
+    assert.deepEqual(seen.config, { id: 'ev', lookbackDays: 30 });
+    assert.equal(seen.now.toISOString(), '2026-09-27T10:00:00.000Z');
+    assert.deepEqual(store.saved['events/ev'], { source: 'https://example.test/ev', fetchedAt: '2026-09-27T10:00:00.000Z', firstFetchedAt: '2026-09-01T00:00:00.000Z', events: [{ id: 'new' }] });
+    assert.deepEqual(store.saved['archive/ev'], [{ id: 'gone' }]);
+
+    const fresh = memoryStore();
+    await runFetch({ ...source, fetch: async () => ({ events: [], stats: {} }) }, { store: fresh, logRoot: root, now: clock('2026-09-27T10:00:00Z') });
+    assert.equal(fresh.saved['events/ev'].firstFetchedAt, '2026-09-27T10:00:00.000Z', 'the first fetch sets the baseline time');
+    assert.equal(fresh.saved['archive/ev'], undefined, 'nothing to archive');
+    rmSync(root, { recursive: true });
+  });
 
   test('passes the previous entries in and saves the new snapshot', async () => {
     const root = tmp();
@@ -173,11 +271,19 @@ describe('log summary', () => {
     assert.deepEqual(entries.map(e => e.time), ['2026-09-27T10:00:00Z', '2026-08-31T10:00:00Z']);
     rmSync(root, { recursive: true });
   });
-  test('labels providers with flag emoji and short names from the repo', () => {
+  test('labels providers with flag emoji and short names, and risk sources by name, from the repo', () => {
     assert.equal(flagEmoji('ca'), '🇨🇦');
     const labels = providerLabels(fileURLToPath(new URL('../../../', import.meta.url)));
     assert.equal(labels.us, '🇺🇸 U.S.');
     assert.equal(labels.ca, '🇨🇦 Canada');
+    assert.equal(labels.gdacs, '🌐 GDACS');
+  });
+  test('describes a risk source run: events, alert changes first, then new events', () => {
+    const gdacs = { ...ok, source: 'gdacs', stats: { events: 13, current: 2, alertChanged: ['gdacs:TC:1 Orange → Red'], added: ['gdacs:EQ:2'], archived: 1 } };
+    assert.equal(describeRun(gdacs), '13 events (2 current) · 🔔 alert changed: gdacs:TC:1 Orange → Red · new: gdacs:EQ:2 · 1 archived');
+    const many = { ...ok, stats: { events: 20, current: 9, added: Array.from({ length: 9 }, (_, i) => `e${i}`) } };
+    assert.equal(describeRun(many), '20 events (9 current) · 9 new');
+    assert.equal(callSummary({ requests: 1, statuses: { 204: 1 }, errors: 0, challenges: 0 }), '1× 204');
   });
 });
 

@@ -1,12 +1,12 @@
 // Rendering of the fetch log (logs/fetch/*.jsonl) as Markdown tables. Pure except
 // readEntries/providerLabels, which read files; scripts/log-summary.mjs is the CLI.
 
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { logFile } from './fetch-log.mjs';
 
 // rss and pages: calls of earlier runs (change notes), still in the logs.
-const CALL_LABELS = { api: 'API', rss: 'RSS', feed: 'Feed', table: 'Table', pages: 'Pages', list: 'List' };
+const CALL_LABELS = { api: 'API', rss: 'RSS', feed: 'Feed', table: 'Table', pages: 'Pages', list: 'List', search: 'Search' };
 
 /** Log entries at or after `sinceMs`, reading each monthly file from then until `now`. */
 export function readEntries(sinceMs, { root, now = new Date() } = {}) {
@@ -37,6 +37,11 @@ export function providerLabels(repoRoot) {
         const flag = existsSync(cfg) ? JSON.parse(readFileSync(cfg, 'utf8')).flag : null;
         labels[id] = `${flag ? flagEmoji(flag) + ' ' : ''}${p.short ?? p.name ?? id}`;
       }
+    }
+    const sources = join(repoRoot, 'config', 'sources');
+    for (const f of existsSync(sources) ? readdirSync(sources).filter(x => x.endsWith('.json')) : []) {
+      const cfg = JSON.parse(readFileSync(join(sources, f), 'utf8'));
+      labels[cfg.id] = `🌐 ${cfg.name ?? cfg.id}`;
     }
   } catch { /* fall back to raw ids */ }
   return labels;
@@ -102,6 +107,10 @@ export function describe(e) {
   const parts = [];
   if (s.advisories != null) parts.push(`${s.advisories} advisories`);
   if (s.destinations != null) parts.push(`${s.destinations} destinations${s.sources ? ` (${s.sources.join(' + ')})` : ''}`);
+  if (s.events != null) parts.push(`${s.events} events (${s.current} current)`);
+  if (s.alertChanged?.length) parts.push(`🔔 alert changed: ${s.alertChanged.join(', ')}`);
+  if (s.added?.length) parts.push(s.added.length <= 6 ? `new: ${s.added.join(', ')}` : `${s.added.length} new`);
+  if (s.archived) parts.push(`${s.archived} archived`);
   // The event the site shows: a level went up or down (confirmed, for sources that need it).
   const levelChanges = [...(s.levelChanged ?? []), ...(s.levelChangesConfirmed ?? [])];
   if (levelChanges.length) parts.push(`🔔 level changed: ${levelChanges.join(', ')}`);

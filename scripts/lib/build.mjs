@@ -82,15 +82,21 @@ export function trackHistory(history, providerId, asOf, records) {
     const last = log.filter(e => !e.source).at(-1);
     if (!last || (last.level !== r.level && asOf > last.date)) log.push({ date: asOf, level: r.level });
 
-    const changes = [];
-    log.forEach((e, i) => {
-      const prev = log[i - 1];
-      if (e.source) changes.push({ date: e.date, from: e.from ?? null, to: e.level, up: e.up });
-      else if (prev && prev.level !== e.level) changes.push({ date: e.date, from: prev.level, to: e.level, up: e.level > prev.level });
-    });
+    const changes = levelChangesOf(log).map(({ seeded: _, ...c }) => c);
     if (changes.length) r.levelChanges = changes.reverse().slice(0, MAX_LEVEL_CHANGES);
     r.trackedSince = log.find(e => !e.source).date;
   }
+}
+
+/** Every level change in one advisory's log, oldest first: { date, from, to, up, seeded? }. */
+export function levelChangesOf(log) {
+  const changes = [];
+  log.forEach((e, i) => {
+    const prev = log[i - 1];
+    if (e.source) changes.push({ date: e.date, from: e.from ?? null, to: e.level, up: e.up, seeded: true });
+    else if (prev && prev.level !== e.level) changes.push({ date: e.date, from: prev.level, to: e.level, up: e.level > prev.level });
+  });
+  return changes;
 }
 
 // ---- providers and the whole site

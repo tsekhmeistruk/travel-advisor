@@ -1,0 +1,36 @@
+{
+ "asOf": "2026-09-27T16:25:57.372Z",
+ "windowDays": 90,
+ "changes": [
+  {
+   "id": "advisory:us:Saint Lucia:2026-07-10",
+   "at": "2026-07-10",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Saint Lucia",
+   "placeIds": [
+    "lc"
+   ],
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "seeded": true
+  },
+  {
+   "id": "advisory:us:Thailand:2026-07-07",
+   "at": "2026-07-07",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Thailand",
+   "placeIds": [
+    "th"
+   ],
+   "from": null,
+   "to": 1,
+   "up": false,
+   "seeded": true
+  }
+ ]
+}

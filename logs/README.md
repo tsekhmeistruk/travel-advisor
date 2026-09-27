@@ -10,7 +10,7 @@ logs/fetch/2026/2026-10.jsonl
 ...
 ```
 
-The daily GitHub Actions run commits these files with the data. Runs on your own machine are logged too, with `"run": "local"`.
+The hourly GitHub Actions run commits these files with the data. Runs on your own machine are logged too, with `"run": "local"`.
 
 ### Reading the log
 
@@ -78,3 +78,16 @@ The fields in `stats` depend on the source:
   - `changed`: destinations whose timestamp changed since the previous run (shown as "updated").
   - `levelChanged`: destinations whose level changed since the previous run, e.g. `Mexico L2 → L3`. Canada's levels are official fields, so they apply at once, without the confirmation the U.S. and the Netherlands need.
   - `pagesRead` and `pagesFailed` (runs before Sep 27, 2026): destination pages read for "what changed" notes.
+- **GDACS** (risk source, from Sep 27, 2026):
+  - `events`: events stored after this run (current ones, and ended ones for 90 days); `current`: how many GDACS still calls current.
+  - `received`: Orange and Red events in this response (the last 30 days).
+  - `added`: ids of events seen for the first time.
+  - `alertChanged`: events whose alert level changed, e.g. `gdacs:TC:1001325 Orange → Red` (shown as "🔔 alert changed").
+  - `closed`: stored "current" events older than the 30-day window, so GDACS can no longer list them; they are marked ended.
+  - `archived`: ended events moved to `data/archive/events/`.
+
+`calls.search` is GDACS's search endpoint, counted like `calls.list`. HTTP 204 means "no events".
+
+## `data/sources-state.json`: last success of every fetch
+
+Next to the log, `scripts/fetch.mjs` keeps one entry per provider and source: `lastAttempt`, `lastSuccess`, `durationMs`, `records`, `consecutiveFailures` and the last `error`. The hourly workflow's due check reads it, and the build publishes it as `site/data/risk/health.json` with a status (`healthy`, `delayed`, `error`).

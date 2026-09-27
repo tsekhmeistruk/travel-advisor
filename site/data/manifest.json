@@ -45,5 +45,12 @@
     }
    ]
   }
- ]
+ ],
+ "risk": {
+  "asOf": "2026-09-27T16:25:57.372Z",
+  "current": "risk/current.json",
+  "changes": "risk/changes.json",
+  "events": "risk/events.json",
+  "health": "risk/health.json"
+ }
 }

@@ -1,0 +1,38 @@
+{
+ "id": "gdacs",
+ "name": "GDACS",
+ "type": "un-system",
+ "authority": "Global Disaster Alert and Coordination System (UN OCHA, UNOSAT and the European Commission)",
+ "links": {
+  "home": "https://www.gdacs.org/",
+  "terms": "https://www.gdacs.org/documents/2025/GDACS_Terms_of_use_Mar_25.pdf"
+ },
+ "staleAfterHours": 6,
+ "confirmFallMinutes": 120,
+ "lookbackDays": 30,
+ "retainEndedDays": 90,
+ "scheme": "gdacs-alert",
+ "levels": {
+  "Green": 1,
+  "Orange": 3,
+  "Red": 4
+ },
+ "types": {
+  "EQ": { "type": "earthquake", "category": "disaster", "tailDays": 7 },
+  "TC": { "type": "cyclone", "category": "disaster", "tailDays": 3 },
+  "FL": { "type": "flood", "category": "disaster", "tailDays": 3 },
+  "VO": { "type": "volcano", "category": "disaster", "tailDays": 7 },
+  "DR": { "type": "drought", "category": "disaster", "tailDays": 0, "maxLevel": 2 },
+  "WF": { "type": "wildfire", "category": "wildfire", "tailDays": 3 }
+ },
+ "codes": {
+  "PSE": [
+   "gaza",
+   "west-bank"
+  ],
+  "BES": [
+   "bonaire",
+   "saba-and-sint-eustatius"
+  ]
+ }
+}

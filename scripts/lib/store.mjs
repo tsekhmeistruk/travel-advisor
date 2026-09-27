@@ -3,7 +3,7 @@
 // file paths. To move to a database, implement the same methods against it and swap the
 // store passed around (see docs/architecture.md for how the files map to tables).
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -21,6 +21,13 @@ export class FileStore {
   dataset(id) { return this.#readJson('config', 'datasets', `${id}.json`); }
   provider(id) { return this.#readJson('config', 'providers', `${id}.json`); }
   datasetIds() { return this.#list('config/datasets', '.json'); }
+  /** Risk categories and their shared scale. */
+  categories() { return this.#readJson('config', 'categories.json'); }
+  /** A risk source (not a travel-advisory provider), e.g. gdacs. */
+  source(id) { return this.#readJson('config', 'sources', `${id}.json`); }
+  sourceIds() { return this.#list('config/sources', '.json'); }
+  /** When each provider and source is due: { id: { every: 'daily-slot' } | { everyMinutes } }. */
+  schedule() { return this.#readJson('config', 'schedule.json'); }
 
   // ---- pipeline state (in data/)
   /** Latest fetched snapshot of one provider, or null if it has never been fetched. */
@@ -30,6 +37,32 @@ export class FileStore {
   /** Level history of a dataset: { provider: { recordTitle: [{ date, level }] } }. */
   history(dataset) { return this.#readJson('data', 'history', `${dataset}.json`, { optional: true }) ?? {}; }
   saveHistory(dataset, history) { this.#writeJson(history, 'data', 'history', `${dataset}.json`); }
+
+  /** A risk source's current events: { source, fetchedAt, firstFetchedAt, events }, or null. */
+  events(source) { return this.#readJson('data', 'events', `${source}.json`, { optional: true }); }
+  saveEvents(source, data) { this.#writeJson(data, 'data', 'events', `${source}.json`); }
+  /** Events that left the current file, one JSON line each, by the year they ended. */
+  archiveEvents(source, events) {
+    for (const e of events) this.#appendLine(e, 'data', 'archive', 'events', source, `${(e.toDate ?? e.startedAt).slice(0, 4)}.jsonl`);
+  }
+
+  /** Confirmed risk signals per place and category, with pending falls: see lib/risk.mjs. */
+  signals() { return this.#readJson('data', 'signals', 'current.json', { optional: true }); }
+  saveSignals(signals) { this.#writeJson(signals, 'data', 'signals', 'current.json'); }
+
+  /** The risk change log of one year (append-only), oldest first. */
+  changes(year) {
+    const file = this.path('data', 'changes', `${year}.jsonl`);
+    if (!existsSync(file)) return [];
+    return readFileSync(file, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
+  }
+  appendChanges(changes) {
+    for (const c of changes) this.#appendLine(c, 'data', 'changes', `${c.at.slice(0, 4)}.jsonl`);
+  }
+
+  /** Last attempt and success of every fetch: { id: { lastAttempt, lastSuccess, ... } }. */
+  sourcesState() { return this.#readJson('data', 'sources-state.json', { optional: true }) ?? {}; }
+  saveSourcesState(state) { this.#writeJson(state, 'data', 'sources-state.json'); }
 
   // ---- published site data (in site/, served as-is)
   geo() { return this.#readJson('site', 'data', 'geo', 'countries-50m.json'); }
@@ -53,6 +86,12 @@ export class FileStore {
     const file = this.path(...parts);
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, JSON.stringify(data, null, 1) + '\n');
+  }
+
+  #appendLine(data, ...parts) {
+    const file = this.path(...parts);
+    mkdirSync(dirname(file), { recursive: true });
+    appendFileSync(file, JSON.stringify(data) + '\n');
   }
 
   #list(dir, ext) {

@@ -7,7 +7,8 @@ import { readFileSync } from 'node:fs';
 import us from '../../../scripts/providers/us/index.mjs';
 import ca from '../../../scripts/providers/ca/index.mjs';
 import nl from '../../../scripts/providers/nl/index.mjs';
-import { PROVIDERS, getProvider } from '../../../scripts/providers/index.mjs';
+import gdacs from '../../../scripts/providers/gdacs/index.mjs';
+import { PROVIDERS, SOURCES, getProvider } from '../../../scripts/providers/index.mjs';
 
 const fixture = (f) => readFileSync(new URL(`../../fixtures/${f}`, import.meta.url), 'utf8');
 const CHALLENGE = '<!DOCTYPE html><title>Just a moment...</title>';
@@ -37,15 +38,84 @@ function fakeLog(responses) {
 const recordSleeps = () => { const waits = []; const sleep = async (ms) => { waits.push(ms); }; return { waits, sleep }; };
 
 describe('provider registry', () => {
-  test('lists every provider under its own id', () => {
-    for (const [id, p] of Object.entries(PROVIDERS)) {
+  test('lists every provider and risk source under its own id', () => {
+    for (const [id, p] of Object.entries({ ...PROVIDERS, ...SOURCES })) {
       assert.equal(p.id, id);
       assert.equal(typeof p.fetch, 'function');
       assert.match(p.source, /^https:\/\//);
     }
+    assert.equal(getProvider('gdacs'), gdacs, 'sources are found by id too');
   });
   test('rejects an unknown provider with the list of known ones', () => {
-    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca/);
+    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, gdacs/);
+  });
+});
+
+describe('GDACS fetcher', () => {
+  const config = JSON.parse(readFileSync(new URL('../../../config/sources/gdacs.json', import.meta.url), 'utf8'));
+  const body = fixture('gdacs-search.json');
+  const NOW = new Date('2026-09-27T16:00:00Z');
+  const page = (n) => JSON.stringify({ type: 'FeatureCollection', features: Array.from({ length: n }, (_, i) => ({
+    type: 'Feature', geometry: { type: 'Point', coordinates: [0, 0] },
+    properties: { eventtype: 'EQ', eventid: 5000 + i + n * 1000, alertlevel: 'Orange', fromdate: '2026-09-20T00:00:00', todate: '2026-09-20T00:00:00', iscurrent: 'false', affectedcountries: [] },
+  })) });
+
+  test('asks for Orange and Red alerts of every configured type over the lookback window', async () => {
+    const log = fakeLog({ search: [{ body }] });
+    const { events, stats } = await gdacs.fetch({ log, previous: [], now: NOW, config, sleep: async () => {} });
+    const url = new URL(log.requests[0].url);
+    assert.equal(url.searchParams.get('alertlevel'), 'Orange;Red');
+    assert.equal(url.searchParams.get('eventlist'), 'EQ;TC;FL;VO;DR;WF');
+    assert.equal(url.searchParams.get('fromDate'), '2026-08-28');
+    assert.equal(url.searchParams.get('toDate'), '2026-09-27');
+    assert.equal(url.searchParams.get('pageNumber'), '1');
+    assert.equal(log.requests[0].opts.detail, false, 'pages are counted, not listed as retries');
+    assert.equal(events.length, 13);
+    assert.equal(stats.added.length, 13);
+    assert.equal(stats.current, events.filter(e => e.current).length);
+    assert.deepEqual(log.warnings, []);
+  });
+
+  test('pages until a short page, and warns when there are more pages than it reads', async () => {
+    const two = fakeLog({ search: [{ body: page(100) }, { body: page(3) }] });
+    assert.equal((await gdacs.fetch({ log: two, previous: [], now: NOW, config })).events.length, 103);
+    assert.deepEqual(two.requests.map(r => new URL(r.url).searchParams.get('pageNumber')), ['1', '2']);
+    const many = fakeLog({ search: () => ({ body: page(100) }) });
+    await gdacs.fetch({ log: many, previous: [], now: NOW, config });
+    assert.equal(many.requests.length, 5);
+    assert.match(many.warnings.join(), /More than 500 events/);
+  });
+
+  test('HTTP 204 means no events; that is only suspicious when events were current before', async () => {
+    const quiet = fakeLog({ search: [{ status: 204 }] });
+    assert.deepEqual((await gdacs.fetch({ log: quiet, previous: [], now: NOW, config })).events, []);
+    assert.deepEqual(quiet.warnings, []);
+    const previous = [{ id: 'gdacs:TC:1', code: 'TC', native: { value: 'Orange' }, current: true, toDate: '2026-09-27T00:00:00.000Z', firstSeen: 'x', revisions: [] }];
+    const suspicious = fakeLog({ search: [{ status: 204 }] });
+    const { events } = await gdacs.fetch({ log: suspicious, previous, now: NOW, config });
+    assert.deepEqual(events, previous, 'missing is not ended');
+    assert.match(suspicious.warnings.join(), /No Orange or Red events returned/);
+  });
+
+  test('warns about event types it has no config for', async () => {
+    const log = fakeLog({ search: [{ body: body.replace(/"eventtype":"VO"/, '"eventtype":"XX"') }] });
+    await gdacs.fetch({ log, previous: [], now: NOW, config });
+    assert.match(log.warnings.join(), /Event types not in config\/sources\/gdacs\.json: XX/);
+  });
+
+  test('retries errors and challenge pages after 30 and 60 seconds, then gives up', async () => {
+    const { waits, sleep } = recordSleeps();
+    const log = fakeLog({ search: [{ status: 503 }, { body: CHALLENGE, challenge: true }, { body }] });
+    assert.equal((await gdacs.fetch({ log, previous: [], now: NOW, config, sleep })).events.length, 13);
+    assert.deepEqual(waits, [30000, 60000]);
+    const down = fakeLog({ search: [new Error('ECONNRESET'), { status: 500 }, { status: 502 }] });
+    await assert.rejects(gdacs.fetch({ log: down, previous: [], now: NOW, config, sleep }), /Search failed after 3 attempts: HTTP 502/);
+  });
+
+  test('a malformed response fails the fetch, so the stored events are kept', async () => {
+    const { sleep } = recordSleeps();
+    const log = fakeLog({ search: [{ body: '{"type":"FeatureCollection"}' }] });
+    await assert.rejects(gdacs.fetch({ log, previous: [], now: NOW, config, sleep }), /no list of features/);
   });
 });
 

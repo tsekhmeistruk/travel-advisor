@@ -1,8 +1,22 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  placeIndex, resolvePlaces, checkPlaces, trackHistory, buildProvider, buildSite, MAX_LEVEL_CHANGES,
+  placeIndex, resolvePlaces, checkPlaces, trackHistory, levelChangesOf, buildProvider, buildSite, MAX_LEVEL_CHANGES,
 } from '../../../scripts/lib/build.mjs';
+
+describe('levelChangesOf', () => {
+  test('lists every change of one log oldest first, seeded ones marked', () => {
+    const log = [
+      { date: '2026-04-28', level: 4, from: null, up: true, source: 'note' },
+      { date: '2026-09-26', level: 4 }, { date: '2026-09-27', level: 4 }, { date: '2026-09-28', level: 2 },
+    ];
+    assert.deepEqual(levelChangesOf(log), [
+      { date: '2026-04-28', from: null, to: 4, up: true, seeded: true },
+      { date: '2026-09-28', from: 4, to: 2, up: false },
+    ]);
+    assert.deepEqual(levelChangesOf([{ date: '2026-09-26', level: 1 }]), []);
+  });
+});
 
 const PLACES = [
   { id: 'fr', name: 'France', iso2: 'FR', shape: 'France' },

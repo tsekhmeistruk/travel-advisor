@@ -1,0 +1,6 @@
+{
+ "us": { "every": "daily-slot" },
+ "ca": { "every": "daily-slot" },
+ "nl": { "every": "daily-slot" },
+ "gdacs": { "everyMinutes": 60 }
+}

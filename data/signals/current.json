@@ -1,0 +1,27 @@
+{
+ "categories": {
+  "disaster": {
+   "trackedSince": "2026-09-27T16:25:57.372Z",
+   "at": "2026-09-27T16:25:57.372Z",
+   "places": {
+    "in": {
+     "level": 3,
+     "basis": [
+      "gdacs:TC:1001326"
+     ]
+    },
+    "mx": {
+     "level": 3,
+     "basis": [
+      "gdacs:TC:1001325"
+     ]
+    }
+   }
+  },
+  "wildfire": {
+   "trackedSince": "2026-09-27T16:25:57.372Z",
+   "at": "2026-09-27T16:25:57.372Z",
+   "places": {}
+  }
+ }
+}

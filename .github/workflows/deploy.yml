@@ -2,7 +2,7 @@ name: Test and deploy
 
 # Every deploy of the live site goes through here, and only happens if all tests pass:
 #   - pushes to main (code changes)
-#   - the daily "Update advisories" run, which calls this workflow after committing new data
+#   - the hourly "Update data" run, which calls this workflow after committing new data
 #     (its commits are made with GITHUB_TOKEN, which doesn't trigger push workflows)
 #   - the "Run workflow" button
 # If a test fails, nothing is deployed and the site keeps serving the last good version.

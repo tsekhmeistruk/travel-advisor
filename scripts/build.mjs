@@ -1,15 +1,18 @@
 // Builds the published site data (site/data/*.json) from config/, the provider snapshots in
-// data/snapshots/ and the level history in data/history/ (which it updates).
-// The logic is in scripts/lib/build.mjs; this script gathers inputs and writes outputs.
+// data/snapshots/, the level history in data/history/ (which it updates), and the risk
+// sources' events in data/events/ (updating data/signals/ and the change log in data/changes/).
+// The logic is in scripts/lib/build.mjs and scripts/lib/risk.mjs; this script gathers inputs
+// and writes outputs.
 //
-// Usage: node scripts/build.mjs   (run node scripts/fetch.mjs <provider> first to refresh)
+// Usage: node scripts/build.mjs   (run node scripts/fetch.mjs <id> first to refresh)
 
 import { fileURLToPath } from 'node:url';
-import { buildSite } from './lib/build.mjs';
+import { buildSite, placeIndex } from './lib/build.mjs';
+import { buildRisk } from './lib/risk.mjs';
 import { FileStore } from './lib/store.mjs';
 import { SPLIT_SHAPE_NAMES } from '../site/js/map/splits.js';
 
-/** Everything buildSite() needs, read from the store. */
+/** Everything buildAll() needs, read from the store. */
 export function readBuildInput(store = new FileStore()) {
   const geo = store.geo();
   const shapeNames = new Set([...geo.objects.countries.geometries.map(g => g.properties.name), ...SPLIT_SHAPE_NAMES]);
@@ -21,20 +24,58 @@ export function readBuildInput(store = new FileStore()) {
     };
   });
   const history = Object.fromEntries(datasets.map(d => [d.config.id, store.history(d.config.id)]));
-  return { places: store.places(), shapeNames, locales: store.locales(), datasets, history };
+  const year = new Date().getUTCFullYear();
+  return {
+    places: store.places(), shapeNames, locales: store.locales(), datasets, history,
+    risk: {
+      categories: store.categories(),
+      schedule: store.schedule(),
+      sources: Object.fromEntries(store.sourceIds().map(id => [id, { config: store.source(id), data: store.events(id) }])),
+      state: store.signals(),
+      log: [...store.changes(year - 1), ...store.changes(year)],
+      sourcesState: store.sourcesState(),
+    },
+  };
 }
 
-// Run only when executed directly (tests import readBuildInput).
+/**
+ * The advisory files (buildSite) plus the risk layer (buildRisk), and the manifest entry that
+ * points at the risk files. Pure: `history` in the input is mutated as buildSite documents.
+ * @returns { files, problems, warnings, state, newChanges }
+ */
+export function buildAll(input) {
+  const site = buildSite(input);
+  const advisoryDataset = input.datasets.find(d => d.config.id === 'travel-advisories');
+  const advisoryFiles = Object.fromEntries(Object.entries(site.files)
+    .filter(([path]) => path.startsWith('travel-advisories/'))
+    .map(([, data]) => [data.provider, data]));
+  const risk = buildRisk({
+    ...input.risk,
+    index: placeIndex(input.places),
+    advisories: { files: advisoryFiles, history: input.history[advisoryDataset?.config.id] ?? {} },
+  });
+  const files = { ...site.files, ...JSON.parse(JSON.stringify(risk.files)) };
+  files['manifest.json'] = {
+    ...site.files['manifest.json'],
+    risk: { asOf: risk.files['risk/current.json'].asOf, ...Object.fromEntries(Object.keys(risk.files).map(p => [p.slice(5, -5), p])) },
+  };
+  return { files, problems: site.problems, warnings: risk.warnings, state: JSON.parse(JSON.stringify(risk.state)), newChanges: risk.newChanges };
+}
+
+// Run only when executed directly (tests import readBuildInput and buildAll).
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const store = new FileStore();
   const input = readBuildInput(store);
-  const { files, problems } = buildSite(input);
+  const { files, problems, warnings, state, newChanges } = buildAll(input);
   if (problems.length) {
     console.error(problems.join('\n'));
     process.exit(1);
   }
+  for (const w of warnings) console.warn(w);
   for (const [path, data] of Object.entries(files)) store.publish(path, data);
   for (const [id, history] of Object.entries(input.history)) store.saveHistory(id, history);
+  store.saveSignals(state);
+  store.appendChanges(newChanges);
 
   for (const d of files['manifest.json'].datasets) {
     for (const p of d.providers) {
@@ -44,4 +85,10 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
         + `${recs.filter(r => r.levelChanges).length} with a recorded level change.`);
     }
   }
+  const current = files['risk/current.json'];
+  for (const [c, meta] of Object.entries(current.categories)) {
+    const above = Object.values(current.places).filter(p => p[c]?.level > 1).length;
+    console.log(`risk/${c}: ${above} places above Normal (sources: ${meta.sources.join(', ')}${meta.status ? `, ${meta.status}` : ''}).`);
+  }
+  console.log(`risk: ${files['risk/events.json'].events.length} active events, ${newChanges.length} new changes.`);
 }
