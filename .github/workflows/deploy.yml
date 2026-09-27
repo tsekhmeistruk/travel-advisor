@@ -72,18 +72,12 @@ jobs:
         with:
           ref: ${{ inputs.ref || github.sha }}
 
-      # Publish only what the site loads, not scripts, logs or source snapshots.
-      - name: Stage site files
-        run: |
-          mkdir -p _site/data
-          cp -r index.html css js vendor _site/
-          cp data/advisories.js data/world.js _site/data/
-
       - uses: actions/configure-pages@v6
 
+      # site/ holds exactly the public files; scripts, config, snapshots and logs stay out.
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: _site
+          path: site
 
       - id: deployment
         uses: actions/deploy-pages@v5

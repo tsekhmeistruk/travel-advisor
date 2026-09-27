@@ -1,0 +1,34 @@
+{
+ "id": "ca",
+ "dataset": "travel-advisories",
+ "flag": "ca",
+ "links": {
+  "list": "https://travel.gc.ca/travelling/advisories"
+ },
+ "home": "ca",
+ "territories": [],
+ "coveredBy": {
+  "somaliland": "Somalia",
+  "northern-cyprus": "Cyprus",
+  "fo": "Denmark",
+  "ax": "Finland"
+ },
+ "listOnly": {},
+ "aliases": {
+  "Côte d'Ivoire (Ivory Coast)": "ci",
+  "Democratic Republic of Congo (Kinshasa)": "cd",
+  "Gambia, The": "gm",
+  "Israel and Palestine": [
+   "il",
+   "gaza",
+   "west-bank"
+  ],
+  "Micronesia (FSM)": "fm",
+  "Northern Marianas": "mp",
+  "Republic of Congo (Brazzaville)": "cg",
+  "Saint Vincent & the Grenadines": "vc",
+  "Saint-Pierre-et-Miquelon": "pm",
+  "Timor-Leste (East Timor)": "tl",
+  "Virgin Islands (U.S.)": "vi"
+ }
+}

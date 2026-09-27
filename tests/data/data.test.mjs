@@ -1,114 +1,147 @@
-// Validates the generated site data (data/advisories.js, data/world.js) and its inputs.
-// Runs before every deploy, so a bad fetch or a forgotten rebuild never reaches the live site.
+// Validates the published site data (site/data/), the configuration it's built from, and the
+// translation files. Runs before every deploy, so a bad fetch, a config mistake or a forgotten
+// rebuild never reaches the live site.
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import vm from 'node:vm';
-import { buildSources, mapNamesFrom, SPLIT_SHAPES } from '../../scripts/lib/build.mjs';
-import { PATHS, readRawSources } from '../../scripts/build-data.mjs';
+import { buildSite } from '../../scripts/lib/build.mjs';
+import { FileStore } from '../../scripts/lib/store.mjs';
+import { readBuildInput } from '../../scripts/build.mjs';
+import { SPLIT_SHAPE_NAMES } from '../../site/js/map/splits.js';
 
-const read = (p) => readFileSync(p, 'utf8');
-const repoFile = (rel) => new URL(`../../${rel}`, import.meta.url);
-
-// Load a generated browser script and return what it assigns to window. The JSON round
-// trip turns the sandbox's objects into this realm's, so deepStrictEqual compares values.
-function loadWindowScript(path) {
-  const sandbox = { window: {} };
-  vm.runInNewContext(read(path), sandbox);
-  return JSON.parse(JSON.stringify(sandbox.window));
-}
-
-const { ADVISORY_DATA } = loadWindowScript(PATHS.advisoriesJs);
-const { WORLD_TOPO } = loadWindowScript(PATHS.worldJs);
-const topo = JSON.parse(read(PATHS.world));
-const mapNames = mapNamesFrom(topo);
+const store = new FileStore();
+const manifest = store.published('manifest.json');
+const places = store.places();
+const placeIds = new Set(places.map(p => p.id));
 const tomorrow = new Date(Date.now() + 864e5).toISOString().slice(0, 10);
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
-describe('generated data is up to date', () => {
-  test('data/advisories.js matches a fresh build of data/sources and data/history.json', () => {
-    const history = JSON.parse(read(PATHS.history));
-    const { sources, problems } = buildSources(readRawSources(), history, mapNames);
+describe('published data is up to date', () => {
+  test('every file in site/data matches a fresh build of config/ and data/', () => {
+    const input = readBuildInput(store);
+    const { files, problems } = buildSite(input);
     assert.deepEqual(problems, []);
-    assert.deepEqual(JSON.parse(JSON.stringify(sources)), ADVISORY_DATA.sources,
-      'Out of date: run `node scripts/build-data.mjs` and commit the result.');
-  });
-
-  test('data/world.js matches data/countries-50m.json', () => {
-    assert.deepEqual(WORLD_TOPO, topo);
+    for (const [path, expected] of Object.entries(files)) {
+      assert.deepEqual(store.published(path), expected, `${path} is out of date: run \`npm run build\` and commit the result.`);
+    }
   });
 });
 
-for (const key of ['us', 'ca']) {
-  describe(`source "${key}"`, () => {
-    const src = ADVISORY_DATA.sources[key];
-
-    test('is present with its metadata', () => {
-      assert.ok(src, `missing source ${key}`);
-      for (const field of ['label', 'agency', 'link', 'home', 'asOf', 'levels', 'coveredBy']) assert.ok(src[field], `missing ${field}`);
-      assert.match(src.asOf, ISO_DATE);
-      assert.deepEqual(Object.keys(src.levels).sort(), ['1', '2', '3', '4']);
-    });
-
-    test('has a plausible number of advisories at every level', () => {
-      assert.ok(src.advisories.length >= 150, `only ${src.advisories.length} advisories`);
-      for (const level of [1, 2, 3, 4]) {
-        assert.ok(src.advisories.some(a => a.level === level), `no level ${level} advisories`);
-      }
-    });
-
-    test('every advisory is well formed', () => {
-      const names = new Set();
-      for (const a of src.advisories) {
-        const where = `${key}/${a.name}`;
-        assert.equal(typeof a.name, 'string', where);
-        assert.ok(!names.has(a.name), `duplicate advisory ${where}`);
-        names.add(a.name);
-        assert.ok([1, 2, 3, 4].includes(a.level), `bad level in ${where}`);
-        assert.match(a.updated, ISO_DATE, `bad date in ${where}`);
-        assert.ok(a.updated <= tomorrow, `future date ${a.updated} in ${where}`);
-        if (a.url) assert.match(a.url, /^https:\/\//, `bad url in ${where}`);
-        assert.ok(a.shapes || a.point || a.note, `no map placement for ${where}`);
-        if (a.levelChange) assert.ok(a.levelChange.from !== a.levelChange.to, `empty level change in ${where}`);
-      }
-    });
-
-    test('every shape exists on the map', () => {
-      const missing = src.advisories.flatMap(a => (a.shapes || []).filter(s => !mapNames.has(s)).map(s => `${a.name} -> ${s}`));
-      assert.deepEqual(missing, []);
-    });
-
-    test('every covered-by rule points at a shape and an advisory that exist', () => {
-      const names = new Set(src.advisories.map(a => a.name));
-      for (const [shape, adv] of Object.entries(src.coveredBy)) {
-        assert.ok(mapNames.has(shape), `coveredBy shape ${shape}`);
-        assert.ok(names.has(adv), `coveredBy advisory ${adv}`);
-      }
-    });
+describe('place registry', () => {
+  test('has unique ids, names, and a shape or point for every place', () => {
+    assert.ok(places.length > 240, `${places.length} places`);
+    assert.equal(placeIds.size, places.length, 'duplicate ids');
+    for (const p of places) {
+      assert.match(p.id, /^[a-z0-9-]+$/, p.id);
+      assert.ok(p.name, p.id);
+      assert.ok(p.shape || p.point, p.id);
+      if (p.iso2) assert.match(p.iso2, /^[A-Z]{2}$/, p.id);
+    }
   });
+  test('includes every shape the map splits out', () => {
+    const shapes = new Set(places.map(p => p.shape));
+    assert.deepEqual(SPLIT_SHAPE_NAMES.filter(s => !shapes.has(s)), []);
+  });
+});
+
+describe('manifest', () => {
+  test('lists available locales, including the default', () => {
+    assert.ok(manifest.locales.includes(manifest.defaultLocale));
+    assert.deepEqual(manifest.locales, store.locales());
+  });
+  test('points at files that exist', () => {
+    for (const d of manifest.datasets) for (const p of d.providers) assert.ok(store.published(p.file), p.file);
+    assert.ok(store.published(manifest.places));
+    assert.ok(store.published(manifest.geo));
+  });
+});
+
+for (const dataset of manifest.datasets) {
+  for (const entry of dataset.providers) {
+    describe(`${dataset.id} / ${entry.id}`, () => {
+      const data = store.published(entry.file);
+
+      test('has a plausible number of records at every level', () => {
+        assert.ok(data.records.length >= 150, `only ${data.records.length} records`);
+        for (const level of dataset.scale.values) assert.ok(data.records.some(r => r.level === level), `no level ${level}`);
+      });
+
+      test('every record is well formed', () => {
+        const titles = new Set();
+        for (const r of data.records) {
+          const where = `${entry.id}/${r.title}`;
+          assert.ok(!titles.has(r.title), `duplicate ${where}`);
+          titles.add(r.title);
+          assert.ok(dataset.scale.values.includes(r.level), `bad level in ${where}`);
+          assert.match(r.updated, ISO_DATE, `bad date in ${where}`);
+          assert.ok(r.updated <= tomorrow, `future date in ${where}`);
+          if (r.url) assert.match(r.url, /^https:\/\//, `bad url in ${where}`);
+          assert.ok(r.places.length || r.noteKey, `no place for ${where}`);
+          for (const id of [...r.places, ...(r.covers ?? [])]) assert.ok(placeIds.has(id), `unknown place ${id} in ${where}`);
+          if (r.levelChange) assert.notEqual(r.levelChange.from, r.levelChange.to, where);
+        }
+      });
+
+      test('home and territories are known places', () => {
+        for (const id of [data.home, ...data.territories]) assert.ok(placeIds.has(id), id);
+      });
+    });
+  }
 }
 
 test('level history is well formed', () => {
-  const history = JSON.parse(read(PATHS.history));
-  for (const [key, book] of Object.entries(history)) {
-    for (const [name, log] of Object.entries(book)) {
-      assert.ok(Array.isArray(log) && log.length > 0, `${key}/${name}`);
-      for (let i = 0; i < log.length; i++) {
-        assert.match(log[i].date, ISO_DATE, `${key}/${name}`);
-        assert.ok([1, 2, 3, 4].includes(log[i].level), `${key}/${name}`);
-        if (i > 0) {
-          assert.ok(log[i].date > log[i - 1].date, `${key}/${name}: dates must increase`);
-          assert.notEqual(log[i].level, log[i - 1].level, `${key}/${name}: consecutive entries must differ`);
-        }
+  for (const dataset of manifest.datasets) {
+    for (const [provider, book] of Object.entries(store.history(dataset.id))) {
+      for (const [title, log] of Object.entries(book)) {
+        const where = `${dataset.id}/${provider}/${title}`;
+        assert.ok(Array.isArray(log) && log.length > 0, where);
+        log.forEach((e, i) => {
+          assert.match(e.date, ISO_DATE, where);
+          assert.ok(dataset.scale.values.includes(e.level), where);
+          if (i > 0) {
+            assert.ok(e.date > log[i - 1].date, `${where}: dates must increase`);
+            assert.notEqual(e.level, log[i - 1].level, `${where}: consecutive entries must differ`);
+          }
+        });
       }
     }
   }
 });
 
-test('the shapes js/app.js splits out match SPLIT_SHAPES in the build', () => {
-  const app = read(repoFile('js/app.js'));
-  const block = app.slice(app.indexOf('const SPLITS = {'), app.indexOf('};', app.indexOf('const SPLITS = {')));
-  const split = [...block.matchAll(/name: '([^']+)'/g)].map(m => m[1]).sort();
-  assert.deepEqual(split, [...SPLIT_SHAPES].sort());
+describe('translations', () => {
+  const keys = (obj, prefix = '') => Object.entries(obj).flatMap(([k, v]) =>
+    v && typeof v === 'object' && !Array.isArray(v) && !('one' in v || 'other' in v) ? keys(v, `${prefix}${k}.`) : [`${prefix}${k}`]);
+  const en = store.locale('en');
+
+  test('every locale has exactly the keys of English (places may differ)', () => {
+    const base = keys(en).filter(k => !k.startsWith('places.')).sort();
+    for (const code of store.locales()) {
+      const other = keys(store.locale(code)).filter(k => !k.startsWith('places.')).sort();
+      assert.deepEqual(other, base, `${code}.json keys differ from en.json`);
+    }
+  });
+
+  test('every provider has names, an agency and all levels, and every note a record uses', () => {
+    for (const code of store.locales()) {
+      const messages = store.locale(code);
+      for (const dataset of manifest.datasets) {
+        for (const entry of dataset.providers) {
+          const p = messages.datasets?.[dataset.id]?.providers?.[entry.id];
+          assert.ok(p?.name && p?.short && p?.agency, `${code}: provider ${entry.id}`);
+          for (const level of dataset.scale.values) {
+            assert.ok(p.levels?.[level]?.name && p.levels[level].short && p.levels[level].desc, `${code}: ${entry.id} level ${level}`);
+          }
+          for (const r of store.published(entry.file).records.filter(x => x.noteKey)) {
+            assert.ok(p.notes?.[r.noteKey], `${code}: ${entry.id} note ${r.noteKey}`);
+          }
+        }
+      }
+    }
+  });
+
+  test('place-name overrides refer to known places', () => {
+    for (const code of store.locales()) {
+      for (const id of Object.keys(store.locale(code).places ?? {})) assert.ok(placeIds.has(id), `${code}: places.${id}`);
+    }
+  });
 });

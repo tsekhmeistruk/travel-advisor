@@ -82,18 +82,18 @@ jobs:
       - name: Fetch U.S. advisories
         id: us
         continue-on-error: true
-        run: node scripts/fetch-us.mjs
+        run: node scripts/fetch.mjs us
 
       - name: Fetch Canadian advisories
         id: ca
         continue-on-error: true
-        run: node scripts/fetch-canada.mjs
+        run: node scripts/fetch.mjs ca
 
       # Builds with whatever is available; a failed source keeps its previous snapshot.
       - name: Build site data
         id: build
         continue-on-error: true
-        run: node scripts/build-data.mjs
+        run: node scripts/build.mjs
 
       # Table of this run's requests and results on the run's summary page.
       - name: Summarize fetch results
@@ -115,7 +115,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data logs
+          git add data logs site/data
           if git diff --cached --quiet; then echo "No changes to commit"; exit 0; fi
           git commit -m "Update advisories $(date -u +%F)"
           git push

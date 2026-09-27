@@ -1,0 +1,171 @@
+{
+ "meta": {
+  "name": "English",
+  "dir": "ltr"
+ },
+ "app": {
+  "title": "Travel Risk Map",
+  "loadError": "The map data couldn't be loaded. Please reload the page."
+ },
+ "map": {
+  "label": "World map",
+  "controls": "Map zoom",
+  "zoomIn": "Zoom in",
+  "zoomOut": "Zoom out",
+  "reset": "Reset view",
+  "legend": "Legend"
+ },
+ "panel": {
+  "label": "Details and settings",
+  "show": "Show panel",
+  "hide": "Hide panel",
+  "settings": "Settings",
+  "theme": "Theme: {mode}",
+  "themeModes": {
+   "auto": "auto",
+   "light": "light",
+   "dark": "dark"
+  },
+  "language": "Language"
+ },
+ "search": {
+  "placeholder": "Find a country",
+  "noMatches": "No matches"
+ },
+ "datasets": {
+  "travel-advisories": {
+   "title": "Travel advisories",
+   "mapLabel": "World map coloured by travel advisory level",
+   "providerSwitch": "Advisory source",
+   "providerSwitchTitle": "{agency} advisories",
+   "header": "{agency} advisories · data as of {date}",
+   "headerStale": "{agency} advisories · data as of {date} ({age})",
+   "footer": "Levels from the {agency}. Always check the full advisory before you travel.",
+   "overview": {
+    "eyebrow": "World overview · {provider}",
+    "count": {
+     "one": "{count} advisory",
+     "other": "{count} advisories"
+    },
+    "recent": "{count} updated in the last {days} days, marked with a pulse on the map.",
+    "hint": "Hover or tap a country for details."
+   },
+   "details": {
+    "eyebrow": "Travel advisory",
+    "coveredBy": "Covered by {title}",
+    "levelBadge": "Level {level} · {name}",
+    "lastUpdated": "Last updated",
+    "updatedValue": "{date} · {age}",
+    "whatChanged": "What changed",
+    "minorEdit": "Minor edit",
+    "minorEditTitle": "Wording or routine edit only; nothing about the risk changed",
+    "siteWide": "Site-wide republish",
+    "siteWideTitle": "Date shared by most of this source's advisories: a site-wide republish, not a content change",
+    "noNoteMinor": "No details published for this update.",
+    "noNote": "The source didn’t publish a note for this update.",
+    "recent": "Recently updated",
+    "recentTitle": "Updated in the last {days} days",
+    "levelChange": "Level {from} → {to} · {date}",
+    "levelChangeTitle": "Level {from} → {to} on {date}",
+    "regional": "Regional advisories",
+    "regionalTitle": "Some areas of this destination have a different, often higher, risk level",
+    "readMore": "Read the advisory on {host} ↗"
+   },
+   "none": {
+    "eyebrow": "No advisory",
+    "badge": "No level",
+    "home": "The {agency} issues advisories only for destinations abroad.",
+    "territory": "{short} territory. No travel advisory is issued.",
+    "missing": "There is no advisory for this place in the current data."
+   },
+   "tooltip": {
+    "level": "Level {level} · {short}",
+    "levelChange": "Level {from} → {to} {age}",
+    "minor": "Minor edit {age}",
+    "updated": "Updated {age}",
+    "none": "No advisory"
+   },
+   "settings": {
+    "levels": "Risk levels",
+    "recent": "Highlight recent updates",
+    "off": "Off",
+    "days": "{days} days",
+    "dim": "Fade countries without recent updates"
+   },
+   "feed": {
+    "title": "Updated in the last {days} days",
+    "empty": "No advisories updated in this period.",
+    "levelChange": "Level {from} → {to}"
+   },
+   "legend": {
+    "none": "No advisory",
+    "recent": "Updated ≤ {days} days"
+   },
+   "search": {
+    "level": "Level {level}",
+    "none": "No advisory"
+   },
+   "providers": {
+    "us": {
+     "name": "United States",
+     "short": "U.S.",
+     "agency": "U.S. State Department",
+     "levels": {
+      "1": {
+       "name": "Exercise normal precautions",
+       "short": "Normal",
+       "desc": "The lowest advisory level. Some safety and security risk exists in any international travel."
+      },
+      "2": {
+       "name": "Exercise increased caution",
+       "short": "Caution",
+       "desc": "Be aware of heightened risks to safety and security."
+      },
+      "3": {
+       "name": "Reconsider travel",
+       "short": "Reconsider",
+       "desc": "Avoid travel due to serious risks to safety and security."
+      },
+      "4": {
+       "name": "Do not travel",
+       "short": "Do not travel",
+       "desc": "Greater likelihood of life-threatening risks. The U.S. government may have very limited ability to help."
+      }
+     },
+     "notes": {
+      "frenchWestIndies": "See also Guadeloupe, Martinique, Saint Barthélemy, Saint Martin."
+     }
+    },
+    "ca": {
+     "name": "Canada",
+     "short": "Canada",
+     "agency": "Government of Canada",
+     "levels": {
+      "1": {
+       "name": "Take normal security precautions",
+       "short": "Normal",
+       "desc": "Take similar precautions to those you would take in Canada."
+      },
+      "2": {
+       "name": "Exercise a high degree of caution",
+       "short": "High caution",
+       "desc": "There are identifiable safety and security concerns, or the situation could change quickly. Be very cautious at all times."
+      },
+      "3": {
+       "name": "Avoid non-essential travel",
+       "short": "Non-essential",
+       "desc": "Specific safety and security concerns could put you at risk. Think about whether you really need to travel."
+      },
+      "4": {
+       "name": "Avoid all travel",
+       "short": "Avoid all",
+       "desc": "You should not travel here. Your personal safety and security are at great risk."
+      }
+     },
+     "notes": {}
+    }
+   }
+  }
+ },
+ "places": {}
+}

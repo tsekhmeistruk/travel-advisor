@@ -1,0 +1,38 @@
+{
+ "id": "us",
+ "dataset": "travel-advisories",
+ "flag": "us",
+ "links": {
+  "list": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html"
+ },
+ "home": "us",
+ "territories": [
+  "pr",
+  "gu",
+  "vi",
+  "as",
+  "mp"
+ ],
+ "coveredBy": {
+  "somaliland": "Somalia",
+  "northern-cyprus": "Cyprus",
+  "fo": "Kingdom of Denmark",
+  "ax": "Finland",
+  "azores": "Portugal",
+  "canary-islands": "Spain",
+  "re": "France",
+  "yt": "France"
+ },
+ "listOnly": {
+  "French West Indies": "frenchWestIndies"
+ },
+ "aliases": {
+  "Burma": "mm",
+  "Federated States of Micronesia": "fm",
+  "French Saint Martin": "mf",
+  "Kingdom of Denmark": "dk",
+  "The Bahamas": "bs",
+  "The Gambia": "gm",
+  "The Kyrgyz Republic": "kg"
+ }
+}

@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { logFile, currentRun } from './lib/fetch-log.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SOURCE_LABELS = { us: '🇺🇸 U.S.', ca: '🇨🇦 Canada' };
+const SOURCE_LABELS = providerLabels();
 const CALL_LABELS = { api: 'API', rss: 'RSS', table: 'Table', pages: 'Pages' };
 
 const inActions = !!process.env.GITHUB_RUN_ID;
@@ -47,6 +47,25 @@ if (inActions) {
 console.log(lines.join('\n'));
 
 // ---- helpers
+
+// "🇺🇸 United States" for each provider: flag emoji from its config, name from site/i18n/en.json.
+function providerLabels() {
+  const labels = {};
+  try {
+    const en = JSON.parse(readFileSync(join(root, 'site', 'i18n', 'en.json'), 'utf8'));
+    for (const dataset of Object.values(en.datasets ?? {})) {
+      for (const [id, p] of Object.entries(dataset.providers ?? {})) {
+        const cfg = join(root, 'config', 'providers', `${id}.json`);
+        const flag = existsSync(cfg) ? JSON.parse(readFileSync(cfg, 'utf8')).flag : null;
+        labels[id] = `${flag ? flagEmoji(flag) + ' ' : ''}${p.short ?? p.name ?? id}`;
+      }
+    }
+  } catch { /* fall back to raw ids */ }
+  return labels;
+}
+function flagEmoji(code) {
+  return String.fromCodePoint(...code.toUpperCase().split('').map(c => 0x1f1e6 + c.charCodeAt(0) - 65));
+}
 
 function readEntries(sinceMs) {
   const out = [];

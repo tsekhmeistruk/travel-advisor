@@ -1,0 +1,43 @@
+{
+ "defaultLocale": "en",
+ "locales": [
+  "en"
+ ],
+ "places": "places.json",
+ "geo": "geo/countries-50m.json",
+ "datasets": [
+  {
+   "id": "travel-advisories",
+   "scale": {
+    "type": "levels",
+    "values": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "recentWindows": [
+    0,
+    7,
+    30,
+    90
+   ],
+   "defaultRecentWindow": 30,
+   "providers": [
+    {
+     "id": "us",
+     "flag": "us",
+     "asOf": "2026-09-26",
+     "file": "travel-advisories/us.json"
+    },
+    {
+     "id": "ca",
+     "flag": "ca",
+     "asOf": "2026-09-26",
+     "file": "travel-advisories/ca.json"
+    }
+   ]
+  }
+ ]
+}

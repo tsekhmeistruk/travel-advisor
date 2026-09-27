@@ -2,7 +2,7 @@
 
 ## `fetch/`: data fetch runs
 
-Every run of `scripts/fetch-us.mjs` or `scripts/fetch-canada.mjs` appends one line to a monthly file:
+Every run of `scripts/fetch.mjs <provider>` appends one line to a monthly file:
 
 ```
 logs/fetch/2026/2026-09.jsonl
@@ -16,7 +16,7 @@ The daily GitHub Actions run commits these files with the data. Runs on your own
 
 ```sh
 node scripts/log-summary.mjs            # table of the last 7 days
-node scripts/log-summary.mjs --days 30  # last 30 days
+npm run logs                            # last 30 days
 ```
 
 Each GitHub Actions run also shows its own table on the run's summary page.
@@ -45,7 +45,7 @@ Each GitHub Actions run also shows its own table on the run's summary page.
 | Field | Meaning |
 |---|---|
 | `time` | When the run started (UTC) |
-| `source` | `us` or `ca` |
+| `source` | The provider id, e.g. `us` or `ca` |
 | `run` | GitHub Actions run id and attempt, or `local` |
 | `trigger` | `schedule`, `workflow_dispatch`, or `local` |
 | `result` | `ok` or `error`. On `error`, `error` holds the message and the previous data was kept. |

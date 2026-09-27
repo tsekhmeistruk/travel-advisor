@@ -1,0 +1,2616 @@
+{
+ "dataset": "travel-advisories",
+ "provider": "ca",
+ "asOf": "2026-09-26",
+ "source": "https://travel.gc.ca/travelling/advisories",
+ "links": {
+  "list": "https://travel.gc.ca/travelling/advisories"
+ },
+ "home": "ca",
+ "territories": [],
+ "records": [
+  {
+   "title": "Afghanistan",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/afghanistan",
+   "change": "Health – editorial change",
+   "places": [
+    "af"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Albania",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/albania",
+   "change": "Health – editorial change",
+   "places": [
+    "al"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Algeria",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/algeria",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "dz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "American Samoa",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/american-samoa",
+   "change": "Health – editorial change",
+   "places": [
+    "as"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Andorra",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/andorra",
+   "change": "Health – editorial change",
+   "places": [
+    "ad"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Angola",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/angola",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ao"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Anguilla",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/anguilla",
+   "change": "Health – editorial change",
+   "places": [
+    "ai"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Antarctica",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/antarctica",
+   "change": "Health – editorial change",
+   "places": [
+    "aq"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Antigua and Barbuda",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/antigua-and-barbuda",
+   "change": "Health – editorial change",
+   "places": [
+    "ag"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Argentina",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/argentina",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ar"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Armenia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/armenia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "am"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Aruba",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/aruba",
+   "change": "Health – editorial change",
+   "places": [
+    "aw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Australia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/australia",
+   "change": "Health – editorial change",
+   "places": [
+    "au"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Austria",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/austria",
+   "change": "Health – editorial change",
+   "places": [
+    "at"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Azerbaijan",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/azerbaijan",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "az"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Azores",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/azores",
+   "change": "Health – editorial change",
+   "places": [
+    "azores"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bahamas",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bahamas",
+   "change": "Health – editorial change",
+   "places": [
+    "bs"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bahrain",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bahrain",
+   "change": "Health – editorial change",
+   "places": [
+    "bh"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bangladesh",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bangladesh",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "bd"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Barbados",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/barbados",
+   "change": "Editorial change",
+   "places": [
+    "bb"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Belarus",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/belarus",
+   "change": "Health – editorial change",
+   "places": [
+    "by"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Belgium",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/belgium",
+   "change": "Health – editorial change",
+   "places": [
+    "be"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Belize",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/belize",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "bz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Benin",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/benin",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "bj"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bermuda",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bermuda",
+   "change": "Health – editorial change",
+   "places": [
+    "bm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bhutan",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bhutan",
+   "change": "Health – editorial change",
+   "places": [
+    "bt"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bolivia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bolivia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "bo"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bonaire",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bonaire",
+   "change": "Health – editorial change",
+   "places": [
+    "bonaire"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bosnia and Herzegovina",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bosnia-and-herzegovina",
+   "change": "Health – editorial change",
+   "places": [
+    "ba"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Botswana",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/botswana",
+   "change": "Health – editorial change",
+   "places": [
+    "bw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Brazil",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/brazil",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "br"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "British Virgin Islands",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/british-virgin-islands",
+   "change": "Health – editorial change",
+   "places": [
+    "vg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Brunei",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/brunei",
+   "change": "Health – editorial change",
+   "places": [
+    "bn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Bulgaria",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bulgaria",
+   "change": "Health – editorial change",
+   "places": [
+    "bg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Burkina Faso",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/burkina-faso",
+   "change": "Health – editorial change",
+   "places": [
+    "bf"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Burundi",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/burundi",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "bi"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Cabo Verde",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cabo-verde",
+   "change": "Health – editorial change",
+   "places": [
+    "cv"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Cambodia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cambodia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "kh"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Cameroon",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cameroon",
+   "change": "Editorial change",
+   "regional": true,
+   "places": [
+    "cm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Canary Islands",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/canary-islands",
+   "change": "Health – editorial change",
+   "places": [
+    "canary-islands"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Cayman Islands",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cayman-islands",
+   "change": "Health – editorial change",
+   "places": [
+    "ky"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Central African Republic",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/central-african-republic",
+   "change": "Health – editorial change",
+   "places": [
+    "cf"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Chad",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/chad",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "td"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Chile",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/chile",
+   "change": "Health – editorial change",
+   "places": [
+    "cl"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "China",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/china",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "cn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Colombia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/colombia",
+   "change": "Safety and security section – updated information on the security situation in Santa Marta and disruptions on the Troncal del Caribe (Route 90)",
+   "regional": true,
+   "places": [
+    "co"
+   ]
+  },
+  {
+   "title": "Comoros",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/comoros",
+   "change": "Health – editorial change",
+   "places": [
+    "km"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Cook Islands",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cook-islands",
+   "change": "Health – editorial change",
+   "places": [
+    "ck"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Costa Rica",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/costa-rica",
+   "change": "Health – editorial change",
+   "places": [
+    "cr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Côte d'Ivoire (Ivory Coast)",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cote-d-ivoire-ivory-coast",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ci"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Croatia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/croatia",
+   "change": "Health – editorial change",
+   "places": [
+    "hr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Cuba",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cuba",
+   "change": "Health – editorial change",
+   "places": [
+    "cu"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Curaçao",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/curacao",
+   "change": "Health – editorial change",
+   "places": [
+    "cw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Cyprus",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cyprus",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "cy"
+   ],
+   "covers": [
+    "northern-cyprus"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Czechia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/czechia",
+   "change": "Health – editorial change",
+   "places": [
+    "cz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Democratic Republic of Congo (Kinshasa)",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/congo-kinshasa",
+   "change": "Health – editorial change",
+   "places": [
+    "cd"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Denmark",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/denmark",
+   "change": "Health – editorial change",
+   "places": [
+    "dk"
+   ],
+   "covers": [
+    "fo"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Djibouti",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/djibouti",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "dj"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Dominica",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/dominica",
+   "change": "Health – editorial change",
+   "places": [
+    "dm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Dominican Republic",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/dominican-republic",
+   "change": "Health – editorial change",
+   "places": [
+    "do"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Ecuador",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ecuador",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ec"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Egypt",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/egypt",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "eg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "El Salvador",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/el-salvador",
+   "change": "Health – editorial change",
+   "places": [
+    "sv"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Equatorial Guinea",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/equatorial-guinea",
+   "change": "Health – editorial change",
+   "places": [
+    "gq"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Eritrea",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/eritrea",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "er"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Estonia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/estonia",
+   "change": "Health – editorial change",
+   "places": [
+    "ee"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Eswatini",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/eswatini",
+   "change": "Health – editorial change",
+   "places": [
+    "sz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Ethiopia",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ethiopia",
+   "change": "Risk levels section – avoid all travel to Afar; safety and security section – added information on the security situation in northern Ethiopia",
+   "regional": true,
+   "places": [
+    "et"
+   ]
+  },
+  {
+   "title": "Falkland Islands",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/falkland-islands",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "places": [
+    "fk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Fiji",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/fiji",
+   "change": "Health – editorial change",
+   "places": [
+    "fj"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Finland",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/finland",
+   "change": "Health – editorial change",
+   "places": [
+    "fi"
+   ],
+   "covers": [
+    "ax"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "France",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/france",
+   "change": "Health – editorial change",
+   "places": [
+    "fr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "French Guiana",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/french-guiana",
+   "change": "Health – editorial change",
+   "places": [
+    "gf"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "French Polynesia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/french-polynesia",
+   "change": "Health – editorial change",
+   "places": [
+    "pf"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Gabon",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/gabon",
+   "change": "Health – editorial change",
+   "places": [
+    "ga"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Gambia, The",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/gambia-the",
+   "change": "Health – editorial change",
+   "places": [
+    "gm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Georgia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/georgia",
+   "change": "Editorial change",
+   "regional": true,
+   "places": [
+    "ge"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Germany",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/germany",
+   "change": "Health – editorial change",
+   "places": [
+    "de"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Ghana",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ghana",
+   "change": "Health – editorial change",
+   "places": [
+    "gh"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Gibraltar",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/gibraltar",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "places": [
+    "gi"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Greece",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/greece",
+   "change": "Health – editorial change",
+   "places": [
+    "gr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Greenland",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/greenland",
+   "change": "Health – editorial change",
+   "places": [
+    "gl"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Grenada",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/grenada",
+   "change": "Health – editorial change",
+   "places": [
+    "gd"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Guadeloupe",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guadeloupe",
+   "change": "Health – editorial change",
+   "places": [
+    "gp"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Guam",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guam",
+   "change": "Health – editorial change",
+   "places": [
+    "gu"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Guatemala",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guatemala",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "gt"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Guinea",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guinea",
+   "change": "Health – editorial change",
+   "places": [
+    "gn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Guinea-Bissau",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guinea-bissau",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "gw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Guyana",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guyana",
+   "change": "Health – editorial change",
+   "places": [
+    "gy"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Haiti",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/haiti",
+   "change": "Health – editorial change",
+   "places": [
+    "ht"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Honduras",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/honduras",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "hn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Hong Kong",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/hong-kong",
+   "change": "Health – editorial change",
+   "places": [
+    "hk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Hungary",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/hungary",
+   "change": "Health – editorial change",
+   "places": [
+    "hu"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Iceland",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/iceland",
+   "change": "Health – editorial change",
+   "places": [
+    "is"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "India",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/india",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "in"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Indonesia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/indonesia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "id"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Iran",
+   "level": 4,
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/iran",
+   "change": "Editorial change",
+   "places": [
+    "ir"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Iraq",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/iraq",
+   "change": "Health – editorial change",
+   "places": [
+    "iq"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Ireland",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ireland",
+   "change": "Health – editorial change",
+   "places": [
+    "ie"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Israel and Palestine",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/israel-and-palestine",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "il",
+    "gaza",
+    "west-bank"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Italy",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/italy",
+   "change": "Health – editorial change",
+   "places": [
+    "it"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Jamaica",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/jamaica",
+   "change": "Health – editorial change",
+   "places": [
+    "jm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Japan",
+   "level": 1,
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/japan",
+   "change": "Natural disasters and climate section – updated information on Tropical Storm Surigae",
+   "places": [
+    "jp"
+   ]
+  },
+  {
+   "title": "Jordan",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/jordan",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "jo"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Kazakhstan",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kazakhstan",
+   "change": "Health – editorial change",
+   "places": [
+    "kz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Kenya",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kenya",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ke"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Kiribati",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kiribati",
+   "change": "Health – editorial change",
+   "places": [
+    "ki"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Kosovo",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kosovo",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "xk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Kuwait",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kuwait",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "kw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Kyrgyzstan",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kyrgyzstan",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "kg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Laos",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/laos",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "la"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Latvia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/latvia",
+   "change": "Health – editorial change",
+   "places": [
+    "lv"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Lebanon",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/lebanon",
+   "change": "Health – editorial change",
+   "places": [
+    "lb"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Lesotho",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/lesotho",
+   "change": "Health – editorial change",
+   "places": [
+    "ls"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Liberia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/liberia",
+   "change": "Health – editorial change",
+   "places": [
+    "lr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Libya",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/libya",
+   "change": "Health – editorial change",
+   "places": [
+    "ly"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Liechtenstein",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/liechtenstein",
+   "change": "Health – editorial change",
+   "places": [
+    "li"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Lithuania",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/lithuania",
+   "change": "Health – editorial change",
+   "places": [
+    "lt"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Luxembourg",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/luxembourg",
+   "change": "Health – editorial change",
+   "places": [
+    "lu"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Macao",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/macao",
+   "change": "Health – editorial change",
+   "places": [
+    "mo"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Madagascar",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/madagascar",
+   "change": "Health – editorial change",
+   "places": [
+    "mg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Malawi",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/malawi",
+   "change": "Health – editorial change",
+   "places": [
+    "mw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Malaysia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/malaysia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "my"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Maldives",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/maldives",
+   "change": "Health – editorial change",
+   "places": [
+    "mv"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Mali",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mali",
+   "change": "Health – editorial change",
+   "places": [
+    "ml"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Malta",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/malta",
+   "change": "Health – editorial change",
+   "places": [
+    "mt"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Marshall Islands",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/marshall-islands",
+   "change": "Health – editorial change",
+   "places": [
+    "mh"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Martinique",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/martinique",
+   "change": "Health – editorial change",
+   "places": [
+    "mq"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Mauritania",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mauritania",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "mr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Mauritius",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mauritius",
+   "change": "Health – editorial change",
+   "places": [
+    "mu"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Mayotte",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mayotte",
+   "change": "Health – editorial change",
+   "places": [
+    "yt"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Mexico",
+   "level": 2,
+   "updated": "2026-09-26",
+   "url": "https://travel.gc.ca/destinations/mexico",
+   "change": "Risk levels section – avoid non-essential travel to Baja California Sur, from Punta Eugenia to Santa Fe; Natural disasters and climate section – updated information on Hurricane Polo",
+   "regional": true,
+   "places": [
+    "mx"
+   ]
+  },
+  {
+   "title": "Micronesia (FSM)",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/micronesia-fsm",
+   "change": "Health – editorial change",
+   "places": [
+    "fm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Moldova",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/moldova",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "md"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Monaco",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/monaco",
+   "change": "Health – editorial change",
+   "places": [
+    "mc"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Mongolia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mongolia",
+   "change": "Health – editorial change",
+   "places": [
+    "mn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Montenegro",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/montenegro",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "places": [
+    "me"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Montserrat",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/montserrat",
+   "change": "Health – editorial change",
+   "places": [
+    "ms"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Morocco",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/morocco",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ma"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Mozambique",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mozambique",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "mz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Myanmar",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/myanmar",
+   "change": "Health – editorial change",
+   "places": [
+    "mm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Namibia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/namibia",
+   "change": "Health – editorial change",
+   "places": [
+    "na"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Nauru",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nauru",
+   "change": "Health – editorial change",
+   "places": [
+    "nr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Nepal",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nepal",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "np"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Netherlands",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/netherlands",
+   "change": "Health – editorial change",
+   "places": [
+    "nl"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "New Caledonia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/new-caledonia",
+   "change": "Health – editorial change",
+   "places": [
+    "nc"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "New Zealand",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/new-zealand",
+   "change": "Health – editorial change",
+   "places": [
+    "nz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Nicaragua",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nicaragua",
+   "change": "Health – editorial change",
+   "places": [
+    "ni"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Niger",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/niger",
+   "change": "Health – editorial change",
+   "places": [
+    "ne"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Nigeria",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nigeria",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ng"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Niue",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/niue",
+   "change": "Health – editorial change",
+   "places": [
+    "nu"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "North Korea",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/north-korea",
+   "change": "Health – editorial change",
+   "places": [
+    "kp"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "North Macedonia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/north-macedonia",
+   "change": "The Health section was updated - travel health information (Public Health Agency of Canada)",
+   "places": [
+    "mk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Northern Marianas",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/northern-marianas",
+   "change": "Health – editorial change",
+   "places": [
+    "mp"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Norway",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/norway",
+   "change": "Health – editorial change",
+   "places": [
+    "no"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Oman",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/oman",
+   "change": "Health – editorial change",
+   "places": [
+    "om"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Pakistan",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/pakistan",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "pk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Palau",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/palau",
+   "change": "Health – editorial change",
+   "places": [
+    "pw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Panama",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/panama",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "pa"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Papua New Guinea",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/papua-new-guinea",
+   "change": "Health – editorial change",
+   "places": [
+    "pg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Paraguay",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/paraguay",
+   "change": "Health – editorial change",
+   "places": [
+    "py"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Peru",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/peru",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "pe"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Philippines",
+   "level": 2,
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/philippines",
+   "change": "Editorial change",
+   "regional": true,
+   "places": [
+    "ph"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Poland",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/poland",
+   "change": "Health – editorial change",
+   "places": [
+    "pl"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Portugal",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/portugal",
+   "change": "Health – editorial change",
+   "places": [
+    "pt"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Puerto Rico",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/puerto-rico",
+   "change": "Health – editorial change",
+   "places": [
+    "pr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Qatar",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/qatar",
+   "change": "Health – editorial change",
+   "places": [
+    "qa"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Republic of Congo (Brazzaville)",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/congo-brazzaville",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "cg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Réunion",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/reunion",
+   "change": "Health – editorial change",
+   "places": [
+    "re"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Romania",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/romania",
+   "change": "Health – editorial change",
+   "places": [
+    "ro"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Russia",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/russia",
+   "change": "Health – editorial change",
+   "places": [
+    "ru"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Rwanda",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/rwanda",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "rw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Saint Kitts and Nevis",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-kitts-and-nevis",
+   "change": "Health – editorial change",
+   "places": [
+    "kn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Saint Lucia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-lucia",
+   "change": "Health – editorial change",
+   "places": [
+    "lc"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Saint Martin",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-martin",
+   "change": "Health – editorial change",
+   "places": [
+    "mf"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Saint Vincent & the Grenadines",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-vincent-the-grenadines",
+   "change": "Health – editorial change",
+   "places": [
+    "vc"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Saint-Barthélemy",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-barthelemy",
+   "change": "Health – editorial change",
+   "places": [
+    "bl"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Saint-Pierre-et-Miquelon",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-pierre-et-miquelon",
+   "change": "Health – editorial change",
+   "places": [
+    "pm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Samoa",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/samoa",
+   "change": "Health – editorial change",
+   "places": [
+    "ws"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "San Marino",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/san-marino",
+   "change": "Health – editorial change",
+   "places": [
+    "sm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Sao Tome and Principe",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sao-tome-and-principe",
+   "change": "Health – editorial change",
+   "places": [
+    "st"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Saudi Arabia",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saudi-arabia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "sa"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Senegal",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/senegal",
+   "change": "Health – editorial change",
+   "places": [
+    "sn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Serbia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/serbia",
+   "change": "Editorial change",
+   "regional": true,
+   "places": [
+    "rs"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Seychelles",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/seychelles",
+   "change": "Health – editorial change",
+   "places": [
+    "sc"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Sierra Leone",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sierra-leone",
+   "change": "Health – editorial change",
+   "places": [
+    "sl"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Singapore",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/singapore",
+   "change": "Health – editorial change",
+   "places": [
+    "sg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Sint Maarten",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sint-maarten",
+   "change": "Health – editorial change",
+   "places": [
+    "sx"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Slovakia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/slovakia",
+   "change": "Health – editorial change",
+   "places": [
+    "sk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Slovenia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/slovenia",
+   "change": "Health – editorial change",
+   "places": [
+    "si"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Solomon Islands",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/solomon-islands",
+   "change": "Health – editorial change",
+   "places": [
+    "sb"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Somalia",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/somalia",
+   "change": "Health – editorial change",
+   "places": [
+    "so"
+   ],
+   "covers": [
+    "somaliland"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "South Africa",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/south-africa",
+   "change": "Health – editorial change",
+   "places": [
+    "za"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "South Korea",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/south-korea",
+   "change": "Health – editorial change",
+   "places": [
+    "kr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "South Sudan",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/south-sudan",
+   "change": "Health – editorial change",
+   "places": [
+    "ss"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Spain",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/spain",
+   "change": "Health – editorial change",
+   "places": [
+    "es"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Sri Lanka",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sri-lanka",
+   "change": "Health – editorial change",
+   "places": [
+    "lk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Sudan",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sudan",
+   "change": "Health – editorial change",
+   "places": [
+    "sd"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Suriname",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/suriname",
+   "change": "Health – editorial change",
+   "places": [
+    "sr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Sweden",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sweden",
+   "change": "Health – editorial change",
+   "places": [
+    "se"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Switzerland",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/switzerland",
+   "change": "Health – editorial change",
+   "places": [
+    "ch"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Syria",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/syria",
+   "change": "Health – editorial change",
+   "places": [
+    "sy"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Taiwan",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/taiwan",
+   "change": "Health – editorial change",
+   "places": [
+    "tw"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Tajikistan",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tajikistan",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "tj"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Tanzania",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tanzania",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "tz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Thailand",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/thailand",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "th"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Timor-Leste (East Timor)",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/timor-leste-east-timor",
+   "change": "Health – editorial change",
+   "places": [
+    "tl"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Togo",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/togo",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "tg"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Tokelau",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tokelau",
+   "change": "Health – editorial change",
+   "places": [
+    "tk"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Tonga",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tonga",
+   "change": "Health – editorial change",
+   "places": [
+    "to"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Trinidad and Tobago",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/trinidad-and-tobago",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "tt"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Tunisia",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tunisia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "tn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Türkiye",
+   "level": 2,
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/turkiye",
+   "change": "Editorial change",
+   "regional": true,
+   "places": [
+    "tr"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Turkmenistan",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/turkmenistan",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "tm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Turks and Caicos Islands",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/turks-and-caicos-islands",
+   "change": "Health – editorial change",
+   "places": [
+    "tc"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Tuvalu",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tuvalu",
+   "change": "Health – editorial change",
+   "places": [
+    "tv"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Uganda",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/uganda",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "ug"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Ukraine",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ukraine",
+   "change": "Health – editorial change",
+   "places": [
+    "ua"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "United Arab Emirates",
+   "level": 3,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/united-arab-emirates",
+   "change": "Health – editorial change",
+   "places": [
+    "ae"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "United Kingdom",
+   "level": 2,
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/united-kingdom",
+   "change": "Editorial change",
+   "places": [
+    "gb"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "United States",
+   "level": 1,
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/united-states",
+   "change": "Natural disasters and climate section – updated information on Hurricane Nolo",
+   "places": [
+    "us"
+   ]
+  },
+  {
+   "title": "Uruguay",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/uruguay",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "uy"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Uzbekistan",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/uzbekistan",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "uz"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Vanuatu",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/vanuatu",
+   "change": "Health – editorial change",
+   "places": [
+    "vu"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Venezuela",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/venezuela",
+   "change": "Health – editorial change",
+   "places": [
+    "ve"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Vietnam",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/vietnam",
+   "change": "Health – editorial change",
+   "places": [
+    "vn"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Virgin Islands (U.S.)",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/virgin-islands-u-s",
+   "change": "Health – editorial change",
+   "places": [
+    "vi"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Yemen",
+   "level": 4,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/yemen",
+   "change": "Health – editorial change",
+   "places": [
+    "ye"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Zambia",
+   "level": 1,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/zambia",
+   "change": "Health – editorial change",
+   "regional": true,
+   "places": [
+    "zm"
+   ],
+   "minorUpdate": true
+  },
+  {
+   "title": "Zimbabwe",
+   "level": 2,
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/zimbabwe",
+   "change": "Health – editorial change",
+   "places": [
+    "zw"
+   ],
+   "minorUpdate": true
+  }
+ ]
+}

@@ -1,9 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node scripts/build-data.mjs)",
       "Bash(node scripts/log-summary.mjs:*)",
-      "Bash(node scripts/fetch-canada.mjs)",
       "Bash(node --check:*)",
       "Bash(git status:*)",
       "Bash(git diff:*)",
@@ -14,10 +12,14 @@
       "Bash(npm run test:e2e)",
       "Bash(npm run test:all)",
       "Bash(npm run build)",
-      "Bash(npm ci)"
+      "Bash(npm ci)",
+      "Bash(node scripts/build.mjs)",
+      "Bash(node scripts/fetch.mjs ca)",
+      "Bash(npm start)"
     ],
     "ask": [
-      "Bash(node scripts/fetch-us.mjs)"
+      "Bash(node scripts/fetch.mjs us)",
+      "Bash(npm run fetch us)"
     ]
   }
 }

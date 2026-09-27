@@ -7,13 +7,17 @@
     "node": ">=22"
   },
   "scripts": {
-    "build": "node scripts/build-data.mjs",
-    "test": "node --test \"tests/unit/*.test.mjs\" \"tests/data/*.test.mjs\"",
+    "start": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "fetch": "node scripts/fetch.mjs",
+    "test": "node --test \"tests/unit/**/*.test.mjs\" \"tests/data/*.test.mjs\"",
     "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
     "test:all": "npm test && npm run test:e2e",
-    "logs": "node scripts/log-summary.mjs --days 30"
+    "logs": "node scripts/log-summary.mjs --days 30",
+    "places:generate": "node scripts/tools/generate-places.mjs"
   },
   "devDependencies": {
+    "i18n-iso-countries": "^7.14.0",
     "puppeteer-core": "^23.11.1"
   }
 }

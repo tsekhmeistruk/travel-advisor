@@ -1,15 +1,17 @@
-// Browser tests: drive headless Chrome/Edge over index.html and check the behaviour that
-// caught real bugs in this project. Screenshots go to test-output/ (git-ignored).
+// Browser tests: serve site/ locally, drive headless Chrome/Edge over it, and check the
+// behaviour that caught real bugs in this project. Screenshots go to test-output/ (git-ignored).
 //
 // Needs `npm ci` (puppeteer-core) and a local Chrome or Edge; set CHROME_PATH to override.
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, mkdirSync } from 'node:fs';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
+import { serve } from '../../scripts/serve.mjs';
 
-const PAGE = pathToFileURL(fileURLToPath(new URL('../../index.html', import.meta.url))).href;
+const SETTINGS_KEY = 'travel-risk-map:settings';
+const DATASET = 'travel-advisories';
 const OUT = fileURLToPath(new URL('../../test-output/', import.meta.url));
 mkdirSync(OUT, { recursive: true });
 
@@ -22,33 +24,38 @@ const executablePath = [
 ].filter(Boolean).find(p => existsSync(p));
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
-let browser;
+let browser, server, PAGE;
 
 before(async () => {
   assert.ok(executablePath, 'No Chrome/Edge found; set CHROME_PATH.');
+  ({ server, url: PAGE } = await serve(0));
   browser = await puppeteer.launch({ executablePath, headless: true, args: ['--no-sandbox'] });
 });
-after(async () => { await browser?.close(); });
+after(async () => { await browser?.close(); server?.close(); });
 
-// Open the site with the given settings and collect console errors.
-async function open({ width = 1440, height = 860, scheme = 'dark', settings = {} } = {}) {
+// Open the site with the given saved settings (raw, as stored) and collect errors.
+async function openRaw({ width = 1440, height = 860, scheme = 'dark', stored = {} } = {}) {
   const page = await browser.newPage();
   page.errors = [];
   page.on('pageerror', e => page.errors.push(e.message));
   page.on('console', m => { if (m.type() === 'error') page.errors.push(m.text()); });
+  page.on('requestfailed', r => page.errors.push(`request failed: ${r.url()}`));
   await page.setViewport({ width, height });
   await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
   await page.goto(PAGE);
-  await page.evaluate((s) => { localStorage.clear(); localStorage.setItem('travel-risk-map:settings', JSON.stringify(s)); }, settings);
-  await page.reload({ waitUntil: 'load' });
+  await page.evaluate((key, s) => { localStorage.clear(); localStorage.setItem(key, JSON.stringify(s)); }, SETTINGS_KEY, stored);
+  await page.reload({ waitUntil: 'networkidle0' });
+  await page.waitForSelector('path.country');
   return page;
 }
+// Open with travel-advisory settings, e.g. { provider: 'ca', recentDays: 90 }.
+const open = ({ settings = {}, ...opts } = {}) => openRaw({ ...opts, stored: { [DATASET]: settings } });
 
-const anchorOf = (page, mapName) => page.evaluate((n) => {
-  const el = [...document.querySelectorAll('path.country')].find(e => e.__data__.mapName === n);
+const anchorOf = (page, placeId) => page.evaluate((id) => {
+  const el = [...document.querySelectorAll('path.country')].find(e => e.__data__.key === id);
   const r = document.getElementById('map').getBoundingClientRect();
   return { x: r.left + el.__data__.anchor[0], y: r.top + el.__data__.anchor[1] };
-}, mapName);
+}, placeId);
 const isSelected = (page) => page.evaluate(() => {
   const s = document.querySelector('.select-outline');
   return s.getAttribute('display') !== 'none' && !!s.getAttribute('d');
@@ -68,12 +75,12 @@ const measureCards = (page) => page.evaluate(() => {
   measure('overview');
   for (const el of document.querySelectorAll('path.country, .dot')) {
     el.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'touch' }));
-    measure(el.__data__.name);
+    measure(el.__data__.key);
     el.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'touch' }));
   }
   return {
     shapes: document.querySelectorAll('path.country').length,
-    colored: [...document.querySelectorAll('path.country')].filter(e => e.__data__.advisory).length,
+    colored: [...document.querySelectorAll('path.country')].filter(e => /\bl[1-4]\b/.test(e.getAttribute('class'))).length,
     pulses: document.querySelectorAll('.pulse').length,
     recent: document.querySelectorAll('#recentList button').length,
     heights: [...heights], overflow: [...new Set(overflow)], cut: [...new Set(cut)],
@@ -86,7 +93,7 @@ for (const source of ['us', 'ca']) {
     describe(`${source} at ${width}px`, () => {
       let page, stats;
       before(async () => {
-        page = await open({ width, height, settings: { source, recentDays: 90 } });
+        page = await open({ width, height, settings: { provider: source, recentDays: 90 } });
         stats = await measureCards(page);
         await page.screenshot({ path: `${OUT}${source}-${width}.png` });
       });
@@ -122,7 +129,7 @@ describe('map interaction', () => {
 
   for (const jitter of [0, 3, 5]) {
     test(`a click with ${jitter}px of movement selects the country`, async () => {
-      const { x, y } = await anchorOf(page, 'Brazil');
+      const { x, y } = await anchorOf(page, 'br');
       await page.mouse.move(x, y);
       await page.mouse.down();
       if (jitter) await page.mouse.move(x + jitter, y + jitter / 2, { steps: 2 });
@@ -154,18 +161,19 @@ describe('map interaction', () => {
 });
 
 describe('panel', () => {
-  test('the source switch changes header and level names, and persists', async () => {
-    const page = await open({ settings: { source: 'us' } });
+  test('the provider switch changes header and level names, and persists', async () => {
+    const page = await open({ settings: { provider: 'us' } });
     const header = () => page.evaluate(() => document.getElementById('asOf').textContent);
     const usHeader = await header();
-    await page.click('#sourceToggle button[data-source="ca"]');
+    await page.click('#providerSwitch button[data-provider="ca"]');
     await sleep(400);
     assert.notEqual(await header(), usHeader);
     assert.match(await header(), /Canada/);
     assert.match(await page.evaluate(() => document.getElementById('levelChips').innerText), /Avoid all/);
     await page.reload();
     await sleep(300);
-    assert.equal(await page.evaluate(() => document.querySelector('#sourceToggle [aria-checked="true"]')?.dataset.source), 'ca');
+    await page.waitForSelector('#providerSwitch [aria-checked="true"]');
+    assert.equal(await page.evaluate(() => document.querySelector('#providerSwitch [aria-checked="true"]')?.dataset.provider), 'ca');
     await page.close();
   });
 
@@ -180,7 +188,7 @@ describe('panel', () => {
   });
 
   test('the recent-update window filters the change feed', async () => {
-    const page = await open({ settings: { source: 'us', recentDays: 90 } });
+    const page = await open({ settings: { provider: 'us', recentDays: 90 } });
     const count = () => page.evaluate(() => document.querySelectorAll('#recentList button').length);
     const wide = await count();
     await page.click('#recentSeg button[data-days="7"]');
@@ -189,6 +197,42 @@ describe('panel', () => {
     await page.click('#recentSeg button[data-days="0"]');
     await sleep(200);
     assert.equal(await page.evaluate(() => document.querySelector('.recent').hidden), true, 'feed hidden when highlighting is off');
+    await page.close();
+  });
+
+  test('search finds a place by a source\'s own name for it ("Burma")', async () => {
+    const page = await open({ settings: { provider: 'us' } });
+    await page.type('#search', 'burma');
+    await page.keyboard.press('Enter');
+    await sleep(900);
+    assert.equal(await page.evaluate(() => document.querySelector('#details h3')?.textContent), 'Myanmar');
+    await page.close();
+  });
+
+  test('search shows an advisory that has no place on the map (French West Indies)', async () => {
+    const page = await open({ settings: { provider: 'us' } });
+    await page.type('#search', 'french west');
+    await page.keyboard.press('Enter');
+    await sleep(300);
+    const card = await page.evaluate(() => document.getElementById('details').innerText);
+    assert.match(card, /French West Indies/);
+    assert.match(card, /Guadeloupe/, 'shows the umbrella note');
+    await page.close();
+  });
+
+  test('keeps settings saved by the previous version', async () => {
+    const page = await openRaw({ stored: { source: 'ca', levels: [3, 4], recentDays: 7, dimOthers: true, theme: 'dark' } });
+    assert.equal(await page.evaluate(() => document.querySelector('#providerSwitch [aria-checked="true"]')?.dataset.provider), 'ca');
+    assert.equal(await page.evaluate(() => document.querySelector('#recentSeg [aria-checked="true"]')?.dataset.days), '7');
+    assert.equal(await page.evaluate(() => document.querySelectorAll('#levelChips [aria-pressed="true"]').length), 2);
+    assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark');
+    await page.close();
+  });
+
+  test('hides the language picker while only one language exists', async () => {
+    const page = await open();
+    assert.equal(await page.evaluate(() => document.getElementById('language').hidden), true);
+    assert.equal(await page.evaluate(() => document.documentElement.lang), 'en');
     await page.close();
   });
 });
