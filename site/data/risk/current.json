@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-27T18:18:00.947Z",
+ "asOf": "2026-09-27T21:37:43.913Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -24,7 +24,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-09-27T18:17:59.025Z"
+   "at": "2026-09-27T21:37:43.913Z"
   },
   "wildfire": {
    "sources": [
@@ -32,7 +32,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-09-27T18:17:59.025Z"
+   "at": "2026-09-27T21:37:43.913Z"
   },
   "health": {
    "sources": [

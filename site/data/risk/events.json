@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-27T18:18:00.947Z",
+ "asOf": "2026-09-27T21:37:43.913Z",
  "events": [
   {
    "id": "gdacs:TC:1001329",
@@ -11,20 +11,20 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "name": "Tropical Cyclone EIGHTEEN-E-26",
+   "name": "Tropical Cyclone RACHEL-26",
    "country": "Mexico",
-   "severity": "Tropical Depression (maximum wind speed of 148 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 157 km/h)",
    "placeIds": [
     "mx"
    ],
    "point": {
-    "lon": -98.6,
-    "lat": 12.7
+    "lon": -99.1,
+    "lat": 12.6
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=2&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=3&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -83,18 +83,18 @@
    },
    "name": "Tropical Cyclone SURIGAE-26",
    "country": "Japan",
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h)",
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 241 km/h)",
    "placeIds": [
     "jp"
    ],
    "point": {
-    "lon": 129.1,
-    "lat": 25.9
+    "lon": 130,
+    "lat": 26.3
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-27T12:00:00.000Z",
+   "toDate": "2026-09-27T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=18&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=19&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104190",
@@ -263,13 +263,13 @@
     "mx"
    ],
    "point": {
-    "lon": -113.9,
-    "lat": 21.3
+    "lon": -114.1,
+    "lat": 21.9
    },
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=28&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=29&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104186",
@@ -334,13 +334,13 @@
    "severity": "Tropical Storm (maximum wind speed of 213 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -123.4,
-    "lat": 22.6
+    "lon": -123.1,
+    "lat": 22.8
    },
    "startedAt": "2026-09-20T09:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001324&episodeid=31&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001324&episodeid=32&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001323",
@@ -356,13 +356,13 @@
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -43.8,
-    "lat": 29.3
+    "lon": -44,
+    "lat": 28.9
    },
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=30&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=31&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104178",
@@ -426,18 +426,18 @@
    },
    "name": "Tropical Cyclone NOLO-26",
    "country": "United States",
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 213 km/h)",
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h)",
    "placeIds": [
     "us"
    ],
    "point": {
-    "lon": -158.3,
+    "lon": -159.3,
     "lat": 16.2
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=28&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=29&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",

@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-27T18:17:59.025Z",
+ "fetchedAt": "2026-09-27T21:37:43.913Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -1673,19 +1673,19 @@
     "USA"
    ],
    "point": {
-    "lon": -158.3,
+    "lon": -159.3,
     "lat": 16.2
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 28,
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 213 km/h)",
+   "episode": 29,
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h)",
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=28&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=29&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1730,19 +1730,19 @@
    "name": "Tropical Cyclone FAY-26",
    "iso3": [],
    "point": {
-    "lon": -43.8,
-    "lat": 29.3
+    "lon": -44,
+    "lat": 28.9
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 30,
+   "episode": 31,
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=30&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=31&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1757,19 +1757,19 @@
    "name": "Tropical Cyclone ODALYS-26",
    "iso3": [],
    "point": {
-    "lon": -123.4,
-    "lat": 22.6
+    "lon": -123.1,
+    "lat": 22.8
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 31,
+   "episode": 32,
    "severity": "Tropical Storm (maximum wind speed of 213 km/h)",
    "startedAt": "2026-09-20T09:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001324&episodeid=31&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001324&episodeid=32&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1787,19 +1787,19 @@
     "MEX"
    ],
    "point": {
-    "lon": -113.9,
-    "lat": 21.3
+    "lon": -114.1,
+    "lat": 21.9
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Orange"
    },
-   "episode": 28,
+   "episode": 29,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 287 km/h)",
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=28&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=29&eventtype=TC",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
@@ -1847,19 +1847,19 @@
     "JPN"
    ],
    "point": {
-    "lon": 129.1,
-    "lat": 25.9
+    "lon": 130,
+    "lat": 26.3
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 18,
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h)",
+   "episode": 19,
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 241 km/h)",
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-27T12:00:00.000Z",
+   "toDate": "2026-09-27T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=18&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=19&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1901,25 +1901,25 @@
   {
    "id": "gdacs:TC:1001329",
    "code": "TC",
-   "name": "Tropical Cyclone EIGHTEEN-E-26",
+   "name": "Tropical Cyclone RACHEL-26",
    "country": "Mexico",
    "iso3": [
     "MEX"
    ],
    "point": {
-    "lon": -98.6,
-    "lat": 12.7
+    "lon": -99.1,
+    "lat": 12.6
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 2,
-   "severity": "Tropical Depression (maximum wind speed of 148 km/h)",
+   "episode": 3,
+   "severity": "Tropical Storm (maximum wind speed of 157 km/h)",
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-27T15:00:00.000Z",
+   "toDate": "2026-09-27T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=2&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=3&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
