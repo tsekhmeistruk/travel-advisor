@@ -1,0 +1,28 @@
+{
+ "placeId": "ky",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Cayman Islands",
+   "updated": "2026-05-21",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cayman-islands-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Cayman Islands",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cayman-islands",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Kaaimaneilanden",
+   "updated": "2026-05-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kaaimaneilanden",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

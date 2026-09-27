@@ -1,0 +1,28 @@
+{
+ "placeId": "bh",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Bahrain",
+   "updated": "2026-08-27",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bhr.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Bahrain",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bahrain",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Bahrein",
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bahrein",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

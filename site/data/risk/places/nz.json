@@ -1,0 +1,28 @@
+{
+ "placeId": "nz",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "New Zealand",
+   "updated": "2026-04-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/new-zealand-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "New Zealand",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/new-zealand",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Nieuw-Zeeland",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nieuw-zeeland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

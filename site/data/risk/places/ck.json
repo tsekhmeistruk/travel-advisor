@@ -1,0 +1,21 @@
+{
+ "placeId": "ck",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "Cook Islands",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cook-islands",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Cookeilanden",
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cookeilanden",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

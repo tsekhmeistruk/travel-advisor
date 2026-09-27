@@ -1,0 +1,28 @@
+{
+ "placeId": "gm",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "The Gambia",
+   "updated": "2026-01-16",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/the-gambia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Gambia, The",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/gambia-the",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Gambia",
+   "updated": "2026-05-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/gambia",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

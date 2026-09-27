@@ -1,0 +1,28 @@
+{
+ "placeId": "eg",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Egypt",
+   "updated": "2025-07-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/egypt-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Egypt",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/egypt",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Egypte",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/egypte",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

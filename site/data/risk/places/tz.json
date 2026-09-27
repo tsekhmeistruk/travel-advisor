@@ -1,0 +1,44 @@
+{
+ "placeId": "tz",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Tanzania",
+   "updated": "2025-10-31",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tza.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Tanzania",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tanzania",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Tanzania",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tanzania",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": [
+  {
+   "id": "advisory:us:Tanzania:2025-10-31",
+   "at": "2025-10-31",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Tanzania",
+   "placeIds": [
+    "tz"
+   ],
+   "from": 2,
+   "to": 3,
+   "up": true,
+   "seeded": true
+  }
+ ]
+}

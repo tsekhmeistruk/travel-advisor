@@ -152,7 +152,15 @@ export function withRiskChanges() {
   };
   const intercept = (req) => {
     const path = Object.keys(bodies).find(p => isData(req, p));
-    return path ? (req.respond({ status: 200, contentType: 'application/json', body: bodies[path] }), true) : false;
+    if (path) return (req.respond({ status: 200, contentType: 'application/json', body: bodies[path] }), true);
+    // A place file: the real one, with that place's injected changes and events added.
+    const place = new URL(req.url()).pathname.match(/\/data\/risk\/places\/([a-z0-9-]+)\.json$/)?.[1];
+    if (!place) return false;
+    const file = JSON.parse(readFileSync(new URL(`../../site/data/risk/places/${place}.json`, import.meta.url), 'utf8'));
+    const own = (c) => (c.placeIds ?? [c.placeId]).includes(place);
+    const body = JSON.stringify({ ...file, changes: [...added.filter(own), ...file.changes], events: [...testEvents.filter(e => e.placeIds.includes(place)).map(e => e.id), ...file.events] });
+    req.respond({ status: 200, contentType: 'application/json', body });
+    return true;
   };
   return Object.assign(intercept, { places: ['jp', 'cl', 'au', 'ph', 'pe', 'it', 'tr'], events: testEvents.map(e => e.id) });
 }

@@ -1,0 +1,44 @@
+{
+ "placeId": "td",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Chad",
+   "updated": "2026-04-28",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/chad-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Chad",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/chad",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Tsjaad",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tsjaad",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": [
+  {
+   "id": "advisory:us:Chad:2026-04-28",
+   "at": "2026-04-28",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Chad",
+   "placeIds": [
+    "td"
+   ],
+   "from": null,
+   "to": 4,
+   "up": true,
+   "seeded": true
+  }
+ ]
+}

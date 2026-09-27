@@ -1,0 +1,28 @@
+{
+ "placeId": "mw",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Malawi",
+   "updated": "2026-05-14",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mwi.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Malawi",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/malawi",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Malawi",
+   "updated": "2026-07-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/malawi",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

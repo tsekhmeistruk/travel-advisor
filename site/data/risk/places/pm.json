@@ -1,0 +1,14 @@
+{
+ "placeId": "pm",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "Saint-Pierre-et-Miquelon",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-pierre-et-miquelon",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

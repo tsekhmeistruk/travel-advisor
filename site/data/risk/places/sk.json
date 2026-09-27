@@ -1,0 +1,28 @@
+{
+ "placeId": "sk",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Slovakia",
+   "updated": "2026-02-12",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.svk.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Slovakia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/slovakia",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Slowakije",
+   "updated": "2026-09-04",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/slowakije",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

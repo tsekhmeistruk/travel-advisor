@@ -1,0 +1,28 @@
+{
+ "placeId": "lt",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Lithuania",
+   "updated": "2026-04-28",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ltu.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Lithuania",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/lithuania",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Litouwen",
+   "updated": "2026-05-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/litouwen",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

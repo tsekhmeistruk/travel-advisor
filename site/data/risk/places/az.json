@@ -1,0 +1,28 @@
+{
+ "placeId": "az",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Azerbaijan",
+   "updated": "2026-04-28",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.aze.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Azerbaijan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/azerbaijan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Azerbeidzjan",
+   "updated": "2026-09-03",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/azerbeidzjan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

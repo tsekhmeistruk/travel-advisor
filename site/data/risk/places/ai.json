@@ -1,0 +1,28 @@
+{
+ "placeId": "ai",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Anguilla",
+   "updated": "2026-05-22",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/anguilla-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Anguilla",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/anguilla",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Anguilla",
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/anguilla",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

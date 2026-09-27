@@ -1,0 +1,28 @@
+{
+ "placeId": "sn",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Senegal",
+   "updated": "2025-12-01",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/senegal-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Senegal",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/senegal",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Senegal",
+   "updated": "2026-09-01",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/senegal",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

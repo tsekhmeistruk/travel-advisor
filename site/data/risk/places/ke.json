@@ -1,0 +1,28 @@
+{
+ "placeId": "ke",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Kenya",
+   "updated": "2026-07-28",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ken.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Kenya",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kenya",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Kenia",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kenia",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

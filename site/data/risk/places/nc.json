@@ -1,0 +1,44 @@
+{
+ "placeId": "nc",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "New Caledonia",
+   "updated": "2026-05-21",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/new-caledonia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "New Caledonia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/new-caledonia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Nieuw-Caledonië",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nieuw-caledonie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": [
+  {
+   "id": "advisory:us:New Caledonia:2026-05-21",
+   "at": "2026-05-21",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "New Caledonia",
+   "placeIds": [
+    "nc"
+   ],
+   "from": null,
+   "to": 2,
+   "up": false,
+   "seeded": true
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "placeId": "bm",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Bermuda",
+   "updated": "2026-04-10",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/bermuda-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Bermuda",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bermuda",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

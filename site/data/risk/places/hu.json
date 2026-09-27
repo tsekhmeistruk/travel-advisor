@@ -1,0 +1,28 @@
+{
+ "placeId": "hu",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Hungary",
+   "updated": "2026-04-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/hungary-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Hungary",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/hungary",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Hongarije",
+   "updated": "2026-08-31",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/hongarije",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

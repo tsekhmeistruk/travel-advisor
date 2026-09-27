@@ -1,0 +1,28 @@
+{
+ "placeId": "qa",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Qatar",
+   "updated": "2026-08-28",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/qatar-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Qatar",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/qatar",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Qatar",
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/qatar",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

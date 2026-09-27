@@ -1,0 +1,28 @@
+{
+ "placeId": "ci",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Côte d’Ivoire",
+   "updated": "2026-02-18",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cote-d-ivoire-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Côte d'Ivoire (Ivory Coast)",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cote-d-ivoire-ivory-coast",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Ivoorkust",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ivoorkust",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

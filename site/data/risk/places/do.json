@@ -1,0 +1,28 @@
+{
+ "placeId": "do",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Dominican Republic",
+   "updated": "2025-06-12",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/dominican-republic-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Dominican Republic",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/dominican-republic",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Dominicaanse Republiek",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/dominicaanse-republiek",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

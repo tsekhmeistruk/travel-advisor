@@ -1,0 +1,28 @@
+{
+ "placeId": "sl",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Sierra Leone",
+   "updated": "2025-09-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sierra-leone-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Sierra Leone",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sierra-leone",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Sierra Leone",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sierra-leone",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

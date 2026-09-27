@@ -1,0 +1,28 @@
+{
+ "placeId": "np",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Nepal",
+   "updated": "2026-09-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.npl.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Nepal",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nepal",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Nepal",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nepal",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

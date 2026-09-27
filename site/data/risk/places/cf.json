@@ -1,0 +1,28 @@
+{
+ "placeId": "cf",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Central African Republic",
+   "updated": "2026-01-15",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.caf.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Central African Republic",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/central-african-republic",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Centraal-Afrikaanse Republiek",
+   "updated": "2026-09-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/centraal-afrikaanse-republiek",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

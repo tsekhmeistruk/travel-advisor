@@ -1,0 +1,28 @@
+{
+ "placeId": "ss",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "South Sudan",
+   "updated": "2026-05-17",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ssd.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "South Sudan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/south-sudan",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Zuid-Sudan",
+   "updated": "2026-07-31",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zuid-sudan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

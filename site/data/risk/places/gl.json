@@ -1,0 +1,28 @@
+{
+ "placeId": "gl",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Greenland",
+   "updated": "2024-10-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/greenland-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Greenland",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/greenland",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Groenland",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/groenland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

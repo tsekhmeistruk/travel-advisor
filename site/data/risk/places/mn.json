@@ -1,0 +1,28 @@
+{
+ "placeId": "mn",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Mongolia",
+   "updated": "2026-07-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/mongolia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Mongolia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mongolia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Mongolië",
+   "updated": "2026-08-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mongolie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

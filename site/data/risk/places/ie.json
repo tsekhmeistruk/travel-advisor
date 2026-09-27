@@ -1,0 +1,28 @@
+{
+ "placeId": "ie",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Ireland",
+   "updated": "2026-03-20",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/ireland-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Ireland",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ireland",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Ierland",
+   "updated": "2026-05-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ierland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

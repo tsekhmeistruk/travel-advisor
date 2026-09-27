@@ -1,0 +1,28 @@
+{
+ "placeId": "ki",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Kiribati",
+   "updated": "2024-12-02",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/kiribati-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Kiribati",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kiribati",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Kiribati",
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kiribati",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "rs",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Serbia",
+   "updated": "2026-08-27",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.srb.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Serbia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/serbia",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Servië",
+   "updated": "2026-07-14",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/servie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

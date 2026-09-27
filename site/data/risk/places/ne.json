@@ -1,0 +1,28 @@
+{
+ "placeId": "ne",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Niger",
+   "updated": "2026-07-09",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ner.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Niger",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/niger",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Niger",
+   "updated": "2026-07-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/niger",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "rw",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Rwanda",
+   "updated": "2026-06-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.rwa.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Rwanda",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/rwanda",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Rwanda",
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/rwanda",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,21 @@
+{
+ "placeId": "nl",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Netherlands",
+   "updated": "2026-08-18",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.nld.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Netherlands",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/netherlands",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

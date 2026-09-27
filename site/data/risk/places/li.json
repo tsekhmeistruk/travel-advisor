@@ -1,0 +1,28 @@
+{
+ "placeId": "li",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Liechtenstein",
+   "updated": "2026-08-18",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lie.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Liechtenstein",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/liechtenstein",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Liechtenstein",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/liechtenstein",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

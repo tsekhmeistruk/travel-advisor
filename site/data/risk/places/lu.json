@@ -1,0 +1,28 @@
+{
+ "placeId": "lu",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Luxembourg",
+   "updated": "2026-04-08",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/luxembourg-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Luxembourg",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/luxembourg",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Luxemburg",
+   "updated": "2026-06-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/luxemburg",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

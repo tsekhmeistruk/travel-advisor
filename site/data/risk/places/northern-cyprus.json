@@ -1,0 +1,28 @@
+{
+ "placeId": "northern-cyprus",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Cyprus",
+   "updated": "2026-06-01",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cyp.html",
+   "own": false
+  },
+  "ca": {
+   "level": 1,
+   "title": "Cyprus",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cyprus",
+   "own": false
+  },
+  "nl": {
+   "level": 1,
+   "title": "Cyprus",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cyprus",
+   "own": false
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "cd",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Democratic Republic of the Congo",
+   "updated": "2026-07-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/democratic-republic-of-the-congo-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Democratic Republic of Congo (Kinshasa)",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/congo-kinshasa",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Congo, Democratische Republiek",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/congo-democratische-republiek",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

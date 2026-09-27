@@ -1,0 +1,28 @@
+{
+ "placeId": "dz",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Algeria",
+   "updated": "2026-08-25",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.dza.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Algeria",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/algeria",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Algerije",
+   "updated": "2026-07-31",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/algerije",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

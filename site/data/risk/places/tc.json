@@ -1,0 +1,28 @@
+{
+ "placeId": "tc",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Turks and Caicos Islands",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/turks-and-caicos-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Turks and Caicos Islands",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/turks-and-caicos-islands",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Turks- en Caicoseilanden",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/turks-en-caicoseilanden",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

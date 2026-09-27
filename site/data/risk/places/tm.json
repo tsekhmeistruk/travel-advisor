@@ -1,0 +1,28 @@
+{
+ "placeId": "tm",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Turkmenistan",
+   "updated": "2026-08-21",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tkm.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Turkmenistan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/turkmenistan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Turkmenistan",
+   "updated": "2026-07-06",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/turkmenistan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

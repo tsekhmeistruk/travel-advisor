@@ -1,0 +1,28 @@
+{
+ "placeId": "bg",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Bulgaria",
+   "updated": "2025-10-09",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/bulgaria-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Bulgaria",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bulgaria",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Bulgarije",
+   "updated": "2026-04-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bulgarije",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

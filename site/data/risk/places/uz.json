@@ -1,0 +1,28 @@
+{
+ "placeId": "uz",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Uzbekistan",
+   "updated": "2026-01-26",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.uzb.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Uzbekistan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/uzbekistan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Oezbekistan",
+   "updated": "2026-07-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oezbekistan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

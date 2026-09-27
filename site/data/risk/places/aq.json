@@ -1,0 +1,28 @@
+{
+ "placeId": "aq",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Antarctica",
+   "updated": "2025-09-23",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/antarctica-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Antarctica",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/antarctica",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Antarctica",
+   "updated": "2026-08-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/antarctica",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,14 @@
+{
+ "placeId": "mp",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "Northern Marianas",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/northern-marianas",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

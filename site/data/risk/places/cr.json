@@ -1,0 +1,28 @@
+{
+ "placeId": "cr",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Costa Rica",
+   "updated": "2026-04-02",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/costa-rica-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Costa Rica",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/costa-rica",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Costa Rica",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/costa-rica",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

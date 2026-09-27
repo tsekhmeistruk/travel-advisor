@@ -1,0 +1,28 @@
+{
+ "placeId": "xk",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Kosovo",
+   "updated": "2026-08-25",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/kosovo-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Kosovo",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kosovo",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Kosovo",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kosovo",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

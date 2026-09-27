@@ -1,0 +1,44 @@
+{
+ "placeId": "mu",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Mauritius",
+   "updated": "2025-12-08",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/mauritius-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Mauritius",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mauritius",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Mauritius",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mauritius",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": [
+  {
+   "id": "advisory:us:Mauritius:2025-12-08",
+   "at": "2025-12-08",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Mauritius",
+   "placeIds": [
+    "mu"
+   ],
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "seeded": true
+  }
+ ]
+}

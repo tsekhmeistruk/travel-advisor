@@ -1,0 +1,28 @@
+{
+ "placeId": "er",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Eritrea",
+   "updated": "2023-07-31",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/eritrea-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Eritrea",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/eritrea",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Eritrea",
+   "updated": "2026-04-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/eritrea",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

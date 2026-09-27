@@ -1,0 +1,24 @@
+{
+ "placeId": "us",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "United States",
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/united-states",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Verenigde Staten van Amerika",
+   "updated": "2026-07-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/verenigde-staten-van-amerika",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:TC:1001321",
+  "gdacs:FL:1103888"
+ ],
+ "changes": []
+}

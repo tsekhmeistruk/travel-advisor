@@ -1,0 +1,21 @@
+{
+ "placeId": "pr",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "Puerto Rico",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/puerto-rico",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Puerto Rico",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/puerto-rico",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

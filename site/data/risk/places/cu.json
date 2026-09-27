@@ -1,0 +1,28 @@
+{
+ "placeId": "cu",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Cuba",
+   "updated": "2025-05-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cuba-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Cuba",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cuba",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Cuba",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cuba",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

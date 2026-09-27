@@ -1,0 +1,30 @@
+{
+ "placeId": "cl",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Chile",
+   "updated": "2026-08-19",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.chl.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Chile",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/chile",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Chili",
+   "updated": "2026-08-21",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/chili",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:FL:1104190"
+ ],
+ "changes": []
+}

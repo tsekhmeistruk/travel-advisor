@@ -1,0 +1,30 @@
+{
+ "placeId": "cv",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Cabo Verde",
+   "updated": "2025-12-18",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cpv.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Cabo Verde",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cabo-verde",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Kaapverdië",
+   "updated": "2026-07-06",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kaapverdie",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:TC:1001328"
+ ],
+ "changes": []
+}

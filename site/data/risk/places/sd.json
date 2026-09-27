@@ -1,0 +1,28 @@
+{
+ "placeId": "sd",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Sudan",
+   "updated": "2026-05-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sudan-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Sudan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sudan",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Sudan",
+   "updated": "2026-09-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sudan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

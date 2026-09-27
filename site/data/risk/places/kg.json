@@ -1,0 +1,28 @@
+{
+ "placeId": "kg",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "The Kyrgyz Republic",
+   "updated": "2026-02-10",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/the-kyrgyz-republic-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Kyrgyzstan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kyrgyzstan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Kirgizië",
+   "updated": "2026-07-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kirgizie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

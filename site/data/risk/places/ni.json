@@ -1,0 +1,28 @@
+{
+ "placeId": "ni",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Nicaragua",
+   "updated": "2026-05-14",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nicaragua-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Nicaragua",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nicaragua",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Nicaragua",
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nicaragua",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,30 @@
+{
+ "placeId": "ru",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Russia",
+   "updated": "2025-12-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/russia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Russia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/russia",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Rusland",
+   "updated": "2026-09-21",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/rusland",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:VO:1000149"
+ ],
+ "changes": []
+}

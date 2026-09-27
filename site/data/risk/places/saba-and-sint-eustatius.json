@@ -1,0 +1,21 @@
+{
+ "placeId": "saba-and-sint-eustatius",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Sint Eustatius",
+   "updated": "2026-08-20",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sint-eustatius-travel-advisory.html",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Sint Eustatius",
+   "updated": "2026-05-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sint-eustatius",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

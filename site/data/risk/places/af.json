@@ -1,0 +1,28 @@
+{
+ "placeId": "af",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Afghanistan",
+   "updated": "2026-02-20",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/afghanistan-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Afghanistan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/afghanistan",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Afghanistan",
+   "updated": "2026-04-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/afghanistan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

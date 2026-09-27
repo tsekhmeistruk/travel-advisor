@@ -1,0 +1,28 @@
+{
+ "placeId": "kz",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Kazakhstan",
+   "updated": "2026-08-18",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/kazakhstan-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Kazakhstan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/kazakhstan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Kazachstan",
+   "updated": "2026-07-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kazachstan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

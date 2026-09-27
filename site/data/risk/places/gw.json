@@ -1,0 +1,28 @@
+{
+ "placeId": "gw",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Guinea-Bissau",
+   "updated": "2025-12-11",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/guinea-bissau-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Guinea-Bissau",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guinea-bissau",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Guinee-Bissau",
+   "updated": "2026-06-12",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guinee-bissau",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

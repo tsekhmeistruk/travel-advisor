@@ -1,0 +1,28 @@
+{
+ "placeId": "pe",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Peru",
+   "updated": "2026-09-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.per.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Peru",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/peru",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Peru",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/peru",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

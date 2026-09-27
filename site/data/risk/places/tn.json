@@ -1,0 +1,28 @@
+{
+ "placeId": "tn",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Tunisia",
+   "updated": "2026-05-21",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/tunisia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Tunisia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tunisia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Tunesië",
+   "updated": "2026-09-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tunesie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

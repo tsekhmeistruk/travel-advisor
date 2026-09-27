@@ -1,0 +1,28 @@
+{
+ "placeId": "vg",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "British Virgin Islands",
+   "updated": "2026-05-22",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.vgb.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "British Virgin Islands",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/british-virgin-islands",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Britse Maagdeneilanden",
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/britse-maagdeneilanden",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "mr",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Mauritania",
+   "updated": "2026-08-18",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mrt.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Mauritania",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mauritania",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Mauritanië",
+   "updated": "2026-05-26",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mauritanie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

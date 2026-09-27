@@ -1,0 +1,44 @@
+{
+ "placeId": "mg",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Madagascar",
+   "updated": "2025-12-05",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mdg.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Madagascar",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/madagascar",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Madagaskar",
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/madagaskar",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": [
+  {
+   "id": "advisory:us:Madagascar:2025-12-05",
+   "at": "2025-12-05",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Madagascar",
+   "placeIds": [
+    "mg"
+   ],
+   "from": 3,
+   "to": 2,
+   "up": false,
+   "seeded": true
+  }
+ ]
+}

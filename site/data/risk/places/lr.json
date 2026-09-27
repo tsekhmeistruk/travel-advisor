@@ -1,0 +1,28 @@
+{
+ "placeId": "lr",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Liberia",
+   "updated": "2025-12-11",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/liberia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Liberia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/liberia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Liberia",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/liberia",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

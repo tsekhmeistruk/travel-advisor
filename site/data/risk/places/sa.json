@@ -1,0 +1,28 @@
+{
+ "placeId": "sa",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Saudi Arabia",
+   "updated": "2026-09-15",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sau.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Saudi Arabia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saudi-arabia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Saoedi-Arabië",
+   "updated": "2026-09-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saoedi-arabie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

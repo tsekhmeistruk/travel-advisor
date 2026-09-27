@@ -1,0 +1,28 @@
+{
+ "placeId": "kr",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "South Korea",
+   "updated": "2025-05-28",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/south-korea-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "South Korea",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/south-korea",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Zuid-Korea",
+   "updated": "2026-06-03",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zuid-korea",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "iq",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Iraq",
+   "updated": "2026-08-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/iraq-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Iraq",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/iraq",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Irak",
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/irak",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

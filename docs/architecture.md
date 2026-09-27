@@ -107,7 +107,7 @@ The product is growing from a travel-advisory map into a risk monitor: several s
 - **Idempotent:** change ids are built from the place, category and fetch time (or event id and revision time), and the build's "now" is the newest fetch time in its inputs, so building the same data twice changes nothing.
 - **Health:** each provider and source is `healthy` (last success within 1.5 × its interval), `delayed`, or `error` (past its stale limit: `staleAfterHours`, or 7 days for advisories). A source in `error` publishes no levels and keeps its last state.
 
-The site shows the risk layer through **map modes** and **event markers** (see below). A full country view comes next.
+The site shows the risk layer through **map modes**, **event markers** and a **country view** (see below).
 
 ### Published formats
 
@@ -139,7 +139,7 @@ The site shows the risk layer through **map modes** and **event markers** (see b
 - `noteKey` points to a translated note, for records without places.
 - `updated` is the source's own date for its latest edit. It is shown, but a pulse means only a level change (`levelChanges`, newest first).
 
-The manifest also has `risk: { asOf, current, changes, events, health }`, pointing at the risk files:
+The manifest also has `risk: { asOf, current, changes, events, health, places }`, pointing at the risk files (`places` is a folder, `risk/places/`):
 
 ```json
 // risk/current.json: event categories list only places above Normal; `default` is the level of every
@@ -160,6 +160,13 @@ The manifest also has `risk: { asOf, current, changes, events, health }`, pointi
 { "asOf": "…", "events": [{ "id": "gdacs:TC:1001325", "source": "gdacs", "type": "cyclone", "category": "disaster", "level": 3,
   "native": { "scheme": "gdacs-alert", "value": "Orange" }, "name": "…", "placeIds": ["mx"], "point": { "lon": -105.1, "lat": 18.5 },
   "startedAt": "…", "toDate": "…", "current": true, "url": "https://www.gdacs.org/report.aspx?…" }] }
+
+// risk/places/<placeId>.json: one per place, for the country view; no as-of time inside, so a file
+// changes only when its content does
+{ "placeId": "mx",
+  "advisories": { "us": { "level": 2, "title": "Mexico", "updated": "2026-05-29", "url": "https://…", "own": true } },
+  "events": ["gdacs:TC:1001325"],
+  "changes": [ /* the place's changes of the last 365 days, newest first, as in changes.json */ ] }
 
 // risk/health.json
 { "asOf": "…", "sources": { "gdacs": { "status": "healthy", "lastSuccess": "…", "lastAttempt": "…", "consecutiveFailures": 0, "records": 13 } } }
@@ -185,6 +192,7 @@ The manifest also has `risk: { asOf, current, changes, events, health }`, pointi
 
   The risk modes share one factory (`createRiskMode`) and one settings namespace (`risk`: levels, window 24 h / 7 / 30 / 90 days, direction, fade). Their card lists every category with its level and what set it: "2 of 3 governments", or the GDACS alert. Their feed lists every change kind (level, advisory, new or changed event). A pulse still means only a level change. A place with no data is drawn grey and never pulses.
 - **Event markers:** a mode may return `markers()` (`[{ id, lon, lat, kind, level }]`), which the map draws with `setMarkers()`: a coloured disc per event, with an icon per kind (earthquake, cyclone, flood, volcano, drought, fire). Markers whose screen positions share a 28px cell become one cluster with a count and the highest level (`map/clusters.js`, pure); clicking a cluster zooms in to split it, and at the closest zoom selects its first event. A selected marker is the target `{ eventId, placeId }`: the card shows the event (the source's facts, our level beside them, the places it affects, a link to the source), and its place is outlined. The Disasters and Wildfires modes mark their category's events; Highest marks only Orange and Red ones; Changes and Travel none.
+- **Country view:** the risk card's "Country details" opens a full panel view in place of the card, settings and feed (`#…&view=country` in the URL; Back or Escape closes it, selecting another country follows it). It shows every category, the active alerts (click: the event card), each government's advisory in its own words with a link, and the place's changes over 7, 30, 90 days or a year. It loads `risk/places/<id>.json` only when opened.
 - **Data freshness:** `core/data-client.js` revalidates the manifest on every load and asks for each data file with its as-of time (`?v=…`), because GitHub Pages lets browsers cache files for minutes and the data changes hourly.
 - **`map/world-map.js`** is a generic map. `style(placeId)` returns `{ cls, muted, dim, dot, pulse }`, and the map draws fills, faded places, dots for tiny places and pulses. It also handles zoom, pan and click tolerance. Dataset-specific code never runs inside it.
 - **Datasets** implement the interface documented in `datasets/registry.js`:

@@ -1,0 +1,28 @@
+{
+ "placeId": "canary-islands",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Spain",
+   "updated": "2026-08-01",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.esp.html",
+   "own": false
+  },
+  "ca": {
+   "level": 1,
+   "title": "Canary Islands",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/canary-islands",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Spanje",
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/spanje",
+   "own": false
+  }
+ },
+ "events": [],
+ "changes": []
+}

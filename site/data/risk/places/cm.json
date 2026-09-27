@@ -1,0 +1,28 @@
+{
+ "placeId": "cm",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Cameroon",
+   "updated": "2026-05-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cameroon-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Cameroon",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cameroon",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Kameroen",
+   "updated": "2026-07-27",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kameroen",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

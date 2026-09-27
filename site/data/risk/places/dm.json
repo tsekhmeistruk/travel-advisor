@@ -1,0 +1,28 @@
+{
+ "placeId": "dm",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Dominica",
+   "updated": "2026-05-20",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/dominica-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Dominica",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/dominica",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Dominica",
+   "updated": "2026-09-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/dominica",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

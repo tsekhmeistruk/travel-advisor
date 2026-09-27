@@ -1,0 +1,30 @@
+{
+ "placeId": "in",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "India",
+   "updated": "2025-06-16",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/india-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "India",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/india",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "India",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/india",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:TC:1001326"
+ ],
+ "changes": []
+}

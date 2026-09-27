@@ -328,8 +328,47 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
     'risk/changes.json': { asOf, windowDays: CHANGE_WINDOW_DAYS, changes: recent },
     'risk/events.json': { asOf, events: events.sort((a, b) => b.startedAt.localeCompare(a.startedAt) || a.id.localeCompare(b.id)) },
     'risk/health.json': { asOf, sources: health },
+    ...placeFiles({ placeIds: [...index.byId.keys()].sort(), advisoryFiles: advisories.files, events, changes: [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')], asOf }),
   };
   return { files, state: newState, newChanges, warnings };
 }
 
 function byTime(a, b) { return a.at.localeCompare(b.at) || a.id.localeCompare(b.id); }
+
+export const PLACE_HISTORY_DAYS = 365;
+
+/**
+ * One file per place for its country view: each government's advisory (level, title, date,
+ * link), the ids of the active events on it, and its changes of the last PLACE_HISTORY_DAYS
+ * days, newest first. No as-of time inside, so a file changes only when its content does.
+ * @param changes  every change known (log, new, advisory), any order
+ */
+export function placeFiles({ placeIds, advisoryFiles, events, changes, asOf }) {
+  const cutoff = asOf ? new Date(Date.parse(asOf) - PLACE_HISTORY_DAYS * DAY).toISOString().slice(0, 10) : '';
+  const advisories = new Map();
+  for (const [provider, data] of Object.entries(advisoryFiles)) {
+    for (const r of data.records) {
+      for (const id of [...r.places, ...(r.covers ?? [])]) {
+        const own = r.places.length === 1 && r.places[0] === id;
+        const prev = advisories.get(id)?.[provider];
+        if (prev?.own && !own) continue;   // its own advisory wins over one that covers it
+        (advisories.get(id) ?? advisories.set(id, {}).get(id))[provider] = { level: r.level, title: r.title, updated: r.updated, url: r.url, own };
+      }
+    }
+  }
+  const byPlace = new Map(placeIds.map(id => [id, []]));
+  for (const c of [...changes].sort(byTime).reverse()) {
+    if (c.at < cutoff) continue;
+    for (const id of c.placeIds ?? [c.placeId]) byPlace.get(id)?.push(c);
+  }
+  const files = {};
+  for (const id of placeIds) {
+    files[`risk/places/${id}.json`] = {
+      placeId: id,
+      advisories: advisories.get(id) ?? {},
+      events: events.filter(e => e.placeIds.includes(id)).map(e => e.id),
+      changes: byPlace.get(id),
+    };
+  }
+  return files;
+}

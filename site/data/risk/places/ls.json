@@ -1,0 +1,28 @@
+{
+ "placeId": "ls",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Lesotho",
+   "updated": "2026-06-17",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/lesotho-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Lesotho",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/lesotho",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Lesotho",
+   "updated": "2026-07-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/lesotho",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

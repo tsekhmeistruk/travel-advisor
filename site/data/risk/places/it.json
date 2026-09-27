@@ -1,0 +1,30 @@
+{
+ "placeId": "it",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Italy",
+   "updated": "2026-09-10",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ita.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Italy",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/italy",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Italië",
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/italie",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:FL:1104053"
+ ],
+ "changes": []
+}

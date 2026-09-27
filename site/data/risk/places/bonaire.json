@@ -1,0 +1,28 @@
+{
+ "placeId": "bonaire",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Bonaire",
+   "updated": "2026-08-20",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bes.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Bonaire",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bonaire",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Bonaire",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bonaire",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

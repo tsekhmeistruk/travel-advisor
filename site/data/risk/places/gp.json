@@ -1,0 +1,28 @@
+{
+ "placeId": "gp",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Guadeloupe",
+   "updated": "2026-08-20",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.glp.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Guadeloupe",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guadeloupe",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Guadeloupe",
+   "updated": "2026-06-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guadeloupe",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

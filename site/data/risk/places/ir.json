@@ -1,0 +1,28 @@
+{
+ "placeId": "ir",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Iran",
+   "updated": "2025-12-05",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/iran-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Iran",
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/iran",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Iran",
+   "updated": "2026-09-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/iran",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

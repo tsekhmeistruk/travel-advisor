@@ -1,0 +1,28 @@
+{
+ "placeId": "hr",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Croatia",
+   "updated": "2026-05-18",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/croatia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Croatia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/croatia",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Kroatië",
+   "updated": "2026-08-27",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/kroatie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "mq",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Martinique",
+   "updated": "2026-09-27",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mtq.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Martinique",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/martinique",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Martinique",
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/martinique",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

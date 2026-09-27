@@ -1,0 +1,30 @@
+{
+ "placeId": "ua",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Ukraine",
+   "updated": "2026-08-28",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/ukraine-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Ukraine",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ukraine",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Oekraïne",
+   "updated": "2026-08-20",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oekraine",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:FL:1104193"
+ ],
+ "changes": []
+}

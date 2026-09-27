@@ -1,0 +1,28 @@
+{
+ "placeId": "sr",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Suriname",
+   "updated": "2026-09-08",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/suriname-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Suriname",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/suriname",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Suriname",
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/suriname",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

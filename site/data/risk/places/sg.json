@@ -1,0 +1,28 @@
+{
+ "placeId": "sg",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Singapore",
+   "updated": "2026-03-09",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/singapore-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Singapore",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/singapore",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Singapore",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/singapore",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

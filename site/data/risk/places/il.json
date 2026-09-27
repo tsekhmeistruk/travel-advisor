@@ -1,0 +1,28 @@
+{
+ "placeId": "il",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Israel",
+   "updated": "2026-08-26",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/israel-west-bank-and-gaza-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Israel and Palestine",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/israel-and-palestine",
+   "own": false
+  },
+  "nl": {
+   "level": 2,
+   "title": "Israël",
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/israel",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

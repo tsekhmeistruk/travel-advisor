@@ -1,0 +1,28 @@
+{
+ "placeId": "br",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Brazil",
+   "updated": "2026-08-31",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bra.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Brazil",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/brazil",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Brazilië",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/brazilie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

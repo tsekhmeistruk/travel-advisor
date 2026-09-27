@@ -1,0 +1,28 @@
+{
+ "placeId": "sv",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "El Salvador",
+   "updated": "2026-06-25",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/el-salvador-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "El Salvador",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/el-salvador",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "El Salvador",
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/el-salvador",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

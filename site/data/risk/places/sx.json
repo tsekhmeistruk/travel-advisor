@@ -1,0 +1,28 @@
+{
+ "placeId": "sx",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Sint Maarten",
+   "updated": "2026-08-24",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sxm.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Sint Maarten",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sint-maarten",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Sint Maarten",
+   "updated": "2026-08-13",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sint-maarten",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

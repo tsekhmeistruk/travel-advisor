@@ -1,0 +1,44 @@
+{
+ "placeId": "lc",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Saint Lucia",
+   "updated": "2026-07-10",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lca.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Saint Lucia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-lucia",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Saint Lucia",
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saint-lucia",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": [
+  {
+   "id": "advisory:us:Saint Lucia:2026-07-10",
+   "at": "2026-07-10",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Saint Lucia",
+   "placeIds": [
+    "lc"
+   ],
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "seeded": true
+  }
+ ]
+}

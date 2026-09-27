@@ -1,0 +1,28 @@
+{
+ "placeId": "gy",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Guyana",
+   "updated": "2026-08-26",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.guy.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Guyana",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guyana",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Guyana",
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/guyana",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

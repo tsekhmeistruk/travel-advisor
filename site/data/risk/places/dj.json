@@ -1,0 +1,28 @@
+{
+ "placeId": "dj",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Djibouti",
+   "updated": "2025-03-06",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.dji.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Djibouti",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/djibouti",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Djibouti",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/djibouti",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

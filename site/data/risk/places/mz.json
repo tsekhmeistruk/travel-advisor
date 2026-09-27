@@ -1,0 +1,28 @@
+{
+ "placeId": "mz",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Mozambique",
+   "updated": "2026-08-21",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.moz.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Mozambique",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mozambique",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Mozambique",
+   "updated": "2026-08-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mozambique",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

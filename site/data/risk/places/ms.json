@@ -1,0 +1,28 @@
+{
+ "placeId": "ms",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Montserrat",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/montserrat-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Montserrat",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/montserrat",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Montserrat",
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/montserrat",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

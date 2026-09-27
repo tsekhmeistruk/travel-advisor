@@ -1,0 +1,28 @@
+{
+ "placeId": "et",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Ethiopia",
+   "updated": "2026-08-27",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/ethiopia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Ethiopia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ethiopia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Ethiopië",
+   "updated": "2026-09-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ethiopie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "bz",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Belize",
+   "updated": "2026-03-12",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/belizetravel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Belize",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/belize",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Belize",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/belize",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

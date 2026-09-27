@@ -1,0 +1,28 @@
+{
+ "placeId": "fi",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Finland",
+   "updated": "2026-03-13",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/finland-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Finland",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/finland",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Finland",
+   "updated": "2026-08-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/finland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

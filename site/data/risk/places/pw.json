@@ -1,0 +1,28 @@
+{
+ "placeId": "pw",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Palau",
+   "updated": "2026-01-07",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.plw.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Palau",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/palau",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Palau",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/palau",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

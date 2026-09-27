@@ -1,0 +1,28 @@
+{
+ "placeId": "id",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Indonesia",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/indonesia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Indonesia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/indonesia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Indonesië",
+   "updated": "2026-09-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/indonesie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

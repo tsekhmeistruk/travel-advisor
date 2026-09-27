@@ -1,0 +1,28 @@
+{
+ "placeId": "be",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Belgium",
+   "updated": "2026-07-23",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bel.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Belgium",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/belgium",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "België",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/belgie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

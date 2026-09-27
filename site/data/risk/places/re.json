@@ -1,0 +1,28 @@
+{
+ "placeId": "re",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "France",
+   "updated": "2025-05-28",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/france-travel-advisory.html",
+   "own": false
+  },
+  "ca": {
+   "level": 1,
+   "title": "Réunion",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/reunion",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Réunion",
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/reunion",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

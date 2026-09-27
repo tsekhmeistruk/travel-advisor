@@ -1,0 +1,28 @@
+{
+ "placeId": "bi",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Burundi",
+   "updated": "2025-04-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/burundi-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Burundi",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/burundi",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Burundi",
+   "updated": "2026-09-21",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/burundi",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

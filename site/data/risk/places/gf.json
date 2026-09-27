@@ -1,0 +1,28 @@
+{
+ "placeId": "gf",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "French Guiana",
+   "updated": "2026-07-08",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/french-guiana-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "French Guiana",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/french-guiana",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Frans-Guyana",
+   "updated": "2026-06-01",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/frans-guyana",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

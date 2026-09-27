@@ -1,0 +1,30 @@
+{
+ "placeId": "ly",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Libya",
+   "updated": "2026-08-31",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lby.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Libya",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/libya",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Libië",
+   "updated": "2026-07-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/libie",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:FL:1104195"
+ ],
+ "changes": []
+}

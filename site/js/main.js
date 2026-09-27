@@ -68,6 +68,7 @@ async function main() {
   // ---- panel and map
   let hovered = null;
   let selected = null;
+  let countryOpen = false;   // the full country view replaces the card, settings and feed
   const modeSwitch = createModeSwitch($('modeSwitch'), { onChange: (id) => switchMode(id, { toUrl: true }) });
   const mapArea = $('mapArea');
   const tooltip = createTooltip($('tooltip'), mapArea);
@@ -147,6 +148,42 @@ async function main() {
     map.setSelectedMarker(target?.eventId ?? null);
     renderDetails();
     if (zoom && target?.placeId) map.zoomTo(target.placeId);
+    // The open country view follows the selected place, and closes with the selection.
+    if (countryOpen) {
+      if (target?.placeId && !target.eventId) renderCountry(target.placeId);
+      else closeCountry({ toUrl: false });
+    }
+    if (toUrl) writeUrl();
+  }
+
+  // ---- the country view (risk modes)
+  $('details').addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-action="country"]');
+    if (btn) openCountry(btn.dataset.place, { toUrl: true });
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && countryOpen) closeCountry({ toUrl: true }); });
+
+  async function openCountry(placeId, { toUrl = false } = {}) {
+    if (!dataset.renderCountryView || !places.has(placeId)) return;
+    if (selected?.placeId !== placeId || selected?.eventId) select({ placeId });
+    countryOpen = true;
+    $('panel').classList.add('is-country');
+    $('countryView').hidden = false;
+    await renderCountry(placeId);
+    if (toUrl) writeUrl();
+  }
+  function renderCountry(placeId) {
+    return dataset.renderCountryView($('countryView'), placeId, {
+      back: () => closeCountry({ toUrl: true }),
+      selectEvent: (id) => { closeCountry(); select(dataset.eventTarget(id), { zoom: true, toUrl: true }); },
+    });
+  }
+  function closeCountry({ toUrl = false } = {}) {
+    countryOpen = false;
+    $('panel').classList.remove('is-country');
+    $('countryView').hidden = true;
+    $('countryView').innerHTML = '';
+    renderDetails();
     if (toUrl) writeUrl();
   }
 
@@ -163,18 +200,25 @@ async function main() {
     if (selected?.recordKey || selected?.eventId) selected = selected.placeId ? { placeId: selected.placeId } : null;
     map.setSelectedMarker(null);
     refresh();
+    if (countryOpen) {
+      if (dataset.renderCountryView && selected?.placeId) await renderCountry(selected.placeId);
+      else closeCountry();
+    }
     if (toUrl) writeUrl();
   }
 
   // Written on user actions only, so a plain visit keeps a plain URL.
   function writeUrl() {
-    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId })}`);
+    const view = countryOpen ? 'country' : null;
+    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId, view })}`);
   }
   window.addEventListener('hashchange', async () => {
     const want = parseHash(location.hash);
     if (want.mode) await switchMode(want.mode);
     const place = want.place && places.has(want.place) ? want.place : null;
     if (place !== (selected?.placeId ?? null)) select(place ? { placeId: place } : null, { zoom: !!place });
+    if (want.view === 'country' && place && !countryOpen) await openCountry(place);
+    else if (want.view !== 'country' && countryOpen) closeCountry();
   });
   function renderDetails() {
     const target = hovered ?? selected;
@@ -198,7 +242,10 @@ async function main() {
     renderDetails();
   }
   refresh();
-  if (fromUrl.place && places.has(fromUrl.place)) select({ placeId: fromUrl.place }, { zoom: true });
+  if (fromUrl.place && places.has(fromUrl.place)) {
+    select({ placeId: fromUrl.place }, { zoom: true });
+    if (fromUrl.view === 'country') await openCountry(fromUrl.place);
+  }
 }
 
 /** Fill elements marked with data-i18n (text) and data-i18n-<attr> (attributes). */

@@ -1,0 +1,28 @@
+{
+ "placeId": "pa",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Panama",
+   "updated": "2026-08-19",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.pan.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Panama",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/panama",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Panama",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/panama",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "ga",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Gabon",
+   "updated": "2026-03-30",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/gabon-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Gabon",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/gabon",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Gabon",
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/gabon",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

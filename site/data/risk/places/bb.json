@@ -1,0 +1,28 @@
+{
+ "placeId": "bb",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Barbados",
+   "updated": "2026-04-10",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.brb.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Barbados",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/barbados",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Barbados",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/barbados",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,21 @@
+{
+ "placeId": "mf",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "French Saint Martin",
+   "updated": "2026-08-14",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.maf.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Saint Martin",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-martin",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

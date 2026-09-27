@@ -1,0 +1,28 @@
+{
+ "placeId": "la",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Laos",
+   "updated": "2026-07-28",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/laos-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Laos",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/laos",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Laos",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/laos",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

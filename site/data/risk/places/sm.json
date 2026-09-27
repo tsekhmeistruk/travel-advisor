@@ -1,0 +1,21 @@
+{
+ "placeId": "sm",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "San Marino",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/san-marino",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "San Marino",
+   "updated": "2026-06-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/san-marino",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

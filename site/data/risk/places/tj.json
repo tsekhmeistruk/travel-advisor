@@ -1,0 +1,28 @@
+{
+ "placeId": "tj",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Tajikistan",
+   "updated": "2026-09-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tjk.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Tajikistan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tajikistan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Tadzjikistan",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tadzjikistan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

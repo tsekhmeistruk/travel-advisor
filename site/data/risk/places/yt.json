@@ -1,0 +1,28 @@
+{
+ "placeId": "yt",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "France",
+   "updated": "2025-05-28",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/france-travel-advisory.html",
+   "own": false
+  },
+  "ca": {
+   "level": 2,
+   "title": "Mayotte",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/mayotte",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Frankrijk",
+   "updated": "2026-07-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/frankrijk",
+   "own": false
+  }
+ },
+ "events": [],
+ "changes": []
+}

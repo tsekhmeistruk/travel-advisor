@@ -1,0 +1,30 @@
+{
+ "placeId": "ar",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Argentina",
+   "updated": "2026-07-10",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.arg.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Argentina",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/argentina",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Argentinië",
+   "updated": "2026-06-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/argentinie",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:FL:1104192"
+ ],
+ "changes": []
+}

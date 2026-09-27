@@ -1,0 +1,28 @@
+{
+ "placeId": "pg",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Papua New Guinea",
+   "updated": "2025-04-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/papua-new-guinea-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Papua New Guinea",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/papua-new-guinea",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Papoea-Nieuw-Guinea",
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/papoea-nieuw-guinea",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

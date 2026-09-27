@@ -1,0 +1,28 @@
+{
+ "placeId": "zw",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Zimbabwe",
+   "updated": "2023-06-27",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.zwe.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Zimbabwe",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/zimbabwe",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Zimbabwe",
+   "updated": "2026-06-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zimbabwe",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

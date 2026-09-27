@@ -1,0 +1,28 @@
+{
+ "placeId": "ba",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Bosnia and Herzegovina",
+   "updated": "2026-08-27",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/bosinia-and-herzegovina-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Bosnia and Herzegovina",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/bosnia-and-herzegovina",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Bosnië en Herzegovina",
+   "updated": "2026-06-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/bosnie-en-herzegovina",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

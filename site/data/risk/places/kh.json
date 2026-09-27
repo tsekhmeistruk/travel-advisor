@@ -1,0 +1,28 @@
+{
+ "placeId": "kh",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Cambodia",
+   "updated": "2026-09-15",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.khm.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Cambodia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cambodia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Cambodja",
+   "updated": "2026-09-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cambodja",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

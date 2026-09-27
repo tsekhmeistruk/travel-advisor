@@ -1,0 +1,28 @@
+{
+ "placeId": "ec",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Ecuador",
+   "updated": "2026-08-18",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ecu.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Ecuador",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/ecuador",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Ecuador",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ecuador",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

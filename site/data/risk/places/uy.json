@@ -1,0 +1,28 @@
+{
+ "placeId": "uy",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Uruguay",
+   "updated": "2026-07-28",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ury.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Uruguay",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/uruguay",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Uruguay",
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/uruguay",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

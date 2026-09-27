@@ -1,0 +1,28 @@
+{
+ "placeId": "kn",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Saint Kitts and Nevis",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/saint-kitts-and-nevis-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Saint Kitts and Nevis",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-kitts-and-nevis",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Saint Kitts en Nevis",
+   "updated": "2026-06-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saint-kitts-en-nevis",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

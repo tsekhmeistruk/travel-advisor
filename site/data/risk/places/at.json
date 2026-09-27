@@ -1,0 +1,28 @@
+{
+ "placeId": "at",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Austria",
+   "updated": "2026-08-21",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/austria-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Austria",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/austria",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Oostenrijk",
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oostenrijk",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "tl",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Timor-Leste",
+   "updated": "2026-05-21",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/timor-leste-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Timor-Leste (East Timor)",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/timor-leste-east-timor",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Oost-Timor",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oost-timor",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

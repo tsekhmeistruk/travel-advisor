@@ -1,0 +1,28 @@
+{
+ "placeId": "na",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Namibia",
+   "updated": "2026-05-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/namibia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Namibia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/namibia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Namibië",
+   "updated": "2026-04-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/namibie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

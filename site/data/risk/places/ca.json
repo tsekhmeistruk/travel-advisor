@@ -1,0 +1,21 @@
+{
+ "placeId": "ca",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Canada",
+   "updated": "2026-06-05",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.can.html",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Canada",
+   "updated": "2026-08-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/canada",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

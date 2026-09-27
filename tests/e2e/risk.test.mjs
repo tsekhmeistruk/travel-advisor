@@ -241,3 +241,70 @@ describe('event markers', () => {
     });
   }
 });
+
+describe('country view', () => {
+  const view = (page) => page.evaluate(() => ({
+    open: !document.getElementById('countryView').hidden,
+    card: getComputedStyle(document.getElementById('details')).display !== 'none',
+    settings: [...document.querySelectorAll('.panel .section')].some(s => getComputedStyle(s).display !== 'none'),
+    name: document.querySelector('#countryView .cv-name')?.textContent ?? null,
+    hash: location.hash,
+  }));
+
+  for (const [width, height] of [[1440, 860], [390, 844]]) {
+    test(`at ${width}px opens from the card, replaces card, settings and feed, and goes back`, async () => {
+      const page = await openMode('highest', { width, height, intercept: withRiskChanges() });
+      await page.type('#search', 'japan');
+      await page.keyboard.press('Enter');
+      await sleep(900);
+      await page.click('#details [data-action="country"]');
+      await page.waitForSelector('#countryView .cv-name');
+      assert.deepEqual(await view(page), { open: true, card: false, settings: false, name: 'Japan', hash: '#mode=highest&place=jp&view=country' });
+      const text = await page.$eval('#countryView', el => el.innerText);
+      assert.match(text, /Disaster: Normal → Critical/, 'its injected level change');
+      assert.match(text, /Test cyclone gdacs:TC:900/, 'its injected alert');
+      assert.match(text, /U\.S\.[\s\S]*Level \d · /, 'each government in its own words');
+      const scroll = await page.evaluate(() => document.documentElement.scrollWidth);
+      assert.ok(scroll <= width, `scrollWidth ${scroll}`);
+      await page.screenshot({ path: `${OUT}country-view-${width}.png`, fullPage: width < 600 });
+      await page.click('#countryView [data-action="back"]');
+      assert.deepEqual(await view(page), { open: false, card: true, settings: true, name: null, hash: '#mode=highest&place=jp' });
+      assert.deepEqual(page.errors, []);
+      await page.close();
+    });
+  }
+
+  test('opens from a link, follows another selected country, closes with Escape', async () => {
+    const page = await openRaw({ hash: '#mode=disaster&place=mx&view=country', intercept: withRiskChanges() });
+    await page.waitForSelector('#countryView .cv-name');
+    assert.equal((await view(page)).name, 'Mexico');
+    await page.type('#search', 'japan');
+    await page.keyboard.press('Enter');
+    await page.waitForFunction(() => document.querySelector('#countryView .cv-name')?.textContent === 'Japan');
+    await page.keyboard.press('Escape');
+    assert.equal((await view(page)).open, false);
+    assert.equal((await view(page)).hash, '#mode=disaster&place=jp');
+    await page.close();
+  });
+
+  test('the history window filters the changes; an alert opens its event card; Travel has no country view', async () => {
+    const page = await openRaw({ hash: '#mode=highest&place=it&view=country', intercept: withRiskChanges() });
+    await page.waitForSelector('#countryView .cv-name');
+    const history = () => page.$$eval('#countryView .cv-history li', els => els.length);
+    assert.equal(await history(), 1, 'the 10-day-old change, in the 90-day default');
+    await page.click('#historySeg [data-history="7"]');
+    assert.equal(await page.$$eval('#countryView .cv-history', els => els.length), 0);
+    await page.close();
+
+    const jp = await openRaw({ hash: '#mode=disaster&place=jp&view=country', intercept: withRiskChanges() });
+    await jp.waitForSelector('#countryView [data-event]');
+    await jp.click('#countryView [data-event="gdacs:TC:900"]');
+    await sleep(900);
+    assert.equal((await view(jp)).open, false);
+    assert.match(await detailsTitle(jp), /Test cyclone gdacs:TC:900/);
+    await jp.click('#modeSwitch [data-mode="travel"]');
+    await sleep(300);
+    assert.equal(await jp.$('#details [data-action="country"]'), null, 'the travel card has no country view');
+    await jp.close();
+  });
+});

@@ -14,6 +14,7 @@ import { titleSize } from '../travel-advisories/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 export const WINDOWS = [1, 7, 30, 90];
+export const HISTORY_WINDOWS = [7, 30, 90, 365];
 const FEED_LIMIT = 50;
 const LEVELS = [1, 2, 3, 4];
 
@@ -24,7 +25,7 @@ const LEVELS = [1, 2, 3, 4];
 export function createRiskMode(ctx) {
   const { i18n, manifest, places, client, mode, view, category } = ctx;
   const now = () => ctx.now?.() ?? Date.now();
-  const settings = ctx.settings.scope('risk', { levels: LEVELS.slice(), recentDays: 30, direction: 'all', dimOthers: false });
+  const settings = ctx.settings.scope('risk', { levels: LEVELS.slice(), recentDays: 30, direction: 'all', dimOthers: false, historyDays: 90 });
   let current = null;
   let changes = [];
   let events = [];
@@ -46,6 +47,7 @@ export function createRiskMode(ctx) {
   if (!WINDOWS.includes(windowDays())) settings.set('recentDays', 30);
   if (!Array.isArray(levels())) settings.set('levels', LEVELS.slice());
   if (!['all', 'up', 'down'].includes(settings.get('direction'))) settings.set('direction', 'all');
+  if (!HISTORY_WINDOWS.includes(settings.get('historyDays'))) settings.set('historyDays', 90);
 
   const categories = view === 'category' ? new Set([category]) : null;
   const viewLevel = (id) => (view === 'category' ? levelOf(current, id, category) : highest(current, id).level);
@@ -137,11 +139,8 @@ export function createRiskMode(ctx) {
     return row.level == null ? tr('card.unavailable') : '';
   }
 
-  function cardHtml(placeId) {
-    const m = cardModel(placeId, { current, changes, events, now: now(), windowDays: windowDays() });
-    const name = placeName(placeId);
-    const level = viewLevel(placeId);
-    const rows = m.rows.map(r => `
+  function rowsHtml(rows) {
+    return rows.map(r => `
       <li class="${r.category === category ? 'is-focus' : ''}">
         <span class="swatch" style="background:${swatch(r.level)}"></span>
         <span class="cat">${esc(catName(r.category))}</span>
@@ -149,19 +148,86 @@ export function createRiskMode(ctx) {
         ${r.changed ? arrow(r.changed) : ''}
         <span class="basis" title="${esc(basisText(r))}">${esc(basisText(r))}</span>
       </li>`).join('');
-    const history = m.history.length
-      ? m.history.map(c => `<li>${arrow(direction(c))}<span class="what">${esc(changeText(c))}</span><span class="date">${esc(i18n.formatDate(c.at.slice(0, 10)))}</span></li>`).join('')
-      : `<li class="since none">${esc(tr('card.noChanges', { days: 90 }))}</li>`;
+  }
+  const historyRow = (c) => `<li>${arrow(direction(c))}<span class="what" title="${esc(changeText(c))}">${esc(changeText(c))}</span><span class="date">${esc(i18n.formatDate(c.at.slice(0, 10)))}</span></li>`;
+  const trendHtml = (trend) => (trend ? `${arrow(trend)}${esc(tr(trend === 'up' ? 'card.raised24' : 'card.lowered24'))}` : '');
+
+  function cardHtml(placeId) {
+    const m = cardModel(placeId, { current, changes, events, now: now(), windowDays: windowDays() });
+    const name = placeName(placeId);
+    const history = m.history.length ? m.history.map(historyRow).join('') : `<li class="since none">${esc(tr('card.noChanges', { days: 90 }))}</li>`;
     const link = safeUrl(m.link);
     return `
       <div class="eyebrow">${esc(tr('card.eyebrow'))}</div>
       <h3 class="${titleSize(name)}" title="${esc(name)}">${esc(name)}</h3>
-      ${badge(level, levelLabel(placeId))}
-      <div class="trend">${m.trend ? `${arrow(m.trend)}${esc(tr(m.trend === 'up' ? 'card.raised24' : 'card.lowered24'))}` : ''}</div>
-      <ul class="risk-rows">${rows}</ul>
+      ${badge(viewLevel(placeId), levelLabel(placeId))}
+      <div class="trend">${trendHtml(m.trend)}</div>
+      <ul class="risk-rows">${rowsHtml(m.rows)}</ul>
       <p class="later">${esc(tr('card.later'))}</p>
       <div class="history"><div class="history-label">${esc(tr('card.history'))}</div><ul class="history-list">${history}</ul></div>
-      ${link ? `<a class="link" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(link)}">${esc(tr('card.report', { source: sourceName('gdacs') }))}</a>` : ''}`;
+      <div class="card-actions">
+        <button class="link link-btn" data-action="country" data-place="${esc(placeId)}">${esc(tr('card.details'))}</button>
+        ${link ? `<a class="link" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(link)}">${esc(tr('card.report', { source: sourceName('gdacs') }))}</a>` : ''}
+      </div>`;
+  }
+
+  /**
+   * The full country view: every category, the active alerts, each government's advisory in its
+   * own words, and the place's change history (up to a year, from its place file).
+   * @param file  risk/places/<id>.json, or null if it couldn't be loaded (then: 90 days of changes)
+   */
+  function countryHtml(placeId, file) {
+    const m = cardModel(placeId, { current, changes, events, now: now(), windowDays: windowDays() });
+    const name = placeName(placeId);
+    const days = settings.get('historyDays');
+    const alerts = events.filter(e => (file ? file.events.includes(e.id) : e.placeIds.includes(placeId)));
+    const alertRows = alerts.map(e => `<li><button data-event="${esc(e.id)}" title="${esc(e.name)}">
+        <span class="swatch" style="background:${swatch(e.level)}"></span>
+        <span class="what">${esc(tr('country.alertRow', { alert: alertName(e.native.value), name: e.name }))}</span>
+        <span class="date">${esc(i18n.formatDate(e.startedAt.slice(0, 10)))}</span>
+      </button></li>`).join('');
+    const provider = (id, key, params) => i18n.t(`datasets.travel-advisories.providers.${id}.${key}`, params);
+    const advisories = Object.entries(file?.advisories ?? {}).map(([id, a]) => {
+      const url = safeUrl(a.url);
+      return `<li>
+        <img class="flag" src="assets/flags/${esc(id)}.svg" alt="" width="21" height="14">
+        <span class="who">${esc(provider(id, 'short'))}</span>
+        <span class="swatch" style="background:var(--l${a.level})"></span>
+        <span class="what" title="${esc(provider(id, `levels.${a.level}.name`))}">${esc(tr('country.advisoryLevel', { level: a.level, name: provider(id, `levels.${a.level}.name`) }))}${a.own ? '' : ` · ${esc(tr('country.coveredBy', { title: a.title }))}`}</span>
+        ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(tr('country.official', { date: i18n.formatDate(a.updated) }))}">↗</a>` : ''}
+      </li>`;
+    }).join('');
+    const all = file ? file.changes : changesFor(placeId, changes);
+    const history = all.filter(c => ageHours(c.at, now()) <= days * 24);
+    return `
+      <div class="cv-head">
+        <button class="back" data-action="back">← ${esc(tr('country.back'))}</button>
+        <div class="eyebrow">${esc(tr('country.eyebrow'))}</div>
+        <h2 class="cv-name">${esc(name)}</h2>
+        ${badge(highest(current, placeId).level, levelLabel(placeId))}
+        <div class="trend">${trendHtml(m.trend)}</div>
+      </div>
+      <section class="cv-section">
+        <h3 class="cv-title">${esc(tr('card.eyebrow'))}</h3>
+        <ul class="risk-rows">${rowsHtml(m.rows)}</ul>
+        <p class="later">${esc(tr('card.later'))}</p>
+      </section>
+      <section class="cv-section">
+        <h3 class="cv-title">${esc(tr('country.alerts'))} <span class="count">${alerts.length}</span></h3>
+        ${alerts.length ? `<ul class="cv-list alerts">${alertRows}</ul>` : `<p class="cv-empty">${esc(tr('country.noAlerts'))}</p>`}
+      </section>
+      <section class="cv-section">
+        <h3 class="cv-title">${esc(tr('country.advisories'))}</h3>
+        ${advisories ? `<ul class="cv-list advisories">${advisories}</ul>` : `<p class="cv-empty">${esc(tr('card.notCovered'))}</p>`}
+      </section>
+      <section class="cv-section">
+        <h3 class="cv-title">${esc(tr('card.history'))}</h3>
+        <div class="segmented" id="historySeg" role="radiogroup" aria-label="${esc(tr('country.historyWindow'))}">
+          ${HISTORY_WINDOWS.map(d => `<button role="radio" data-history="${d}" aria-checked="${d === days}">${esc(d === 365 ? tr('country.year') : tr('settings.days', { days: d }))}</button>`).join('')}
+        </div>
+        ${history.length ? `<ul class="history-list cv-history">${history.map(historyRow).join('')}</ul>` : `<p class="cv-empty">${esc(tr('feed.empty'))}</p>`}
+      </section>
+      <p class="cv-note">${esc(tr('country.note'))}</p>`;
   }
 
   /** The card of one event (a marker or a feed item): the source's facts, with our level beside them. */
@@ -237,6 +303,23 @@ export function createRiskMode(ctx) {
       if (event) return eventHtml(event);
       if (!target?.placeId) return overviewHtml();
       return cardHtml(target.placeId);
+    },
+
+    /**
+     * Render the country view of a place into `container` and handle its clicks:
+     * back() closes it, selectEvent(id) shows an alert. Loads the place's file first.
+     */
+    async renderCountryView(container, placeId, { back, selectEvent }) {
+      const file = await client.file(`${manifest.places}${placeId}.json`, manifest.asOf).catch(() => null);
+      const draw = () => { container.innerHTML = countryHtml(placeId, file); };
+      draw();
+      container.onclick = (e) => {
+        if (e.target.closest('[data-action="back"]')) return back();
+        const ev = e.target.closest('[data-event]');
+        if (ev) return selectEvent(ev.dataset.event);
+        const h = e.target.closest('[data-history]');
+        if (h) { settings.set('historyDays', Number(h.dataset.history)); draw(); }
+      };
     },
 
     /**

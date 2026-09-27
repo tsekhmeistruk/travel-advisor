@@ -1,0 +1,28 @@
+{
+ "placeId": "hk",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Hong Kong",
+   "updated": "2026-09-04",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/hong-kong-travel-advisory1.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Hong Kong",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/hong-kong",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Hongkong SAR",
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/hongkong",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

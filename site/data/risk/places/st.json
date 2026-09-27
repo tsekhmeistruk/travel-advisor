@@ -1,0 +1,28 @@
+{
+ "placeId": "st",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "São Tomé and Príncipe",
+   "updated": "2026-09-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.stp.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Sao Tome and Principe",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sao-tome-and-principe",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Sao Tomé en Principe",
+   "updated": "2026-08-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sao-tome-en-principe",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

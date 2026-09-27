@@ -1,0 +1,28 @@
+{
+ "placeId": "ve",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Venezuela",
+   "updated": "2026-06-27",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ven.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Venezuela",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/venezuela",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Venezuela",
+   "updated": "2026-09-04",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/venezuela",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "zm",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Zambia",
+   "updated": "2023-07-31",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.zmb.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Zambia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/zambia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Zambia",
+   "updated": "2026-05-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zambia",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

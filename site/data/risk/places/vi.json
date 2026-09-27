@@ -1,0 +1,21 @@
+{
+ "placeId": "vi",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "Virgin Islands (U.S.)",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/virgin-islands-u-s",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Amerikaanse Maagdeneilanden",
+   "updated": "2026-06-12",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/amerikaanse-maagdeneilanden",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

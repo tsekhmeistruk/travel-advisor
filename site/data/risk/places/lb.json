@@ -1,0 +1,28 @@
+{
+ "placeId": "lb",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Lebanon",
+   "updated": "2026-08-21",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lbn.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Lebanon",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/lebanon",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Libanon",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/libanon",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

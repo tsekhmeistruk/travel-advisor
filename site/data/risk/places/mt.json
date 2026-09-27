@@ -1,0 +1,28 @@
+{
+ "placeId": "mt",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Malta",
+   "updated": "2026-07-09",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mlt.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Malta",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/malta",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Malta",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/malta",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "ch",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Switzerland",
+   "updated": "2026-08-14",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.che.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Switzerland",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/switzerland",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Zwitserland",
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zwitserland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

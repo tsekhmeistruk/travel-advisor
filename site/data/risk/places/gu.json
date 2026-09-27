@@ -1,0 +1,14 @@
+{
+ "placeId": "gu",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "Guam",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/guam",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

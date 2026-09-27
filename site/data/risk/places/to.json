@@ -1,0 +1,28 @@
+{
+ "placeId": "to",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Tonga",
+   "updated": "2024-12-02",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/tonga-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Tonga",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/tonga",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Tonga",
+   "updated": "2026-04-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/tonga",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

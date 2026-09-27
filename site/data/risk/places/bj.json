@@ -1,0 +1,28 @@
+{
+ "placeId": "bj",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Benin",
+   "updated": "2026-01-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/benin-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Benin",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/benin",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Benin",
+   "updated": "2026-07-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/benin",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

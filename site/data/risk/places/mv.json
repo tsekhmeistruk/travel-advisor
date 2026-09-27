@@ -1,0 +1,28 @@
+{
+ "placeId": "mv",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Maldives",
+   "updated": "2025-10-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/maldives-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Maldives",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/maldives",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Maldiven",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/maldiven",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

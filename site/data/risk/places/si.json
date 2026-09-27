@@ -1,0 +1,28 @@
+{
+ "placeId": "si",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Slovenia",
+   "updated": "2026-05-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/slovenia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Slovenia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/slovenia",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Slovenië",
+   "updated": "2026-07-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/slovenie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

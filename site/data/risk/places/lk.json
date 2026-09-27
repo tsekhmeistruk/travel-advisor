@@ -1,0 +1,28 @@
+{
+ "placeId": "lk",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Sri Lanka",
+   "updated": "2025-10-14",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lka.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Sri Lanka",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/sri-lanka",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Sri Lanka",
+   "updated": "2026-09-14",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/sri-lanka",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

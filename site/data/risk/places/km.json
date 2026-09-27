@@ -1,0 +1,28 @@
+{
+ "placeId": "km",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Comoros",
+   "updated": "2026-01-12",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/comoros-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Comoros",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/comoros",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Comoren",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/comoren",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

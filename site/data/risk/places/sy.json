@@ -1,0 +1,28 @@
+{
+ "placeId": "sy",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Syria",
+   "updated": "2026-08-07",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.syr.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Syria",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/syria",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Syrië",
+   "updated": "2026-09-24",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/syrie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

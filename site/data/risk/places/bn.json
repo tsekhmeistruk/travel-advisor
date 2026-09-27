@@ -1,0 +1,28 @@
+{
+ "placeId": "bn",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Brunei",
+   "updated": "2026-05-14",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/brunei-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Brunei",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/brunei",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Brunei Darussalam",
+   "updated": "2026-07-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/brunei-darussalam",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

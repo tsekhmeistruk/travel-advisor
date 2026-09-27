@@ -1,0 +1,28 @@
+{
+ "placeId": "ws",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Samoa",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/samoa-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Samoa",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/samoa",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Samoa",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/samoa",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

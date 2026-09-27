@@ -1,0 +1,28 @@
+{
+ "placeId": "my",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Malaysia",
+   "updated": "2026-02-22",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/malaysia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Malaysia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/malaysia",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Maleisië",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/maleisie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

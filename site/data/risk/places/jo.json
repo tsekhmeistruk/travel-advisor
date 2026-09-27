@@ -1,0 +1,28 @@
+{
+ "placeId": "jo",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Jordan",
+   "updated": "2026-08-29",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.jor.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Jordan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/jordan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Jordanië",
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/jordanie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

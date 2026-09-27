@@ -1,0 +1,28 @@
+{
+ "placeId": "cg",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Republic of the Congo",
+   "updated": "2024-10-02",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/republic-of-the-congo-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Republic of Congo (Brazzaville)",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/congo-brazzaville",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Congo, de Republiek",
+   "updated": "2026-09-15",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/congo-de-republiek",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

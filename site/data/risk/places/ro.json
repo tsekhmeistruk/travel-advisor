@@ -1,0 +1,28 @@
+{
+ "placeId": "ro",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Romania",
+   "updated": "2025-10-14",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/romania-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Romania",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/romania",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Roemenië",
+   "updated": "2026-09-16",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/roemenie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

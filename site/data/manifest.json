@@ -51,6 +51,7 @@
   "current": "risk/current.json",
   "changes": "risk/changes.json",
   "events": "risk/events.json",
-  "health": "risk/health.json"
+  "health": "risk/health.json",
+  "places": "risk/places/"
  }
 }

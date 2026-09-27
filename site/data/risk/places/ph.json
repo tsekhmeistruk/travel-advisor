@@ -1,0 +1,28 @@
+{
+ "placeId": "ph",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Philippines",
+   "updated": "2026-09-01",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.phl.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Philippines",
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/philippines",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Filipijnen",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/filipijnen",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

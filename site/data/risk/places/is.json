@@ -1,0 +1,28 @@
+{
+ "placeId": "is",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Iceland",
+   "updated": "2026-05-05",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/iceland-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Iceland",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/iceland",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "IJsland",
+   "updated": "2026-04-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/ijsland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

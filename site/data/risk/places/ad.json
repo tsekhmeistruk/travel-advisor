@@ -1,0 +1,28 @@
+{
+ "placeId": "ad",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Andorra",
+   "updated": "2026-05-21",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/andorra-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Andorra",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/andorra",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Andorra",
+   "updated": "2026-07-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/andorra",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

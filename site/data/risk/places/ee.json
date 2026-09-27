@@ -1,0 +1,28 @@
+{
+ "placeId": "ee",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Estonia",
+   "updated": "2026-03-31",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/estonia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Estonia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/estonia",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Estland",
+   "updated": "2026-09-17",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/estland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

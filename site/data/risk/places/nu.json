@@ -1,0 +1,21 @@
+{
+ "placeId": "nu",
+ "advisories": {
+  "ca": {
+   "level": 1,
+   "title": "Niue",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/niue",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Niue",
+   "updated": "2026-06-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/niue",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

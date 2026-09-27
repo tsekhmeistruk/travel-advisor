@@ -1,0 +1,28 @@
+{
+ "placeId": "sc",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Seychelles",
+   "updated": "2025-12-09",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/seychelles-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Seychelles",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/seychelles",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Seychellen",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/seychellen",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

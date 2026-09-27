@@ -1,0 +1,28 @@
+{
+ "placeId": "pk",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Pakistan",
+   "updated": "2026-06-16",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.pak.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Pakistan",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/pakistan",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Pakistan",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/pakistan",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

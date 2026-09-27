@@ -1,0 +1,28 @@
+{
+ "placeId": "md",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Moldova",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/moldova-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Moldova",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/moldova",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Moldavië",
+   "updated": "2026-09-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/moldavie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

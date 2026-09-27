@@ -1,0 +1,28 @@
+{
+ "placeId": "tt",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Trinidad and Tobago",
+   "updated": "2026-04-13",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/trinidad-and-tobago-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Trinidad and Tobago",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/trinidad-and-tobago",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Trinidad en Tobago",
+   "updated": "2026-09-25",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/trinidad-en-tobago",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

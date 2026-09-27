@@ -55,15 +55,25 @@ const EVENTS = [
   { id: 'gdacs:EQ:9', source: 'gdacs', ...DATES, category: 'disaster', type: 'earthquake', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Offshore quake', placeIds: [] },
   { id: 'gdacs:DR:3', source: 'gdacs', ...DATES, category: 'disaster', type: 'drought', level: 2, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Drought', placeIds: ['so', 'ke'] },
 ];
-const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json' };
+const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json', places: 'risk/places/' };
+// A place file as the build writes it: advisories, active event ids, a year of changes.
+const MX_FILE = {
+  placeId: 'mx',
+  advisories: {
+    us: { level: 2, title: 'Mexico', updated: '2026-05-29', url: 'https://travel.state.gov/mx', own: true },
+    ca: { level: 3, title: 'North <America>', updated: '2026-09-26', url: 'javascript:alert(1)', own: false },
+  },
+  events: ['gdacs:TC:1', 'gdacs:EQ:2'],
+  changes: [CHANGES[0], CHANGES[1], { id: 'mx:travel:old', at: '2026-01-10', kind: 'advisory', category: 'travel', source: 'us', placeIds: ['mx'], from: 1, to: 2, up: true }],
+};
 
 let ds, changes, requested, storage;
 async function create({ view = 'highest', category, mode = view === 'category' ? category : view, saved = {}, current = CURRENT } = {}) {
   storage = new Map(Object.entries({ 'travel-risk-map:settings': JSON.stringify({ risk: saved }) }));
   const settings = createSettings('travel-risk-map:settings', {}, { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) });
   requested = [];
-  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS } };
-  const client = { file: async (path, version) => { requested.push([path, version]); return files[path]; } };
+  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS }, 'risk/places/mx.json': MX_FILE };
+  const client = { file: async (path, version) => { requested.push([path, version]); if (!files[path]) throw new Error('HTTP 404'); return files[path]; } };
   changes = 0;
   ds = createRiskMode({
     i18n: createI18n({ locale: 'en', messages: EN, today: new Date(NOW) }), settings, client, manifest: MANIFEST, places: PLACES,
@@ -143,12 +153,15 @@ describe('logic', () => {
 
 describe('url state', () => {
   test('reads and writes the mode and the selected place', () => {
-    assert.deepEqual(parseHash('#mode=disaster&place=mx'), { mode: 'disaster', place: 'mx' });
-    assert.deepEqual(parseHash(''), { mode: null, place: null });
-    assert.deepEqual(parseHash(undefined), { mode: null, place: null });
+    assert.deepEqual(parseHash('#mode=disaster&place=mx'), { mode: 'disaster', place: 'mx', view: null });
+    assert.deepEqual(parseHash(''), { mode: null, place: null, view: null });
+    assert.deepEqual(parseHash(undefined), { mode: null, place: null, view: null });
     assert.equal(formatHash({ mode: 'travel' }), '#mode=travel');
     assert.equal(formatHash({ mode: 'disaster', place: 'mx' }), '#mode=disaster&place=mx');
     assert.equal(formatHash({}), '');
+    assert.deepEqual(parseHash('#mode=highest&place=mx&view=country'), { mode: 'highest', place: 'mx', view: 'country' });
+    assert.equal(formatHash({ mode: 'highest', place: 'mx', view: 'country' }), '#mode=highest&place=mx&view=country');
+    assert.equal(formatHash({ mode: 'highest', view: 'country' }), '#mode=highest', 'a view needs a place');
   });
 });
 
@@ -231,6 +244,7 @@ describe('details card', () => {
     assert.match(html, /New GDACS Orange alert: tropical cyclone/);
     assert.match(html, /href="https:\/\/www\.gdacs\.org\/report\.aspx\?eventid=1"/);
     assert.match(html, /Security, unrest and health: coming later/);
+    assert.match(html, /<button class="link link-btn" data-action="country" data-place="mx">Country details →<\/button>/);
   });
   test('a place with no data says so, and without changes says that', () => {
     const html = ds.details({ placeId: 'aq' });
@@ -428,5 +442,73 @@ describe('markers', () => {
     assert.match(ds.legend(), /legend-marker/);
     await create({ view: 'changes' });
     assert.doesNotMatch(ds.legend(), /legend-marker/);
+  });
+});
+
+describe('country view', () => {
+  const container = () => ({ innerHTML: '' });
+  const click = (el, attrs) => el.onclick({ target: { closest: (sel) => {
+    const m = sel.match(/^\[data-(\w+)(?:="(\w+)")?\]$/);
+    if (!m) return null;
+    const [, name, value] = m;
+    if (!(name in attrs) || (value && attrs[name] !== value)) return null;
+    return { dataset: { [name]: String(attrs[name]) } };
+  } } });
+
+  test('shows every category, the active alerts, each government in its own words, and the history', async () => {
+    const el = container();
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    assert.deepEqual(requested.at(-1), ['risk/places/mx.json', CURRENT.asOf], 'the place file, versioned');
+    const html = el.innerHTML;
+    assert.match(html, /<h2 class="cv-name">Mexico<\/h2>/);
+    assert.match(html, /High · Disaster/);
+    assert.equal((html.match(/<li class="">/g) ?? []).length + (html.match(/<li class="is-focus">/g) ?? []).length, 3, 'three category rows');
+    assert.match(html, /Active alerts <span class="count">2<\/span>/);
+    assert.match(html, /Orange: Tropical Cyclone &lt;b&gt;X&lt;\/b&gt;/);
+    assert.match(html, /U\.S\.<\/span>[\s\S]*Level 2 · Exercise increased caution/);
+    assert.match(html, /Level 3 · Avoid non-essential travel · under North &lt;America&gt;/, 'a covering advisory says so');
+    assert.match(html, /href="https:\/\/travel\.state\.gov\/mx"/);
+    assert.doesNotMatch(html, /javascript:/);
+    assert.match(html, /data-history="90" aria-checked="true"/);
+    assert.match(html, /Disaster: Normal → High/);
+    assert.doesNotMatch(html, /Level 1 → 2/, 'the January change is outside 90 days');
+    assert.match(html, /not official levels/);
+  });
+
+  test('the history window reaches back a year, and is saved', async () => {
+    const el = container();
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    click(el, { history: 365 });
+    assert.match(el.innerHTML, /U\.S\.: Level 1 → 2/);
+    assert.match(el.innerHTML, /data-history="365" aria-checked="true"/);
+    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.historyDays, 365);
+    click(el, { history: 7 });
+    assert.doesNotMatch(el.innerHTML, /U\.S\.: Level 1 → 2/);
+  });
+
+  test('back and an alert call their handlers', async () => {
+    const el = container();
+    const calls = [];
+    await ds.renderCountryView(el, 'mx', { back: () => calls.push('back'), selectEvent: (id) => calls.push(id) });
+    click(el, { action: 'back' });
+    click(el, { event: 'gdacs:TC:1' });
+    click(el, {});
+    assert.deepEqual(calls, ['back', 'gdacs:TC:1']);
+  });
+
+  test('without a place file it falls back to the loaded changes and events', async () => {
+    const el = container();
+    await ds.renderCountryView(el, 'so', { back() {}, selectEvent() {} });
+    assert.match(el.innerHTML, /U\.S\.: Level 3 → 4/);
+    assert.match(el.innerHTML, /Active alerts <span class="count">1<\/span>/, 'the drought');
+    assert.match(el.innerHTML, /No advisory/, 'no advisories without the file');
+    await ds.renderCountryView(el, 'aq', { back() {}, selectEvent() {} });
+    assert.match(el.innerHTML, /No active alerts\./);
+    assert.match(el.innerHTML, /No changes in this period\./);
+  });
+
+  test('an invalid saved history window falls back to 90 days', async () => {
+    await create({ saved: { historyDays: 12 } });
+    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.historyDays, 90);
   });
 });

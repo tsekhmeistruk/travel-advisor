@@ -57,7 +57,11 @@ export function buildAll(input) {
   const files = { ...site.files, ...JSON.parse(JSON.stringify(risk.files)) };
   files['manifest.json'] = {
     ...site.files['manifest.json'],
-    risk: { asOf: risk.files['risk/current.json'].asOf, ...Object.fromEntries(Object.keys(risk.files).map(p => [p.slice(5, -5), p])) },
+    risk: {
+      asOf: risk.files['risk/current.json'].asOf,
+      ...Object.fromEntries(['current', 'changes', 'events', 'health'].map(name => [name, `risk/${name}.json`])),
+      places: 'risk/places/',   // + <placeId>.json, one per place
+    },
   };
   return { files, problems: site.problems, warnings: risk.warnings, state: JSON.parse(JSON.stringify(risk.state)), newChanges: risk.newChanges };
 }

@@ -1,0 +1,28 @@
+{
+ "placeId": "ae",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "United Arab Emirates",
+   "updated": "2026-08-29",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/united-arab-emirates-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "United Arab Emirates",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/united-arab-emirates",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Verenigde Arabische Emiraten",
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/verenigde-arabische-emiraten",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

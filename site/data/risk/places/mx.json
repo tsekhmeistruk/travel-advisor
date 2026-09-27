@@ -1,0 +1,32 @@
+{
+ "placeId": "mx",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Mexico",
+   "updated": "2026-05-29",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mex.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Mexico",
+   "updated": "2026-09-26",
+   "url": "https://travel.gc.ca/destinations/mexico",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Mexico",
+   "updated": "2026-09-23",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/mexico",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:TC:1001329",
+  "gdacs:TC:1001325",
+  "gdacs:FL:1104099"
+ ],
+ "changes": []
+}

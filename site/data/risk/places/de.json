@@ -1,0 +1,28 @@
+{
+ "placeId": "de",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Germany",
+   "updated": "2025-05-13",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/germany-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Germany",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/germany",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Duitsland",
+   "updated": "2026-08-27",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/duitsland",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

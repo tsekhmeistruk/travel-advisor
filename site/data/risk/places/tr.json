@@ -1,0 +1,30 @@
+{
+ "placeId": "tr",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Turkey",
+   "updated": "2026-06-09",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/turkey-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Türkiye",
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/turkiye",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Turkije",
+   "updated": "2026-09-10",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/turkije",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:FL:1104183"
+ ],
+ "changes": []
+}

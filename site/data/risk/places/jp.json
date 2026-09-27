@@ -1,0 +1,30 @@
+{
+ "placeId": "jp",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Japan",
+   "updated": "2025-05-15",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/japan-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Japan",
+   "updated": "2026-09-25",
+   "url": "https://travel.gc.ca/destinations/japan",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Japan",
+   "updated": "2026-08-26",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/japan",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:TC:1001327"
+ ],
+ "changes": []
+}

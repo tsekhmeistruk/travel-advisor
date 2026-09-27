@@ -1,0 +1,28 @@
+{
+ "placeId": "mk",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "North Macedonia",
+   "updated": "2025-01-14",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/north-macedonia-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "North Macedonia",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/north-macedonia",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Noord-Macedonië",
+   "updated": "2026-05-29",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/noord-macedonie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

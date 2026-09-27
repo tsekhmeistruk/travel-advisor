@@ -90,6 +90,21 @@ describe('risk data', () => {
     }
   });
 
+  test('every place has a place file, with only its own changes and events, and valid advisories', () => {
+    const eventIds = new Set(risk('events').events.map(e => e.id));
+    for (const id of placeIds) {
+      const file = store.published(`${manifest.risk.places}${id}.json`);
+      assert.ok(file, `no place file for ${id}`);
+      assert.equal(file.placeId, id);
+      for (const c of file.changes) assert.ok((c.placeIds ?? [c.placeId]).includes(id), `${id}: change ${c.id} is about another place`);
+      for (const e of file.events) assert.ok(eventIds.has(e), `${id}: ${e} is not an active event`);
+      for (const [p, a] of Object.entries(file.advisories)) {
+        assert.ok(levels.has(a.level), `${id}/${p}: level`);
+        if (a.url) assert.match(a.url, /^https:\/\//, `${id}/${p}: url`);
+      }
+    }
+  });
+
   test('every scheduled provider and source has a health entry', () => {
     assert.deepEqual(Object.keys(risk('health').sources).sort(), Object.keys(store.schedule()).sort());
     for (const [id, h] of Object.entries(risk('health').sources)) assert.ok(['healthy', 'delayed', 'error'].includes(h.status), id);

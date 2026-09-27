@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { placeIndex } from '../../../scripts/lib/build.mjs';
 import {
   healthStatus, travelSignals, eventLevel, isActive, eventPlaces, eventSignals, updateSignals, eventChanges,
-  advisoryChanges, buildRisk, CHANGE_WINDOW_DAYS,
+  advisoryChanges, buildRisk, placeFiles, CHANGE_WINDOW_DAYS, PLACE_HISTORY_DAYS,
 } from '../../../scripts/lib/risk.mjs';
 
 const PLACES = [
@@ -265,6 +265,8 @@ describe('buildRisk', () => {
     assert.equal(files['risk/events.json'].events.length, 2);
     assert.match(warnings.join('\n'), /gdacs:EQ:2 .* is on no place; shown as a marker only/);
     assert.deepEqual(Object.keys(files['risk/health.json'].sources), ['gdacs', 'us']);
+    assert.deepEqual(files['risk/places/mx.json'].events, ['gdacs:TC:1']);
+    assert.equal(Object.keys(files).filter(p => p.startsWith('risk/places/')).length, PLACES.length, 'a file per place');
     assert.equal(files['risk/health.json'].sources.us.status, 'healthy');
   });
 
@@ -307,5 +309,41 @@ describe('buildRisk', () => {
     assert.equal(files['risk/current.json'].asOf, null);
     assert.deepEqual(files['risk/changes.json'].changes, []);
     assert.equal(files['risk/health.json'].sources.gdacs.status, 'error');
+  });
+});
+
+describe('placeFiles', () => {
+  const files = {
+    us: { records: [{ title: 'Somalia', level: 4, updated: '2026-09-01', url: 'https://u/so', places: ['so'], covers: ['somaliland'] }] },
+    ca: { records: [
+      { title: 'Somaliland', level: 3, updated: '2026-09-02', url: 'https://c/sl', places: ['somaliland'] },
+      { title: 'Somalia', level: 4, updated: '2026-09-03', url: 'https://c/so', places: ['so'], covers: ['somaliland'] },
+    ] },
+  };
+  const events = [{ id: 'e1', placeIds: ['so', 'somaliland'] }, { id: 'e2', placeIds: [] }];
+  const changes = [
+    { id: 'old', at: '2025-06-01', placeIds: ['so'] },
+    { id: 'a', at: '2026-09-20', placeIds: ['so', 'somaliland'] },
+    { id: 'b', at: '2026-09-26T10:00:00.000Z', placeId: 'so' },
+  ];
+  const out = placeFiles({ placeIds: ['so', 'somaliland', 'jp'], advisoryFiles: files, events, changes, asOf: '2026-09-27T00:00:00.000Z' });
+
+  test('writes one file per place, even for a place with nothing', () => {
+    assert.deepEqual(Object.keys(out), ['risk/places/so.json', 'risk/places/somaliland.json', 'risk/places/jp.json']);
+    assert.deepEqual(out['risk/places/jp.json'], { placeId: 'jp', advisories: {}, events: [], changes: [] });
+  });
+  test('lists each government\'s advisory; a place\'s own advisory wins over one that covers it', () => {
+    assert.deepEqual(out['risk/places/so.json'].advisories, {
+      us: { level: 4, title: 'Somalia', updated: '2026-09-01', url: 'https://u/so', own: true },
+      ca: { level: 4, title: 'Somalia', updated: '2026-09-03', url: 'https://c/so', own: true },
+    });
+    const sl = out['risk/places/somaliland.json'].advisories;
+    assert.deepEqual([sl.us.title, sl.us.own, sl.ca.title, sl.ca.own], ['Somalia', false, 'Somaliland', true]);
+  });
+  test('lists the place\'s active events and its changes of the last year, newest first', () => {
+    assert.deepEqual(out['risk/places/so.json'].events, ['e1']);
+    assert.deepEqual(out['risk/places/so.json'].changes.map(c => c.id), ['b', 'a']);
+    assert.deepEqual(out['risk/places/somaliland.json'].changes.map(c => c.id), ['a']);
+    assert.equal(PLACE_HISTORY_DAYS, 365);
   });
 });

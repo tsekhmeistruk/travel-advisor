@@ -1,0 +1,28 @@
+{
+ "placeId": "fm",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Federated States of Micronesia",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.fsm.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Micronesia (FSM)",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/micronesia-fsm",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Micronesië",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/micronesie",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

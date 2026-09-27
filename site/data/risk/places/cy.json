@@ -1,0 +1,44 @@
+{
+ "placeId": "cy",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Cyprus",
+   "updated": "2026-06-01",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cyp.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Cyprus",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/cyprus",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Cyprus",
+   "updated": "2026-09-18",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/cyprus",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": [
+  {
+   "id": "advisory:us:Cyprus:2026-06-01",
+   "at": "2026-06-01",
+   "kind": "advisory",
+   "category": "travel",
+   "source": "us",
+   "title": "Cyprus",
+   "placeIds": [
+    "cy"
+   ],
+   "from": null,
+   "to": 1,
+   "up": false,
+   "seeded": true
+  }
+ ]
+}

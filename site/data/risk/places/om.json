@@ -1,0 +1,28 @@
+{
+ "placeId": "om",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Oman",
+   "updated": "2026-08-30",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.omn.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Oman",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/oman",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Oman",
+   "updated": "2026-09-08",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/oman",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

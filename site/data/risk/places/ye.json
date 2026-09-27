@@ -1,0 +1,28 @@
+{
+ "placeId": "ye",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Yemen",
+   "updated": "2025-12-19",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/yemen-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Yemen",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/yemen",
+   "own": true
+  },
+  "nl": {
+   "level": 4,
+   "title": "Jemen",
+   "updated": "2026-09-16",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/jemen",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

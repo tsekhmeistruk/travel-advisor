@@ -1,0 +1,28 @@
+{
+ "placeId": "nr",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Nauru",
+   "updated": "2024-12-02",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nauru-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Nauru",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nauru",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Nauru",
+   "updated": "2026-07-22",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nauru",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

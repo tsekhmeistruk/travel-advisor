@@ -1,0 +1,28 @@
+{
+ "placeId": "vc",
+ "advisories": {
+  "us": {
+   "level": 1,
+   "title": "Saint Vincent and the Grenadines",
+   "updated": "2026-07-07",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.vct.html",
+   "own": true
+  },
+  "ca": {
+   "level": 1,
+   "title": "Saint Vincent & the Grenadines",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/saint-vincent-the-grenadines",
+   "own": true
+  },
+  "nl": {
+   "level": 1,
+   "title": "Saint Vincent en de Grenadines",
+   "updated": "2026-03-19",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/saint-vincent-en-de-grenadines",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

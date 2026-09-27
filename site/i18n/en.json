@@ -289,7 +289,22 @@
    "later": "Security, unrest and health: coming later",
    "history": "Recent changes",
    "noChanges": "No changes in the last {days} days.",
-   "report": "{source} report ↗"
+   "report": "{source} report ↗",
+   "details": "Country details →"
+  },
+  "country": {
+   "back": "Back to the map",
+   "eyebrow": "Country risk",
+   "alerts": "Active alerts",
+   "alertRow": "{alert}: {name}",
+   "noAlerts": "No active alerts.",
+   "advisories": "Travel advisories",
+   "advisoryLevel": "Level {level} · {name}",
+   "coveredBy": "under {title}",
+   "official": "Official advisory, updated {date}",
+   "historyWindow": "History period",
+   "year": "1 year",
+   "note": "Risk levels are our summary of official and UN sources, not official levels. Each government's advisory is in its own words above."
   },
   "change": {
    "level": "{category}: {from} → {to}",

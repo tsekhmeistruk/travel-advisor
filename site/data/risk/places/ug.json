@@ -1,0 +1,28 @@
+{
+ "placeId": "ug",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Uganda",
+   "updated": "2026-06-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.uga.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Uganda",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/uganda",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Uganda",
+   "updated": "2026-09-09",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/uganda",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

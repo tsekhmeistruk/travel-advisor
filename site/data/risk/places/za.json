@@ -1,0 +1,28 @@
+{
+ "placeId": "za",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "South Africa",
+   "updated": "2025-05-27",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/south-africa-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "South Africa",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/south-africa",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Zuid-Afrika",
+   "updated": "2026-07-07",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/zuid-afrika",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

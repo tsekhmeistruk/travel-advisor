@@ -1,0 +1,28 @@
+{
+ "placeId": "jm",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Jamaica",
+   "updated": "2026-06-23",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/jamaica-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Jamaica",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/jamaica",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Jamaica",
+   "updated": "2026-09-02",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/jamaica",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "ma",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "Morocco",
+   "updated": "2026-09-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.mar.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "Morocco",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/morocco",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "Marokko",
+   "updated": "2026-07-30",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/marokko",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

@@ -1,0 +1,28 @@
+{
+ "placeId": "cn",
+ "advisories": {
+  "us": {
+   "level": 2,
+   "title": "China",
+   "updated": "2026-09-04",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.chn.html",
+   "own": true
+  },
+  "ca": {
+   "level": 2,
+   "title": "China",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/china",
+   "own": true
+  },
+  "nl": {
+   "level": 2,
+   "title": "China",
+   "updated": "2026-08-28",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/china",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

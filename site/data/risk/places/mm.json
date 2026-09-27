@@ -1,0 +1,28 @@
+{
+ "placeId": "mm",
+ "advisories": {
+  "us": {
+   "level": 4,
+   "title": "Burma",
+   "updated": "2026-05-08",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/burma-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 4,
+   "title": "Myanmar",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/myanmar",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Myanmar",
+   "updated": "2026-08-11",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/myanmar",
+   "own": true
+  }
+ },
+ "events": [],
+ "changes": []
+}

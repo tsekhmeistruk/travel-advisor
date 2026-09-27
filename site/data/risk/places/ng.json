@@ -1,0 +1,30 @@
+{
+ "placeId": "ng",
+ "advisories": {
+  "us": {
+   "level": 3,
+   "title": "Nigeria",
+   "updated": "2026-06-12",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nigeria-travel-advisory.html",
+   "own": true
+  },
+  "ca": {
+   "level": 3,
+   "title": "Nigeria",
+   "updated": "2026-09-24",
+   "url": "https://travel.gc.ca/destinations/nigeria",
+   "own": true
+  },
+  "nl": {
+   "level": 3,
+   "title": "Nigeria",
+   "updated": "2026-07-06",
+   "url": "https://www.nederlandwereldwijd.nl/reisadvies/nigeria",
+   "own": true
+  }
+ },
+ "events": [
+  "gdacs:FL:1104186"
+ ],
+ "changes": []
+}
