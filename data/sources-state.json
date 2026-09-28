@@ -14,15 +14,15 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-09-28T19:40:02.556Z",
-  "lastSuccess": "2026-09-28T19:40:02.556Z",
-  "durationMs": 4013,
+  "lastAttempt": "2026-09-28T23:57:42.639Z",
+  "lastSuccess": "2026-09-28T23:57:42.639Z",
+  "durationMs": 3618,
   "records": 67,
   "consecutiveFailures": 0
  },
  "gdelt": {
-  "lastAttempt": "2026-09-28T16:14:27.583Z",
-  "lastSuccess": "2026-09-28T16:14:27.583Z",
+  "lastAttempt": "2026-09-28T23:57:46.313Z",
+  "lastSuccess": "2026-09-28T23:57:46.313Z",
   "durationMs": 6,
   "records": 0,
   "consecutiveFailures": 0

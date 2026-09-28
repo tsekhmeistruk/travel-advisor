@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-28T19:40:06.637Z",
+ "asOf": "2026-09-28T23:57:46.313Z",
  "events": [
   {
    "id": "gdacs:TC:1001330",
@@ -12,16 +12,16 @@
     "value": "Green"
    },
    "name": "Tropical Cyclone HANNA-26",
-   "severity": "Tropical Storm (maximum wind speed of 74 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -50.4,
-    "lat": 36.6
+    "lon": -48.7,
+    "lat": 36.5
    },
    "startedAt": "2026-09-28T15:00:00.000Z",
-   "toDate": "2026-09-28T15:00:00.000Z",
+   "toDate": "2026-09-28T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=1&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=2&eventtype=TC"
   },
   {
    "id": "gdacs:VO:1000150",
@@ -64,13 +64,13 @@
     "mx"
    ],
    "point": {
-    "lon": -101.2,
-    "lat": 13.8
+    "lon": -102.1,
+    "lat": 14.2
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-28T15:00:00.000Z",
+   "toDate": "2026-09-28T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=6&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=7&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -185,13 +185,13 @@
     "jp"
    ],
    "point": {
-    "lon": 132.8,
-    "lat": 27.5
+    "lon": 133.2,
+    "lat": 28.1
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-28T12:00:00.000Z",
+   "toDate": "2026-09-28T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=22&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=23&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104190",
@@ -323,10 +323,10 @@
    "source": "gdacs",
    "type": "cyclone",
    "category": "disaster",
-   "level": 1,
+   "level": 3,
    "native": {
     "scheme": "gdacs-alert",
-    "value": "Green"
+    "value": "Orange"
    },
    "name": "Tropical Cyclone POLO-26",
    "country": "Mexico",
@@ -335,13 +335,13 @@
     "mx"
    ],
    "point": {
-    "lon": -113.5,
-    "lat": 24.2
+    "lon": -113,
+    "lat": 25
    },
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-28T15:00:00.000Z",
+   "toDate": "2026-09-28T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=32&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=33&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001324",
@@ -379,13 +379,13 @@
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -44.6,
-    "lat": 27.1
+    "lon": -45.3,
+    "lat": 26.6
    },
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-28T15:00:00.000Z",
+   "toDate": "2026-09-28T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=34&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=35&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104176",
@@ -504,13 +504,13 @@
     "us"
    ],
    "point": {
-    "lon": -162.3,
-    "lat": 17.1
+    "lon": -163.1,
+    "lat": 17.7
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-28T15:00:00.000Z",
+   "toDate": "2026-09-28T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=32&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=33&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",
@@ -649,8 +649,8 @@
     "it"
    ],
    "point": {
-    "lon": 13.575,
-    "lat": 37.312
+    "lon": 14.946,
+    "lat": 37.878
    },
    "startedAt": "2026-07-26T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",

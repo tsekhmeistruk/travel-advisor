@@ -6,3 +6,5 @@
 {"id":"in:disaster:2026-09-28T11:59:27.360Z","at":"2026-09-28T11:59:27.360Z","kind":"level","category":"disaster","placeId":"in","from":1,"to":3,"up":true,"basis":["gdacs:FL:1104121"],"sources":["gdacs"]}
 {"id":"gdacs:TC:1001325:2026-09-28T15:37:04.553Z","at":"2026-09-28T15:37:04.553Z","kind":"event","category":"disaster","source":"gdacs","eventId":"gdacs:TC:1001325","type":"cyclone","placeIds":["mx"],"from":3,"to":1,"up":false,"native":"Green"}
 {"id":"mx:disaster:2026-09-28T19:40:02.557Z","at":"2026-09-28T19:40:02.557Z","kind":"level","category":"disaster","placeId":"mx","from":4,"to":1,"up":false,"basis":["gdacs:FL:1104099","gdacs:TC:1001325","gdacs:TC:1001329"],"sources":["gdacs"]}
+{"id":"gdacs:TC:1001325:2026-09-28T23:57:42.640Z","at":"2026-09-28T23:57:42.640Z","kind":"event","category":"disaster","source":"gdacs","eventId":"gdacs:TC:1001325","type":"cyclone","placeIds":["mx"],"from":1,"to":3,"up":true,"native":"Orange"}
+{"id":"mx:disaster:2026-09-28T23:57:42.640Z","at":"2026-09-28T23:57:42.640Z","kind":"level","category":"disaster","placeId":"mx","from":1,"to":3,"up":true,"basis":["gdacs:TC:1001325"],"sources":["gdacs"]}

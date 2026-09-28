@@ -43,6 +43,38 @@
  ],
  "changes": [
   {
+   "id": "mx:disaster:2026-09-28T23:57:42.640Z",
+   "at": "2026-09-28T23:57:42.640Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "mx",
+   "from": 1,
+   "to": 3,
+   "up": true,
+   "basis": [
+    "gdacs:TC:1001325"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001325:2026-09-28T23:57:42.640Z",
+   "at": "2026-09-28T23:57:42.640Z",
+   "kind": "event",
+   "category": "disaster",
+   "source": "gdacs",
+   "eventId": "gdacs:TC:1001325",
+   "type": "cyclone",
+   "placeIds": [
+    "mx"
+   ],
+   "from": 1,
+   "to": 3,
+   "up": true,
+   "native": "Orange"
+  },
+  {
    "id": "mx:disaster:2026-09-28T19:40:02.557Z",
    "at": "2026-09-28T19:40:02.557Z",
    "kind": "level",
