@@ -10,8 +10,8 @@
   },
   "de": {
    "status": "healthy",
-   "lastSuccess": "2026-09-28T15:35:58.883Z",
-   "lastAttempt": "2026-09-28T15:35:58.883Z",
+   "lastSuccess": "2026-09-28T15:53:12.348Z",
+   "lastAttempt": "2026-09-28T15:53:12.348Z",
    "consecutiveFailures": 0,
    "records": 200
   },
