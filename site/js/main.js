@@ -56,8 +56,12 @@ async function main() {
   const places = new Map(placeList.map(p => [p.id, p]));
   const modes = MODES.filter(m => m.entry(manifest));
   const pickMode = (id) => modes.find(m => m.id === id) ?? modes.find(m => m.id === DEFAULT_MODE) ?? modes[0];
+  // The country view comes from a risk mode; a mode without one (Travel) borrows one.
+  const viewerMode = modes.find(m => m.id === 'highest');
+  let borrowedViewer = null;
+  const countryViewer = async () => (dataset.renderCountryView ? dataset : viewerMode ? (borrowedViewer ??= await createDataset(viewerMode)) : null);
   const createDataset = async (m) => {
-    const ds = m.create({ i18n, settings, client, manifest: m.entry(manifest), places, changed: () => refresh() });
+    const ds = m.create({ i18n, settings, client, manifest: m.entry(manifest), places, changed: () => refresh(), countryView: !!viewerMode });
     await ds.load();
     return ds;
   };
@@ -164,7 +168,7 @@ async function main() {
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && countryOpen) closeCountry({ toUrl: true }); });
 
   async function openCountry(placeId, { toUrl = false } = {}) {
-    if (!dataset.renderCountryView || !places.has(placeId)) return;
+    if (!places.has(placeId) || !(await countryViewer())) return;
     if (selected?.placeId !== placeId || selected?.eventId) select({ placeId });
     countryOpen = true;
     $('panel').classList.add('is-country');
@@ -172,10 +176,11 @@ async function main() {
     await renderCountry(placeId);
     if (toUrl) writeUrl();
   }
-  function renderCountry(placeId) {
-    return dataset.renderCountryView($('countryView'), placeId, {
+  async function renderCountry(placeId) {
+    const viewer = await countryViewer();
+    return viewer.renderCountryView($('countryView'), placeId, {
       back: () => closeCountry({ toUrl: true }),
-      selectEvent: (id) => { closeCountry(); select(dataset.eventTarget(id), { zoom: true, toUrl: true }); },
+      selectEvent: (id) => { closeCountry(); select(viewer.eventTarget(id), { zoom: true, toUrl: true }); },
     });
   }
   function closeCountry({ toUrl = false } = {}) {
@@ -201,7 +206,7 @@ async function main() {
     map.setSelectedMarker(null);
     refresh();
     if (countryOpen) {
-      if (dataset.renderCountryView && selected?.placeId) await renderCountry(selected.placeId);
+      if (selected?.placeId) await renderCountry(selected.placeId);
       else closeCountry();
     }
     if (toUrl) writeUrl();

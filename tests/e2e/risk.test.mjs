@@ -291,7 +291,7 @@ describe('country view', () => {
     await page.close();
   });
 
-  test('the history window filters the changes; an alert opens its event card; Travel has no country view', async () => {
+  test('the history window filters the changes; an alert opens its event card; Travel opens it too', async () => {
     const page = await openRaw({ hash: '#mode=highest&place=it&view=country', intercept: withRiskChanges() });
     await page.waitForSelector('#countryView .cv-name');
     // The injected 10-day-old fall (High → Elevated); real changes may be listed too.
@@ -309,7 +309,10 @@ describe('country view', () => {
     assert.match(await detailsTitle(jp), /Test cyclone gdacs:TC:900/);
     await jp.click('#modeSwitch [data-mode="travel"]');
     await sleep(300);
-    assert.equal(await jp.$('#details [data-action="country"]'), null, 'the travel card has no country view');
+    await jp.click('#details [data-action="country"]');
+    await jp.waitForSelector('#countryView .cv-name');
+    assert.equal((await view(jp)).name, 'Japan', 'the travel card opens the country view too');
+    assert.match(await jp.evaluate(() => location.hash), /^#mode=travel&place=jp&view=country$/);
     await jp.close();
   });
 });

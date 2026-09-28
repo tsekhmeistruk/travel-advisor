@@ -11,7 +11,7 @@ import { startRunLog, withRunLog, logFile } from '../../../scripts/lib/fetch-log
 import { FileStore } from '../../../scripts/lib/store.mjs';
 import { runFetch } from '../../../scripts/fetch.mjs';
 import { runDue } from '../../../scripts/due.mjs';
-import { readEntries, renderRunSummary, renderRecent, result, callSummary, describe as describeRun, duration, cell, flagEmoji, providerLabels } from '../../../scripts/lib/log-summary.mjs';
+import { readEntries, renderRunSummary, renderRecent, result, callSummary, describe as describeRun, duration, cell, flagEmoji, providerLabels, renderHealth } from '../../../scripts/lib/log-summary.mjs';
 import { serve } from '../../../scripts/serve.mjs';
 
 const tmp = () => mkdtempSync(join(tmpdir(), 'trm-test-'));
@@ -319,6 +319,18 @@ describe('log summary', () => {
     assert.equal(labels.us, '🇺🇸 U.S.');
     assert.equal(labels.ca, '🇨🇦 Canada');
     assert.equal(labels.gdacs, '🌐 GDACS');
+  });
+  test('renders each source\'s health: status, last success, failures in a row', () => {
+    const md = renderHealth({ sources: {
+      gdacs: { status: 'healthy', lastSuccess: '2026-09-28T15:37:04.551Z', consecutiveFailures: 0 },
+      us: { status: 'error', consecutiveFailures: 3, error: 'API failed | x' },
+      who: { status: 'delayed', lastSuccess: '2026-09-27T01:00:00.000Z' },
+    } }, { labels: { us: '🇺🇸 U.S.' } });
+    assert.match(md, /^### Source health/);
+    assert.match(md, /\| gdacs \| ✅ Healthy \| 2026-09-28 15:37 \| 0 \|/);
+    assert.match(md, /\| 🇺🇸 U\.S\. \| ❌ Error \| never \| 3 \(API failed \\\| x\) \|/);
+    assert.match(md, /\| who \| ⚠️ Delayed \| 2026-09-27 01:00 \| 0 \|/);
+    assert.match(renderHealth({}), /No health data yet/);
   });
   test('describes a counts source run: days counted, gaps, or up to date', () => {
     assert.equal(describeRun({ ...ok, stats: { counted: ['2026-09-26', '2026-09-27'], gaps: ['2026-09-20'], through: '2026-09-27' } }),

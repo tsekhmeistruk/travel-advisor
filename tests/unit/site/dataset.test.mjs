@@ -47,12 +47,12 @@ const CA = { ...US, provider: 'ca', asOf: '2026-09-01', links: { list: 'javascri
   records: [{ title: 'Myanmar', level: 3, updated: '2026-09-10', places: ['mm'], levelChanges: [{ date: '2026-09-10', from: 4, to: 3, up: false }], trackedSince: SINCE }] };
 
 let ds, changes;
-async function create(saved = {}) {
+async function create(saved = {}, { countryView = true } = {}) {
   const storage = new Map(Object.entries({ 'travel-risk-map:settings': JSON.stringify({ 'travel-advisories': saved }) }));
   const settings = createSettings('travel-risk-map:settings', {}, { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) });
   const client = { file: async (path) => (path.endsWith('/ca.json') ? CA : US) };
   changes = 0;
-  ds = createTravelAdvisories({ i18n: createI18n({ locale: 'en', messages: EN, today: TODAY }), settings, client, manifest: MANIFEST, places: PLACES, changed: () => changes++ });
+  ds = createTravelAdvisories({ i18n: createI18n({ locale: 'en', messages: EN, today: TODAY }), settings, client, manifest: MANIFEST, places: PLACES, changed: () => changes++, countryView });
   await ds.load();
   return ds;
 }
@@ -108,6 +108,12 @@ describe('details card', () => {
     assert.match(html, /<h3[^>]*>Myanmar<\/h3>/);
     assert.match(html, /Level 4 · Do not travel/);
     assert.match(html, /href="https:\/\/travel\.state\.gov\/mm"/);
+  });
+  test('offers the country view for a place, when the site has one', async () => {
+    assert.match(ds.details({ placeId: 'mm' }), /<button class="link-btn cv-open" data-action="country" data-place="mm">Country details →<\/button>/);
+    assert.doesNotMatch(ds.details({ recordKey: 'French West Indies' }), /data-action="country"/, 'a record without a place: no country');
+    await create({}, { countryView: false });
+    assert.doesNotMatch(ds.details({ placeId: 'mm' }), /data-action="country"/, 'no risk data: no country view');
   });
   test('escapes text from the source', () => {
     const html = ds.details({ recordKey: US.records[5].title });

@@ -61,6 +61,24 @@ export function renderRunSummary(entries, { labels = {}, logLink } = {}) {
   return lines.join('\n');
 }
 
+const STATUS = { healthy: '✅ Healthy', delayed: '⚠️ Delayed', error: '❌ Error' };
+
+/**
+ * Table of every provider's and source's health (site/data/risk/health.json), for the run's
+ * page: status, last success and failures in a row.
+ */
+export function renderHealth(health, { labels = {} } = {}) {
+  const lines = ['### Source health', ''];
+  const entries = Object.entries(health?.sources ?? {});
+  if (!entries.length) return [...lines, 'No health data yet.'].join('\n');
+  lines.push('| Source | Status | Last success (UTC) | Failures in a row |', '|---|---|---|---|');
+  for (const [id, h] of entries) {
+    const last = h.lastSuccess ? h.lastSuccess.slice(0, 16).replace('T', ' ') : 'never';
+    lines.push(`| ${cell(labels[id] ?? id)} | ${STATUS[h.status] ?? h.status} | ${last} | ${h.consecutiveFailures ?? 0}${h.error ? ` (${cell(h.error)})` : ''} |`);
+  }
+  return lines.join('\n');
+}
+
 /** Table of every run in the last `days` days. */
 export function renderRecent(entries, { labels = {}, days }) {
   const lines = [`Fetch runs in the last ${days} days`, ''];

@@ -61,7 +61,8 @@
     "noChange": "No level change since tracking began on {date}.",
     "regional": "Regional advisories",
     "regionalTitle": "Some areas of this destination have a different, often higher, risk level",
-    "readMore": "Official advisory: {host} ↗"
+    "readMore": "Official advisory: {host} ↗",
+    "country": "Country details →"
    },
    "change": {
     "fromTo": "Level {from} → {to}",
