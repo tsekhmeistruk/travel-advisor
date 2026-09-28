@@ -5,7 +5,8 @@
 //   jitter=true|false
 //
 // Environment: EVENT (github.event_name), SEED (the repository), SOURCES (a manual run's
-// input: "all" or ids). Usage: node scripts/due.mjs
+// input: "all", ids, or "due"). "due" makes a manual run behave like a scheduled one, for an
+// external scheduler that starts the workflow through the API. Usage: node scripts/due.mjs
 
 import { appendFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -16,7 +17,7 @@ import { FileStore } from './lib/store.mjs';
 export function runDue({ store = new FileStore(), env = process.env, now = new Date() } = {}) {
   const result = dueSources({
     schedule: store.schedule(), state: store.sourcesState(), now,
-    seed: env.SEED ?? 'local', manual: env.EVENT === 'workflow_dispatch', only: env.SOURCES ?? '',
+    seed: env.SEED ?? 'local', manual: env.EVENT === 'workflow_dispatch' && env.SOURCES?.trim() !== 'due', only: env.SOURCES ?? '',
   });
   const lines = Object.entries(result.reasons).map(([id, why]) => `${result.due.includes(id) ? 'run ' : 'skip'} ${id}: ${why}`);
   return { ...result, output: `due=,${result.due.join(',')},\nany=${result.due.length > 0}\njitter=${result.jitter}\n`, lines };

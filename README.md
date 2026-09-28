@@ -40,7 +40,7 @@ Advisory levels are simplified to 1–4 for every source. Always read the full o
 2. **Build:** `node scripts/build.mjs` matches every advisory to a place, compares each level with the level history to record changes, derives the risk signals and their changes, and writes the site's data (`site/data/`).
 3. **Commit, test and deploy:** the bot commits the data and fetch logs, then `.github/workflows/deploy.yml` runs all tests. It deploys `site/` to GitHub Pages **only if every test passes**. If a test fails, the live site keeps its last good version.
 
-If anything fails, the run is marked failed, which sends you an email, and the next hourly run retries. To update immediately, use **Actions → Update data → Run workflow** (optionally naming only some sources, e.g. `gdacs`).
+If anything fails, the run is marked failed, which sends you an email, and the next hourly run retries. To update immediately, use **Actions → Update data → Run workflow** (optionally naming only some sources, e.g. `gdacs`). GitHub runs scheduled workflows late or not at all under load, so for dependable hourly updates an external scheduler can start the workflow through the API with `sources` set to `due`, which fetches only what is due, like a scheduled run.
 
 The code is organized so that more providers, other datasets (e.g. flight statistics), more languages and a database can be added without restructuring. See **[docs/architecture.md](docs/architecture.md)** for the design, the data formats, and step-by-step guides for each.
 

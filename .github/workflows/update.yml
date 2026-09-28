@@ -19,7 +19,7 @@ on:
   workflow_dispatch:   # "Run workflow" button: fetches now, without waiting for a slot
     inputs:
       sources:
-        description: 'What to fetch: "all", or ids separated by spaces (us ca nl gdacs who)'
+        description: 'What to fetch: "all", ids separated by spaces (us ca nl gdacs who), or "due" (only what is due, like a scheduled run)'
         default: all
 
 permissions:

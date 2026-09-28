@@ -127,6 +127,10 @@ describe('due check (scripts/due.mjs)', () => {
     const r = runDue({ store, env: { EVENT: 'workflow_dispatch', SOURCES: 'gdacs' }, now: new Date('2026-09-27T09:30:00Z') });
     assert.equal(r.output, 'due=,gdacs,\nany=true\njitter=false\n');
   });
+  test('a manual run with "due" behaves like a scheduled one (for an external scheduler)', () => {
+    const r = runDue({ store, env: { SEED: 'tsekhmeistruk/travel-advisor', EVENT: 'workflow_dispatch', SOURCES: 'due' }, now: new Date('2026-09-27T09:30:00Z') });
+    assert.equal(r.output, 'due=,,\nany=false\njitter=false\n', 'the U.S. slot is at 14:xx and GDACS ran 10 minutes ago');
+  });
   test('nothing due gives an empty list', () => {
     const quietStore = { ...store, sourcesState: () => ({ us: { lastSuccess: '2026-09-27T05:00:00Z' }, gdacs: { lastSuccess: '2026-09-27T09:20:00Z' } }) };
     const r = runDue({ store: quietStore, env: {}, now: new Date('2026-09-27T09:30:00Z') });
