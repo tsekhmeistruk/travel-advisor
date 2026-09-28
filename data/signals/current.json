@@ -2,20 +2,12 @@
  "categories": {
   "disaster": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-28T00:50:46.466Z",
+   "at": "2026-09-28T05:21:22.352Z",
    "places": {
-    "in": {
-     "level": 3,
-     "basis": [
-      "gdacs:TC:1001326"
-     ],
-     "pending": {
-      "level": 1,
-      "firstSeen": "2026-09-28T00:50:46.466Z"
-     }
-    },
     "mx": {
-     "level": 3,
+     "level": 4,
+     "since": "2026-09-28T05:21:22.352Z",
+     "from": 3,
      "basis": [
       "gdacs:TC:1001325"
      ]
@@ -24,7 +16,7 @@
   },
   "wildfire": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-28T00:50:46.466Z",
+   "at": "2026-09-28T05:21:22.352Z",
    "places": {}
   },
   "health": {

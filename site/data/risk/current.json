@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-28T02:27:37.550Z",
+ "asOf": "2026-09-28T05:21:22.352Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -24,16 +24,16 @@
     "gdacs"
    ],
    "default": 1,
-   "status": "delayed",
-   "at": "2026-09-28T00:50:46.466Z"
+   "status": "healthy",
+   "at": "2026-09-28T05:21:22.352Z"
   },
   "wildfire": {
    "sources": [
     "gdacs"
    ],
    "default": 1,
-   "status": "delayed",
-   "at": "2026-09-28T00:50:46.466Z"
+   "status": "healthy",
+   "at": "2026-09-28T05:21:22.352Z"
   },
   "health": {
    "sources": [
@@ -1280,12 +1280,6 @@
      "uk": 3
     },
     "agree": 1
-   },
-   "disaster": {
-    "level": 3,
-    "basis": [
-     "gdacs:TC:1001326"
-    ]
    }
   },
   "io": {
@@ -1892,7 +1886,9 @@
     "agree": 4
    },
    "disaster": {
-    "level": 3,
+    "level": 4,
+    "since": "2026-09-28T05:21:22.352Z",
+    "from": 3,
     "basis": [
      "gdacs:TC:1001325"
     ]

@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-28T02:27:37.550Z",
+ "asOf": "2026-09-28T05:21:22.352Z",
  "events": [
   {
    "id": "gdacs:TC:1001329",
@@ -18,13 +18,13 @@
     "mx"
    ],
    "point": {
-    "lon": -99.1,
-    "lat": 12.6
+    "lon": -99.8,
+    "lat": 12.9
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=3&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=4&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -88,13 +88,13 @@
     "jp"
    ],
    "point": {
-    "lon": 130,
-    "lat": 26.3
+    "lon": 130.9,
+    "lat": 26.6
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-27T18:00:00.000Z",
+   "toDate": "2026-09-28T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=19&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=20&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104190",
@@ -226,10 +226,10 @@
    "source": "gdacs",
    "type": "cyclone",
    "category": "disaster",
-   "level": 3,
+   "level": 4,
    "native": {
     "scheme": "gdacs-alert",
-    "value": "Orange"
+    "value": "Red"
    },
    "name": "Tropical Cyclone POLO-26",
    "country": "Mexico",
@@ -238,38 +238,13 @@
     "mx"
    ],
    "point": {
-    "lon": -114.1,
-    "lat": 21.9
+    "lon": -114,
+    "lat": 22.8
    },
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=29&eventtype=TC"
-  },
-  {
-   "id": "gdacs:FL:1104186",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Nigeria",
-   "country": "Nigeria",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "ng"
-   ],
-   "point": {
-    "lon": 7.515,
-    "lat": 5.454
-   },
-   "startedAt": "2026-09-21T01:00:00.000Z",
-   "toDate": "2026-09-24T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104186&episodeid=3&eventtype=FL"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=30&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001324",
@@ -307,13 +282,13 @@
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -44,
-    "lat": 28.9
+    "lon": -43.8,
+    "lat": 28.5
    },
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=31&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=32&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104178",
@@ -377,18 +352,18 @@
    },
    "name": "Tropical Cyclone NOLO-26",
    "country": "United States",
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h)",
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 259 km/h)",
    "placeIds": [
     "us"
    ],
    "point": {
-    "lon": -159.3,
-    "lat": 16.2
+    "lon": -160.3,
+    "lat": 16.3
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=29&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=30&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",
@@ -409,31 +384,6 @@
    "toDate": "2026-09-10T08:52:02.000Z",
    "current": false,
    "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617"
-  },
-  {
-   "id": "gdacs:FL:1104141",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Vietnam",
-   "country": "Vietnam",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "vn"
-   ],
-   "point": {
-    "lon": 106.661,
-    "lat": 10.782
-   },
-   "startedAt": "2026-09-03T01:00:00.000Z",
-   "toDate": "2026-09-24T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104141&episodeid=8&eventtype=FL"
   },
   {
    "id": "gdacs:FL:1104122",

@@ -35,5 +35,38 @@
   "gdacs:TC:1001325",
   "gdacs:FL:1104099"
  ],
- "changes": []
+ "changes": [
+  {
+   "id": "mx:disaster:2026-09-28T05:21:22.352Z",
+   "at": "2026-09-28T05:21:22.352Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "mx",
+   "from": 3,
+   "to": 4,
+   "up": true,
+   "basis": [
+    "gdacs:TC:1001325"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001325:2026-09-28T05:21:22.352Z",
+   "at": "2026-09-28T05:21:22.352Z",
+   "kind": "event",
+   "category": "disaster",
+   "source": "gdacs",
+   "eventId": "gdacs:TC:1001325",
+   "type": "cyclone",
+   "placeIds": [
+    "mx"
+   ],
+   "from": 3,
+   "to": 4,
+   "up": true,
+   "native": "Red"
+  }
+ ]
 }

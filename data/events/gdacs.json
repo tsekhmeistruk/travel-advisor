@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-28T00:50:46.466Z",
+ "fetchedAt": "2026-09-28T05:21:22.352Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -46,7 +46,7 @@
    "episode": 22,
    "severity": "Medium impact for agricultural drought in 1264372 km2",
    "startedAt": "2025-12-21T00:00:00.000Z",
-   "toDate": "2026-09-25T00:00:00.000Z",
+   "toDate": "2026-09-26T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1018332&episodeid=22&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -76,7 +76,7 @@
    "episode": 15,
    "severity": "Medium impact for agricultural drought in 97655 km2",
    "startedAt": "2025-11-21T00:00:00.000Z",
-   "toDate": "2026-09-25T00:00:00.000Z",
+   "toDate": "2026-09-26T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1018431&episodeid=15&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -115,7 +115,7 @@
    "episode": 9,
    "severity": "Medium impact for agricultural drought in 677277 km2",
    "startedAt": "2026-04-21T00:00:00.000Z",
-   "toDate": "2026-09-25T00:00:00.000Z",
+   "toDate": "2026-09-26T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027449&episodeid=9&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -152,7 +152,7 @@
    "episode": 9,
    "severity": "Medium impact for agricultural drought in 752713 km2",
    "startedAt": "2026-04-21T00:00:00.000Z",
-   "toDate": "2026-09-25T00:00:00.000Z",
+   "toDate": "2026-09-26T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027450&episodeid=9&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -185,7 +185,7 @@
    "episode": 6,
    "severity": "Medium impact for agricultural drought in 196893 km2",
    "startedAt": "2026-05-21T00:00:00.000Z",
-   "toDate": "2026-09-25T00:00:00.000Z",
+   "toDate": "2026-09-26T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027465&episodeid=6&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -516,7 +516,7 @@
    "severity": "Magnitude 0 ",
    "startedAt": "2026-09-03T01:00:00.000Z",
    "toDate": "2026-09-24T01:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104141&episodeid=8&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
@@ -617,36 +617,6 @@
    ]
   },
   {
-   "id": "gdacs:FL:1104154",
-   "code": "FL",
-   "name": "Flood in India",
-   "country": "India",
-   "iso3": [
-    "IND"
-   ],
-   "point": {
-    "lon": 88.181,
-    "lat": 27.419
-   },
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "episode": 2,
-   "severity": "Magnitude 0 ",
-   "startedAt": "2026-09-12T01:00:00.000Z",
-   "toDate": "2026-09-14T01:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104154&episodeid=2&eventtype=FL",
-   "firstSeen": "2026-09-27T17:38:30.045Z",
-   "revisions": [
-    {
-     "at": "2026-09-27T17:38:30.045Z",
-     "value": "Green"
-    }
-   ]
-  },
-  {
    "id": "gdacs:FL:1104157",
    "code": "FL",
    "name": "Flood in Nepal",
@@ -668,36 +638,6 @@
    "toDate": "2026-09-15T01:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104157&episodeid=2&eventtype=FL",
-   "firstSeen": "2026-09-27T17:38:30.045Z",
-   "revisions": [
-    {
-     "at": "2026-09-27T17:38:30.045Z",
-     "value": "Green"
-    }
-   ]
-  },
-  {
-   "id": "gdacs:FL:1104159",
-   "code": "FL",
-   "name": "Flood in Kenya",
-   "country": "Kenya",
-   "iso3": [
-    "KEN"
-   ],
-   "point": {
-    "lon": 39.664,
-    "lat": -4.035
-   },
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "episode": 1,
-   "severity": "Magnitude 0 ",
-   "startedAt": "2026-09-12T01:00:00.000Z",
-   "toDate": "2026-09-14T01:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104159&episodeid=1&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -758,36 +698,6 @@
    "toDate": "2026-09-16T01:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104161&episodeid=1&eventtype=FL",
-   "firstSeen": "2026-09-27T17:38:30.045Z",
-   "revisions": [
-    {
-     "at": "2026-09-27T17:38:30.045Z",
-     "value": "Green"
-    }
-   ]
-  },
-  {
-   "id": "gdacs:FL:1104164",
-   "code": "FL",
-   "name": "Flood in Albania",
-   "country": "Albania",
-   "iso3": [
-    "ALB"
-   ],
-   "point": {
-    "lon": 20.082,
-    "lat": 41.113
-   },
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "episode": 1,
-   "severity": "Magnitude 0 ",
-   "startedAt": "2026-09-12T01:00:00.000Z",
-   "toDate": "2026-09-14T01:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104164&episodeid=1&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1326,7 +1236,7 @@
    "severity": "Magnitude 0 ",
    "startedAt": "2026-09-21T01:00:00.000Z",
    "toDate": "2026-09-24T01:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104186&episodeid=3&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
@@ -1673,19 +1583,19 @@
     "USA"
    ],
    "point": {
-    "lon": -159.3,
-    "lat": 16.2
+    "lon": -160.3,
+    "lat": 16.3
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 29,
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 231 km/h)",
+   "episode": 30,
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 259 km/h)",
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=29&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=30&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1730,19 +1640,19 @@
    "name": "Tropical Cyclone FAY-26",
    "iso3": [],
    "point": {
-    "lon": -44,
-    "lat": 28.9
+    "lon": -43.8,
+    "lat": 28.5
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 31,
+   "episode": 32,
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=31&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=32&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1787,24 +1697,28 @@
     "MEX"
    ],
    "point": {
-    "lon": -114.1,
-    "lat": 21.9
+    "lon": -114,
+    "lat": 22.8
    },
    "native": {
     "scheme": "gdacs-alert",
-    "value": "Orange"
+    "value": "Red"
    },
-   "episode": 29,
+   "episode": 30,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 287 km/h)",
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=29&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=30&eventtype=TC",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Orange"
+    },
+    {
+     "at": "2026-09-28T05:21:22.352Z",
+     "value": "Red"
     }
    ]
   },
@@ -1847,19 +1761,19 @@
     "JPN"
    ],
    "point": {
-    "lon": 130,
-    "lat": 26.3
+    "lon": 130.9,
+    "lat": 26.6
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 19,
+   "episode": 20,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 241 km/h)",
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-27T18:00:00.000Z",
+   "toDate": "2026-09-28T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=19&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=20&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1907,19 +1821,19 @@
     "MEX"
    ],
    "point": {
-    "lon": -99.1,
-    "lat": 12.6
+    "lon": -99.8,
+    "lat": 12.9
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 3,
+   "episode": 4,
    "severity": "Tropical Storm (maximum wind speed of 157 km/h)",
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-27T21:00:00.000Z",
+   "toDate": "2026-09-28T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=3&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=4&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
