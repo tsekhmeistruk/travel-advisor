@@ -28,26 +28,26 @@
     {
      "id": "us",
      "flag": "us",
-     "asOf": "2026-09-27",
+     "asOf": "2026-09-28",
      "file": "travel-advisories/us.json"
     },
     {
      "id": "ca",
      "flag": "ca",
-     "asOf": "2026-09-27",
+     "asOf": "2026-09-28",
      "file": "travel-advisories/ca.json"
     },
     {
      "id": "nl",
      "flag": "nl",
-     "asOf": "2026-09-27",
+     "asOf": "2026-09-28",
      "file": "travel-advisories/nl.json"
     }
    ]
   }
  ],
  "risk": {
-  "asOf": "2026-09-27T23:59:06.691Z",
+  "asOf": "2026-09-28T01:10:53.774Z",
   "current": "risk/current.json",
   "changes": "risk/changes.json",
   "events": "risk/events.json",

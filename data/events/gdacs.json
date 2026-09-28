@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-27T23:59:06.691Z",
+ "fetchedAt": "2026-09-28T00:50:46.466Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -1828,7 +1828,7 @@
    "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
    "startedAt": "2026-09-22T18:00:00.000Z",
    "toDate": "2026-09-24T00:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1001326&episodeid=6&eventtype=TC",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [

@@ -5,7 +5,7 @@
    "level": 4,
    "title": "Russia",
    "updated": "2025-12-29",
-   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/russia-travel-advisory.html",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.rus.html",
    "own": true
   },
   "ca": {
@@ -23,8 +23,6 @@
    "own": true
   }
  },
- "events": [
-  "gdacs:VO:1000149"
- ],
+ "events": [],
  "changes": []
 }

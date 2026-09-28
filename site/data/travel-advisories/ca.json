@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "ca",
- "asOf": "2026-09-27",
+ "asOf": "2026-09-28",
  "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "links": {
   "list": "https://travel.gc.ca/travelling/advisories"
@@ -280,7 +280,7 @@
   {
    "title": "Bolivia",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-09-27",
    "url": "https://travel.gc.ca/destinations/bolivia",
    "regional": true,
    "places": [
@@ -1371,7 +1371,7 @@
   {
    "title": "Mexico",
    "level": 2,
-   "updated": "2026-09-26",
+   "updated": "2026-09-27",
    "url": "https://travel.gc.ca/destinations/mexico",
    "regional": true,
    "places": [

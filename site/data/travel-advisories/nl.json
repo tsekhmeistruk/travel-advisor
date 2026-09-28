@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "nl",
- "asOf": "2026-09-27",
+ "asOf": "2026-09-28",
  "source": "https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice",
  "links": {
   "list": "https://www.nederlandwereldwijd.nl/reisadvies"

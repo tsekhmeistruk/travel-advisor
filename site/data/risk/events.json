@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-27T23:59:06.691Z",
+ "asOf": "2026-09-28T01:10:53.774Z",
  "events": [
   {
    "id": "gdacs:TC:1001329",
@@ -222,31 +222,6 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1104196&episodeid=2&eventtype=FL"
   },
   {
-   "id": "gdacs:TC:1001326",
-   "source": "gdacs",
-   "type": "cyclone",
-   "category": "disaster",
-   "level": 3,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Orange"
-   },
-   "name": "Tropical Cyclone ONE-26",
-   "country": "India",
-   "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
-   "placeIds": [
-    "in"
-   ],
-   "point": {
-    "lon": 83.7,
-    "lat": 18.1
-   },
-   "startedAt": "2026-09-22T18:00:00.000Z",
-   "toDate": "2026-09-24T00:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001326&episodeid=6&eventtype=TC"
-  },
-  {
    "id": "gdacs:TC:1001325",
    "source": "gdacs",
    "type": "cyclone",
@@ -295,30 +270,6 @@
    "toDate": "2026-09-24T01:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104186&episodeid=3&eventtype=FL"
-  },
-  {
-   "id": "gdacs:VO:1000149",
-   "source": "gdacs",
-   "type": "volcano",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Eruption  Chikurachki",
-   "country": "Russia",
-   "placeIds": [
-    "ru"
-   ],
-   "point": {
-    "lon": 155.461,
-    "lat": 50.324
-   },
-   "startedAt": "2026-09-21T00:00:00.000Z",
-   "toDate": "2026-09-21T00:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1000149&episodeid=1&eventtype=VO"
   },
   {
    "id": "gdacs:TC:1001324",

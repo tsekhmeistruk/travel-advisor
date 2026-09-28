@@ -1,36 +1,36 @@
 {
  "ca": {
-  "lastAttempt": "2026-09-27T04:25:12.534Z",
-  "lastSuccess": "2026-09-27T04:25:12.534Z",
-  "durationMs": 1736,
+  "lastAttempt": "2026-09-28T01:10:51.043Z",
+  "lastSuccess": "2026-09-28T01:10:51.043Z",
+  "durationMs": 2686,
   "records": 230,
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-09-27T23:59:06.690Z",
-  "lastSuccess": "2026-09-27T23:59:06.690Z",
-  "durationMs": 2565,
+  "lastAttempt": "2026-09-28T00:50:46.466Z",
+  "lastSuccess": "2026-09-28T00:50:46.466Z",
+  "durationMs": 2804,
   "records": 65,
   "consecutiveFailures": 0
  },
  "nl": {
-  "lastAttempt": "2026-09-27T04:25:14.335Z",
-  "lastSuccess": "2026-09-27T04:25:14.335Z",
-  "durationMs": 1943,
+  "lastAttempt": "2026-09-28T01:10:53.774Z",
+  "lastSuccess": "2026-09-28T01:10:53.774Z",
+  "durationMs": 2981,
   "records": 226,
   "consecutiveFailures": 0
  },
  "us": {
-  "lastAttempt": "2026-09-27T04:25:11.069Z",
-  "lastSuccess": "2026-09-27T04:25:11.069Z",
-  "durationMs": 1399,
+  "lastAttempt": "2026-09-28T01:10:50.190Z",
+  "lastSuccess": "2026-09-28T01:10:50.190Z",
+  "durationMs": 809,
   "records": 219,
   "consecutiveFailures": 0
  },
  "who": {
-  "lastAttempt": "2026-09-27T18:18:00.947Z",
-  "lastSuccess": "2026-09-27T18:18:00.947Z",
-  "durationMs": 357,
+  "lastAttempt": "2026-09-28T00:50:49.314Z",
+  "lastSuccess": "2026-09-28T00:50:49.314Z",
+  "durationMs": 798,
   "records": 8,
   "consecutiveFailures": 0
  }
