@@ -56,5 +56,20 @@
     "gdacs"
    ]
   }
- ]
+ ],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 190,
+    "expected": 117.3
+   },
+   "violence": {
+    "status": "normal",
+    "count": 656,
+    "expected": 657.9
+   }
+  }
+ }
 }

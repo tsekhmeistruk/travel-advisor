@@ -1,9 +1,10 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { placeIndex } from '../../../scripts/lib/build.mjs';
+import { addDay, addDays, emptyCounts } from '../../../scripts/lib/counts.mjs';
 import {
   healthStatus, travelSignals, eventLevel, isActive, eventPlaces, eventSignals, updateSignals, eventChanges,
-  advisoryChanges, buildRisk, placeFiles, CHANGE_WINDOW_DAYS, PLACE_HISTORY_DAYS,
+  advisoryChanges, buildRisk, placeFiles, activitySignals, CHANGE_WINDOW_DAYS, PLACE_HISTORY_DAYS,
 } from '../../../scripts/lib/risk.mjs';
 
 const PLACES = [
@@ -385,5 +386,57 @@ describe('WHO notices in the risk layer', () => {
     const fell = updateSignals(state, new Map(), { category: 'health', at: hoursAfter(1), confirmFallMinutes: 0, sources: ['who'] });
     assert.equal(fell.changes.length, 1, 'no wait: a notice does not flap');
     assert.equal(eventChanges('who', data([notice('Mexico')]), WHO, idx).length, 0, 'Elevated is below the level where a new event is listed');
+  });
+});
+
+describe('news activity (counts sources) in the risk layer', () => {
+  const GDELT = {
+    id: 'gdelt', kind: 'counts', staleAfterHours: 72,
+    series: { protest: { category: 'unrest', rootCodes: ['14'] }, violence: { category: 'security', rootCodes: ['19'] } },
+    anomaly: { windowDays: 7, baselineDays: 84, above: { minCount: 5, minExcess: 3, minRatio: 2, maxP: 0.01 }, far: { minCount: 10, minRatio: 4, maxP: 0.001 }, stay: { maxP: 0.05 } },
+    links: { home: 'https://www.gdeltproject.org/' },
+  };
+  // 91 days: Mexico's protests jump in the last week, Japan's stay at their normal.
+  const counts = (lastWeek = 12, days = 91) => {
+    let d = emptyCounts();
+    for (let i = 0; i < days; i++) d = addDay(d, addDays('2026-06-29', i), { mx: { protest: i >= days - 7 ? lastWeek : 1, violence: 0 }, jp: { protest: 3 } }, { historyDays: 400 });
+    return d;
+  };
+
+  test('the first assessment sets a baseline; later status moves are changes, recorded once', () => {
+    const first = activitySignals('gdelt', counts(), GDELT, undefined);
+    assert.deepEqual(first.changes, []);
+    assert.deepEqual(first.state.places, { mx: { protest: 'far' } });
+    assert.deepEqual(first.published.places, { mx: { protest: { status: 'far', count: 84, expected: 7 } } }, 'only above normal');
+    assert.equal(first.byPlace.jp.protest.status, 'normal', 'every figure, for the place files');
+    assert.deepEqual([first.published.through, first.published.learning, first.published.windowDays], ['2026-09-27', false, 7]);
+
+    const quiet = counts(1, 92);
+    const next = activitySignals('gdelt', quiet, GDELT, first.state);
+    assert.deepEqual(next.changes.map(c => [c.id, c.kind, c.category, c.from, c.to, c.up]), [['mx:protest:2026-09-28', 'anomaly', 'unrest', 'far', 'normal', false]]);
+    assert.deepEqual(activitySignals('gdelt', quiet, GDELT, next.state).changes, [], 'the same day again adds nothing');
+  });
+
+  test('buildRisk publishes activity beside the levels, in place files too, and never as a level', () => {
+    const CATEGORIES = { scale: { type: 'levels', values: [1, 2, 3, 4] }, categories: [{ id: 'travel' }, { id: 'unrest' }, { id: 'security' }] };
+    const input = {
+      index, categories: CATEGORIES, schedule: { gdelt: { everyMinutes: 360 } }, advisories: { files: {}, history: {} },
+      sources: { gdelt: { config: GDELT, data: counts() } }, state: null, log: [],
+      sourcesState: { gdelt: { lastAttempt: T0, lastSuccess: T0 } },
+    };
+    const { files, state } = buildRisk(input);
+    const current = files['risk/current.json'];
+    assert.deepEqual(Object.keys(current.activity), ['gdelt']);
+    assert.equal(current.activity.gdelt.places.mx.protest.status, 'far');
+    assert.equal(current.places.mx, undefined, 'no level from news reports');
+    assert.equal(current.categories.unrest, undefined);
+    assert.deepEqual(current.sources.gdelt, { url: 'https://www.gdeltproject.org/', terms: undefined });
+    assert.deepEqual(files['risk/places/mx.json'].activity, { source: 'gdelt', series: { protest: { status: 'far', count: 84, expected: 7 }, violence: { status: 'normal', count: 0, expected: 0 } } });
+    assert.equal(files['risk/places/gt.json'].activity, undefined, 'no counts: no activity');
+    assert.deepEqual(state.activity.gdelt.places, { mx: { protest: 'far' } });
+
+    const down = buildRisk({ ...input, sourcesState: { gdelt: { lastAttempt: '2026-10-10T00:00:00.000Z', lastSuccess: '2026-09-01T00:00:00.000Z' } }, state });
+    assert.equal(down.files['risk/current.json'].activity, undefined, 'a source that is down publishes no activity');
+    assert.deepEqual(down.state.activity, state.activity, 'and keeps its last state');
   });
 });

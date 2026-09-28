@@ -69,9 +69,22 @@ describe('risk sources are wired up everywhere', () => {
       const cfg = store.source(id);
       assert.equal(cfg.id, id, 'config id');
       assert.ok(SOURCES[id], 'module registered in scripts/providers/index.mjs');
-      assert.equal(SOURCES[id].kind, 'events', 'module kind');
+      assert.equal(SOURCES[id].kind, cfg.kind ?? 'events', 'module kind matches the config');
       assert.ok(cfg.name && cfg.type && cfg.authority, 'name, type and authority');
       assert.ok(cfg.links?.home?.startsWith('https://') && cfg.links?.terms?.startsWith('https://'), 'links to the source and its terms');
+      assertInWorkflow(id);
+      if (cfg.kind === 'counts') {
+        // News counts never set a level: series, their categories, the anomaly rules, the place codes.
+        for (const [name, s] of Object.entries(cfg.series)) {
+          assert.ok(categories.has(s.category) && s.rootCodes.length, `${name}: category and codes`);
+        }
+        const a = cfg.anomaly;
+        assert.ok(a.windowDays > 0 && a.baselineDays > a.windowDays && a.far.minRatio > a.above.minRatio && a.stay.maxP > a.above.maxP, 'anomaly rules');
+        assert.ok(cfg.backfillDays >= a.windowDays + a.baselineDays && cfg.historyDays >= cfg.backfillDays, 'history for a baseline');
+        assert.deepEqual(Object.values(cfg.fips).filter(p => !placeIds.has(p)), [], 'fips codes refer to known places');
+        assert.equal(cfg.levels, undefined, 'no levels');
+        return;
+      }
       assert.ok(cfg.staleAfterHours > 0 && cfg.confirmFallMinutes >= 0, 'staleAfterHours, confirmFallMinutes');
       for (const [code, t] of Object.entries(cfg.types)) {
         assert.ok(categories.has(t.category), `${code}: category ${t.category} is in config/categories.json`);
@@ -79,7 +92,6 @@ describe('risk sources are wired up everywhere', () => {
       }
       for (const level of Object.values(cfg.levels)) assert.ok(store.categories().scale.values.includes(level), `level ${level}`);
       assert.deepEqual([...Object.values(cfg.codes ?? {}), ...Object.values(cfg.aliases ?? {})].flat().filter(p => !placeIds.has(p)), [], 'codes and aliases refer to known places');
-      assertInWorkflow(id);
     });
   }
 
@@ -125,6 +137,7 @@ describe('translation keys used by the code exist', () => {
     const categories = store.categories().categories.map(c => `risk.categories.${c.id}`);
     const sources = store.sourceIds().flatMap(id => {
       const cfg = store.source(id);
+      if (cfg.kind === 'counts') return [`risk.sources.${id}`, ...Object.keys(cfg.series).map(s => `risk.activity.series.${s}`)];
       return [`risk.sources.${id}`, ...Object.values(cfg.types).map(t => `risk.eventTypes.${t.type}`), ...Object.keys(cfg.levels).map(a => `risk.alerts.${a}`)];
     });
     assert.deepEqual([...levels, ...categories, ...sources].filter(k => !has(k)), []);

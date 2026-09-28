@@ -39,7 +39,8 @@ export function startRunLog(source, { root = LOG_ROOT } = {}) {
   return {
     // fetch() that records the request under `call`. With `detail`, every attempt is
     // listed; without it (many similar requests, e.g. destination pages) only counts are kept.
-    async request(call, url, init = {}, { detail = true } = {}) {
+    // With `binary`, the body is a Buffer (e.g. a zip file) instead of text.
+    async request(call, url, init = {}, { detail = true, binary = false } = {}) {
       const c = entry.calls[call] ??= detail
         ? { url, attempts: [] }
         : { requests: 0, statuses: {}, errors: 0, challenges: 0, totalMs: 0 };
@@ -47,9 +48,9 @@ export function startRunLog(source, { root = LOG_ROOT } = {}) {
       let rec;
       try {
         const res = await fetch(url, init);
-        const body = await res.text();
+        const body = binary ? Buffer.from(await res.arrayBuffer()) : await res.text();
         rec = { status: res.status, ms: Date.now() - t0 };
-        if (CHALLENGE.test(body.slice(0, 4000))) rec.challenge = true;
+        if (CHALLENGE.test(body.toString('utf8', 0, 4000).slice(0, 4000))) rec.challenge = true;
         const retryAfter = res.headers.get('retry-after');
         if (retryAfter) rec.retryAfter = retryAfter;
         return { status: res.status, ok: res.ok && !rec.challenge, challenge: !!rec.challenge, body };

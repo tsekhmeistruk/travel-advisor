@@ -36,6 +36,7 @@ data/                          pipeline state (future: database tables)
   snapshots/<dataset>/<p>.json latest fetch of each provider
   history/<dataset>.json       level history per provider and record
   events/<source>.json         a risk source's current events (and those ended in the last 90 days)
+  counts/<source>.json         a counts source's daily counts per place and series (GDELT news reports)
   archive/events/<source>/<yyyy>.jsonl   events that left the current file
   signals/current.json         confirmed risk signals per category and place, with pending falls
   changes/<yyyy>.jsonl         the risk change log (append-only)
@@ -107,6 +108,20 @@ The product is growing from a travel-advisory map into a risk monitor: several s
 - **Idempotent:** change ids are built from the place, category and fetch time (or event id and revision time), and the build's "now" is the newest fetch time in its inputs, so building the same data twice changes nothing.
 - **Health:** each provider and source is `healthy` (last success within 1.5 × its interval), `delayed`, or `error` (past its stale limit: `staleAfterHours`, or 7 days for advisories). A source in `error` publishes no levels and keeps its last state.
 
+### Unusual activity (news reports)
+
+A **counts source** (`kind: "counts"`, today GDELT) never sets a level. GDELT codes news reports into events by machine; the pipeline counts, per place and day, protest reports (CAMEO root 14) and violence reports (18–20), by where they happened (FIPS codes, mapped to places in `config/sources/gdelt.json`), in `data/counts/gdelt.json` (`lib/counts.mjs`: one number per day, gaps left out of windows).
+
+`lib/anomaly.mjs` compares each place's last 7 days with its own previous 84:
+
+- **Expected** is the baseline's count scaled to one week. **Chance** is P(X ≥ count) for a Poisson count with that mean (a normal approximation above a mean of 100).
+- **Above normal:** count ≥ 5, at least 3 more than expected, twice as many, p < 0.01. **Far above normal:** count ≥ 10, four times as many, p < 0.001.
+- **Hysteresis:** a status holds while the ratio stays at least half of the one that entered it and p ≤ 0.05.
+- **Percentages** are shown only from an expected count of 2, so 0 → 1 never reads "+100%".
+- **Learning:** it needs about 3/4 of the baseline (a backfill of 98 days is fetched once).
+
+Statuses above normal are published as `activity` in `risk/current.json`, each place's figures in its place file, and a change of status is a change of kind `anomaly` (listed, never pulsed). The card shows them in its "coming later" slot ("News: Protest reports far above normal (GDELT)"), and the country view as figures against the normal.
+
 The site shows the risk layer through **map modes**, **event markers** and a **country view** (see below).
 
 ### Published formats
@@ -167,6 +182,13 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
   "advisories": { "us": { "level": 2, "title": "Mexico", "updated": "2026-05-29", "url": "https://…", "own": true } },
   "events": ["gdacs:TC:1001325"],
   "changes": [ /* the place's changes of the last 365 days, newest first, as in changes.json */ ] }
+
+// risk/current.json, beside the levels: unusual activity of counts sources (never a level)
+"activity": { "gdelt": { "through": "2026-09-27", "learning": false, "windowDays": 7, "baselineDays": 84,
+  "places": { "et": { "violence": { "status": "far", "count": 640, "expected": 56.5 } } } } }
+// a change of status in risk/changes.json
+{ "id": "et:violence:2026-09-27", "at": "2026-09-27", "kind": "anomaly", "category": "security", "placeId": "et",
+  "series": "violence", "source": "gdelt", "from": "normal", "to": "far", "up": true, "count": 640, "expected": 56.5 }
 
 // risk/health.json
 { "asOf": "…", "sources": { "gdacs": { "status": "healthy", "lastSuccess": "…", "lastAttempt": "…", "consecutiveFailures": 0, "records": 13 } } }

@@ -39,5 +39,20 @@
  "events": [
   "gdacs:TC:1001327"
  ],
- "changes": []
+ "changes": [],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 31,
+    "expected": 32.3
+   },
+   "violence": {
+    "status": "normal",
+    "count": 231,
+    "expected": 263.2
+   }
+  }
+ }
 }

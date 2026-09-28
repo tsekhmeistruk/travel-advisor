@@ -40,5 +40,20 @@
   "gdacs:VO:1000150",
   "gdacs:FL:1104053"
  ],
- "changes": []
+ "changes": [],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 32,
+    "expected": 27
+   },
+   "violence": {
+    "status": "normal",
+    "count": 189,
+    "expected": 233.8
+   }
+  }
+ }
 }

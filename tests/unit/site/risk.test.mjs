@@ -552,3 +552,69 @@ describe('WHO notices on the site', () => {
     assert.doesNotMatch(html, /automatic estimates/);
   });
 });
+
+describe('news activity on the site', () => {
+  const ACTIVITY = { gdelt: { through: '2026-09-27', learning: false, windowDays: 7, baselineDays: 84, places: { mx: { protest: { status: 'far', count: 18, expected: 4 }, violence: { status: 'above', count: 12, expected: 1.2 } } } } };
+  const ANOMALY = { id: 'mx:protest:2026-09-27', at: '2026-09-27', kind: 'anomaly', category: 'unrest', placeId: 'mx', series: 'protest', source: 'gdelt', from: 'normal', to: 'far', up: true, count: 18, expected: 4 };
+  async function withActivity({ activity = ACTIVITY, file = { ...MX_FILE, activity: { source: 'gdelt', series: ACTIVITY.gdelt.places.mx } }, levels } = {}) {
+    const files = {
+      'risk/current.json': { ...CURRENT, sources: { ...CURRENT.sources, gdelt: { url: 'https://www.gdeltproject.org/' } }, activity },
+      'risk/changes.json': { changes: [ANOMALY, ...CHANGES] }, 'risk/events.json': { events: EVENTS }, 'risk/places/mx.json': file,
+    };
+    const storage = new Map(levels ? [['k', JSON.stringify({ risk: { levels } })]] : []);
+    const settings = createSettings('k', {}, { getItem: (k) => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) });
+    ds = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN, today: new Date(NOW) }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'highest', view: 'highest', now: () => NOW });
+    await ds.load();
+  }
+
+  test('the card says what is unusual in its "later" slot, and never gives it a level', async () => {
+    await withActivity();
+    const html = ds.details({ placeId: 'mx' });
+    assert.match(html, /<p class="later news"[^>]*>News: Protest reports far above normal · Violence reports above normal \(GDELT\)<\/p>/);
+    assert.doesNotMatch(html, /Security and unrest: coming later/);
+    assert.doesNotMatch(html, /<span class="cat">(Unrest|Security)/, 'no category row');
+    assert.match(ds.details({ placeId: 'jp' }), /Security and unrest: coming later/, 'nothing unusual: the usual line');
+  });
+
+  test('the country view shows each series\' week against its normal, a percentage only from 2 expected', async () => {
+    await withActivity();
+    const el = { innerHTML: '' };
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    assert.match(el.innerHTML, /News activity/);
+    assert.match(el.innerHTML, /18 in the last 7 days, usually about 4 \(\+350%\)/);
+    assert.match(el.innerHTML, /12 in the last 7 days, usually about 1\.2</, 'no percentage from an expected 1.2');
+    assert.match(el.innerHTML, /far above normal/);
+    assert.match(el.innerHTML, /not verified incidents, compared with this country&#39;s own last 12 weeks\. They never set a risk level\./);
+  });
+
+  test('while the baseline is being collected, or with no counts, the country view says so', async () => {
+    await withActivity({ activity: { gdelt: { ...ACTIVITY.gdelt, learning: true, places: {} } } });
+    const el = { innerHTML: '' };
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    assert.match(el.innerHTML, /Collecting a baseline first/);
+    await withActivity({ file: MX_FILE });
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    assert.match(el.innerHTML, /No news reports of protests or violence counted here\./);
+  });
+
+  test('an anomaly is listed in the feed with a neutral dot, whatever levels are shown, and never pulses', async () => {
+    await withActivity({ levels: [4] });
+    const f = fakeFeed();
+    ds.renderFeed(f.el);
+    assert.match(f.el.innerHTML, /data-key="mx:protest:2026-09-27"[\s\S]*?--c:var\(--land-none\)[\s\S]*?Protest reports far above normal \(GDELT\)/);
+    assert.equal(ds.style('mx').pulse, null, 'Mexico\'s level change is hidden (High), and the anomaly never pulses');
+    assert.match(ds.details({ placeId: 'mx' }), /Protest reports far above normal \(GDELT\)/, 'in the place\'s recent changes');
+  });
+
+  test('an anomaly that ends reads "back to normal"', async () => {
+    const back = { ...ANOMALY, id: 'x', from: 'far', to: 'normal', up: false };
+    await withActivity();
+    const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: [back] }, 'risk/events.json': { events: [] } };
+    const settings = createSettings('k2', {}, { getItem: () => null, setItem: () => {} });
+    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'highest', view: 'highest', now: () => NOW });
+    await mode.load();
+    const f = fakeFeed();
+    mode.renderFeed(f.el);
+    assert.match(f.el.innerHTML, /Protest reports back to normal \(GDELT\)/);
+  });
+});

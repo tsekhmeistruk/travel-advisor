@@ -46,6 +46,19 @@ export class FileStore {
     for (const e of events) this.#appendLine(e, 'data', 'archive', 'events', source, `${(e.toDate ?? e.startedAt).slice(0, 4)}.jsonl`);
   }
 
+  /** A counts source's daily counts (lib/counts.mjs), or null. */
+  counts(source) { return this.#readJson('data', 'counts', `${source}.json`, { optional: true }); }
+  /** One line per place and series, so a new day changes each line instead of the whole file's layout. */
+  saveCounts(source, data) {
+    const file = this.path('data', 'counts', `${source}.json`);
+    mkdirSync(dirname(file), { recursive: true });
+    const places = Object.keys(data.series).sort();
+    const series = places.map((p, i) => ` ${JSON.stringify(p)}: {${Object.keys(data.series[p]).sort()
+      .map(n => `${JSON.stringify(n)}: ${JSON.stringify(data.series[p][n])}`).join(', ')}}${i < places.length - 1 ? ',' : ''}`);
+    const head = `{"first": ${JSON.stringify(data.first)}, "last": ${JSON.stringify(data.last)}, "gaps": ${JSON.stringify(data.gaps)}, "series": {`;
+    writeFileSync(file, `${head}\n${series.join('\n')}\n}}\n`);
+  }
+
   /** Confirmed risk signals per place and category, with pending falls: see lib/risk.mjs. */
   signals() { return this.#readJson('data', 'signals', 'current.json', { optional: true }); }
   saveSignals(signals) { this.#writeJson(signals, 'data', 'signals', 'current.json'); }

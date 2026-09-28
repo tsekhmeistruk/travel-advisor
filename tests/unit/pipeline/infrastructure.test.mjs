@@ -36,6 +36,18 @@ describe('run log', () => {
     rmSync(root, { recursive: true });
   });
 
+  test('returns a binary body as a Buffer, unchanged', async () => {
+    const bytes = Buffer.from([0x50, 0x4b, 0x03, 0x04, 0xff, 0x00, 0x80]);
+    globalThis.fetch = async () => new Response(bytes, { status: 200 });
+    const root = tmp();
+    const log = startRunLog('gdelt', { root });
+    const res = await log.request('daily', 'https://example.test/x.zip', {}, { detail: false, binary: true });
+    assert.ok(Buffer.isBuffer(res.body));
+    assert.deepEqual(res.body, bytes);
+    assert.equal(res.ok, true);
+    rmSync(root, { recursive: true });
+  });
+
   test('records Retry-After on throttled responses', async () => {
     globalThis.fetch = async () => new Response('', { status: 429, headers: { 'retry-after': '120' } });
     const root = tmp();
@@ -80,6 +92,20 @@ describe('FileStore', () => {
     store.publish('x/y.json', { ok: true });
     assert.deepEqual(store.published('x/y.json'), { ok: true });
     assert.throws(() => store.places(), /Missing .*places\.json/);
+    rmSync(root, { recursive: true });
+  });
+
+  test('saves daily counts one line per place, and reads them back', () => {
+    const root = tmp();
+    const store = new FileStore(root);
+    assert.equal(store.counts('gdelt'), null);
+    const data = { first: '2026-09-01', last: '2026-09-02', gaps: ['2026-09-02'], series: { fr: { violence: [0, 1], protest: [3, 0] }, et: { protest: [2, 0], violence: [0, 0] } } };
+    store.saveCounts('gdelt', data);
+    assert.deepEqual(store.counts('gdelt'), data);
+    const lines = readFileSync(join(root, 'data', 'counts', 'gdelt.json'), 'utf8').split('\n');
+    assert.deepEqual(lines.slice(1, 3), [' "et": {"protest": [2,0], "violence": [0,0]},', ' "fr": {"protest": [3,0], "violence": [0,1]}']);
+    store.saveCounts('empty', { first: null, last: null, gaps: [], series: {} });
+    assert.deepEqual(store.counts('empty'), { first: null, last: null, gaps: [], series: {} });
     rmSync(root, { recursive: true });
   });
 
@@ -170,6 +196,18 @@ describe('runFetch', () => {
       lastAttempt: '2026-09-27T12:00:00.000Z', lastSuccess: '2026-09-27T10:00:00.000Z', durationMs: 0, records: 2, consecutiveFailures: 2, error: 'site down',
     });
     process.exitCode = saved;
+    rmSync(root, { recursive: true });
+  });
+
+  test('a counts source gets its stored counts and config, and saves the new counts', async () => {
+    const root = tmp();
+    const saved = {};
+    const store = { source: (id) => ({ id }), counts: () => ({ last: '2026-09-26' }), saveCounts: (id, d) => { saved[id] = d; }, sourcesState: () => ({}), saveSourcesState: () => {} };
+    let seen;
+    const source = { id: 'ct', kind: 'counts', source: 'https://example.test/ct', fetch: async (args) => { seen = args; return { data: { last: '2026-09-27' }, stats: { counted: ['2026-09-27'], gaps: [] } }; } };
+    await runFetch(source, { store, logRoot: root, now: clock('2026-09-28T10:00:00Z') });
+    assert.deepEqual([seen.previous, seen.config], [{ last: '2026-09-26' }, { id: 'ct' }]);
+    assert.deepEqual(saved.ct, { last: '2026-09-27' });
     rmSync(root, { recursive: true });
   });
 
@@ -281,6 +319,11 @@ describe('log summary', () => {
     assert.equal(labels.us, '🇺🇸 U.S.');
     assert.equal(labels.ca, '🇨🇦 Canada');
     assert.equal(labels.gdacs, '🌐 GDACS');
+  });
+  test('describes a counts source run: days counted, gaps, or up to date', () => {
+    assert.equal(describeRun({ ...ok, stats: { counted: ['2026-09-26', '2026-09-27'], gaps: ['2026-09-20'], through: '2026-09-27' } }),
+      '2 day(s) counted, through 2026-09-27 · no file for 2026-09-20');
+    assert.equal(describeRun({ ...ok, stats: { counted: [], gaps: [], through: '2026-09-27' } }), 'up to date, through 2026-09-27');
   });
   test('describes a risk source run: events, alert changes first, then new events', () => {
     const gdacs = { ...ok, source: 'gdacs', stats: { events: 13, current: 2, alertChanged: ['gdacs:TC:1 Orange → Red'], added: ['gdacs:EQ:2'], archived: 1 } };

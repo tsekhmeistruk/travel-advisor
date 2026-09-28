@@ -60,7 +60,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 ## Conventions
 
-- **Generated files: never edit by hand.** These are `site/data/**` (except `geo/`), `data/history/**`, `data/snapshots/**`, `data/events/**`, `data/archive/**`, `data/signals/**`, `data/changes/**`, `data/sources-state.json` and the logs. Change config or code, then run `npm run build`. The data test fails if the published data doesn't match a fresh build, or if the signals or change log miss a change.
+- **Generated files: never edit by hand.** These are `site/data/**` (except `geo/`), `data/history/**`, `data/snapshots/**`, `data/events/**`, `data/counts/**`, `data/archive/**`, `data/signals/**`, `data/changes/**`, `data/sources-state.json` and the logs. Change config or code, then run `npm run build`. The data test fails if the published data doesn't match a fresh build, or if the signals or change log miss a change.
 - **Source fact, signal and change stay separate** (see "The risk layer" in `docs/architecture.md`). Parsers keep the source's own level as `native`; our 1–4 level is set in the build from `config/sources/<id>.json`, and is never presented as the source's. "No data" is `null`, never a level.
 - **No hard-coded interface text in JS or HTML.** Add a key to **every** `site/i18n/*.json`; the test checks that all locales have the same keys. Use `esc()` for data, and `safeUrl()` for links from data.
 - **Pure logic goes in `lib/`, `parse.mjs` or `logic.js`, with unit tests.** Scripts and views stay thin.
@@ -75,6 +75,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). Done so far:
   - **Pipeline:** stores, schedule, source health, the hourly workflow; GDACS (Orange/Red for levels, Green cyclones, floods and volcanoes for markers) and WHO Disease Outbreak News (Health) into `site/data/risk/`, with a file per place.
   - **Site:** map modes (Travel, Highest, Disasters, Wildfires, Changes), the risk summary card, the change feed, event markers with clustering and an event card, the country view, URL state and cache-busting. Travel is still the default mode.
+  - **Unusual activity without keys:** GDELT news counts give protest and violence activity against each country's normal (never a level); Security and Unrest levels still need ACLED or UCDP.
   - **Waiting for the owner:** NASA FIRMS (a `FIRMS_MAP_KEY` secret; then fire activity and anomalies), ACLED (licence request; UCDP is the fallback) for Security and Unrest, confirming reuse with GDACS and WHO. The owner said to skip these until they're back.
 - **The risk baseline was set on Sep 27, 2026:** the 13 GDACS events of the first fetch aren't "new", and the first build recorded no disaster changes. The same for WHO's first fetch (its first notices set the baseline).
 - **Level history began on Sep 26, 2026.** Canada and the Netherlands have no earlier history (their sources don't publish past levels, and the Internet Archive has no usable copies), so their maps show few or no pulses until real changes happen. The U.S. has 10 changes seeded from its change notes (Chad, Cyprus, Grenada, Madagascar, Mauritius, New Caledonia, Saint Lucia, Tanzania, Thailand, Vanuatu). Egypt was skipped because its note gives no direction.
@@ -142,6 +143,13 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **No 1–4 scale:** flags mapped in `parse.mjs` (none 1, situationPartWarning 2, partialWarning or situationWarning 3, warning 4). **Today no destination is at level 2** (no situation warnings), so the data test checks for a spread of levels, not all four.
 - **Names are German;** matching is by ISO alpha-3, `PSE` (Palästinensische Gebiete) is Gaza and the West Bank in `codes`. Overseas territories without their own entry are `coveredBy` their country's entry (German titles: "Frankreich", "Vereinigtes Königreich", …).
 - **Official fields,** level changes apply at once. The reuse licence of the API isn't stated on it; confirm before relying on it commercially.
+
+**GDELT** (counts source: unusual news activity, never a level) comes from the daily event files (`data.gdeltproject.org/events/<yyyymmdd>.export.CSV.zip`, no key; free with a citation and a link), in `providers/gdelt/`.
+- **A zip of ~3.5 MB a day** (~60,000 events, 58 tab-separated columns, GDELT 1.0 format), published a few hours after the UTC day ends. `lib/zip.mjs` reads it (no dependency); `log.request(…, { binary: true })` returns a Buffer.
+- **Only three columns matter:** 28 `EventRootCode` (14 protest; 18, 19, 20 violence), 51 `ActionGeo_CountryCode` (a **FIPS** code, not ISO), 0 `GLOBALEVENTID` (count once).
+- **GDELT's own FIPS name list is wrong in places:** it calls `GV` "Equatorial Guinea" (it's Guinea) and `LO` "Czechoslovakia" (it's Slovakia). The mapping in `config/sources/gdelt.json` `fips` was checked against the place names GDELT gives each code in a real file; `OS` (oceans) and a few islands stay unmapped.
+- **Backfill:** the first run starts `backfillDays` (98) ago; a run counts at most `maxDaysPerRun` (3) days. The 98 days were backfilled once locally (Sep 28, 2026). Yesterday's file not published yet is not an error; an older missing file is a gap.
+- **Thresholds** (`anomaly` in the config) flag about 6% of place-series on real data (28 of 466 on Sep 27, 2026, e.g. violence in Ethiopia and Eritrea far above normal). They are news volumes: a country in the news for other reasons can show up, which is why this never sets a level.
 
 **WHO** (risk source: health) comes from the Disease Outbreak News API (`www.who.int/api/news/diseaseoutbreaknews`, OData, no key), in `providers/who/`.
 - **One request** for the latest 30 notices (`$orderby=PublicationDate desc&$select=…`); those of the last 90 days are kept. WHO publishes a few a month, so an empty list is treated as an error.

@@ -70,7 +70,7 @@ describe('risk data', () => {
     changes.forEach((c, i) => {
       assert.ok(!ids.has(c.id), `duplicate change ${c.id}`);
       ids.add(c.id);
-      assert.ok(['level', 'advisory', 'event'].includes(c.kind), c.id);
+      assert.ok(['level', 'advisory', 'event', 'anomaly'].includes(c.kind), c.id);
       assert.ok(categoryIds.has(c.category), c.id);
       assert.ok(c.at >= oldest && c.at <= tomorrow + 'T', `${c.id} outside the window`);
       if (i > 0) assert.ok(c.at <= changes[i - 1].at, `${c.id}: changes must be newest first`);

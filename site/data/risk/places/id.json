@@ -39,5 +39,20 @@
  "events": [
   "gdacs:FL:1104168"
  ],
- "changes": []
+ "changes": [],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 25,
+    "expected": 25.8
+   },
+   "violence": {
+    "status": "normal",
+    "count": 187,
+    "expected": 193.8
+   }
+  }
+ }
 }

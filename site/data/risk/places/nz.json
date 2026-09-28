@@ -37,5 +37,20 @@
   }
  },
  "events": [],
- "changes": []
+ "changes": [],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 13,
+    "expected": 14.2
+   },
+   "violence": {
+    "status": "normal",
+    "count": 167,
+    "expected": 139.3
+   }
+  }
+ }
 }

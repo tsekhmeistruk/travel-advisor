@@ -5,6 +5,7 @@
 //   travel-advisory providers (kind "advisories", the default): entries -> data/snapshots/
 //   risk sources (kind "events", e.g. gdacs): events -> data/events/<id>.json; events that
 //     expired are moved to data/archive/events/
+//   counts sources (kind "counts", e.g. gdelt): daily counts -> data/counts/<id>.json
 //
 // Usage: node scripts/fetch.mjs <id>      e.g. node scripts/fetch.mjs ca
 
@@ -24,9 +25,8 @@ export async function runFetch(provider, { store = new FileStore(), logRoot, sle
   let error = null;
   await withRunLog(provider.id, async (log) => {
     try {
-      records = provider.kind === 'events'
-        ? await fetchEvents(provider, { store, log, sleep, now })
-        : await fetchAdvisories(provider, { store, log, sleep, now });
+      const run = { events: fetchEvents, counts: fetchCounts }[provider.kind] ?? fetchAdvisories;
+      records = await run(provider, { store, log, sleep, now });
     } catch (err) {
       error = err;
       throw err;
@@ -56,6 +56,15 @@ async function fetchEvents(provider, { store, log, sleep, now }) {
   log.stat(stats);
   console.log(`Saved ${events.length} ${provider.id} events${expired.length ? `, archived ${expired.length}` : ''}.`);
   return events.length;
+}
+
+async function fetchCounts(provider, { store, log, sleep, now }) {
+  const config = store.source(provider.id);
+  const { data, stats } = await provider.fetch({ log, previous: store.counts(provider.id), now: now(), config, ...(sleep && { sleep }) });
+  store.saveCounts(provider.id, data);
+  log.stat(stats);
+  console.log(`Counted ${stats.counted.length} day(s) of ${provider.id}${stats.gaps.length ? `, ${stats.gaps.length} without a file` : ''}; counts through ${data.last}.`);
+  return stats.counted.length;
 }
 
 /** Update data/sources-state.json: every attempt, and the last success. */

@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-28T15:37:04.553Z",
+ "asOf": "2026-09-28T15:59:29.539Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -49,6 +49,10 @@
   "gdacs": {
    "url": "https://www.gdacs.org/",
    "terms": "https://www.gdacs.org/documents/2025/GDACS_Terms_of_use_Mar_25.pdf"
+  },
+  "gdelt": {
+   "url": "https://www.gdeltproject.org/",
+   "terms": "https://www.gdeltproject.org/about.html#termsofuse"
   },
   "who": {
    "url": "https://www.who.int/emergencies/disease-outbreak-news",
@@ -3309,6 +3313,206 @@
      "de": 1
     },
     "agree": 3
+   }
+  }
+ },
+ "activity": {
+  "gdelt": {
+   "through": "2026-09-27",
+   "learning": false,
+   "windowDays": 7,
+   "baselineDays": 84,
+   "places": {
+    "af": {
+     "violence": {
+      "status": "above",
+      "count": 716,
+      "expected": 301.3
+     }
+    },
+    "am": {
+     "violence": {
+      "status": "above",
+      "count": 82,
+      "expected": 37.4
+     }
+    },
+    "by": {
+     "protest": {
+      "status": "far",
+      "count": 15,
+      "expected": 2.8
+     }
+    },
+    "cf": {
+     "violence": {
+      "status": "far",
+      "count": 55,
+      "expected": 12.9
+     }
+    },
+    "cz": {
+     "violence": {
+      "status": "above",
+      "count": 48,
+      "expected": 22.3
+     }
+    },
+    "dk": {
+     "protest": {
+      "status": "above",
+      "count": 15,
+      "expected": 6.8
+     }
+    },
+    "ee": {
+     "violence": {
+      "status": "above",
+      "count": 39,
+      "expected": 12.3
+     }
+    },
+    "er": {
+     "violence": {
+      "status": "far",
+      "count": 42,
+      "expected": 7.1
+     }
+    },
+    "et": {
+     "protest": {
+      "status": "above",
+      "count": 14,
+      "expected": 6.2
+     },
+     "violence": {
+      "status": "far",
+      "count": 640,
+      "expected": 56.5
+     }
+    },
+    "gl": {
+     "protest": {
+      "status": "above",
+      "count": 13,
+      "expected": 4.1
+     },
+     "violence": {
+      "status": "above",
+      "count": 34,
+      "expected": 15.2
+     }
+    },
+    "il": {
+     "protest": {
+      "status": "above",
+      "count": 537,
+      "expected": 222.2
+     }
+    },
+    "jm": {
+     "protest": {
+      "status": "far",
+      "count": 23,
+      "expected": 3.5
+     }
+    },
+    "kp": {
+     "protest": {
+      "status": "above",
+      "count": 12,
+      "expected": 3.8
+     }
+    },
+    "ky": {
+     "violence": {
+      "status": "above",
+      "count": 12,
+      "expected": 4.8
+     }
+    },
+    "ls": {
+     "violence": {
+      "status": "above",
+      "count": 30,
+      "expected": 13.1
+     }
+    },
+    "ml": {
+     "protest": {
+      "status": "above",
+      "count": 6,
+      "expected": 1.3
+     }
+    },
+    "mm": {
+     "protest": {
+      "status": "above",
+      "count": 7,
+      "expected": 2.3
+     },
+     "violence": {
+      "status": "above",
+      "count": 87,
+      "expected": 35.7
+     }
+    },
+    "na": {
+     "violence": {
+      "status": "above",
+      "count": 63,
+      "expected": 24.5
+     }
+    },
+    "ni": {
+     "violence": {
+      "status": "above",
+      "count": 17,
+      "expected": 7.2
+     }
+    },
+    "pl": {
+     "protest": {
+      "status": "above",
+      "count": 20,
+      "expected": 8.8
+     }
+    },
+    "rw": {
+     "violence": {
+      "status": "far",
+      "count": 105,
+      "expected": 25.5
+     }
+    },
+    "si": {
+     "violence": {
+      "status": "above",
+      "count": 8,
+      "expected": 1.7
+     }
+    },
+    "sn": {
+     "violence": {
+      "status": "above",
+      "count": 19,
+      "expected": 8.2
+     }
+    },
+    "tt": {
+     "protest": {
+      "status": "above",
+      "count": 7,
+      "expected": 2.3
+     }
+    },
+    "ve": {
+     "protest": {
+      "status": "above",
+      "count": 50,
+      "expected": 16.2
+     }
+    }
    }
   }
  }

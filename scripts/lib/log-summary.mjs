@@ -111,6 +111,8 @@ export function describe(e) {
   if (s.alertChanged?.length) parts.push(`🔔 alert changed: ${s.alertChanged.join(', ')}`);
   if (s.added?.length) parts.push(s.added.length <= 6 ? `new: ${s.added.join(', ')}` : `${s.added.length} new`);
   if (s.archived) parts.push(`${s.archived} archived`);
+  if (s.counted) parts.push(s.counted.length ? `${s.counted.length} day(s) counted, through ${s.through}` : `up to date, through ${s.through}`);
+  if (s.gaps?.length) parts.push(`no file for ${s.gaps.join(', ')}`);
   // The event the site shows: a level went up or down (confirmed, for sources that need it).
   const levelChanges = [...(s.levelChanged ?? []), ...(s.levelChangesConfirmed ?? [])];
   if (levelChanges.length) parts.push(`🔔 level changed: ${levelChanges.join(', ')}`);

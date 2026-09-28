@@ -30,7 +30,10 @@ export function readBuildInput(store = new FileStore()) {
     risk: {
       categories: store.categories(),
       schedule: store.schedule(),
-      sources: Object.fromEntries(store.sourceIds().map(id => [id, { config: store.source(id), data: store.events(id) }])),
+      sources: Object.fromEntries(store.sourceIds().map(id => {
+        const config = store.source(id);
+        return [id, { config, data: config.kind === 'counts' ? store.counts(id) : store.events(id) }];
+      })),
       state: store.signals(),
       log: [...store.changes(year - 1), ...store.changes(year)],
       sourcesState: store.sourcesState(),

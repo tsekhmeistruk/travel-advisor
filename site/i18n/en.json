@@ -307,7 +307,8 @@
   },
   "sources": {
    "gdacs": "GDACS",
-   "who": "WHO"
+   "who": "WHO",
+   "gdelt": "GDELT"
   },
   "status": {
    "delayed": "delayed",
@@ -320,7 +321,7 @@
   "mapLabel": "World map coloured by risk level ({mode})",
   "header": "Risk Monitor · updated {age}",
   "headerIssue": "Risk Monitor · updated {age} · {source} {status}",
-  "footer": "Risk levels are our summary of {sources}, not official levels. Always check the sources before you travel.",
+  "footer": "Sources: {sources}. Risk levels are our summary of them, not official levels. Always check the sources before you travel.",
   "overview": {
    "eyebrow": "World overview · {mode}",
    "above": {
@@ -375,7 +376,8 @@
    "eventUp": "{source} {type}: raised to {alert}",
    "eventDown": "{source} {type}: lowered to {alert}",
    "raised": "Raised",
-   "lowered": "Lowered"
+   "lowered": "Lowered",
+   "anomaly": "{series} {status} ({source})"
   },
   "tooltip": {
    "change": "{change} · {age}"
@@ -416,6 +418,30 @@
    "note": "{source} alerts are automatic estimates. Confirm with national authorities before acting on them.",
    "notes": {
     "who": "WHO publishes Disease Outbreak News for outbreaks of international concern. Read the notice for WHO's advice to travellers."
+   }
+  },
+  "activity": {
+   "title": "News activity",
+   "series": {
+    "protest": "Protest reports",
+    "violence": "Violence reports"
+   },
+   "status": {
+    "normal": "normal",
+    "above": "above normal",
+    "far": "far above normal"
+   },
+   "line": "News: {items} ({source})",
+   "item": "{series} {status}",
+   "figures": "{count} in the last {days} days, usually about {expected} ({percent})",
+   "figuresFew": "{count} in the last {days} days, usually about {expected}",
+   "learning": "Collecting a baseline first: this needs about 12 weeks of history.",
+   "none": "No news reports of protests or violence counted here.",
+   "note": "Counts of news reports coded by {source}, not verified incidents, compared with this country's own last {weeks} weeks. They never set a risk level.",
+   "change": {
+    "normal": "back to normal",
+    "above": "above normal",
+    "far": "far above normal"
    }
   }
  },

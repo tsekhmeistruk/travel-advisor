@@ -33,5 +33,20 @@
   "gdacs:TC:1001321",
   "gdacs:FL:1103888"
  ],
- "changes": []
+ "changes": [],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 1332,
+    "expected": 970.4
+   },
+   "violence": {
+    "status": "normal",
+    "count": 14853,
+    "expected": 16084.3
+   }
+  }
+ }
 }

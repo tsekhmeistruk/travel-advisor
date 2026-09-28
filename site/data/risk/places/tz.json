@@ -53,5 +53,20 @@
    "up": true,
    "seeded": true
   }
- ]
+ ],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 2,
+    "expected": 4.2
+   },
+   "violence": {
+    "status": "normal",
+    "count": 15,
+    "expected": 17.8
+   }
+  }
+ }
 }

@@ -11,6 +11,8 @@ import uk from '../../../scripts/providers/uk/index.mjs';
 import de from '../../../scripts/providers/de/index.mjs';
 import gdacs from '../../../scripts/providers/gdacs/index.mjs';
 import who from '../../../scripts/providers/who/index.mjs';
+import gdelt from '../../../scripts/providers/gdelt/index.mjs';
+import { zip } from './zip-helper.mjs';
 import { PROVIDERS, SOURCES, getProvider } from '../../../scripts/providers/index.mjs';
 
 const fixture = (f) => readFileSync(new URL(`../../fixtures/${f}`, import.meta.url), 'utf8');
@@ -50,7 +52,7 @@ describe('provider registry', () => {
     assert.equal(getProvider('gdacs'), gdacs, 'sources are found by id too');
   });
   test('rejects an unknown provider with the list of known ones', () => {
-    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, de, gdacs, who/);
+    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, de, gdacs, who, gdelt/);
   });
 });
 
@@ -255,6 +257,53 @@ describe('Germany fetcher', () => {
     const { waits, sleep } = recordSleeps();
     await assert.rejects(de.fetch({ log: fakeLog({ api: [{ status: 503 }, { body: CHALLENGE, challenge: true }, { status: 500 }] }), previous: [], today: TODAY, sleep }), /API failed after 3 attempts: HTTP 500/);
     assert.deepEqual(waits, [30000, 60000]);
+  });
+});
+
+describe('GDELT fetcher', () => {
+  const config = JSON.parse(readFileSync(new URL('../../../config/sources/gdelt.json', import.meta.url), 'utf8'));
+  const csv = readFileSync(new URL('../../fixtures/gdelt-events.csv', import.meta.url));
+  const file = zip('x.export.CSV', csv);
+  const NOW = new Date('2026-09-28T12:00:00Z');   // yesterday: 2026-09-27
+  const dayOf = (url) => url.match(/(\d{8})\.export/)[1];
+
+  test('the first run starts backfillDays ago, oldest first, and counts at most maxDaysPerRun days', async () => {
+    const log = fakeLog({ daily: () => ({ body: file }) });
+    const { data, stats } = await gdelt.fetch({ log, previous: null, now: NOW, config: { ...config, backfillDays: 10, maxDaysPerRun: 3 } });
+    assert.deepEqual(log.requests.map(r => dayOf(r.url)), ['20260918', '20260919', '20260920']);
+    assert.ok(log.requests.every(r => r.opts.binary && r.opts.detail === false));
+    assert.deepEqual(stats.counted, ['2026-09-18', '2026-09-19', '2026-09-20']);
+    assert.equal(data.series.fr.protest.join(), '5,5,5');
+    assert.deepEqual(stats.unmapped, ['OS 6']);
+    assert.equal(stats.events, 177);
+  });
+
+  test('continues after the last counted day; yesterday not yet published is not an error', async () => {
+    const previous = { first: '2026-09-20', last: '2026-09-25', gaps: [], series: {} };
+    const log = fakeLog({ daily: (url) => (dayOf(url) === '20260927' ? { status: 404 } : { body: file }) });
+    const { data, stats } = await gdelt.fetch({ log, previous, now: NOW, config });
+    assert.deepEqual(log.requests.map(r => dayOf(r.url)), ['20260926', '20260927']);
+    assert.deepEqual([stats.counted, stats.gaps, data.last], [['2026-09-26'], [], '2026-09-26']);
+  });
+
+  test('an older day without a file is a gap; nothing to count is no request', async () => {
+    const previous = { first: '2026-09-20', last: '2026-09-22', gaps: [], series: {} };
+    const log = fakeLog({ daily: (url) => (dayOf(url) === '20260923' ? { status: 404 } : { body: file }) });
+    const { data, stats } = await gdelt.fetch({ log, previous, now: NOW, config: { ...config, maxDaysPerRun: 2 } });
+    assert.deepEqual([stats.gaps, stats.counted, data.gaps], [['2026-09-23'], ['2026-09-24'], ['2026-09-23']]);
+    const done = fakeLog({ daily: () => { throw new Error('no request expected'); } });
+    const same = await gdelt.fetch({ log: done, previous: { ...previous, last: '2026-09-27' }, now: NOW, config });
+    assert.deepEqual([done.requests.length, same.stats.counted], [0, []]);
+  });
+
+  test('errors are retried, then fail; a file that is not a zip fails', async () => {
+    const { waits, sleep } = recordSleeps();
+    const previous = { first: '2026-09-20', last: '2026-09-26', gaps: [], series: {} };
+    const flaky = fakeLog({ daily: [{ status: 503 }, new Error('ECONNRESET'), { body: file }] });
+    assert.deepEqual((await gdelt.fetch({ log: flaky, previous, now: NOW, config, sleep })).stats.counted, ['2026-09-27']);
+    assert.deepEqual(waits, [30000, 60000]);
+    await assert.rejects(gdelt.fetch({ log: fakeLog({ daily: () => ({ status: 500 }) }), previous, now: NOW, config, sleep }), /Daily file failed after 3 attempts: HTTP 500/);
+    await assert.rejects(gdelt.fetch({ log: fakeLog({ daily: () => ({ body: Buffer.from('<html>') }) }), previous, now: NOW, config }), /Not a zip archive/);
   });
 });
 

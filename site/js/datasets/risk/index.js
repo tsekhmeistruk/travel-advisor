@@ -36,6 +36,7 @@ export function createRiskMode(ctx) {
   const typeName = (t) => (i18n.has(`risk.eventTypes.${t}`) ? tr(`eventTypes.${t}`) : t);
   const alertName = (a) => (i18n.has(`risk.alerts.${a}`) ? tr(`alerts.${a}`) : a);
   const sourceName = (id) => (i18n.has(`risk.sources.${id}`) ? tr(`sources.${id}`) : i18n.t(`datasets.travel-advisories.providers.${id}.short`));
+  const seriesName = (s) => (i18n.has(`risk.activity.series.${s}`) ? tr(`activity.series.${s}`) : s);
   const windowText = (d) => (d === 1 ? tr('window.day') : tr('window.days', { days: d }));
   const modeName = () => i18n.t(`modes.${mode}.label`);
   const placeName = (id) => (places.get(id) ? i18n.placeName(places.get(id)) : id);
@@ -81,6 +82,7 @@ export function createRiskMode(ctx) {
       if (c.from != null) return tr('change.advisory', { provider, from: c.from, to: c.to });
       return tr(c.up ? 'change.advisoryUp' : 'change.advisoryDown', { provider, to: c.to });
     }
+    if (c.kind === 'anomaly') return tr('change.anomaly', { series: seriesName(c.series), status: tr(`activity.change.${c.to}`), source: sourceName(c.source) });
     const params = { source: sourceName(c.source), alert: alertName(c.native), type: typeName(c.type) };
     if (c.new) return tr('change.eventNew', params);
     return tr(c.up ? 'change.eventUp' : 'change.eventDown', params);
@@ -154,6 +156,21 @@ export function createRiskMode(ctx) {
   const historyRow = (c) => `<li>${arrow(direction(c))}<span class="what" title="${esc(changeText(c))}">${esc(changeText(c))}</span><span class="date">${esc(i18n.formatDate(c.at.slice(0, 10)))}</span></li>`;
   const trendHtml = (trend) => (trend ? `${arrow(trend)}${esc(tr(trend === 'up' ? 'card.raised24' : 'card.lowered24'))}` : '');
 
+  /** Unusual news activity for a place, from the published statuses: [{ source, series, status, count, expected }]. */
+  function activityOf(placeId) {
+    return Object.entries(current.activity ?? {}).flatMap(([source, a]) =>
+      Object.entries(a.places?.[placeId] ?? {}).map(([series, v]) => ({ source, series, ...v })));
+  }
+  function newsLine(placeId) {
+    const items = activityOf(placeId);
+    if (!items.length) return `<p class="later">${esc(tr('card.later'))}</p>`;
+    const text = tr('activity.line', {
+      items: items.map(i => tr('activity.item', { series: seriesName(i.series), status: tr(`activity.status.${i.status}`) })).join(' · '),
+      source: sourceName(items[0].source),
+    });
+    return `<p class="later news" title="${esc(text)}">${esc(text)}</p>`;
+  }
+
   function cardHtml(placeId) {
     const m = cardModel(placeId, { current, changes, events, now: now(), windowDays: windowDays() });
     const name = placeName(placeId);
@@ -165,7 +182,7 @@ export function createRiskMode(ctx) {
       ${badge(viewLevel(placeId), levelLabel(placeId))}
       <div class="trend">${trendHtml(m.trend)}</div>
       <ul class="risk-rows">${rowsHtml(m.rows)}</ul>
-      <p class="later">${esc(tr('card.later'))}</p>
+      ${newsLine(placeId)}
       <div class="history"><div class="history-label">${esc(tr('card.history'))}</div><ul class="history-list short">${history}</ul></div>
       <div class="card-actions">
         <button class="link link-btn" data-action="country" data-place="${esc(placeId)}">${esc(tr('card.details'))}</button>
@@ -178,6 +195,28 @@ export function createRiskMode(ctx) {
    * own words, and the place's change history (up to a year, from its place file).
    * @param file  risk/places/<id>.json, or null if it couldn't be loaded (then: 90 days of changes)
    */
+  /** The country view's news activity: each series' week against its normal, or why there is none. */
+  function activitySection(file) {
+    const meta = Object.values(current.activity ?? {})[0];
+    if (!meta) return '';
+    const rows = Object.entries(file?.activity?.series ?? {}).map(([series, v]) => {
+      const pct = v.expected >= 2 ? Math.round((v.count / v.expected - 1) * 100) : null;
+      const figures = tr(pct == null ? 'activity.figuresFew' : 'activity.figures', {
+        count: v.count, days: meta.windowDays, expected: v.expected >= 10 ? Math.round(v.expected) : v.expected,
+        percent: pct == null ? '' : `${pct > 0 ? '+' : ''}${pct}%`,
+      });
+      return `<li class="activity ${esc(v.status)}"><span class="who">${esc(seriesName(series))}</span>
+        <span class="what" title="${esc(figures)}">${esc(figures)}</span><span class="date">${esc(tr(`activity.status.${v.status}`))}</span></li>`;
+    }).join('');
+    const body = meta.learning ? `<p class="cv-empty">${esc(tr('activity.learning'))}</p>`
+      : rows ? `<ul class="cv-list">${rows}</ul>` : `<p class="cv-empty">${esc(tr('activity.none'))}</p>`;
+    return `<section class="cv-section">
+        <h3 class="cv-title">${esc(tr('activity.title'))}</h3>
+        ${body}
+        <p class="cv-note">${esc(tr('activity.note', { source: sourceName(Object.keys(current.activity)[0]), weeks: Math.round(meta.baselineDays / 7) }))}</p>
+      </section>`;
+  }
+
   function countryHtml(placeId, file) {
     const m = cardModel(placeId, { current, changes, events, now: now(), windowDays: windowDays() });
     const name = placeName(placeId);
@@ -212,7 +251,7 @@ export function createRiskMode(ctx) {
       <section class="cv-section">
         <h3 class="cv-title">${esc(tr('card.eyebrow'))}</h3>
         <ul class="risk-rows">${rowsHtml(m.rows)}</ul>
-        <p class="later">${esc(tr('card.later'))}</p>
+        ${newsLine(placeId)}
       </section>
       <section class="cv-section">
         <h3 class="cv-title">${esc(tr('country.alerts'))} <span class="count">${alerts.length}</span></h3>
@@ -222,6 +261,7 @@ export function createRiskMode(ctx) {
         <h3 class="cv-title">${esc(tr('country.advisories'))}</h3>
         ${advisories ? `<ul class="cv-list advisories">${advisories}</ul>` : `<p class="cv-empty">${esc(tr('card.notCovered'))}</p>`}
       </section>
+      ${activitySection(file)}
       <section class="cv-section">
         <h3 class="cv-title">${esc(tr('card.history'))}</h3>
         <div class="segmented" id="historySeg" role="radiogroup" aria-label="${esc(tr('country.historyWindow'))}">
@@ -411,14 +451,14 @@ export function createRiskMode(ctx) {
     renderFeed(container) {
       const section = container.closest('.recent');
       section.hidden = false;
-      const items = shown().filter(c => c.to == null || levels().includes(c.to));
+      const items = shown().filter(c => c.kind === 'anomaly' || c.to == null || levels().includes(c.to));
       section.querySelector('#recentTitle').textContent = tr('feed.title', { window: windowText(windowDays()) });
       section.querySelector('#recentCount').textContent = items.length;
       const more = items.length - FEED_LIMIT;
       container.innerHTML = items.length
         ? items.slice(0, FEED_LIMIT).map(c => `<li><button data-key="${esc(c.id)}" title="${esc(changeText(c))}">
             <span class="row">
-              <span class="swatch" style="--c:${swatch(c.to)}"></span>
+              <span class="swatch" style="--c:${swatch(c.kind === 'anomaly' ? null : c.to)}"></span>
               <span class="name">${esc(changeName(c))}</span>
               <span class="when">${esc(i18n.shortHours(ageHours(c.at, now())))}</span>
             </span>

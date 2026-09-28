@@ -106,5 +106,20 @@
    "up": true,
    "native": "Red"
   }
- ]
+ ],
+ "activity": {
+  "source": "gdelt",
+  "series": {
+   "protest": {
+    "status": "normal",
+    "count": 25,
+    "expected": 17.6
+   },
+   "violence": {
+    "status": "normal",
+    "count": 245,
+    "expected": 347.8
+   }
+  }
+ }
 }

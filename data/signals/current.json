@@ -52,5 +52,93 @@
     }
    }
   }
+ },
+ "activity": {
+  "gdelt": {
+   "through": "2026-09-27",
+   "learning": false,
+   "windowDays": 7,
+   "baselineDays": 84,
+   "places": {
+    "af": {
+     "violence": "above"
+    },
+    "am": {
+     "violence": "above"
+    },
+    "by": {
+     "protest": "far"
+    },
+    "cf": {
+     "violence": "far"
+    },
+    "cz": {
+     "violence": "above"
+    },
+    "dk": {
+     "protest": "above"
+    },
+    "ee": {
+     "violence": "above"
+    },
+    "er": {
+     "violence": "far"
+    },
+    "et": {
+     "protest": "above",
+     "violence": "far"
+    },
+    "gl": {
+     "protest": "above",
+     "violence": "above"
+    },
+    "il": {
+     "protest": "above"
+    },
+    "jm": {
+     "protest": "far"
+    },
+    "kp": {
+     "protest": "above"
+    },
+    "ky": {
+     "violence": "above"
+    },
+    "ls": {
+     "violence": "above"
+    },
+    "ml": {
+     "protest": "above"
+    },
+    "mm": {
+     "protest": "above",
+     "violence": "above"
+    },
+    "na": {
+     "violence": "above"
+    },
+    "ni": {
+     "violence": "above"
+    },
+    "pl": {
+     "protest": "above"
+    },
+    "rw": {
+     "violence": "far"
+    },
+    "si": {
+     "violence": "above"
+    },
+    "sn": {
+     "violence": "above"
+    },
+    "tt": {
+     "protest": "above"
+    },
+    "ve": {
+     "protest": "above"
+    }
+   }
+  }
  }
 }

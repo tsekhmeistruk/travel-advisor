@@ -5,5 +5,6 @@
  "uk": { "every": "daily-slot" },
  "de": { "every": "daily-slot" },
  "gdacs": { "everyMinutes": 60 },
- "who": { "everyMinutes": 360 }
+ "who": { "everyMinutes": 360 },
+ "gdelt": { "everyMinutes": 360 }
 }
