@@ -21,10 +21,10 @@
   "consecutiveFailures": 0
  },
  "gdelt": {
-  "lastAttempt": "2026-09-28T15:59:29.539Z",
-  "lastSuccess": "2026-09-28T15:59:29.539Z",
-  "durationMs": 65989,
-  "records": 95,
+  "lastAttempt": "2026-09-28T16:14:27.583Z",
+  "lastSuccess": "2026-09-28T16:14:27.583Z",
+  "durationMs": 6,
+  "records": 0,
   "consecutiveFailures": 0
  },
  "nl": {
