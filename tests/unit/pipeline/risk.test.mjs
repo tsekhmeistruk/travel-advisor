@@ -253,7 +253,8 @@ describe('buildRisk', () => {
       disaster: { sources: ['gdacs'], default: 1, status: 'healthy', at: T0 },
       wildfire: { sources: ['gdacs'], default: 1, status: 'healthy', at: T0 },
     });
-    assert.deepEqual(current.sources, { gdacs: { url: undefined, terms: undefined }, us: { url: undefined } }, 'every source, for attribution');
+    assert.deepEqual(current.sources, { gdacs: { url: undefined, terms: undefined }, us: { url: undefined, flag: undefined } }, 'every source, for attribution');
+    assert.equal(buildRisk(input({ advisories: { ...advisories, flags: { us: 'us' } } })).files['risk/current.json'].sources.us.flag, 'us');
     assert.deepEqual(Object.keys(buildRisk(input({ sources: { gdacs: { config: { ...CONFIG, links: { home: 'https://g.test', terms: 'https://g.test/t' } }, data: null } } })).files['risk/current.json'].sources.gdacs), ['url', 'terms']);
     assert.deepEqual(current.places.mx, {
       travel: { level: 2, natives: { us: 2 }, agree: 1 },

@@ -7,6 +7,13 @@
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/saint-pierre-et-miquelon",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "St Pierre & Miquelon",
+   "updated": "2025-12-10",
+   "url": "https://www.gov.uk/foreign-travel-advice/st-pierre-and-miquelon",
+   "own": true
   }
  },
  "events": [],

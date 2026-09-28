@@ -21,6 +21,13 @@
    "updated": "2026-04-20",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/afghanistan",
    "own": true
+  },
+  "uk": {
+   "level": 4,
+   "title": "Afghanistan",
+   "updated": "2026-07-30",
+   "url": "https://www.gov.uk/foreign-travel-advice/afghanistan",
+   "own": true
   }
  },
  "events": [],

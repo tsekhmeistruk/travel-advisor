@@ -21,6 +21,13 @@
    "updated": "2026-07-02",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/noorwegen",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Norway",
+   "updated": "2026-08-25",
+   "url": "https://www.gov.uk/foreign-travel-advice/norway",
+   "own": true
   }
  },
  "events": [],

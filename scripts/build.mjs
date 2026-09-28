@@ -52,7 +52,11 @@ export function buildAll(input) {
   const risk = buildRisk({
     ...input.risk,
     index: placeIndex(input.places),
-    advisories: { files: advisoryFiles, history: input.history[advisoryDataset?.config.id] ?? {} },
+    advisories: {
+      files: advisoryFiles,
+      history: input.history[advisoryDataset?.config.id] ?? {},
+      flags: Object.fromEntries((advisoryDataset?.providers ?? []).map(p => [p.config.id, p.config.flag])),
+    },
   });
   const files = { ...site.files, ...JSON.parse(JSON.stringify(risk.files)) };
   files['manifest.json'] = {

@@ -21,6 +21,13 @@
    "updated": "2026-06-12",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/bahamas",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Bahamas",
+   "updated": "2026-05-28",
+   "url": "https://www.gov.uk/foreign-travel-advice/bahamas",
+   "own": true
   }
  },
  "events": [],

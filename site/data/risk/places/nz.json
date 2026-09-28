@@ -21,6 +21,13 @@
    "updated": "2026-09-09",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/nieuw-zeeland",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "New Zealand",
+   "updated": "2026-03-19",
+   "url": "https://www.gov.uk/foreign-travel-advice/new-zealand",
+   "own": true
   }
  },
  "events": [],

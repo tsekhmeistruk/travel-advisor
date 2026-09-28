@@ -116,7 +116,7 @@ describe('risk panel', () => {
     const rows = await page.$$eval('#details .risk-rows li', els => els.map(li => [li.querySelector('.cat').textContent, li.querySelector('.lvl').textContent, li.querySelector('.basis').textContent]));
     assert.deepEqual(rows.map(r => r[0]), ['Travel', 'Disaster', 'Wildfire', 'Health']);
     for (const [, level] of rows) assert.match(level, /^(Normal|Elevated|High|Critical|No data)$/);
-    assert.match(rows[0][2], /of 3 governments/);
+    assert.match(rows[0][2], /^\d of \d governments?$/);
     const disaster = rows[1];
     if (disaster[1] !== 'Normal') assert.match(disaster[2], /^GDACS (Orange|Red) /);
     assert.match(await text(page, 'footer'), /not official levels/);

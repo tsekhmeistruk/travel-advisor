@@ -21,6 +21,13 @@
    "updated": "2026-08-12",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/armenie",
    "own": true
+  },
+  "uk": {
+   "level": 3,
+   "title": "Armenia",
+   "updated": "2026-03-01",
+   "url": "https://www.gov.uk/foreign-travel-advice/armenia",
+   "own": true
   }
  },
  "events": [],

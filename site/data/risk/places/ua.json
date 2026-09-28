@@ -21,6 +21,13 @@
    "updated": "2026-08-20",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/oekraine",
    "own": true
+  },
+  "uk": {
+   "level": 3,
+   "title": "Ukraine",
+   "updated": "2026-09-15",
+   "url": "https://www.gov.uk/foreign-travel-advice/ukraine",
+   "own": true
   }
  },
  "events": [

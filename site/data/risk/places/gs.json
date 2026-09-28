@@ -1,6 +1,14 @@
 {
  "placeId": "gs",
- "advisories": {},
+ "advisories": {
+  "uk": {
+   "level": 1,
+   "title": "South Georgia and the South Sandwich Islands",
+   "updated": "2025-09-24",
+   "url": "https://www.gov.uk/foreign-travel-advice/south-georgia-and-south-sandwich-islands",
+   "own": true
+  }
+ },
  "events": [],
  "changes": []
 }

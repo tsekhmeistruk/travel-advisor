@@ -21,6 +21,13 @@
    "updated": "2026-06-17",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/bonaire",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Bonaire/St Eustatius/Saba",
+   "updated": "2025-12-10",
+   "url": "https://www.gov.uk/foreign-travel-advice/bonaire-st-eustatius-saba",
+   "own": false
   }
  },
  "events": [],

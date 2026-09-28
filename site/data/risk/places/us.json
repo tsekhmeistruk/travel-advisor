@@ -14,6 +14,13 @@
    "updated": "2026-07-08",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/verenigde-staten-van-amerika",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "USA",
+   "updated": "2026-08-18",
+   "url": "https://www.gov.uk/foreign-travel-advice/usa",
+   "own": true
   }
  },
  "events": [

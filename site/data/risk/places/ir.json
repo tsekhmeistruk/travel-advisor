@@ -21,6 +21,13 @@
    "updated": "2026-09-25",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/iran",
    "own": true
+  },
+  "uk": {
+   "level": 4,
+   "title": "Iran",
+   "updated": "2026-08-13",
+   "url": "https://www.gov.uk/foreign-travel-advice/iran",
+   "own": true
   }
  },
  "events": [],

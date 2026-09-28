@@ -12,10 +12,11 @@
 import us from './us/index.mjs';
 import ca from './ca/index.mjs';
 import nl from './nl/index.mjs';
+import uk from './uk/index.mjs';
 import gdacs from './gdacs/index.mjs';
 import who from './who/index.mjs';
 
-export const PROVIDERS = { us, ca, nl };
+export const PROVIDERS = { us, ca, nl, uk };
 export const SOURCES = { gdacs, who };
 
 export function getProvider(id) {

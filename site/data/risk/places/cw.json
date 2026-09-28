@@ -21,6 +21,13 @@
    "updated": "2026-06-17",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/curacao",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Curaçao",
+   "updated": "2025-12-10",
+   "url": "https://www.gov.uk/foreign-travel-advice/curacao",
+   "own": true
   }
  },
  "events": [],

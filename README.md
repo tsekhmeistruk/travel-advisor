@@ -1,6 +1,6 @@
 # Travel Risk Map
 
-A world map of official travel advisory levels from the **U.S. State Department**, the **Government of Canada** and the **Dutch Ministry of Foreign Affairs**. It shows at a glance where the risk is and where the risk level changed recently. The data refreshes automatically every day.
+A world map of official travel advisory levels from the **U.S. State Department**, the **Government of Canada**, the **Dutch Ministry of Foreign Affairs** and the **UK Foreign Office**. It shows at a glance where the risk is and where the risk level changed recently. The data refreshes automatically every day.
 
 **Live site: https://tsekhmeistruk.github.io/travel-advisor/**
 
@@ -8,7 +8,7 @@ A world map of official travel advisory levels from the **U.S. State Department*
 
 - **Map modes:** **Travel** (official advisories, below), **Highest** (the highest risk level of any category), **Disasters** (GDACS alerts) and **Changes** (where a risk level changed recently). The risk modes use one scale, Normal, Elevated, High and Critical, which is our summary of the sources, not an official level. Their card shows each category's level and what set it, e.g. "3 of 3 governments" or "GDACS Orange tropical cyclone". **Country details** opens a full view of a country: every category, active alerts, each government's advisory in its own words, and its changes over up to a year. **Event markers** show GDACS alerts on the map, grouped when they are close. A link like `#mode=disaster&place=mx` opens a mode and a country.
 - **Risk level by colour:** each country is filled by its advisory level, from 1 (normal precautions) to 4 (do not travel). Countries with no advisory are grey.
-- **Source switch** (U.S. / Canada / Netherlands) at the top of the map. Each source uses its own level wording, links and data. On phones it shows flags only.
+- **Source switch** (U.S. / Canada / Netherlands / U.K.) at the top of the map. Each source uses its own level wording, links and data. On phones it shows flags only.
 - **Level changes:** a country pulses on the map when its level went up or down in the last 7, 30 or 90 days. Only the level (the colour) counts. Text edits and reissues at the same level don't, and for details the site links to the official advisory.
 - **Change feed:** "Level changes in the last N days" lists each change, e.g. "▲ Level 2 → 3", newest first.
 - **Details panel:** hover or tap a country to see its level, what the level means, when the source last updated it, its level history (the last three changes), whether regional advisories apply, and a link to the official advisory.
@@ -22,6 +22,8 @@ A world map of official travel advisory levels from the **U.S. State Department*
 | 🇺🇸 U.S. State Department | [Data API](https://cadataapi.state.gov/api/TravelAdvisories) for levels and dates | The website is behind a bot check. The API is sometimes inconsistent, so each day's result is merged with the previous one: outdated copies are ignored, a **level change is applied only when the next day's fetch confirms it**, and missing advisories are kept for 7 days. |
 | 🇨🇦 Government of Canada | [Official open-data JSON feed](https://open.canada.ca/data/dataset/bef2ebb3-ca9a-485f-aaff-5dc36eb89426) (Global Affairs Canada, Open Government Licence – Canada), plus the live [advisory table](https://travel.gc.ca/travelling/advisories) | The feed gives every destination and its level in one request. It's rebuilt about once a day, so the live table catches anything newer. Either source alone is enough. |
 | 🇳🇱 Netherlands, Ministry of Foreign Affairs | [Open-data API v2](https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice) (CC0) | The colour code is read from the Dutch summary text, because the API has no level field: green, yellow, orange and red become levels 1–4. For regional advisories, the "rest of the country" colour is the headline level. A level change is applied only when the next day's fetch confirms it. |
+
+| 🇬🇧 UK Foreign, Commonwealth & Development Office | [GOV.UK Content API](https://www.gov.uk/api/content/foreign-travel-advice) (Open Government Licence v3.0) | The FCDO has no 1–4 scale; its warnings are mapped: none 1, "all but essential travel to parts" 2, "all travel to parts" 3 (also, rarely, "all but essential travel to the whole country"), "all travel to the whole country" 4. The site shows the FCDO's own wording. Only pages that changed since the day before are fetched. |
 
 Advisory levels are simplified to 1–4 for every source. Always read the full official advisory before you travel.
 
@@ -111,6 +113,7 @@ npm run logs        # table of the last 30 days
 ## Credits
 
 - **Advisory data:** [U.S. Department of State](https://travel.state.gov/), [Government of Canada](https://travel.gc.ca/) and the [Dutch Ministry of Foreign Affairs](https://www.nederlandwereldwijd.nl/reisadvies) (open data, CC0). This site isn't affiliated with any of these governments.
+- **UK travel advice:** contains public sector information licensed under the [Open Government Licence v3.0](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) (Foreign, Commonwealth & Development Office). Not affiliated.
 - **Outbreak notices:** [WHO Disease Outbreak News](https://www.who.int/emergencies/disease-outbreak-news), World Health Organization. Titles, dates and links only. Not affiliated.
 - **Disaster alerts:** [GDACS](https://www.gdacs.org/), the Global Disaster Alert and Coordination System (UN OCHA, UNOSAT and the European Commission). Not affiliated.
 - **Map geometry:** [Natural Earth](https://www.naturalearthdata.com/) via [world-atlas](https://github.com/topojson/world-atlas) (public domain).

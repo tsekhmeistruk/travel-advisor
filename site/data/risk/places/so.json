@@ -21,6 +21,13 @@
    "updated": "2026-08-04",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/somalie",
    "own": true
+  },
+  "uk": {
+   "level": 3,
+   "title": "Somalia",
+   "updated": "2026-06-04",
+   "url": "https://www.gov.uk/foreign-travel-advice/somalia",
+   "own": true
   }
  },
  "events": [],

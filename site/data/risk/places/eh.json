@@ -1,6 +1,14 @@
 {
  "placeId": "eh",
- "advisories": {},
+ "advisories": {
+  "uk": {
+   "level": 3,
+   "title": "Western Sahara",
+   "updated": "2026-06-29",
+   "url": "https://www.gov.uk/foreign-travel-advice/western-sahara",
+   "own": true
+  }
+ },
  "events": [],
  "changes": []
 }

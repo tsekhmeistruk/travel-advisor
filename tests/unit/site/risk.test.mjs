@@ -32,7 +32,7 @@ const CURRENT = {
     disaster: { sources: ['gdacs'], default: 1, status: 'healthy', at: hoursAgo(2) },
     wildfire: { sources: ['gdacs'], default: 1, status: 'healthy', at: hoursAgo(2) },
   },
-  sources: { gdacs: { url: 'https://www.gdacs.org/' }, us: { url: 'javascript:alert(1)' } },
+  sources: { gdacs: { url: 'https://www.gdacs.org/' }, us: { url: 'javascript:alert(1)', flag: 'us' }, ca: { flag: 'ca' }, uk: { flag: 'gb' } },
   places: {
     mx: { travel: { level: 2, natives: { us: 2, ca: 2 }, agree: 2 }, disaster: { level: 3, since: hoursAgo(5), from: 1, basis: ['gdacs:TC:1', 'gdacs:EQ:2'] } },
     jp: { travel: { level: 1, natives: { us: 1, ca: 1 }, agree: 2 } },
@@ -61,6 +61,7 @@ const MX_FILE = {
   placeId: 'mx',
   advisories: {
     us: { level: 2, title: 'Mexico', updated: '2026-05-29', url: 'https://travel.state.gov/mx', own: true },
+    uk: { level: 2, title: 'Mexico', updated: '2026-09-26', url: 'https://www.gov.uk/foreign-travel-advice/mexico', own: true },
     ca: { level: 3, title: 'North <America>', updated: '2026-09-26', url: 'javascript:alert(1)', own: false },
   },
   events: ['gdacs:TC:1', 'gdacs:EQ:2'],
@@ -468,6 +469,7 @@ describe('country view', () => {
     assert.match(html, /U\.S\.<\/span>[\s\S]*Level 2 · Exercise increased caution/);
     assert.match(html, /Level 3 · Avoid non-essential travel · under North &lt;America&gt;/, 'a covering advisory says so');
     assert.match(html, /href="https:\/\/travel\.state\.gov\/mx"/);
+    assert.match(html, /src="assets\/flags\/gb\.svg"/, 'a flag code that differs from the provider id');
     assert.doesNotMatch(html, /javascript:/);
     assert.match(html, /data-history="90" aria-checked="true"/);
     assert.match(html, /Disaster: Normal → High/);

@@ -1,6 +1,6 @@
 # Travel Risk Map: project guide
 
-A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada and the Netherlands, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data (advisories daily, GDACS disaster alerts hourly), and tests gate every deploy. It's growing into a **risk monitor**: several risk categories per place from several sources (see "The risk layer" in `docs/architecture.md`), plus more providers, languages, and a database later.
+A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada, the Netherlands and the UK, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data (advisories daily, GDACS disaster alerts hourly), and tests gate every deploy. It's growing into a **risk monitor**: several risk categories per place from several sources (see "The risk layer" in `docs/architecture.md`), plus more providers, languages, and a database later.
 
 **Read `docs/architecture.md` first.** It covers the concepts, data flow, published formats and step-by-step guides. This file is the short version, plus hard-won knowledge.
 
@@ -129,6 +129,13 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **The summaries contain typos,** e.g. "Vor de rest van Marokko". Match loosely, and add every case like this as a regression test.
 - **Because levels come from prose,** the shared merge (`lib/merge.mjs`) applies a level change only when a later day confirms it.
 - **Names are Dutch** ("IJsland"), so matching is by the ISO alpha-3 code (`iso3` in the place registry). Special codes are in `config/providers/nl.json` → `codes`: `PSE` covers Gaza and the West Bank; `BQ-BO`, `BQ-SA` and `BQ-SE` are Caribbean Netherlands; `SJM` (Svalbard) is list-only. Kosovo is `XKX`.
+
+**UK** comes from the FCDO's travel advice in the GOV.UK Content API (`www.gov.uk/api/content/foreign-travel-advice`, no key, Open Government Licence v3.0), in `providers/uk/`.
+- **The index has no warnings,** only each destination's page and last-published time; the warnings (`details.alert_status`) are on each page. So the first run reads all ~226 pages (about 20 s, 4 at a time), and later runs only pages whose `public_updated_at` changed: usually the index alone.
+- **No 1–4 scale:** the warnings are mapped in `parse.mjs`; the most severe one sets the level; "_to_parts" warnings make it regional. An unknown warning fails the page (then its previous entry is kept), so a new FCDO category is noticed. Level 3 is named "Against all travel to parts", which is what 40 of 42 level-3 destinations have; the other 2 are "all but essential travel to the whole country" (said in the description).
+- **Official fields,** so level changes apply at once, as for Canada.
+- **Names:** "USA", "Myanmar (Burma)", "Palestine", combined pages like "Bonaire/St Eustatius/Saba" and "Cook Islands, Tokelau and Niue" are `aliases` in `config/providers/uk.json`. The Channel Islands and the Isle of Man have no page (UK territories); Greenland and the Faroes fall under Denmark.
+- **The flag code is `gb`, not the provider id `uk`:** code that shows a provider's flag must use its `flag` (published in `risk/current.json` `sources`).
 
 **WHO** (risk source: health) comes from the Disease Outbreak News API (`www.who.int/api/news/diseaseoutbreaknews`, OData, no key), in `providers/who/`.
 - **One request** for the latest 30 notices (`$orderby=PublicationDate desc&$select=…`); those of the last 90 days are kept. WHO publishes a few a month, so an empty list is treated as an error.

@@ -21,6 +21,13 @@
    "updated": "2026-09-18",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/belgie",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Belgium",
+   "updated": "2026-09-25",
+   "url": "https://www.gov.uk/foreign-travel-advice/belgium",
+   "own": true
   }
  },
  "events": [],

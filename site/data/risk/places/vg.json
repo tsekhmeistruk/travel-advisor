@@ -21,6 +21,13 @@
    "updated": "2026-03-19",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/britse-maagdeneilanden",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "British Virgin Islands",
+   "updated": "2025-11-03",
+   "url": "https://www.gov.uk/foreign-travel-advice/british-virgin-islands",
+   "own": true
   }
  },
  "events": [],

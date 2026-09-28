@@ -21,6 +21,13 @@
    "updated": "2026-09-15",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/spanje",
    "own": false
+  },
+  "uk": {
+   "level": 1,
+   "title": "Spain",
+   "updated": "2026-08-12",
+   "url": "https://www.gov.uk/foreign-travel-advice/spain",
+   "own": false
   }
  },
  "events": [],

@@ -14,6 +14,13 @@
    "updated": "2026-08-19",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/canada",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Canada",
+   "updated": "2026-06-02",
+   "url": "https://www.gov.uk/foreign-travel-advice/canada",
+   "own": true
   }
  },
  "events": [],

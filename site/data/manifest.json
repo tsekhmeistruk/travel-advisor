@@ -42,12 +42,18 @@
      "flag": "nl",
      "asOf": "2026-09-28",
      "file": "travel-advisories/nl.json"
+    },
+    {
+     "id": "uk",
+     "flag": "gb",
+     "asOf": "2026-09-28",
+     "file": "travel-advisories/uk.json"
     }
    ]
   }
  ],
  "risk": {
-  "asOf": "2026-09-28T01:10:53.774Z",
+  "asOf": "2026-09-28T02:13:27.043Z",
   "current": "risk/current.json",
   "changes": "risk/changes.json",
   "events": "risk/events.json",

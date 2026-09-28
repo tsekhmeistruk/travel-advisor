@@ -189,6 +189,34 @@
      "notes": {
       "svalbard": "Svalbard is part of Norway on the map, which shows Norway's own advice."
      }
+    },
+    "uk": {
+     "name": "United Kingdom",
+     "short": "U.K.",
+     "agency": "UK Foreign Office",
+     "levels": {
+      "1": {
+       "name": "No advice against travel",
+       "short": "No warning",
+       "desc": "The FCDO does not advise against travel to any part of this destination. Read the full advice for local risks and entry rules."
+      },
+      "2": {
+       "name": "Essential travel only, to parts",
+       "short": "Essential only",
+       "desc": "The FCDO advises against all but essential travel to some parts of this destination."
+      },
+      "3": {
+       "name": "Against all travel to parts",
+       "short": "Avoid parts",
+       "desc": "The FCDO advises against all travel to parts of this destination (or, rarely, against all but essential travel to the whole of it)."
+      },
+      "4": {
+       "name": "Against all travel",
+       "short": "Do not travel",
+       "desc": "The FCDO advises against all travel to the whole of this destination."
+      }
+     },
+     "notes": {}
     }
    }
   }

@@ -14,6 +14,13 @@
    "updated": "2026-06-25",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/niue",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Cook Islands, Tokelau and Niue",
+   "updated": "2025-12-10",
+   "url": "https://www.gov.uk/foreign-travel-advice/cook-islands-tokelau-and-niue",
+   "own": false
   }
  },
  "events": [],

@@ -21,6 +21,13 @@
    "updated": "2026-08-28",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/china",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "China",
+   "updated": "2026-08-27",
+   "url": "https://www.gov.uk/foreign-travel-advice/china",
+   "own": true
   }
  },
  "events": [],

@@ -245,7 +245,7 @@ export function advisoryChanges(history, files) {
  *   index        placeIndex() of the registry
  *   categories   config/categories.json
  *   schedule     config/schedule.json
- *   advisories   { files: { providerId: published data }, history }
+ *   advisories   { files: { providerId: published data }, history, flags: { providerId: flag code } }
  *   sources      { id: { config, data: stored events | null } }
  *   state        data/signals/current.json (or null)
  *   log          stored change log entries (this year and last)
@@ -324,7 +324,7 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   // Who the levels come from, for attribution: risk sources first, then the governments.
   const sourcesOut = {
     ...Object.fromEntries(Object.entries(sources).map(([id, { config }]) => [id, { url: config.links?.home, terms: config.links?.terms }])),
-    ...Object.fromEntries(Object.entries(advisories.files).map(([id, d]) => [id, { url: d.links?.list }])),
+    ...Object.fromEntries(Object.entries(advisories.files).map(([id, d]) => [id, { url: d.links?.list, flag: advisories.flags?.[id] }])),
   };
   const files = {
     'risk/current.json': { asOf, scale: categories.scale, categories: categoriesOut, sources: sourcesOut, places: sortedPlaces },

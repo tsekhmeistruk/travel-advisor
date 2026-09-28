@@ -1,0 +1,56 @@
+{
+ "id": "uk",
+ "dataset": "travel-advisories",
+ "flag": "gb",
+ "links": {
+  "list": "https://www.gov.uk/foreign-travel-advice"
+ },
+ "home": "gb",
+ "territories": [
+  "je",
+  "gg",
+  "im"
+ ],
+ "coveredBy": {
+  "somaliland": "Somalia",
+  "northern-cyprus": "Cyprus",
+  "ax": "Finland",
+  "azores": "Portugal",
+  "canary-islands": "Spain",
+  "gl": "Denmark",
+  "fo": "Denmark"
+ },
+ "listOnly": {},
+ "aliases": {
+  "Antarctica/British Antarctic Territory": "aq",
+  "Bonaire/St Eustatius/Saba": [
+   "bonaire",
+   "saba-and-sint-eustatius"
+  ],
+  "Cape Verde": "cv",
+  "Cook Islands, Tokelau and Niue": [
+   "ck",
+   "tk",
+   "nu"
+  ],
+  "Federated States of Micronesia": "fm",
+  "Myanmar (Burma)": "mm",
+  "Palestine": [
+   "gaza",
+   "west-bank"
+  ],
+  "Pitcairn Island": "pn",
+  "South Georgia and the South Sandwich Islands": "gs",
+  "St Helena, Ascension and Tristan da Cunha": "sh",
+  "St Lucia": "lc",
+  "St Maarten": "sx",
+  "St Martin and St Barthélemy": [
+   "mf",
+   "bl"
+  ],
+  "St Pierre & Miquelon": "pm",
+  "St Vincent and the Grenadines": "vc",
+  "The Gambia": "gm",
+  "USA": "us"
+ }
+}

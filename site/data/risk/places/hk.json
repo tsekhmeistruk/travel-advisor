@@ -21,6 +21,13 @@
    "updated": "2026-09-15",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/hongkong",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Hong Kong",
+   "updated": "2026-04-01",
+   "url": "https://www.gov.uk/foreign-travel-advice/hong-kong",
+   "own": true
   }
  },
  "events": [],

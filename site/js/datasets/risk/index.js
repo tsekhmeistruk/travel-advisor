@@ -190,7 +190,7 @@ export function createRiskMode(ctx) {
     const advisories = Object.entries(file?.advisories ?? {}).map(([id, a]) => {
       const url = safeUrl(a.url);
       return `<li>
-        <img class="flag" src="assets/flags/${esc(id)}.svg" alt="" width="21" height="14">
+        <img class="flag" src="assets/flags/${esc(current.sources?.[id]?.flag ?? id)}.svg" alt="" width="21" height="14">
         <span class="who">${esc(provider(id, 'short'))}</span>
         <span class="swatch" style="background:var(--l${a.level})"></span>
         <span class="what" title="${esc(provider(id, `levels.${a.level}.name`))}">${esc(tr('country.advisoryLevel', { level: a.level, name: provider(id, `levels.${a.level}.name`) }))}${a.own ? '' : ` · ${esc(tr('country.coveredBy', { title: a.title }))}`}</span>

@@ -21,6 +21,13 @@
    "updated": "2026-09-17",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/koeweit",
    "own": true
+  },
+  "uk": {
+   "level": 1,
+   "title": "Kuwait",
+   "updated": "2026-08-20",
+   "url": "https://www.gov.uk/foreign-travel-advice/kuwait",
+   "own": true
   }
  },
  "events": [],

@@ -3,7 +3,8 @@
  "providers": [
   "us",
   "ca",
-  "nl"
+  "nl",
+  "uk"
  ],
  "scale": {
   "type": "levels",

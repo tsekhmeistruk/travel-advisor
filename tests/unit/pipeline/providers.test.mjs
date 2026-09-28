@@ -7,6 +7,7 @@ import { readFileSync } from 'node:fs';
 import us from '../../../scripts/providers/us/index.mjs';
 import ca from '../../../scripts/providers/ca/index.mjs';
 import nl from '../../../scripts/providers/nl/index.mjs';
+import uk from '../../../scripts/providers/uk/index.mjs';
 import gdacs from '../../../scripts/providers/gdacs/index.mjs';
 import who from '../../../scripts/providers/who/index.mjs';
 import { PROVIDERS, SOURCES, getProvider } from '../../../scripts/providers/index.mjs';
@@ -48,7 +49,7 @@ describe('provider registry', () => {
     assert.equal(getProvider('gdacs'), gdacs, 'sources are found by id too');
   });
   test('rejects an unknown provider with the list of known ones', () => {
-    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, gdacs, who/);
+    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, gdacs, who/);
   });
 });
 
@@ -150,6 +151,68 @@ describe('GDACS fetcher', () => {
     const { sleep } = recordSleeps();
     const log = fakeLog({ search: [{ body: '{"type":"FeatureCollection"}' }] });
     await assert.rejects(gdacs.fetch({ log, previous: [], now: NOW, config, sleep }), /no list of features/);
+  });
+});
+
+describe('UK fetcher', () => {
+  const index = JSON.parse(fixture('uk-index.json'));
+  const pages = JSON.parse(fixture('uk-pages.json'));
+  // The real 12 destinations plus fillers, to pass the "plausible size" check.
+  const filler = Array.from({ length: 150 }, (_, i) => ({
+    api_url: `https://www.gov.uk/api/content/foreign-travel-advice/c${i}`, web_url: `https://www.gov.uk/foreign-travel-advice/c${i}`,
+    public_updated_at: '2026-09-01T10:00:00Z', details: { country: { name: `Country ${i}`, slug: `c${i}` } },
+  }));
+  const indexBody = (children = [...index.links.children, ...filler]) => JSON.stringify({ links: { children } });
+  const page = (url) => {
+    const slug = url.split('/').at(-1);
+    return { body: JSON.stringify(pages[slug] ?? { details: { alert_status: [] } }) };
+  };
+  const TODAY = '2026-09-28';
+
+  test('the first run reads the index and every page, with levels from the warnings', async () => {
+    const log = fakeLog({ index: [{ body: indexBody() }], pages: page });
+    const { entries, stats } = await uk.fetch({ log, previous: [], today: TODAY, sleep: async () => {} });
+    assert.equal(entries.length, 162);
+    assert.equal(log.requests.filter(r => r.call === 'pages').length, 162);
+    assert.ok(log.requests.filter(r => r.call === 'pages').every(r => r.opts.detail === false), 'pages are counted, not listed');
+    const by = (n) => entries.find(e => e.name === n);
+    assert.deepEqual([by('Afghanistan').level, by('Mexico').level, by('Ukraine').level, by('France').level], [4, 2, 3, 1]);
+    assert.equal(by('Mexico').regional, true);
+    assert.equal(by('France').alerts, undefined);
+    assert.equal(by('Mexico').url, 'https://www.gov.uk/foreign-travel-advice/mexico');
+    assert.match(by('Mexico').updated, /^\d{4}-\d{2}-\d{2}$/);
+    assert.deepEqual(stats.levelChanged, []);
+  });
+
+  test('later runs read only pages that changed, and report level changes at once', async () => {
+    const first = await uk.fetch({ log: fakeLog({ index: [{ body: indexBody() }], pages: page }), previous: [], today: TODAY });
+    const later = [...index.links.children, ...filler].map(c => (c.details.country.name === 'Mexico' ? { ...c, public_updated_at: '2026-09-28T08:00:00Z' } : c));
+    const log = fakeLog({ index: [{ body: indexBody(later) }], pages: () => ({ body: JSON.stringify({ details: { alert_status: ['avoid_all_travel_to_parts'] } }) }) });
+    const { entries, stats } = await uk.fetch({ log, previous: first.entries, today: '2026-09-29' });
+    assert.deepEqual(log.requests.filter(r => r.call === 'pages').map(r => r.url), ['https://www.gov.uk/api/content/foreign-travel-advice/mexico']);
+    assert.equal(entries.find(e => e.name === 'Mexico').level, 3);
+    assert.deepEqual(stats.levelChanged, ['Mexico L2 → L3']);
+    assert.deepEqual(stats.changed, ['Mexico']);
+    assert.equal(entries.find(e => e.name === 'France').lastSeen, '2026-09-29', 'unchanged entries are kept');
+  });
+
+  test('a failed page keeps its previous entry and warns; many failures fail the run', async () => {
+    const first = await uk.fetch({ log: fakeLog({ index: [{ body: indexBody() }], pages: page }), previous: [], today: TODAY });
+    const later = [...index.links.children, ...filler].map(c => ({ ...c, public_updated_at: '2026-09-28T09:00:00Z' }));
+    const { sleep } = recordSleeps();
+    const mexicoDown = fakeLog({ index: [{ body: indexBody(later) }], pages: (url) => (url.endsWith('/mexico') ? { status: 503 } : page(url)) });
+    const { entries } = await uk.fetch({ log: mexicoDown, previous: first.entries, today: TODAY, sleep });
+    assert.equal(entries.find(e => e.name === 'Mexico').level, 2, 'the previous entry');
+    assert.match(mexicoDown.warnings.join(), /Pages failed, previous entry kept: Mexico \(pages failed after 3 attempts: HTTP 503\)/);
+    const allDown = fakeLog({ index: [{ body: indexBody(later) }], pages: () => ({ status: 500 }) });
+    await assert.rejects(uk.fetch({ log: allDown, previous: first.entries, today: TODAY, sleep }), /destination pages failed/);
+  });
+
+  test('a small index means the format changed; a failing index fails after retries', async () => {
+    await assert.rejects(uk.fetch({ log: fakeLog({ index: [{ body: indexBody(index.links.children) }] }), previous: [], today: TODAY }), /Only 12 destinations/);
+    const { waits, sleep } = recordSleeps();
+    await assert.rejects(uk.fetch({ log: fakeLog({ index: [{ status: 500 }, { body: CHALLENGE, challenge: true }, { status: 502 }] }), previous: [], today: TODAY, sleep }), /index failed after 3 attempts/);
+    assert.deepEqual(waits, [15000, 30000]);
   });
 });
 

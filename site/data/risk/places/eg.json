@@ -21,6 +21,13 @@
    "updated": "2026-06-25",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/egypte",
    "own": true
+  },
+  "uk": {
+   "level": 3,
+   "title": "Egypt",
+   "updated": "2026-08-04",
+   "url": "https://www.gov.uk/foreign-travel-advice/egypt",
+   "own": true
   }
  },
  "events": [],

@@ -1,6 +1,14 @@
 {
  "placeId": "io",
- "advisories": {},
+ "advisories": {
+  "uk": {
+   "level": 1,
+   "title": "British Indian Ocean Territory",
+   "updated": "2024-04-08",
+   "url": "https://www.gov.uk/foreign-travel-advice/british-indian-ocean-territory",
+   "own": true
+  }
+ },
  "events": [],
  "changes": []
 }
