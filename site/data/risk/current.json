@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-28T02:13:27.043Z",
+ "asOf": "2026-09-28T02:27:37.550Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -24,7 +24,7 @@
     "gdacs"
    ],
    "default": 1,
-   "status": "healthy",
+   "status": "delayed",
    "at": "2026-09-28T00:50:46.466Z"
   },
   "wildfire": {
@@ -32,7 +32,7 @@
     "gdacs"
    ],
    "default": 1,
-   "status": "healthy",
+   "status": "delayed",
    "at": "2026-09-28T00:50:46.466Z"
   },
   "health": {
