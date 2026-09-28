@@ -30,6 +30,25 @@
    "own": true
   }
  },
- "events": [],
- "changes": []
+ "events": [
+  "gdacs:FL:1104081"
+ ],
+ "changes": [
+  {
+   "id": "cn:disaster:2026-09-28T11:59:27.360Z",
+   "at": "2026-09-28T11:59:27.360Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "cn",
+   "from": 1,
+   "to": 3,
+   "up": true,
+   "basis": [
+    "gdacs:FL:1104081"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  }
+ ]
 }

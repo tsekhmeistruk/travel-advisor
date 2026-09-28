@@ -37,6 +37,22 @@
  ],
  "changes": [
   {
+   "id": "gdacs:TC:1001325:2026-09-28T11:59:27.360Z",
+   "at": "2026-09-28T11:59:27.360Z",
+   "kind": "event",
+   "category": "disaster",
+   "source": "gdacs",
+   "eventId": "gdacs:TC:1001325",
+   "type": "cyclone",
+   "placeIds": [
+    "mx"
+   ],
+   "from": 4,
+   "to": 3,
+   "up": false,
+   "native": "Orange"
+  },
+  {
    "id": "mx:disaster:2026-09-28T05:21:22.352Z",
    "at": "2026-09-28T05:21:22.352Z",
    "kind": "level",

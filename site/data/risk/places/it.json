@@ -31,6 +31,7 @@
   }
  },
  "events": [
+  "gdacs:VO:1000150",
   "gdacs:FL:1104053"
  ],
  "changes": []

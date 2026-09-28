@@ -1,6 +1,30 @@
 {
- "asOf": "2026-09-28T05:21:22.352Z",
+ "asOf": "2026-09-28T11:59:30.444Z",
  "events": [
+  {
+   "id": "gdacs:VO:1000150",
+   "source": "gdacs",
+   "type": "volcano",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Eruption  Etna",
+   "country": "Italy",
+   "placeIds": [
+    "it"
+   ],
+   "point": {
+    "lon": 14.999,
+    "lat": 37.748
+   },
+   "startedAt": "2026-09-27T22:00:00.000Z",
+   "toDate": "2026-09-27T22:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1000150&episodeid=1&eventtype=VO"
+  },
   {
    "id": "gdacs:TC:1001329",
    "source": "gdacs",
@@ -18,13 +42,13 @@
     "mx"
    ],
    "point": {
-    "lon": -99.8,
-    "lat": 12.9
+    "lon": -100.4,
+    "lat": 13.4
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-28T03:00:00.000Z",
+   "toDate": "2026-09-28T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=4&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=5&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -72,6 +96,57 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1001328&episodeid=8&eventtype=TC"
   },
   {
+   "id": "gdacs:FL:1104197",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Costa Rica",
+   "country": "Costa Rica",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "cr"
+   ],
+   "point": {
+    "lon": -83.867,
+    "lat": 10.068
+   },
+   "startedAt": "2026-09-25T01:00:00.000Z",
+   "toDate": "2026-09-27T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104197&episodeid=1&eventtype=FL"
+  },
+  {
+   "id": "gdacs:FL:1104198",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in India, Nepal",
+   "country": "India, Nepal",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "in",
+    "np"
+   ],
+   "point": {
+    "lon": 76.417,
+    "lat": 19.567
+   },
+   "startedAt": "2026-09-24T01:00:00.000Z",
+   "toDate": "2026-09-26T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104198&episodeid=2&eventtype=FL"
+  },
+  {
    "id": "gdacs:TC:1001327",
    "source": "gdacs",
    "type": "cyclone",
@@ -88,13 +163,13 @@
     "jp"
    ],
    "point": {
-    "lon": 130.9,
-    "lat": 26.6
+    "lon": 131.6,
+    "lat": 27.5
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-28T00:00:00.000Z",
+   "toDate": "2026-09-28T06:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=20&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=21&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104190",
@@ -226,10 +301,10 @@
    "source": "gdacs",
    "type": "cyclone",
    "category": "disaster",
-   "level": 4,
+   "level": 3,
    "native": {
     "scheme": "gdacs-alert",
-    "value": "Red"
+    "value": "Orange"
    },
    "name": "Tropical Cyclone POLO-26",
    "country": "Mexico",
@@ -238,13 +313,13 @@
     "mx"
    ],
    "point": {
-    "lon": -114,
-    "lat": 22.8
+    "lon": -113.8,
+    "lat": 23.6
    },
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-28T03:00:00.000Z",
+   "toDate": "2026-09-28T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=30&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=31&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001324",
@@ -282,13 +357,38 @@
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -43.8,
-    "lat": 28.5
+    "lon": -44.1,
+    "lat": 27.9
    },
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-28T03:00:00.000Z",
+   "toDate": "2026-09-28T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=32&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=33&eventtype=TC"
+  },
+  {
+   "id": "gdacs:FL:1104176",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Philippines",
+   "country": "Philippines",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "ph"
+   ],
+   "point": {
+    "lon": 126.451,
+    "lat": 7.053
+   },
+   "startedAt": "2026-09-18T01:00:00.000Z",
+   "toDate": "2026-09-26T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104176&episodeid=3&eventtype=FL"
   },
   {
    "id": "gdacs:FL:1104178",
@@ -307,13 +407,13 @@
     "gn"
    ],
    "point": {
-    "lon": -10.122,
-    "lat": 9.21
+    "lon": -8.857,
+    "lat": 8.393
    },
    "startedAt": "2026-09-18T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
+   "toDate": "2026-09-29T01:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104178&episodeid=3&eventtype=FL"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104178&episodeid=4&eventtype=FL"
   },
   {
    "id": "gdacs:FL:1104183",
@@ -341,6 +441,31 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1104183&episodeid=2&eventtype=FL"
   },
   {
+   "id": "gdacs:FL:1104168",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Indonesia",
+   "country": "Indonesia",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "id"
+   ],
+   "point": {
+    "lon": 99.381,
+    "lat": 2.192
+   },
+   "startedAt": "2026-09-16T01:00:00.000Z",
+   "toDate": "2026-09-28T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104168&episodeid=3&eventtype=FL"
+  },
+  {
    "id": "gdacs:TC:1001321",
    "source": "gdacs",
    "type": "cyclone",
@@ -352,18 +477,18 @@
    },
    "name": "Tropical Cyclone NOLO-26",
    "country": "United States",
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 259 km/h)",
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 269 km/h)",
    "placeIds": [
     "us"
    ],
    "point": {
-    "lon": -160.3,
-    "lat": 16.3
+    "lon": -161.3,
+    "lat": 16.5
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-28T03:00:00.000Z",
+   "toDate": "2026-09-28T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=30&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=31&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",
@@ -427,13 +552,63 @@
     "mx"
    ],
    "point": {
-    "lon": -97.837,
-    "lat": 22.247
+    "lon": -106.421,
+    "lat": 23.204
    },
    "startedAt": "2026-08-17T01:00:00.000Z",
+   "toDate": "2026-09-28T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104099&episodeid=17&eventtype=FL"
+  },
+  {
+   "id": "gdacs:FL:1104121",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 3,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Flood in India",
+   "country": "India",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "in"
+   ],
+   "point": {
+    "lon": 80.86,
+    "lat": 27.13
+   },
+   "startedAt": "2026-08-09T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104099&episodeid=15&eventtype=FL"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104121&episodeid=18&eventtype=FL"
+  },
+  {
+   "id": "gdacs:FL:1104081",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 3,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Flood in China",
+   "country": "China",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "cn"
+   ],
+   "point": {
+    "lon": 108.481,
+    "lat": 31.296
+   },
+   "startedAt": "2026-07-31T01:00:00.000Z",
+   "toDate": "2026-09-27T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104081&episodeid=20&eventtype=FL"
   },
   {
    "id": "gdacs:FL:1104053",
@@ -459,6 +634,31 @@
    "toDate": "2026-09-27T01:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104053&episodeid=26&eventtype=FL"
+  },
+  {
+   "id": "gdacs:FL:1104011",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Myanmar",
+   "country": "Myanmar",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "mm"
+   ],
+   "point": {
+    "lon": 98.817,
+    "lat": 12.109
+   },
+   "startedAt": "2026-07-04T01:00:00.000Z",
+   "toDate": "2026-09-28T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104011&episodeid=27&eventtype=FL"
   },
   {
    "id": "gdacs:FL:1103888",

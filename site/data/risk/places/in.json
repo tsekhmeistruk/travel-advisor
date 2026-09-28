@@ -30,8 +30,27 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:FL:1104198",
+  "gdacs:FL:1104121"
+ ],
  "changes": [
+  {
+   "id": "in:disaster:2026-09-28T11:59:27.360Z",
+   "at": "2026-09-28T11:59:27.360Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "in",
+   "from": 1,
+   "to": 3,
+   "up": true,
+   "basis": [
+    "gdacs:FL:1104121"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  },
   {
    "id": "in:disaster:2026-09-28T05:21:22.352Z",
    "at": "2026-09-28T05:21:22.352Z",

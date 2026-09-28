@@ -7,10 +7,10 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-09-28T05:21:22.350Z",
-  "lastSuccess": "2026-09-28T05:21:22.350Z",
-  "durationMs": 2443,
-  "records": 62,
+  "lastAttempt": "2026-09-28T11:59:27.358Z",
+  "lastSuccess": "2026-09-28T11:59:27.358Z",
+  "durationMs": 3021,
+  "records": 66,
   "consecutiveFailures": 0
  },
  "nl": {
@@ -35,9 +35,9 @@
   "consecutiveFailures": 0
  },
  "who": {
-  "lastAttempt": "2026-09-28T00:50:49.314Z",
-  "lastSuccess": "2026-09-28T00:50:49.314Z",
-  "durationMs": 798,
+  "lastAttempt": "2026-09-28T11:59:30.444Z",
+  "lastSuccess": "2026-09-28T11:59:30.444Z",
+  "durationMs": 937,
   "records": 8,
   "consecutiveFailures": 0
  }
