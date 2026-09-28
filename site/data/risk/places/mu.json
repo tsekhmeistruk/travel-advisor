@@ -28,6 +28,12 @@
    "updated": "2026-09-04",
    "url": "https://www.gov.uk/foreign-travel-advice/mauritius",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Mauritius",
+   "updated": "2026-09-01",
+   "own": true
   }
  },
  "events": [],

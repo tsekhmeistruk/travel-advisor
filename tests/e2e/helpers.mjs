@@ -94,9 +94,12 @@ export function withLevelChanges(provider = 'us') {
   };
   const changed = [];
   [[1, 1], [2, 3], [3, 10], [4, 40]].forEach(([level, age]) => {
-    const r = data.records.find(x => x.level === level && x.places.length === 1);
-    const from = level === 1 ? 2 : level - 1;
-    r.levelChanges = [{ date: day(age), from, to: level, up: level > from }];
+    // A provider may have no record at some level today (Germany has no level 2): then any other
+    // unchanged record, with a change to its own level.
+    const fresh = (x) => x.places.length === 1 && !changed.includes(x.title);
+    const r = data.records.find(x => x.level === level && fresh(x)) ?? data.records.find(fresh);
+    const from = r.level === 1 ? 2 : r.level - 1;
+    r.levelChanges = [{ date: day(age), from, to: r.level, up: r.level > from }];
     changed.push(r.title);
   });
   data.records.find(x => x.title === changed[3]).levelChanges.push(

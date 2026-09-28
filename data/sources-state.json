@@ -6,11 +6,18 @@
   "records": 230,
   "consecutiveFailures": 0
  },
+ "de": {
+  "lastAttempt": "2026-09-28T15:35:58.883Z",
+  "lastSuccess": "2026-09-28T15:35:58.883Z",
+  "durationMs": 633,
+  "records": 200,
+  "consecutiveFailures": 0
+ },
  "gdacs": {
-  "lastAttempt": "2026-09-28T11:59:27.358Z",
-  "lastSuccess": "2026-09-28T11:59:27.358Z",
-  "durationMs": 3021,
-  "records": 66,
+  "lastAttempt": "2026-09-28T15:37:04.551Z",
+  "lastSuccess": "2026-09-28T15:37:04.551Z",
+  "durationMs": 3282,
+  "records": 67,
   "consecutiveFailures": 0
  },
  "nl": {

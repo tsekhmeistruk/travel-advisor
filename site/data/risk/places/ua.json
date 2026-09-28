@@ -28,6 +28,12 @@
    "updated": "2026-09-15",
    "url": "https://www.gov.uk/foreign-travel-advice/ukraine",
    "own": true
+  },
+  "de": {
+   "level": 4,
+   "title": "Ukraine",
+   "updated": "2026-09-25",
+   "own": true
   }
  },
  "events": [

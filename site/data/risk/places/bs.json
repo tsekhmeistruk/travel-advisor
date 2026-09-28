@@ -28,6 +28,12 @@
    "updated": "2026-05-28",
    "url": "https://www.gov.uk/foreign-travel-advice/bahamas",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Bahamas",
+   "updated": "2026-08-26",
+   "own": true
   }
  },
  "events": [],

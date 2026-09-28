@@ -28,6 +28,12 @@
    "updated": "2026-07-30",
    "url": "https://www.gov.uk/foreign-travel-advice/afghanistan",
    "own": true
+  },
+  "de": {
+   "level": 4,
+   "title": "Afghanistan",
+   "updated": "2026-08-19",
+   "own": true
   }
  },
  "events": [],

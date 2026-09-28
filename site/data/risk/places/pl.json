@@ -28,6 +28,12 @@
    "updated": "2026-08-11",
    "url": "https://www.gov.uk/foreign-travel-advice/poland",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Polen",
+   "updated": "2026-08-21",
+   "own": true
   }
  },
  "events": [],

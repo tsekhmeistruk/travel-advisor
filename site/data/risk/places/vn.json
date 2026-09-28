@@ -28,6 +28,12 @@
    "updated": "2026-09-21",
    "url": "https://www.gov.uk/foreign-travel-advice/vietnam",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Vietnam",
+   "updated": "2026-08-27",
+   "own": true
   }
  },
  "events": [],

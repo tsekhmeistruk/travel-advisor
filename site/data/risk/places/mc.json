@@ -21,6 +21,12 @@
    "updated": "2025-12-10",
    "url": "https://www.gov.uk/foreign-travel-advice/monaco",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Monaco",
+   "updated": "2026-04-21",
+   "own": true
   }
  },
  "events": [],

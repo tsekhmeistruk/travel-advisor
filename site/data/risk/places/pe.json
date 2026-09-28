@@ -28,6 +28,12 @@
    "updated": "2026-06-22",
    "url": "https://www.gov.uk/foreign-travel-advice/peru",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Peru",
+   "updated": "2026-08-24",
+   "own": true
   }
  },
  "events": [],

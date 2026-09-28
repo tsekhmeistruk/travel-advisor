@@ -28,6 +28,12 @@
    "updated": "2026-09-10",
    "url": "https://www.gov.uk/foreign-travel-advice/belarus",
    "own": true
+  },
+  "de": {
+   "level": 4,
+   "title": "Belarus",
+   "updated": "2026-06-19",
+   "own": true
   }
  },
  "events": [],

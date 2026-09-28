@@ -28,6 +28,12 @@
    "updated": "2026-07-08",
    "url": "https://www.gov.uk/foreign-travel-advice/south-africa",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Südafrika",
+   "updated": "2026-09-22",
+   "own": true
   }
  },
  "events": [],

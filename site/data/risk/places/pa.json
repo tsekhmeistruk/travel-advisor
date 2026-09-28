@@ -28,6 +28,12 @@
    "updated": "2025-12-10",
    "url": "https://www.gov.uk/foreign-travel-advice/panama",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Panama",
+   "updated": "2026-08-20",
+   "own": true
   }
  },
  "events": [],

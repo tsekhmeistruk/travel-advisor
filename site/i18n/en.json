@@ -217,6 +217,34 @@
       }
      },
      "notes": {}
+    },
+    "de": {
+     "name": "Germany",
+     "short": "Germany",
+     "agency": "German Foreign Office",
+     "levels": {
+      "1": {
+       "name": "No travel warning",
+       "short": "No warning",
+       "desc": "The German Foreign Office has no travel warning for this destination. Read its safety advice for local risks."
+      },
+      "2": {
+       "name": "Travel to parts advised against",
+       "short": "Avoid parts",
+       "desc": "The German Foreign Office advises against travel to some parts of this destination."
+      },
+      "3": {
+       "name": "Partial travel warning",
+       "short": "Partial warning",
+       "desc": "The German Foreign Office warns against travel to parts of this destination, or advises against travel to all of it."
+      },
+      "4": {
+       "name": "Travel warning",
+       "short": "Warning",
+       "desc": "The German Foreign Office warns against all travel to this destination."
+      }
+     },
+     "notes": {}
     }
    }
   }
@@ -321,7 +349,8 @@
    "history": "Recent changes",
    "noChanges": "No changes in the last {days} days.",
    "report": "{source} report ↗",
-   "details": "Country details →"
+   "details": "Country details →",
+   "falling": "Lowering to {level}, awaiting confirmation"
   },
   "country": {
    "back": "Back to the map",

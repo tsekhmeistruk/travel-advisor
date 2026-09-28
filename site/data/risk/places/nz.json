@@ -28,6 +28,12 @@
    "updated": "2026-03-19",
    "url": "https://www.gov.uk/foreign-travel-advice/new-zealand",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Neuseeland",
+   "updated": "2026-07-07",
+   "own": true
   }
  },
  "events": [],

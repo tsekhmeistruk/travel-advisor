@@ -28,6 +28,12 @@
    "updated": "2026-08-11",
    "url": "https://www.gov.uk/foreign-travel-advice/greece",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Griechenland",
+   "updated": "2026-08-19",
+   "own": true
   }
  },
  "events": [],

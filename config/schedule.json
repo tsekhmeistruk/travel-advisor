@@ -3,6 +3,7 @@
  "ca": { "every": "daily-slot" },
  "nl": { "every": "daily-slot" },
  "uk": { "every": "daily-slot" },
+ "de": { "every": "daily-slot" },
  "gdacs": { "everyMinutes": 60 },
  "who": { "everyMinutes": 360 }
 }

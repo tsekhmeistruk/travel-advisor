@@ -308,7 +308,8 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   for (const [c, cat] of Object.entries(newState.categories)) {
     if (catMeta[c]?.default == null) continue;
     for (const [id, s] of Object.entries(cat.places)) {
-      put(id, c, { level: s.level, since: s.since, from: s.from, basis: s.basis });
+      // `falling`: a lower level seen, waiting for a later fetch to confirm it (the card says so).
+      put(id, c, { level: s.level, since: s.since, from: s.from, basis: s.basis, ...(s.pending && { falling: s.pending.level }) });
     }
   }
 

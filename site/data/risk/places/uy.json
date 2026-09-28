@@ -28,6 +28,12 @@
    "updated": "2025-12-10",
    "url": "https://www.gov.uk/foreign-travel-advice/uruguay",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Uruguay",
+   "updated": "2026-08-21",
+   "own": true
   }
  },
  "events": [],

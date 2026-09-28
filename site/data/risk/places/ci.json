@@ -28,6 +28,12 @@
    "updated": "2026-05-29",
    "url": "https://www.gov.uk/foreign-travel-advice/cote-d-ivoire",
    "own": true
+  },
+  "de": {
+   "level": 3,
+   "title": "Côte d'Ivoire",
+   "updated": "2025-12-01",
+   "own": true
   }
  },
  "events": [],

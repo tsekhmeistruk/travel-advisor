@@ -28,6 +28,12 @@
    "updated": "2026-08-11",
    "url": "https://www.gov.uk/foreign-travel-advice/sweden",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Schweden",
+   "updated": "2026-05-29",
+   "own": true
   }
  },
  "events": [],

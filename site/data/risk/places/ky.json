@@ -28,6 +28,12 @@
    "updated": "2025-10-29",
    "url": "https://www.gov.uk/foreign-travel-advice/cayman-islands",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Vereinigtes Königreich",
+   "updated": "2026-07-06",
+   "own": false
   }
  },
  "events": [],

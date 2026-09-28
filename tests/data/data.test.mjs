@@ -147,9 +147,13 @@ for (const dataset of manifest.datasets) {
     describe(`${dataset.id} / ${entry.id}`, () => {
       const data = store.published(entry.file);
 
-      test('has a plausible number of records at every level', () => {
+      // A sanity check of the parsing, not of the world: a source may have no destination at some
+      // level today (Germany has no level 2), but a spread from the lowest to the highest.
+      test('has a plausible number of records, from the lowest level to the highest', () => {
         assert.ok(data.records.length >= 150, `only ${data.records.length} records`);
-        for (const level of dataset.scale.values) assert.ok(data.records.some(r => r.level === level), `no level ${level}`);
+        const used = new Set(data.records.map(r => r.level));
+        assert.ok(used.has(dataset.scale.values[0]) && used.has(dataset.scale.values.at(-1)), `levels used: ${[...used].sort()}`);
+        assert.ok(used.size >= 3, `only levels ${[...used].sort()}`);
       });
 
       test('every record is well formed', () => {

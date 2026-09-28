@@ -28,6 +28,12 @@
    "updated": "2026-08-28",
    "url": "https://www.gov.uk/foreign-travel-advice/taiwan",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Taiwan*",
+   "updated": "2026-07-14",
+   "own": true
   }
  },
  "events": [],

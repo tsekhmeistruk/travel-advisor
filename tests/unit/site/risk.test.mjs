@@ -264,6 +264,11 @@ describe('details card', () => {
     assert.match(ds.details({ placeId: 'so' }), /U\.S\.: Level 3 → 4/);
     assert.match(ds.details({ placeId: 'jp' }), /U\.S\.: lowered to Level 1/);
   });
+  test('a level awaiting a confirmed fall says so instead of naming the alert', async () => {
+    await create({ current: { ...CURRENT, places: { ...CURRENT.places, mx: { ...CURRENT.places.mx, disaster: { ...CURRENT.places.mx.disaster, falling: 1 } } } } });
+    assert.match(ds.details({ placeId: 'mx' }), /Disaster<\/span>\s*<span class="lvl">High[\s\S]*?Lowering to Normal, awaiting confirmation/);
+  });
+
   test('an unavailable source is named on the row; unsafe links are dropped', async () => {
     await create({ current: { ...CURRENT, categories: { ...CURRENT.categories, wildfire: { sources: ['gdacs'], default: null, status: 'error' } } } });
     assert.match(ds.details({ placeId: 'jp' }), /Wildfire<\/span>\s*<span class="lvl">No data[\s\S]*Source unavailable/);

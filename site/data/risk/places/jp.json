@@ -28,6 +28,12 @@
    "updated": "2026-08-28",
    "url": "https://www.gov.uk/foreign-travel-advice/japan",
    "own": true
+  },
+  "de": {
+   "level": 3,
+   "title": "Japan",
+   "updated": "2026-07-07",
+   "own": true
   }
  },
  "events": [

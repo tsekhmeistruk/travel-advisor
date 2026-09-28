@@ -28,6 +28,12 @@
    "updated": "2026-09-04",
    "url": "https://www.gov.uk/foreign-travel-advice/ireland",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Irland",
+   "updated": "2026-04-13",
+   "own": true
   }
  },
  "events": [],

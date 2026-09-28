@@ -28,6 +28,12 @@
    "updated": "2026-01-21",
    "url": "https://www.gov.uk/foreign-travel-advice/seychelles",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Seychellen",
+   "updated": "2026-09-04",
+   "own": true
   }
  },
  "events": [],

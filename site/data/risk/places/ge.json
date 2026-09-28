@@ -28,6 +28,12 @@
    "updated": "2026-09-15",
    "url": "https://www.gov.uk/foreign-travel-advice/georgia",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Georgien",
+   "updated": "2026-02-24",
+   "own": true
   }
  },
  "events": [],

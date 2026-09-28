@@ -28,6 +28,12 @@
    "updated": "2025-12-11",
    "url": "https://www.gov.uk/foreign-travel-advice/macao",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Macau*",
+   "updated": "2026-03-10",
+   "own": true
   }
  },
  "events": [],

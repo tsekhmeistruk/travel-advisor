@@ -118,7 +118,7 @@ describe('risk panel', () => {
     for (const [, level] of rows) assert.match(level, /^(Normal|Elevated|High|Critical|No data)$/);
     assert.match(rows[0][2], /^\d of \d governments?$/);
     const disaster = rows[1];
-    if (disaster[1] !== 'Normal') assert.match(disaster[2], /^GDACS (Orange|Red) /);
+    if (disaster[1] !== 'Normal') assert.match(disaster[2], /^GDACS (Orange|Red) |^Lowering to /, 'the alert that set it, or a fall awaiting confirmation');
     assert.match(await text(page, 'footer'), /not official levels/);
     await page.close();
   });
@@ -136,7 +136,11 @@ describe('risk panel', () => {
     await page.click('#riskWindowSeg [data-days="1"]');
     await sleep(200);
     assert.match(await text(page, 'recentTitle'), /24 hours/);
-    assert.equal(await count(), 2, 'the 1-hour level change and the 2-hour event');
+    // Real changes of the last day may be listed too: check the injected ones, not a total.
+    const keys = await page.$$eval('#recentList button', els => els.map(b => b.dataset.key));
+    assert.ok(keys.includes('test:event'), 'the 2-hour event');
+    assert.ok(keys.some(k => k.startsWith('jp:disaster:')), 'the 1-hour level change');
+    assert.ok(!keys.some(k => k.startsWith('it:disaster:')), 'not the 10-day-old one');
     assert.equal((await saved(page)).risk.recentDays, 1);
     await page.close();
   });
@@ -290,10 +294,11 @@ describe('country view', () => {
   test('the history window filters the changes; an alert opens its event card; Travel has no country view', async () => {
     const page = await openRaw({ hash: '#mode=highest&place=it&view=country', intercept: withRiskChanges() });
     await page.waitForSelector('#countryView .cv-name');
-    const history = () => page.$$eval('#countryView .cv-history li', els => els.length);
-    assert.equal(await history(), 1, 'the 10-day-old change, in the 90-day default');
+    // The injected 10-day-old fall (High → Elevated); real changes may be listed too.
+    const injected = () => page.$$eval('#countryView .cv-history li', els => els.filter(li => /Disaster: High → Elevated/.test(li.textContent)).length);
+    assert.equal(await injected(), 1, 'in the 90-day default');
     await page.click('#historySeg [data-history="7"]');
-    assert.equal(await page.$$eval('#countryView .cv-history', els => els.length), 0);
+    assert.equal(await injected(), 0, 'outside 7 days');
     await page.close();
 
     const jp = await openRaw({ hash: '#mode=disaster&place=jp&view=country', intercept: withRiskChanges() });

@@ -21,6 +21,12 @@
    "updated": "2026-06-02",
    "url": "https://www.gov.uk/foreign-travel-advice/canada",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Kanada",
+   "updated": "2026-09-01",
+   "own": true
   }
  },
  "events": [],

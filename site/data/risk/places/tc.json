@@ -28,6 +28,12 @@
    "updated": "2026-03-13",
    "url": "https://www.gov.uk/foreign-travel-advice/turks-and-caicos-islands",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Vereinigtes Königreich",
+   "updated": "2026-07-06",
+   "own": false
   }
  },
  "events": [],

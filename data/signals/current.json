@@ -2,7 +2,7 @@
  "categories": {
   "disaster": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-28T11:59:27.360Z",
+   "at": "2026-09-28T15:37:04.553Z",
    "places": {
     "cn": {
      "level": 3,
@@ -28,15 +28,15 @@
       "gdacs:TC:1001325"
      ],
      "pending": {
-      "level": 3,
-      "firstSeen": "2026-09-28T11:59:27.360Z"
+      "level": 1,
+      "firstSeen": "2026-09-28T15:37:04.553Z"
      }
     }
    }
   },
   "wildfire": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-28T11:59:27.360Z",
+   "at": "2026-09-28T15:37:04.553Z",
    "places": {}
   },
   "health": {

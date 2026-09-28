@@ -1,6 +1,13 @@
 {
  "placeId": "australian-indian-ocean-territories",
- "advisories": {},
+ "advisories": {
+  "de": {
+   "level": 1,
+   "title": "Australien",
+   "updated": "2026-09-15",
+   "own": false
+  }
+ },
  "events": [],
  "changes": []
 }

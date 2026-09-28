@@ -28,6 +28,12 @@
    "updated": "2025-05-15",
    "url": "https://www.gov.uk/foreign-travel-advice/anguilla",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Vereinigtes Königreich",
+   "updated": "2026-07-06",
+   "own": false
   }
  },
  "events": [],

@@ -1,6 +1,6 @@
 # Travel Risk Map: project guide
 
-A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada, the Netherlands and the UK, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data (advisories daily, GDACS disaster alerts hourly), and tests gate every deploy. It's growing into a **risk monitor**: several risk categories per place from several sources (see "The risk layer" in `docs/architecture.md`), plus more providers, languages, and a database later.
+A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada, the Netherlands, the UK and Germany, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data (advisories daily, GDACS disaster alerts hourly), and tests gate every deploy. It's growing into a **risk monitor**: several risk categories per place from several sources (see "The risk layer" in `docs/architecture.md`), plus more providers, languages, and a database later.
 
 **Read `docs/architecture.md` first.** It covers the concepts, data flow, published formats and step-by-step guides. This file is the short version, plus hard-won knowledge.
 
@@ -136,6 +136,12 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **Official fields,** so level changes apply at once, as for Canada.
 - **Names:** "USA", "Myanmar (Burma)", "Palestine", combined pages like "Bonaire/St Eustatius/Saba" and "Cook Islands, Tokelau and Niue" are `aliases` in `config/providers/uk.json`. The Channel Islands and the Isle of Man have no page (UK territories); Greenland and the Faroes fall under Denmark.
 - **The flag code is `gb`, not the provider id `uk`:** code that shows a provider's flag must use its `flag` (published in `risk/current.json` `sources`).
+
+**Germany** comes from the Federal Foreign Office's open-data API (`www.auswaertiges-amt.de/opendata/travelwarning`, no key), in `providers/de/`.
+- **One request, every destination** (~200), with ISO codes, a German name, `lastModified` (Unix seconds) and four flags: `warning`, `partialWarning`, `situationWarning`, `situationPartWarning`. No page links: records link to the list page.
+- **No 1–4 scale:** flags mapped in `parse.mjs` (none 1, situationPartWarning 2, partialWarning or situationWarning 3, warning 4). **Today no destination is at level 2** (no situation warnings), so the data test checks for a spread of levels, not all four.
+- **Names are German;** matching is by ISO alpha-3, `PSE` (Palästinensische Gebiete) is Gaza and the West Bank in `codes`. Overseas territories without their own entry are `coveredBy` their country's entry (German titles: "Frankreich", "Vereinigtes Königreich", …).
+- **Official fields,** level changes apply at once. The reuse licence of the API isn't stated on it; confirm before relying on it commercially.
 
 **WHO** (risk source: health) comes from the Disease Outbreak News API (`www.who.int/api/news/diseaseoutbreaknews`, OData, no key), in `providers/who/`.
 - **One request** for the latest 30 notices (`$orderby=PublicationDate desc&$select=…`); those of the last 90 days are kept. WHO publishes a few a month, so an empty list is treated as an error.

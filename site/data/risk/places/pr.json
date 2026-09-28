@@ -14,6 +14,12 @@
    "updated": "2026-09-18",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/puerto-rico",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "USA",
+   "updated": "2026-09-28",
+   "own": false
   }
  },
  "events": [],

@@ -129,6 +129,8 @@ export function createRiskMode(ctx) {
   }
 
   function basisText(row) {
+    // The source already shows less (e.g. an alert downgraded): the level holds until a later fetch confirms it.
+    if (row.falling != null) return tr('card.falling', { level: levelName(row.falling) });
     if (row.basis?.travel) return tr('card.travelBasis', { agree: row.basis.travel.agree, count: row.basis.travel.count });
     const first = row.basis?.events?.[0];
     if (first) {

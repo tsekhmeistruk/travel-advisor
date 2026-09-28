@@ -21,6 +21,12 @@
    "updated": "2026-08-18",
    "url": "https://www.gov.uk/foreign-travel-advice/usa",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "USA",
+   "updated": "2026-09-28",
+   "own": true
   }
  },
  "events": [

@@ -78,6 +78,7 @@ The fields in `stats` depend on the source:
   - `changed`: destinations whose timestamp changed since the previous run (shown as "updated").
   - `levelChanged`: destinations whose level changed since the previous run, e.g. `Mexico L2 → L3`. Canada's levels are official fields, so they apply at once, without the confirmation the U.S. and the Netherlands need.
   - `pagesRead` and `pagesFailed` (runs before Sep 27, 2026): destination pages read for "what changed" notes.
+- **Germany** (from Sep 28, 2026): `destinations`, `changed` (destinations whose `lastModified` moved), `levelChanged` (applied at once). `calls.api` is the one list request.
 - **UK** (from Sep 28, 2026): `destinations`, `changed` (pages re-read because they were republished), `levelChanged` (applied at once), `pagesFailed`. `calls.index` is listed per attempt; `calls.pages` is counted: all ~226 on the first run, then only republished pages.
 - **GDACS** (risk source, from Sep 27, 2026):
   - `events`: events stored after this run (current ones, and ended ones for 90 days); `current`: how many GDACS still calls current.

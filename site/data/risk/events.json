@@ -1,6 +1,28 @@
 {
- "asOf": "2026-09-28T11:59:30.444Z",
+ "asOf": "2026-09-28T15:37:04.553Z",
  "events": [
+  {
+   "id": "gdacs:TC:1001330",
+   "source": "gdacs",
+   "type": "cyclone",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Tropical Cyclone HANNA-26",
+   "severity": "Tropical Storm (maximum wind speed of 74 km/h)",
+   "placeIds": [],
+   "point": {
+    "lon": -50.4,
+    "lat": 36.6
+   },
+   "startedAt": "2026-09-28T15:00:00.000Z",
+   "toDate": "2026-09-28T15:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=1&eventtype=TC"
+  },
   {
    "id": "gdacs:VO:1000150",
    "source": "gdacs",
@@ -42,13 +64,13 @@
     "mx"
    ],
    "point": {
-    "lon": -100.4,
-    "lat": 13.4
+    "lon": -101.2,
+    "lat": 13.8
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-28T09:00:00.000Z",
+   "toDate": "2026-09-28T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=5&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=6&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -163,13 +185,13 @@
     "jp"
    ],
    "point": {
-    "lon": 131.6,
+    "lon": 132.8,
     "lat": 27.5
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-28T06:00:00.000Z",
+   "toDate": "2026-09-28T12:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=21&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=22&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104190",
@@ -301,10 +323,10 @@
    "source": "gdacs",
    "type": "cyclone",
    "category": "disaster",
-   "level": 3,
+   "level": 1,
    "native": {
     "scheme": "gdacs-alert",
-    "value": "Orange"
+    "value": "Green"
    },
    "name": "Tropical Cyclone POLO-26",
    "country": "Mexico",
@@ -313,13 +335,13 @@
     "mx"
    ],
    "point": {
-    "lon": -113.8,
-    "lat": 23.6
+    "lon": -113.5,
+    "lat": 24.2
    },
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-28T09:00:00.000Z",
+   "toDate": "2026-09-28T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=31&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=32&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001324",
@@ -357,13 +379,13 @@
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -44.1,
-    "lat": 27.9
+    "lon": -44.6,
+    "lat": 27.1
    },
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-28T09:00:00.000Z",
+   "toDate": "2026-09-28T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=33&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=34&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104176",
@@ -477,18 +499,18 @@
    },
    "name": "Tropical Cyclone NOLO-26",
    "country": "United States",
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 269 km/h)",
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 250 km/h)",
    "placeIds": [
     "us"
    ],
    "point": {
-    "lon": -161.3,
-    "lat": 16.5
+    "lon": -162.3,
+    "lat": 17.1
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-28T09:00:00.000Z",
+   "toDate": "2026-09-28T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=31&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=32&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",
@@ -627,8 +649,8 @@
     "it"
    ],
    "point": {
-    "lon": 14.946,
-    "lat": 37.878
+    "lon": 13.575,
+    "lat": 37.312
    },
    "startedAt": "2026-07-26T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",

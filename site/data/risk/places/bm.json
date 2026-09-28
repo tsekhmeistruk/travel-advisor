@@ -21,6 +21,12 @@
    "updated": "2025-11-01",
    "url": "https://www.gov.uk/foreign-travel-advice/bermuda",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Vereinigtes Königreich",
+   "updated": "2026-07-06",
+   "own": false
   }
  },
  "events": [],

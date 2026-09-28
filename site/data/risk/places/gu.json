@@ -7,6 +7,12 @@
    "updated": "2026-09-24",
    "url": "https://travel.gc.ca/destinations/guam",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "USA",
+   "updated": "2026-09-28",
+   "own": false
   }
  },
  "events": [],

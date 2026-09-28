@@ -28,6 +28,12 @@
    "updated": "2026-04-01",
    "url": "https://www.gov.uk/foreign-travel-advice/hong-kong",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Hongkong*",
+   "updated": "2026-09-28",
+   "own": true
   }
  },
  "events": [],

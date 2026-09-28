@@ -28,6 +28,12 @@
    "updated": "2026-07-09",
    "url": "https://www.gov.uk/foreign-travel-advice/india",
    "own": true
+  },
+  "de": {
+   "level": 3,
+   "title": "Indien",
+   "updated": "2026-08-19",
+   "own": true
   }
  },
  "events": [

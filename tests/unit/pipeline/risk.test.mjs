@@ -279,6 +279,13 @@ describe('buildRisk', () => {
     assert.deepEqual(again.files, first.files);
   });
 
+  test('a fall awaiting confirmation is published as falling, with the level it held', () => {
+    const state = { categories: { disaster: { trackedSince: T0, at: T0, places: { jp: { level: 4, basis: ['x'], pending: { level: 1, firstSeen: T0 } } } }, wildfire: { trackedSince: T0, at: T0, places: {} } } };
+    const t1 = hoursAfter(1);
+    const { files } = buildRisk(input({ state, sources: { gdacs: { config: CONFIG, data: { fetchedAt: t1, firstFetchedAt: '2026-09-01T00:00:00.000Z', events: [] } } }, sourcesState: { gdacs: { lastAttempt: t1, lastSuccess: t1 } } }));
+    assert.deepEqual(files['risk/current.json'].places.jp.disaster, { level: 4, since: undefined, from: undefined, basis: ['x'], falling: 1 });
+  });
+
   test('a source past its stale limit shows "no data" and keeps its last state instead of turning places Normal', () => {
     const state = { categories: { disaster: { trackedSince: T0, at: T0, places: { jp: { level: 4, basis: ['x'] } } } } };
     const late = hoursAfter(10);

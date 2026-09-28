@@ -1,6 +1,13 @@
 {
  "placeId": "va",
- "advisories": {},
+ "advisories": {
+  "de": {
+   "level": 1,
+   "title": "Heiliger Stuhl / Vatikan",
+   "updated": "2026-08-25",
+   "own": true
+  }
+ },
  "events": [],
  "changes": []
 }

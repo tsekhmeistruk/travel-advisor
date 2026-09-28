@@ -1,6 +1,13 @@
 {
  "placeId": "im",
- "advisories": {},
+ "advisories": {
+  "de": {
+   "level": 1,
+   "title": "Vereinigtes Königreich",
+   "updated": "2026-07-06",
+   "own": false
+  }
+ },
  "events": [],
  "changes": []
 }

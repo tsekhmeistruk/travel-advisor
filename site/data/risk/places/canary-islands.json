@@ -28,6 +28,12 @@
    "updated": "2026-08-12",
    "url": "https://www.gov.uk/foreign-travel-advice/spain",
    "own": false
+  },
+  "de": {
+   "level": 1,
+   "title": "Spanien",
+   "updated": "2026-08-19",
+   "own": false
   }
  },
  "events": [],

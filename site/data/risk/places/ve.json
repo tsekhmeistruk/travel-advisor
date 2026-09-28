@@ -28,6 +28,12 @@
    "updated": "2026-09-02",
    "url": "https://www.gov.uk/foreign-travel-advice/venezuela",
    "own": true
+  },
+  "de": {
+   "level": 3,
+   "title": "Venezuela",
+   "updated": "2026-09-03",
+   "own": true
   }
  },
  "events": [],

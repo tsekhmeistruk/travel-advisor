@@ -28,6 +28,12 @@
    "updated": "2026-08-27",
    "url": "https://www.gov.uk/foreign-travel-advice/china",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "China",
+   "updated": "2026-09-25",
+   "own": true
   }
  },
  "events": [

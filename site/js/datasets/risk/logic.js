@@ -92,7 +92,8 @@ export function countDirections(changes) {
  * Everything the summary card shows for one place.
  * @returns {
  *   highest: { level, by },
- *   rows: [{ category, level, basis, changed }]   basis: { travel: { agree, count } } | { events: [...] } | null
+ *   rows: [{ category, level, basis, changed, falling }]   basis: { travel: { agree, count } } | { events: [...] } | null;
+ *                                                 falling: a lower level awaiting confirmation, or null
  *   trend: 'up' | 'down' | null                   the latest pulsing change in the last 24 hours
  *   history: the place's latest changes (up to `historySize`)
  *   link, linkSource: the first basis event's source page and source id, or null
@@ -108,7 +109,7 @@ export function cardModel(placeId, { current, changes, events, now, windowDays, 
       ? (signal ? { travel: { agree: signal.agree, count: Object.keys(signal.natives).length } } : null)
       : (signal?.basis?.length ? { events: signal.basis.map(id => eventsById.get(id)).filter(Boolean) } : null);
     const change = recent.find(c => c.category === category);
-    return { category, level: levelOf(current, placeId, category), basis, changed: change ? direction(change) : null };
+    return { category, level: levelOf(current, placeId, category), basis, changed: change ? direction(change) : null, falling: signal?.falling ?? null };
   });
   const last24 = filterChanges(own, { windowDays: 1, now, pulseOnly: true })[0];
   const linked = rows.flatMap(r => r.basis?.events ?? []).find(e => e.url);

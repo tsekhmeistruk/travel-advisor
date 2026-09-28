@@ -28,6 +28,12 @@
    "updated": "2026-08-06",
    "url": "https://www.gov.uk/foreign-travel-advice/chad",
    "own": true
+  },
+  "de": {
+   "level": 3,
+   "title": "Tschad",
+   "updated": "2026-08-31",
+   "own": true
   }
  },
  "events": [],

@@ -28,6 +28,12 @@
    "updated": "2026-08-20",
    "url": "https://www.gov.uk/foreign-travel-advice/bahrain",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Bahrain",
+   "updated": "2026-09-04",
+   "own": true
   }
  },
  "events": [],

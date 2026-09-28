@@ -8,6 +8,7 @@ import us from '../../../scripts/providers/us/index.mjs';
 import ca from '../../../scripts/providers/ca/index.mjs';
 import nl from '../../../scripts/providers/nl/index.mjs';
 import uk from '../../../scripts/providers/uk/index.mjs';
+import de from '../../../scripts/providers/de/index.mjs';
 import gdacs from '../../../scripts/providers/gdacs/index.mjs';
 import who from '../../../scripts/providers/who/index.mjs';
 import { PROVIDERS, SOURCES, getProvider } from '../../../scripts/providers/index.mjs';
@@ -49,7 +50,7 @@ describe('provider registry', () => {
     assert.equal(getProvider('gdacs'), gdacs, 'sources are found by id too');
   });
   test('rejects an unknown provider with the list of known ones', () => {
-    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, gdacs, who/);
+    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, de, gdacs, who/);
   });
 });
 
@@ -213,6 +214,47 @@ describe('UK fetcher', () => {
     const { waits, sleep } = recordSleeps();
     await assert.rejects(uk.fetch({ log: fakeLog({ index: [{ status: 500 }, { body: CHALLENGE, challenge: true }, { status: 502 }] }), previous: [], today: TODAY, sleep }), /index failed after 3 attempts/);
     assert.deepEqual(waits, [15000, 30000]);
+  });
+});
+
+describe('Germany fetcher', () => {
+  const real = JSON.parse(fixture('germany-warnings.json'));
+  // The real 17 plus fillers, to pass the "plausible size" check.
+  const body = (edit = (x) => x) => {
+    const r = structuredClone(real.response);
+    for (let i = 0; i < 150; i++) {
+      r.contentList.push(`f${i}`);
+      r[`f${i}`] = { countryName: `Land ${i}`, iso3CountryCode: 'TST', lastModified: 1757063288, warning: false, partialWarning: false };
+    }
+    return JSON.stringify({ response: edit(r) });
+  };
+  const TODAY = '2026-09-28';
+
+  test('reads every destination in one request', async () => {
+    const log = fakeLog({ api: [{ body: body() }] });
+    const { entries, stats } = await de.fetch({ log, previous: [], today: TODAY });
+    assert.equal(log.requests.length, 1);
+    assert.equal(entries.length, 167);
+    assert.equal(stats.destinations, 167);
+    assert.ok(entries.every(e => e.lastSeen === TODAY));
+  });
+
+  test('reports level changes (applied at once) and destinations that changed', async () => {
+    const first = (await de.fetch({ log: fakeLog({ api: [{ body: body() }] }), previous: [], today: TODAY })).entries;
+    const ghana = real.response.contentList.find(id => real.response[id].iso3CountryCode === 'GHA');
+    const later = body(r => ({ ...r, [ghana]: { ...r[ghana], partialWarning: false, warning: true, lastModified: 1790000000 } }));
+    const { entries, stats } = await de.fetch({ log: fakeLog({ api: [{ body: later }] }), previous: first, today: '2026-09-29' });
+    const name = real.response[ghana].countryName;
+    assert.equal(entries.find(e => e.name === name).level, 4);
+    assert.deepEqual(stats.levelChanged, [`${name} L3 → L4`]);
+    assert.deepEqual(stats.changed, [name]);
+  });
+
+  test('a short list means the format changed; errors are retried, then fail', async () => {
+    await assert.rejects(de.fetch({ log: fakeLog({ api: [{ body: JSON.stringify(real) }] }), previous: [], today: TODAY }), /Parsed only 17/);
+    const { waits, sleep } = recordSleeps();
+    await assert.rejects(de.fetch({ log: fakeLog({ api: [{ status: 503 }, { body: CHALLENGE, challenge: true }, { status: 500 }] }), previous: [], today: TODAY, sleep }), /API failed after 3 attempts: HTTP 500/);
+    assert.deepEqual(waits, [30000, 60000]);
   });
 });
 

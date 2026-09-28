@@ -28,6 +28,12 @@
    "updated": "2026-05-07",
    "url": "https://www.gov.uk/foreign-travel-advice/argentina",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Argentinien",
+   "updated": "2026-03-23",
+   "own": true
   }
  },
  "events": [

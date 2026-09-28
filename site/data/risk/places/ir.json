@@ -28,6 +28,12 @@
    "updated": "2026-08-13",
    "url": "https://www.gov.uk/foreign-travel-advice/iran",
    "own": true
+  },
+  "de": {
+   "level": 4,
+   "title": "Iran",
+   "updated": "2026-08-19",
+   "own": true
   }
  },
  "events": [],

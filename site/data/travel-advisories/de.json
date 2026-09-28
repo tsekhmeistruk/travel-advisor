@@ -1,0 +1,1915 @@
+{
+ "dataset": "travel-advisories",
+ "provider": "de",
+ "asOf": "2026-09-28",
+ "source": "https://www.auswaertiges-amt.de/opendata/travelwarning",
+ "links": {
+  "list": "https://www.auswaertiges-amt.de/de/ReiseUndSicherheit/reise-und-sicherheitshinweise"
+ },
+ "home": "de",
+ "territories": [],
+ "records": [
+  {
+   "title": "Afghanistan",
+   "level": 4,
+   "updated": "2026-08-19",
+   "places": [
+    "af"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Ägypten",
+   "level": 3,
+   "updated": "2026-08-03",
+   "regional": true,
+   "places": [
+    "eg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Albanien",
+   "level": 1,
+   "updated": "2026-08-21",
+   "places": [
+    "al"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Algerien",
+   "level": 3,
+   "updated": "2026-08-31",
+   "regional": true,
+   "places": [
+    "dz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Andorra",
+   "level": 1,
+   "updated": "2026-06-02",
+   "places": [
+    "ad"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Angola",
+   "level": 1,
+   "updated": "2026-05-26",
+   "places": [
+    "ao"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Antigua und Barbuda",
+   "level": 1,
+   "updated": "2026-04-02",
+   "places": [
+    "ag"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Äquatorialguinea",
+   "level": 1,
+   "updated": "2025-09-05",
+   "places": [
+    "gq"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Argentinien",
+   "level": 1,
+   "updated": "2026-03-23",
+   "places": [
+    "ar"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Armenien",
+   "level": 3,
+   "updated": "2026-09-03",
+   "regional": true,
+   "places": [
+    "am"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Aserbaidschan",
+   "level": 3,
+   "updated": "2026-08-07",
+   "regional": true,
+   "places": [
+    "az"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Äthiopien",
+   "level": 3,
+   "updated": "2026-09-25",
+   "regional": true,
+   "places": [
+    "et"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Australien",
+   "level": 1,
+   "updated": "2026-09-15",
+   "places": [
+    "au"
+   ],
+   "covers": [
+    "ashmore-and-cartier-islands",
+    "australian-indian-ocean-territories",
+    "hm",
+    "nf"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Bahamas",
+   "level": 1,
+   "updated": "2026-08-26",
+   "places": [
+    "bs"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Bahrain",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "bh"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Bangladesch",
+   "level": 1,
+   "updated": "2026-08-19",
+   "places": [
+    "bd"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Barbados",
+   "level": 1,
+   "updated": "2026-04-22",
+   "places": [
+    "bb"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Belarus",
+   "level": 4,
+   "updated": "2026-06-19",
+   "places": [
+    "by"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Belgien",
+   "level": 1,
+   "updated": "2026-08-27",
+   "places": [
+    "be"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Belize",
+   "level": 1,
+   "updated": "2026-08-20",
+   "places": [
+    "bz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Benin",
+   "level": 3,
+   "updated": "2026-08-12",
+   "regional": true,
+   "places": [
+    "bj"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Bhutan",
+   "level": 1,
+   "updated": "2026-01-28",
+   "places": [
+    "bt"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Bolivien",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "bo"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Bosnien und Herzegowina",
+   "level": 1,
+   "updated": "2026-04-08",
+   "places": [
+    "ba"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Botsuana",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "bw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Brasilien",
+   "level": 1,
+   "updated": "2026-09-09",
+   "places": [
+    "br"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Brunei Darussalam",
+   "level": 1,
+   "updated": "2026-08-18",
+   "places": [
+    "bn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Bulgarien",
+   "level": 1,
+   "updated": "2026-03-13",
+   "places": [
+    "bg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Burkina Faso",
+   "level": 3,
+   "updated": "2026-09-14",
+   "regional": true,
+   "places": [
+    "bf"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Burundi",
+   "level": 1,
+   "updated": "2026-09-01",
+   "places": [
+    "bi"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Cabo Verde",
+   "level": 1,
+   "updated": "2026-09-21",
+   "places": [
+    "cv"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Chile",
+   "level": 1,
+   "updated": "2026-08-26",
+   "places": [
+    "cl"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "China",
+   "level": 1,
+   "updated": "2026-09-25",
+   "places": [
+    "cn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Cookinseln",
+   "level": 1,
+   "updated": "2026-04-22",
+   "places": [
+    "ck"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Costa Rica",
+   "level": 1,
+   "updated": "2026-08-20",
+   "places": [
+    "cr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Côte d'Ivoire",
+   "level": 3,
+   "updated": "2025-12-01",
+   "regional": true,
+   "places": [
+    "ci"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Dänemark",
+   "level": 1,
+   "updated": "2026-07-30",
+   "places": [
+    "dk"
+   ],
+   "covers": [
+    "fo",
+    "gl"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Demokratische Republik Kongo",
+   "level": 3,
+   "updated": "2026-09-18",
+   "regional": true,
+   "places": [
+    "cd"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Demokratische Volksrepublik Korea (Nordkorea)",
+   "level": 1,
+   "updated": "2026-02-27",
+   "places": [
+    "kp"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Dominica",
+   "level": 1,
+   "updated": "2026-05-12",
+   "places": [
+    "dm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Dominikanische Republik",
+   "level": 1,
+   "updated": "2026-08-20",
+   "places": [
+    "do"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Dschibuti",
+   "level": 1,
+   "updated": "2026-08-25",
+   "places": [
+    "dj"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Ecuador",
+   "level": 1,
+   "updated": "2026-09-21",
+   "places": [
+    "ec"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "El Salvador",
+   "level": 1,
+   "updated": "2026-06-26",
+   "places": [
+    "sv"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Eritrea",
+   "level": 3,
+   "updated": "2026-09-22",
+   "regional": true,
+   "places": [
+    "er"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Estland",
+   "level": 1,
+   "updated": "2026-06-04",
+   "places": [
+    "ee"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Eswatini",
+   "level": 1,
+   "updated": "2026-08-24",
+   "places": [
+    "sz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Fidschi",
+   "level": 1,
+   "updated": "2026-07-14",
+   "places": [
+    "fj"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Finnland",
+   "level": 1,
+   "updated": "2026-06-04",
+   "places": [
+    "fi"
+   ],
+   "covers": [
+    "ax"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Frankreich",
+   "level": 1,
+   "updated": "2026-09-24",
+   "places": [
+    "fr"
+   ],
+   "covers": [
+    "bl",
+    "gf",
+    "gp",
+    "mf",
+    "mq",
+    "nc",
+    "pf",
+    "pm",
+    "re",
+    "tf",
+    "wf",
+    "yt"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Gabun",
+   "level": 1,
+   "updated": "2026-07-27",
+   "places": [
+    "ga"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Gambia",
+   "level": 1,
+   "updated": "2026-09-10",
+   "places": [
+    "gm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Georgien",
+   "level": 1,
+   "updated": "2026-02-24",
+   "places": [
+    "ge"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Ghana",
+   "level": 3,
+   "updated": "2026-08-12",
+   "regional": true,
+   "places": [
+    "gh"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Grenada",
+   "level": 1,
+   "updated": "2026-05-12",
+   "places": [
+    "gd"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Griechenland",
+   "level": 1,
+   "updated": "2026-08-19",
+   "places": [
+    "gr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Guatemala",
+   "level": 1,
+   "updated": "2026-08-20",
+   "places": [
+    "gt"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Guinea",
+   "level": 1,
+   "updated": "2026-09-14",
+   "places": [
+    "gn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Guinea-Bissau",
+   "level": 1,
+   "updated": "2026-07-01",
+   "places": [
+    "gw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Guyana",
+   "level": 1,
+   "updated": "2026-08-24",
+   "places": [
+    "gy"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Haiti",
+   "level": 4,
+   "updated": "2026-08-20",
+   "places": [
+    "ht"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Heiliger Stuhl / Vatikan",
+   "level": 1,
+   "updated": "2026-08-25",
+   "places": [
+    "va"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Honduras",
+   "level": 1,
+   "updated": "2026-08-20",
+   "places": [
+    "hn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Hongkong*",
+   "level": 1,
+   "updated": "2026-09-28",
+   "places": [
+    "hk"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Indien",
+   "level": 3,
+   "updated": "2026-08-19",
+   "regional": true,
+   "places": [
+    "in"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Indonesien",
+   "level": 1,
+   "updated": "2026-09-08",
+   "places": [
+    "id"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Irak",
+   "level": 4,
+   "updated": "2026-08-25",
+   "places": [
+    "iq"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Iran",
+   "level": 4,
+   "updated": "2026-08-19",
+   "places": [
+    "ir"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Irland",
+   "level": 1,
+   "updated": "2026-04-13",
+   "places": [
+    "ie"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Island",
+   "level": 1,
+   "updated": "2026-08-13",
+   "places": [
+    "is"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Israel",
+   "level": 1,
+   "updated": "2026-09-21",
+   "places": [
+    "il"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Italien",
+   "level": 1,
+   "updated": "2026-08-25",
+   "places": [
+    "it"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Jamaika",
+   "level": 1,
+   "updated": "2026-05-11",
+   "places": [
+    "jm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Japan",
+   "level": 3,
+   "updated": "2026-07-07",
+   "regional": true,
+   "places": [
+    "jp"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Jemen",
+   "level": 4,
+   "updated": "2026-09-09",
+   "places": [
+    "ye"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Jordanien",
+   "level": 1,
+   "updated": "2026-08-27",
+   "places": [
+    "jo"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kambodscha",
+   "level": 3,
+   "updated": "2026-08-18",
+   "regional": true,
+   "places": [
+    "kh"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kamerun",
+   "level": 3,
+   "updated": "2026-09-08",
+   "regional": true,
+   "places": [
+    "cm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kanada",
+   "level": 1,
+   "updated": "2026-09-01",
+   "places": [
+    "ca"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kasachstan",
+   "level": 1,
+   "updated": "2026-02-27",
+   "places": [
+    "kz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Katar",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "qa"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kenia",
+   "level": 3,
+   "updated": "2026-08-25",
+   "regional": true,
+   "places": [
+    "ke"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kirgisistan",
+   "level": 1,
+   "updated": "2026-09-15",
+   "places": [
+    "kg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kiribati",
+   "level": 1,
+   "updated": "2026-05-15",
+   "places": [
+    "ki"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kolumbien",
+   "level": 3,
+   "updated": "2026-09-28",
+   "regional": true,
+   "places": [
+    "co"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Komoren",
+   "level": 1,
+   "updated": "2026-07-30",
+   "places": [
+    "km"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kosovo",
+   "level": 1,
+   "updated": "2026-09-18",
+   "places": [
+    "xk"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kroatien",
+   "level": 1,
+   "updated": "2026-08-17",
+   "places": [
+    "hr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kuba",
+   "level": 1,
+   "updated": "2026-08-17",
+   "places": [
+    "cu"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Kuwait",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "kw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Laos",
+   "level": 1,
+   "updated": "2026-07-31",
+   "places": [
+    "la"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Lesotho",
+   "level": 1,
+   "updated": "2025-11-03",
+   "places": [
+    "ls"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Lettland",
+   "level": 1,
+   "updated": "2026-09-07",
+   "places": [
+    "lv"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Libanon",
+   "level": 3,
+   "updated": "2026-09-01",
+   "regional": true,
+   "places": [
+    "lb"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Liberia",
+   "level": 1,
+   "updated": "2026-07-01",
+   "places": [
+    "lr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Libyen",
+   "level": 4,
+   "updated": "2026-08-31",
+   "places": [
+    "ly"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Liechtenstein",
+   "level": 1,
+   "updated": "2026-02-12",
+   "places": [
+    "li"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Litauen",
+   "level": 1,
+   "updated": "2026-06-04",
+   "places": [
+    "lt"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Luxemburg",
+   "level": 1,
+   "updated": "2026-04-21",
+   "places": [
+    "lu"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Macau*",
+   "level": 1,
+   "updated": "2026-03-10",
+   "places": [
+    "mo"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Madagaskar",
+   "level": 1,
+   "updated": "2026-07-09",
+   "places": [
+    "mg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Malawi",
+   "level": 1,
+   "updated": "2026-09-14",
+   "places": [
+    "mw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Malaysia",
+   "level": 1,
+   "updated": "2026-09-02",
+   "places": [
+    "my"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Malediven",
+   "level": 1,
+   "updated": "2026-07-07",
+   "places": [
+    "mv"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Mali",
+   "level": 4,
+   "updated": "2026-09-14",
+   "places": [
+    "ml"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Malta",
+   "level": 1,
+   "updated": "2026-08-07",
+   "places": [
+    "mt"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Marokko",
+   "level": 1,
+   "updated": "2026-09-14",
+   "places": [
+    "ma"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Marshallinseln",
+   "level": 1,
+   "updated": "2026-07-10",
+   "places": [
+    "mh"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Mauretanien",
+   "level": 3,
+   "updated": "2026-08-12",
+   "regional": true,
+   "places": [
+    "mr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Mauritius",
+   "level": 1,
+   "updated": "2026-09-01",
+   "places": [
+    "mu"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Mexiko",
+   "level": 1,
+   "updated": "2026-09-26",
+   "places": [
+    "mx"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Mikronesien",
+   "level": 1,
+   "updated": "2026-07-10",
+   "places": [
+    "fm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Monaco",
+   "level": 1,
+   "updated": "2026-04-21",
+   "places": [
+    "mc"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Mongolei",
+   "level": 1,
+   "updated": "2026-09-01",
+   "places": [
+    "mn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Montenegro",
+   "level": 1,
+   "updated": "2026-02-03",
+   "places": [
+    "me"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Mosambik",
+   "level": 3,
+   "updated": "2026-04-17",
+   "regional": true,
+   "places": [
+    "mz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Myanmar",
+   "level": 4,
+   "updated": "2026-08-26",
+   "places": [
+    "mm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Namibia",
+   "level": 1,
+   "updated": "2026-09-17",
+   "places": [
+    "na"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Naoero",
+   "level": 1,
+   "updated": "2026-07-29",
+   "places": [
+    "nr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Nepal",
+   "level": 1,
+   "updated": "2026-09-08",
+   "places": [
+    "np"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Neuseeland",
+   "level": 1,
+   "updated": "2026-07-07",
+   "places": [
+    "nz"
+   ],
+   "covers": [
+    "tk"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Nicaragua",
+   "level": 1,
+   "updated": "2026-09-08",
+   "places": [
+    "ni"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Niederlande",
+   "level": 1,
+   "updated": "2026-09-11",
+   "places": [
+    "nl"
+   ],
+   "covers": [
+    "aw",
+    "bonaire",
+    "cw",
+    "saba-and-sint-eustatius",
+    "sx"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Niger",
+   "level": 4,
+   "updated": "2026-08-31",
+   "places": [
+    "ne"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Nigeria",
+   "level": 3,
+   "updated": "2026-08-12",
+   "regional": true,
+   "places": [
+    "ng"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Niue",
+   "level": 1,
+   "updated": "2026-06-08",
+   "places": [
+    "nu"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Nordmazedonien",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "mk"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Norwegen",
+   "level": 1,
+   "updated": "2026-06-11",
+   "places": [
+    "no"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Oman",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "om"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Österreich",
+   "level": 1,
+   "updated": "2026-08-27",
+   "places": [
+    "at"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Pakistan",
+   "level": 3,
+   "updated": "2026-09-25",
+   "regional": true,
+   "places": [
+    "pk"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Palästinensische Gebiete*",
+   "level": 4,
+   "updated": "2026-09-21",
+   "places": [
+    "gaza",
+    "west-bank"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Palau",
+   "level": 1,
+   "updated": "2026-07-10",
+   "places": [
+    "pw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Panama",
+   "level": 1,
+   "updated": "2026-08-20",
+   "places": [
+    "pa"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Papua-Neuguinea",
+   "level": 1,
+   "updated": "2026-08-18",
+   "places": [
+    "pg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Paraguay",
+   "level": 1,
+   "updated": "2026-07-07",
+   "places": [
+    "py"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Peru",
+   "level": 1,
+   "updated": "2026-08-24",
+   "places": [
+    "pe"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Philippinen",
+   "level": 3,
+   "updated": "2026-09-28",
+   "regional": true,
+   "places": [
+    "ph"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Polen",
+   "level": 1,
+   "updated": "2026-08-21",
+   "places": [
+    "pl"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Portugal",
+   "level": 1,
+   "updated": "2026-07-29",
+   "places": [
+    "pt"
+   ],
+   "covers": [
+    "azores"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Republik Kongo",
+   "level": 1,
+   "updated": "2026-01-23",
+   "places": [
+    "cg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Republik Korea (Südkorea)",
+   "level": 1,
+   "updated": "2026-07-07",
+   "places": [
+    "kr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Republik Moldau",
+   "level": 1,
+   "updated": "2026-07-07",
+   "places": [
+    "md"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Ruanda",
+   "level": 1,
+   "updated": "2026-09-02",
+   "places": [
+    "rw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Rumänien",
+   "level": 1,
+   "updated": "2026-07-29",
+   "places": [
+    "ro"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Russische Föderation",
+   "level": 4,
+   "updated": "2026-06-30",
+   "places": [
+    "ru"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Salomonen",
+   "level": 1,
+   "updated": "2026-05-15",
+   "places": [
+    "sb"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Sambia",
+   "level": 1,
+   "updated": "2026-08-27",
+   "places": [
+    "zm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Samoa",
+   "level": 1,
+   "updated": "2026-04-22",
+   "places": [
+    "ws"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "San Marino",
+   "level": 1,
+   "updated": "2026-04-22",
+   "places": [
+    "sm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "São Tomé und Príncipe",
+   "level": 1,
+   "updated": "2026-08-24",
+   "places": [
+    "st"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Saudi-Arabien",
+   "level": 3,
+   "updated": "2026-09-22",
+   "regional": true,
+   "places": [
+    "sa"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Schweden",
+   "level": 1,
+   "updated": "2026-05-29",
+   "places": [
+    "se"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Schweiz",
+   "level": 1,
+   "updated": "2026-06-25",
+   "places": [
+    "ch"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Senegal",
+   "level": 1,
+   "updated": "2026-09-14",
+   "places": [
+    "sn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Serbien",
+   "level": 1,
+   "updated": "2026-08-11",
+   "places": [
+    "rs"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Seychellen",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "sc"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Sierra Leone",
+   "level": 1,
+   "updated": "2026-08-21",
+   "places": [
+    "sl"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Simbabwe",
+   "level": 1,
+   "updated": "2026-09-04",
+   "places": [
+    "zw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Singapur",
+   "level": 1,
+   "updated": "2026-07-07",
+   "places": [
+    "sg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Slowakei",
+   "level": 1,
+   "updated": "2026-04-21",
+   "places": [
+    "sk"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Slowenien",
+   "level": 1,
+   "updated": "2026-09-21",
+   "places": [
+    "si"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Somalia",
+   "level": 4,
+   "updated": "2026-08-26",
+   "places": [
+    "so"
+   ],
+   "covers": [
+    "somaliland"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Spanien",
+   "level": 1,
+   "updated": "2026-08-19",
+   "places": [
+    "es"
+   ],
+   "covers": [
+    "canary-islands"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Sri Lanka",
+   "level": 1,
+   "updated": "2026-07-20",
+   "places": [
+    "lk"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "St. Kitts und Nevis",
+   "level": 1,
+   "updated": "2026-01-14",
+   "places": [
+    "kn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "St. Lucia",
+   "level": 1,
+   "updated": "2026-05-12",
+   "places": [
+    "lc"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "St. Vincent und die Grenadinen",
+   "level": 1,
+   "updated": "2026-08-24",
+   "places": [
+    "vc"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Südafrika",
+   "level": 1,
+   "updated": "2026-09-22",
+   "places": [
+    "za"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Sudan",
+   "level": 4,
+   "updated": "2026-08-25",
+   "places": [
+    "sd"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Südsudan",
+   "level": 4,
+   "updated": "2026-09-14",
+   "places": [
+    "ss"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Suriname",
+   "level": 1,
+   "updated": "2026-08-24",
+   "places": [
+    "sr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Syrien",
+   "level": 4,
+   "updated": "2026-08-27",
+   "places": [
+    "sy"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Tadschikistan",
+   "level": 1,
+   "updated": "2026-08-10",
+   "places": [
+    "tj"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Taiwan*",
+   "level": 1,
+   "updated": "2026-07-14",
+   "places": [
+    "tw"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Tansania",
+   "level": 1,
+   "updated": "2026-09-25",
+   "places": [
+    "tz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Thailand",
+   "level": 3,
+   "updated": "2026-09-28",
+   "regional": true,
+   "places": [
+    "th"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Timor-Leste",
+   "level": 1,
+   "updated": "2026-09-14",
+   "places": [
+    "tl"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Togo",
+   "level": 3,
+   "updated": "2026-09-14",
+   "regional": true,
+   "places": [
+    "tg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Tonga",
+   "level": 1,
+   "updated": "2026-04-22",
+   "places": [
+    "to"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Trinidad und Tobago",
+   "level": 1,
+   "updated": "2026-09-24",
+   "places": [
+    "tt"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Tschad",
+   "level": 3,
+   "updated": "2026-08-31",
+   "regional": true,
+   "places": [
+    "td"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Tschechische Republik",
+   "level": 1,
+   "updated": "2026-09-17",
+   "places": [
+    "cz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Tunesien",
+   "level": 1,
+   "updated": "2026-09-28",
+   "places": [
+    "tn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Türkei",
+   "level": 1,
+   "updated": "2026-09-18",
+   "places": [
+    "tr"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Turkmenistan",
+   "level": 1,
+   "updated": "2026-02-23",
+   "places": [
+    "tm"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Tuvalu",
+   "level": 1,
+   "updated": "2026-04-22",
+   "places": [
+    "tv"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Uganda",
+   "level": 1,
+   "updated": "2026-08-28",
+   "places": [
+    "ug"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Ukraine",
+   "level": 4,
+   "updated": "2026-09-25",
+   "places": [
+    "ua"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Ungarn",
+   "level": 1,
+   "updated": "2026-08-10",
+   "places": [
+    "hu"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Uruguay",
+   "level": 1,
+   "updated": "2026-08-21",
+   "places": [
+    "uy"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "USA",
+   "level": 1,
+   "updated": "2026-09-28",
+   "places": [
+    "us"
+   ],
+   "covers": [
+    "as",
+    "gu",
+    "mp",
+    "pr",
+    "vi"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Usbekistan",
+   "level": 1,
+   "updated": "2026-04-22",
+   "places": [
+    "uz"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Vanuatu",
+   "level": 1,
+   "updated": "2026-08-19",
+   "places": [
+    "vu"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Venezuela",
+   "level": 3,
+   "updated": "2026-09-03",
+   "regional": true,
+   "places": [
+    "ve"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Vereinigte Arabische Emirate",
+   "level": 1,
+   "updated": "2026-07-24",
+   "places": [
+    "ae"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Vereinigtes Königreich",
+   "level": 1,
+   "updated": "2026-07-06",
+   "places": [
+    "gb"
+   ],
+   "covers": [
+    "ai",
+    "bm",
+    "fk",
+    "gg",
+    "gi",
+    "gs",
+    "im",
+    "io",
+    "je",
+    "ky",
+    "ms",
+    "pn",
+    "sh",
+    "tc",
+    "vg"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Vietnam",
+   "level": 1,
+   "updated": "2026-08-27",
+   "places": [
+    "vn"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Zentralafrikanische Republik",
+   "level": 4,
+   "updated": "2025-12-01",
+   "places": [
+    "cf"
+   ],
+   "trackedSince": "2026-09-28"
+  },
+  {
+   "title": "Zypern",
+   "level": 1,
+   "updated": "2026-08-10",
+   "places": [
+    "cy"
+   ],
+   "covers": [
+    "northern-cyprus"
+   ],
+   "trackedSince": "2026-09-28"
+  }
+ ]
+}

@@ -28,6 +28,12 @@
    "updated": "2026-08-04",
    "url": "https://www.gov.uk/foreign-travel-advice/egypt",
    "own": true
+  },
+  "de": {
+   "level": 3,
+   "title": "Ägypten",
+   "updated": "2026-08-03",
+   "own": true
   }
  },
  "events": [],

@@ -28,6 +28,12 @@
    "updated": "2026-09-26",
    "url": "https://www.gov.uk/foreign-travel-advice/mexico",
    "own": true
+  },
+  "de": {
+   "level": 1,
+   "title": "Mexiko",
+   "updated": "2026-09-26",
+   "own": true
   }
  },
  "events": [
@@ -36,6 +42,22 @@
   "gdacs:FL:1104099"
  ],
  "changes": [
+  {
+   "id": "gdacs:TC:1001325:2026-09-28T15:37:04.553Z",
+   "at": "2026-09-28T15:37:04.553Z",
+   "kind": "event",
+   "category": "disaster",
+   "source": "gdacs",
+   "eventId": "gdacs:TC:1001325",
+   "type": "cyclone",
+   "placeIds": [
+    "mx"
+   ],
+   "from": 3,
+   "to": 1,
+   "up": false,
+   "native": "Green"
+  },
   {
    "id": "gdacs:TC:1001325:2026-09-28T11:59:27.360Z",
    "at": "2026-09-28T11:59:27.360Z",

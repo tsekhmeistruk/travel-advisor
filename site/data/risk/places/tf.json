@@ -1,6 +1,13 @@
 {
  "placeId": "tf",
- "advisories": {},
+ "advisories": {
+  "de": {
+   "level": 1,
+   "title": "Frankreich",
+   "updated": "2026-09-24",
+   "own": false
+  }
+ },
  "events": [],
  "changes": []
 }
