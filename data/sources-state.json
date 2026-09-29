@@ -1,57 +1,57 @@
 {
  "ca": {
-  "lastAttempt": "2026-09-28T01:10:51.043Z",
-  "lastSuccess": "2026-09-28T01:10:51.043Z",
-  "durationMs": 2686,
+  "lastAttempt": "2026-09-29T21:23:54.952Z",
+  "lastSuccess": "2026-09-29T21:23:54.952Z",
+  "durationMs": 1386,
   "records": 230,
   "consecutiveFailures": 0
  },
  "de": {
-  "lastAttempt": "2026-09-28T15:53:12.348Z",
-  "lastSuccess": "2026-09-28T15:53:12.348Z",
-  "durationMs": 885,
+  "lastAttempt": "2026-09-29T21:24:00.579Z",
+  "lastSuccess": "2026-09-29T21:24:00.579Z",
+  "durationMs": 862,
   "records": 200,
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-09-29T17:01:25.922Z",
-  "lastSuccess": "2026-09-29T17:01:25.922Z",
-  "durationMs": 6581,
+  "lastAttempt": "2026-09-29T21:23:47.387Z",
+  "lastSuccess": "2026-09-29T21:23:47.387Z",
+  "durationMs": 5241,
   "records": 66,
   "consecutiveFailures": 0
  },
  "gdelt": {
-  "lastAttempt": "2026-09-29T11:36:12.595Z",
-  "lastSuccess": "2026-09-29T11:36:12.595Z",
-  "durationMs": 843,
-  "records": 1,
+  "lastAttempt": "2026-09-29T21:23:53.539Z",
+  "lastSuccess": "2026-09-29T21:23:53.539Z",
+  "durationMs": 7,
+  "records": 0,
   "consecutiveFailures": 0
  },
  "nl": {
-  "lastAttempt": "2026-09-28T01:10:53.774Z",
-  "lastSuccess": "2026-09-28T01:10:53.774Z",
-  "durationMs": 2981,
+  "lastAttempt": "2026-09-29T21:23:56.402Z",
+  "lastSuccess": "2026-09-29T21:23:56.402Z",
+  "durationMs": 1798,
   "records": 226,
   "consecutiveFailures": 0
  },
  "uk": {
-  "lastAttempt": "2026-09-28T02:27:37.550Z",
-  "lastSuccess": "2026-09-28T02:27:37.550Z",
-  "durationMs": 334,
+  "lastAttempt": "2026-09-29T21:23:58.268Z",
+  "lastSuccess": "2026-09-29T21:23:58.268Z",
+  "durationMs": 2245,
   "records": 226,
   "consecutiveFailures": 0
  },
  "us": {
-  "lastAttempt": "2026-09-28T01:10:50.190Z",
-  "lastSuccess": "2026-09-28T01:10:50.190Z",
-  "durationMs": 809,
+  "lastAttempt": "2026-09-29T21:23:53.613Z",
+  "lastSuccess": "2026-09-29T21:23:53.613Z",
+  "durationMs": 1276,
   "records": 219,
   "consecutiveFailures": 0
  },
  "who": {
-  "lastAttempt": "2026-09-29T11:36:12.063Z",
-  "lastSuccess": "2026-09-29T11:36:12.063Z",
-  "durationMs": 434,
+  "lastAttempt": "2026-09-29T21:23:52.694Z",
+  "lastSuccess": "2026-09-29T21:23:52.694Z",
+  "durationMs": 746,
   "records": 8,
   "consecutiveFailures": 0
  }

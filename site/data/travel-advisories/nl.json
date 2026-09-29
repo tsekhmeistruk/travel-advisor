@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "nl",
- "asOf": "2026-09-28",
+ "asOf": "2026-09-29",
  "source": "https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice",
  "links": {
   "list": "https://www.nederlandwereldwijd.nl/reisadvies"
@@ -654,7 +654,7 @@
   {
    "title": "Fiji",
    "level": 1,
-   "updated": "2026-06-25",
+   "updated": "2026-09-28",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/fiji",
    "places": [
     "fj"
@@ -1342,7 +1342,7 @@
   {
    "title": "Mexico",
    "level": 2,
-   "updated": "2026-09-23",
+   "updated": "2026-09-28",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/mexico",
    "regional": true,
    "places": [

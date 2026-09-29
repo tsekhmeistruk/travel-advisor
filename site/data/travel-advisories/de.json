@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "de",
- "asOf": "2026-09-28",
+ "asOf": "2026-09-29",
  "source": "https://www.auswaertiges-amt.de/opendata/travelwarning",
  "links": {
   "list": "https://www.auswaertiges-amt.de/de/ReiseUndSicherheit/reise-und-sicherheitshinweise"
@@ -21,7 +21,7 @@
   {
    "title": "Ägypten",
    "level": 3,
-   "updated": "2026-08-03",
+   "updated": "2026-09-29",
    "regional": true,
    "places": [
     "eg"
@@ -350,7 +350,7 @@
   {
    "title": "Dänemark",
    "level": 1,
-   "updated": "2026-07-30",
+   "updated": "2026-09-29",
    "places": [
     "dk"
    ],
@@ -1185,7 +1185,7 @@
   {
    "title": "Nigeria",
    "level": 3,
-   "updated": "2026-08-12",
+   "updated": "2026-09-29",
    "regional": true,
    "places": [
     "ng"
@@ -1240,7 +1240,7 @@
   {
    "title": "Pakistan",
    "level": 3,
-   "updated": "2026-09-25",
+   "updated": "2026-09-29",
    "regional": true,
    "places": [
     "pk"
@@ -1445,7 +1445,7 @@
   {
    "title": "Schweden",
    "level": 1,
-   "updated": "2026-05-29",
+   "updated": "2026-09-29",
    "places": [
     "se"
    ],
@@ -1658,7 +1658,7 @@
   {
    "title": "Tansania",
    "level": 1,
-   "updated": "2026-09-25",
+   "updated": "2026-09-29",
    "places": [
     "tz"
    ],

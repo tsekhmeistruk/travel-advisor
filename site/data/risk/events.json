@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-29T17:01:25.922Z",
+ "asOf": "2026-09-29T21:24:00.579Z",
  "events": [
   {
    "id": "gdacs:TC:1001331",
@@ -12,16 +12,16 @@
     "value": "Green"
    },
    "name": "Tropical Cyclone NINETEEN-E-26",
-   "severity": "Tropical Depression (maximum wind speed of 65 km/h)",
+   "severity": "Tropical Depression (maximum wind speed of 56 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -131.6,
-    "lat": 14.4
+    "lon": -130.8,
+    "lat": 14.2
    },
    "startedAt": "2026-09-29T15:00:00.000Z",
-   "toDate": "2026-09-29T15:00:00.000Z",
+   "toDate": "2026-09-29T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=1&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=2&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001330",
@@ -37,13 +37,13 @@
    "severity": "Tropical Storm (maximum wind speed of 74 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -45.5,
-    "lat": 34.6
+    "lon": -44.5,
+    "lat": 34
    },
    "startedAt": "2026-09-28T15:00:00.000Z",
-   "toDate": "2026-09-29T15:00:00.000Z",
+   "toDate": "2026-09-29T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=5&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=6&eventtype=TC"
   },
   {
    "id": "gdacs:VO:1000150",
@@ -81,18 +81,18 @@
    },
    "name": "Tropical Cyclone RACHEL-26",
    "country": "Mexico",
-   "severity": "Tropical Storm (maximum wind speed of 176 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 194 km/h)",
    "placeIds": [
     "mx"
    ],
    "point": {
-    "lon": -105,
-    "lat": 15.3
+    "lon": -105.7,
+    "lat": 16
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-29T15:00:00.000Z",
+   "toDate": "2026-09-29T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=10&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=11&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -207,13 +207,13 @@
     "jp"
    ],
    "point": {
-    "lon": 136.3,
-    "lat": 29.2
+    "lon": 136.7,
+    "lat": 29.6
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-29T12:00:00.000Z",
+   "toDate": "2026-09-29T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=26&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=27&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104190",
@@ -277,18 +277,18 @@
    },
    "name": "Tropical Cyclone POLO-26",
    "country": "Mexico",
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 287 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 287 km/h)",
    "placeIds": [
     "mx"
    ],
    "point": {
-    "lon": -110.9,
-    "lat": 27.8
+    "lon": -109.7,
+    "lat": 29
    },
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-29T15:00:00.000Z",
+   "toDate": "2026-09-29T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=36&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=37&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001324",
@@ -326,13 +326,13 @@
    "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -47.3,
-    "lat": 24.2
+    "lon": -48.2,
+    "lat": 23.7
    },
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-29T15:00:00.000Z",
+   "toDate": "2026-09-29T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=38&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=39&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104176",
@@ -452,12 +452,12 @@
    ],
    "point": {
     "lon": -164.2,
-    "lat": 20.5
+    "lat": 21.3
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-29T15:00:00.000Z",
+   "toDate": "2026-09-29T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=36&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=37&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",
