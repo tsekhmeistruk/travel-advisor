@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-28T23:57:46.313Z",
+ "asOf": "2026-09-29T05:42:15.072Z",
  "events": [
   {
    "id": "gdacs:TC:1001330",
@@ -15,13 +15,13 @@
    "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -48.7,
-    "lat": 36.5
+    "lon": -47.7,
+    "lat": 36
    },
    "startedAt": "2026-09-28T15:00:00.000Z",
-   "toDate": "2026-09-28T21:00:00.000Z",
+   "toDate": "2026-09-29T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=2&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=3&eventtype=TC"
   },
   {
    "id": "gdacs:VO:1000150",
@@ -64,13 +64,13 @@
     "mx"
    ],
    "point": {
-    "lon": -102.1,
-    "lat": 14.2
+    "lon": -102.9,
+    "lat": 14.5
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-28T21:00:00.000Z",
+   "toDate": "2026-09-29T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=7&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=8&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -180,18 +180,18 @@
    },
    "name": "Tropical Cyclone SURIGAE-26",
    "country": "Japan",
-   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 241 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 241 km/h)",
    "placeIds": [
     "jp"
    ],
    "point": {
-    "lon": 133.2,
-    "lat": 28.1
+    "lon": 133.9,
+    "lat": 28.6
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-28T18:00:00.000Z",
+   "toDate": "2026-09-29T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=23&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=24&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104190",
@@ -217,81 +217,6 @@
    "toDate": "2026-09-26T01:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104190&episodeid=4&eventtype=FL"
-  },
-  {
-   "id": "gdacs:FL:1104192",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Argentina",
-   "country": "Argentina",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "ar"
-   ],
-   "point": {
-    "lon": -71.31,
-    "lat": -41.133
-   },
-   "startedAt": "2026-09-23T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104192&episodeid=2&eventtype=FL"
-  },
-  {
-   "id": "gdacs:FL:1104193",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Ukraine",
-   "country": "Ukraine",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "ua"
-   ],
-   "point": {
-    "lon": 35.383,
-    "lat": 46.847
-   },
-   "startedAt": "2026-09-23T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104193&episodeid=1&eventtype=FL"
-  },
-  {
-   "id": "gdacs:FL:1104195",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Libya",
-   "country": "Libya",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "ly"
-   ],
-   "point": {
-    "lon": 16.743,
-    "lat": 28.006
-   },
-   "startedAt": "2026-09-23T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104195&episodeid=1&eventtype=FL"
   },
   {
    "id": "gdacs:FL:1104196",
@@ -323,10 +248,10 @@
    "source": "gdacs",
    "type": "cyclone",
    "category": "disaster",
-   "level": 3,
+   "level": 4,
    "native": {
     "scheme": "gdacs-alert",
-    "value": "Orange"
+    "value": "Red"
    },
    "name": "Tropical Cyclone POLO-26",
    "country": "Mexico",
@@ -335,13 +260,13 @@
     "mx"
    ],
    "point": {
-    "lon": -113,
-    "lat": 25
+    "lon": -112.5,
+    "lat": 25.9
    },
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-28T21:00:00.000Z",
+   "toDate": "2026-09-29T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=33&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=34&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001324",
@@ -376,16 +301,16 @@
     "value": "Green"
    },
    "name": "Tropical Cyclone FAY-26",
-   "severity": "Tropical Depression (maximum wind speed of 111 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 111 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -45.3,
-    "lat": 26.6
+    "lon": -45.9,
+    "lat": 26
    },
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-28T21:00:00.000Z",
+   "toDate": "2026-09-29T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=35&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=36&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104176",
@@ -438,31 +363,6 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1104178&episodeid=4&eventtype=FL"
   },
   {
-   "id": "gdacs:FL:1104183",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Türkiye",
-   "country": "Türkiye",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "tr"
-   ],
-   "point": {
-    "lon": 31.839,
-    "lat": 41.25
-   },
-   "startedAt": "2026-09-18T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104183&episodeid=2&eventtype=FL"
-  },
-  {
    "id": "gdacs:FL:1104168",
    "source": "gdacs",
    "type": "flood",
@@ -504,13 +404,13 @@
     "us"
    ],
    "point": {
-    "lon": -163.1,
-    "lat": 17.7
+    "lon": -163.7,
+    "lat": 18.8
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-28T21:00:00.000Z",
+   "toDate": "2026-09-29T03:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=33&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=34&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",
@@ -681,31 +581,6 @@
    "toDate": "2026-09-28T01:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104011&episodeid=27&eventtype=FL"
-  },
-  {
-   "id": "gdacs:FL:1103888",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in United States",
-   "country": "United States",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "us"
-   ],
-   "point": {
-    "lon": -73.371,
-    "lat": 41.119
-   },
-   "startedAt": "2026-05-19T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1103888&episodeid=91&eventtype=FL"
   }
  ]
 }

@@ -1,7 +1,39 @@
 {
- "asOf": "2026-09-28T23:57:46.313Z",
+ "asOf": "2026-09-29T05:42:15.072Z",
  "windowDays": 90,
  "changes": [
+  {
+   "id": "mx:disaster:2026-09-29T05:42:11.152Z",
+   "at": "2026-09-29T05:42:11.152Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "mx",
+   "from": 3,
+   "to": 4,
+   "up": true,
+   "basis": [
+    "gdacs:TC:1001325"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
+   "id": "gdacs:TC:1001325:2026-09-29T05:42:11.152Z",
+   "at": "2026-09-29T05:42:11.152Z",
+   "kind": "event",
+   "category": "disaster",
+   "source": "gdacs",
+   "eventId": "gdacs:TC:1001325",
+   "type": "cyclone",
+   "placeIds": [
+    "mx"
+   ],
+   "from": 3,
+   "to": 4,
+   "up": true,
+   "native": "Red"
+  },
   {
    "id": "mx:disaster:2026-09-28T23:57:42.640Z",
    "at": "2026-09-28T23:57:42.640Z",
