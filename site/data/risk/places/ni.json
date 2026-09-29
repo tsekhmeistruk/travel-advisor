@@ -37,19 +37,34 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "ni:violence:2026-09-28",
+   "at": "2026-09-28",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "ni",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 10,
+   "expected": 7.8
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
     "status": "normal",
-    "count": 6,
-    "expected": 1.8
+    "count": 4,
+    "expected": 2
    },
    "violence": {
-    "status": "above",
-    "count": 17,
-    "expected": 7.2
+    "status": "normal",
+    "count": 10,
+    "expected": 7.8
    }
   }
  }

@@ -37,7 +37,6 @@
   }
  },
  "events": [
-  "gdacs:TC:1001329",
   "gdacs:TC:1001325",
   "gdacs:FL:1104099"
  ],
@@ -194,13 +193,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 25,
-    "expected": 17.6
+    "count": 21,
+    "expected": 17.8
    },
    "violence": {
     "status": "normal",
-    "count": 245,
-    "expected": 347.8
+    "count": 252,
+    "expected": 348.3
    }
   }
  }

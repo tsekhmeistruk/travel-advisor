@@ -46,12 +46,12 @@
    "protest": {
     "status": "normal",
     "count": 16,
-    "expected": 30
+    "expected": 29.5
    },
    "violence": {
     "status": "normal",
-    "count": 63,
-    "expected": 138.3
+    "count": 73,
+    "expected": 138.1
    }
   }
  }

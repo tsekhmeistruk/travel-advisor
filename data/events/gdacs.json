@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-29T05:42:11.152Z",
+ "fetchedAt": "2026-09-29T11:36:08.942Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -245,8 +245,8 @@
    "episode": 91,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-05-19T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
-   "current": false,
+   "toDate": "2026-09-27T01:00:00.000Z",
+   "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1103888&episodeid=91&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
@@ -355,19 +355,19 @@
     "MEX"
    ],
    "point": {
-    "lon": -106.421,
-    "lat": 23.204
+    "lon": -104.952,
+    "lat": 20.299
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 17,
+   "episode": 19,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-08-17T01:00:00.000Z",
    "toDate": "2026-09-28T01:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104099&episodeid=17&eventtype=FL",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104099&episodeid=19&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -385,19 +385,19 @@
     "IND"
    ],
    "point": {
-    "lon": 80.86,
-    "lat": 27.13
+    "lon": 79.05,
+    "lat": 30.02
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Orange"
    },
-   "episode": 18,
+   "episode": 19,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-08-09T01:00:00.000Z",
-   "toDate": "2026-09-27T01:00:00.000Z",
+   "toDate": "2026-09-28T01:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104121&episodeid=18&eventtype=FL",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104121&episodeid=19&eventtype=FL",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
@@ -475,19 +475,19 @@
     "KHM"
    ],
    "point": {
-    "lon": 104.78,
-    "lat": 10.936
+    "lon": 103.861,
+    "lat": 13.356
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 7,
+   "episode": 8,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-08-28T01:00:00.000Z",
-   "toDate": "2026-09-16T01:00:00.000Z",
+   "toDate": "2026-09-24T01:00:00.000Z",
    "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104132&episodeid=7&eventtype=FL",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104132&episodeid=8&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -715,19 +715,19 @@
     "COD"
    ],
    "point": {
-    "lon": 28.844,
-    "lat": -2.51
+    "lon": 28.706,
+    "lat": -0.565
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 1,
+   "episode": 2,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-09-15T01:00:00.000Z",
-   "toDate": "2026-09-17T01:00:00.000Z",
+   "toDate": "2026-09-24T01:00:00.000Z",
    "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104166&episodeid=1&eventtype=FL",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104166&episodeid=2&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1135,19 +1135,19 @@
     "TUR"
    ],
    "point": {
-    "lon": 31.839,
-    "lat": 41.25
+    "lon": 29.051,
+    "lat": 41.071
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 2,
+   "episode": 3,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-09-18T01:00:00.000Z",
-   "toDate": "2026-09-25T01:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104183&episodeid=2&eventtype=FL",
+   "toDate": "2026-09-29T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104183&episodeid=3&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1644,19 +1644,19 @@
     "USA"
    ],
    "point": {
-    "lon": -163.7,
-    "lat": 18.8
+    "lon": -164.3,
+    "lat": 20
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 34,
+   "episode": 35,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 250 km/h)",
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-29T03:00:00.000Z",
+   "toDate": "2026-09-29T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=34&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=35&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1701,19 +1701,19 @@
    "name": "Tropical Cyclone FAY-26",
    "iso3": [],
    "point": {
-    "lon": -45.9,
-    "lat": 26
+    "lon": -46.8,
+    "lat": 25
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 36,
+   "episode": 37,
    "severity": "Tropical Storm (maximum wind speed of 111 km/h)",
    "startedAt": "2026-09-19T15:00:00.000Z",
-   "toDate": "2026-09-29T03:00:00.000Z",
+   "toDate": "2026-09-29T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=36&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001323&episodeid=37&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1758,19 +1758,19 @@
     "MEX"
    ],
    "point": {
-    "lon": -112.5,
-    "lat": 25.9
+    "lon": -111.9,
+    "lat": 26.2
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Red"
    },
-   "episode": 34,
+   "episode": 35,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 287 km/h)",
    "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-29T03:00:00.000Z",
+   "toDate": "2026-09-29T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=34&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=35&eventtype=TC",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
@@ -1838,19 +1838,19 @@
     "JPN"
    ],
    "point": {
-    "lon": 133.9,
-    "lat": 28.6
+    "lon": 135,
+    "lat": 29
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 24,
+   "episode": 25,
    "severity": "Tropical Storm (maximum wind speed of 241 km/h)",
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-29T00:00:00.000Z",
+   "toDate": "2026-09-29T06:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=24&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=25&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1893,24 +1893,21 @@
    "id": "gdacs:TC:1001329",
    "code": "TC",
    "name": "Tropical Cyclone RACHEL-26",
-   "country": "Mexico",
-   "iso3": [
-    "MEX"
-   ],
+   "iso3": [],
    "point": {
-    "lon": -102.9,
-    "lat": 14.5
+    "lon": -104.3,
+    "lat": 14.7
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 8,
+   "episode": 9,
    "severity": "Tropical Storm (maximum wind speed of 157 km/h)",
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-29T03:00:00.000Z",
+   "toDate": "2026-09-29T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=8&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=9&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1925,19 +1922,19 @@
    "name": "Tropical Cyclone HANNA-26",
    "iso3": [],
    "point": {
-    "lon": -47.7,
-    "lat": 36
+    "lon": -46.2,
+    "lat": 35.2
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 3,
+   "episode": 4,
    "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
    "startedAt": "2026-09-28T15:00:00.000Z",
-   "toDate": "2026-09-29T03:00:00.000Z",
+   "toDate": "2026-09-29T09:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=3&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=4&eventtype=TC",
    "firstSeen": "2026-09-28T15:37:04.553Z",
    "revisions": [
     {

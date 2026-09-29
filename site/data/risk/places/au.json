@@ -43,13 +43,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 56,
-    "expected": 81
+    "count": 64,
+    "expected": 80.5
    },
    "violence": {
     "status": "normal",
-    "count": 782,
-    "expected": 951
+    "count": 792,
+    "expected": 949.2
    }
   }
  }

@@ -2,7 +2,7 @@
  "categories": {
   "disaster": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-29T05:42:11.152Z",
+   "at": "2026-09-29T11:36:08.942Z",
    "places": {
     "cn": {
      "level": 3,
@@ -32,12 +32,12 @@
   },
   "wildfire": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-29T05:42:11.152Z",
+   "at": "2026-09-29T11:36:08.942Z",
    "places": {}
   },
   "health": {
    "trackedSince": "2026-09-27T18:04:53.636Z",
-   "at": "2026-09-29T05:42:15.072Z",
+   "at": "2026-09-29T11:36:12.064Z",
    "places": {
     "cd": {
      "level": 2,
@@ -51,7 +51,7 @@
  },
  "activity": {
   "gdelt": {
-   "through": "2026-09-27",
+   "through": "2026-09-28",
    "learning": false,
    "windowDays": 7,
    "baselineDays": 84,
@@ -69,6 +69,7 @@
      "violence": "far"
     },
     "cz": {
+     "protest": "above",
      "violence": "above"
     },
     "dk": {
@@ -81,7 +82,6 @@
      "violence": "far"
     },
     "et": {
-     "protest": "above",
      "violence": "far"
     },
     "gl": {
@@ -113,10 +113,13 @@
     "na": {
      "violence": "above"
     },
-    "ni": {
-     "violence": "above"
+    "ne": {
+     "protest": "above"
     },
     "pl": {
+     "protest": "above"
+    },
+    "rs": {
      "protest": "above"
     },
     "rw": {
@@ -131,7 +134,13 @@
     "tt": {
      "protest": "above"
     },
+    "vc": {
+     "violence": "above"
+    },
     "ve": {
+     "protest": "far"
+    },
+    "xk": {
      "protest": "above"
     }
    }
