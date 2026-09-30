@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-29T21:24:00.579Z",
+ "asOf": "2026-09-30T00:45:53.301Z",
  "events": [
   {
    "id": "gdacs:TC:1001331",
@@ -80,11 +80,8 @@
     "value": "Green"
    },
    "name": "Tropical Cyclone RACHEL-26",
-   "country": "Mexico",
    "severity": "Tropical Storm (maximum wind speed of 194 km/h)",
-   "placeIds": [
-    "mx"
-   ],
+   "placeIds": [],
    "point": {
     "lon": -105.7,
     "lat": 16

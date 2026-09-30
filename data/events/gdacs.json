@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-29T21:23:47.388Z",
+ "fetchedAt": "2026-09-30T00:45:53.301Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -1866,10 +1866,7 @@
    "id": "gdacs:TC:1001329",
    "code": "TC",
    "name": "Tropical Cyclone RACHEL-26",
-   "country": "Mexico",
-   "iso3": [
-    "MEX"
-   ],
+   "iso3": [],
    "point": {
     "lon": -105.7,
     "lat": 16
