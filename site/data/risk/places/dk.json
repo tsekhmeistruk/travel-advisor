@@ -37,19 +37,34 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "dk:protest:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "dk",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 11,
+   "expected": 6.9
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "above",
-    "count": 12,
-    "expected": 6.8
+    "status": "normal",
+    "count": 11,
+    "expected": 6.9
    },
    "violence": {
     "status": "normal",
-    "count": 68,
-    "expected": 48.7
+    "count": 49,
+    "expected": 50.1
    }
   }
  }

@@ -37,19 +37,34 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "az:violence:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "az",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 128,
+   "expected": 49.5
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
     "status": "normal",
-    "count": 11,
-    "expected": 9.6
+    "count": 9,
+    "expected": 9.5
    },
    "violence": {
-    "status": "normal",
-    "count": 98,
-    "expected": 50.3
+    "status": "above",
+    "count": 128,
+    "expected": 49.5
    }
   }
  }

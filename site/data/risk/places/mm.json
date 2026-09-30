@@ -39,19 +39,34 @@
  "events": [
   "gdacs:FL:1104011"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "mm:violence:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "mm",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "far",
+   "up": true,
+   "count": 150,
+   "expected": 37.2
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
     "status": "above",
     "count": 7,
-    "expected": 2.3
+    "expected": 2
    },
    "violence": {
-    "status": "above",
-    "count": 88,
-    "expected": 36.8
+    "status": "far",
+    "count": 150,
+    "expected": 37.2
    }
   }
  }

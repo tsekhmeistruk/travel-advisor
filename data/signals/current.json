@@ -2,7 +2,7 @@
  "categories": {
   "disaster": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-30T06:41:45.737Z",
+   "at": "2026-09-30T13:02:30.839Z",
    "places": {
     "cn": {
      "level": 3,
@@ -32,12 +32,12 @@
   },
   "wildfire": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-09-30T06:41:45.737Z",
+   "at": "2026-09-30T13:02:30.839Z",
    "places": {}
   },
   "health": {
    "trackedSince": "2026-09-27T18:04:53.636Z",
-   "at": "2026-09-30T06:43:31.210Z",
+   "at": "2026-09-30T13:02:34.324Z",
    "places": {
     "cd": {
      "level": 2,
@@ -51,7 +51,7 @@
  },
  "activity": {
   "gdelt": {
-   "through": "2026-09-28",
+   "through": "2026-09-29",
    "learning": false,
    "windowDays": 7,
    "baselineDays": 84,
@@ -59,21 +59,26 @@
     "af": {
      "violence": "above"
     },
+    "ag": {
+     "violence": "above"
+    },
     "am": {
      "violence": "above"
     },
-    "by": {
-     "protest": "far"
+    "ar": {
+     "violence": "above"
+    },
+    "az": {
+     "violence": "above"
+    },
+    "cd": {
+     "violence": "above"
     },
     "cf": {
      "violence": "far"
     },
     "cz": {
-     "protest": "above",
      "violence": "above"
-    },
-    "dk": {
-     "protest": "above"
     },
     "ee": {
      "violence": "above"
@@ -84,31 +89,18 @@
     "et": {
      "violence": "far"
     },
-    "gl": {
-     "protest": "above",
-     "violence": "above"
-    },
     "il": {
      "protest": "above"
     },
     "jm": {
      "protest": "far"
     },
-    "kp": {
-     "protest": "above"
-    },
-    "ky": {
-     "violence": "above"
-    },
     "ls": {
      "violence": "above"
     },
-    "ml": {
-     "protest": "above"
-    },
     "mm": {
      "protest": "above",
-     "violence": "above"
+     "violence": "far"
     },
     "na": {
      "violence": "above"
@@ -125,11 +117,14 @@
     "rw": {
      "violence": "far"
     },
-    "si": {
-     "violence": "above"
+    "sk": {
+     "violence": "far"
     },
     "sn": {
      "violence": "above"
+    },
+    "tn": {
+     "protest": "above"
     },
     "tt": {
      "protest": "above"

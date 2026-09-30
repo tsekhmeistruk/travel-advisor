@@ -64,8 +64,8 @@
    },
    "violence": {
     "status": "normal",
-    "count": 6,
-    "expected": 9.4
+    "count": 5,
+    "expected": 9.5
    }
   }
  }

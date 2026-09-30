@@ -37,19 +37,48 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "gl:violence:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "gl",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 18,
+   "expected": 16.6
+  },
+  {
+   "id": "gl:protest:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "gl",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 5,
+   "expected": 4.6
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "above",
-    "count": 9,
-    "expected": 4.3
+    "status": "normal",
+    "count": 5,
+    "expected": 4.6
    },
    "violence": {
-    "status": "above",
-    "count": 26,
-    "expected": 16
+    "status": "normal",
+    "count": 18,
+    "expected": 16.6
    }
   }
  }

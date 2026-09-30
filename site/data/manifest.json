@@ -59,7 +59,7 @@
   }
  ],
  "risk": {
-  "asOf": "2026-09-30T06:43:31.900Z",
+  "asOf": "2026-09-30T13:02:35.292Z",
   "current": "risk/current.json",
   "changes": "risk/changes.json",
   "events": "risk/events.json",

@@ -36,20 +36,22 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:FL:1104202"
+ ],
  "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
     "status": "normal",
-    "count": 56,
-    "expected": 43.3
+    "count": 79,
+    "expected": 43.9
    },
    "violence": {
     "status": "normal",
-    "count": 479,
-    "expected": 528.3
+    "count": 483,
+    "expected": 527
    }
   }
  }

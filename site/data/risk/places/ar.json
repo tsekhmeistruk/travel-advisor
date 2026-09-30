@@ -37,19 +37,34 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "ar:violence:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "ar",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 88,
+   "expected": 41.9
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
     "status": "normal",
-    "count": 5,
+    "count": 6,
     "expected": 9.8
    },
    "violence": {
-    "status": "normal",
-    "count": 77,
-    "expected": 40.9
+    "status": "above",
+    "count": 88,
+    "expected": 41.9
    }
   }
  }

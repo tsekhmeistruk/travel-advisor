@@ -37,7 +37,22 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "ky:violence:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "ky",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 8,
+   "expected": 4.9
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
@@ -47,9 +62,9 @@
     "expected": 0.6
    },
    "violence": {
-    "status": "above",
-    "count": 10,
-    "expected": 4.8
+    "status": "normal",
+    "count": 8,
+    "expected": 4.9
    }
   }
  }

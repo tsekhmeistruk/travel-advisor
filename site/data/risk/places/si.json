@@ -37,7 +37,22 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "si:violence:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "si",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 4,
+   "expected": 2.1
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
@@ -47,9 +62,9 @@
     "expected": 1.1
    },
    "violence": {
-    "status": "above",
-    "count": 8,
-    "expected": 1.7
+    "status": "normal",
+    "count": 4,
+    "expected": 2.1
    }
   }
  }

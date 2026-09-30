@@ -37,7 +37,22 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "sk:violence:2026-09-29",
+   "at": "2026-09-29",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "sk",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "far",
+   "up": true,
+   "count": 40,
+   "expected": 5
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
@@ -47,8 +62,8 @@
     "expected": 0.5
    },
    "violence": {
-    "status": "normal",
-    "count": 6,
+    "status": "far",
+    "count": 40,
     "expected": 5
    }
   }
