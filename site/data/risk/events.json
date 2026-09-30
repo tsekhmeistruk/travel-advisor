@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-30T13:02:35.292Z",
+ "asOf": "2026-09-30T18:26:24.737Z",
  "events": [
   {
    "id": "gdacs:TC:1001332",
@@ -13,18 +13,18 @@
    },
    "name": "Tropical Cyclone TWENTYSIX-26",
    "country": "Northern Mariana Islands",
-   "severity": "Tropical Depression (maximum wind speed of 204 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 204 km/h)",
    "placeIds": [
     "mp"
    ],
    "point": {
-    "lon": 150.9,
-    "lat": 15.8
+    "lon": 151,
+    "lat": 16
    },
    "startedAt": "2026-09-30T00:00:00.000Z",
-   "toDate": "2026-09-30T06:00:00.000Z",
+   "toDate": "2026-09-30T12:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=2&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=3&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001331",
@@ -40,13 +40,13 @@
    "severity": "Tropical Depression (maximum wind speed of 56 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -129.4,
-    "lat": 13.6
+    "lon": -128.4,
+    "lat": 14.3
    },
    "startedAt": "2026-09-29T15:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=4&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=5&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104202",
@@ -84,16 +84,16 @@
     "value": "Green"
    },
    "name": "Tropical Cyclone HANNA-26",
-   "severity": "Tropical Storm (maximum wind speed of 74 km/h)",
+   "severity": "Tropical Depression (maximum wind speed of 74 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -43.9,
-    "lat": 33.5
+    "lon": -43.6,
+    "lat": 33.4
    },
    "startedAt": "2026-09-28T15:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=8&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=9&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104199",
@@ -161,13 +161,13 @@
     "mx"
    ],
    "point": {
-    "lon": -107.2,
-    "lat": 17.6
+    "lon": -108,
+    "lat": 18.1
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=13&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=14&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104201",
@@ -301,18 +301,18 @@
    },
    "name": "Tropical Cyclone SURIGAE-26",
    "country": "Japan",
-   "severity": "Tropical Storm (maximum wind speed of 241 km/h)",
+   "severity": "Tropical Depression (maximum wind speed of 241 km/h)",
    "placeIds": [
     "jp"
    ],
    "point": {
-    "lon": 138.3,
-    "lat": 31.2
+    "lon": 138.8,
+    "lat": 31.8
    },
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-30T06:00:00.000Z",
+   "toDate": "2026-09-30T12:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=29&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=30&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104196",
@@ -500,13 +500,13 @@
     "us"
    ],
    "point": {
-    "lon": -164.6,
-    "lat": 22.4
+    "lon": -165,
+    "lat": 22
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=39&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=40&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",

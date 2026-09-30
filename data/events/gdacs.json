@@ -1,13 +1,13 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-30T13:02:30.839Z",
+ "fetchedAt": "2026-09-30T18:26:24.737Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
    "id": "gdacs:DR:1018332",
    "code": "DR",
-   "name": "Drought in Austria, Bosnia  and  Herzegovina, Belgium, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Netherlands, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, San Marino, Ukraine, ",
-   "country": "Austria, Bosnia & Herzegovina, Belgium, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Netherlands, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, San Marino, Ukraine, ",
+   "name": "Drought in Austria, Bosnia  and  Herzegovina, Belgium, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Moldova, Montenegro, Netherlands, Norway, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, San Marino, Ukraine, ",
+   "country": "Austria, Bosnia & Herzegovina, Belgium, Belarus, Switzerland, Czech Republic, Germany, Denmark, Spain, France, Croatia, Hungary, Ireland, Italy, Liechtenstein, Luxembourg, Moldova, Montenegro, Netherlands, Norway, Poland, Romania, Serbia, Sweden, Slovenia, Slovakia, San Marino, Ukraine, ",
    "iso3": [
     "AUT",
     "BIH",
@@ -25,7 +25,10 @@
     "ITA",
     "LIE",
     "LUX",
+    "MDA",
+    "MNE",
     "NLD",
+    "NOR",
     "POL",
     "ROU",
     "SRB",
@@ -36,19 +39,19 @@
     "UKR"
    ],
    "point": {
-    "lon": 11.164,
-    "lat": 48.063
+    "lon": 13.24,
+    "lat": 48.619
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Orange"
    },
-   "episode": 22,
-   "severity": "Medium impact for agricultural drought in 1264372 km2",
+   "episode": 23,
+   "severity": "Medium impact for agricultural drought in 1717124 km2",
    "startedAt": "2025-12-21T00:00:00.000Z",
-   "toDate": "2026-09-28T00:00:00.000Z",
+   "toDate": "2026-09-30T13:47:57.000Z",
    "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1018332&episodeid=22&eventtype=DR",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1018332&episodeid=23&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
@@ -105,19 +108,19 @@
     "SLV"
    ],
    "point": {
-    "lon": -93.751,
-    "lat": 16.611
+    "lon": -93.302,
+    "lat": 17.027
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Orange"
    },
-   "episode": 9,
-   "severity": "Medium impact for agricultural drought in 677277 km2",
+   "episode": 10,
+   "severity": "Medium impact for agricultural drought in 840372 km2",
    "startedAt": "2026-04-21T00:00:00.000Z",
-   "toDate": "2026-09-28T00:00:00.000Z",
+   "toDate": "2026-09-30T13:48:38.000Z",
    "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1027449&episodeid=9&eventtype=DR",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1027449&episodeid=10&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
@@ -129,32 +132,37 @@
   {
    "id": "gdacs:DR:1027450",
    "code": "DR",
-   "name": "Drought in Djibouti, Eritrea, Ethiopia, Kenya, Sudan, Somalia, South Sudan, Uganda",
-   "country": "Djibouti, Eritrea, Ethiopia, Kenya, Sudan, Somalia, South Sudan, Uganda",
+   "name": "Drought in Democratic Republic of Congo, Central African Republic, Cameroon, Djibouti, Eritrea, Ethiopia, Kenya, Niger, Nigeria, Sudan, Somalia, South Sudan, Chad",
+   "country": "Democratic Republic of Congo, Central African Republic, Cameroon, Djibouti, Eritrea, Ethiopia, Kenya, Niger, Nigeria, Sudan, Somalia, South Sudan, Chad",
    "iso3": [
+    "COD",
+    "CAF",
+    "CMR",
     "DJI",
     "ERI",
     "ETH",
     "KEN",
+    "NER",
+    "NGA",
     "SDN",
     "SOM",
     "SSD",
-    "UGA"
+    "TCD"
    ],
    "point": {
-    "lon": 38.087,
-    "lat": 8.868
+    "lon": 26.314,
+    "lat": 9.57
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Orange"
    },
-   "episode": 9,
-   "severity": "Medium impact for agricultural drought in 752713 km2",
-   "startedAt": "2026-04-21T00:00:00.000Z",
-   "toDate": "2026-09-28T00:00:00.000Z",
+   "episode": 10,
+   "severity": "Medium impact for agricultural drought in 2451121 km2",
+   "startedAt": "2026-06-21T00:00:00.000Z",
+   "toDate": "2026-09-30T13:48:55.000Z",
    "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1027450&episodeid=9&eventtype=DR",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1027450&episodeid=10&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
@@ -175,19 +183,19 @@
     "UGA"
    ],
    "point": {
-    "lon": 33.813,
-    "lat": 0.938
+    "lon": 33.606,
+    "lat": 0.763
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Orange"
    },
-   "episode": 6,
-   "severity": "Medium impact for agricultural drought in 196893 km2",
+   "episode": 7,
+   "severity": "Medium impact for agricultural drought in 233797 km2",
    "startedAt": "2026-05-21T00:00:00.000Z",
-   "toDate": "2026-09-28T00:00:00.000Z",
+   "toDate": "2026-09-30T13:48:57.000Z",
    "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1027465&episodeid=6&eventtype=DR",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1027465&episodeid=7&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
     {
@@ -1647,19 +1655,19 @@
     "USA"
    ],
    "point": {
-    "lon": -164.6,
-    "lat": 22.4
+    "lon": -165,
+    "lat": 22
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 39,
+   "episode": 40,
    "severity": "Tropical Storm (maximum wind speed of 250 km/h)",
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=39&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=40&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1841,19 +1849,19 @@
     "JPN"
    ],
    "point": {
-    "lon": 138.3,
-    "lat": 31.2
+    "lon": 138.8,
+    "lat": 31.8
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 29,
-   "severity": "Tropical Storm (maximum wind speed of 241 km/h)",
+   "episode": 30,
+   "severity": "Tropical Depression (maximum wind speed of 241 km/h)",
    "startedAt": "2026-09-23T06:00:00.000Z",
-   "toDate": "2026-09-30T06:00:00.000Z",
+   "toDate": "2026-09-30T12:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=29&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=30&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1901,19 +1909,19 @@
     "MEX"
    ],
    "point": {
-    "lon": -107.2,
-    "lat": 17.6
+    "lon": -108,
+    "lat": 18.1
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 13,
+   "episode": 14,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 194 km/h)",
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=13&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=14&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1928,19 +1936,19 @@
    "name": "Tropical Cyclone HANNA-26",
    "iso3": [],
    "point": {
-    "lon": -43.9,
-    "lat": 33.5
+    "lon": -43.6,
+    "lat": 33.4
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 8,
-   "severity": "Tropical Storm (maximum wind speed of 74 km/h)",
+   "episode": 9,
+   "severity": "Tropical Depression (maximum wind speed of 74 km/h)",
    "startedAt": "2026-09-28T15:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=8&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001330&episodeid=9&eventtype=TC",
    "firstSeen": "2026-09-28T15:37:04.553Z",
    "revisions": [
     {
@@ -1955,19 +1963,19 @@
    "name": "Tropical Cyclone NINETEEN-E-26",
    "iso3": [],
    "point": {
-    "lon": -129.4,
-    "lat": 13.6
+    "lon": -128.4,
+    "lat": 14.3
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 4,
+   "episode": 5,
    "severity": "Tropical Depression (maximum wind speed of 56 km/h)",
    "startedAt": "2026-09-29T15:00:00.000Z",
-   "toDate": "2026-09-30T09:00:00.000Z",
+   "toDate": "2026-09-30T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=4&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=5&eventtype=TC",
    "firstSeen": "2026-09-29T17:01:25.922Z",
    "revisions": [
     {
@@ -1983,19 +1991,19 @@
    "country": "Northern Mariana Islands",
    "iso3": [],
    "point": {
-    "lon": 150.9,
-    "lat": 15.8
+    "lon": 151,
+    "lat": 16
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 2,
-   "severity": "Tropical Depression (maximum wind speed of 204 km/h)",
+   "episode": 3,
+   "severity": "Tropical Storm (maximum wind speed of 204 km/h)",
    "startedAt": "2026-09-30T00:00:00.000Z",
-   "toDate": "2026-09-30T06:00:00.000Z",
+   "toDate": "2026-09-30T12:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=2&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=3&eventtype=TC",
    "firstSeen": "2026-09-30T06:41:45.737Z",
    "revisions": [
     {
