@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "us",
- "asOf": "2026-09-29",
+ "asOf": "2026-09-30",
  "source": "https://cadataapi.state.gov/api/TravelAdvisories",
  "links": {
   "list": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html"
@@ -49,7 +49,7 @@
    "title": "Andorra",
    "level": 1,
    "updated": "2026-05-21",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.and.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/andorra-travel-advisory.html",
    "places": [
     "ad"
    ],
@@ -219,7 +219,7 @@
    "title": "Benin",
    "level": 2,
    "updated": "2026-01-07",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.ben.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/benin-travel-advisory.html",
    "places": [
     "bj"
    ],
@@ -329,7 +329,7 @@
    "title": "Burkina Faso",
    "level": 4,
    "updated": "2026-05-04",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.bfa.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/burkina-faso-travel-advisory.html",
    "places": [
     "bf"
    ],
@@ -379,7 +379,7 @@
    "title": "Cameroon",
    "level": 2,
    "updated": "2026-05-15",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.cmr.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/cameroon-travel-advisory.html",
    "places": [
     "cm"
    ],
@@ -419,7 +419,7 @@
    "title": "Chad",
    "level": 4,
    "updated": "2026-04-28",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tcd.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/chad-travel-advisory.html",
    "places": [
     "td"
    ],
@@ -698,7 +698,7 @@
    "title": "Finland",
    "level": 1,
    "updated": "2026-03-13",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.fin.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/finland-travel-advisory.html",
    "places": [
     "fi"
    ],
@@ -814,7 +814,7 @@
    "title": "Greece",
    "level": 1,
    "updated": "2025-10-23",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.grc.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/greece-travel-advisory.html",
    "places": [
     "gr"
    ],
@@ -862,7 +862,7 @@
    "title": "Guatemala",
    "level": 3,
    "updated": "2026-03-12",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.gtm.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/guatemala-travel-advisory.html",
    "places": [
     "gt"
    ],
@@ -872,7 +872,7 @@
    "title": "Guinea",
    "level": 2,
    "updated": "2026-02-25",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.gin.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/guinea-travel-advisory.html",
    "places": [
     "gn"
    ],
@@ -932,7 +932,7 @@
    "title": "Hungary",
    "level": 1,
    "updated": "2026-04-15",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.hun.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/hungary-travel-advisory.html",
    "places": [
     "hu"
    ],
@@ -942,7 +942,7 @@
    "title": "Iceland",
    "level": 1,
    "updated": "2026-05-05",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.isl.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/iceland-travel-advisory.html",
    "places": [
     "is"
    ],
@@ -1195,7 +1195,7 @@
    "title": "Luxembourg",
    "level": 1,
    "updated": "2026-04-08",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.lux.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/luxembourg-travel-advisory.html",
    "places": [
     "lu"
    ],
@@ -1459,7 +1459,7 @@
    "title": "New Zealand",
    "level": 1,
    "updated": "2026-04-29",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.nzl.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/new-zealand-travel-advisory.html",
    "places": [
     "nz"
    ],
@@ -1469,7 +1469,7 @@
    "title": "Nicaragua",
    "level": 3,
    "updated": "2026-05-14",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.nic.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/nicaragua-travel-advisory.html",
    "places": [
     "ni"
    ],
@@ -1780,7 +1780,7 @@
    "title": "Senegal",
    "level": 1,
    "updated": "2025-12-01",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sen.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/senegal-travel-advisory.html",
    "places": [
     "sn"
    ],
@@ -1800,7 +1800,7 @@
    "title": "Seychelles",
    "level": 1,
    "updated": "2025-12-09",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.syc.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/seychelles-travel-advisory.html",
    "places": [
     "sc"
    ],
@@ -1810,7 +1810,7 @@
    "title": "Sierra Leone",
    "level": 2,
    "updated": "2025-09-15",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sle.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sierra-leone-travel-advisory.html",
    "places": [
     "sl"
    ],
@@ -1820,7 +1820,7 @@
    "title": "Singapore",
    "level": 1,
    "updated": "2026-03-09",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sgp.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/singapore-travel-advisory.html",
    "places": [
     "sg"
    ],
@@ -1880,7 +1880,7 @@
    "title": "Somalia",
    "level": 4,
    "updated": "2026-05-21",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.som.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/somalia-travel-advisory.html",
    "places": [
     "so"
    ],
@@ -1893,7 +1893,7 @@
    "title": "South Africa",
    "level": 2,
    "updated": "2025-05-27",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.zaf.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/south-africa-travel-advisory.html",
    "places": [
     "za"
    ],
@@ -1903,7 +1903,7 @@
    "title": "South Korea",
    "level": 1,
    "updated": "2025-05-28",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.kor.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/south-korea-travel-advisory.html",
    "places": [
     "kr"
    ],
@@ -1946,7 +1946,7 @@
    "title": "Sudan",
    "level": 4,
    "updated": "2026-05-15",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sdn.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/sudan-travel-advisory.html",
    "places": [
     "sd"
    ],
@@ -2112,7 +2112,7 @@
    "title": "Trinidad and Tobago",
    "level": 3,
    "updated": "2026-04-13",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.tto.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/trinidad-and-tobago-travel-advisory.html",
    "places": [
     "tt"
    ],
@@ -2280,7 +2280,7 @@
    "title": "Yemen",
    "level": 4,
    "updated": "2025-12-19",
-   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.yem.html",
+   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/yemen-travel-advisory.html",
    "places": [
     "ye"
    ],

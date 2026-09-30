@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "nl",
- "asOf": "2026-09-29",
+ "asOf": "2026-09-30",
  "source": "https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice",
  "links": {
   "list": "https://www.nederlandwereldwijd.nl/reisadvies"
@@ -633,7 +633,7 @@
   {
    "title": "Ethiopië",
    "level": 2,
-   "updated": "2026-09-25",
+   "updated": "2026-09-30",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/ethiopie",
    "regional": true,
    "places": [
@@ -2060,7 +2060,7 @@
   {
    "title": "Tanzania",
    "level": 2,
-   "updated": "2026-09-09",
+   "updated": "2026-09-30",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/tanzania",
    "regional": true,
    "places": [

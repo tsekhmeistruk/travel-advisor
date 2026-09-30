@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "de",
- "asOf": "2026-09-29",
+ "asOf": "2026-09-30",
  "source": "https://www.auswaertiges-amt.de/opendata/travelwarning",
  "links": {
   "list": "https://www.auswaertiges-amt.de/de/ReiseUndSicherheit/reise-und-sicherheitshinweise"
@@ -839,7 +839,7 @@
   {
    "title": "Kroatien",
    "level": 1,
-   "updated": "2026-08-17",
+   "updated": "2026-09-30",
    "places": [
     "hr"
    ],
@@ -1048,7 +1048,7 @@
   {
    "title": "Mexiko",
    "level": 1,
-   "updated": "2026-09-26",
+   "updated": "2026-09-30",
    "places": [
     "mx"
    ],
@@ -1658,7 +1658,7 @@
   {
    "title": "Tansania",
    "level": 1,
-   "updated": "2026-09-29",
+   "updated": "2026-09-30",
    "places": [
     "tz"
    ],
@@ -1849,7 +1849,7 @@
   {
    "title": "Vereinigte Arabische Emirate",
    "level": 1,
-   "updated": "2026-07-24",
+   "updated": "2026-09-30",
    "places": [
     "ae"
    ],

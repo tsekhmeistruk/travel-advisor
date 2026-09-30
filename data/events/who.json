@@ -1,29 +1,8 @@
 {
  "source": "https://www.who.int/api/news/diseaseoutbreaknews",
- "fetchedAt": "2026-09-30T13:02:34.324Z",
+ "fetchedAt": "2026-09-30T22:37:59.570Z",
  "firstFetchedAt": "2026-09-27T18:04:53.636Z",
  "events": [
-  {
-   "id": "who:DON:2026-DON611",
-   "code": "DON",
-   "name": "Hantavirus outbreak linked to cruise ship travel, Multi-locations",
-   "iso3": [],
-   "native": {
-    "scheme": "who-don",
-    "value": "notice"
-   },
-   "startedAt": "2026-07-02T18:27:48.000Z",
-   "toDate": "2026-07-02T18:27:48.000Z",
-   "current": false,
-   "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON611",
-   "firstSeen": "2026-09-27T18:04:53.636Z",
-   "revisions": [
-    {
-     "at": "2026-09-27T18:04:53.636Z",
-     "value": "notice"
-    }
-   ]
-  },
   {
    "id": "who:DON:2026-DON612",
    "code": "DON",

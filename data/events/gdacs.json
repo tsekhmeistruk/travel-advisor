@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-30T18:26:24.737Z",
+ "fetchedAt": "2026-09-30T22:37:56.477Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -1655,19 +1655,19 @@
     "USA"
    ],
    "point": {
-    "lon": -165,
-    "lat": 22
+    "lon": -164.7,
+    "lat": 21.6
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 40,
+   "episode": 41,
    "severity": "Tropical Storm (maximum wind speed of 250 km/h)",
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-09-30T15:00:00.000Z",
+   "toDate": "2026-09-30T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=40&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=41&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1890,7 +1890,7 @@
    "severity": "Tropical Storm (maximum wind speed of 83 km/h)",
    "startedAt": "2026-09-25T03:00:00.000Z",
    "toDate": "2026-09-26T21:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1001328&episodeid=8&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
@@ -1910,18 +1910,18 @@
    ],
    "point": {
     "lon": -108,
-    "lat": 18.1
+    "lat": 18.8
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 14,
+   "episode": 15,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 194 km/h)",
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-09-30T15:00:00.000Z",
+   "toDate": "2026-09-30T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=14&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=15&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1963,19 +1963,19 @@
    "name": "Tropical Cyclone NINETEEN-E-26",
    "iso3": [],
    "point": {
-    "lon": -128.4,
-    "lat": 14.3
+    "lon": -127,
+    "lat": 14.9
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 5,
+   "episode": 6,
    "severity": "Tropical Depression (maximum wind speed of 56 km/h)",
    "startedAt": "2026-09-29T15:00:00.000Z",
-   "toDate": "2026-09-30T15:00:00.000Z",
+   "toDate": "2026-09-30T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=5&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=6&eventtype=TC",
    "firstSeen": "2026-09-29T17:01:25.922Z",
    "revisions": [
     {
@@ -1987,23 +1987,23 @@
   {
    "id": "gdacs:TC:1001332",
    "code": "TC",
-   "name": "Tropical Cyclone TWENTYSIX-26",
+   "name": "Tropical Cyclone CHOI-WAN-26",
    "country": "Northern Mariana Islands",
    "iso3": [],
    "point": {
-    "lon": 151,
-    "lat": 16
+    "lon": 150,
+    "lat": 16.2
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 3,
+   "episode": 4,
    "severity": "Tropical Storm (maximum wind speed of 204 km/h)",
    "startedAt": "2026-09-30T00:00:00.000Z",
-   "toDate": "2026-09-30T12:00:00.000Z",
+   "toDate": "2026-09-30T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=3&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=4&eventtype=TC",
    "firstSeen": "2026-09-30T06:41:45.737Z",
    "revisions": [
     {

@@ -36,9 +36,7 @@
    "own": true
   }
  },
- "events": [
-  "gdacs:TC:1001328"
- ],
+ "events": [],
  "changes": [],
  "activity": {
   "source": "gdelt",
