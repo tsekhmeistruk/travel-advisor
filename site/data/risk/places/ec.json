@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:FL:1104201"
+ ],
  "changes": [],
  "activity": {
   "source": "gdelt",
