@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:FL:1104205"
+ ],
  "changes": [
   {
    "id": "advisory:us:Chad:2026-04-28",

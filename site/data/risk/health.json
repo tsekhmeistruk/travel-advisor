@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-01T07:53:03.409Z",
+ "asOf": "2026-10-01T15:26:27.586Z",
  "sources": {
   "ca": {
    "status": "healthy",
@@ -17,17 +17,17 @@
   },
   "gdacs": {
    "status": "healthy",
-   "lastSuccess": "2026-10-01T07:48:29.839Z",
-   "lastAttempt": "2026-10-01T07:48:29.839Z",
+   "lastSuccess": "2026-10-01T15:26:24.251Z",
+   "lastAttempt": "2026-10-01T15:26:24.251Z",
    "consecutiveFailures": 0,
-   "records": 68
+   "records": 71
   },
   "gdelt": {
    "status": "healthy",
-   "lastSuccess": "2026-10-01T07:53:03.409Z",
-   "lastAttempt": "2026-10-01T07:53:03.409Z",
+   "lastSuccess": "2026-10-01T15:26:27.586Z",
+   "lastAttempt": "2026-10-01T15:26:27.586Z",
    "consecutiveFailures": 0,
-   "records": 1
+   "records": 0
   },
   "nl": {
    "status": "healthy",
@@ -51,12 +51,11 @@
    "records": 219
   },
   "who": {
-   "status": "delayed",
-   "lastSuccess": "2026-09-30T22:37:59.570Z",
-   "lastAttempt": "2026-10-01T07:48:33.092Z",
-   "consecutiveFailures": 1,
-   "records": 7,
-   "error": "API failed after 3 attempts: The operation was aborted due to timeout"
+   "status": "healthy",
+   "lastSuccess": "2026-10-01T15:26:26.929Z",
+   "lastAttempt": "2026-10-01T15:26:26.929Z",
+   "consecutiveFailures": 0,
+   "records": 7
   }
  }
 }

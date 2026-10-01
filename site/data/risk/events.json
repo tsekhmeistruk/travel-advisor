@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-01T07:53:03.409Z",
+ "asOf": "2026-10-01T15:26:27.586Z",
  "events": [
   {
    "id": "gdacs:TC:1001332",
@@ -13,18 +13,18 @@
    },
    "name": "Tropical Cyclone CHOI-WAN-26",
    "country": "Northern Mariana Islands",
-   "severity": "Tropical Storm (maximum wind speed of 194 km/h)",
+   "severity": "Tropical Storm (maximum wind speed of 204 km/h)",
    "placeIds": [
     "mp"
    ],
    "point": {
-    "lon": 146.8,
-    "lat": 16.9
+    "lon": 145.8,
+    "lat": 16.5
    },
    "startedAt": "2026-09-30T00:00:00.000Z",
-   "toDate": "2026-10-01T06:00:00.000Z",
+   "toDate": "2026-10-01T12:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=6&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=7&eventtype=TC"
   },
   {
    "id": "gdacs:TC:1001331",
@@ -40,13 +40,13 @@
    "severity": "Tropical Depression (maximum wind speed of 56 km/h)",
    "placeIds": [],
    "point": {
-    "lon": -125.9,
+    "lon": -123.3,
     "lat": 15.2
    },
    "startedAt": "2026-09-29T15:00:00.000Z",
-   "toDate": "2026-10-01T03:00:00.000Z",
+   "toDate": "2026-10-01T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=7&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001331&episodeid=9&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104202",
@@ -72,6 +72,31 @@
    "toDate": "2026-10-01T01:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104202&episodeid=1&eventtype=FL"
+  },
+  {
+   "id": "gdacs:FL:1104205",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Chad",
+   "country": "Chad",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "td"
+   ],
+   "point": {
+    "lon": 15.05,
+    "lat": 12.119
+   },
+   "startedAt": "2026-09-29T01:00:00.000Z",
+   "toDate": "2026-10-01T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104205&episodeid=1&eventtype=FL"
   },
   {
    "id": "gdacs:TC:1001330",
@@ -112,13 +137,13 @@
     "es"
    ],
    "point": {
-    "lon": -6.153,
-    "lat": 39.175
+    "lon": 2.085,
+    "lat": 41.471
    },
    "startedAt": "2026-09-28T01:00:00.000Z",
-   "toDate": "2026-09-30T01:00:00.000Z",
+   "toDate": "2026-10-01T01:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104199&episodeid=2&eventtype=FL"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104199&episodeid=3&eventtype=FL"
   },
   {
    "id": "gdacs:VO:1000150",
@@ -161,13 +186,13 @@
     "mx"
    ],
    "point": {
-    "lon": -108.5,
-    "lat": 19.2
+    "lon": -109.6,
+    "lat": 19.6
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-10-01T03:00:00.000Z",
+   "toDate": "2026-10-01T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=16&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=18&eventtype=TC"
   },
   {
    "id": "gdacs:FL:1104201",
@@ -243,6 +268,31 @@
    "toDate": "2026-09-28T01:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104200&episodeid=1&eventtype=FL"
+  },
+  {
+   "id": "gdacs:FL:1104204",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Panama",
+   "country": "Panama",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "pa"
+   ],
+   "point": {
+    "lon": -82.626,
+    "lat": 8.738
+   },
+   "startedAt": "2026-09-26T01:00:00.000Z",
+   "toDate": "2026-09-28T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104204&episodeid=1&eventtype=FL"
   },
   {
    "id": "who:DON:2026-DON618",
@@ -338,6 +388,31 @@
    "toDate": "2026-09-30T03:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=38&eventtype=TC"
+  },
+  {
+   "id": "gdacs:FL:1104186",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Nigeria",
+   "country": "Nigeria",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "ng"
+   ],
+   "point": {
+    "lon": 5.223,
+    "lat": 7.623
+   },
+   "startedAt": "2026-09-21T01:00:00.000Z",
+   "toDate": "2026-09-29T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104186&episodeid=4&eventtype=FL"
   },
   {
    "id": "gdacs:TC:1001324",
@@ -500,13 +575,13 @@
     "us"
    ],
    "point": {
-    "lon": -164.8,
-    "lat": 21.5
+    "lon": -165.5,
+    "lat": 21.9
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-10-01T03:00:00.000Z",
+   "toDate": "2026-10-01T15:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=42&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=44&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",
