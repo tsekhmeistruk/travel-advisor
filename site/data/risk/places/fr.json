@@ -39,19 +39,34 @@
  "events": [
   "gdacs:FL:1104202"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "fr:protest:2026-09-30",
+   "at": "2026-09-30",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "fr",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 134,
+   "expected": 43.8
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "normal",
-    "count": 79,
-    "expected": 43.9
+    "status": "above",
+    "count": 134,
+    "expected": 43.8
    },
    "violence": {
     "status": "normal",
-    "count": 483,
-    "expected": 527
+    "count": 462,
+    "expected": 527.8
    }
   }
  }

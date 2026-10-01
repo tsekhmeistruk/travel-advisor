@@ -14,17 +14,17 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-10-01T01:35:10.750Z",
-  "lastSuccess": "2026-10-01T01:35:10.750Z",
-  "durationMs": 3417,
-  "records": 67,
+  "lastAttempt": "2026-10-01T07:48:29.839Z",
+  "lastSuccess": "2026-10-01T07:48:29.839Z",
+  "durationMs": 3187,
+  "records": 68,
   "consecutiveFailures": 0
  },
  "gdelt": {
-  "lastAttempt": "2026-09-30T22:38:00.369Z",
-  "lastSuccess": "2026-09-30T22:38:00.369Z",
-  "durationMs": 4,
-  "records": 0,
+  "lastAttempt": "2026-10-01T07:53:03.409Z",
+  "lastSuccess": "2026-10-01T07:53:03.409Z",
+  "durationMs": 974,
+  "records": 1,
   "consecutiveFailures": 0
  },
  "nl": {
@@ -49,10 +49,11 @@
   "consecutiveFailures": 0
  },
  "who": {
-  "lastAttempt": "2026-09-30T22:37:59.570Z",
+  "lastAttempt": "2026-10-01T07:48:33.092Z",
   "lastSuccess": "2026-09-30T22:37:59.570Z",
-  "durationMs": 736,
+  "durationMs": 270086,
   "records": 7,
-  "consecutiveFailures": 0
+  "consecutiveFailures": 1,
+  "error": "API failed after 3 attempts: The operation was aborted due to timeout"
  }
 }

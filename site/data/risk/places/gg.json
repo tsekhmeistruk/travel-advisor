@@ -9,7 +9,22 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "gg:violence:2026-09-30",
+   "at": "2026-09-30",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "gg",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "far",
+   "up": true,
+   "count": 10,
+   "expected": 1.3
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
@@ -19,8 +34,8 @@
     "expected": 0.1
    },
    "violence": {
-    "status": "normal",
-    "count": 3,
+    "status": "far",
+    "count": 10,
     "expected": 1.3
    }
   }

@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-01T01:35:10.751Z",
+ "asOf": "2026-10-01T07:53:03.409Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -26,7 +26,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-01T01:35:10.751Z"
+   "at": "2026-10-01T07:48:29.839Z"
   },
   "wildfire": {
    "sources": [
@@ -34,14 +34,14 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-01T01:35:10.751Z"
+   "at": "2026-10-01T07:48:29.839Z"
   },
   "health": {
    "sources": [
     "who"
    ],
    "default": 1,
-   "status": "healthy",
+   "status": "delayed",
    "at": "2026-09-30T22:37:59.570Z"
   }
  },
@@ -720,15 +720,6 @@
      "de": 1
     },
     "agree": 3
-   },
-   "disaster": {
-    "level": 3,
-    "since": "2026-09-28T11:59:27.360Z",
-    "from": 1,
-    "basis": [
-     "gdacs:FL:1104081"
-    ],
-    "falling": 1
    }
   },
   "co": {
@@ -3318,100 +3309,133 @@
  },
  "activity": {
   "gdelt": {
-   "through": "2026-09-29",
+   "through": "2026-09-30",
    "learning": false,
    "windowDays": 7,
    "baselineDays": 84,
    "places": {
     "af": {
+     "protest": {
+      "status": "above",
+      "count": 20,
+      "expected": 8.9
+     },
      "violence": {
       "status": "above",
-      "count": 566,
-      "expected": 290.8
+      "count": 553,
+      "expected": 289.2
      }
     },
     "ag": {
      "violence": {
       "status": "above",
-      "count": 20,
-      "expected": 7.8
+      "count": 21,
+      "expected": 8
      }
     },
     "am": {
      "violence": {
       "status": "above",
-      "count": 82,
-      "expected": 36.7
+      "count": 75,
+      "expected": 36.8
      }
     },
     "ar": {
      "violence": {
       "status": "above",
-      "count": 88,
-      "expected": 41.9
+      "count": 77,
+      "expected": 44.1
      }
     },
     "az": {
      "violence": {
       "status": "above",
-      "count": 128,
-      "expected": 49.5
+      "count": 134,
+      "expected": 49.7
      }
     },
     "cd": {
      "violence": {
       "status": "above",
       "count": 52,
-      "expected": 25.2
+      "expected": 25.3
      }
     },
     "cf": {
      "violence": {
-      "status": "far",
-      "count": 56,
-      "expected": 10.8
+      "status": "above",
+      "count": 24,
+      "expected": 12.8
      }
     },
     "cz": {
      "violence": {
       "status": "above",
-      "count": 54,
+      "count": 53,
       "expected": 22
+     }
+    },
+    "do": {
+     "protest": {
+      "status": "above",
+      "count": 12,
+      "expected": 3.2
      }
     },
     "ee": {
      "violence": {
       "status": "above",
-      "count": 43,
-      "expected": 12.8
+      "count": 32,
+      "expected": 13.8
      }
     },
     "er": {
      "violence": {
       "status": "far",
-      "count": 75,
-      "expected": 6.7
+      "count": 70,
+      "expected": 7.4
+     }
+    },
+    "es": {
+     "protest": {
+      "status": "above",
+      "count": 96,
+      "expected": 42.8
      }
     },
     "et": {
      "violence": {
       "status": "far",
-      "count": 734,
-      "expected": 58.3
+      "count": 672,
+      "expected": 69.8
+     }
+    },
+    "fr": {
+     "protest": {
+      "status": "above",
+      "count": 134,
+      "expected": 43.8
+     }
+    },
+    "gg": {
+     "violence": {
+      "status": "far",
+      "count": 10,
+      "expected": 1.3
      }
     },
     "il": {
      "protest": {
       "status": "above",
-      "count": 554,
-      "expected": 222
+      "count": 567,
+      "expected": 222.7
      }
     },
     "jm": {
      "protest": {
       "status": "far",
-      "count": 26,
-      "expected": 3.3
+      "count": 17,
+      "expected": 4.1
      }
     },
     "ls": {
@@ -3421,23 +3445,30 @@
       "expected": 13.1
      }
     },
+    "lu": {
+     "violence": {
+      "status": "above",
+      "count": 12,
+      "expected": 5.4
+     }
+    },
     "mm": {
      "protest": {
       "status": "above",
-      "count": 7,
-      "expected": 2
+      "count": 6,
+      "expected": 2.1
      },
      "violence": {
       "status": "far",
-      "count": 150,
-      "expected": 37.2
+      "count": 142,
+      "expected": 37.8
      }
     },
     "na": {
      "violence": {
       "status": "above",
-      "count": 72,
-      "expected": 23.8
+      "count": 46,
+      "expected": 24.8
      }
     },
     "ne": {
@@ -3457,36 +3488,22 @@
     "rs": {
      "protest": {
       "status": "above",
-      "count": 12,
-      "expected": 4.5
-     }
-    },
-    "rw": {
-     "violence": {
-      "status": "far",
-      "count": 64,
-      "expected": 28
+      "count": 13,
+      "expected": 4.6
      }
     },
     "sk": {
      "violence": {
       "status": "far",
-      "count": 40,
+      "count": 42,
       "expected": 5
      }
     },
     "sn": {
      "violence": {
       "status": "above",
-      "count": 17,
+      "count": 18,
       "expected": 8.3
-     }
-    },
-    "tn": {
-     "protest": {
-      "status": "above",
-      "count": 15,
-      "expected": 6.1
      }
     },
     "tt": {
@@ -3500,21 +3517,14 @@
      "violence": {
       "status": "above",
       "count": 23,
-      "expected": 10.3
+      "expected": 10.1
      }
     },
     "ve": {
      "protest": {
       "status": "far",
-      "count": 70,
-      "expected": 16.1
-     }
-    },
-    "xk": {
-     "protest": {
-      "status": "above",
-      "count": 4,
-      "expected": 1.3
+      "count": 60,
+      "expected": 16.2
      }
     }
    }

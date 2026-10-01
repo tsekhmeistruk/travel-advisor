@@ -39,6 +39,20 @@
  "events": [],
  "changes": [
   {
+   "id": "cn:disaster:2026-10-01T07:48:29.839Z",
+   "at": "2026-10-01T07:48:29.839Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "cn",
+   "from": 3,
+   "to": 1,
+   "up": false,
+   "basis": [],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
    "id": "cn:disaster:2026-09-28T11:59:27.360Z",
    "at": "2026-09-28T11:59:27.360Z",
    "kind": "level",
@@ -60,13 +74,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 204,
-    "expected": 117.4
+    "count": 174,
+    "expected": 119.1
    },
    "violence": {
     "status": "normal",
-    "count": 577,
-    "expected": 662.8
+    "count": 601,
+    "expected": 664.5
    }
   }
  }

@@ -2,20 +2,8 @@
  "categories": {
   "disaster": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-10-01T01:35:10.751Z",
+   "at": "2026-10-01T07:48:29.839Z",
    "places": {
-    "cn": {
-     "level": 3,
-     "since": "2026-09-28T11:59:27.360Z",
-     "from": 1,
-     "basis": [
-      "gdacs:FL:1104081"
-     ],
-     "pending": {
-      "level": 1,
-      "firstSeen": "2026-10-01T01:35:10.751Z"
-     }
-    },
     "in": {
      "level": 3,
      "since": "2026-09-28T11:59:27.360Z",
@@ -36,7 +24,7 @@
   },
   "wildfire": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-10-01T01:35:10.751Z",
+   "at": "2026-10-01T07:48:29.839Z",
    "places": {}
   },
   "health": {
@@ -55,12 +43,13 @@
  },
  "activity": {
   "gdelt": {
-   "through": "2026-09-29",
+   "through": "2026-09-30",
    "learning": false,
    "windowDays": 7,
    "baselineDays": 84,
    "places": {
     "af": {
+     "protest": "above",
      "violence": "above"
     },
     "ag": {
@@ -79,10 +68,13 @@
      "violence": "above"
     },
     "cf": {
-     "violence": "far"
+     "violence": "above"
     },
     "cz": {
      "violence": "above"
+    },
+    "do": {
+     "protest": "above"
     },
     "ee": {
      "violence": "above"
@@ -90,7 +82,16 @@
     "er": {
      "violence": "far"
     },
+    "es": {
+     "protest": "above"
+    },
     "et": {
+     "violence": "far"
+    },
+    "fr": {
+     "protest": "above"
+    },
+    "gg": {
      "violence": "far"
     },
     "il": {
@@ -100,6 +101,9 @@
      "protest": "far"
     },
     "ls": {
+     "violence": "above"
+    },
+    "lu": {
      "violence": "above"
     },
     "mm": {
@@ -118,17 +122,11 @@
     "rs": {
      "protest": "above"
     },
-    "rw": {
-     "violence": "far"
-    },
     "sk": {
      "violence": "far"
     },
     "sn": {
      "violence": "above"
-    },
-    "tn": {
-     "protest": "above"
     },
     "tt": {
      "protest": "above"
@@ -138,9 +136,6 @@
     },
     "ve": {
      "protest": "far"
-    },
-    "xk": {
-     "protest": "above"
     }
    }
   }

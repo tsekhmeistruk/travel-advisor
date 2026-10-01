@@ -39,6 +39,20 @@
  "events": [],
  "changes": [
   {
+   "id": "tn:protest:2026-09-30",
+   "at": "2026-09-30",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "tn",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 9,
+   "expected": 6.6
+  },
+  {
    "id": "tn:protest:2026-09-29",
    "at": "2026-09-29",
    "kind": "anomaly",
@@ -57,14 +71,14 @@
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "above",
-    "count": 15,
-    "expected": 6.1
+    "status": "normal",
+    "count": 9,
+    "expected": 6.6
    },
    "violence": {
     "status": "normal",
-    "count": 3,
-    "expected": 14.7
+    "count": 2,
+    "expected": 14.6
    }
   }
  }
