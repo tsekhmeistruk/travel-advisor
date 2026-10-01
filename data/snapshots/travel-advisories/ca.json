@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-09-30T22:38:04.184Z",
+ "fetchedAt": "2026-10-01T20:30:32.152Z",
  "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "entries": [
   {
@@ -24,8 +24,8 @@
    "name": "Algeria",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-29",
-   "stamp": "2026-09-29 14:22:11",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 07:36:48",
    "url": "https://travel.gc.ca/destinations/algeria",
    "iso": "DZ"
   },
@@ -69,8 +69,8 @@
    "name": "Antarctica",
    "level": 2,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:35",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 13:00:03",
    "url": "https://travel.gc.ca/destinations/antarctica",
    "iso": "AQ"
   },
@@ -339,8 +339,8 @@
    "name": "Cambodia",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:33",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:35:48",
    "url": "https://travel.gc.ca/destinations/cambodia",
    "iso": "KH"
   },
@@ -402,8 +402,8 @@
    "name": "China",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:33",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:35:48",
    "url": "https://travel.gc.ca/destinations/china",
    "iso": "CN"
   },
@@ -438,8 +438,8 @@
    "name": "Costa Rica",
    "level": 2,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:33",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:07:44",
    "url": "https://travel.gc.ca/destinations/costa-rica",
    "iso": "CR"
   },
@@ -465,8 +465,8 @@
    "name": "Cuba",
    "level": 3,
    "regional": false,
-   "updated": "2026-09-28",
-   "stamp": "2026-09-28 14:58:23",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:07:42",
    "url": "https://travel.gc.ca/destinations/cuba",
    "iso": "CU"
   },
@@ -654,8 +654,8 @@
    "name": "French Guiana",
    "level": 1,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:33",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:07:43",
    "url": "https://travel.gc.ca/destinations/french-guiana",
    "iso": "GF"
   },
@@ -924,8 +924,8 @@
    "name": "Japan",
    "level": 1,
    "regional": false,
-   "updated": "2026-09-29",
-   "stamp": "2026-09-29 04:14:27",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 07:27:39",
    "url": "https://travel.gc.ca/destinations/japan",
    "iso": "JP"
   },
@@ -1167,8 +1167,8 @@
    "name": "Mauritius",
    "level": 1,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:34",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:07:43",
    "url": "https://travel.gc.ca/destinations/mauritius",
    "iso": "MU"
   },
@@ -1185,8 +1185,8 @@
    "name": "Mexico",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-29",
-   "stamp": "2026-09-29 14:42:49",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 15:06:25",
    "url": "https://travel.gc.ca/destinations/mexico",
    "iso": "MX"
   },
@@ -1248,8 +1248,8 @@
    "name": "Morocco",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:34",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 12:46:20",
    "url": "https://travel.gc.ca/destinations/morocco",
    "iso": "MA"
   },
@@ -1329,8 +1329,8 @@
    "name": "Nicaragua",
    "level": 2,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:34",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:07:44",
    "url": "https://travel.gc.ca/destinations/nicaragua",
    "iso": "NI"
   },
@@ -1788,8 +1788,8 @@
    "name": "Suriname",
    "level": 1,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:35",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 11:07:43",
    "url": "https://travel.gc.ca/destinations/suriname",
    "iso": "SR"
   },
@@ -1842,8 +1842,8 @@
    "name": "Tanzania",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:35",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 15:41:28",
    "url": "https://travel.gc.ca/destinations/tanzania",
    "iso": "TZ"
   },
@@ -1914,8 +1914,8 @@
    "name": "Türkiye",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-29",
-   "stamp": "2026-09-29 16:00:41",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 16:05:59",
    "url": "https://travel.gc.ca/destinations/turkiye",
    "iso": "TR"
   },
@@ -1941,8 +1941,8 @@
    "name": "Tuvalu",
    "level": 1,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:35",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 14:05:53",
    "url": "https://travel.gc.ca/destinations/tuvalu",
    "iso": "TV"
   },
@@ -1986,8 +1986,8 @@
    "name": "United States",
    "level": 1,
    "regional": false,
-   "updated": "2026-09-28",
-   "stamp": "2026-09-28 13:39:06",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01 14:14:08",
    "url": "https://travel.gc.ca/destinations/united-states",
    "iso": "US"
   },

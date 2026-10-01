@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-09-30T22:38:05.976Z",
+ "fetchedAt": "2026-10-01T20:30:34.360Z",
  "source": "https://www.gov.uk/api/content/foreign-travel-advice",
  "entries": [
   {
@@ -11,7 +11,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Albania",
@@ -19,7 +19,7 @@
    "updated": "2026-08-13",
    "stamp": "2026-08-13T15:28:50.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/albania",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Algeria",
@@ -31,7 +31,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Andorra",
@@ -39,7 +39,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T12:46:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/andorra",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Angola",
@@ -51,7 +51,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Anguilla",
@@ -59,7 +59,7 @@
    "updated": "2025-05-15",
    "stamp": "2025-05-15T15:32:41.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/anguilla",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Antarctica/British Antarctic Territory",
@@ -67,7 +67,7 @@
    "updated": "2025-04-10",
    "stamp": "2025-04-10T15:27:54.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/antarctica-british-antarctic-territory",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Antigua and Barbuda",
@@ -75,7 +75,7 @@
    "updated": "2026-03-13",
    "stamp": "2026-03-13T09:27:23.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/antigua-and-barbuda",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Argentina",
@@ -83,7 +83,7 @@
    "updated": "2026-05-07",
    "stamp": "2026-05-07T16:26:11.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/argentina",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Armenia",
@@ -95,7 +95,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Aruba",
@@ -103,7 +103,7 @@
    "updated": "2026-07-07",
    "stamp": "2026-07-07T13:03:43.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/aruba",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Australia",
@@ -111,7 +111,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:06:09.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/australia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Austria",
@@ -119,7 +119,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:19:06.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/austria",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Azerbaijan",
@@ -132,7 +132,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bahamas",
@@ -140,7 +140,7 @@
    "updated": "2026-05-28",
    "stamp": "2026-05-28T16:01:45.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/bahamas",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bahrain",
@@ -148,7 +148,7 @@
    "updated": "2026-08-20",
    "stamp": "2026-08-20T10:51:52.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/bahrain",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bangladesh",
@@ -160,7 +160,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Barbados",
@@ -168,7 +168,7 @@
    "updated": "2026-01-23",
    "stamp": "2026-01-23T15:06:44.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/barbados",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Belarus",
@@ -179,7 +179,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Belgium",
@@ -187,7 +187,7 @@
    "updated": "2026-09-25",
    "stamp": "2026-09-25T11:48:06.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/belgium",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Belize",
@@ -195,7 +195,7 @@
    "updated": "2026-06-12",
    "stamp": "2026-06-12T09:40:30.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/belize",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Benin",
@@ -208,7 +208,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bermuda",
@@ -216,7 +216,7 @@
    "updated": "2025-11-01",
    "stamp": "2025-11-01T12:46:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/bermuda",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bhutan",
@@ -224,7 +224,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:09:24.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/bhutan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bolivia",
@@ -236,7 +236,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bonaire/St Eustatius/Saba",
@@ -244,7 +244,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:10:48.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/bonaire-st-eustatius-saba",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bosnia and Herzegovina",
@@ -252,7 +252,7 @@
    "updated": "2026-08-13",
    "stamp": "2026-08-13T15:28:44.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/bosnia-and-herzegovina",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Botswana",
@@ -260,7 +260,7 @@
    "updated": "2026-06-01",
    "stamp": "2026-06-01T13:04:17.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/botswana",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Brazil",
@@ -272,7 +272,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "British Indian Ocean Territory",
@@ -280,7 +280,7 @@
    "updated": "2024-04-08",
    "stamp": "2024-04-08T11:56:22.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/british-indian-ocean-territory",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "British Virgin Islands",
@@ -288,7 +288,7 @@
    "updated": "2025-11-03",
    "stamp": "2025-11-03T12:00:01.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/british-virgin-islands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Brunei",
@@ -296,7 +296,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:05:48.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/brunei",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bulgaria",
@@ -304,7 +304,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:18:49.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/bulgaria",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Burkina Faso",
@@ -315,7 +315,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Burundi",
@@ -327,7 +327,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cambodia",
@@ -339,7 +339,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cameroon",
@@ -352,7 +352,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Canada",
@@ -360,7 +360,7 @@
    "updated": "2026-06-02",
    "stamp": "2026-06-02T16:02:41.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/canada",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cape Verde",
@@ -368,7 +368,7 @@
    "updated": "2026-07-28",
    "stamp": "2026-07-28T15:13:41.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/cape-verde",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cayman Islands",
@@ -376,7 +376,7 @@
    "updated": "2025-10-29",
    "stamp": "2025-10-29T15:42:43.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/cayman-islands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Central African Republic",
@@ -388,7 +388,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Chad",
@@ -400,7 +400,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Chile",
@@ -408,7 +408,7 @@
    "updated": "2026-08-18",
    "stamp": "2026-08-18T22:18:12.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/chile",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "China",
@@ -416,7 +416,7 @@
    "updated": "2026-08-27",
    "stamp": "2026-08-27T22:02:55.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/china",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Colombia",
@@ -428,7 +428,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Comoros",
@@ -436,7 +436,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:42:55.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/comoros",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Congo",
@@ -448,7 +448,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cook Islands, Tokelau and Niue",
@@ -456,7 +456,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:43:48.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/cook-islands-tokelau-and-niue",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Costa Rica",
@@ -464,7 +464,7 @@
    "updated": "2026-05-19",
    "stamp": "2026-05-19T10:42:25.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/costa-rica",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Côte d'Ivoire",
@@ -476,7 +476,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Croatia",
@@ -484,7 +484,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:18:43.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/croatia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cuba",
@@ -495,7 +495,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Curaçao",
@@ -503,7 +503,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:16:00.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/curacao",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cyprus",
@@ -511,7 +511,7 @@
    "updated": "2026-08-14",
    "stamp": "2026-08-14T09:34:05.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/cyprus",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Czechia",
@@ -519,7 +519,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:18:36.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/czechia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Democratic Republic of the Congo",
@@ -532,7 +532,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Denmark",
@@ -540,7 +540,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:18:28.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/denmark",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Djibouti",
@@ -552,7 +552,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Dominica",
@@ -560,7 +560,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:28:48.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/dominica",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Dominican Republic",
@@ -568,7 +568,7 @@
    "updated": "2026-08-07",
    "stamp": "2026-08-07T15:02:53.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/dominican-republic",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ecuador",
@@ -580,7 +580,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Egypt",
@@ -593,7 +593,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "El Salvador",
@@ -601,7 +601,7 @@
    "updated": "2026-06-17",
    "stamp": "2026-06-17T13:04:09.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/el-salvador",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Equatorial Guinea",
@@ -609,7 +609,7 @@
    "updated": "2026-01-08",
    "stamp": "2026-01-08T10:25:07.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/equatorial-guinea",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Eritrea",
@@ -621,7 +621,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Estonia",
@@ -629,7 +629,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:18:21.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/estonia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Eswatini",
@@ -637,20 +637,20 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:32:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/eswatini",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ethiopia",
    "level": 3,
-   "updated": "2026-09-25",
-   "stamp": "2026-09-25T15:13:20.000Z",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01T17:05:40.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/ethiopia",
    "regional": true,
    "alerts": [
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Falkland Islands",
@@ -658,7 +658,7 @@
    "updated": "2026-08-10",
    "stamp": "2026-08-10T08:48:47.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/falkland-islands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Federated States of Micronesia",
@@ -666,7 +666,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:07:21.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/federated-states-of-micronesia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Fiji",
@@ -674,7 +674,7 @@
    "updated": "2026-08-10",
    "stamp": "2026-08-10T13:48:05.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/fiji",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Finland",
@@ -682,7 +682,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:18:13.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/finland",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "France",
@@ -690,7 +690,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:17:02.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/france",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "French Guiana",
@@ -698,7 +698,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:36:08.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/french-guiana",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "French Polynesia",
@@ -706,7 +706,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:36:20.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/french-polynesia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Gabon",
@@ -714,7 +714,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:37:09.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/gabon",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Georgia",
@@ -726,7 +726,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Germany",
@@ -734,7 +734,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:18:05.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/germany",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ghana",
@@ -746,7 +746,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Gibraltar",
@@ -754,7 +754,7 @@
    "updated": "2026-07-14",
    "stamp": "2026-07-14T08:32:42.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/gibraltar",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Greece",
@@ -762,7 +762,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:17:58.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/greece",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Grenada",
@@ -770,7 +770,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:53:19.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/grenada",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guadeloupe",
@@ -778,7 +778,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:54:06.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/guadeloupe",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guatemala",
@@ -790,7 +790,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guinea",
@@ -798,7 +798,7 @@
    "updated": "2026-08-12",
    "stamp": "2026-08-12T15:34:39.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/guinea",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guinea-Bissau",
@@ -806,7 +806,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:55:45.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/guinea-bissau",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guyana",
@@ -814,7 +814,7 @@
    "updated": "2025-12-30",
    "stamp": "2025-12-30T14:37:59.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/guyana",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Haiti",
@@ -825,7 +825,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Honduras",
@@ -833,7 +833,7 @@
    "updated": "2026-07-29",
    "stamp": "2026-07-29T15:40:19.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/honduras",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Hong Kong",
@@ -841,7 +841,7 @@
    "updated": "2026-04-01",
    "stamp": "2026-04-01T15:59:28.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/hong-kong",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Hungary",
@@ -849,7 +849,7 @@
    "updated": "2026-09-23",
    "stamp": "2026-09-23T15:27:57.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/hungary",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Iceland",
@@ -857,7 +857,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:17:40.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/iceland",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "India",
@@ -869,7 +869,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Indonesia",
@@ -877,7 +877,7 @@
    "updated": "2026-09-18",
    "stamp": "2026-09-18T10:54:47.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/indonesia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Iran",
@@ -888,7 +888,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Iraq",
@@ -901,7 +901,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ireland",
@@ -909,7 +909,7 @@
    "updated": "2026-09-04",
    "stamp": "2026-09-04T09:53:16.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/ireland",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Israel",
@@ -922,7 +922,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Italy",
@@ -930,7 +930,7 @@
    "updated": "2026-09-28",
    "stamp": "2026-09-28T13:17:37.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/italy",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Jamaica",
@@ -938,7 +938,7 @@
    "updated": "2026-05-06",
    "stamp": "2026-05-06T11:06:25.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/jamaica",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Japan",
@@ -946,7 +946,7 @@
    "updated": "2026-08-28",
    "stamp": "2026-08-28T15:22:35.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/japan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Jordan",
@@ -958,7 +958,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kazakhstan",
@@ -966,7 +966,7 @@
    "updated": "2026-03-30",
    "stamp": "2026-03-30T10:09:15.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/kazakhstan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kenya",
@@ -979,7 +979,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kiribati",
@@ -987,7 +987,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:02:38.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/kiribati",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kosovo",
@@ -995,7 +995,7 @@
    "updated": "2026-09-23",
    "stamp": "2026-09-23T11:48:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/kosovo",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kuwait",
@@ -1003,7 +1003,7 @@
    "updated": "2026-08-20",
    "stamp": "2026-08-20T08:00:55.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/kuwait",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kyrgyzstan",
@@ -1011,7 +1011,7 @@
    "updated": "2026-09-14",
    "stamp": "2026-09-14T10:23:33.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/kyrgyzstan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Laos",
@@ -1023,7 +1023,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Latvia",
@@ -1031,7 +1031,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:17:07.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/latvia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Lebanon",
@@ -1044,7 +1044,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Lesotho",
@@ -1052,7 +1052,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:12:05.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/lesotho",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Liberia",
@@ -1060,7 +1060,7 @@
    "updated": "2026-05-27",
    "stamp": "2026-05-27T13:27:30.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/liberia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Libya",
@@ -1073,7 +1073,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Liechtenstein",
@@ -1081,7 +1081,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:17:45.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/liechtenstein",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Lithuania",
@@ -1089,7 +1089,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:19:26.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/lithuania",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Luxembourg",
@@ -1097,7 +1097,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:19:44.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/luxembourg",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Macao",
@@ -1105,7 +1105,7 @@
    "updated": "2025-12-11",
    "stamp": "2025-12-11T11:32:17.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/macao",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Madagascar",
@@ -1113,7 +1113,7 @@
    "updated": "2026-09-09",
    "stamp": "2026-09-09T13:30:36.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/madagascar",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Malawi",
@@ -1121,7 +1121,7 @@
    "updated": "2026-07-03",
    "stamp": "2026-07-03T09:59:53.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/malawi",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Malaysia",
@@ -1133,7 +1133,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Maldives",
@@ -1141,7 +1141,7 @@
    "updated": "2026-08-12",
    "stamp": "2026-08-12T10:35:58.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/maldives",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mali",
@@ -1152,7 +1152,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Malta",
@@ -1160,7 +1160,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:20:07.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/malta",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Marshall Islands",
@@ -1168,7 +1168,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:02:32.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/marshall-islands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Martinique",
@@ -1176,7 +1176,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:37:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/martinique",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mauritania",
@@ -1188,7 +1188,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mauritius",
@@ -1196,7 +1196,7 @@
    "updated": "2026-09-04",
    "stamp": "2026-09-04T15:08:37.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/mauritius",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mayotte",
@@ -1204,19 +1204,19 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:41:54.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/mayotte",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mexico",
    "level": 2,
-   "updated": "2026-09-28",
-   "stamp": "2026-09-28T19:33:06.000Z",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01T14:16:05.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/mexico",
    "regional": true,
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Moldova",
@@ -1228,7 +1228,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Monaco",
@@ -1236,7 +1236,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:45:13.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/monaco",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mongolia",
@@ -1244,7 +1244,7 @@
    "updated": "2026-08-07",
    "stamp": "2026-08-07T12:03:24.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/mongolia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Montenegro",
@@ -1252,7 +1252,7 @@
    "updated": "2026-08-13",
    "stamp": "2026-08-13T15:25:26.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/montenegro",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Montserrat",
@@ -1260,7 +1260,7 @@
    "updated": "2026-07-03",
    "stamp": "2026-07-03T15:32:01.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/montserrat",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Morocco",
@@ -1268,7 +1268,7 @@
    "updated": "2026-08-19",
    "stamp": "2026-08-19T11:00:36.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/morocco",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mozambique",
@@ -1281,7 +1281,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Myanmar (Burma)",
@@ -1294,7 +1294,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Namibia",
@@ -1302,7 +1302,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:15:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/namibia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nauru",
@@ -1310,15 +1310,15 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:03:07.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/nauru",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nepal",
    "level": 1,
-   "updated": "2026-09-11",
-   "stamp": "2026-09-11T13:52:03.000Z",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01T12:09:36.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/nepal",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Netherlands",
@@ -1326,7 +1326,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:20:34.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/netherlands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "New Caledonia",
@@ -1334,7 +1334,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:19:36.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/new-caledonia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "New Zealand",
@@ -1342,7 +1342,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:06:12.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/new-zealand",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nicaragua",
@@ -1350,7 +1350,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:20:42.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/nicaragua",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Niger",
@@ -1361,7 +1361,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nigeria",
@@ -1374,7 +1374,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "North Korea",
@@ -1385,7 +1385,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "North Macedonia",
@@ -1393,7 +1393,7 @@
    "updated": "2026-08-13",
    "stamp": "2026-08-13T15:16:47.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/north-macedonia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Norway",
@@ -1401,7 +1401,7 @@
    "updated": "2026-08-25",
    "stamp": "2026-08-25T08:47:40.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/norway",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Oman",
@@ -1409,7 +1409,7 @@
    "updated": "2026-07-22",
    "stamp": "2026-07-22T12:46:33.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/oman",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Pakistan",
@@ -1422,7 +1422,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Palau",
@@ -1430,7 +1430,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:25:21.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/palau",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Palestine",
@@ -1443,7 +1443,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Panama",
@@ -1451,7 +1451,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:26:25.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/panama",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Papua New Guinea",
@@ -1463,7 +1463,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Paraguay",
@@ -1471,7 +1471,7 @@
    "updated": "2026-01-21",
    "stamp": "2026-01-21T16:11:30.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/paraguay",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Peru",
@@ -1483,7 +1483,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Philippines",
@@ -1495,7 +1495,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Pitcairn Island",
@@ -1503,7 +1503,7 @@
    "updated": "2025-03-27",
    "stamp": "2025-03-27T16:14:53.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/pitcairn-island",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Poland",
@@ -1511,7 +1511,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:21:18.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/poland",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Portugal",
@@ -1519,7 +1519,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:21:44.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/portugal",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Qatar",
@@ -1527,7 +1527,7 @@
    "updated": "2026-08-19",
    "stamp": "2026-08-19T13:38:09.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/qatar",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Réunion",
@@ -1535,7 +1535,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:30:27.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/reunion",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Romania",
@@ -1543,7 +1543,7 @@
    "updated": "2026-09-18",
    "stamp": "2026-09-18T13:15:40.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/romania",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Russia",
@@ -1554,7 +1554,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Rwanda",
@@ -1566,7 +1566,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Samoa",
@@ -1574,7 +1574,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:02:53.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/samoa",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "San Marino",
@@ -1582,7 +1582,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:33:32.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/san-marino",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "São Tomé and Principe",
@@ -1590,7 +1590,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:33:54.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/sao-tome-and-principe",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Saudi Arabia",
@@ -1603,7 +1603,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Senegal",
@@ -1611,7 +1611,7 @@
    "updated": "2026-05-13",
    "stamp": "2026-05-13T15:45:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/senegal",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Serbia",
@@ -1619,7 +1619,7 @@
    "updated": "2026-08-13",
    "stamp": "2026-08-13T15:18:02.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/serbia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Seychelles",
@@ -1627,7 +1627,7 @@
    "updated": "2026-01-21",
    "stamp": "2026-01-21T12:01:13.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/seychelles",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sierra Leone",
@@ -1635,7 +1635,7 @@
    "updated": "2026-06-19",
    "stamp": "2026-06-19T14:34:37.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/sierra-leone",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Singapore",
@@ -1643,7 +1643,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:08:04.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/singapore",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Slovakia",
@@ -1651,7 +1651,7 @@
    "updated": "2026-08-28",
    "stamp": "2026-08-28T13:01:26.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/slovakia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Slovenia",
@@ -1659,7 +1659,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:22:42.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/slovenia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Solomon Islands",
@@ -1667,7 +1667,7 @@
    "updated": "2026-05-26",
    "stamp": "2026-05-26T08:39:14.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/solomon-islands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Somalia",
@@ -1679,7 +1679,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "South Africa",
@@ -1687,7 +1687,7 @@
    "updated": "2026-07-08",
    "stamp": "2026-07-08T15:36:29.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/south-africa",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "South Georgia and the South Sandwich Islands",
@@ -1695,7 +1695,7 @@
    "updated": "2025-09-24",
    "stamp": "2025-09-24T10:48:52.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/south-georgia-and-south-sandwich-islands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "South Korea",
@@ -1703,7 +1703,7 @@
    "updated": "2026-05-14",
    "stamp": "2026-05-14T10:06:39.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/south-korea",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "South Sudan",
@@ -1714,7 +1714,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Spain",
@@ -1722,7 +1722,7 @@
    "updated": "2026-08-12",
    "stamp": "2026-08-12T15:46:24.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/spain",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sri Lanka",
@@ -1730,7 +1730,7 @@
    "updated": "2026-09-21",
    "stamp": "2026-09-21T14:39:53.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/sri-lanka",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St Helena, Ascension and Tristan da Cunha",
@@ -1738,7 +1738,7 @@
    "updated": "2026-09-10",
    "stamp": "2026-09-10T13:21:17.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/st-helena-ascension-and-tristan-da-cunha",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St Kitts and Nevis",
@@ -1746,7 +1746,7 @@
    "updated": "2026-01-05",
    "stamp": "2026-01-05T14:54:43.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/st-kitts-and-nevis",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St Lucia",
@@ -1754,7 +1754,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T12:34:04.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/st-lucia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St Maarten",
@@ -1762,7 +1762,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T12:38:22.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/st-maarten",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St Martin and St Barthélemy",
@@ -1770,7 +1770,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T12:39:06.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/st-martin-and-st-barthelemy",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St Pierre & Miquelon",
@@ -1778,7 +1778,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T12:39:48.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/st-pierre-and-miquelon",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St Vincent and the Grenadines",
@@ -1786,7 +1786,7 @@
    "updated": "2026-04-23",
    "stamp": "2026-04-23T13:50:31.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/st-vincent-and-the-grenadines",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sudan",
@@ -1798,7 +1798,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Suriname",
@@ -1806,7 +1806,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T12:41:46.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/suriname",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sweden",
@@ -1814,7 +1814,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:23:29.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/sweden",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Switzerland",
@@ -1822,7 +1822,7 @@
    "updated": "2026-08-11",
    "stamp": "2026-08-11T09:23:45.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/switzerland",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Syria",
@@ -1833,7 +1833,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Taiwan",
@@ -1841,7 +1841,7 @@
    "updated": "2026-08-28",
    "stamp": "2026-08-28T12:31:24.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/taiwan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tajikistan",
@@ -1849,19 +1849,19 @@
    "updated": "2026-08-19",
    "stamp": "2026-08-19T14:15:52.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/tajikistan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tanzania",
    "level": 2,
-   "updated": "2026-09-29",
-   "stamp": "2026-09-29T09:26:37.000Z",
+   "updated": "2026-10-01",
+   "stamp": "2026-10-01T15:28:23.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/tanzania",
    "regional": true,
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Thailand",
@@ -1873,7 +1873,7 @@
    "alerts": [
     "avoid_all_but_essential_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "The Gambia",
@@ -1881,7 +1881,7 @@
    "updated": "2026-07-07",
    "stamp": "2026-07-07T10:18:39.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/the-gambia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Timor-Leste",
@@ -1889,7 +1889,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T12:48:06.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/timor-leste",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Togo",
@@ -1902,7 +1902,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tonga",
@@ -1910,7 +1910,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:02:58.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/tonga",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Trinidad and Tobago",
@@ -1918,7 +1918,7 @@
    "updated": "2026-09-21",
    "stamp": "2026-09-21T15:13:58.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/trinidad-and-tobago",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tunisia",
@@ -1930,7 +1930,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Turkey",
@@ -1942,7 +1942,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Turkmenistan",
@@ -1950,7 +1950,7 @@
    "updated": "2026-06-04",
    "stamp": "2026-06-04T12:53:56.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/turkmenistan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Turks and Caicos Islands",
@@ -1958,7 +1958,7 @@
    "updated": "2026-03-13",
    "stamp": "2026-03-13T16:34:25.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/turks-and-caicos-islands",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tuvalu",
@@ -1966,7 +1966,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:07:18.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/tuvalu",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Uganda",
@@ -1974,7 +1974,7 @@
    "updated": "2026-09-02",
    "stamp": "2026-09-02T15:45:31.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/uganda",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ukraine",
@@ -1987,7 +1987,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "United Arab Emirates",
@@ -1995,7 +1995,7 @@
    "updated": "2026-07-24",
    "stamp": "2026-07-24T14:52:23.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/united-arab-emirates",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Uruguay",
@@ -2003,7 +2003,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:00:39.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/uruguay",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "USA",
@@ -2011,7 +2011,7 @@
    "updated": "2026-08-18",
    "stamp": "2026-08-18T09:29:04.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/usa",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Uzbekistan",
@@ -2019,7 +2019,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:06:30.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/uzbekistan",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Vanuatu",
@@ -2027,7 +2027,7 @@
    "updated": "2026-03-19",
    "stamp": "2026-03-19T14:02:48.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/vanuatu",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Venezuela",
@@ -2040,7 +2040,7 @@
     "avoid_all_but_essential_travel_to_parts",
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Vietnam",
@@ -2048,7 +2048,7 @@
    "updated": "2026-09-21",
    "stamp": "2026-09-21T13:25:10.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/vietnam",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Wallis and Futuna",
@@ -2056,7 +2056,7 @@
    "updated": "2025-12-10",
    "stamp": "2025-12-10T13:02:12.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/wallis-and-futuna",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Western Sahara",
@@ -2068,7 +2068,7 @@
    "alerts": [
     "avoid_all_travel_to_parts"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Yemen",
@@ -2079,7 +2079,7 @@
    "alerts": [
     "avoid_all_travel_to_whole_country"
    ],
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Zambia",
@@ -2087,7 +2087,7 @@
    "updated": "2026-06-01",
    "stamp": "2026-06-01T13:58:33.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/zambia",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Zimbabwe",
@@ -2095,7 +2095,7 @@
    "updated": "2026-07-15",
    "stamp": "2026-07-15T08:15:29.000Z",
    "url": "https://www.gov.uk/foreign-travel-advice/zimbabwe",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   }
  ]
 }

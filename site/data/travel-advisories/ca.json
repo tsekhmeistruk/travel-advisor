@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "ca",
- "asOf": "2026-09-30",
+ "asOf": "2026-10-01",
  "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "links": {
   "list": "https://travel.gc.ca/travelling/advisories"
@@ -32,7 +32,7 @@
   {
    "title": "Algeria",
    "level": 2,
-   "updated": "2026-09-29",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/algeria",
    "regional": true,
    "places": [
@@ -84,7 +84,7 @@
   {
    "title": "Antarctica",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/antarctica",
    "places": [
     "aq"
@@ -393,7 +393,7 @@
   {
    "title": "Cambodia",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/cambodia",
    "regional": true,
    "places": [
@@ -466,7 +466,7 @@
   {
    "title": "China",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/china",
    "regional": true,
    "places": [
@@ -508,7 +508,7 @@
   {
    "title": "Costa Rica",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/costa-rica",
    "places": [
     "cr"
@@ -539,7 +539,7 @@
   {
    "title": "Cuba",
    "level": 3,
-   "updated": "2026-09-28",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/cuba",
    "places": [
     "cu"
@@ -764,7 +764,7 @@
   {
    "title": "French Guiana",
    "level": 1,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/french-guiana",
    "places": [
     "gf"
@@ -1073,7 +1073,7 @@
   {
    "title": "Japan",
    "level": 1,
-   "updated": "2026-09-29",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/japan",
    "places": [
     "jp"
@@ -1351,7 +1351,7 @@
   {
    "title": "Mauritius",
    "level": 1,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/mauritius",
    "places": [
     "mu"
@@ -1371,7 +1371,7 @@
   {
    "title": "Mexico",
    "level": 2,
-   "updated": "2026-09-29",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/mexico",
    "regional": true,
    "places": [
@@ -1443,7 +1443,7 @@
   {
    "title": "Morocco",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/morocco",
    "regional": true,
    "places": [
@@ -1536,7 +1536,7 @@
   {
    "title": "Nicaragua",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/nicaragua",
    "places": [
     "ni"
@@ -2058,7 +2058,7 @@
   {
    "title": "Suriname",
    "level": 1,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/suriname",
    "places": [
     "sr"
@@ -2119,7 +2119,7 @@
   {
    "title": "Tanzania",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/tanzania",
    "regional": true,
    "places": [
@@ -2204,7 +2204,7 @@
   {
    "title": "Türkiye",
    "level": 2,
-   "updated": "2026-09-29",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/turkiye",
    "regional": true,
    "places": [
@@ -2236,7 +2236,7 @@
   {
    "title": "Tuvalu",
    "level": 1,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/tuvalu",
    "places": [
     "tv"
@@ -2287,7 +2287,7 @@
   {
    "title": "United States",
    "level": 1,
-   "updated": "2026-09-28",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/united-states",
    "places": [
     "us"

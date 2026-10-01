@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "us",
- "asOf": "2026-09-30",
+ "asOf": "2026-10-01",
  "source": "https://cadataapi.state.gov/api/TravelAdvisories",
  "links": {
   "list": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html"
@@ -1780,7 +1780,7 @@
    "title": "Senegal",
    "level": 1,
    "updated": "2025-12-01",
-   "url": "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/senegal-travel-advisory.html",
+   "url": "https://travel.state.gov/content/tsg_aem/us/en/home/international-travel/travel-advisories/destination.sen.html",
    "places": [
     "sn"
    ],

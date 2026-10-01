@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-10-01T15:26:24.252Z",
+ "fetchedAt": "2026-10-01T20:30:24.346Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -2079,21 +2079,23 @@
    "code": "TC",
    "name": "Tropical Cyclone CHOI-WAN-26",
    "country": "Northern Mariana Islands",
-   "iso3": [],
+   "iso3": [
+    "MNP"
+   ],
    "point": {
-    "lon": 145.8,
-    "lat": 16.5
+    "lon": 145.1,
+    "lat": 16.9
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 7,
-   "severity": "Tropical Storm (maximum wind speed of 204 km/h)",
+   "episode": 8,
+   "severity": "Tropical Storm (maximum wind speed of 194 km/h)",
    "startedAt": "2026-09-30T00:00:00.000Z",
-   "toDate": "2026-10-01T12:00:00.000Z",
+   "toDate": "2026-10-01T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=7&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=8&eventtype=TC",
    "firstSeen": "2026-09-30T06:41:45.737Z",
    "revisions": [
     {

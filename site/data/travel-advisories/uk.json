@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "uk",
- "asOf": "2026-09-30",
+ "asOf": "2026-10-01",
  "source": "https://www.gov.uk/api/content/foreign-travel-advice",
  "links": {
   "list": "https://www.gov.uk/foreign-travel-advice"
@@ -717,7 +717,7 @@
   {
    "title": "Ethiopia",
    "level": 3,
-   "updated": "2026-09-25",
+   "updated": "2026-10-01",
    "url": "https://www.gov.uk/foreign-travel-advice/ethiopia",
    "regional": true,
    "places": [
@@ -1354,7 +1354,7 @@
   {
    "title": "Mexico",
    "level": 2,
-   "updated": "2026-09-28",
+   "updated": "2026-10-01",
    "url": "https://www.gov.uk/foreign-travel-advice/mexico",
    "regional": true,
    "places": [
@@ -1468,7 +1468,7 @@
   {
    "title": "Nepal",
    "level": 1,
-   "updated": "2026-09-11",
+   "updated": "2026-10-01",
    "url": "https://www.gov.uk/foreign-travel-advice/nepal",
    "places": [
     "np"
@@ -2089,7 +2089,7 @@
   {
    "title": "Tanzania",
    "level": 2,
-   "updated": "2026-09-29",
+   "updated": "2026-10-01",
    "url": "https://www.gov.uk/foreign-travel-advice/tanzania",
    "regional": true,
    "places": [

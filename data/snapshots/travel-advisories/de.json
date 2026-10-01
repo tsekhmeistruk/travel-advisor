@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-09-30T22:38:06.857Z",
+ "fetchedAt": "2026-10-01T20:30:35.434Z",
  "source": "https://www.auswaertiges-amt.de/opendata/travelwarning",
  "entries": [
   {
@@ -7,7 +7,7 @@
    "level": 4,
    "updated": "2026-08-19",
    "iso": "AFG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ägypten",
@@ -15,14 +15,14 @@
    "regional": true,
    "updated": "2026-09-29",
    "iso": "EGY",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Albanien",
    "level": 1,
    "updated": "2026-08-21",
    "iso": "ALB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Algerien",
@@ -30,42 +30,42 @@
    "regional": true,
    "updated": "2026-08-31",
    "iso": "DZA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Andorra",
    "level": 1,
    "updated": "2026-06-02",
    "iso": "AND",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Angola",
    "level": 1,
    "updated": "2026-05-26",
    "iso": "AGO",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Antigua und Barbuda",
    "level": 1,
    "updated": "2026-04-02",
    "iso": "ATG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Äquatorialguinea",
    "level": 1,
    "updated": "2025-09-05",
    "iso": "GNQ",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Argentinien",
    "level": 1,
    "updated": "2026-03-23",
    "iso": "ARG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Armenien",
@@ -73,7 +73,7 @@
    "regional": true,
    "updated": "2026-09-03",
    "iso": "ARM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Aserbaidschan",
@@ -81,71 +81,71 @@
    "regional": true,
    "updated": "2026-08-07",
    "iso": "AZE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Äthiopien",
    "level": 3,
    "regional": true,
-   "updated": "2026-09-25",
+   "updated": "2026-10-01",
    "iso": "ETH",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Australien",
    "level": 1,
    "updated": "2026-09-15",
    "iso": "AUS",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bahamas",
    "level": 1,
    "updated": "2026-08-26",
    "iso": "BHS",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bahrain",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "BHR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bangladesch",
    "level": 1,
    "updated": "2026-08-19",
    "iso": "BGD",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Barbados",
    "level": 1,
    "updated": "2026-04-22",
    "iso": "BRB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Belarus",
    "level": 4,
    "updated": "2026-06-19",
    "iso": "BLR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Belgien",
    "level": 1,
    "updated": "2026-08-27",
    "iso": "BEL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Belize",
    "level": 1,
    "updated": "2026-08-20",
    "iso": "BLZ",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Benin",
@@ -153,56 +153,56 @@
    "regional": true,
    "updated": "2026-08-12",
    "iso": "BEN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bhutan",
    "level": 1,
    "updated": "2026-01-28",
    "iso": "BTN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bolivien",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "BOL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bosnien und Herzegowina",
    "level": 1,
-   "updated": "2026-04-08",
+   "updated": "2026-10-01",
    "iso": "BIH",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Botsuana",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "BWA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Brasilien",
    "level": 1,
-   "updated": "2026-09-09",
+   "updated": "2026-10-01",
    "iso": "BRA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Brunei Darussalam",
    "level": 1,
    "updated": "2026-08-18",
    "iso": "BRN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Bulgarien",
    "level": 1,
    "updated": "2026-03-13",
    "iso": "BGR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Burkina Faso",
@@ -210,49 +210,49 @@
    "regional": true,
    "updated": "2026-09-14",
    "iso": "BFA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Burundi",
    "level": 1,
    "updated": "2026-09-01",
    "iso": "BDI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cabo Verde",
    "level": 1,
    "updated": "2026-09-21",
    "iso": "CPV",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Chile",
    "level": 1,
    "updated": "2026-08-26",
    "iso": "CHL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "China",
    "level": 1,
    "updated": "2026-09-25",
    "iso": "CHN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Cookinseln",
    "level": 1,
    "updated": "2026-04-22",
    "iso": "COK",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Costa Rica",
    "level": 1,
    "updated": "2026-08-20",
    "iso": "CRI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Côte d'Ivoire",
@@ -260,14 +260,14 @@
    "regional": true,
    "updated": "2025-12-01",
    "iso": "CIV",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Dänemark",
    "level": 1,
    "updated": "2026-09-29",
    "iso": "DNK",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Demokratische Republik Kongo",
@@ -275,49 +275,49 @@
    "regional": true,
    "updated": "2026-09-18",
    "iso": "COD",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Demokratische Volksrepublik Korea (Nordkorea)",
    "level": 1,
    "updated": "2026-02-27",
    "iso": "PRK",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Dominica",
    "level": 1,
    "updated": "2026-05-12",
    "iso": "DMA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Dominikanische Republik",
    "level": 1,
    "updated": "2026-08-20",
    "iso": "DOM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Dschibuti",
    "level": 1,
    "updated": "2026-08-25",
    "iso": "DJI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ecuador",
    "level": 1,
-   "updated": "2026-09-21",
+   "updated": "2026-10-01",
    "iso": "ECU",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "El Salvador",
    "level": 1,
    "updated": "2026-06-26",
    "iso": "SLV",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Eritrea",
@@ -325,63 +325,63 @@
    "regional": true,
    "updated": "2026-09-22",
    "iso": "ERI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Estland",
    "level": 1,
    "updated": "2026-06-04",
    "iso": "EST",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Eswatini",
    "level": 1,
    "updated": "2026-08-24",
    "iso": "SWZ",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Fidschi",
    "level": 1,
    "updated": "2026-07-14",
    "iso": "FJI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Finnland",
    "level": 1,
    "updated": "2026-06-04",
    "iso": "FIN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Frankreich",
    "level": 1,
    "updated": "2026-09-24",
    "iso": "FRA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Gabun",
    "level": 1,
    "updated": "2026-07-27",
    "iso": "GAB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Gambia",
    "level": 1,
    "updated": "2026-09-10",
    "iso": "GMB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Georgien",
    "level": 1,
    "updated": "2026-02-24",
    "iso": "GEO",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ghana",
@@ -389,77 +389,77 @@
    "regional": true,
    "updated": "2026-08-12",
    "iso": "GHA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Grenada",
    "level": 1,
    "updated": "2026-05-12",
    "iso": "GRD",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Griechenland",
    "level": 1,
    "updated": "2026-08-19",
    "iso": "GRC",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guatemala",
    "level": 1,
    "updated": "2026-08-20",
    "iso": "GTM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guinea",
    "level": 1,
    "updated": "2026-09-14",
    "iso": "GIN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guinea-Bissau",
    "level": 1,
    "updated": "2026-07-01",
    "iso": "GNB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Guyana",
    "level": 1,
    "updated": "2026-08-24",
    "iso": "GUY",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Haiti",
    "level": 4,
    "updated": "2026-08-20",
    "iso": "HTI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Heiliger Stuhl / Vatikan",
    "level": 1,
    "updated": "2026-08-25",
    "iso": "VAT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Honduras",
    "level": 1,
    "updated": "2026-08-20",
    "iso": "HND",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Hongkong*",
    "level": 1,
    "updated": "2026-09-28",
    "iso": "HKG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Indien",
@@ -467,63 +467,63 @@
    "regional": true,
    "updated": "2026-08-19",
    "iso": "IND",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Indonesien",
    "level": 1,
    "updated": "2026-09-08",
    "iso": "IDN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Irak",
    "level": 4,
    "updated": "2026-08-25",
    "iso": "IRQ",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Iran",
    "level": 4,
    "updated": "2026-08-19",
    "iso": "IRN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Irland",
    "level": 1,
    "updated": "2026-04-13",
    "iso": "IRL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Island",
    "level": 1,
    "updated": "2026-08-13",
    "iso": "ISL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Israel",
    "level": 1,
    "updated": "2026-09-21",
    "iso": "ISR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Italien",
    "level": 1,
    "updated": "2026-08-25",
    "iso": "ITA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Jamaika",
    "level": 1,
    "updated": "2026-05-11",
    "iso": "JAM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Japan",
@@ -531,21 +531,21 @@
    "regional": true,
    "updated": "2026-07-07",
    "iso": "JPN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Jemen",
    "level": 4,
    "updated": "2026-09-09",
    "iso": "YEM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Jordanien",
    "level": 1,
    "updated": "2026-08-27",
    "iso": "JOR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kambodscha",
@@ -553,7 +553,7 @@
    "regional": true,
    "updated": "2026-08-18",
    "iso": "KHM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kamerun",
@@ -561,28 +561,28 @@
    "regional": true,
    "updated": "2026-09-08",
    "iso": "CMR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kanada",
    "level": 1,
    "updated": "2026-09-01",
    "iso": "CAN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kasachstan",
    "level": 1,
    "updated": "2026-02-27",
    "iso": "KAZ",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Katar",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "QAT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kenia",
@@ -590,21 +590,21 @@
    "regional": true,
    "updated": "2026-08-25",
    "iso": "KEN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kirgisistan",
    "level": 1,
    "updated": "2026-09-15",
    "iso": "KGZ",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kiribati",
    "level": 1,
    "updated": "2026-05-15",
    "iso": "KIR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kolumbien",
@@ -612,63 +612,63 @@
    "regional": true,
    "updated": "2026-09-28",
    "iso": "COL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Komoren",
    "level": 1,
    "updated": "2026-07-30",
    "iso": "COM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kosovo",
    "level": 1,
    "updated": "2026-09-18",
    "iso": "XKX",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kroatien",
    "level": 1,
    "updated": "2026-09-30",
    "iso": "HRV",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kuba",
    "level": 1,
    "updated": "2026-08-17",
    "iso": "CUB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Kuwait",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "KWT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Laos",
    "level": 1,
    "updated": "2026-07-31",
    "iso": "LAO",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Lesotho",
    "level": 1,
    "updated": "2025-11-03",
    "iso": "LSO",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Lettland",
    "level": 1,
    "updated": "2026-09-07",
    "iso": "LVA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Libanon",
@@ -676,105 +676,105 @@
    "regional": true,
    "updated": "2026-09-01",
    "iso": "LBN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Liberia",
    "level": 1,
    "updated": "2026-07-01",
    "iso": "LBR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Libyen",
    "level": 4,
    "updated": "2026-08-31",
    "iso": "LBY",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Liechtenstein",
    "level": 1,
    "updated": "2026-02-12",
    "iso": "LIE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Litauen",
    "level": 1,
    "updated": "2026-06-04",
    "iso": "LTU",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Luxemburg",
    "level": 1,
    "updated": "2026-04-21",
    "iso": "LUX",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Macau*",
    "level": 1,
    "updated": "2026-03-10",
    "iso": "MAC",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Madagaskar",
    "level": 1,
    "updated": "2026-07-09",
    "iso": "MDG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Malawi",
    "level": 1,
    "updated": "2026-09-14",
    "iso": "MWI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Malaysia",
    "level": 1,
    "updated": "2026-09-02",
    "iso": "MYS",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Malediven",
    "level": 1,
    "updated": "2026-07-07",
    "iso": "MDV",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mali",
    "level": 4,
    "updated": "2026-09-14",
    "iso": "MLI",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Malta",
    "level": 1,
    "updated": "2026-08-07",
    "iso": "MLT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Marokko",
    "level": 1,
    "updated": "2026-09-14",
    "iso": "MAR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Marshallinseln",
    "level": 1,
    "updated": "2026-07-10",
    "iso": "MHL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mauretanien",
@@ -782,49 +782,49 @@
    "regional": true,
    "updated": "2026-08-12",
    "iso": "MRT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mauritius",
    "level": 1,
    "updated": "2026-09-01",
    "iso": "MUS",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mexiko",
    "level": 1,
    "updated": "2026-09-30",
    "iso": "MEX",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mikronesien",
    "level": 1,
    "updated": "2026-07-10",
    "iso": "FSM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Monaco",
    "level": 1,
    "updated": "2026-04-21",
    "iso": "MCO",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mongolei",
    "level": 1,
    "updated": "2026-09-01",
    "iso": "MNG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Montenegro",
    "level": 1,
    "updated": "2026-02-03",
    "iso": "MNE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Mosambik",
@@ -832,63 +832,63 @@
    "regional": true,
    "updated": "2026-04-17",
    "iso": "MOZ",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Myanmar",
    "level": 4,
    "updated": "2026-08-26",
    "iso": "MMR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Namibia",
    "level": 1,
    "updated": "2026-09-17",
    "iso": "NAM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Naoero",
    "level": 1,
    "updated": "2026-07-29",
    "iso": "NRU",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nepal",
    "level": 1,
    "updated": "2026-09-08",
    "iso": "NPL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Neuseeland",
    "level": 1,
    "updated": "2026-07-07",
    "iso": "NZL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nicaragua",
    "level": 1,
    "updated": "2026-09-08",
    "iso": "NIC",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Niederlande",
    "level": 1,
    "updated": "2026-09-11",
    "iso": "NLD",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Niger",
    "level": 4,
    "updated": "2026-08-31",
    "iso": "NER",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nigeria",
@@ -896,42 +896,42 @@
    "regional": true,
    "updated": "2026-09-29",
    "iso": "NGA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Niue",
    "level": 1,
    "updated": "2026-06-08",
    "iso": "NIU",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Nordmazedonien",
    "level": 1,
-   "updated": "2026-09-04",
+   "updated": "2026-10-01",
    "iso": "MKD",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Norwegen",
    "level": 1,
    "updated": "2026-06-11",
    "iso": "NOR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Oman",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "OMN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Österreich",
    "level": 1,
    "updated": "2026-08-27",
    "iso": "AUT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Pakistan",
@@ -939,49 +939,49 @@
    "regional": true,
    "updated": "2026-09-29",
    "iso": "PAK",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Palästinensische Gebiete*",
    "level": 4,
    "updated": "2026-09-21",
    "iso": "PSE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Palau",
    "level": 1,
    "updated": "2026-07-10",
    "iso": "PLW",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Panama",
    "level": 1,
    "updated": "2026-08-20",
    "iso": "PAN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Papua-Neuguinea",
    "level": 1,
    "updated": "2026-08-18",
    "iso": "PNG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Paraguay",
    "level": 1,
    "updated": "2026-07-07",
    "iso": "PRY",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Peru",
    "level": 1,
    "updated": "2026-08-24",
    "iso": "PER",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Philippinen",
@@ -989,98 +989,98 @@
    "regional": true,
    "updated": "2026-09-28",
    "iso": "PHL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Polen",
    "level": 1,
    "updated": "2026-08-21",
    "iso": "POL",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Portugal",
    "level": 1,
    "updated": "2026-07-29",
    "iso": "PRT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Republik Kongo",
    "level": 1,
    "updated": "2026-01-23",
    "iso": "COG",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Republik Korea (Südkorea)",
    "level": 1,
    "updated": "2026-07-07",
    "iso": "KOR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Republik Moldau",
    "level": 1,
    "updated": "2026-07-07",
    "iso": "MDA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ruanda",
    "level": 1,
    "updated": "2026-09-02",
    "iso": "RWA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Rumänien",
    "level": 1,
    "updated": "2026-07-29",
    "iso": "ROU",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Russische Föderation",
    "level": 4,
    "updated": "2026-06-30",
    "iso": "RUS",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Salomonen",
    "level": 1,
    "updated": "2026-05-15",
    "iso": "SLB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sambia",
    "level": 1,
    "updated": "2026-08-27",
    "iso": "ZMB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Samoa",
    "level": 1,
    "updated": "2026-04-22",
    "iso": "WSM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "San Marino",
    "level": 1,
    "updated": "2026-04-22",
    "iso": "SMR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "São Tomé und Príncipe",
    "level": 1,
    "updated": "2026-08-24",
    "iso": "STP",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Saudi-Arabien",
@@ -1088,175 +1088,175 @@
    "regional": true,
    "updated": "2026-09-22",
    "iso": "SAU",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Schweden",
    "level": 1,
    "updated": "2026-09-29",
    "iso": "SWE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Schweiz",
    "level": 1,
    "updated": "2026-06-25",
    "iso": "CHE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Senegal",
    "level": 1,
    "updated": "2026-09-14",
    "iso": "SEN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Serbien",
    "level": 1,
    "updated": "2026-08-11",
    "iso": "SRB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Seychellen",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "SYC",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sierra Leone",
    "level": 1,
    "updated": "2026-08-21",
    "iso": "SLE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Simbabwe",
    "level": 1,
    "updated": "2026-09-04",
    "iso": "ZWE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Singapur",
    "level": 1,
    "updated": "2026-07-07",
    "iso": "SGP",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Slowakei",
    "level": 1,
    "updated": "2026-04-21",
    "iso": "SVK",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Slowenien",
    "level": 1,
    "updated": "2026-09-21",
    "iso": "SVN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Somalia",
    "level": 4,
    "updated": "2026-08-26",
    "iso": "SOM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Spanien",
    "level": 1,
    "updated": "2026-08-19",
    "iso": "ESP",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sri Lanka",
    "level": 1,
    "updated": "2026-07-20",
    "iso": "LKA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St. Kitts und Nevis",
    "level": 1,
    "updated": "2026-01-14",
    "iso": "KNA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St. Lucia",
    "level": 1,
    "updated": "2026-05-12",
    "iso": "LCA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "St. Vincent und die Grenadinen",
    "level": 1,
    "updated": "2026-08-24",
    "iso": "VCT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Südafrika",
    "level": 1,
    "updated": "2026-09-22",
    "iso": "ZAF",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Sudan",
    "level": 4,
    "updated": "2026-08-25",
    "iso": "SDN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Südsudan",
    "level": 4,
    "updated": "2026-09-14",
    "iso": "SSD",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Suriname",
    "level": 1,
    "updated": "2026-08-24",
    "iso": "SUR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Syrien",
    "level": 4,
    "updated": "2026-08-27",
    "iso": "SYR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tadschikistan",
    "level": 1,
    "updated": "2026-08-10",
    "iso": "TJK",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Taiwan*",
    "level": 1,
    "updated": "2026-07-14",
    "iso": "TWN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tansania",
    "level": 1,
    "updated": "2026-09-30",
    "iso": "TZA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Thailand",
@@ -1264,14 +1264,14 @@
    "regional": true,
    "updated": "2026-09-28",
    "iso": "THA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Timor-Leste",
    "level": 1,
    "updated": "2026-09-14",
    "iso": "TLS",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Togo",
@@ -1279,21 +1279,21 @@
    "regional": true,
    "updated": "2026-09-14",
    "iso": "TGO",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tonga",
    "level": 1,
    "updated": "2026-04-22",
    "iso": "TON",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Trinidad und Tobago",
    "level": 1,
    "updated": "2026-09-24",
    "iso": "TTO",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tschad",
@@ -1301,91 +1301,91 @@
    "regional": true,
    "updated": "2026-08-31",
    "iso": "TCD",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tschechische Republik",
    "level": 1,
    "updated": "2026-09-17",
    "iso": "CZE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tunesien",
    "level": 1,
    "updated": "2026-09-28",
    "iso": "TUN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Türkei",
    "level": 1,
    "updated": "2026-09-18",
    "iso": "TUR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Turkmenistan",
    "level": 1,
    "updated": "2026-02-23",
    "iso": "TKM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Tuvalu",
    "level": 1,
    "updated": "2026-04-22",
    "iso": "TUV",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Uganda",
    "level": 1,
    "updated": "2026-08-28",
    "iso": "UGA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ukraine",
    "level": 4,
    "updated": "2026-09-25",
    "iso": "UKR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Ungarn",
    "level": 1,
    "updated": "2026-08-10",
    "iso": "HUN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Uruguay",
    "level": 1,
    "updated": "2026-08-21",
    "iso": "URY",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "USA",
    "level": 1,
    "updated": "2026-09-28",
    "iso": "USA",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Usbekistan",
    "level": 1,
    "updated": "2026-04-22",
    "iso": "UZB",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Vanuatu",
    "level": 1,
    "updated": "2026-08-19",
    "iso": "VUT",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Venezuela",
@@ -1393,42 +1393,42 @@
    "regional": true,
    "updated": "2026-09-03",
    "iso": "VEN",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Vereinigte Arabische Emirate",
    "level": 1,
    "updated": "2026-09-30",
    "iso": "ARE",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Vereinigtes Königreich",
    "level": 1,
    "updated": "2026-07-06",
    "iso": "GBR",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Vietnam",
    "level": 1,
    "updated": "2026-08-27",
    "iso": "VNM",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Zentralafrikanische Republik",
    "level": 4,
    "updated": "2025-12-01",
    "iso": "CAF",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   },
   {
    "name": "Zypern",
    "level": 1,
    "updated": "2026-08-10",
    "iso": "CYP",
-   "lastSeen": "2026-09-30"
+   "lastSeen": "2026-10-01"
   }
  ]
 }

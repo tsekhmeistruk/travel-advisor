@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "nl",
- "asOf": "2026-09-30",
+ "asOf": "2026-10-01",
  "source": "https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice",
  "links": {
   "list": "https://www.nederlandwereldwijd.nl/reisadvies"
@@ -633,7 +633,7 @@
   {
    "title": "Ethiopië",
    "level": 2,
-   "updated": "2026-09-30",
+   "updated": "2026-10-01",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/ethiopie",
    "regional": true,
    "places": [
@@ -1437,7 +1437,7 @@
   {
    "title": "Namibië",
    "level": 2,
-   "updated": "2026-04-08",
+   "updated": "2026-10-01",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/namibie",
    "places": [
     "na"
@@ -2155,7 +2155,7 @@
   {
    "title": "Turkije",
    "level": 2,
-   "updated": "2026-09-10",
+   "updated": "2026-10-01",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/turkije",
    "regional": true,
    "places": [

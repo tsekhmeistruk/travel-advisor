@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "de",
- "asOf": "2026-09-30",
+ "asOf": "2026-10-01",
  "source": "https://www.auswaertiges-amt.de/opendata/travelwarning",
  "links": {
   "list": "https://www.auswaertiges-amt.de/de/ReiseUndSicherheit/reise-und-sicherheitshinweise"
@@ -115,7 +115,7 @@
   {
    "title": "Äthiopien",
    "level": 3,
-   "updated": "2026-09-25",
+   "updated": "2026-10-01",
    "regional": true,
    "places": [
     "et"
@@ -231,7 +231,7 @@
   {
    "title": "Bosnien und Herzegowina",
    "level": 1,
-   "updated": "2026-04-08",
+   "updated": "2026-10-01",
    "places": [
     "ba"
    ],
@@ -249,7 +249,7 @@
   {
    "title": "Brasilien",
    "level": 1,
-   "updated": "2026-09-09",
+   "updated": "2026-10-01",
    "places": [
     "br"
    ],
@@ -409,7 +409,7 @@
   {
    "title": "Ecuador",
    "level": 1,
-   "updated": "2026-09-21",
+   "updated": "2026-10-01",
    "places": [
     "ec"
    ],
@@ -1204,7 +1204,7 @@
   {
    "title": "Nordmazedonien",
    "level": 1,
-   "updated": "2026-09-04",
+   "updated": "2026-10-01",
    "places": [
     "mk"
    ],
