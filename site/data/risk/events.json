@@ -1,5 +1,5 @@
 {
- "asOf": "2026-09-30T22:38:06.034Z",
+ "asOf": "2026-10-01T01:35:10.751Z",
  "events": [
   {
    "id": "gdacs:TC:1001332",
@@ -240,31 +240,6 @@
    "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618"
   },
   {
-   "id": "gdacs:FL:1104197",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Costa Rica",
-   "country": "Costa Rica",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "cr"
-   ],
-   "point": {
-    "lon": -83.867,
-    "lat": 10.068
-   },
-   "startedAt": "2026-09-25T01:00:00.000Z",
-   "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104197&episodeid=1&eventtype=FL"
-  },
-  {
    "id": "gdacs:TC:1001327",
    "source": "gdacs",
    "type": "cyclone",
@@ -288,31 +263,6 @@
    "toDate": "2026-09-30T12:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1001327&episodeid=30&eventtype=TC"
-  },
-  {
-   "id": "gdacs:FL:1104196",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Ghana",
-   "country": "Ghana",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "gh"
-   ],
-   "point": {
-    "lon": -0.089,
-    "lat": 8.306
-   },
-   "startedAt": "2026-09-23T01:00:00.000Z",
-   "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104196&episodeid=2&eventtype=FL"
   },
   {
    "id": "gdacs:TC:1001325",
@@ -579,56 +529,6 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1104121&episodeid=19&eventtype=FL"
   },
   {
-   "id": "gdacs:FL:1104081",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 3,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Orange"
-   },
-   "name": "Flood in China",
-   "country": "China",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "cn"
-   ],
-   "point": {
-    "lon": 108.481,
-    "lat": 31.296
-   },
-   "startedAt": "2026-07-31T01:00:00.000Z",
-   "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104081&episodeid=20&eventtype=FL"
-  },
-  {
-   "id": "gdacs:FL:1104053",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in Italy",
-   "country": "Italy",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "it"
-   ],
-   "point": {
-    "lon": 14.946,
-    "lat": 37.878
-   },
-   "startedAt": "2026-07-26T01:00:00.000Z",
-   "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104053&episodeid=26&eventtype=FL"
-  },
-  {
    "id": "gdacs:FL:1104011",
    "source": "gdacs",
    "type": "flood",
@@ -652,31 +552,6 @@
    "toDate": "2026-09-28T01:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104011&episodeid=27&eventtype=FL"
-  },
-  {
-   "id": "gdacs:FL:1103888",
-   "source": "gdacs",
-   "type": "flood",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "name": "Flood in United States",
-   "country": "United States",
-   "severity": "Magnitude 0 ",
-   "placeIds": [
-    "us"
-   ],
-   "point": {
-    "lon": -73.371,
-    "lat": 41.119
-   },
-   "startedAt": "2026-05-19T01:00:00.000Z",
-   "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1103888&episodeid=91&eventtype=FL"
   }
  ]
 }

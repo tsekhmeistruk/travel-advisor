@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-09-30T22:37:56.477Z",
+ "fetchedAt": "2026-10-01T01:35:10.751Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -254,7 +254,7 @@
    "severity": "Magnitude 0 ",
    "startedAt": "2026-05-19T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1103888&episodeid=91&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
@@ -314,7 +314,7 @@
    "severity": "Magnitude 0 ",
    "startedAt": "2026-07-26T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104053&episodeid=26&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
@@ -344,7 +344,7 @@
    "severity": "Magnitude 0 ",
    "startedAt": "2026-07-31T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104081&episodeid=20&eventtype=FL",
    "firstSeen": "2026-09-27T16:25:57.372Z",
    "revisions": [
@@ -646,36 +646,6 @@
    "toDate": "2026-09-24T01:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104166&episodeid=2&eventtype=FL",
-   "firstSeen": "2026-09-27T17:38:30.045Z",
-   "revisions": [
-    {
-     "at": "2026-09-27T17:38:30.045Z",
-     "value": "Green"
-    }
-   ]
-  },
-  {
-   "id": "gdacs:FL:1104167",
-   "code": "FL",
-   "name": "Flood in Ecuador",
-   "country": "Ecuador",
-   "iso3": [
-    "ECU"
-   ],
-   "point": {
-    "lon": -79.807,
-    "lat": -3.3
-   },
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Green"
-   },
-   "episode": 1,
-   "severity": "Magnitude 0 ",
-   "startedAt": "2026-09-15T01:00:00.000Z",
-   "toDate": "2026-09-17T01:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104167&episodeid=1&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1424,7 +1394,7 @@
    "severity": "Magnitude 0 ",
    "startedAt": "2026-09-23T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104196&episodeid=2&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
@@ -1454,7 +1424,7 @@
    "severity": "Magnitude 0 ",
    "startedAt": "2026-09-25T01:00:00.000Z",
    "toDate": "2026-09-27T01:00:00.000Z",
-   "current": true,
+   "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1104197&episodeid=1&eventtype=FL",
    "firstSeen": "2026-09-28T11:59:27.360Z",
    "revisions": [

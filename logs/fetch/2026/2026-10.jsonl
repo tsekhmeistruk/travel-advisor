@@ -1,0 +1,1 @@
+{"time":"2026-10-01T01:35:10.750Z","source":"gdacs","run":"36801787455.1","trigger":"schedule","result":"ok","durationMs":3416,"calls":{"search":{"requests":2,"statuses":{"200":2},"errors":0,"challenges":0,"totalMs":3389}},"stats":{"events":67,"current":21,"received":66,"added":[],"alertChanged":[],"closed":[],"archived":1}}
