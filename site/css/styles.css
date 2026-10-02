@@ -203,8 +203,19 @@ h1, h2 { margin: 0; }
   max-width: 240px;
   white-space: nowrap;
 }
-.tooltip strong { display: block; font-size: 13px; font-weight: 600; }
-.tooltip .tt-row { display: flex; align-items: center; gap: 6px; color: var(--text-2); }
+.tooltip strong, .sheet strong { display: block; font-size: 13px; font-weight: 600; }
+.tooltip .tt-row, .sheet .tt-row { display: flex; align-items: center; gap: 6px; color: var(--text-2); }
+
+/* The phone sheet (shown only on small screens, see the media query) */
+.sheet { display: none; }
+.sheet-body { flex: 1; min-width: 0; font-size: 13px; line-height: 1.45; }
+.sheet-body strong { font-size: 14.5px; margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sheet-body .tt-row { min-width: 0; }
+.sheet-actions { display: flex; align-items: center; gap: 4px; flex: none; }
+.sheet-details {
+  padding: 8px 14px; border: 0; border-radius: 999px;
+  background: var(--text); color: var(--panel); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+}
 
 /* Map controls & legend */
 .map-controls {
@@ -731,4 +742,11 @@ h1, h2 { margin: 0; }
   /* Flags only, so several providers fit beside the zoom controls; names stay in title/aria-label. */
   .source-toggle button span { display: none; }
   .tooltip { display: none; }
+  .sheet:not([hidden]) {
+    position: absolute; left: 10px; right: 10px; bottom: 10px; z-index: 6;
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 10px 12px 14px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
 }

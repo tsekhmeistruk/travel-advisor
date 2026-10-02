@@ -49,6 +49,11 @@
   "placeholder": "Find a country",
   "noMatches": "No matches"
  },
+ "sheet": {
+  "label": "Selected on the map",
+  "details": "Details",
+  "close": "Close"
+ },
  "datasets": {
   "travel-advisories": {
    "title": "Travel advisories",

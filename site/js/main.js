@@ -116,7 +116,7 @@ async function main() {
       else tooltip.hide();
     },
     onMove: (event) => { if (event.pointerType === 'mouse') tooltip.move(event); },
-    onSelect: (region) => select(region && selected?.placeId !== region.key ? { placeId: region.key } : null, { toUrl: true }),
+    onSelect: (region) => { select(region && selected?.placeId !== region.key ? { placeId: region.key } : null, { toUrl: true }); showSheet(); },
     // A marker previews and selects its event; a cluster of several zooms in to split it (at
     // the closest zoom, where it can't split any more, it selects its first event).
     onMarkerHover: (cluster, event) => {
@@ -126,7 +126,7 @@ async function main() {
     },
     onMarkerSelect: (cluster) => {
       if (cluster.items.length > 1 && map.canZoomIn()) map.zoomAround(cluster.x, cluster.y);
-      else select(dataset.eventTarget?.(cluster.items[0].id) ?? null, { toUrl: true });
+      else { select(dataset.eventTarget?.(cluster.items[0].id) ?? null, { toUrl: true }); showSheet(); }
     },
   });
 
@@ -172,8 +172,26 @@ async function main() {
     map.setHovered(target?.placeId ?? null);
     renderDetails();
   }
+  // ---- phones: a tap on the map shows what was tapped in a sheet over the map, since the card
+  // is below it. Details scrolls to the card (or the open panel view); × or the ocean closes it.
+  const phone = matchMedia('(max-width: 760px)');
+  const sheet = $('sheet');
+  function showSheet() {
+    const t = selected;
+    if (!phone.matches || !(t?.placeId || t?.eventId)) return hideSheet();
+    $('sheetBody').innerHTML = t.eventId && dataset.markerTooltip ? dataset.markerTooltip([t.eventId]) : dataset.tooltip(t.placeId);
+    sheet.hidden = false;
+  }
+  function hideSheet() { sheet.hidden = true; }
+  $('sheetClose').onclick = hideSheet;
+  $('sheetDetails').onclick = () => {
+    hideSheet();
+    $(panelView === 'list' ? 'listView' : panelView === 'country' ? 'countryView' : 'details').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   /** follow: an open panel view follows the selection (off when a view selects the place itself). */
   function select(target, { zoom = false, toUrl = false, follow = true } = {}) {
+    hideSheet();   // a tap on the map shows it again (see showSheet)
     selected = target;
     map.setSelected(target?.placeId ?? null);
     map.setSelectedMarker(target?.eventId ?? null);
@@ -314,6 +332,7 @@ async function main() {
     map.setStyle((id) => dataset.style(id));
     map.setMarkers(dataset.markers?.() ?? []);
     renderDetails();
+    if (!sheet.hidden) showSheet();   // this mode's view of the selection
   }
   refresh();
   if (fromUrl.place && places.has(fromUrl.place)) select({ placeId: fromUrl.place }, { zoom: true });

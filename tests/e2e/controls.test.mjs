@@ -5,7 +5,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, click, detailsTitle, withLevelChanges } from './helpers.mjs';
+import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, click, detailsTitle, withLevelChanges, withRiskChanges } from './helpers.mjs';
 
 useBrowser();
 
@@ -275,6 +275,80 @@ describe('languages', () => {
     await page.evaluateOnNewDocument(() => Object.defineProperty(navigator, 'languages', { get: () => ['ar-EG', 'en'] }));
     await page.reload({ waitUntil: 'networkidle0' });
     assert.equal(await page.evaluate(() => document.documentElement.lang), 'ar');
+    await page.close();
+  });
+});
+
+describe('phone sheet', () => {
+  // An ocean point inside the map area, clear of the controls, legend and sheet.
+  const mapOcean = (page) => page.evaluate(() => {
+    const r = document.getElementById('mapArea').getBoundingClientRect();
+    for (let y = r.top + 120; y < r.bottom - 90; y += 8) {
+      for (let x = r.left + 60; x < r.right - 20; x += 8) {
+        if (document.elementFromPoint(x, y)?.classList.contains('sphere')) return { x, y };
+      }
+    }
+    return null;
+  });
+  const sheet = (page) => page.$eval('#sheet', el => ({ shown: !el.hidden && getComputedStyle(el).display !== 'none', text: el.innerText }));
+
+  test('at 390px a tap on a country shows it over the map; Details scrolls to the card; the ocean and × close it', async () => {
+    const page = await open({ width: 390, height: 844 });
+    assert.equal((await sheet(page)).shown, false);
+    await click(page, await anchorOf(page, 'br'));
+    let s = await sheet(page);
+    assert.equal(s.shown, true);
+    assert.match(s.text, /Brazil[\s\S]*Level \d/);
+    const inMap = await page.evaluate(() => {
+      const a = document.getElementById('sheet').getBoundingClientRect(), m = document.getElementById('mapArea').getBoundingClientRect();
+      return a.top >= m.top && a.bottom <= m.bottom && a.left >= m.left && a.right <= m.right;
+    });
+    assert.equal(inMap, true, 'inside the map area');
+    await page.click('#sheetDetails');
+    await sleep(800);
+    assert.equal((await sheet(page)).shown, false);
+    assert.equal(await detailsTitle(page), 'Brazil');
+    const top = await page.$eval('#details', el => el.getBoundingClientRect().top);
+    assert.ok(top >= -1 && top < 200, `the card scrolled into view (top ${top})`);
+    await page.evaluate(() => scrollTo(0, 0));
+    await sleep(400);   // scrolled back, and not a double-click
+    await click(page, await anchorOf(page, 'au'));
+    assert.match((await sheet(page)).text, /Australia/);
+    const ocean = await mapOcean(page);
+    assert.ok(ocean, 'found an ocean point');
+    await click(page, ocean);
+    assert.equal((await sheet(page)).shown, false, 'the ocean closes it');
+    await sleep(400);
+    await click(page, await anchorOf(page, 'au'));
+    await page.click('#sheetClose');
+    assert.equal((await sheet(page)).shown, false, '× closes it');
+    assert.equal(await isSelected(page), true, 'and keeps the selection');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('at 390px a tapped marker shows its event; a search does not open the sheet', async () => {
+    const page = await openRaw({ width: 390, height: 844, stored: { mode: 'disaster' }, intercept: withRiskChanges() });
+    await page.waitForSelector('.marker');
+    const box = await page.evaluate(() => {
+      const m = [...document.querySelectorAll('.marker')].find(e => e.__data__.items.some(i => i.id === 'gdacs:EQ:0'));
+      const r = m.getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2, n: m.__data__.items.length };
+    });
+    assert.equal(box.n, 1, 'the Chile test event is a marker of its own');
+    await click(page, box);
+    assert.match((await sheet(page)).text, /Test earthquake gdacs:EQ:0[\s\S]*Orange/);
+    await page.type('#search', 'kenya');
+    await page.keyboard.press('Enter');
+    await sleep(300);
+    assert.equal((await sheet(page)).shown, false, 'a choice in the panel closes it');
+    await page.close();
+  });
+
+  test('at 1440px a click shows no sheet', async () => {
+    const page = await open();
+    await click(page, await anchorOf(page, 'br'));
+    assert.equal((await sheet(page)).shown, false);
     await page.close();
   });
 });
