@@ -21,9 +21,9 @@
   "consecutiveFailures": 0
  },
  "gdelt": {
-  "lastAttempt": "2026-10-01T15:26:27.586Z",
-  "lastSuccess": "2026-10-01T15:26:27.586Z",
-  "durationMs": 5,
+  "lastAttempt": "2026-10-02T00:15:08.805Z",
+  "lastSuccess": "2026-10-02T00:15:08.805Z",
+  "durationMs": 206,
   "records": 0,
   "consecutiveFailures": 0
  },
@@ -49,10 +49,10 @@
   "consecutiveFailures": 0
  },
  "who": {
-  "lastAttempt": "2026-10-01T15:26:26.929Z",
-  "lastSuccess": "2026-10-01T15:26:26.929Z",
-  "durationMs": 580,
-  "records": 7,
+  "lastAttempt": "2026-10-02T00:15:07.939Z",
+  "lastSuccess": "2026-10-02T00:15:07.939Z",
+  "durationMs": 774,
+  "records": 6,
   "consecutiveFailures": 0
  }
 }

@@ -1,30 +1,8 @@
 {
  "source": "https://www.who.int/api/news/diseaseoutbreaknews",
- "fetchedAt": "2026-10-01T15:26:26.930Z",
+ "fetchedAt": "2026-10-02T00:15:07.940Z",
  "firstFetchedAt": "2026-09-27T18:04:53.636Z",
  "events": [
-  {
-   "id": "who:DON:2026-DON612",
-   "code": "DON",
-   "name": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
-   "country": "Democratic Republic of the Congo, Uganda",
-   "iso3": [],
-   "native": {
-    "scheme": "who-don",
-    "value": "notice"
-   },
-   "startedAt": "2026-07-03T15:31:57.000Z",
-   "toDate": "2026-07-03T15:31:57.000Z",
-   "current": false,
-   "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON612",
-   "firstSeen": "2026-09-27T18:04:53.636Z",
-   "revisions": [
-    {
-     "at": "2026-09-27T18:04:53.636Z",
-     "value": "notice"
-    }
-   ]
-  },
   {
    "id": "who:DON:2026-DON613",
    "code": "DON",
