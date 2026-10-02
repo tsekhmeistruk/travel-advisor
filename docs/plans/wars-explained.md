@@ -81,9 +81,9 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Status
 
-- **Current step:** 5.3
-- **Done:** parts 0–4
-- **Last commit of this revision:** 5a847ba
+- **Current step:** done
+- **Done:** parts 0–5
+- **Last commit of this revision:** b78302f
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -176,7 +176,7 @@ A review of the code and data (Oct 2, 2026) found:
 
 - [x] 5.1 `docs/architecture.md`, README, and `.claude/CLAUDE.md` (code map, panel order, card slots, source quirks for Wikipedia, USGS and EONET, the UCDP fields, current state).
 - [x] 5.2 Review screenshots: desktop, phone, tablet 768, landscape 844×390, both themes, a war hovered and selected.
-- [ ] 5.3 Ship and report.
+- [x] 5.3 Ship and report.
 
 ---
 
@@ -185,3 +185,4 @@ A review of the code and data (Oct 2, 2026) found:
 - Part 2: 51f0eec (+ 718728f bot-data merge), deploy green, live: risk/wars.json with 38 conflicts (Ukraine A with Belarus, North Korea; Sudan RSF and SFA spelled out); update run 37043453470 (wikipedia) green. Tests added: the parser on real articles (Ukraine, Sudan, Lebanon, Mali, the 2026 Iran war and its template, Venezuela), the fetcher, side matching, risk/wars.json in the risk layer, store and runFetch for a context source, run descriptions, data and project checks. Edited: the provider list, project checks for a context kind. Deleted: none.
 - Part 3: 57ae708 (+ 72cc78a bot-data merge), deploy green, live: Wars list of 72, 1,570 dots, #mode=wars&war=1-309 opens the Sudanese civil war with both sides, #mode=wars&war=1-13243 Russia (with Belarus, North Korea) vs Ukraine, no console errors. Tests added: Wars logic (titles, sides, list, new, quiet, card, focus, dots), the mode's list, card, focus, dots, search and footer, the URL's war, e2e list, hover and click, the card's fixed height for every war (1440, 390), links and search, dots and help, the zoom limits. Edited: conflict and country-view fixtures (sides), overview and place-card checks, the Filters test, the per-mode feed check, shots and live-check lists. Deleted: none.
 - Part 4: 5a847ba, deploy green, live: one-line footers in every mode, Disasters 253 alerts on the map, Wars 1,570 dots, no console errors; update run 37059116610 (usgs, eonet) green, live events: 55 USGS, 32 EONET. Tests added: USGS and EONET parsers and fetchers (real responses cut), distances and duplicates, markers in the risk layer, the marker card, footers per mode, e2e USGS card from the search, the overview count, every footer's help. Edited: footer and empty-feed checks, the Disasters overview text, the provider list. Deleted: none.
+- Part 5: b78302f, deploy green, live: every mode and two war links ok, no console errors. Tests: none added, edited or deleted (docs).
