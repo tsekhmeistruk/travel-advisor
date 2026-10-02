@@ -588,6 +588,16 @@ h1, h2 { margin: 0; }
 /* Country view: replaces the card, settings and feed while open */
 .panel.is-country .details, .panel.is-country .section { display: none; }
 .country-view[hidden] { display: none; }
+.cv-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; }
+.cv-actions .share { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; }
+/* A short confirmation ("Link copied"), fixed to the viewport. */
+.toast {
+  position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 20;
+  padding: 9px 16px; border-radius: 999px;
+  background: var(--text); color: var(--panel); font-size: 13px; font-weight: 500;
+  box-shadow: var(--shadow); pointer-events: none;
+}
+.toast[hidden] { display: none; }
 /* The countries list */
 .list-view { gap: 12px; }
 .list-view .cv-name .count { font-size: 12px; font-weight: 500; vertical-align: middle; color: var(--text-2); background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }

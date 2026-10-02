@@ -637,14 +637,16 @@ describe('country view', () => {
     assert.deepEqual(calls, [['open', 'jp'], ['back'], ['hover', 'mx'], ['hover', null], ['hover', null]]);
   });
 
-  test('back and an alert call their handlers', async () => {
+  test('back, share and an alert call their handlers', async () => {
     const el = container();
     const calls = [];
-    await ds.renderCountryView(el, 'mx', { back: () => calls.push('back'), selectEvent: (id) => calls.push(id) });
+    await ds.renderCountryView(el, 'mx', { back: () => calls.push('back'), share: () => calls.push('share'), selectEvent: (id) => calls.push(id) });
+    assert.match(el.innerHTML, /<button class="link-btn share" data-action="share"><svg[\s\S]*?<\/svg>Share<\/button>/);
     click(el, { action: 'back' });
+    click(el, { action: 'share' });
     click(el, { event: 'gdacs:TC:1' });
     click(el, {});
-    assert.deepEqual(calls, ['back', 'gdacs:TC:1']);
+    assert.deepEqual(calls, ['back', 'share', 'gdacs:TC:1']);
   });
 
   test('without a place file it falls back to the loaded changes and events', async () => {

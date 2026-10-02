@@ -54,6 +54,10 @@
   "details": "Details",
   "close": "Close"
  },
+ "share": {
+  "copied": "Link copied",
+  "failed": "Couldn't copy the link"
+ },
  "datasets": {
   "travel-advisories": {
    "title": "Travel advisories",
@@ -394,6 +398,7 @@
   },
   "country": {
    "back": "Back to the map",
+   "share": "Share",
    "eyebrow": "Country risk",
    "alerts": "Active alerts",
    "alertRow": "{alert}: {name}",

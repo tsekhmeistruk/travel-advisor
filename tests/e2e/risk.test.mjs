@@ -430,6 +430,20 @@ describe('country view', () => {
     });
   }
 
+  test('Share copies the link to the country view, and says so', async () => {
+    const page = await openRaw({ hash: '#mode=highest&place=jp&view=country' });
+    await page.waitForSelector('#countryView .cv-name');
+    const at = new URL(page.url());
+    await page.browserContext().overridePermissions(at.origin, ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write']);
+    await page.click('#countryView [data-action="share"]');
+    await page.waitForSelector('#toast:not([hidden])');
+    assert.equal(await page.$eval('#toast', el => el.textContent), 'Link copied');
+    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), `${at.origin}${at.pathname}#mode=highest&place=jp&view=country`);
+    await page.waitForSelector('#toast[hidden]', { timeout: 4000 });   // and goes away
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
   test('opens from a link, follows another selected country, closes with Escape', async () => {
     const page = await openRaw({ hash: '#mode=disaster&place=mx&view=country', intercept: withRiskChanges() });
     await page.waitForSelector('#countryView .cv-name');

@@ -39,9 +39,9 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Status
 
-- **Current step:** 4.6 (ship)
-- **Done:** parts 0–3; 4.1–4.5
-- **Last commit of this revision:** d1a678a (part 3)
+- **Current step:** 5.6 (ship)
+- **Done:** parts 0–4; 5.1–5.5
+- **Last commit of this revision:** 5b018c6 (part 4)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -141,19 +141,19 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
   - [x] unit: alert entries with event targets, Green fires left out, category filter, placeholder.
   - [x] e2e: type "Test cyclone" (a `withRiskChanges()` event), press Enter: the event card shows and its marker is selected.
 - [x] 4.5 Docs: architecture (search), README.
-- [ ] 4.6 Ship. Live check: searching for a named cyclone or flood opens its card.
+- [x] 4.6 Ship. Live check: searching for a named cyclone or flood opens its card.
 
 ## Part 5: Share a country
 
-- [ ] 5.1 A "Share" button in the country view header (`countryHtml()`, `data-action="share"`). `renderCountryView` takes a `share` handler beside `back` and `selectEvent`.
-- [ ] 5.2 Main builds the link with `formatHash({ mode, place, view: 'country' })`.
+- [x] 5.1 A "Share" button in the country view header (`countryHtml()`, `data-action="share"`). `renderCountryView` takes a `share` handler beside `back` and `selectEvent`.
+- [x] 5.2 Main builds the link with `formatHash({ mode, place, view: 'country' })`.
   - On touch screens (`(pointer: coarse)`), use `navigator.share` if it exists.
   - Otherwise use `navigator.clipboard.writeText` and the toast "Link copied", or "Couldn't copy the link" on failure.
-- [ ] 5.3 A new `<div class="toast" id="toast" role="status" hidden>` at the bottom centre of the map area, hidden after 2.5s. i18n: `risk.country.share`, `share.copied`, `share.failed`.
-- [ ] 5.4 Tests:
-  - [ ] unit: the share action calls its handler.
-  - [ ] e2e: grant the clipboard permissions, click Share: the clipboard holds `…#mode=highest&place=jp&view=country`, and the toast shows.
-- [ ] 5.5 Docs: architecture (the country view), README.
+- [x] 5.3 A new `<div class="toast" id="toast" role="status" hidden>` at the bottom centre of the map area, hidden after 2.5s. i18n: `risk.country.share`, `share.copied`, `share.failed`.
+- [x] 5.4 Tests:
+  - [x] unit: the share action calls its handler.
+  - [x] e2e: grant the clipboard permissions, click Share: the clipboard holds `…#mode=highest&place=jp&view=country`, and the toast shows.
+- [x] 5.5 Docs: architecture (the country view), README.
 - [ ] 5.6 Ship. Live check: Share copies the link.
 
 ## Part 6: Country names when zoomed in
@@ -190,3 +190,4 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 - Part 1: eb89206, deploy green, live check passed (link zooms to scale 10, one-line headers, no console errors). Tests added: e2e link zoom + resize keeps view, e2e panel doesn't move between modes (1440, 390), unit Changes fade ignores news. Edited: unit Travel header texts, e2e provider-switch test. Deleted: none.
 - Part 2: 05cb8c1, deploy green, live overview 141 places above Normal (was 162), no console errors; update run 36959859838 (gdacs) green, built with the new rule (bot commit c842ed2). Tests added: travelLevel cases (Bahrain, Georgia, Argentina, India), site unit for the stricter flag. Edited: travelSignals unit tests, data test checks travelLevel(). Deleted: none.
 - Part 3: d1a678a, deploy green, live: feed has no GDELT items (47 → 13), news section lists 29 places (5 shown), no console errors. Also fixed: hidden .recent sections showed (feed with highlighting Off, empty news section in Travel); travel agree counts the level itself. Tests added: unit isNews/cardModel history, news not in feed/latest/tooltip/histories, newsRows order, renderNews order/cap/Show all/hidden, Travel latest changes; e2e news section + withRiskChanges news injection. Edited: quiet line tests, feed-off test checks visibility, travel agree expectations. Deleted: anomaly-in-feed and back-to-normal tests and their i18n keys.
+- Part 4: 5b018c6, deploy green, live: "polo" finds Tropical Cyclone POLO-26 (Red) and Enter opens its card; prompt "Find a country or alert"; no console errors in any mode. Tests added: unit alert entries (order, target, offshore, prompt), Green fires left out + severity order + category filter; e2e alert search (card, marker, zoom, Travel prompt). Edited: the search entry unit test. Deleted: none.

@@ -261,6 +261,7 @@ async function main() {
     const viewer = await countryViewer();
     return viewer.renderCountryView($('countryView'), placeId, {
       back: () => closeView({ toUrl: true }),
+      share: () => shareCountry(placeId),
       selectEvent: (id) => { closeView({ all: true }); select(viewer.eventTarget(id), { zoom: true, toUrl: true }); },
     });
   }
@@ -279,6 +280,30 @@ async function main() {
     }
     if (toUrl) writeUrl();
   }
+  // Share a country's view: the share sheet on a touch screen, else the link is copied.
+  const touch = matchMedia('(pointer: coarse)');
+  async function shareCountry(placeId) {
+    const url = `${location.origin}${location.pathname}${formatHash({ mode: mode.id, place: placeId, view: 'country' })}`;
+    if (touch.matches && navigator.share) {
+      try { await navigator.share({ title: `${i18n.placeName(places.get(placeId))} · ${i18n.t('app.title')}`, url }); } catch { /* cancelled */ }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      showToast(i18n.t('share.copied'));
+    } catch {
+      showToast(i18n.t('share.failed'));
+    }
+  }
+  let toastTimer = null;
+  function showToast(text) {
+    const toast = $('toast');
+    toast.textContent = text;
+    toast.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { toast.hidden = true; }, 2500);
+  }
+
   /** Back: from a country opened in the list, to the list; otherwise (or with all) to the card. */
   function closeView({ toUrl = false, all = false } = {}) {
     hovered = null;

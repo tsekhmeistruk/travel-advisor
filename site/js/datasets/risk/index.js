@@ -296,7 +296,10 @@ export function createRiskMode(ctx) {
     const history = all.filter(c => ageHours(c.at, now()) <= days * 24);
     return `
       <div class="cv-head">
-        <button class="back" data-action="back">← ${esc(tr('country.back'))}</button>
+        <div class="cv-actions">
+          <button class="back" data-action="back">← ${esc(tr('country.back'))}</button>
+          <button class="link-btn share" data-action="share"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 15V4M8 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${esc(tr('country.share'))}</button>
+        </div>
         <div class="eyebrow">${esc(tr('country.eyebrow'))}</div>
         <h2 class="cv-name">${esc(name)}</h2>
         ${badge(highest(current, placeId).level, levelLabel(placeId))}
@@ -410,14 +413,16 @@ export function createRiskMode(ctx) {
 
     /**
      * Render the country view of a place into `container` and handle its clicks:
-     * back() closes it, selectEvent(id) shows an alert. Loads the place's file first.
+     * back() closes it, share() shares a link to it, selectEvent(id) shows an alert. Loads the
+     * place's file first.
      */
-    async renderCountryView(container, placeId, { back, selectEvent }) {
+    async renderCountryView(container, placeId, { back, share, selectEvent }) {
       const file = await client.file(`${manifest.places}${placeId}.json`, manifest.asOf).catch(() => null);
       const draw = () => { container.innerHTML = countryHtml(placeId, file); };
       draw();
       container.onclick = (e) => {
         if (e.target.closest('[data-action="back"]')) return back();
+        if (e.target.closest('[data-action="share"]')) return share?.();
         const ev = e.target.closest('[data-event]');
         if (ev) return selectEvent(ev.dataset.event);
         const h = e.target.closest('[data-history]');
