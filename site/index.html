@@ -18,7 +18,11 @@
       <svg id="map" role="img" data-i18n-aria-label="map.label"></svg>
       <div class="tooltip" id="tooltip" hidden></div>
 
-      <div class="source-toggle" id="providerSwitch" role="radiogroup" hidden></div>
+      <!-- On the map: the mode switch, and below it the provider switch (Travel mode). -->
+      <div class="map-top" id="mapTop">
+        <div class="mode-switch" id="modeSwitch" role="radiogroup" hidden></div>
+        <div class="source-toggle" id="providerSwitch" role="radiogroup" hidden></div>
+      </div>
 
       <div class="map-controls" role="group" data-i18n-aria-label="map.controls">
         <button class="icon-btn" id="zoomIn" data-i18n-title="map.zoomIn" data-i18n-aria-label="map.zoomIn">+</button>
@@ -51,8 +55,6 @@
           </button>
         </div>
       </header>
-
-      <div class="segmented mode-switch" id="modeSwitch" role="radiogroup" hidden></div>
 
       <div class="search">
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>

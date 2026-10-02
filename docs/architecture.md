@@ -200,7 +200,8 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
   - It loads the manifest, picks a locale (saved choice, then browser languages, then the default), and loads messages, places and map geometry.
   - It picks the **mode** (the URL hash first, then the saved choice, then Highest), creates that mode's dataset from `MODES` in `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
   - It wires hover and selection *targets* to the details card, tooltip, feed and search.
-  - **Panel order:** header (the data age; stale data is flagged, see `stale()`), mode switch, search, the details card, the feed, then the **Filters** (a `<details>`, collapsed by default, its state saved as `filtersOpen`) and the footer.
+  - **On the map**, top centre: the mode switch (`ui/controls.js`), and in Travel the provider switch below it (`.map-top`); on phones the mode switch is a full-width row that scrolls if it must, with the zoom controls and provider switch below it. The map keeps the mode row clear (`topInset` of `WorldMap`).
+  - **Panel order:** header (the data age; stale data is flagged, see `stale()`), search, the details card, the feed, then the **Filters** (a `<details>`, collapsed by default, its state saved as `filtersOpen`) and the footer.
   - The legend ends with an ⓘ button that opens **How levels work** (`<dialog id="help">` in `index.html`, text in `help.*`): the scale, what sets each level, confirmation, and that news activity never sets a level. Escape or the backdrop closes it.
   - Switching modes loads the new dataset first, then swaps it in place: no reload, and the map, zoom and selected place stay.
   - On user actions it writes the mode and the selected place to the URL (`#mode=disaster&place=mx`, `core/url-state.js`), so a view can be linked. A new hash (a link, back and forward) switches to it.

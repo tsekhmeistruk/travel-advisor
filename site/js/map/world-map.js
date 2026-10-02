@@ -29,15 +29,17 @@ export class WorldMap {
    * @param opts.topo                  world-atlas topology
    * @param opts.places                place registry
    * @param opts.bottomInset()         px to keep clear at the bottom (e.g. the legend)
+   * @param opts.topInset()            px to keep clear at the top (e.g. the mode switch)
    * @param opts.onHover(region|null, event), opts.onMove(event), opts.onSelect(region|null)
    * @param opts.onMarkerHover(cluster|null, event), opts.onMarkerSelect(cluster)
    *   a cluster is { id, items: [markers], x, y, level }; one marker is a cluster of one
    */
-  constructor({ svg, container, topo, places, bottomInset = () => 0, onHover = () => {}, onMove = () => {}, onSelect = () => {}, onMarkerHover = () => {}, onMarkerSelect = () => {} }) {
+  constructor({ svg, container, topo, places, bottomInset = () => 0, topInset = () => 0, onHover = () => {}, onMove = () => {}, onSelect = () => {}, onMarkerHover = () => {}, onMarkerSelect = () => {} }) {
     const { d3, topojson } = globalThis;
     this.d3 = d3;
     this.container = container;
     this.bottomInset = bottomInset;
+    this.topInset = topInset;
     this.handlers = { onHover, onMove, onSelect, onMarkerHover, onMarkerSelect };
     this.markers = [];
     this.selectedMarker = null;
@@ -151,7 +153,7 @@ export class WorldMap {
     this.svg.attr('width', this.width).attr('height', this.height);
 
     const pad = this.width < 600 ? 8 : 24;
-    this.projection.fitExtent([[pad, pad], [this.width - pad, this.height - (this.bottomInset() + 24)]], this.fitOutline);
+    this.projection.fitExtent([[pad, pad + this.topInset()], [this.width - pad, this.height - (this.bottomInset() + 24)]], this.fitOutline);
     this.spherePath.attr('d', this.path({ type: 'Sphere' }));
     this.graticulePath.attr('d', this.path(this.d3.geoGraticule10()));
     this.countryPaths.attr('d', r => this.path(r.feature));

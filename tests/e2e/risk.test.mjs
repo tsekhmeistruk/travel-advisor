@@ -327,8 +327,9 @@ describe('event markers', () => {
   });
 
   for (const width of [1440, 390]) {
-    test(`at ${width}px every mode button shows its whole name`, async () => {
+    test(`at ${width}px every mode button shows its whole name, on the map`, async () => {
       const page = await open({ width, height: 844 });
+      assert.equal(await page.$eval('#modeSwitch', el => !!el.closest('#mapArea')), true);
       const cut = await page.$$eval('#modeSwitch button', els => els.filter(b => b.scrollWidth > b.clientWidth + 1).map(b => b.textContent));
       assert.deepEqual(cut, []);
       assert.equal(await page.$$eval('#modeSwitch button', els => els.length), 5);

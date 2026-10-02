@@ -22,7 +22,7 @@ export function createProviderSwitch(el, { onChange }) {
   };
 }
 
-/** Segmented control of the map's modes (Travel, Highest, Disasters, Changes). */
+/** The map's modes as a pill on the map (Travel, Highest, Disasters, Wildfires, Changes). */
 export function createModeSwitch(el, { onChange }) {
   el.addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-mode]');
@@ -34,6 +34,9 @@ export function createModeSwitch(el, { onChange }) {
       el.hidden = modes.length < 2;
       el.innerHTML = modes.map(m =>
         `<button role="radio" data-mode="${esc(m.id)}" aria-checked="${m.id === activeId}" title="${esc(m.title)}">${esc(m.label)}</button>`).join('');
+      // On a narrow screen the row scrolls: keep the active mode in view.
+      const on = el.querySelector('[aria-checked="true"]');
+      if (on && el.scrollWidth > el.clientWidth) el.scrollLeft = Math.max(0, on.offsetLeft - el.offsetLeft - (el.clientWidth - on.offsetWidth) / 2);
     },
   };
 }

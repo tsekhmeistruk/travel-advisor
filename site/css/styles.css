@@ -231,11 +231,43 @@ h1, h2 { margin: 0; }
 .icon-btn.ghost:hover { background: var(--panel-2); }
 .panel-open { position: absolute; top: 16px; right: 16px; }
 
+/* Top of the map: the mode switch, then the provider switch. The column lets the map be dragged
+   around them; only the pills take clicks. */
+.map-top {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  z-index: 4;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  max-width: calc(100% - 128px);   /* clear of the zoom controls and the panel button */
+  pointer-events: none;
+}
+.map-top > * { pointer-events: auto; }
+.mode-switch {
+  display: flex; gap: 2px; max-width: 100%;
+  padding: 4px;
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  overflow-x: auto; scrollbar-width: none;
+}
+.mode-switch::-webkit-scrollbar { display: none; }
+.mode-switch[hidden] { display: none; }
+.mode-switch button {
+  flex: none;
+  padding: 7px 14px;
+  border: 0; border-radius: 999px; background: transparent;
+  font-size: 13px; font-weight: 600; color: var(--text-2); white-space: nowrap;
+  cursor: pointer; transition: background .15s, color .15s;
+}
+.mode-switch button:hover { color: var(--text); background: var(--panel-2); }
+.mode-switch button[aria-checked="true"] { background: var(--text); color: var(--panel); }
+.mode-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
 /* Source switch: segmented pill with a sliding thumb */
 .source-toggle {
   --n: 2; --i: 0;
-  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-  z-index: 4;
+  position: relative;
   display: grid; grid-template-columns: repeat(var(--n), 1fr);
   padding: 4px;
   background: color-mix(in srgb, var(--panel) 88%, transparent);
@@ -564,9 +596,6 @@ h1, h2 { margin: 0; }
 .cv-list li.activity .date { font-weight: 600; color: var(--text); }
 .cv-list li.activity.normal .date { font-weight: 400; color: var(--text-2); }
 
-.mode-switch { margin-top: -6px; }
-.mode-switch[hidden] { display: none; }
-.mode-switch button { font-size: 12.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-left: 2px; padding-right: 2px; }
 
 /* Settings */
 .section h2 {
@@ -670,13 +699,18 @@ h1, h2 { margin: 0; }
 @media (max-width: 760px) {
   body { overflow: auto; }
   .app, .app.panel-collapsed { display: flex; flex-direction: column; height: auto; }
-  .map-area { height: calc(52vw + 110px); max-height: 62vh; flex: none; }
+  .map-area { height: calc(52vw + 154px); max-height: 68vh; flex: none; }   /* +44px: the mode row */
   .app.panel-collapsed .panel { visibility: visible; }
   .panel { border-left: 0; border-top: 1px solid var(--line); overflow: visible; padding: 16px; }
   #panelClose, .panel-open { display: none !important; }
   .legend { left: 16px; right: 16px; bottom: 12px; gap: 4px 10px; font-size: 11px; }
-  .map-controls { top: 12px; left: 12px; }
-  .source-toggle { top: 12px; left: auto; right: 12px; transform: none; }
+  /* The mode switch is a full-width row at the top (it scrolls if it must); the zoom controls and
+     the provider switch sit below it. */
+  .map-top { top: 10px; left: 10px; right: 10px; transform: none; max-width: none; align-items: stretch; }
+  .mode-switch { justify-content: space-between; }
+  .mode-switch button { padding: 7px 10px; font-size: 12.5px; }
+  .map-top .source-toggle { align-self: flex-end; }
+  .map-controls { top: 62px; left: 12px; }
   .source-toggle button { min-width: 0; padding: 7px 12px; font-size: 12.5px; }
   /* Flags only, so several providers fit beside the zoom controls; names stay in title/aria-label. */
   .source-toggle button span { display: none; }

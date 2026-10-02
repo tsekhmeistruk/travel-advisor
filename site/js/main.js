@@ -92,6 +92,8 @@ async function main() {
     },
   });
   createThemeToggle($('themeToggle'), { settings, t: i18n.t });
+  const renderModes = () => modeSwitch.render(modes.map(m => ({ id: m.id, label: i18n.t(`modes.${m.id}.label`), title: i18n.t(`modes.${m.id}.title`) })), mode.id, i18n.t('modes.label'));
+  renderModes();   // measured by the map's layout, like the legend
 
   // The legend ends with the "How levels work" button.
   const helpButton = `<button class="legend-help" data-action="help" title="${i18n.t('help.open')}" aria-label="${i18n.t('help.open')}">
@@ -105,6 +107,8 @@ async function main() {
     topo,
     places: placeList,
     bottomInset: () => $('legend').offsetHeight,
+    // The mode switch's row (the provider switch below it may overlap the map's top edge).
+    topInset: () => $('modeSwitch').offsetHeight,
     onHover: (region, event) => {
       hover(region ? { placeId: region.key } : null);
       if (region && event.pointerType === 'mouse') tooltip.show(dataset.tooltip(region.key), event);
@@ -255,7 +259,7 @@ async function main() {
   }
 
   function refresh() {
-    modeSwitch.render(modes.map(m => ({ id: m.id, label: i18n.t(`modes.${m.id}.label`), title: i18n.t(`modes.${m.id}.title`) })), mode.id, i18n.t('modes.label'));
+    renderModes();
     $('map').setAttribute('aria-label', dataset.mapLabel());
     providerSwitch.render(dataset.providers(), dataset.provider(), dataset.providerSwitchLabel());
     $('asOf').textContent = dataset.header();

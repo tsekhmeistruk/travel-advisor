@@ -24,19 +24,32 @@ const scaleOf = (page) => page.evaluate(() => {
   return Number(t.match(/scale\(([\d.]+)/)?.[1] ?? 1);
 });
 
-describe('provider switch layout', () => {
+describe('switches on the map', () => {
+  // The mode switch (every mode) and, in Travel, the provider switch below it.
+  const layout = (page) => page.evaluate(() => {
+    const box = (sel) => document.querySelector(sel).getBoundingClientRect();
+    const hits = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+    const modes = box('#modeSwitch'), zoom = box('.map-controls'), map = box('#mapArea');
+    const providers = document.getElementById('providerSwitch').hidden ? null : box('#providerSwitch');
+    const active = box('#modeSwitch [aria-checked="true"]');
+    return {
+      modesOverZoom: hits(modes, zoom), providersOverZoom: !!providers && hits(providers, zoom), modesOverProviders: !!providers && hits(modes, providers),
+      inside: [modes, providers].filter(Boolean).every(b => b.left >= map.left && b.right <= map.right && b.top >= map.top),
+      activeVisible: active.left >= modes.left - 1 && active.right <= modes.right + 1,
+      providers: document.querySelectorAll('#providerSwitch button').length,
+      pageScroll: document.documentElement.scrollWidth > innerWidth,
+    };
+  });
   for (const [width, height] of [[1440, 860], [390, 844], [320, 640]]) {
-    test(`at ${width}px it does not cover the zoom controls or leave the screen`, async () => {
+    test(`at ${width}px they sit on the map, apart from each other and the zoom controls`, async () => {
       const page = await open({ width, height });
-      const r = await page.evaluate(() => {
-        const box = (id) => document.querySelector(id).getBoundingClientRect();
-        const sw = box('#providerSwitch'), zoom = box('.map-controls');
-        const overlap = sw.left < zoom.right && sw.right > zoom.left && sw.top < zoom.bottom && sw.bottom > zoom.top;
-        return { overlap, inside: sw.left >= 0 && sw.right <= innerWidth, buttons: document.querySelectorAll('#providerSwitch button').length };
-      });
-      assert.ok(r.buttons >= 3, `${r.buttons} providers`);
-      assert.equal(r.overlap, false, 'switch overlaps the zoom controls');
-      assert.equal(r.inside, true, 'switch runs off the screen');
+      const travel = await layout(page);
+      assert.ok(travel.providers >= 3, `${travel.providers} providers`);
+      assert.deepEqual(travel, { ...travel, modesOverZoom: false, providersOverZoom: false, modesOverProviders: false, inside: true, activeVisible: true, pageScroll: false });
+      await page.click('#modeSwitch [data-mode="changes"]');
+      await page.waitForFunction(() => document.getElementById('providerSwitch').hidden);
+      const changes = await layout(page);
+      assert.deepEqual(changes, { ...changes, modesOverZoom: false, inside: true, activeVisible: true, pageScroll: false }, 'the last mode stays in view');
       await page.close();
     });
   }
