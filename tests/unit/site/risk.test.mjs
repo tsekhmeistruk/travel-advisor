@@ -351,10 +351,28 @@ describe('texts', () => {
     assert.equal(ds.mapLabel(), 'World map coloured by risk level (Highest)');
     assert.match(ds.legend(), /Normal.*Elevated.*High.*Critical.*No data.*Level changed ≤ 30 days/);
   });
-  test('search lists every place with its level', () => {
+  test('search lists every place with its level, then the active alerts by name', () => {
     const entries = ds.searchEntries();
-    assert.equal(entries.length, PLACES.size);
-    assert.deepEqual(entries.find(e => e.target.placeId === 'mx'), { label: 'Mexico', aliases: ['Mexico'], swatch: 'var(--l3)', sub: 'High', target: { placeId: 'mx' } });
+    const placeEntries = entries.filter(e => !e.target.eventId);
+    assert.equal(placeEntries.length, PLACES.size);
+    assert.deepEqual(placeEntries.find(e => e.target.placeId === 'mx'), { label: 'Mexico', aliases: ['Mexico'], swatch: 'var(--l3)', sub: 'High', target: { placeId: 'mx' } });
+    const alerts = entries.filter(e => e.target.eventId);
+    assert.equal(entries.indexOf(alerts[0]), PLACES.size, 'after the places');
+    assert.deepEqual(alerts.map(e => e.target.eventId), ['gdacs:TC:1', 'gdacs:EQ:2', 'gdacs:EQ:9', 'gdacs:DR:3']);
+    assert.deepEqual(alerts[0], { label: 'Tropical Cyclone <b>X</b>', aliases: ['tropical cyclone'], swatch: 'var(--l3)', sub: 'Orange alert · tropical cyclone', target: { eventId: 'gdacs:TC:1', placeId: 'mx' } });
+    assert.deepEqual(alerts[2].target, { eventId: 'gdacs:EQ:9' }, 'an offshore alert: no place');
+    assert.equal(ds.searchPlaceholder(), 'Find a country or alert');
+  });
+  test('search leaves Green forest fires out (a generic name, hundreds of them); a category mode finds its own alerts', async () => {
+    const fire = (id, value, level) => ({ id, source: 'gdacs', ...DATES, category: 'wildfire', type: 'wildfire', level, native: { scheme: 'gdacs-alert', value }, name: 'Forest fires in Mexico', placeIds: ['mx'] });
+    const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: [...EVENTS, fire('gdacs:WF:1', 'Green', 1), fire('gdacs:WF:2', 'Orange', 3)] } };
+    const make = async (options) => {
+      const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings: createSettings('k5', {}, { getItem: () => null, setItem: () => {} }), client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, now: () => NOW, ...options });
+      await mode.load();
+      return mode.searchEntries().filter(e => e.target.eventId).map(e => e.target.eventId);
+    };
+    assert.deepEqual(await make({ mode: 'highest', view: 'highest' }), ['gdacs:TC:1', 'gdacs:EQ:2', 'gdacs:EQ:9', 'gdacs:WF:2', 'gdacs:DR:3'], 'the Orange fire, not the Green one; most severe first (the drought is Elevated)');
+    assert.deepEqual(await make({ mode: 'wildfire', view: 'category', category: 'wildfire' }), ['gdacs:WF:2']);
   });
   test('the event name is escaped wherever it appears', async () => {
     const f = fakeFeed();

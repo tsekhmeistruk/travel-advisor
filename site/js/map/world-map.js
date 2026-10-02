@@ -143,6 +143,15 @@ export class WorldMap {
     this.svg.transition().duration(750).ease(this.d3.easeCubicInOut)
       .call(this.zoom.transform, this.d3.zoomIdentity.translate(this.width / 2 - k * cx, this.height / 2 - k * cy).scale(k));
   }
+  /** Centre a shown marker (an event) at zoom 3 or more. False when no marker has this id. */
+  zoomToMarker(id) {
+    const m = this.markers.find(x => x.id === id);
+    if (!m?.xy) return false;
+    const k = Math.min(MAX_ZOOM, Math.max(3, this.transform.k));
+    this.svg.transition().duration(750).ease(this.d3.easeCubicInOut)
+      .call(this.zoom.transform, this.d3.zoomIdentity.translate(this.width / 2 - k * m.xy[0], this.height / 2 - k * m.xy[1]).scale(k));
+    return true;
+  }
   zoomBy(factor) { this.svg.transition().duration(300).call(this.zoom.scaleBy, factor); }
   resetZoom() { this.svg.transition().duration(500).call(this.zoom.transform, this.d3.zoomIdentity); }
 

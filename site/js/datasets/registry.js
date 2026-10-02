@@ -16,6 +16,7 @@
 //   showWindow(days)                            widen the feed's window ("Show 90 days" in an empty list)
 //   feedTarget(key), feedKeyFor(target)         map feed items to selection targets and back
 //   searchEntries()                             what the search box can find
+//   searchPlaceholder()                         optional: its prompt ("Find a country or alert")
 // and optionally
 //   renderNews(el)                              its list of unusual news activity (hidden without)
 // and optionally, for the full panel views (one risk mode's viewer serves a mode without them):

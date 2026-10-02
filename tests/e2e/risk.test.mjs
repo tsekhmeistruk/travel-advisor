@@ -278,6 +278,24 @@ describe('risk panel', () => {
     await page.close();
   });
 
+  test('the search finds an alert by name: Enter shows its card, selects its marker and zooms to it', async () => {
+    const page = await openMode('highest', { intercept: withRiskChanges() });
+    assert.equal(await page.$eval('#search', el => el.placeholder), 'Find a country or alert');
+    await page.type('#search', 'test cyclone');
+    await page.waitForSelector('#searchResults li[data-i]');
+    assert.match(await page.$eval('#searchResults li[data-i]', el => el.textContent), /Test cyclone gdacs:TC:900\s*Red alert · tropical cyclone/);
+    await page.keyboard.press('Enter');
+    await sleep(1000);
+    await page.hover('#footer');
+    assert.equal(await detailsTitle(page), 'Test cyclone gdacs:TC:900');
+    assert.equal(await page.evaluate(() => [...document.querySelectorAll('.marker.is-selected')].some(m => m.__data__.items.some(i => i.id === 'gdacs:TC:900'))), true, 'its marker is selected');
+    assert.ok(await page.evaluate(() => Number(document.querySelector('.viewport').getAttribute('transform').match(/scale\(([\d.]+)/)[1])) >= 3, 'zoomed to the marker');
+    await page.click('#modeSwitch [data-mode="travel"]');
+    await page.waitForFunction(() => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === 'travel');
+    assert.equal(await page.$eval('#search', el => el.placeholder), 'Find a country', 'Travel finds places only');
+    await page.close();
+  });
+
   test('hovering a feed item previews that place; clicking selects it', async () => {
     const page = await openMode('disaster', { intercept: withRiskChanges() });
     const first = await page.$('#recentList button');

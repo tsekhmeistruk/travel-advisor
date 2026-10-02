@@ -39,9 +39,9 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Status
 
-- **Current step:** 3.7 (ship)
-- **Done:** parts 0–2; 3.1–3.6
-- **Last commit of this revision:** 05cb8c1 (part 2)
+- **Current step:** 4.6 (ship)
+- **Done:** parts 0–3; 4.1–4.5
+- **Last commit of this revision:** d1a678a (part 3)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -127,20 +127,20 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
   - [x] e2e: `withRiskChanges()` (`tests/e2e/helpers.mjs`) gains an injected anomaly and an activity entry in `risk/current.json`. The feed doesn't list the anomaly; the news section lists the place and a click selects it; the section is hidden in Disasters and Travel.
   - [x] `measureCards()` keeps the fixed card height in every mode; `tests/data/project.test.mjs` keys pass.
 - [x] 3.6 Docs: `docs/architecture.md` (feed kinds, the news section, `renderNews`), README, `.claude/CLAUDE.md` ("Only level changes count", now with alerts).
-- [ ] 3.7 Ship. Live check: the feed has no GDELT items, and the news section lists the countries.
+- [x] 3.7 Ship. Live check: the feed has no GDELT items, and the news section lists the countries.
 
 ## Part 4: Search finds alerts
 
-- [ ] 4.1 `searchEntries()` (`datasets/risk/index.js`) adds active alerts:
+- [x] 4.1 `searchEntries()` (`datasets/risk/index.js`) adds active alerts:
   - included: named alerts (cyclones, floods, volcanoes, droughts, WHO notices) and any Orange or Red alert; in a category mode, only that category;
   - left out: Green forest fires (a generic repeated name, about 140 entries);
   - entry: `{ label: e.name, aliases: [type name], swatch, sub: "Red alert · Cyclone", target: eventTarget(id) }`.
-- [ ] 4.2 `WorldMap.zoomToMarker(id)` centres on a shown marker at k ≥ 3 and returns false when the marker isn't shown. `select()` in `main.js` tries it, then falls back to `zoomTo(placeId)`.
-- [ ] 4.3 An optional `searchPlaceholder()` gives "Find a country or alert" in the risk modes; Travel keeps "Find a country". `refresh()` sets the placeholder and aria-label.
-- [ ] 4.4 Tests:
-  - [ ] unit: alert entries with event targets, Green fires left out, category filter, placeholder.
-  - [ ] e2e: type "Test cyclone" (a `withRiskChanges()` event), press Enter: the event card shows and its marker is selected.
-- [ ] 4.5 Docs: architecture (search), README.
+- [x] 4.2 `WorldMap.zoomToMarker(id)` centres on a shown marker at k ≥ 3 and returns false when the marker isn't shown. `select()` in `main.js` tries it, then falls back to `zoomTo(placeId)`.
+- [x] 4.3 An optional `searchPlaceholder()` gives "Find a country or alert" in the risk modes; Travel keeps "Find a country". `refresh()` sets the placeholder and aria-label.
+- [x] 4.4 Tests:
+  - [x] unit: alert entries with event targets, Green fires left out, category filter, placeholder.
+  - [x] e2e: type "Test cyclone" (a `withRiskChanges()` event), press Enter: the event card shows and its marker is selected.
+- [x] 4.5 Docs: architecture (search), README.
 - [ ] 4.6 Ship. Live check: searching for a named cyclone or flood opens its card.
 
 ## Part 5: Share a country
@@ -189,3 +189,4 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 - Part 1: eb89206, deploy green, live check passed (link zooms to scale 10, one-line headers, no console errors). Tests added: e2e link zoom + resize keeps view, e2e panel doesn't move between modes (1440, 390), unit Changes fade ignores news. Edited: unit Travel header texts, e2e provider-switch test. Deleted: none.
 - Part 2: 05cb8c1, deploy green, live overview 141 places above Normal (was 162), no console errors; update run 36959859838 (gdacs) green, built with the new rule (bot commit c842ed2). Tests added: travelLevel cases (Bahrain, Georgia, Argentina, India), site unit for the stricter flag. Edited: travelSignals unit tests, data test checks travelLevel(). Deleted: none.
+- Part 3: d1a678a, deploy green, live: feed has no GDELT items (47 → 13), news section lists 29 places (5 shown), no console errors. Also fixed: hidden .recent sections showed (feed with highlighting Off, empty news section in Travel); travel agree counts the level itself. Tests added: unit isNews/cardModel history, news not in feed/latest/tooltip/histories, newsRows order, renderNews order/cap/Show all/hidden, Travel latest changes; e2e news section + withRiskChanges news injection. Edited: quiet line tests, feed-off test checks visibility, travel agree expectations. Deleted: anomaly-in-feed and back-to-normal tests and their i18n keys.

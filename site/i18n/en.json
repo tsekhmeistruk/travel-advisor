@@ -457,6 +457,10 @@
    "showAll": "Show all {count}",
    "note": "News reports of protests and violence (GDELT) compared with each country's normal week: not verified incidents, and never a risk level."
   },
+  "search": {
+   "placeholder": "Find a country or alert",
+   "alert": "{alert} · {type}"
+  },
   "legend": {
    "none": "No data",
    "recent": "Level changed ≤ {window}",

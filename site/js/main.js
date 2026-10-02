@@ -208,7 +208,8 @@ async function main() {
     map.setSelected(target?.placeId ?? null);
     map.setSelectedMarker(target?.eventId ?? null);
     renderDetails();
-    if (zoom && target?.placeId) map.zoomTo(target.placeId);
+    // An event zooms to its marker when the mode shows one, otherwise to its place.
+    if (zoom && !(target?.eventId && map.zoomToMarker(target.eventId)) && target?.placeId) map.zoomTo(target.placeId);
     const place = target?.placeId && !target.eventId ? target.placeId : null;
     if (follow && panelView === 'country') {
       // The country view follows the selected place, and closes with the selection.
@@ -351,6 +352,9 @@ async function main() {
     if (dataset.renderNews) dataset.renderNews(newsList);
     else $('newsSection').hidden = true;
     search.setEntries(dataset.searchEntries());
+    const placeholder = dataset.searchPlaceholder?.() ?? i18n.t('search.placeholder');
+    $('search').placeholder = placeholder;
+    $('search').setAttribute('aria-label', placeholder);
     map.setStyle((id) => dataset.style(id));
     map.setMarkers(dataset.markers?.() ?? []);
     renderDetails();

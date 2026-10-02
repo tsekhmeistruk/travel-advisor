@@ -346,6 +346,9 @@ export function createRiskMode(ctx) {
       ${url ? `<a class="link" href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">${esc(tr('card.report', { source: sourceName(e.source) }))}</a>` : ''}`;
   }
 
+  /** An event's selection target: the event, on its first place. */
+  const targetOf = (e) => ({ eventId: e.id, ...(e.placeIds[0] && { placeId: e.placeIds[0] }) });
+
   // ---- the dataset interface
 
   return {
@@ -486,7 +489,7 @@ export function createRiskMode(ctx) {
     /** A marker's selection target: the event, on its first place. */
     eventTarget(id) {
       const e = events.find(x => x.id === id);
-      return e ? { eventId: id, ...(e.placeIds[0] && { placeId: e.placeIds[0] }) } : null;
+      return e ? targetOf(e) : null;
     },
     /** Tooltip for a marker, or a cluster of several. */
     markerTooltip(ids) {
@@ -628,11 +631,23 @@ export function createRiskMode(ctx) {
       return target?.placeId ? shown().find(c => changePlaces(c).includes(target.placeId))?.id ?? null : null;
     },
 
+    /**
+     * Every place, then the active alerts by name (this mode's category only, in a category mode).
+     * Green forest fires are left out: each repeats a generic name ("Forest fires in Brazil")
+     * hundreds of times; they are on the map.
+     */
     searchEntries() {
-      return [...places.values()].map(place => {
+      const placeEntries = [...places.values()].map(place => {
         const level = viewLevel(place.id);
         return { label: i18n.placeName(place), aliases: [place.name], swatch: swatch(level), sub: levelName(level), target: { placeId: place.id } };
       });
+      // Most severe first, so a Red or Orange alert isn't hidden below Green ones of the same name.
+      const alerts = events
+        .filter(e => (!categories || categories.has(e.category)) && !(e.type === 'wildfire' && (e.level ?? 1) <= 1))
+        .sort((a, b) => (b.level ?? 1) - (a.level ?? 1))
+        .map(e => ({ label: e.name, aliases: [typeName(e.type)], swatch: swatch(e.level), sub: tr('search.alert', { alert: alertName(e.native.value), type: typeName(e.type) }), target: targetOf(e) }));
+      return [...placeEntries, ...alerts];
     },
+    searchPlaceholder: () => tr('search.placeholder'),
   };
 }
