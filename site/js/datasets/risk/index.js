@@ -359,7 +359,8 @@ export function createRiskMode(ctx) {
       const level = viewLevel(placeId);
       const muted = level != null && !levels().includes(level);
       const list = shown();
-      const changed = list.some(c => changePlaces(c).includes(placeId));
+      // A change here means the level moved: news activity or an alert alone doesn't count.
+      const changed = list.some(c => PULSE_KINDS.has(c.kind) && changePlaces(c).includes(placeId));
       // A pulse means the colour moved: none on a hidden level or on a place without data.
       const pulse = level != null && !muted ? list.find(c => PULSE_KINDS.has(c.kind) && changePlaces(c)[0] === placeId) : null;
       return {

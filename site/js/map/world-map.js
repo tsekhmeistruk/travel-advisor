@@ -146,10 +146,18 @@ export class WorldMap {
   zoomBy(factor) { this.svg.transition().duration(300).call(this.zoom.scaleBy, factor); }
   resetZoom() { this.svg.transition().duration(500).call(this.zoom.transform, this.d3.zoomIdentity); }
 
+  /** Fit the world to the container. On a resize, keep what was in view: its centre and the zoom. */
   layout() {
     const rect = this.container.getBoundingClientRect();
-    this.width = Math.max(1, Math.round(rect.width));
-    this.height = Math.max(1, Math.round(rect.height));
+    const width = Math.max(1, Math.round(rect.width));
+    const height = Math.max(1, Math.round(rect.height));
+    // The observer also reports the first size, which the constructor laid out already: a zoom
+    // started since then (to a linked place) must not be undone.
+    if (width === this.width && height === this.height) return;
+    const t = this.transform;
+    const keep = this.width && t.k > 1 ? { k: t.k, at: this.projection.invert(t.invert([this.width / 2, this.height / 2])) } : null;
+    this.width = width;
+    this.height = height;
     this.svg.attr('width', this.width).attr('height', this.height);
 
     const pad = this.width < 600 ? 8 : 24;
@@ -166,8 +174,11 @@ export class WorldMap {
     const [[sx0, sy0], [sx1, sy1]] = this.path.bounds({ type: 'Sphere' });
     this.zoom.extent([[0, 0], [this.width, this.height]])
       .translateExtent([[Math.min(0, sx0), Math.min(0, sy0)], [Math.max(this.width, sx1), Math.max(this.height, sy1)]]);
-    this.transform = this.d3.zoomIdentity;
-    this.svg.call(this.zoom.transform, this.transform);
+    const p = keep?.at && this.projection(keep.at);
+    this.transform = p?.every(Number.isFinite)
+      ? this.d3.zoomIdentity.translate(this.width / 2 - keep.k * p[0], this.height / 2 - keep.k * p[1]).scale(keep.k)
+      : this.d3.zoomIdentity;
+    this.svg.call(this.zoom.transform, this.transform);   // clamped to the new extent
     this.repaint();
   }
 

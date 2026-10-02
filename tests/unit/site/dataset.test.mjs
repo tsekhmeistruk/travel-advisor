@@ -183,11 +183,11 @@ describe('header, footer, tooltip, legend', () => {
     await create({}, { countryView: false });
     assert.doesNotMatch(ds.details(null), /data-action="list"/);
   });
-  test('the header shows the data date, with its age (and a warning) once it is over a week old', async () => {
-    assert.equal(ds.header(), 'U.S. State Department advisories · data as of Sep 26, 2026');
+  test('the header shows the data date on one line, with its age (and a warning) once it is over a week old', async () => {
+    assert.equal(ds.header(), 'Data as of Sep 26, 2026', 'no agency: it is in the overview and the footer');
     assert.equal(ds.stale(), false);
     await ds.setProvider('ca');
-    assert.match(ds.header(), /Government of Canada advisories · data as of Sep 1, 2026 \(26 days ago\)/);
+    assert.equal(ds.header(), 'Data as of Sep 1, 2026 (26 days ago)');
     assert.equal(ds.stale(), true);
   });
   test('the tooltip names the place, its level and its latest level change', () => {

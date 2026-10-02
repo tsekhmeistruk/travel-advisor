@@ -97,6 +97,23 @@ describe('mode switch', () => {
     await page.close();
   });
 
+  for (const [width, height] of [[1440, 860], [390, 844]]) {
+    test(`at ${width}px the panel does not move between Travel and the risk modes`, async () => {
+      // Fresh risk data, so the header is its usual one line (stale data adds a warning).
+      const current = JSON.parse(readFileSync(new URL('../../site/data/risk/current.json', import.meta.url), 'utf8'));
+      const body = JSON.stringify({ ...current, asOf: new Date().toISOString() });
+      const fresh = (req) => isData(req, 'risk/current.json') && (req.respond({ status: 200, contentType: 'application/json', body }), true);
+      // The UK has the longest agency name, which used to wrap the Travel header.
+      const page = await open({ width, height, settings: { provider: 'uk' }, intercept: fresh });
+      const top = () => page.$eval('#search', el => Math.round(el.getBoundingClientRect().top + scrollY));
+      const travel = await top();
+      await page.click('#modeSwitch [data-mode="highest"]');
+      await page.waitForFunction(() => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === 'highest');
+      assert.equal(await top(), travel);
+      await page.close();
+    });
+  }
+
   test('a first visit opens on Highest; a saved Travel is kept', async () => {
     const first = await openRaw({ stored: {} });
     await first.waitForSelector('path.country');

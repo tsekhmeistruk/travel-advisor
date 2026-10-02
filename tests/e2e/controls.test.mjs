@@ -128,6 +128,30 @@ describe('map interaction', () => {
     await page.close();
   });
 
+  test('a link to a place zooms to it; collapsing the panel or resizing keeps the zoom and the place in view', async () => {
+    const page = await openRaw({ hash: '#mode=highest&place=de' });
+    await page.waitForSelector('path.country');
+    await sleep(1200);
+    const zoomed = await scaleOf(page);
+    assert.ok(zoomed > 1, `zoomed in (scale ${zoomed})`);
+    const inView = () => page.evaluate(() => {
+      const r = [...document.querySelectorAll('path.country')].find(e => e.__data__.key === 'de').getBoundingClientRect();
+      const m = document.getElementById('mapArea').getBoundingClientRect();
+      const x = (r.left + r.right) / 2, y = (r.top + r.bottom) / 2;
+      return x > m.left && x < m.right && y > m.top && y < m.bottom;
+    });
+    assert.equal(await inView(), true);
+    await page.click('#panelClose');
+    await sleep(500);
+    assert.equal(await scaleOf(page), zoomed, 'collapsing the panel keeps the zoom');
+    assert.equal(await inView(), true, 'and the place in view');
+    await page.setViewport({ width: 1100, height: 700 });
+    await sleep(500);
+    assert.equal(await scaleOf(page), zoomed, 'a resize keeps the zoom');
+    assert.equal(await inView(), true, 'and the place in view');
+    await page.close();
+  });
+
   test('a tiny place can be selected through its dot', async () => {
     const page = await open({ settings: { provider: 'us' } });
     const id = await page.evaluate(() => document.querySelector('.dot')?.__data__.key);

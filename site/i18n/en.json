@@ -60,8 +60,8 @@
    "mapLabel": "World map coloured by travel advisory level",
    "providerSwitch": "Advisory source",
    "providerSwitchTitle": "{agency} advisories",
-   "header": "{agency} advisories · data as of {date}",
-   "headerStale": "{agency} advisories · data as of {date} ({age})",
+   "header": "Data as of {date}",
+   "headerStale": "Data as of {date} ({age})",
    "footer": "Levels from the {agency}. Always check the full advisory before you travel.",
    "overview": {
     "eyebrow": "World overview · {provider}",

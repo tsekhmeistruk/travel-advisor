@@ -718,6 +718,15 @@ describe('news activity on the site', () => {
     assert.match(ds.details({ placeId: 'mx' }), /Protest reports far above normal \(GDELT\)/, 'in the place\'s recent changes');
   });
 
+  test('in the Changes mode, news activity alone is not a change: the place stays faded', async () => {
+    const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: [{ ...ANOMALY, id: 'jp:protest', placeId: 'jp' }, ...CHANGES] }, 'risk/events.json': { events: EVENTS } };
+    const settings = createSettings('k3', {}, { getItem: () => null, setItem: () => {} });
+    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'changes', view: 'changes', now: () => NOW });
+    await mode.load();
+    assert.equal(mode.style('jp').dim, true, 'only news activity in the window');
+    assert.equal(mode.style('mx').dim, false, 'a level change');
+  });
+
   test('an anomaly that ends reads "back to normal"', async () => {
     const back = { ...ANOMALY, id: 'x', from: 'far', to: 'normal', up: false };
     await withActivity();

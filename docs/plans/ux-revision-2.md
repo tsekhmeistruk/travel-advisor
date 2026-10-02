@@ -39,8 +39,8 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Status
 
-- **Current step:** 1.1
-- **Done:** part 0
+- **Current step:** 1.6 (ship)
+- **Done:** part 0; 1.1–1.5
 - **Last commit of this revision:** none yet
 
 ## Every part ends with the same checks (the "ship" boxes)
@@ -61,20 +61,20 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Part 1: Map and mode bugs
 
-- [ ] 1.1 `WorldMap.layout()`:
+- [x] 1.1 `WorldMap.layout()`:
   - return early when the container size is unchanged;
   - on a real resize, keep the view: take `k` and the geographic point at the view's centre (`projection.invert(transform.invert([w/2, h/2]))`), refit, then put that point back at the centre with the same `k`;
   - fall back to the identity transform if the point isn't finite.
-- [ ] 1.2 In `style()` (`datasets/risk/index.js`), `changed` counts only `PULSE_KINDS` changes. That fixes the Changes mode and "Fade places without a recent change".
-- [ ] 1.3 Travel `header()` (`datasets/travel-advisories/index.js`) becomes "Data as of {date}", and the stale form "Data as of {date} ({age})". Edit `datasets.travel-advisories.header` and `headerStale` in `site/i18n/en.json`.
-- [ ] 1.4 Tests:
-  - [ ] e2e: a link `#mode=highest&place=de` zooms (the `.viewport` scale is above 1 after about 1.2s; this fails before 1.1).
-  - [ ] e2e: after zooming to Germany, collapsing the panel and changing the viewport keep the scale, and Germany stays on screen.
-  - [ ] e2e: the search box has the same top in Travel and Highest, at 1440 and 390px.
-  - [ ] e2e, edit: `site.test.mjs` "the provider switch changes header…" now expects Canada in the overview eyebrow and footer, not the header.
-  - [ ] unit: in the Changes view, a place with only an anomaly is faded, and one with a level change isn't.
-  - [ ] unit, edit: the Travel header texts in `tests/unit/site/dataset.test.mjs`.
-- [ ] 1.5 Docs: `docs/architecture.md` (the map keeps the view on resize; the Travel header).
+- [x] 1.2 In `style()` (`datasets/risk/index.js`), `changed` counts only `PULSE_KINDS` changes. That fixes the Changes mode and "Fade places without a recent change".
+- [x] 1.3 Travel `header()` (`datasets/travel-advisories/index.js`) becomes "Data as of {date}", and the stale form "Data as of {date} ({age})". Edit `datasets.travel-advisories.header` and `headerStale` in `site/i18n/en.json`.
+- [x] 1.4 Tests:
+  - [x] e2e: a link `#mode=highest&place=de` zooms (the `.viewport` scale is above 1 after about 1.2s; this fails before 1.1).
+  - [x] e2e: after zooming to Germany, collapsing the panel and changing the viewport keep the scale, and Germany stays on screen.
+  - [x] e2e: the search box has the same top in Travel and Highest, at 1440 and 390px.
+  - [x] e2e, edit: `site.test.mjs` "the provider switch changes header…" now expects Canada in the overview eyebrow and footer, not the header.
+  - [x] unit: in the Changes view, a place with only an anomaly is faded, and one with a level change isn't.
+  - [x] unit, edit: the Travel header texts in `tests/unit/site/dataset.test.mjs`.
+- [x] 1.5 Docs: `docs/architecture.md` (the map keeps the view on resize; the Travel header).
 - [ ] 1.6 Ship (see "Every part ends with…"). Live check: `#mode=highest&place=de` zooms.
 
 ## Part 2: Travel level = two or more governments

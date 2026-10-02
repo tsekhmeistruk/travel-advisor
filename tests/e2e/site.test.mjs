@@ -87,14 +87,15 @@ describe('map interaction', () => {
 });
 
 describe('panel', () => {
-  test('the provider switch changes header and level names, and persists', async () => {
+  test('the provider switch changes the overview, footer and level names, and persists', async () => {
     const page = await open({ settings: { provider: 'us' } });
-    const header = () => page.evaluate(() => document.getElementById('asOf').textContent);
-    const usHeader = await header();
+    const text = (id) => page.evaluate((i) => document.getElementById(i).textContent, id);
+    assert.match(await text('asOf'), /^Data as of /, 'the header is the data date, on one line');
     await page.click('#providerSwitch button[data-provider="ca"]');
     await sleep(400);
-    assert.notEqual(await header(), usHeader);
-    assert.match(await header(), /Canada/);
+    assert.match(await text('details'), /World overview · Canada/);
+    assert.match(await text('footer'), /Government of Canada/);
+    assert.doesNotMatch(await text('asOf'), /Canada/, 'the agency is no longer in the header');
     assert.match(await page.evaluate(() => document.getElementById('levelChips').innerText), /Avoid all/);
     await page.reload();
     await sleep(300);

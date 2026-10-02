@@ -161,9 +161,11 @@ export function createTravelAdvisories(ctx) {
     mapLabel: () => tx('mapLabel'),
     providerSwitchLabel: () => tx('providerSwitch'),
 
+    // One line, as in the risk modes, so the panel doesn't move between modes. The agency is
+    // named in the overview and the footer.
     header() {
       const age = i18n.ageDays(data.asOf);
-      const params = { agency: tp('agency'), date: i18n.formatDate(data.asOf), age: i18n.relativeAge(age) };
+      const params = { date: i18n.formatDate(data.asOf), age: i18n.relativeAge(age) };
       return age > STALE_DAYS ? tx('headerStale', params) : tx('header', params);
     },
     stale: () => i18n.ageDays(data.asOf) > STALE_DAYS,
