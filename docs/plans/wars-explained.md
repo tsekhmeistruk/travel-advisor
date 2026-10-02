@@ -81,9 +81,9 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Status
 
-- **Current step:** 2.7
-- **Done:** parts 0–1; 2.1–2.6
-- **Last commit of this revision:** (none yet)
+- **Current step:** 3.8
+- **Done:** parts 0–2; 3.1–3.7
+- **Last commit of this revision:** 718728f
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -144,21 +144,21 @@ A review of the code and data (Oct 2, 2026) found:
   - [x] unit: the infobox parser on real wikitext (Ukraine, Sudan, Myanmar, Gaza, DR Congo, no infobox).
   - [x] unit: the fetcher (failure keeps the last entry, the User-Agent), the build and its fallback.
   - [x] data and project: `risk/wars.json` equals a fresh build; the source is wired.
-- [ ] 2.7 Ship. Live check: `risk/wars.json` has the sides and backers of Ukraine and Sudan. Then one update run (`-f sources=wikipedia`), watched.
+- [x] 2.7 Ship. Live check: `risk/wars.json` has the sides and backers of Ukraine and Sudan. Then one update run (`-f sources=wikipedia`), watched.
 
 ## Part 3: The Wars panel
 
-- [ ] 3.1 `site/js/datasets/wars/logic.js` (pure): `warRows`, `warModel`, `sideLabels`, `newRows`.
-- [ ] 3.2 The Wars list instead of the feed; no Filters in Wars; the overview's New chips (the sub-line moves to a tooltip).
-- [ ] 3.3 The war card (fixed height), the `war` target, and `war=` in the URL.
-- [ ] 3.4 The map: the sides of a hovered or selected war in two hues, where it's fought outlined, the rest faded; the latest month's events as dots.
-- [ ] 3.5 Place card and country view: both sides per conflict, and buttons to the war card.
-- [ ] 3.6 Text: the new `wars.*` keys; the help explains the sides and the dots.
-- [ ] 3.7 Tests:
-  - [ ] unit site: `warRows`, `warModel` (Wikipedia sides, UCDP fallback, unnamed groups), `newRows`, `sideLabels`.
-  - [ ] e2e: the Wars list (8, then all); hovering highlights the sides; clicking opens the war card; fixed height; `#war=` and Back; dots and their tooltip; phone.
-  - [ ] edited: the per-mode loop for Wars, Filters in Wars, the overview, the place card's conflict rows, the shots and live-check lists.
-  - [ ] deleted: the Wars feed tests.
+- [x] 3.1 `site/js/datasets/wars/logic.js` (pure): `warRows`, `warModel`, `sideLabels`, `newRows`.
+- [x] 3.2 The Wars list instead of the feed; no Filters in Wars; the overview's New chips (the sub-line moves to a tooltip).
+- [x] 3.3 The war card (fixed height), the `war` target, and `war=` in the URL.
+- [x] 3.4 The map: the sides of a hovered or selected war in two hues, where it's fought outlined, the rest faded; the latest month's events as dots.
+- [x] 3.5 Place card and country view: both sides per conflict, and buttons to the war card.
+- [x] 3.6 Text: the new `wars.*` keys; the help explains the sides and the dots.
+- [x] 3.7 Tests:
+  - [x] unit site: `warRows`, `warModel` (Wikipedia sides, UCDP fallback, unnamed groups), `newRows`, `sideLabels`.
+  - [x] e2e: the Wars list (8, then all); hovering highlights the sides; clicking opens the war card; fixed height; `#war=` and Back; dots and their tooltip; phone.
+  - [x] edited: the per-mode loop for Wars, Filters in Wars, the overview, the place card's conflict rows, the shots and live-check lists.
+  - [x] deleted: the Wars feed tests.
 - [ ] 3.8 Ship. Live check: the Wars list; `#mode=wars&war=1-309` opens Sudan with SAF vs RSF; dots; no console errors.
 
 ## Part 4: The other modes, USGS and EONET
@@ -182,3 +182,4 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Log (one line per finished part: commit, deploy, tests)
 - Part 1: 86cacdf (+ 9239dd4 test fix), deploy green after the test fix (the first deploy failed: two header checks anchored at 'Updated'), live: Sudan's sides SFA, RSF; 4 new, 10 quiet; conflict-events.json 186 KB; update run 37041430778 (ucdp) green. Tests added: parser points and side ids, refetch of outdated versions, stored tables, sides from several dyads, new and quiet, dots, old format refused, data checks of sides and dots, e2e one-line header with delayed sources and the moves line with big numbers. Edited: UCDP fixture (+ a real Sudan-RSF row), parser, conflict and risk-layer tests, header texts, two e2e header checks. Deleted: none.
+- Part 2: 51f0eec (+ 718728f bot-data merge), deploy green, live: risk/wars.json with 38 conflicts (Ukraine A with Belarus, North Korea; Sudan RSF and SFA spelled out); update run 37043453470 (wikipedia) green. Tests added: the parser on real articles (Ukraine, Sudan, Lebanon, Mali, the 2026 Iran war and its template, Venezuela), the fetcher, side matching, risk/wars.json in the risk layer, store and runFetch for a context source, run descriptions, data and project checks. Edited: the provider list, project checks for a context kind. Deleted: none.

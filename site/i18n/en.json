@@ -44,7 +44,8 @@
   "conflict": "Conflict counts the deaths in organized violence that UCDP (Uppsala Conflict Data Program) records: fighting between a government and armed groups, between armed groups, and attacks on civilians, where they happened. A war is a conflict with a government on one side and 1,000 or more deaths in 12 months, wherever it is fought. UCDP's figures are preliminary and come out monthly, a month or two behind.",
   "confidence": "A level rises as soon as a source reports it. A fall is applied once a later update confirms it, so a level doesn't flicker.",
   "news": "News activity (GDELT) compares protests and violence in the news with a country's normal week. It is shown as unusual or not, and never sets a level.",
-  "ours": "The levels are this site's summary of the sources, not official levels. Each card links to its source."
+  "ours": "The levels are this site's summary of the sources, not official levels. Each card links to its source.",
+  "wars": "In Wars, a war's card shows who fights whom: the sides UCDP records (governments and armed groups, with the deaths in their fighting), and, from Wikipedia, the other countries fighting beside them and the countries backing them. Hover or pick a war to colour its two sides on the map. The dots are the deadly events of the latest month, sized by deaths."
  },
  "search": {
   "placeholder": "Find a country",
@@ -561,7 +562,8 @@
    "title": "Deaths, 12 months:",
    "over": "{min}+",
    "range": "{min}–{max}",
-   "fewer": "Under {min}"
+   "fewer": "Under {min}",
+   "dots": "Deadly events in {month}"
   },
   "unnamedNoParty": "Armed conflict in {place}",
   "otherViolence": "Also {groups} killed between armed groups and {civilians} in attacks on civilians.",
@@ -572,6 +574,64 @@
   "tensionTitle": "{pair}: {count} military news reports between them in {days} days, usually about {expected} (GDELT)",
   "tensionFigures": "{count} military reports between them in {days} days, usually about {expected}",
   "tensionsCountry": "Tensions with other countries",
-  "tensionShort": "{count} · usually {expected}"
+  "tensionShort": "{count} · usually {expected}",
+  "vs": "{a} vs {b}",
+  "vsShort": "vs",
+  "andMore": "{names} +{count}",
+  "unidentified": "unidentified armed group",
+  "newTitle": "New in 12 months",
+  "with": "with {names}",
+  "backedBy": "backed by {names}",
+  "kindWar": "War",
+  "kindConflict": "Armed conflict",
+  "kindQuiet": "Gone quiet",
+  "warEyebrow": "{kind} · since {since}",
+  "warBadge": {
+   "one": "{deaths} death in 12 months",
+   "other": "{deaths} deaths in 12 months"
+  },
+  "warLast": {
+   "one": "{deaths} death in {month}",
+   "other": "{deaths} deaths in {month}"
+  },
+  "civilians": {
+   "one": "{deaths} of them a civilian (UCDP)",
+   "other": "{deaths} of them civilians (UCDP)"
+  },
+  "quietBadge": "No deaths since {month}",
+  "quietBefore": {
+   "one": "{deaths} death in the 12 months before",
+   "other": "{deaths} deaths in the 12 months before"
+  },
+  "credit": "Summary: Wikipedia, CC BY-SA 4.0",
+  "noArticle": "The sides as UCDP records them. No Wikipedia article is linked for this conflict yet.",
+  "linkWikipedia": "Wikipedia ↗",
+  "linkMap": "Map ↗",
+  "listTitle": "Wars and armed conflicts",
+  "listAll": "Show all {count}",
+  "rowTitle": {
+   "one": "{name}: {deaths} death in 12 months",
+   "other": "{name}: {deaths} deaths in 12 months"
+  },
+  "quietTitle": "Gone quiet",
+  "quietAbout": "No deaths in the last 3 months, after 100 or more in the 12 months before",
+  "quietSince": "No deaths since {month}",
+  "searchWar": {
+   "one": "War · {deaths} death in 12 months",
+   "other": "War · {deaths} deaths in 12 months"
+  },
+  "searchConflict": {
+   "one": "Armed conflict · {deaths} death in 12 months",
+   "other": "Armed conflict · {deaths} deaths in 12 months"
+  },
+  "footer": "Data: {sources}. Sides and summaries from Wikipedia (CC BY-SA 4.0).",
+  "about": "How it works",
+  "dots": {
+   "event": {
+    "one": "{date} · {deaths} death",
+    "other": "{date} · {deaths} deaths"
+   },
+   "unknownPlace": "Place not given"
+  }
  }
 }

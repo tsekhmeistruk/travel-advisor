@@ -117,6 +117,7 @@
      204
     ],
     "first": "2024-01",
+    "trend": "down",
     "war": true,
     "places": [
      "sd",
@@ -146,7 +147,6 @@
      "b": [
       {
        "name": null,
-       "place": "cf",
        "deaths": 56
       },
       {
@@ -177,6 +177,7 @@
      3
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cf",
@@ -222,6 +223,7 @@
      48
     ],
     "first": "2024-02",
+    "trend": null,
     "war": false,
     "places": [
      "et",
@@ -273,6 +275,7 @@
      204
     ],
     "first": "2024-01",
+    "trend": "down",
     "war": true,
     "places": [
      "sd",

@@ -1,18 +1,21 @@
 // The part of the app's state that lives in the URL, so a view can be linked and shared:
-//   #mode=disaster&place=mx&view=country, #mode=highest&view=list
+//   #mode=disaster&place=mx&view=country, #mode=highest&view=list, #mode=wars&war=1-309
+// A war is a UCDP conflict key ("1:309"), written with a dash so the link stays readable.
 // Pure: main.js reads location.hash and writes it back with history.replaceState.
 
-/** { mode, place, view } from a location hash; missing parts are null. */
+/** { mode, place, view, war } from a location hash; missing parts are null. */
 export function parseHash(hash) {
   const params = new URLSearchParams(String(hash ?? '').replace(/^#/, ''));
-  return { mode: params.get('mode') || null, place: params.get('place') || null, view: params.get('view') || null };
+  const war = params.get('war');
+  return { mode: params.get('mode') || null, place: params.get('place') || null, view: params.get('view') || null, war: /^\d+[-:]\d+$/.test(war ?? '') ? war.replace('-', ':') : null };
 }
 
-/** The hash for a state: "#mode=travel", "#mode=disaster&place=mx", "…&view=country" (which needs a place), "…&view=list". */
-export function formatHash({ mode, place, view }) {
+/** The hash for a state: "#mode=travel", "#mode=disaster&place=mx", "…&view=country" (which needs a place), "…&view=list", "#mode=wars&war=1-309". */
+export function formatHash({ mode, place, view, war }) {
   const params = new URLSearchParams();
   if (mode) params.set('mode', mode);
   if (place) params.set('place', place);
+  else if (war) params.set('war', war.replace(':', '-'));
   if (view && (place || view === 'list')) params.set('view', view);
   const s = params.toString();
   return s ? `#${s}` : '';

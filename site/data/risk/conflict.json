@@ -158,6 +158,7 @@
     5702
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "ua",
@@ -207,6 +208,7 @@
     204
    ],
    "first": "2024-01",
+   "trend": "down",
    "war": true,
    "places": [
     "sd",
@@ -252,6 +254,7 @@
     25
    ],
    "first": "2024-01",
+   "trend": "down",
    "war": true,
    "places": [
     "lb",
@@ -324,6 +327,7 @@
     101
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "gaza",
@@ -377,6 +381,7 @@
     2
    ],
    "first": "2026-02",
+   "trend": "down",
    "war": true,
    "places": [
     "ir",
@@ -441,6 +446,7 @@
     137
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "so"
@@ -484,6 +490,7 @@
     113
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "et"
@@ -535,6 +542,7 @@
     301
    ],
    "first": "2024-01",
+   "trend": "up",
    "war": true,
    "places": [
     "pk",
@@ -562,7 +570,6 @@
     "b": [
      {
       "name": null,
-      "place": "ng",
       "deaths": 2367
      },
      {
@@ -637,6 +644,7 @@
     450
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "ng"
@@ -680,6 +688,7 @@
     107
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "bf"
@@ -723,6 +732,7 @@
     184
    ],
    "first": "2024-01",
+   "trend": "down",
    "war": true,
    "places": [
     "ng"
@@ -770,6 +780,7 @@
     1365
    ],
    "first": "2024-01",
+   "trend": "up",
    "war": true,
    "places": [
     "ye",
@@ -814,6 +825,7 @@
     207
    ],
    "first": "2024-01",
+   "trend": "up",
    "war": true,
    "places": [
     "pk"
@@ -857,6 +869,7 @@
     78
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "ml"
@@ -916,6 +929,7 @@
     66
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "mm"
@@ -963,6 +977,7 @@
     44
    ],
    "first": "2024-01",
+   "trend": null,
    "war": true,
    "places": [
     "cd",
@@ -1008,6 +1023,7 @@
     0
    ],
    "first": "2024-03",
+   "trend": "down",
    "war": false,
    "places": [
     "af",
@@ -1053,6 +1069,7 @@
     22
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "et"
@@ -1096,6 +1113,7 @@
     18
    ],
    "first": "2024-02",
+   "trend": "up",
    "war": false,
    "places": [
     "ne"
@@ -1122,7 +1140,6 @@
     "b": [
      {
       "name": null,
-      "place": "pk",
       "deaths": 333
      },
      {
@@ -1153,6 +1170,7 @@
     13
    ],
    "first": "2024-01",
+   "trend": "up",
    "war": false,
    "places": [
     "pk"
@@ -1228,6 +1246,7 @@
     28
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "co"
@@ -1271,6 +1290,7 @@
     45
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "mm"
@@ -1318,6 +1338,7 @@
     3
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ne"
@@ -1365,6 +1386,7 @@
     1
    ],
    "first": "2024-05",
+   "trend": "down",
    "war": false,
    "places": [
     "ng",
@@ -1410,6 +1432,7 @@
     0
    ],
    "first": "2024-10",
+   "trend": null,
    "war": false,
    "places": [
     "ss"
@@ -1453,6 +1476,7 @@
     17
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "mz"
@@ -1496,6 +1520,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "in"
@@ -1539,6 +1564,7 @@
     7
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ml"
@@ -1570,7 +1596,6 @@
      },
      {
       "name": null,
-      "place": "us",
       "deaths": 54
      },
      {
@@ -1601,6 +1626,7 @@
     2
    ],
    "first": "2024-04",
+   "trend": null,
    "war": false,
    "places": [
     "ve",
@@ -1648,6 +1674,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "mm"
@@ -1691,6 +1718,7 @@
     12
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "cm"
@@ -1734,6 +1762,7 @@
     0
    ],
    "first": "2024-02",
+   "trend": null,
    "war": false,
    "places": [
     "ht"
@@ -1777,6 +1806,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "mm"
@@ -1798,7 +1828,6 @@
     "b": [
      {
       "name": null,
-      "place": "sy",
       "deaths": 129
      }
     ]
@@ -1821,6 +1850,7 @@
     10
    ],
    "first": "2024-05",
+   "trend": null,
    "war": false,
    "places": [
     "sy"
@@ -1864,6 +1894,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "cd"
@@ -1890,7 +1921,6 @@
     "b": [
      {
       "name": null,
-      "place": "ne",
       "deaths": 109
      },
      {
@@ -1917,6 +1947,7 @@
     6
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ne"
@@ -1976,6 +2007,7 @@
     6
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "cf"
@@ -2012,7 +2044,6 @@
      },
      {
       "name": null,
-      "place": "iq",
       "deaths": 9
      }
     ]
@@ -2035,6 +2066,7 @@
     2
    ],
    "first": "2024-04",
+   "trend": null,
    "war": false,
    "places": [
     "iq"
@@ -2081,6 +2113,7 @@
     0
    ],
    "first": "2025-05",
+   "trend": null,
    "war": false,
    "places": [
     "th",
@@ -2126,6 +2159,7 @@
     0
    ],
    "first": "2024-05",
+   "trend": null,
    "war": false,
    "places": [
     "so"
@@ -2169,6 +2203,7 @@
     5
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "id"
@@ -2212,6 +2247,7 @@
     3
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ph"
@@ -2255,6 +2291,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ml"
@@ -2298,6 +2335,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "sy"
@@ -2324,7 +2362,6 @@
     "b": [
      {
       "name": null,
-      "place": "cf",
       "deaths": 56
      },
      {
@@ -2355,6 +2392,7 @@
     3
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "cf",
@@ -2382,7 +2420,6 @@
     "b": [
      {
       "name": null,
-      "place": "co",
       "deaths": 62
      },
      {
@@ -2417,6 +2454,7 @@
     31
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "co"
@@ -2460,6 +2498,7 @@
     48
    ],
    "first": "2024-02",
+   "trend": null,
    "war": false,
    "places": [
     "et",
@@ -2505,6 +2544,7 @@
     0
    ],
    "first": "2025-01",
+   "trend": null,
    "war": false,
    "places": [
     "ye"
@@ -2532,7 +2572,6 @@
     "b": [
      {
       "name": null,
-      "place": "ht",
       "deaths": 33
      },
      {
@@ -2563,6 +2602,7 @@
     0
    ],
    "first": "2024-02",
+   "trend": null,
    "war": false,
    "places": [
     "ht"
@@ -2614,6 +2654,7 @@
     11
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ir"
@@ -2657,6 +2698,7 @@
     28
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "af",
@@ -2713,6 +2755,7 @@
     0
    ],
    "first": "2026-02",
+   "trend": null,
    "war": false,
    "places": [
     "iq",
@@ -2757,6 +2800,7 @@
     1
    ],
    "first": "2024-02",
+   "trend": null,
    "war": false,
    "places": [
     "pk"
@@ -2783,7 +2827,6 @@
     "b": [
      {
       "name": null,
-      "place": "mx",
       "deaths": 50
      },
      {
@@ -2810,6 +2853,7 @@
     4
    ],
    "first": "2024-03",
+   "trend": null,
    "war": false,
    "places": [
     "mx"
@@ -2853,6 +2897,7 @@
     3
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "cm"
@@ -2896,6 +2941,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "iq"
@@ -2959,6 +3005,7 @@
     28
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "af",
@@ -3003,6 +3050,7 @@
     2
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "sy"
@@ -3029,7 +3077,6 @@
     "b": [
      {
       "name": null,
-      "place": "cd",
       "deaths": 37
      },
      {
@@ -3056,6 +3103,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "cd"
@@ -3099,6 +3147,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "cm"
@@ -3142,6 +3191,7 @@
     0
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "bj",
@@ -3190,6 +3240,7 @@
     6
    ],
    "first": "2026-05",
+   "trend": null,
    "war": false,
    "places": [
     "et"
@@ -3233,6 +3284,7 @@
     4
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "th"
@@ -3276,6 +3328,7 @@
     5
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ng"
@@ -3306,7 +3359,6 @@
      },
      {
       "name": null,
-      "place": "ug",
       "deaths": 6
      }
     ]
@@ -3329,6 +3381,7 @@
     0
    ],
    "first": "2024-02",
+   "trend": null,
    "war": false,
    "places": [
     "ug"
@@ -3350,7 +3403,6 @@
     "b": [
      {
       "name": null,
-      "place": "ir",
       "deaths": 34
      }
     ]
@@ -3373,6 +3425,7 @@
     1
    ],
    "first": "2024-03",
+   "trend": null,
    "war": false,
    "places": [
     "ir"
@@ -3416,6 +3469,7 @@
     7
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "ph"
@@ -3442,7 +3496,6 @@
     "b": [
      {
       "name": null,
-      "place": "ve",
       "deaths": 30
      },
      {
@@ -3469,6 +3522,7 @@
     0
    ],
    "first": "2026-01",
+   "trend": null,
    "war": false,
    "places": [
     "ve"
@@ -3490,7 +3544,6 @@
     "b": [
      {
       "name": null,
-      "place": "cm",
       "deaths": 30
      }
     ]
@@ -3513,6 +3566,7 @@
     0
    ],
    "first": "2024-03",
+   "trend": null,
    "war": false,
    "places": [
     "cm"
@@ -3556,6 +3610,7 @@
     0
    ],
    "first": "2024-03",
+   "trend": null,
    "war": false,
    "places": [
     "ru"
@@ -3599,6 +3654,7 @@
     1
    ],
    "first": "2024-01",
+   "trend": null,
    "war": false,
    "places": [
     "in"
@@ -3620,7 +3676,6 @@
     "b": [
      {
       "name": null,
-      "place": "et",
       "deaths": 25
      }
     ]
@@ -3643,6 +3698,7 @@
     0
    ],
    "first": "2024-03",
+   "trend": null,
    "war": false,
    "places": [
     "et"

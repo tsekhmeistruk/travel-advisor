@@ -32,9 +32,9 @@ for (const mode of RISK_MODES) {
       test('colours every country by its risk level (Normal in the calm risk fill)', () => {
         assert.ok(stats.colored > 200, `${stats.colored} coloured`);
       });
-      test('pulses the level changes and lists them in the feed', () => {
+      test('pulses the level changes and lists them in the feed (Wars lists the wars instead)', () => {
         assert.ok(stats.pulses >= MIN_PULSES[mode], `${stats.pulses} pulses`);
-        assert.ok(stats.recent >= stats.pulses, `${stats.recent} listed, ${stats.pulses} pulses`);
+        if (mode !== 'wars') assert.ok(stats.recent >= stats.pulses, `${stats.recent} listed, ${stats.pulses} pulses`);
       });
       test('keeps the details card one fixed height for every country', () => {
         assert.equal(stats.heights.length, 1, `heights: ${stats.heights.join(', ')}`);
@@ -284,9 +284,13 @@ describe('risk panel', () => {
     await page.close();
   });
 
-  test('the filters are collapsed on a first visit, and stay as the visitor leaves them', async () => {
+  test('the filters are collapsed on a first visit, and stay as the visitor leaves them; Wars has none', async () => {
     const page = await openRaw({ stored: { filtersOpen: undefined } });
     await page.waitForSelector('path.country');
+    assert.equal(await page.$eval('#filters', el => el.checkVisibility()), false, 'Wars (a first visit): no Filters, they only filtered the feed');
+    await page.click('#modeSwitch [data-mode="highest"]');
+    await page.waitForSelector('#riskLevelChips');
+    assert.equal(await page.$eval('#filters', el => el.checkVisibility()), true);
     const isOpen = () => page.$eval('#filters', el => el.open);
     assert.equal(await isOpen(), false);
     assert.equal(await page.$eval('#riskLevelChips', el => el.checkVisibility()), false, 'hidden while collapsed');
@@ -643,5 +647,142 @@ describe('countries list', () => {
     assert.equal((await list(page)).open, true, 'the header button opens it');
     assert.deepEqual(page.errors, []);
     await page.close();
+  });
+});
+
+describe('Wars: who fights whom', () => {
+  const published = (name) => JSON.parse(readFileSync(new URL(`../../site/data/risk/${name}.json`, import.meta.url), 'utf8'));
+  const conflict = published('conflict');
+  const wars = published('wars');
+  const keys = Object.keys(conflict.conflicts);
+  // A war with an article (Wikipedia's title and summary) and several groups on side B.
+  const sudanLike = keys.find(k => conflict.conflicts[k].war && wars.conflicts[k] && conflict.conflicts[k].sides.b.length > 1) ?? keys[0];
+  const sideClasses = (page) => page.$$eval('path.country', els => {
+    const count = (c) => els.filter(e => e.classList.contains(c)).length;
+    return { a: count('side-a'), b: count('side-b'), muted: count('is-muted') };
+  });
+
+  test('the Wars list replaces the feed: the deadliest first, then all of them and those gone quiet; no Filters', async () => {
+    const page = await openMode('wars');
+    assert.equal(await text(page, 'recentTitle'), 'Wars and armed conflicts');
+    assert.equal(await text(page, 'recentCount'), String(keys.length));
+    const rows = () => page.$$eval('#recentList button[data-key^="war:"]', els => els.map(b => b.dataset.key.slice(4)));
+    assert.deepEqual(await rows(), keys.slice(0, 8), 'the first 8, most deaths first');
+    assert.match(await page.$eval('#recentList button[data-key]', b => b.querySelector('.name').textContent), / vs /, 'who fights whom');
+    await page.click('#recentList [data-feed-all]');
+    assert.deepEqual((await rows()).slice(0, keys.length), keys);
+    if (conflict.quiet.length) assert.equal(await page.$eval('#recentList .recent-sub', el => el.textContent), 'Gone quiet');
+    assert.equal(await page.$eval('#filters', el => el.checkVisibility()), false);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('hovering a war shows its card and colours its sides; leaving restores the map; a click keeps it, zooms and goes in the URL', async () => {
+    const page = await openMode('wars');
+    const row = `#recentList button[data-key="war:${sudanLike}"]`;
+    await page.hover(row);
+    assert.equal(await detailsTitle(page), wars.conflicts[sudanLike].title.replace(/\s*\([^()]*\)\s*$/, ''));
+    assert.equal(await page.$$eval('#details .war-side', els => els.length), 2);
+    const shown = await sideClasses(page);
+    assert.ok(shown.a >= 1 && shown.muted > 150, JSON.stringify(shown));
+    await page.hover('#footer');
+    assert.deepEqual(await sideClasses(page), { a: 0, b: 0, muted: 0 }, 'the usual map again');
+    assert.equal(await page.$$eval('#details .wars-count', els => els.length), 1, 'the overview again');
+    await page.click(row);
+    await sleep(900);
+    await page.hover('#footer');
+    assert.equal(await page.evaluate(() => location.hash), `#mode=wars&war=${sudanLike.replace(':', '-')}`);
+    assert.ok((await sideClasses(page)).a >= 1, 'kept while the pointer is elsewhere');
+    assert.ok(await page.$eval('.viewport', el => !/scale\(1\)$/.test(el.getAttribute('transform') ?? '') && /scale/.test(el.getAttribute('transform') ?? '')), 'zoomed to where it is fought');
+    assert.equal(await page.$eval(row, b => b.classList.contains('is-active')), true);
+    await page.click('#map', { offset: { x: 5, y: 400 } });   // the ocean clears the selection
+    await sleep(200);
+    assert.deepEqual(await sideClasses(page), { a: 0, b: 0, muted: 0 });
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  for (const [width, height] of [[1440, 860], [390, 844]]) {
+    test(`at ${width}px every war's card keeps the fixed height, and fits`, async () => {
+      const page = await openMode('wars', { width, height });
+      await page.click('#recentList [data-feed-all]');
+      const stats = await page.evaluate(() => {
+        const card = document.getElementById('details');
+        const heights = new Set(), overflow = [], cut = [];
+        const buttons = [...document.querySelectorAll('#recentList button[data-key^="war:"]')];
+        for (const b of buttons) {
+          b.dispatchEvent(new PointerEvent('pointerover', { bubbles: true }));
+          heights.add(card.offsetHeight);
+          const last = [...card.children].at(-1);
+          if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(b.dataset.key);
+          for (const el of card.querySelectorAll('.badge, .link, .trend')) if (el.scrollWidth > el.clientWidth + 1) cut.push(b.dataset.key);
+        }
+        return { heights: [...heights], overflow, cut: [...new Set(cut)], cards: buttons.length };
+      });
+      assert.ok(stats.cards >= keys.length, `${stats.cards} cards`);
+      assert.equal(stats.heights.length, 1, `heights: ${stats.heights.join(', ')}`);
+      assert.deepEqual([...stats.overflow, ...stats.cut], []);
+      assert.deepEqual(page.errors, []);
+      await page.close();
+    });
+  }
+
+  test('a link opens a war; a side\'s country and the place card\'s conflicts lead on; the search finds a war', async () => {
+    const page = await openRaw({ hash: `#mode=wars&war=${sudanLike.replace(':', '-')}` });
+    await page.waitForSelector('#details .war-sides');
+    assert.ok((await sideClasses(page)).a >= 1, 'the link colours the sides');
+    const place = await page.$eval('#details .war-side.a button[data-place]', b => b.dataset.place);
+    await page.click('#details .war-side.a button[data-place]');
+    await sleep(900);
+    await page.hover('#footer');
+    assert.match(await page.evaluate(() => location.hash), new RegExp(`place=${place}`), 'a side\'s country opens its card');
+    const war = await page.$eval('#details .wars-conflicts button[data-war]', b => b.dataset.war);
+    await page.click('#details .wars-conflicts button[data-war]');
+    await sleep(300);
+    await page.hover('#footer');
+    assert.equal(await page.$$eval('#details .war-sides', els => els.length), 1, 'its conflict opens the war card');
+    assert.equal(await page.evaluate(() => location.hash), `#mode=wars&war=${war.replace(':', '-')}`);
+    await page.click('#search');
+    await page.type('#search', 'Russia vs');
+    await page.waitForSelector('#searchResults li');
+    await page.keyboard.press('Enter');
+    await sleep(300);
+    assert.match(await page.evaluate(() => location.hash), /war=1-13243/, 'Russia vs Ukraine');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('the month\'s deadly events are dots: each explained on hover, a click picks its war; the footer\'s "How it works" opens the help', async () => {
+    const page = await openMode('wars');
+    const events = published('conflict-events').events;
+    assert.equal(await page.$$eval('.points .point', els => els.length), events.length);
+    const i = events.findIndex(e => conflict.conflicts[e[4]]);
+    const dot = (await page.$$('.points .point'))[i];
+    await dot.hover();
+    assert.match(await page.$eval('#tooltip', el => el.textContent), /\d+ deaths?/);
+    assert.match(await page.$eval('#tooltip', el => el.textContent), / vs /);
+    await dot.click();
+    await sleep(300);
+    assert.equal(await page.evaluate(() => location.hash), `#mode=wars&war=${events[i][4].replace(':', '-')}`);
+    assert.ok(await page.$$eval('.points .point.is-dim', els => els.length) > 0, 'the other wars\' dots fade');
+    assert.match(await page.$eval('#legend', el => el.textContent), /Deadly events in \w+ \d{4}/);
+    await page.click('#footer [data-action="help"]');
+    assert.equal(await page.$eval('#help', el => el.open), true);
+    assert.match(await page.$eval('#help', el => el.textContent), /who fights whom/);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+  test('a war or a place too big to zoom into keeps the world in view (the pan limits hold)', async () => {
+    for (const hash of ['#mode=wars&war=1-13243', '#mode=wars&place=ru']) {
+      const page = await openRaw({ hash });
+      await page.waitForSelector('path.country');
+      await sleep(1000);   // the zoom's transition
+      const t = await page.$eval('.viewport', el => el.getAttribute('transform'));
+      const [, x, y, k] = t.match(/translate\(([-\d.e]+),([-\d.e]+)\) scale\(([\d.]+)\)/).map(Number);
+      if (k === 1) assert.deepEqual([Math.abs(Math.round(x)), Math.abs(Math.round(y))], [0, 0], `${hash}: ${t}`);
+      const sphere = await page.$eval('.sphere', el => { const r = el.getBoundingClientRect(); return { top: r.top, bottom: r.bottom }; });
+      assert.ok(sphere.top < 300 && sphere.bottom > 500, `${hash}: the world on screen ${JSON.stringify(sphere)}`);
+      await page.close();
+    }
   });
 });

@@ -21,6 +21,12 @@
   --l3: #ee8433;
   --l4: #de3f46;
   --risk-normal: #a9c4b6;   /* Normal in the risk modes: calm, so Elevated and above stand out */
+  /* A war's two sides (Okabe–Ito blue and reddish purple: told apart with any colour vision, and
+     unlike the level colours), and the month's deadly events as dots. */
+  --side-a: #0072b2;
+  --side-b: #c45a95;
+  --fought: #9ba4b2;
+  --event-dot: rgba(21, 26, 34, .62);
 
   --radius: 12px;
   --panel-w: 364px;   /* 348px of content width + 16px for a classic scrollbar */
@@ -50,6 +56,10 @@
     --l3: #e57a2b;
     --l4: #e5484f;
     --risk-normal: #3b5a4c;
+    --side-a: #3d9be0;
+    --side-b: #d983b4;
+    --fought: #5a6473;
+    --event-dot: rgba(231, 235, 241, .7);
     color-scheme: dark;
   }
 }
@@ -75,6 +85,10 @@
   --l3: #e57a2b;
   --l4: #e5484f;
   --risk-normal: #3b5a4c;
+  --side-a: #3d9be0;
+  --side-b: #d983b4;
+  --fought: #5a6473;
+  --event-dot: rgba(231, 235, 241, .7);
   color-scheme: dark;
 }
 
@@ -129,6 +143,11 @@ h1, h2 { margin: 0; }
 .l3 { fill: var(--l3); }
 .l4 { fill: var(--l4); }
 .r1 { fill: var(--risk-normal); }
+/* Wars: a war's sides while it is shown; the countries Wikipedia puts with a side are lighter. */
+.side-a { fill: var(--side-a); }
+.side-b { fill: var(--side-b); }
+.fought { fill: var(--fought); }
+.country.ally, .dot.ally { opacity: .55; }
 /* Country names, zoomed in: a halo keeps them readable on any fill; clicks go to the map. */
 .map-label {
   font-size: 11.5px; font-weight: 600; fill: var(--text);
@@ -174,6 +193,10 @@ h1, h2 { margin: 0; }
 .marker .count { fill: #fff; font-size: 10px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
 .marker:hover .disc { stroke: var(--hover-stroke); stroke-width: 2; }
 .marker.is-selected .disc { stroke: var(--accent); stroke-width: 2.5; }
+/* The month's deadly events (Wars): small dots sized by deaths; another war's fade while one is shown. */
+.point { fill: var(--event-dot); stroke: var(--panel); stroke-width: .6; stroke-opacity: .7; cursor: pointer; transition: opacity .2s; }
+.point:hover { stroke: var(--hover-stroke); stroke-width: 1.5; stroke-opacity: 1; }
+.point.is-dim { opacity: .12; }
 .legend-marker { width: 12px; height: 12px; border-radius: 50%; background: var(--l3); border: 1.5px solid var(--panel); box-shadow: 0 0 0 1px var(--line); }
 
 .pulse { pointer-events: none; }
@@ -382,6 +405,7 @@ h1, h2 { margin: 0; }
 .swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
 .swatch.none { background: var(--land-none); }
 .legend-pulse { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--text); position: relative; }
+.legend-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--event-dot); }
 .legend-pulse::after { content: ""; position: absolute; inset: 2px; border-radius: 50%; background: var(--text); }
 
 /* ---------- Panel ---------- */
@@ -600,8 +624,8 @@ h1, h2 { margin: 0; }
 .wars-spark-label { font-size: 11px; color: var(--text-3); white-space: nowrap; }
 .details p.wars-sub { margin-top: 8px; height: calc(2 * 1.45em); font-size: 12px; line-height: 1.45; color: var(--text-3); overflow: hidden; }
 .details p.wars-deaths { margin-top: 8px; height: 20px; font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
-.wars-trend { width: 100%; margin-top: 8px; }
-.wars-chips { display: flex; align-items: center; gap: 4px; height: 26px; margin-top: 3px; white-space: nowrap; overflow: hidden; font-size: 12.5px; }
+.wars-trend { width: 100%; margin-top: 5px; }
+.wars-chips { display: flex; align-items: center; gap: 4px; height: 24px; margin-top: 2px; white-space: nowrap; overflow: hidden; font-size: 12.5px; }
 .wars-trend button {
   display: inline-flex; align-items: baseline; gap: 4px; flex: none;
   padding: 2px 7px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel);
@@ -624,6 +648,26 @@ h1, h2 { margin: 0; }
 .wars-conflicts .what { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .details p.wars-other { margin: 2px 0 0; height: calc(2 * 1.45em); font-size: 12px; line-height: 1.45; color: var(--text-3); overflow: hidden; }
 .details p.wars-quiet { margin-top: 12px; font-size: 13px; }
+/* A conflict row is a button to its war card. */
+.wars-conflicts button { display: flex; align-items: center; gap: 7px; width: 100%; min-width: 0; padding: 0; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.wars-conflicts button:hover .what, .wars-conflicts button:focus-visible .what { text-decoration: underline; }
+/* The war card: who fights whom, side A over side B, each in its map colour: its fighters (a
+   line) and the countries Wikipedia puts with it and its backers (a line); then the deaths, the
+   months, and Wikipedia's summary (two lines) with its credit. Fixed slots, like every card. */
+.war-sides { display: flex; flex-direction: column; gap: 3px; width: 100%; margin: 0 0 10px; }
+.war-side { min-width: 0; padding: 1px 0 1px 9px; border-left: 4px solid var(--side-a); border-radius: 2px; }
+.war-side.b { border-left-color: var(--side-b); }
+.war-names { height: 1.4em; font-size: 13.5px; line-height: 1.4; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.war-names button { padding: 0; border: 0; background: none; font: inherit; color: inherit; cursor: pointer; }
+.war-names button:hover, .war-names button:focus-visible { text-decoration: underline; }
+.war-extra { height: 1.45em; font-size: 12px; line-height: 1.45; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.war-vs { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); }
+.details p.war-extract {
+  margin: 10px 0 0; height: calc(2 * 1.45em); font-size: 12.5px; line-height: 1.45; color: var(--text);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.details p.war-extract.dim { color: var(--text-3); }
+.details p.war-credit { margin: 2px 0 0; height: 16px; font-size: 11px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cv-figure { margin: 6px 0 0; font-size: 13px; font-weight: 600; }
 .cv-section .wars-bars svg { height: 56px; }
 .legend-title { color: var(--text-3); }
@@ -796,6 +840,8 @@ h1, h2 { margin: 0; }
 .recent-empty { color: var(--text-3); font-size: 13px; padding: 4px 6px; }
 .recent-list .recent-empty .link-btn, .recent-list .recent-more .link-btn { display: inline; width: auto; padding: 0; font-size: 13px; color: var(--accent); }
 .recent-list .recent-more { padding: 6px 6px 0; }
+.recent-list .recent-sub { padding: 12px 6px 2px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); }
+.filters[hidden] { display: none; }
 .recent-list .recent-more .link-btn:hover { background: none; }
 
 .panel-footer { margin-top: auto; padding-top: 6px; border-top: 1px solid var(--line); padding-top: 12px; line-height: 1.5; }

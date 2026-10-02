@@ -133,6 +133,7 @@
      5702
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "ua",
@@ -179,6 +180,7 @@
      0
     ],
     "first": "2024-03",
+    "trend": null,
     "war": false,
     "places": [
      "ru"
@@ -226,6 +228,7 @@
      5702
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "ua",
@@ -272,6 +275,7 @@
      0
     ],
     "first": "2024-03",
+    "trend": null,
     "war": false,
     "places": [
      "ru"

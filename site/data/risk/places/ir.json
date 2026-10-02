@@ -121,6 +121,7 @@
      2
     ],
     "first": "2026-02",
+    "trend": "down",
     "war": true,
     "places": [
      "ir",
@@ -186,6 +187,7 @@
      11
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ir"
@@ -208,7 +210,6 @@
      "b": [
       {
        "name": null,
-       "place": "ir",
        "deaths": 34
       }
      ]
@@ -231,6 +232,7 @@
      1
     ],
     "first": "2024-03",
+    "trend": null,
     "war": false,
     "places": [
      "ir"
@@ -287,6 +289,7 @@
      0
     ],
     "first": "2026-02",
+    "trend": null,
     "war": false,
     "places": [
      "iq",
@@ -340,6 +343,7 @@
      2
     ],
     "first": "2026-02",
+    "trend": "down",
     "war": true,
     "places": [
      "ir",
@@ -405,6 +409,7 @@
      11
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ir"
@@ -461,6 +466,7 @@
      0
     ],
     "first": "2026-02",
+    "trend": null,
     "war": false,
     "places": [
      "iq",
@@ -484,7 +490,6 @@
      "b": [
       {
        "name": null,
-       "place": "ir",
        "deaths": 34
       }
      ]
@@ -507,6 +512,7 @@
      1
     ],
     "first": "2024-03",
+    "trend": null,
     "war": false,
     "places": [
      "ir"

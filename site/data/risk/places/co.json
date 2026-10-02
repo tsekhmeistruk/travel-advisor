@@ -145,6 +145,7 @@
      28
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "co"
@@ -172,7 +173,6 @@
      "b": [
       {
        "name": null,
-       "place": "co",
        "deaths": 62
       },
       {
@@ -207,6 +207,7 @@
      31
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "co"
@@ -239,7 +240,6 @@
       },
       {
        "name": null,
-       "place": "us",
        "deaths": 54
       },
       {
@@ -270,6 +270,7 @@
      2
     ],
     "first": "2024-04",
+    "trend": null,
     "war": false,
     "places": [
      "ve",
@@ -352,6 +353,7 @@
      28
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "co"
@@ -379,7 +381,6 @@
      "b": [
       {
        "name": null,
-       "place": "co",
        "deaths": 62
       },
       {
@@ -414,6 +415,7 @@
      31
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "co"

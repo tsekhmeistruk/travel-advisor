@@ -3,9 +3,10 @@
 // dataset module (see datasets/registry.js). Switching modes swaps the dataset in place: the
 // map, its zoom and the selected place stay.
 //
-// Interaction model: a "target" is { placeId } or { recordKey }. Hovering sets a temporary
-// target, clicking sets the selected one; the details card shows hovered ?? selected.
-// The mode and the selected place are also kept in the URL (#mode=…&place=…), for links.
+// Interaction model: a "target" is { placeId }, { recordKey }, { eventId, placeId? } or, in Wars,
+// { warKey }. Hovering sets a temporary target, clicking sets the selected one; the details card
+// shows hovered ?? selected. A war also colours its sides on the map (dataset.focus).
+// The mode and the selected place or war are also kept in the URL (#mode=…&place=…), for links.
 
 import { $ } from './core/dom.js';
 import { createI18n, chooseLocale } from './core/i18n.js';
@@ -131,6 +132,12 @@ async function main() {
       if (cluster.items.length > 1 && map.canZoomIn()) map.zoomAround(cluster.x, cluster.y);
       else { select(dataset.eventTarget?.(cluster.items[0].id) ?? null, { toUrl: true }); showSheet(); }
     },
+    // A dot (an event of the month, in Wars) explains itself; a click picks its war.
+    onPointHover: (point, event) => {
+      if (point && event.pointerType === 'mouse' && dataset.pointTooltip) tooltip.show(dataset.pointTooltip(point.id), event);
+      else tooltip.hide();
+    },
+    onPointSelect: (point) => { select(dataset.pointTarget?.(point.id) ?? null, { zoom: true, toUrl: true }); showSheet(); },
   });
 
   $('zoomIn').onclick = () => map.zoomBy(1.6);
@@ -157,6 +164,8 @@ async function main() {
     $('app').classList.toggle('panel-collapsed', !settings.get('panelOpen'));
     $('panelOpen').hidden = settings.get('panelOpen');
   }
+  // The footer's "How it works" opens the help, like the legend's button.
+  $('footer').addEventListener('click', (e) => { if (e.target.closest('[data-action="help"]')) $('help').showModal(); });
   $('panelClose').onclick = () => { settings.set('panelOpen', false); applyPanel(); };
   $('panelOpen').onclick = () => { settings.set('panelOpen', true); applyPanel(); };
   applyPanel();
@@ -173,7 +182,15 @@ async function main() {
   function hover(target) {
     hovered = target;
     map.setHovered(target?.placeId ?? null);
+    applyFocus();
     renderDetails();
+  }
+  // The war the map shows: the hovered one, else the selected one. A change repaints the map.
+  const focusTarget = () => (hovered?.warKey ? hovered : selected?.warKey ? selected : null);
+  function applyFocus() {
+    if (!dataset.focus?.(focusTarget())) return;
+    map.repaint();
+    map.setPoints(dataset.points?.() ?? []);
   }
   // ---- phones: a tap on the map shows what was tapped in a sheet over the map, since the card
   // is below it. Details scrolls to the card (or the open panel view); × or the ocean closes it.
@@ -181,8 +198,9 @@ async function main() {
   const sheet = $('sheet');
   function showSheet() {
     const t = selected;
-    if (!phone.matches || !(t?.placeId || t?.eventId)) return hideSheet();
-    $('sheetBody').innerHTML = t.eventId && dataset.markerTooltip ? dataset.markerTooltip([t.eventId]) : dataset.tooltip(t.placeId);
+    if (!phone.matches || !(t?.placeId || t?.eventId || t?.warKey)) return hideSheet();
+    $('sheetBody').innerHTML = t.warKey && dataset.warTooltip ? dataset.warTooltip(t.warKey)
+      : t.eventId && dataset.markerTooltip ? dataset.markerTooltip([t.eventId]) : dataset.tooltip(t.placeId);
     sheet.hidden = false;
   }
   function hideSheet() { sheet.hidden = true; }
@@ -198,18 +216,20 @@ async function main() {
     selected = target;
     map.setSelected(target?.placeId ?? null);
     map.setSelectedMarker(target?.eventId ?? null);
+    applyFocus();
     renderDetails();
-    // An event zooms to its marker when the mode shows one, otherwise to its place.
-    if (zoom && !(target?.eventId && map.zoomToMarker(target.eventId)) && target?.placeId) map.zoomTo(target.placeId);
+    // An event zooms to its marker when the mode shows one, otherwise to its place; a war to where it is fought.
+    if (zoom && target?.warKey) map.zoomToPlaces(dataset.warPlaces?.(target.warKey) ?? []);
+    else if (zoom && !(target?.eventId && map.zoomToMarker(target.eventId)) && target?.placeId) map.zoomTo(target.placeId);
     const place = target?.placeId && !target.eventId ? target.placeId : null;
     if (follow && panelView === 'country') {
       // The country view follows the selected place, and closes with the selection.
       if (place) renderCountry(place);
-      else closeView({ all: !!target?.eventId });
+      else closeView({ all: !!(target?.eventId || target?.warKey) });
     } else if (follow && panelView === 'list') {
       // From the list, a place on the map opens its country view (Back returns to the list).
       if (place) return openCountry(place, { fromList: true, toUrl });
-      if (target?.eventId) closeView({ all: true });
+      if (target?.eventId || target?.warKey) closeView({ all: true });
     }
     if (toUrl) writeUrl();
   }
@@ -219,6 +239,8 @@ async function main() {
     const btn = e.target.closest('[data-action="country"]');
     if (btn) return openCountry(btn.dataset.place, { toUrl: true });
     if (e.target.closest('[data-action="list"]')) return openList({ toUrl: true });
+    const war = e.target.closest('[data-war]');
+    if (war) return select({ warKey: war.dataset.war }, { zoom: true, toUrl: true });
     const place = e.target.closest('button[data-place]');
     if (place) return select({ placeId: place.dataset.place }, { zoom: true, toUrl: true });
     onListClick(e);
@@ -316,8 +338,9 @@ async function main() {
     dataset = ds;
     settings.set('mode', mode.id);
     hovered = null;
-    // A record belongs to its dataset, an event to the modes that show it: keep only the place.
+    // A record belongs to its dataset, an event to the modes that show it: keep only the place. A war is Wars' own.
     if (selected?.recordKey || selected?.eventId) selected = selected.placeId ? { placeId: selected.placeId } : null;
+    if (selected?.warKey) selected = null;
     map.setSelectedMarker(null);
     refresh();
     // The views show this mode's levels: redraw them (a kept list, when Back comes to it).
@@ -333,13 +356,16 @@ async function main() {
 
   // Written on user actions only, so a plain visit keeps a plain URL.
   function writeUrl() {
-    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId, view: panelView })}`);
+    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId, war: selected?.warKey, view: panelView })}`);
   }
   window.addEventListener('hashchange', async () => {
     const want = parseHash(location.hash);
     if (want.mode) await switchMode(want.mode);
     const place = want.place && places.has(want.place) ? want.place : null;
-    if (place !== (selected?.placeId ?? null)) select(place ? { placeId: place } : null, { zoom: !!place, follow: false });
+    const war = !place && want.war && dataset.hasWar?.(want.war) ? want.war : null;
+    if (war) {
+      if (war !== selected?.warKey) select({ warKey: war }, { zoom: true, follow: false });
+    } else if (place !== (selected?.placeId ?? null)) select(place ? { placeId: place } : null, { zoom: !!place, follow: false });
     if (want.view === 'country' && place) {
       if (panelView === 'country') await renderCountry(place);
       else await openCountry(place);
@@ -365,19 +391,23 @@ async function main() {
     $('asOf').classList.toggle('is-stale', dataset.stale());
     $('footer').innerHTML = dataset.footer();
     renderLegend();
+    $('filters').hidden = !!dataset.settingsHidden;
     dataset.renderSettings($('datasetSettings'));
     dataset.renderFeed(feed);
     search.setEntries(dataset.searchEntries());
     const placeholder = dataset.searchPlaceholder?.() ?? i18n.t('search.placeholder');
     $('search').placeholder = placeholder;
     $('search').setAttribute('aria-label', placeholder);
+    dataset.focus?.(focusTarget());
     map.setStyle((id) => dataset.style(id));
     map.setMarkers(dataset.markers?.() ?? []);
+    map.setPoints(dataset.points?.() ?? []);
     renderDetails();
     if (!sheet.hidden) showSheet();   // this mode's view of the selection
   }
   refresh();
   if (fromUrl.place && places.has(fromUrl.place)) select({ placeId: fromUrl.place }, { zoom: true });
+  else if (fromUrl.war && dataset.hasWar?.(fromUrl.war)) select({ warKey: fromUrl.war }, { zoom: true });
   if (fromUrl.view === 'country' && selected?.placeId) await openCountry(selected.placeId);
   else if (fromUrl.view === 'list') await openList();
 }

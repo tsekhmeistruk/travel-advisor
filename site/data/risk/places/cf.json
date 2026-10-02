@@ -158,6 +158,7 @@
      6
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cf"
@@ -185,7 +186,6 @@
      "b": [
       {
        "name": null,
-       "place": "cf",
        "deaths": 56
       },
       {
@@ -216,6 +216,7 @@
      3
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cf",
@@ -279,6 +280,7 @@
      6
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cf"
@@ -306,7 +308,6 @@
      "b": [
       {
        "name": null,
-       "place": "cf",
        "deaths": 56
       },
       {
@@ -337,6 +338,7 @@
      3
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cf",

@@ -10,7 +10,8 @@ import { launch, openPage } from './browser.mjs';
 
 const { values: o, positionals } = parseArgs({ allowPositionals: true, options: { base: { type: 'string', default: 'https://tsekhmeistruk.github.io/travel-advisor/' } } });
 const base = o.base.replace(/\/?$/, '/');
-const hashes = [...['wars', 'disaster', 'travel', 'highest'].map(m => `#mode=${m}`), ...positionals];
+// Every mode, and a war's card (Russia vs Ukraine: its sides and the dots).
+const hashes = [...['wars', 'disaster', 'travel', 'highest'].map(m => `#mode=${m}`), '#mode=wars&war=1-13243', ...positionals];
 
 const browser = await launch();
 let errors = 0;
@@ -21,10 +22,12 @@ try {
       header: document.getElementById('asOf')?.textContent,
       card: document.querySelector('#details h3, #details .wars-count')?.textContent.trim(),
       feed: document.getElementById('recentCount')?.textContent,
+      sides: document.querySelectorAll('#details .war-side').length,
+      dots: document.querySelectorAll('.points .point').length,
       zoom: document.querySelector('.viewport')?.getAttribute('transform')?.match(/scale\(([\d.]+)/)?.[1],
     }));
     errors += page.errors.length;
-    console.log(`${hash.padEnd(28)} ${page.errors.length ? `ERRORS ${page.errors.join(' | ')}` : 'ok'} | ${info.header} | ${info.card} | feed ${info.feed} | zoom ${info.zoom}`);
+    console.log(`${hash.padEnd(28)} ${page.errors.length ? `ERRORS ${page.errors.join(' | ')}` : 'ok'} | ${info.header} | ${info.card} | feed ${info.feed}${info.dots ? ` | ${info.dots} dots` : ''}${info.sides ? ` | ${info.sides} sides` : ''} | zoom ${info.zoom}`);
     await page.close();
   }
 } finally {

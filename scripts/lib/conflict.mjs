@@ -9,6 +9,7 @@
 //   trend      a place's last `trend.months` months against the ones before: `up` (escalating)
 //              or `down` (calming), or none
 //
+//   trend      also per conflict, by the same rule as a place's
 //   sides      who fought a state-based conflict in the window, from every event's dyad: side A
 //              (the government, and any government fighting beside it) and side B, each actor
 //              with the deaths in the events it fought; a government is also mapped to its place
@@ -160,26 +161,28 @@ export function conflictSignals(sourceId, data, config) {
   const ranked = [...conflictMonths].map(([key, byMonth]) => [key, sum(byMonth, window)])
     .filter(([, deaths]) => deaths >= config.armedConflict.minDeaths)
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'en', { numeric: true }));
-  // An actor's place: a government is its country, and "XXX475" (not identified yet) is the
-  // government of country 475 (Nigeria), as UCDP names a state-based conflict after it.
-  const actorPlace = (name) => {
+  // An actor's place: a government is its country. "XXX475" (not identified yet) on side A is the
+  // government of country 475 (Nigeria), as UCDP names a state-based conflict after it; on side B
+  // it is an armed group UCDP hasn't identified, so no place.
+  const actorPlace = (name, sideA = true) => {
     const xxx = name.match(/^XXX(\d+)$/);
-    if (xxx) return countries[xxx[1]] ? placeOf(countries[xxx[1]]) : undefined;
+    if (xxx) return sideA && countries[xxx[1]] ? placeOf(countries[xxx[1]]) : undefined;
     const gov = name.match(/^Government of (.+)$/);
     return gov ? placeOf(gov[1]) : undefined;
   };
-  const sideList = (byName) => [...byName].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .map(([name, deaths]) => ({ name: /^XXX\d+$/.test(name) ? null : name, ...(actorPlace(name) && { place: actorPlace(name) }), deaths }));
+  const sideList = (byName, sideA) => [...byName].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([name, deaths]) => ({ name: /^XXX\d+$/.test(name) ? null : name, ...(actorPlace(name, sideA) && { place: actorPlace(name, sideA) }), deaths }));
   for (const [key, deaths12] of ranked) {
     const m = meta[key];
     const raw = conflictSides.get(key);
-    const parties = [...new Set([...raw.a.keys(), ...raw.b.keys()].map(actorPlace).filter(Boolean))].sort();
+    const parties = [...new Set([...[...raw.a.keys()].map(n => actorPlace(n, true)), ...[...raw.b.keys()].map(n => actorPlace(n, false))].filter(Boolean))].sort();
     for (const p of parties) (partyTo.get(p) ?? partyTo.set(p, []).get(p)).push(key);
     conflicts[key] = {
       name: /^XXX/.test(m.name) ? null : m.name,   // UCDP hasn't named it yet: the sides say who
-      sides: { a: sideList(raw.a), b: sideList(raw.b) },
+      sides: { a: sideList(raw.a, true), b: sideList(raw.b, false) },
       deaths12, civilians12: civilians.get(key) ?? 0, last: conflictMonths.get(key).get(through) ?? 0,
       months: window.map(mo => conflictMonths.get(key).get(mo) ?? 0), first: firstMonth.get(key),
+      trend: trendOf(sum(conflictMonths.get(key), monthsBack(through, config.trend.months)), sum(conflictMonths.get(key), monthsBack(addMonths(through, -config.trend.months), config.trend.months)), config.trend),
       war: deaths12 >= config.war.minDeaths,
       places: [...(conflictPlaces.get(key) ?? [])].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([p]) => p),
       parties,

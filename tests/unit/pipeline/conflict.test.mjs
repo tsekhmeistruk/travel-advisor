@@ -110,12 +110,13 @@ describe('conflictSignals', () => {
     assert.deepEqual(c['1:13243'], {
       name: 'Russia - Ukraine',
       sides: { a: [{ name: 'Government of Russia (Soviet Union)', place: 'ru', deaths: 6060 }], b: [{ name: 'Government of Ukraine', place: 'ua', deaths: 6060 }] },
-      deaths12: 6060, civilians12: 0, last: 505, months: Array(12).fill(505), first: '2025-07',
+      deaths12: 6060, civilians12: 0, last: 505, months: Array(12).fill(505), first: '2025-07', trend: null,
       war: true, places: ['ua', 'ru'], parties: ['ru', 'ua'],
     });
     assert.equal(c['1:777'].name, null, 'not named yet: the sides say who');
-    assert.deepEqual(c['1:777'].sides, { a: [{ name: null, place: 'ye', deaths: 1300 }], b: [{ name: null, place: 'ye', deaths: 1300 }] }, 'XXX678: the government of country 678');
+    assert.deepEqual(c['1:777'].sides, { a: [{ name: null, place: 'ye', deaths: 1300 }], b: [{ name: null, deaths: 1300 }] }, 'XXX678: on side A the government of country 678, on side B a group not identified yet');
     assert.deepEqual(c['1:777'].parties, ['ye']);
+    assert.equal(c['1:777'].trend, 'up', 'a conflict\'s trend, by the rule of a place\'s');
     assert.equal(c['1:234'].war, false);
     assert.deepEqual(c['1:234'].sides.b, [{ name: 'Hamas', deaths: 31 }, { name: 'PIJ', deaths: 2 }], 'every group the government fought, by deaths');
     assert.equal(c['1:234'].civilians12, 12);
@@ -196,6 +197,8 @@ describe('sides of a war with several dyads, and quiet conflicts', () => {
     assert.equal(sudan.civilians12, 36);
     assert.deepEqual(sudan.months, [100, 100, 100, 100, 10, 10, 10, 10, 10, 10, 10, 10]);
     assert.equal(sudan.first, '2025-01');
+    assert.equal(sudan.trend, null, '30 against 30 in the last 3 months');
+    assert.equal(r.published.conflicts['1:13243'].trend, null, 'none since May, 60 before: too few to call it');
     const iran = r.published.conflicts['1:16905'];
     assert.deepEqual(iran.sides.b, [{ name: 'Government of Israel', place: 'il', deaths: 300 }, { name: 'Government of United States of America', place: 'us', deaths: 300 }]);
     assert.deepEqual(iran.parties, ['il', 'ir', 'us']);

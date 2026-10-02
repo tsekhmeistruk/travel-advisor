@@ -246,7 +246,6 @@
      "b": [
       {
        "name": null,
-       "place": "mx",
        "deaths": 50
       },
       {
@@ -273,6 +272,7 @@
      4
     ],
     "first": "2024-03",
+    "trend": null,
     "war": false,
     "places": [
      "mx"
@@ -305,7 +305,6 @@
       },
       {
        "name": null,
-       "place": "us",
        "deaths": 54
       },
       {
@@ -336,6 +335,7 @@
      2
     ],
     "first": "2024-04",
+    "trend": null,
     "war": false,
     "places": [
      "ve",
@@ -369,7 +369,6 @@
      "b": [
       {
        "name": null,
-       "place": "mx",
        "deaths": 50
       },
       {
@@ -396,6 +395,7 @@
      4
     ],
     "first": "2024-03",
+    "trend": null,
     "war": false,
     "places": [
      "mx"

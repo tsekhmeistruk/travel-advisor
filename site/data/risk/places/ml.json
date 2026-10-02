@@ -128,6 +128,7 @@
      78
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "ml"
@@ -172,6 +173,7 @@
      7
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ml"
@@ -216,6 +218,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ml"
@@ -262,6 +265,7 @@
      78
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "ml"
@@ -306,6 +310,7 @@
      7
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ml"
@@ -350,6 +355,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ml"

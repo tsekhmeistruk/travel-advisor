@@ -27,7 +27,9 @@ const { values: o, positionals } = parseArgs({
 const MODES = ['wars', 'disaster', 'travel', 'highest'];
 const views = positionals.length
   ? positionals.map(p => { const i = p.indexOf('='); return { name: i < 0 ? p : p.slice(0, i), hash: i < 0 ? '' : p.slice(i + 1) }; })
-  : MODES.flatMap(m => [{ name: `${m}-1440`, hash: `#mode=${m}` }, { name: `${m}-390-dark`, hash: `#mode=${m}`, width: 390, height: 844, dark: true, phone: true, full: true }]);
+  : [...MODES.flatMap(m => [{ name: `${m}-1440`, hash: `#mode=${m}` }, { name: `${m}-390-dark`, hash: `#mode=${m}`, width: 390, height: 844, dark: true, phone: true, full: true }]),
+    // A war's card and its sides on the map (Russia vs Ukraine), desktop and phone.
+    { name: 'war-1440', hash: '#mode=wars&war=1-13243' }, { name: 'war-390-dark', hash: '#mode=wars&war=1-13243', width: 390, height: 844, dark: true, phone: true, full: true }];
 
 const local = o.base ? null : await serve(0);
 const base = (o.base ?? local.url).replace(/\/?$/, '/');

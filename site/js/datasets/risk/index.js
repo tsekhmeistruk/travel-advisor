@@ -11,7 +11,7 @@ import { esc, safeUrl } from '../../core/dom.js';
 import { levelOf, levelIn, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, groupFeed } from './logic.js';
 import { prepareEntries, rankMatches } from '../../ui/search.js';
 import { titleSize } from '../travel-advisories/logic.js';
-import { barRects, conflictName, conflictUrl, windowMonths } from '../wars/logic.js';
+import { barRects, conflictName, conflictUrl, windowMonths, sideActors, firstNames } from '../wars/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 export const WINDOWS = [1, 7, 30, 90];
@@ -292,7 +292,8 @@ export function createRiskMode(ctx) {
 
   /**
    * The country view's armed violence (UCDP, from the place file): deaths per month, the conflicts
-   * fought there and those it is a party to (linked to UCDP), and the violence no government is a side of.
+   * fought there and those it is a party to, by who fights whom (linked to UCDP), and the violence
+   * no government is a side of.
    */
   function conflictSection(file) {
     if (!conflict) return '';
@@ -309,7 +310,12 @@ export function createRiskMode(ctx) {
       const url = link(x.key);
       return `<li><span class="swatch" style="background:${swatch(x.war ? 4 : 3)}"></span><span class="what" title="${esc(text)}">${esc(text)}</span>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">↗</a>` : ''}</li>`;
     };
-    const name = (x) => conflictName(x, tw, placeName);
+    // "Sudan vs SFA, RSF": each side's first two, by UCDP's short names.
+    const side = (actors) => {
+      const { names, more } = firstNames(sideActors(actors, { placeName, unnamed: tw('unidentified') }).map(a => a.short), 2);
+      return more ? tw('andMore', { names: names.join(', '), count: more }) : names.join(', ');
+    };
+    const name = (x) => (x.sides ? tw('vs', { a: side(x.sides.a), b: side(x.sides.b) }) : conflictName(x, tw, placeName));
     const fought = c.conflicts.map(x => row(x, tw(x.war ? 'foughtWar' : 'foughtConflict', { name: name(x), deaths: num(x.deaths12) })));
     const elsewhere = c.partyTo.filter(x => !c.conflicts.some(y => y.key === x.key))
       .map(x => row(x, tw('partyTo', { name: name(x), war: tw(x.war ? 'war' : 'armedConflict'), place: placeName(x.places[0]) })));

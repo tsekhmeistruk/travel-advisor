@@ -91,7 +91,6 @@
      "b": [
       {
        "name": null,
-       "place": "sy",
        "deaths": 129
       }
      ]
@@ -114,6 +113,7 @@
      10
     ],
     "first": "2024-05",
+    "trend": null,
     "war": false,
     "places": [
      "sy"
@@ -158,6 +158,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "sy"
@@ -202,6 +203,7 @@
      2
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "sy"
@@ -252,6 +254,7 @@
      2
     ],
     "first": "2026-02",
+    "trend": "down",
     "war": true,
     "places": [
      "ir",
@@ -289,7 +292,6 @@
      "b": [
       {
        "name": null,
-       "place": "sy",
        "deaths": 129
       }
      ]
@@ -312,6 +314,7 @@
      10
     ],
     "first": "2024-05",
+    "trend": null,
     "war": false,
     "places": [
      "sy"
@@ -356,6 +359,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "sy"
@@ -400,6 +404,7 @@
      2
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "sy"

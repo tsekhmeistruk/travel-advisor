@@ -135,6 +135,7 @@
      1
     ],
     "first": "2024-05",
+    "trend": "down",
     "war": false,
     "places": [
      "ng",
@@ -185,6 +186,7 @@
      204
     ],
     "first": "2024-01",
+    "trend": "down",
     "war": true,
     "places": [
      "sd",

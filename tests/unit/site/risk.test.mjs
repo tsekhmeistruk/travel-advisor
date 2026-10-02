@@ -60,14 +60,17 @@ const EVENTS = [
 const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json', conflict: 'risk/conflict.json', places: 'risk/places/' };
 // The conflict figures (risk/conflict.json), as lib/conflict.mjs publishes them; only what the risk card reads.
 const CONFLICT = { source: 'ucdp', through: '2026-08', links: { home: 'https://ucdp.uu.se/', conflict: 'https://ucdp.uu.se/conflict/' }, places: { so: { deaths12: 3304 }, ke: { deaths12: 1 } } };
-// A place file's conflict section: a conflict fought there, and a war it is a party to elsewhere.
-const KENYA_WAR = { key: '1:9', name: null, sideA: 'XXX501', sideB: 'XXX501', deaths12: 3304, last: 200, war: true, places: ['so'], parties: ['ke'] };
+// A place file's conflict section: a conflict fought there (with its sides), and a war it is a
+// party to elsewhere (as an older place file had it, without sides: named by UCDP's name).
+const KENYA_WAR = { key: '1:9', name: null, deaths12: 3304, last: 200, war: true, places: ['so'], parties: ['ke'] };
+const KENYA_GOV = { key: '1:5', name: 'Kenya: Government', deaths12: 20, last: 20, war: false, places: ['ke'], parties: ['ke'],
+  sides: { a: [{ name: 'Government of Kenya', place: 'ke', deaths: 20 }], b: [{ name: 'Al-Shabaab', deaths: 15 }, { name: 'IS', deaths: 3 }, { name: null, deaths: 2 }, { name: 'ASWJ', deaths: 1 }] } };
 const KE_FILE = {
   placeId: 'ke', advisories: {}, events: [], changes: [],
   conflict: {
     through: '2026-08', deaths12: 30, months: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30], byType: { state: 20, nonState: 5, oneSided: 5 }, trend: null,
-    conflicts: [{ key: '1:5', name: 'Kenya: Government', sideA: 'Government of Kenya', sideB: 'Al-Shabaab', deaths12: 20, last: 20, war: false, places: ['ke'], parties: ['ke'] }],
-    partyTo: [{ key: '1:5', name: 'Kenya: Government', sideA: 'Government of Kenya', sideB: 'Al-Shabaab', deaths12: 20, last: 20, war: false, places: ['ke'], parties: ['ke'] }, KENYA_WAR],
+    conflicts: [KENYA_GOV],
+    partyTo: [KENYA_GOV, KENYA_WAR],
   },
 };
 // A place file as the build writes it: advisories, active event ids, a year of changes.
@@ -179,17 +182,24 @@ describe('logic', () => {
 
 describe('url state', () => {
   test('reads and writes the mode and the selected place', () => {
-    assert.deepEqual(parseHash('#mode=disaster&place=mx'), { mode: 'disaster', place: 'mx', view: null });
-    assert.deepEqual(parseHash(''), { mode: null, place: null, view: null });
-    assert.deepEqual(parseHash(undefined), { mode: null, place: null, view: null });
+    assert.deepEqual(parseHash('#mode=disaster&place=mx'), { mode: 'disaster', place: 'mx', view: null, war: null });
+    assert.deepEqual(parseHash(''), { mode: null, place: null, view: null, war: null });
+    assert.deepEqual(parseHash(undefined), { mode: null, place: null, view: null, war: null });
     assert.equal(formatHash({ mode: 'travel' }), '#mode=travel');
     assert.equal(formatHash({ mode: 'disaster', place: 'mx' }), '#mode=disaster&place=mx');
     assert.equal(formatHash({}), '');
-    assert.deepEqual(parseHash('#mode=highest&place=mx&view=country'), { mode: 'highest', place: 'mx', view: 'country' });
+    assert.deepEqual(parseHash('#mode=highest&place=mx&view=country'), { mode: 'highest', place: 'mx', view: 'country', war: null });
     assert.equal(formatHash({ mode: 'highest', place: 'mx', view: 'country' }), '#mode=highest&place=mx&view=country');
     assert.equal(formatHash({ mode: 'highest', view: 'country' }), '#mode=highest', 'a country view needs a place');
     assert.equal(formatHash({ mode: 'highest', view: 'list' }), '#mode=highest&view=list', 'the list does not');
-    assert.deepEqual(parseHash('#mode=highest&view=list'), { mode: 'highest', place: null, view: 'list' });
+    assert.deepEqual(parseHash('#mode=highest&view=list'), { mode: 'highest', place: null, view: 'list', war: null });
+  });
+  test('a war: a UCDP conflict key, written with a dash; a place wins over it', () => {
+    assert.equal(formatHash({ mode: 'wars', war: '1:309' }), '#mode=wars&war=1-309');
+    assert.equal(parseHash('#mode=wars&war=1-309').war, '1:309');
+    assert.equal(parseHash('#mode=wars&war=1:309').war, '1:309', 'the colon too');
+    assert.equal(parseHash('#mode=wars&war=sudan').war, null, 'not a key');
+    assert.equal(formatHash({ mode: 'wars', place: 'sd', war: '1:309' }), '#mode=wars&place=sd');
   });
 });
 
@@ -636,7 +646,7 @@ describe('country view', () => {
     assert.match(section, /Normal · 30 deaths in 12 months/);
     assert.equal((section.match(/<rect /g) ?? []).length, 12);
     assert.match(section, /<title>August 2026: 30<\/title>/);
-    assert.match(section, /Kenya: Government · 20 deaths<\/span><a href="https:\/\/ucdp\.uu\.se\/conflict\/5"/);
+    assert.match(section, /Kenya vs Al-Shabaab, IS \+1 · 20 deaths<\/span><a href="https:\/\/ucdp\.uu\.se\/conflict\/5"/, 'who fights whom: the first two of a side, the unidentified left out');
     assert.match(section, /Party to Kenya: unnamed armed group · war · mostly in Somalia/, 'a war it is a party to, fought elsewhere; listed once');
     assert.equal((section.match(/<li>/g) ?? []).length, 2, 'the conflict fought here is not repeated as one it is a party to');
     assert.match(section, /Also 5 killed between armed groups and 5 in attacks on civilians\./);

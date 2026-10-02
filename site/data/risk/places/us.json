@@ -98,7 +98,6 @@
       },
       {
        "name": null,
-       "place": "us",
        "deaths": 54
       },
       {
@@ -129,6 +128,7 @@
      2
     ],
     "first": "2024-04",
+    "trend": null,
     "war": false,
     "places": [
      "ve",
@@ -185,6 +185,7 @@
      2
     ],
     "first": "2026-02",
+    "trend": "down",
     "war": true,
     "places": [
      "ir",
@@ -230,7 +231,6 @@
       },
       {
        "name": null,
-       "place": "us",
        "deaths": 54
       },
       {
@@ -261,6 +261,7 @@
      2
     ],
     "first": "2024-04",
+    "trend": null,
     "war": false,
     "places": [
      "ve",
@@ -302,7 +303,6 @@
       },
       {
        "name": null,
-       "place": "iq",
        "deaths": 9
       }
      ]
@@ -325,6 +325,7 @@
      2
     ],
     "first": "2024-04",
+    "trend": null,
     "war": false,
     "places": [
      "iq"

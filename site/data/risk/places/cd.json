@@ -135,6 +135,7 @@
      44
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "cd",
@@ -180,6 +181,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cd"
@@ -207,7 +209,6 @@
      "b": [
       {
        "name": null,
-       "place": "cd",
        "deaths": 37
       },
       {
@@ -234,6 +235,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cd"
@@ -284,6 +286,7 @@
      44
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "cd",
@@ -329,6 +332,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cd"
@@ -356,7 +360,6 @@
      "b": [
       {
        "name": null,
-       "place": "cd",
        "deaths": 37
       },
       {
@@ -383,6 +386,7 @@
      0
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "cd"

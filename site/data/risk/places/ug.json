@@ -100,7 +100,6 @@
       },
       {
        "name": null,
-       "place": "ug",
        "deaths": 6
       }
      ]
@@ -123,6 +122,7 @@
      0
     ],
     "first": "2024-02",
+    "trend": null,
     "war": false,
     "places": [
      "ug"
@@ -156,7 +156,6 @@
       },
       {
        "name": null,
-       "place": "ug",
        "deaths": 6
       }
      ]
@@ -179,6 +178,7 @@
      0
     ],
     "first": "2024-02",
+    "trend": null,
     "war": false,
     "places": [
      "ug"

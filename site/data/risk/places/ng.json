@@ -98,7 +98,6 @@
      "b": [
       {
        "name": null,
-       "place": "ng",
        "deaths": 2367
       },
       {
@@ -173,6 +172,7 @@
      450
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "ng"
@@ -217,6 +217,7 @@
      184
     ],
     "first": "2024-01",
+    "trend": "down",
     "war": true,
     "places": [
      "ng"
@@ -265,6 +266,7 @@
      1
     ],
     "first": "2024-05",
+    "trend": "down",
     "war": false,
     "places": [
      "ng",
@@ -311,6 +313,7 @@
      5
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ng"
@@ -340,7 +343,6 @@
      "b": [
       {
        "name": null,
-       "place": "ng",
        "deaths": 2367
       },
       {
@@ -415,6 +417,7 @@
      450
     ],
     "first": "2024-01",
+    "trend": null,
     "war": true,
     "places": [
      "ng"
@@ -459,6 +462,7 @@
      184
     ],
     "first": "2024-01",
+    "trend": "down",
     "war": true,
     "places": [
      "ng"
@@ -507,6 +511,7 @@
      1
     ],
     "first": "2024-05",
+    "trend": "down",
     "war": false,
     "places": [
      "ng",
@@ -553,6 +558,7 @@
      5
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "ng"

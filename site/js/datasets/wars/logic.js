@@ -117,4 +117,103 @@ export function conflictUrl(base, key) {
   return `${base}${key.split(':')[1]}`;
 }
 
+// ---- wars: who fights whom (UCDP's sides, with Wikipedia's context from risk/wars.json:
+//   { conflicts: { key: { title, url, extract, start, map, sides: { a: { with, backers }, b }, names } } })
+
+/** A war's short title: Wikipedia's without the years in brackets ("Russo-Ukrainian war"), else UCDP's, else null. */
+export function warTitle(c, w) {
+  if (w?.title) return w.title.replace(/\s*\([^()]*\)\s*$/, '');
+  return c?.name ? conflictTitle(c) : null;
+}
+
+/**
+ * One side's actors to show, most deaths first: [{ text, short, place? }]. A government is its
+ * place; a group keeps UCDP's short name, and its full name from Wikipedia's infobox when known
+ * (`names`: { RSF: 'Rapid Support Forces' }); an actor UCDP hasn't identified is `unnamed`, left
+ * out when the side names someone.
+ */
+export function sideActors(actors, { placeName, names = {}, unnamed }) {
+  const out = [];
+  for (const a of actors) {
+    const item = a.place ? { text: placeName(a.place), short: placeName(a.place), place: a.place }
+      : a.name ? { text: names[a.name] ?? a.name, short: a.name }
+        : { text: unnamed, short: unnamed, unnamed: true };
+    if (!out.some(x => x.short === item.short)) out.push(item);
+  }
+  return out.length > 1 ? out.filter(x => !x.unnamed) : out;
+}
+
+/** The first `max` names of a list and how many more: { names: [..], more }. */
+export function firstNames(list, max) {
+  return { names: list.slice(0, max), more: Math.max(0, list.length - max) };
+}
+
+/**
+ * The Wars list: every listed conflict, most deaths first (as published), with its two sides.
+ * @returns [{ key, war, deaths12, last, trend, title, a: [actor], b: [actor] }]
+ */
+export function warRows(conflict, wars, opts) {
+  return Object.entries(conflict.conflicts).map(([key, c]) => {
+    const w = wars?.conflicts?.[key];
+    const names = w?.names ?? {};
+    return {
+      key, war: c.war, deaths12: c.deaths12, last: c.last, trend: c.trend ?? null, title: warTitle(c, w),
+      a: sideActors(c.sides.a, { ...opts, names }), b: sideActors(c.sides.b, { ...opts, names }),
+    };
+  });
+}
+
+/** New conflicts (first seen in the 12 months), most deaths first. */
+export function newRows(conflict) {
+  return (conflict.new ?? []).filter(k => conflict.conflicts[k]).sort((a, b) => conflict.conflicts[b].deaths12 - conflict.conflicts[a].deaths12);
+}
+
+/** Conflicts gone quiet: [{ key, title, deaths, lastDeaths, parties }], as published. */
+export function quietRows(conflict, wars) {
+  return (conflict.quiet ?? []).map(q => ({ ...q, title: warTitle(q, wars?.conflicts?.[q.key]) }));
+}
+
+/**
+ * A war's card: its title and context, its sides (UCDP's actors, then the countries Wikipedia
+ * puts with them and their backers), its deaths by month and trend. A conflict gone quiet has no
+ * sides or months, only its last deaths. null for an unknown key.
+ */
+export function warModel(conflict, wars, key, opts) {
+  const c = conflict.conflicts[key];
+  const q = c ? null : conflict.quiet?.find(x => x.key === key);
+  if (!c && !q) return null;
+  const w = wars?.conflicts?.[key] ?? null;
+  const side = (s) => ({ actors: sideActors(c.sides[s], { ...opts, names: w?.names ?? {} }), with: w?.sides?.[s]?.with ?? [], backers: w?.sides?.[s]?.backers ?? [] });
+  return {
+    key, title: warTitle(c ?? q, w), war: !!c?.war, quiet: q,
+    start: w?.start ?? null, first: c?.first ?? null,
+    deaths12: c?.deaths12 ?? 0, last: c?.last ?? 0, civilians12: c?.civilians12 ?? 0, trend: c?.trend ?? null,
+    months: c ? windowMonths(conflict.through, c.months.length).map((month, i) => ({ month, deaths: c.months[i] })) : [],
+    sides: c ? { a: side('a'), b: side('b') } : null,
+    extract: w?.extract ?? null, url: w?.url ?? null, map: w?.map ?? null,
+    places: c?.places ?? [], parties: c?.parties ?? q.parties,
+  };
+}
+
+/**
+ * What the map shows of a war: side A's and side B's places (UCDP's governments), the countries
+ * Wikipedia puts with each side, and the places where it is fought. A side's place wins over an
+ * ally's; a place on both sides is side A's.
+ */
+export function warFocus(m) {
+  const a = new Set(m.sides?.a.actors.filter(x => x.place).map(x => x.place) ?? []);
+  const b = new Set(m.sides?.b.actors.filter(x => x.place && !a.has(x.place)).map(x => x.place) ?? []);
+  const taken = (p) => a.has(p) || b.has(p);
+  const allyA = new Set((m.sides?.a.with ?? []).filter(p => !taken(p)));
+  const allyB = new Set((m.sides?.b.with ?? []).filter(p => !taken(p) && !allyA.has(p)));
+  // Gone quiet: no sides, only the parties, shown where it was fought.
+  const fought = new Set([...m.places, ...(m.sides ? [] : m.parties)].filter(p => !taken(p)));
+  return { key: m.key, a, b, allyA, allyB, fought };
+}
+
+/** A dot's radius for an event's deaths: 2px for one, growing with the square root, 9px at most. */
+export function dotRadius(deaths) {
+  return Math.min(9, round(1.6 + Math.sqrt(deaths) * 0.45));
+}
+
 const round = (n) => Math.round(n * 10) / 10;

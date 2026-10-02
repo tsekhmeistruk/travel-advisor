@@ -121,6 +121,7 @@
      301
     ],
     "first": "2024-01",
+    "trend": "up",
     "war": true,
     "places": [
      "pk",
@@ -166,6 +167,7 @@
      207
     ],
     "first": "2024-01",
+    "trend": "up",
     "war": true,
     "places": [
      "pk"
@@ -193,7 +195,6 @@
      "b": [
       {
        "name": null,
-       "place": "pk",
        "deaths": 333
       },
       {
@@ -224,6 +225,7 @@
      13
     ],
     "first": "2024-01",
+    "trend": "up",
     "war": false,
     "places": [
      "pk"
@@ -269,6 +271,7 @@
      0
     ],
     "first": "2024-03",
+    "trend": "down",
     "war": false,
     "places": [
      "af",
@@ -315,6 +318,7 @@
      1
     ],
     "first": "2024-02",
+    "trend": null,
     "war": false,
     "places": [
      "pk"
@@ -359,6 +363,7 @@
      28
     ],
     "first": "2024-01",
+    "trend": null,
     "war": false,
     "places": [
      "af",
@@ -414,6 +419,7 @@
      301
     ],
     "first": "2024-01",
+    "trend": "up",
     "war": true,
     "places": [
      "pk",
@@ -459,6 +465,7 @@
      207
     ],
     "first": "2024-01",
+    "trend": "up",
     "war": true,
     "places": [
      "pk"
@@ -504,6 +511,7 @@
      0
     ],
     "first": "2024-03",
+    "trend": "down",
     "war": false,
     "places": [
      "af",
@@ -533,7 +541,6 @@
      "b": [
       {
        "name": null,
-       "place": "pk",
        "deaths": 333
       },
       {
@@ -564,6 +571,7 @@
      13
     ],
     "first": "2024-01",
+    "trend": "up",
     "war": false,
     "places": [
      "pk"
@@ -608,6 +616,7 @@
      1
     ],
     "first": "2024-02",
+    "trend": null,
     "war": false,
     "places": [
      "pk"
