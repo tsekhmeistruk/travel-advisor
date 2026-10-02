@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { placeIndex } from '../../../scripts/lib/build.mjs';
 import { addDay, addDays, emptyCounts } from '../../../scripts/lib/counts.mjs';
 import {
-  healthStatus, travelSignals, eventLevel, isActive, eventPlaces, eventSignals, updateSignals, eventChanges,
+  healthStatus, travelSignals, travelLevel, eventLevel, isActive, eventPlaces, eventSignals, updateSignals, eventChanges,
   advisoryChanges, buildRisk, placeFiles, activitySignals, CHANGE_WINDOW_DAYS, PLACE_HISTORY_DAYS,
 } from '../../../scripts/lib/risk.mjs';
 
@@ -53,15 +53,24 @@ describe('healthStatus', () => {
 
 describe('travelSignals', () => {
   const file = (records) => ({ records });
-  test('takes the highest government level per place, with every government\'s own level and the agreement', () => {
+  test('takes the level two or more governments give, names a stricter one, and keeps each government\'s own level', () => {
     const s = travelSignals({
-      us: file([{ level: 4, places: ['so'], covers: ['somaliland'] }, { level: 2, places: ['mx'] }]),
+      us: file([{ level: 4, places: ['so'], covers: ['somaliland'] }, { level: 2, places: ['mx'] }, { level: 2, places: ['ar'] }]),
       ca: file([{ level: 3, places: ['so'] }, { level: 2, places: ['mx'] }, { level: 3, places: ['somaliland'] }]),
     });
-    assert.deepEqual(s.get('so'), { level: 4, natives: { us: 4, ca: 3 }, agree: 1 });
-    assert.deepEqual(s.get('mx'), { level: 2, natives: { us: 2, ca: 2 }, agree: 2 });
-    assert.deepEqual(s.get('somaliland'), { level: 4, natives: { us: 4, ca: 3 }, agree: 1 });
+    assert.deepEqual(s.get('so'), { level: 3, natives: { us: 4, ca: 3 }, agree: 2, strictest: { level: 4, by: ['us'] } }, 'one government alone does not set it');
+    assert.deepEqual(s.get('mx'), { level: 2, natives: { us: 2, ca: 2 }, agree: 2 }, 'they agree: none is stricter');
+    assert.deepEqual(s.get('somaliland'), { level: 3, natives: { us: 4, ca: 3 }, agree: 2, strictest: { level: 4, by: ['us'] } });
+    assert.deepEqual(s.get('ar'), { level: 2, natives: { us: 2 }, agree: 1 }, 'one government covers it: its level');
     assert.equal(s.get('jp'), undefined, 'no government covers it: no signal, not Normal');
+  });
+  test('with five governments, the second-highest level: a single stricter one is named, not followed', () => {
+    assert.equal(travelLevel({ us: 3, ca: 3, nl: 4, uk: 1, de: 1 }), 3, 'Bahrain: the Netherlands alone says 4');
+    assert.equal(travelLevel({ us: 1, ca: 1, nl: 2, uk: 3, de: 1 }), 2, 'Georgia: the UK warning for parts still shows');
+    assert.equal(travelLevel({ us: 1, ca: 1, nl: 2, uk: 1, de: 1 }), 1, 'Argentina: one government at 2');
+    assert.equal(travelLevel({ us: 2, ca: 2, nl: 2, uk: 3, de: 3 }), 3, 'India: two governments at 3');
+    assert.equal(travelLevel({ us: 4, ca: 4, nl: 3, uk: 4, de: 4 }), 4);
+    assert.equal(travelLevel({ nl: 2 }), 2);
   });
   test('a place\'s own advisory wins over one that covers it, and a shared one over a covering one', () => {
     const s = travelSignals({ ca: file([

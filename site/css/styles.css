@@ -550,6 +550,8 @@ h1, h2 { margin: 0; }
   min-width: 0; margin-left: auto; font-size: 12px; color: var(--text-2);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+/* A government stricter than the travel level, by its flag. */
+.flag.mini { width: 15px; height: 10px; border-radius: 2px; vertical-align: -1px; }
 .details .later.news { color: var(--text-2); }
 .details .later { margin: 4px 0 0; height: 18px; font-size: 12px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
 /* The risk card lists at most three changes: three lines, to leave room for a row per category. */

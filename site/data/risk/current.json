@@ -147,7 +147,7 @@
   },
   "al": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -155,7 +155,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "am": {
@@ -198,7 +204,7 @@
   },
   "ar": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -206,7 +212,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "as": {
@@ -396,7 +408,7 @@
   },
   "bh": {
    "travel": {
-    "level": 4,
+    "level": 3,
     "natives": {
      "us": 3,
      "ca": 3,
@@ -404,7 +416,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 4,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "bi": {
@@ -459,7 +477,7 @@
   },
   "bn": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -467,7 +485,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "bo": {
@@ -588,7 +612,7 @@
   },
   "canary-islands": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -596,7 +620,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "cd": {
@@ -634,7 +664,7 @@
   },
   "cg": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 2,
      "ca": 2,
@@ -642,7 +672,13 @@
      "uk": 3,
      "de": 1
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "uk"
+     ]
+    }
    }
   },
   "ch": {
@@ -827,7 +863,7 @@
   },
   "dj": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 2,
      "ca": 2,
@@ -835,7 +871,13 @@
      "uk": 3,
      "de": 1
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "uk"
+     ]
+    }
    }
   },
   "dk": {
@@ -1093,7 +1135,7 @@
   },
   "gd": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -1101,12 +1143,18 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "ge": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -1114,12 +1162,18 @@
      "uk": 3,
      "de": 1
     },
-    "agree": 1
+    "agree": 2,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "uk"
+     ]
+    }
    }
   },
   "gf": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -1127,7 +1181,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "gg": {
@@ -1141,7 +1201,7 @@
   },
   "gh": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 2,
      "ca": 2,
@@ -1149,7 +1209,13 @@
      "uk": 2,
      "de": 3
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "de"
+     ]
+    }
    }
   },
   "gi": {
@@ -1165,7 +1231,7 @@
   },
   "gl": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -1173,7 +1239,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "gm": {
@@ -1204,7 +1276,7 @@
   },
   "gp": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -1212,7 +1284,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "gq": {
@@ -1253,7 +1331,7 @@
   },
   "gt": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -1261,7 +1339,13 @@
      "uk": 2,
      "de": 1
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "gu": {
@@ -1276,7 +1360,7 @@
   },
   "gw": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -1284,12 +1368,18 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "gy": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -1297,7 +1387,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "hk": {
@@ -1324,7 +1420,7 @@
   },
   "hn": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -1332,7 +1428,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "hr": {
@@ -1542,7 +1644,7 @@
   },
   "jp": {
    "travel": {
-    "level": 3,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -1550,7 +1652,13 @@
      "uk": 1,
      "de": 3
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "de"
+     ]
+    }
    }
   },
   "ke": {
@@ -1581,7 +1689,7 @@
   },
   "kh": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 2,
      "ca": 2,
@@ -1589,7 +1697,13 @@
      "uk": 2,
      "de": 3
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "de"
+     ]
+    }
    }
   },
   "ki": {
@@ -1685,7 +1799,7 @@
   },
   "kz": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -1693,7 +1807,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "la": {
@@ -1724,7 +1844,7 @@
   },
   "lc": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -1732,7 +1852,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "li": {
@@ -1866,7 +1992,7 @@
   },
   "md": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 2,
      "ca": 2,
@@ -1874,7 +2000,13 @@
      "uk": 3,
      "de": 1
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "uk"
+     ]
+    }
    }
   },
   "me": {
@@ -1969,7 +2101,7 @@
   },
   "mn": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -1977,12 +2109,18 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "mo": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -1990,7 +2128,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "mp": {
@@ -2005,7 +2149,7 @@
   },
   "mq": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -2013,7 +2157,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "mr": {
@@ -2204,7 +2354,7 @@
   },
   "ni": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -2212,7 +2362,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "nl": {
@@ -2432,13 +2588,19 @@
   },
   "pr": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "ca": 1,
      "nl": 2,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "pt": {
@@ -2495,7 +2657,7 @@
   },
   "re": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -2503,7 +2665,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "ro": {
@@ -2521,7 +2689,7 @@
   },
   "rs": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -2529,7 +2697,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "ru": {
@@ -2547,7 +2721,7 @@
   },
   "rw": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 1,
@@ -2555,7 +2729,13 @@
      "uk": 2,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "sa": {
@@ -2598,7 +2778,7 @@
   },
   "sc": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -2606,7 +2786,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "sd": {
@@ -2750,7 +2936,7 @@
   },
   "sr": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -2758,7 +2944,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "ss": {
@@ -2854,7 +3046,7 @@
   },
   "td": {
    "travel": {
-    "level": 4,
+    "level": 3,
     "natives": {
      "us": 4,
      "ca": 3,
@@ -2862,7 +3054,13 @@
      "uk": 3,
      "de": 3
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 4,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "tf": {
@@ -2889,7 +3087,7 @@
   },
   "th": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 1,
      "ca": 2,
@@ -2897,7 +3095,13 @@
      "uk": 2,
      "de": 3
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "de"
+     ]
+    }
    }
   },
   "tj": {
@@ -2953,7 +3157,7 @@
   },
   "tn": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 2,
      "ca": 2,
@@ -2961,7 +3165,13 @@
      "uk": 3,
      "de": 1
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "uk"
+     ]
+    }
    }
   },
   "to": {
@@ -2979,7 +3189,7 @@
   },
   "tr": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 2,
      "ca": 2,
@@ -2987,12 +3197,18 @@
      "uk": 3,
      "de": 1
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "uk"
+     ]
+    }
    }
   },
   "tt": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -3000,7 +3216,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 3,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "tv": {
@@ -3031,7 +3253,7 @@
   },
   "tz": {
    "travel": {
-    "level": 3,
+    "level": 2,
     "natives": {
      "us": 3,
      "ca": 2,
@@ -3039,7 +3261,13 @@
      "uk": 2,
      "de": 1
     },
-    "agree": 1
+    "agree": 4,
+    "strictest": {
+     "level": 3,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "ua": {
@@ -3057,7 +3285,7 @@
   },
   "ug": {
    "travel": {
-    "level": 4,
+    "level": 3,
     "natives": {
      "us": 4,
      "ca": 3,
@@ -3065,7 +3293,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 2,
+    "strictest": {
+     "level": 4,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "us": {
@@ -3095,7 +3329,7 @@
   },
   "uz": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -3103,7 +3337,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "va": {
@@ -3130,7 +3370,7 @@
   },
   "ve": {
    "travel": {
-    "level": 4,
+    "level": 3,
     "natives": {
      "us": 3,
      "ca": 4,
@@ -3138,7 +3378,13 @@
      "uk": 3,
      "de": 3
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 4,
+     "by": [
+      "ca"
+     ]
+    }
    }
   },
   "vg": {
@@ -3230,7 +3476,7 @@
   },
   "xk": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 2,
      "ca": 1,
@@ -3238,7 +3484,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "us"
+     ]
+    }
    }
   },
   "ye": {
@@ -3282,7 +3534,7 @@
   },
   "zm": {
    "travel": {
-    "level": 2,
+    "level": 1,
     "natives": {
      "us": 1,
      "ca": 1,
@@ -3290,7 +3542,13 @@
      "uk": 1,
      "de": 1
     },
-    "agree": 1
+    "agree": 5,
+    "strictest": {
+     "level": 2,
+     "by": [
+      "nl"
+     ]
+    }
    }
   },
   "zw": {

@@ -146,7 +146,7 @@ export function cardModel(placeId, { current, changes, events, now, windowDays, 
   const rows = Object.keys(current.categories).map(category => {
     const signal = current.places[placeId]?.[category];
     const basis = category === 'travel'
-      ? (signal ? { travel: { agree: signal.agree, count: Object.keys(signal.natives).length } } : null)
+      ? (signal ? { travel: { agree: signal.agree, count: Object.keys(signal.natives).length, ...(signal.strictest && { strictest: signal.strictest }) } } : null)
       : (signal?.basis?.length ? { events: signal.basis.map(id => eventsById.get(id)).filter(Boolean) } : null);
     const change = recent.find(c => c.category === category);
     return { category, level: levelOf(current, placeId, category), basis, changed: change ? direction(change) : null, falling: signal?.falling ?? null };

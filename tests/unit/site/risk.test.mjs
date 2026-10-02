@@ -37,7 +37,8 @@ const CURRENT = {
     mx: { travel: { level: 2, natives: { us: 2, ca: 2 }, agree: 2 }, disaster: { level: 3, since: hoursAgo(5), from: 1, basis: ['gdacs:TC:1', 'gdacs:EQ:2'] } },
     jp: { travel: { level: 1, natives: { us: 1, ca: 1 }, agree: 2 } },
     so: { travel: { level: 4, natives: { us: 4, ca: 3 }, agree: 1 }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
-    ke: { travel: { level: 2, natives: { us: 2 }, agree: 1 }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
+    // A stricter government than the travel level (two or more must agree): named on the card.
+    ke: { travel: { level: 2, natives: { us: 3, ca: 2 }, agree: 2, strictest: { level: 3, by: ['us'] } }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
   },
 };
 const CHANGES = [
@@ -250,6 +251,11 @@ describe('details card', () => {
     assert.match(html, /Security and unrest: coming later/);
     assert.match(html, /<button class="link link-btn" data-action="country" data-place="mx">Country details →<\/button>/);
     assert.match(ds.details(null), /<button class="link link-btn" data-action="list">All countries →<\/button>/, 'the overview opens the list');
+  });
+  test('a government stricter than the travel level is named on the row by its flag, in full in the title', () => {
+    const html = ds.details({ placeId: 'ke' });
+    assert.match(html, /Travel<\/span>\s*<span class="lvl">Elevated<\/span>[^<]*(<span class="arrow[^>]*>▼<\/span>)?\s*<span class="basis" title="2 of 2 governments give this level or higher; U\.S\. gives High">2 of 2 · <img class="flag mini" src="assets\/flags\/us\.svg" alt="U\.S\."[^>]*> High<\/span>/);
+    assert.match(ds.details({ placeId: 'mx' }), /title="2 of 2 governments">2 of 2 governments</, 'they agree: the plain count');
   });
   test('a place with no data says so, and without changes says that', () => {
     const html = ds.details({ placeId: 'aq' });

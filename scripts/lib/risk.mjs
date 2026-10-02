@@ -52,9 +52,20 @@ function intervalMinutes(rule) {
 // ---- travel signals (from the built advisory files)
 
 /**
- * The travel category per place: the highest level among the governments that cover it,
- * with each government's own level (its native value) and how many agree on the highest.
- * A place's own advisory wins over one that merely covers it (as on the map).
+ * A place's travel level from each government's own level ({ providerId: level }): the level
+ * that at least two of them give, or the only one's, so one government alone, or one misread
+ * advisory, doesn't set it.
+ */
+export function travelLevel(natives) {
+  const sorted = Object.values(natives).sort((a, b) => b - a);
+  return sorted[1] ?? sorted[0];
+}
+
+/**
+ * The travel category per place: its travelLevel(), with each government's own level (its
+ * native value), how many give this level or higher (`agree`), and `strictest`
+ * { level, by: [providers] } when a government gives a higher one. A place's own advisory wins
+ * over one that merely covers it (as on the map).
  * @param files  { providerId: published provider data }
  */
 export function travelSignals(files) {
@@ -70,8 +81,13 @@ export function travelSignals(files) {
   }
   const signals = new Map();
   for (const [id, natives] of byPlace) {
-    const level = Math.max(...Object.values(natives));
-    signals.set(id, { level, natives, agree: Object.values(natives).filter(l => l === level).length });
+    const level = travelLevel(natives);
+    const values = Object.values(natives);
+    const top = Math.max(...values);
+    signals.set(id, {
+      level, natives, agree: values.filter(l => l >= level).length,
+      ...(top > level && { strictest: { level: top, by: Object.keys(natives).filter(p => natives[p] === top) } }),
+    });
   }
   return signals;
 }

@@ -165,7 +165,12 @@ export function createRiskMode(ctx) {
   function basisText(row) {
     // The source already shows less (e.g. an alert downgraded): the level holds until a later fetch confirms it.
     if (row.falling != null) return tr('card.falling', { level: levelName(row.falling) });
-    if (row.basis?.travel) return tr('card.travelBasis', { agree: row.basis.travel.agree, count: row.basis.travel.count });
+    if (row.basis?.travel) {
+      const { agree, count, strictest } = row.basis.travel;
+      return strictest
+        ? tr('card.travelStricterTitle', { agree, count, provider: sourceName(strictest.by[0]), level: levelName(strictest.level) })
+        : tr('card.travelBasis', { agree, count });
+    }
     const first = row.basis?.events?.[0];
     if (first) {
       const text = tr('card.eventBasis', { source: sourceName(first.source), alert: alertName(first.native.value), type: typeName(first.type) });
@@ -175,6 +180,18 @@ export function createRiskMode(ctx) {
     return row.level == null ? tr('card.unavailable') : '';
   }
 
+  /**
+   * The row's basis, short enough for the card: a government stricter than the travel level is
+   * named by its flag and the level it gives, e.g. "3 of 5 · [NL] Critical" (the title says it in full).
+   */
+  function basisHtml(row) {
+    const strictest = row.falling == null && row.basis?.travel?.strictest;
+    if (!strictest) return esc(basisText(row));
+    const id = strictest.by[0];
+    const flag = `<img class="flag mini" src="assets/flags/${esc(current.sources?.[id]?.flag ?? id)}.svg" alt="${esc(sourceName(id))}" width="15" height="10">`;
+    return esc(tr('card.travelStricter', { agree: row.basis.travel.agree, count: row.basis.travel.count, flag: MARK, level: levelName(strictest.level) })).replace(MARK, flag);
+  }
+
   function rowsHtml(rows) {
     return rows.map(r => `
       <li class="${r.category === category ? 'is-focus' : ''}">
@@ -182,7 +199,7 @@ export function createRiskMode(ctx) {
         <span class="cat">${esc(catName(r.category))}</span>
         <span class="lvl">${esc(levelName(r.level))}</span>
         ${r.changed ? arrow(r.changed) : ''}
-        <span class="basis" title="${esc(basisText(r))}">${esc(basisText(r))}</span>
+        <span class="basis" title="${esc(basisText(r))}">${basisHtml(r)}</span>
       </li>`).join('');
   }
   const historyRow = (c) => `<li>${arrow(direction(c))}<span class="what" title="${esc(changeText(c))}">${esc(changeText(c))}</span><span class="date">${esc(i18n.formatDate(c.at.slice(0, 10)))}</span></li>`;

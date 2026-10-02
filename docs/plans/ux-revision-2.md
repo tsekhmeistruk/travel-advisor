@@ -39,9 +39,9 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Status
 
-- **Current step:** 1.6 (ship)
-- **Done:** part 0; 1.1–1.5
-- **Last commit of this revision:** none yet
+- **Current step:** 2.6 (ship)
+- **Done:** parts 0–1; 2.1–2.5
+- **Last commit of this revision:** eb89206 (part 1)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -75,27 +75,27 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
   - [x] unit: in the Changes view, a place with only an anomaly is faded, and one with a level change isn't.
   - [x] unit, edit: the Travel header texts in `tests/unit/site/dataset.test.mjs`.
 - [x] 1.5 Docs: `docs/architecture.md` (the map keeps the view on resize; the Travel header).
-- [ ] 1.6 Ship (see "Every part ends with…"). Live check: `#mode=highest&place=de` zooms.
+- [x] 1.6 Ship (see "Every part ends with…"). Live check: `#mode=highest&place=de` zooms.
 
 ## Part 2: Travel level = two or more governments
 
-- [ ] 2.1 `travelSignals()` (`scripts/lib/risk.mjs:60`):
+- [x] 2.1 `travelSignals()` (`scripts/lib/risk.mjs:60`):
   - sort the levels from high to low; the level is the second one, or the only one when a single government covers the place;
   - `agree` is the number of governments at this level or above;
   - add `strictest: { level, by: [providerIds] }` only when a government is stricter.
-- [ ] 2.2 Run `npm run build` to regenerate `site/data/risk/**`. There's no stored travel state, and travel changes come from `advisoryChanges()`, so no change is recorded. Check that `site/data/risk/changes.json` didn't grow.
-- [ ] 2.3 Site:
+- [x] 2.2 Run `npm run build` to regenerate `site/data/risk/**`. There's no stored travel state, and travel changes come from `advisoryChanges()`, so no change is recorded. Check that `site/data/risk/changes.json` didn't grow.
+- [x] 2.3 Site:
   - `basisText()` (`datasets/risk/index.js`) and the travel basis from `cardModel()` (`logic.js`) read "3 of 5 governments · Netherlands stricter" (new key `risk.card.travelStricter`).
   - Edit `help.travel` and `help.levels.2`–`4` in `en.json`.
-- [ ] 2.4 Tests:
-  - [ ] unit pipeline (`tests/unit/pipeline/risk.test.mjs`, rewrite the `travelSignals` tests):
+- [x] 2.4 Tests:
+  - [x] unit pipeline (`tests/unit/pipeline/risk.test.mjs`, rewrite the `travelSignals` tests):
     - `{us:4, ca:3}` gives 3 with `agree` 2 and `strictest {4,['us']}`;
     - a tie gives no `strictest`;
     - one government gives its own level;
     - the Bahrain case gives 3.
-  - [ ] unit site: a fixture place with a stricter government (e.g. `ke`: `natives {us:3, ca:2}`, level 2, `strictest {3,['us']}`) shows "· U.S. stricter".
-  - [ ] the data tests pass after the rebuild.
-- [ ] 2.5 Docs:
+  - [x] unit site: a fixture place with a stricter government (e.g. `ke`: `natives {us:3, ca:2}`, level 2, `strictest {3,['us']}`) shows "· U.S. stricter".
+  - [x] the data tests pass after the rebuild.
+- [x] 2.5 Docs:
   - `docs/architecture.md:105` (the Travel signal);
   - README "What it shows";
   - `.claude/CLAUDE.md` (the risk-layer note, "Current state").
@@ -187,4 +187,4 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Log (one line per finished part: commit, deploy, tests)
 
-- (empty)
+- Part 1: eb89206, deploy green, live check passed (link zooms to scale 10, one-line headers, no console errors). Tests added: e2e link zoom + resize keeps view, e2e panel doesn't move between modes (1440, 390), unit Changes fade ignores news. Edited: unit Travel header texts, e2e provider-switch test. Deleted: none.

@@ -8,6 +8,7 @@ import { FileStore } from '../../scripts/lib/store.mjs';
 import { readBuildInput, buildAll } from '../../scripts/build.mjs';
 import { SPLIT_SHAPE_NAMES } from '../../site/js/map/splits.js';
 import { rank } from '../../scripts/lib/anomaly.mjs';
+import { travelLevel } from '../../scripts/lib/risk.mjs';
 
 const store = new FileStore();
 const manifest = store.published('manifest.json');
@@ -60,7 +61,7 @@ describe('risk data', () => {
         assert.ok(levels.has(s.level), `${id}/${c}: level ${s.level}`);
         for (const b of s.basis ?? []) assert.ok(eventIds.has(b), `${id}/${c}: basis ${b} is not a stored event`);
       }
-      if (signals.travel) assert.equal(signals.travel.level, Math.max(...Object.values(signals.travel.natives)), `${id}: travel is the highest government level`);
+      if (signals.travel) assert.equal(signals.travel.level, travelLevel(signals.travel.natives), `${id}: travel is the level two or more governments give`);
     }
   });
 
