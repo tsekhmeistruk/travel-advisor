@@ -191,8 +191,9 @@ describe('map style', () => {
     assert.ok(ds.style('mx').pulse > 0);
     assert.ok(ds.style('so').pulse > 0, 'an advisory level change pulses');
     assert.equal(ds.style('jp').pulse, null, 'too old for the 30-day window');
-    assert.deepEqual(ds.style('jp'), { cls: 'l1', muted: false, dim: false, dot: false, pulse: null });
-    assert.deepEqual(ds.style('aq'), { cls: 'l1', muted: false, dim: false, dot: false, pulse: null }, 'disaster covers it: Normal');
+    assert.deepEqual(ds.style('jp'), { cls: 'r1', muted: false, dim: false, dot: false, pulse: null }, 'Normal: the calm risk fill, not advisory green');
+    assert.deepEqual(ds.style('aq'), { cls: 'r1', muted: false, dim: false, dot: false, pulse: null }, 'disaster covers it: Normal');
+    assert.match(ds.legend(), /background:var\(--risk-normal\)"><\/span>Normal/);
   });
   test('a category mode colours by that category only', async () => {
     await create({ view: 'category', category: 'disaster' });

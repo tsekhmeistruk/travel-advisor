@@ -228,7 +228,7 @@ export class WorldMap {
       })
       .attr('class', c => `marker ml${c.level}${c.items.some(m => m.id === this.selectedMarker) ? ' is-selected' : ''}`)
       .attr('transform', c => `translate(${c.x},${c.y})`);
-    sel.select('.disc').attr('r', c => (c.items.length > 1 ? 9 : 7.5));
+    sel.select('.disc').attr('r', c => (c.items.length > 1 ? 9 : c.level <= 1 ? 6 : 7.5));
     sel.select('.icon').attr('d', c => (c.items.length > 1 ? null : MARKER_ICONS[c.items[0].kind] ?? MARKER_ICONS.default));
     sel.select('.count').text(c => (c.items.length > 1 ? c.items.length : ''));
     sel.on('pointerenter', (event, c) => this.handlers.onMarkerHover(c, event))

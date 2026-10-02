@@ -42,7 +42,10 @@ export function createRiskMode(ctx) {
   const placeName = (id) => (places.get(id) ? i18n.placeName(places.get(id)) : id);
   const windowDays = () => settings.get('recentDays');
   const levels = () => settings.get('levels');
-  const swatch = (l) => (l ? `var(--l${l})` : 'var(--land-none)');
+  // Normal is a calm neutral, not advisory green: in a risk mode most of the world is Normal,
+  // and what is above it must stand out. (A government's own level 1 stays green.)
+  const swatch = (l) => (l === 1 ? 'var(--risk-normal)' : l ? `var(--l${l})` : 'var(--land-none)');
+  const fillClass = (l) => (l === 1 ? 'r1' : l ? `l${l}` : 'none');
 
   // Validate saved settings against what's available now.
   if (!WINDOWS.includes(windowDays())) settings.set('recentDays', 30);
@@ -120,10 +123,10 @@ export function createRiskMode(ctx) {
       <div class="eyebrow">${esc(tr('overview.eyebrow', { mode: modeName() }))}</div>
       <h3>${esc(tr('overview.above', { count: counts[1] + counts[2] + counts[3] }))}</h3>
       <div class="stack" aria-hidden="true">
-        ${desc.map(l => `<span style="--c:var(--l${l});flex:${counts[l - 1]}"></span>`).join('')}
+        ${desc.map(l => `<span style="--c:${swatch(l)};flex:${counts[l - 1]}"></span>`).join('')}
       </div>
       <div class="overview-grid">
-        ${desc.map(l => `<div><span class="swatch" style="background:var(--l${l})"></span>${esc(levelName(l))}<b>${counts[l - 1]}</b></div>`).join('')}
+        ${desc.map(l => `<div><span class="swatch" style="background:${swatch(l)}"></span>${esc(levelName(l))}<b>${counts[l - 1]}</b></div>`).join('')}
       </div>
       <p class="moves">${esc(tr('overview.changes', { window: windowText(windowDays()), up: MARK, down: '\u0001' }))
     .replace(MARK, `${arrow('up')} <strong>${moves.up}</strong>`).replace('\u0001', `${arrow('down')} <strong>${moves.down}</strong>`)}</p>
@@ -330,7 +333,7 @@ export function createRiskMode(ctx) {
       // A pulse means the colour moved: none on a hidden level or on a place without data.
       const pulse = level != null && !muted ? list.find(c => PULSE_KINDS.has(c.kind) && changePlaces(c)[0] === placeId) : null;
       return {
-        cls: level ? `l${level}` : 'none',
+        cls: fillClass(level),
         muted,
         dim: (view === 'changes' || settings.get('dimOthers')) && !changed,
         // Every place is covered (GDACS is global), so a dot for every tiny Normal place would
@@ -400,7 +403,7 @@ export function createRiskMode(ctx) {
     },
 
     legend() {
-      return LEVELS.map(l => `<span class="legend-item"><span class="swatch" style="background:var(--l${l})"></span>${esc(levelName(l))}</span>`).join('')
+      return LEVELS.map(l => `<span class="legend-item"><span class="swatch" style="background:${swatch(l)}"></span>${esc(levelName(l))}</span>`).join('')
         + `<span class="legend-item"><span class="swatch none"></span>${esc(tr('legend.none'))}</span>`
         + `<span class="legend-item"><span class="legend-pulse"></span>${esc(tr('legend.recent', { window: windowText(windowDays()) }))}</span>`
         + (view === 'changes' ? '' : `<span class="legend-item"><span class="legend-marker"></span>${esc(tr('legend.markers'))}</span>`);
@@ -412,7 +415,7 @@ export function createRiskMode(ctx) {
         <div class="setting">
           <span class="setting-label">${esc(tr('settings.levels'))}</span>
           <div class="chips" id="riskLevelChips">
-            ${LEVELS.map(l => `<button class="chip" data-level="${l}" style="--c:var(--l${l})" aria-pressed="${levels().includes(l)}"><span class="swatch"></span>${esc(levelName(l))}</button>`).join('')}
+            ${LEVELS.map(l => `<button class="chip" data-level="${l}" style="--c:${swatch(l)}" aria-pressed="${levels().includes(l)}"><span class="swatch"></span>${esc(levelName(l))}</button>`).join('')}
           </div>
         </div>
         <div class="setting">

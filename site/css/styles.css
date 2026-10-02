@@ -20,6 +20,7 @@
   --l2: #e4b23a;
   --l3: #ee8433;
   --l4: #de3f46;
+  --risk-normal: #a9c4b6;   /* Normal in the risk modes: calm, so Elevated and above stand out */
 
   --radius: 12px;
   --panel-w: 364px;   /* 348px of content width + 16px for a classic scrollbar */
@@ -48,6 +49,7 @@
     --l2: #d6a531;
     --l3: #e57a2b;
     --l4: #e5484f;
+    --risk-normal: #3b5a4c;
     color-scheme: dark;
   }
 }
@@ -72,6 +74,7 @@
   --l2: #d6a531;
   --l3: #e57a2b;
   --l4: #e5484f;
+  --risk-normal: #3b5a4c;
   color-scheme: dark;
 }
 
@@ -125,6 +128,7 @@ h1, h2 { margin: 0; }
 .l2 { fill: var(--l2); }
 .l3 { fill: var(--l3); }
 .l4 { fill: var(--l4); }
+.r1 { fill: var(--risk-normal); }
 .country.is-muted, .dot.is-muted { fill: var(--land-muted); }
 .country.is-dim, .dot.is-dim { opacity: .28; }
 .country.is-polar { opacity: .45; }
@@ -154,7 +158,8 @@ h1, h2 { margin: 0; }
 /* Event markers (earthquake, cyclone, …) and their clusters */
 .marker { cursor: pointer; }
 .marker .disc { stroke: var(--panel); stroke-width: 1.5; transition: stroke .15s; }
-.marker.ml1 .disc { fill: var(--l1); }
+/* Minor (Green) alerts: smaller, ringed in dark, so Orange and Red ones dominate. */
+.marker.ml1 .disc { fill: var(--l1); stroke: rgba(10, 13, 18, .7); }
 .marker.ml2 .disc { fill: var(--l2); }
 .marker.ml3 .disc { fill: var(--l3); }
 .marker.ml4 .disc { fill: var(--l4); }

@@ -188,7 +188,7 @@ export const measureCards = (page) => page.evaluate(() => {
   }
   return {
     shapes: document.querySelectorAll('path.country').length,
-    colored: [...document.querySelectorAll('path.country')].filter(e => /\bl[1-4]\b/.test(e.getAttribute('class'))).length,
+    colored: [...document.querySelectorAll('path.country')].filter(e => /\b(l[1-4]|r1)\b/.test(e.getAttribute('class'))).length,
     pulses: document.querySelectorAll('.pulse').length,
     recent: document.querySelectorAll('#recentList button').length,
     heights: [...heights], overflow: [...new Set(overflow)], cut: [...new Set(cut)],

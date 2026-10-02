@@ -28,7 +28,7 @@ for (const mode of RISK_MODES) {
       });
       after(async () => { await page?.close(); });
 
-      test('colours every country by its risk level', () => {
+      test('colours every country by its risk level (Normal in the calm risk fill)', () => {
         assert.ok(stats.colored > 200, `${stats.colored} coloured`);
       });
       test('pulses the level changes and lists them in the feed', () => {
