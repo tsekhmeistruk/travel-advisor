@@ -178,10 +178,12 @@ describe('header, footer, tooltip, legend', () => {
     assert.ok(!ds.footer().includes('href='), 'javascript: link must not be rendered');
     assert.ok(!ds.details({ placeId: 'mm' }).includes('javascript:'));
   });
-  test('the header shows the data date, with its age once it is over a week old', async () => {
+  test('the header shows the data date, with its age (and a warning) once it is over a week old', async () => {
     assert.equal(ds.header(), 'U.S. State Department advisories · data as of Sep 26, 2026');
+    assert.equal(ds.stale(), false);
     await ds.setProvider('ca');
     assert.match(ds.header(), /Government of Canada advisories · data as of Sep 1, 2026 \(26 days ago\)/);
+    assert.equal(ds.stale(), true);
   });
   test('the tooltip names the place, its level and its latest level change', () => {
     const html = ds.tooltip('mm');
@@ -208,6 +210,25 @@ describe('providers, feed and search', () => {
   test('an unknown saved provider falls back to the first one', async () => {
     await create({ provider: 'xx' });
     assert.equal(ds.provider(), 'us');
+  });
+  test('the feed lists recent level changes; an empty one offers the longest window', async () => {
+    const title = { textContent: '' }, count = { textContent: '' };
+    const section = { hidden: true, querySelector: (sel) => (sel === '#recentTitle' ? title : count) };
+    const el = { innerHTML: '', closest: () => section };
+    ds.renderFeed(el);
+    assert.equal(section.hidden, false);
+    assert.match(el.innerHTML, /data-key="Burma"/);
+    await create({ levels: [1], recentDays: 7 });
+    ds.renderFeed(el);
+    assert.match(el.innerHTML, /No level changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
+    ds.showWindow(90);
+    assert.equal(changes, 1);
+    ds.renderFeed(el);
+    assert.equal(title.textContent, 'Level changes in the last 90 days');
+    assert.doesNotMatch(el.innerHTML, /data-show-days/);
+    await create({ recentDays: 0 });
+    ds.renderFeed(el);
+    assert.equal(section.hidden, true, 'highlighting off: no feed');
   });
   test('feed items map to targets and back', () => {
     assert.deepEqual(ds.feedTarget('Burma'), { placeId: 'mm' });

@@ -72,7 +72,9 @@ export async function openRaw({ width = 1440, height = 860, scheme = 'dark', sto
   await page.setViewport({ width, height });
   await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
   await page.goto(env.url + hash);
-  await page.evaluate((key, s) => { localStorage.clear(); localStorage.setItem(key, JSON.stringify(s)); }, SETTINGS_KEY, stored);
+  // The filters start collapsed for visitors; tests use them, so they are open unless a test
+  // says otherwise (filtersOpen: undefined for a first visit).
+  await page.evaluate((key, s) => { localStorage.clear(); localStorage.setItem(key, JSON.stringify(s)); }, SETTINGS_KEY, { filtersOpen: true, ...stored });
   await page.reload({ waitUntil: 'networkidle0' });
   return page;
 }
@@ -190,7 +192,7 @@ export const measureCards = (page) => page.evaluate(() => {
     shapes: document.querySelectorAll('path.country').length,
     colored: [...document.querySelectorAll('path.country')].filter(e => /\b(l[1-4]|r1)\b/.test(e.getAttribute('class'))).length,
     pulses: document.querySelectorAll('.pulse').length,
-    recent: document.querySelectorAll('#recentList button').length,
+    recent: Number(document.getElementById('recentCount').textContent),   // listed (a long feed shows its first 8)
     heights: [...heights], overflow: [...new Set(overflow)], cut: [...new Set(cut)],
     scrollWidth: document.documentElement.scrollWidth,
   };

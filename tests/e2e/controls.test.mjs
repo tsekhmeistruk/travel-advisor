@@ -246,7 +246,7 @@ describe('languages', () => {
     await page.waitForSelector('path.country');
     assert.equal(await page.evaluate(() => document.documentElement.lang), 'ar');
     assert.equal(await page.evaluate(() => document.documentElement.dir), 'rtl');
-    assert.match(await page.$eval('.section h2', el => el.textContent), /^\[ar\] Settings/);
+    assert.match(await page.$eval('#filters h2', el => el.textContent), /^\[ar\] Filters/);
     assert.match(await page.$eval('#search', el => el.placeholder), /^\[ar\] /);
     // Country names come from the browser in the chosen language.
     await page.evaluate(() => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === 'fr')

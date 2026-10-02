@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { createRiskMode, WINDOWS } from '../../../site/js/datasets/risk/index.js';
 import {
   changeTime, ageHours, changePlaces, direction, levelOf, highest, filterChanges, changesFor, pulseOpacity, countByLevel,
-  countDirections, cardModel,
+  countDirections, cardModel, isStale,
 } from '../../../site/js/datasets/risk/logic.js';
 import { MODES } from '../../../site/js/datasets/registry.js';
 import { clusterMarkers, MARKER_ICONS } from '../../../site/js/map/clusters.js';
@@ -254,6 +254,27 @@ describe('details card', () => {
     assert.match(html, /No changes in the last 90 days\./);
     assert.doesNotMatch(html, /report ↗/);
   });
+  test('the overview lists the three latest changes, newest first, as buttons to their place', () => {
+    const latest = ds.details(null).split('class="latest"')[1];
+    assert.match(latest, /Latest changes/);
+    assert.deepEqual([...latest.matchAll(/class="name">([^<]+)</g)].map(m => m[1]), ['Mexico', 'Mexico', 'Offshore quake']);
+    const keys = [...latest.matchAll(/data-key="([^"]+)"/g)].map(m => m[1]);
+    assert.deepEqual(keys, ds.details(null).match(/data-key="([^"]+)"/g).map(k => k.slice(10, -1)));
+    assert.deepEqual(ds.feedTarget(keys[0]), { placeId: 'mx' });
+    assert.match(latest, /Disaster: Normal → High/);
+  });
+  test('an empty window says so and offers the longest one; at the longest it only says so', async () => {
+    await create({ view: 'changes', saved: { recentDays: 1, levels: [1, 2] } });
+    assert.match(ds.details(null), /No changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
+    const f = fakeFeed();
+    ds.renderFeed(f.el);
+    assert.match(f.el.innerHTML, /recent-empty">No changes in this period\. <button class="link-btn" data-show-days="90">/);
+    ds.showWindow(90);
+    assert.equal(changes, 1);
+    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.recentDays, 90);
+    ds.renderFeed(f.el);
+    assert.doesNotMatch(f.el.innerHTML + ds.details(null), /data-show-days/, 'nothing longer to offer');
+  });
   test('a category mode\'s overview says what raises its level', async () => {
     await create({ view: 'category', category: 'wildfire' });
     assert.match(ds.details(null), /Levels rise only with a GDACS Orange or Red forest-fire alert, which is rare\. Green markers are smaller fires\./);
@@ -286,11 +307,19 @@ describe('details card', () => {
 
 describe('texts', () => {
   test('header: the data age, and a source that is not healthy', async () => {
-    assert.equal(ds.header(), 'Risk Monitor · updated 2 hours ago');
+    assert.equal(ds.header(), 'Updated 2 hours ago');
+    assert.equal(ds.stale(), false);
     await create({ current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'delayed' } } } });
-    assert.equal(ds.header(), 'Risk Monitor · updated 2 hours ago · GDACS delayed');
+    assert.equal(ds.header(), 'Updated 2 hours ago · GDACS delayed');
     await create({ view: 'category', category: 'wildfire', current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'error' } } } });
-    assert.equal(ds.header(), 'Risk Monitor · updated 2 hours ago', 'only this mode\'s categories count');
+    assert.equal(ds.header(), 'Updated 2 hours ago', 'only this mode\'s categories count');
+  });
+  test('header: data over 12 hours old is flagged as delayed', async () => {
+    assert.equal(isStale(hoursAgo(12), NOW, 12), false);
+    assert.equal(isStale(hoursAgo(13), NOW, 12), true);
+    await create({ current: { ...CURRENT, asOf: hoursAgo(13), categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'delayed' } } } });
+    assert.equal(ds.stale(), true);
+    assert.equal(ds.header(), 'Updated 13 hours ago: newer data is delayed · GDACS delayed');
   });
   test('footer: links every source and says the levels are ours', () => {
     const html = ds.footer();
@@ -376,8 +405,14 @@ describe('feed', () => {
     const f = fakeFeed();
     mode.renderFeed(f.el);
     assert.match(f.el.innerHTML, /Kenya \+1/);
-    assert.equal((f.el.innerHTML.match(/<button/g) ?? []).length, 50);
+    assert.equal((f.el.innerHTML.match(/data-key=/g) ?? []).length, 8, 'the first 8');
+    assert.match(f.el.innerHTML, /<button class="link-btn" data-feed-all>Show all 56<\/button>/);
+    f.el.onclick({ target: { closest: () => null } });
+    assert.equal((f.el.innerHTML.match(/data-key=/g) ?? []).length, 8, 'another click changes nothing');
+    f.el.onclick({ target: { closest: (sel) => (sel === '[data-feed-all]' ? {} : null) } });
+    assert.equal((f.el.innerHTML.match(/data-key=/g) ?? []).length, 50, 'then up to 50');
     assert.match(f.el.innerHTML, /and 6 more/);
+    assert.doesNotMatch(f.el.innerHTML, /data-feed-all/);
   });
   test('maps feed items to places and back', () => {
     assert.deepEqual(ds.feedTarget('advisory:us:Somalia:2026-09-20'), { placeId: 'so' });

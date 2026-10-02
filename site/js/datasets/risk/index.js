@@ -9,13 +9,16 @@
 // names the source facts behind each level (a government's advisory, a GDACS alert).
 
 import { esc, safeUrl } from '../../core/dom.js';
-import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, PULSE_KINDS } from './logic.js';
+import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, PULSE_KINDS } from './logic.js';
 import { titleSize } from '../travel-advisories/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 export const WINDOWS = [1, 7, 30, 90];
 export const HISTORY_WINDOWS = [7, 30, 90, 365];
+const FEED_SHORT = 8;      // the feed shows this many until "Show all" (it can be long: news activity)
 const FEED_LIMIT = 50;
+const LATEST = 3;          // changes on the overview card
+const STALE_HOURS = 12;    // updates are hourly: older data means runs were dropped
 const LEVELS = [1, 2, 3, 4];
 
 /**
@@ -29,6 +32,7 @@ export function createRiskMode(ctx) {
   let current = null;
   let changes = [];
   let events = [];
+  let feedAll = false;   // "Show all" was clicked (for this page view)
 
   const tr = (key, params) => i18n.t(`risk.${key}`, params);
   const levelName = (l) => (l == null ? tr('noData') : tr(`levels.${l}`));
@@ -65,6 +69,12 @@ export function createRiskMode(ctx) {
     }
     return memo.list;
   }
+
+  /** The feed's changes: the window's, on shown levels (news activity has none). */
+  const feedItems = () => shown().filter(c => c.kind === 'anomaly' || c.to == null || levels().includes(c.to));
+  /** An empty list: says so, and offers the longest window. */
+  const emptyHtml = (text) => `${esc(text)}${windowDays() < WINDOWS.at(-1)
+    ? ` <button class="link-btn" data-show-days="${WINDOWS.at(-1)}">${esc(tr('feed.showDays', { days: WINDOWS.at(-1) }))}</button>` : ''}`;
 
   async function load() {
     const [c, ch, ev] = await Promise.all([
@@ -130,8 +140,24 @@ export function createRiskMode(ctx) {
       </div>
       <p class="moves">${esc(tr('overview.changes', { window: windowText(windowDays()), up: MARK, down: '\u0001' }))
     .replace(MARK, `${arrow('up')} <strong>${moves.up}</strong>`).replace('\u0001', `${arrow('down')} <strong>${moves.down}</strong>`)}</p>
+      ${latestHtml()}
       ${view === 'category' && i18n.has(`risk.overview.about.${category}`) ? `<p class="hint">${esc(tr(`overview.about.${category}`))}</p>` : ''}
       <p class="hint">${esc(tr('overview.hint'))}</p>`;
+  }
+
+  /** The newest changes, one line each; a click selects the place (no hover: it would replace the card). */
+  function latestHtml() {
+    const items = feedItems().slice(0, LATEST);
+    const rows = items.map(c => `<li><button data-key="${esc(c.id)}" title="${esc(`${changeName(c)}: ${changeText(c)}`)}">
+        <span class="swatch" style="background:${swatch(c.kind === 'anomaly' ? null : c.to)}"></span>
+        <span class="name">${esc(changeName(c))}</span>
+        ${arrow(direction(c))}<span class="what">${esc(changeText(c))}</span>
+        <span class="when">${esc(i18n.shortHours(ageHours(c.at, now())))}</span>
+      </button></li>`).join('');
+    return `<div class="latest">
+        <div class="history-label">${esc(tr('overview.latest'))}</div>
+        ${items.length ? `<ul class="latest-list">${rows}</ul>` : `<p class="latest-empty">${emptyHtml(tr('feed.empty'))}</p>`}
+      </div>`;
   }
 
   function basisText(row) {
@@ -314,8 +340,10 @@ export function createRiskMode(ctx) {
       const issue = Object.entries(current.categories)
         .filter(([c, meta]) => (!categories || categories.has(c)) && meta.status && meta.status !== 'healthy')
         .map(([, meta]) => meta)[0];
-      return issue ? tr('headerIssue', { age, source: sourceName(issue.sources[0]), status: tr(`status.${issue.status}`) }) : tr('header', { age });
+      const base = tr(isStale(current.asOf, now(), STALE_HOURS) ? 'headerStale' : 'header', { age });
+      return issue ? tr('headerIssue', { base, source: sourceName(issue.sources[0]), status: tr(`status.${issue.status}`) }) : base;
     },
+    stale: () => isStale(current.asOf, now(), STALE_HOURS),
     /** Footer HTML: the sources, linked, and that the levels are ours. */
     footer() {
       const links = Object.entries(current.sources ?? {}).map(([id, s]) => {
@@ -455,21 +483,31 @@ export function createRiskMode(ctx) {
     renderFeed(container) {
       const section = container.closest('.recent');
       section.hidden = false;
-      const items = shown().filter(c => c.kind === 'anomaly' || c.to == null || levels().includes(c.to));
+      const items = feedItems();
       section.querySelector('#recentTitle').textContent = tr('feed.title', { window: windowText(windowDays()) });
       section.querySelector('#recentCount').textContent = items.length;
-      const more = items.length - FEED_LIMIT;
+      const limit = feedAll ? FEED_LIMIT : FEED_SHORT;
+      const more = items.length - limit;
+      const tail = more <= 0 ? ''
+        : feedAll ? `<li class="recent-empty">${esc(tr('feed.more', { count: more }))}</li>`
+          : `<li class="recent-more"><button class="link-btn" data-feed-all>${esc(tr('feed.showAll', { count: items.length }))}</button></li>`;
+      container.onclick = (e) => {
+        if (!e.target.closest('[data-feed-all]')) return;
+        feedAll = true;
+        this.renderFeed(container);
+      };
       container.innerHTML = items.length
-        ? items.slice(0, FEED_LIMIT).map(c => `<li><button data-key="${esc(c.id)}" title="${esc(changeText(c))}">
+        ? items.slice(0, limit).map(c => `<li><button data-key="${esc(c.id)}" title="${esc(changeText(c))}">
             <span class="row">
               <span class="swatch" style="--c:${swatch(c.kind === 'anomaly' ? null : c.to)}"></span>
               <span class="name">${esc(changeName(c))}</span>
               <span class="when">${esc(i18n.shortHours(ageHours(c.at, now())))}</span>
             </span>
             <span class="what">${arrow(direction(c))}${esc(changeText(c))}</span>
-          </button></li>`).join('') + (more > 0 ? `<li class="recent-empty">${esc(tr('feed.more', { count: more }))}</li>` : '')
-        : `<li class="recent-empty">${esc(tr('feed.empty'))}</li>`;
+          </button></li>`).join('') + tail
+        : `<li class="recent-empty">${emptyHtml(tr('feed.empty'))}</li>`;
     },
+    showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
 
     /** A feed item's target: its first place, and its event when it is about one (the card then shows the event). */
     feedTarget(key) {

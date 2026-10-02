@@ -18,6 +18,11 @@ export function ageHours(at, now) {
   return Math.max(0, (now - changeTime(at)) / HOUR);
 }
 
+/** Whether data published at `asOf` is more than `hours` old (scheduled updates can be dropped). */
+export function isStale(asOf, now, hours) {
+  return ageHours(asOf, now) > hours;
+}
+
 /** The places a change is about: one for a level change, several for an event or advisory. */
 export function changePlaces(c) {
   return c.placeIds ?? (c.placeId ? [c.placeId] : []);

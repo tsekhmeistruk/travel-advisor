@@ -289,6 +289,31 @@ h1, h2 { margin: 0; }
   font-size: 12px; color: var(--text-2);
 }
 .legend-item { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.legend-help {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 24px; height: 24px; margin: -4px -6px -4px auto;
+  border: 0; border-radius: 50%; background: transparent; color: var(--accent); cursor: pointer;
+}
+.legend-help svg { width: 17px; height: 17px; }
+.legend-help:hover, .legend-help:focus-visible { background: var(--panel-2); color: var(--text); }
+
+/* "How levels work" */
+.help {
+  width: min(460px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+  padding: 0; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--panel); color: var(--text); box-shadow: var(--shadow);
+}
+.help::backdrop { background: rgba(10, 13, 18, .45); }
+.help-body { padding: 18px 20px 20px; font-size: 13.5px; line-height: 1.5; }
+.help-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+.help-head h2 { font-size: 16px; font-weight: 700; }
+.help-head form { margin: -6px -8px 0 0; }
+.help p { margin: 10px 0 0; color: var(--text-2); }
+.help .subtle { font-size: 12.5px; }
+.help-levels { margin: 12px 0 0; display: grid; gap: 8px; }
+.help-levels div { display: grid; grid-template-columns: 92px 1fr; gap: 10px; }
+.help-levels dt { display: flex; align-items: center; gap: 7px; font-weight: 600; height: 1.5em; }
+.help-levels dd { margin: 0; color: var(--text-2); }
 .swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
 .swatch.none { background: var(--land-none); }
 .legend-pulse { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--text); position: relative; }
@@ -309,6 +334,9 @@ h1, h2 { margin: 0; }
 .panel > * { flex-shrink: 0; }
 .panel-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .panel-header h1 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
+/* Data older than it should be (dropped scheduled updates): the header says so. */
+#asOf.is-stale { color: var(--l3); font-weight: 500; }
+#asOf.is-stale::before { content: "⚠ "; }
 .header-actions { display: flex; gap: 2px; margin: -4px -6px 0 0; }
 
 .search { position: relative; }
@@ -474,6 +502,21 @@ h1, h2 { margin: 0; }
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
 }
 .details .moves { display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap; }
+/* The overview's latest changes: three one-line rows (or an empty line). */
+.details .latest { width: 100%; margin-top: 12px; }
+.latest-list { list-style: none; margin: 4px -6px 0; padding: 0; }
+.latest-list button {
+  display: flex; align-items: baseline; gap: 6px; width: 100%;
+  padding: 3px 6px; border: 0; border-radius: 6px; background: transparent;
+  text-align: left; font-size: 12.5px; line-height: 1.45; cursor: pointer; white-space: nowrap;
+}
+.latest-list button:hover, .latest-list button:focus-visible { background: var(--panel); }
+.latest-list .swatch { width: 8px; height: 8px; border-radius: 50%; align-self: center; }
+.latest-list .name { flex: none; max-width: 40%; overflow: hidden; text-overflow: ellipsis; font-weight: 600; }
+.latest-list .what { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--text-2); }
+.latest-list .when { margin-left: auto; padding-left: 6px; color: var(--text-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+.details p.latest-empty { margin: 4px 0 0; font-size: 12.5px; color: var(--text-3); }
+.latest-empty .link-btn, .recent-empty .link-btn { font-size: inherit; font-weight: 500; }
 
 .card-actions { display: flex; align-items: baseline; gap: 14px; width: 100%; margin-top: auto; }
 .card-actions .link { margin-top: 12px; }
@@ -532,6 +575,18 @@ h1, h2 { margin: 0; }
   color: var(--text-3);
   margin-bottom: 10px;
 }
+/* Filters: collapsed by default, remembered. */
+.filters summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; list-style: none; border-radius: 6px; }
+.filters summary::-webkit-details-marker { display: none; }
+.filters summary h2 { margin: 0; }
+.filters summary::after {
+  content: ""; width: 7px; height: 7px; margin-right: 4px;
+  border-right: 2px solid var(--text-3); border-bottom: 2px solid var(--text-3);
+  transform: rotate(45deg) translateY(-2px); transition: transform .15s;
+}
+.filters[open] summary::after { transform: rotate(-135deg) translateY(-1px); }
+.filters[open] summary { margin-bottom: 10px; }
+.filters summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .section h2 .count {
   font-size: 11px; letter-spacing: 0; color: var(--text-2);
   background: var(--panel-2); border: 1px solid var(--line);
@@ -604,7 +659,10 @@ h1, h2 { margin: 0; }
 .recent-list button:hover, .recent-list button.is-active { background: var(--panel-2); }
 .recent-list .swatch { border-radius: 50%; background: var(--c); }
 .recent-list .when { margin-left: auto; color: var(--text-3); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.recent-empty { color: var(--text-3); font-size: 13px; padding: 4px 0; }
+.recent-empty { color: var(--text-3); font-size: 13px; padding: 4px 6px; }
+.recent-list .recent-empty .link-btn, .recent-list .recent-more .link-btn { display: inline; width: auto; padding: 0; font-size: 13px; color: var(--accent); }
+.recent-list .recent-more { padding: 6px 6px 0; }
+.recent-list .recent-more .link-btn:hover { background: none; }
 
 .panel-footer { margin-top: auto; padding-top: 6px; border-top: 1px solid var(--line); padding-top: 12px; line-height: 1.5; }
 

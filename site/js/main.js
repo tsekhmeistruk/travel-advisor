@@ -27,7 +27,7 @@ main().catch((err) => {
 
 async function main() {
   const client = createDataClient();
-  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, mode: null, locale: null });
+  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, filtersOpen: false, mode: null, locale: null });
   migrateSettings(settings);
 
   // ---- language
@@ -93,7 +93,12 @@ async function main() {
   });
   createThemeToggle($('themeToggle'), { settings, t: i18n.t });
 
-  $('legend').innerHTML = dataset.legend();   // measured by the map's layout
+  // The legend ends with the "How levels work" button.
+  const helpButton = `<button class="legend-help" data-action="help" title="${i18n.t('help.open')}" aria-label="${i18n.t('help.open')}">
+    <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.5v.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  </button>`;
+  const renderLegend = () => { $('legend').innerHTML = dataset.legend() + helpButton; };
+  renderLegend();   // measured by the map's layout
   const map = new WorldMap({
     svg: $('map'),
     container: mapArea,
@@ -124,11 +129,16 @@ async function main() {
   $('zoomOut').onclick = () => map.zoomBy(1 / 1.6);
   $('zoomReset').onclick = () => map.resetZoom();
 
-  const feed = $('recentList');
-  feed.addEventListener('click', (e) => {
+  // Feed items (in the feed, and the latest ones on the overview card) select their place;
+  // "Show 90 days" in an empty list widens the window.
+  const onListClick = (e) => {
+    const widen = e.target.closest('[data-show-days]');
+    if (widen) return dataset.showWindow(Number(widen.dataset.showDays));
     const btn = e.target.closest('button[data-key]');
     if (btn) select(dataset.feedTarget(btn.dataset.key), { zoom: true, toUrl: true });
-  });
+  };
+  const feed = $('recentList');
+  feed.addEventListener('click', onListClick);
   feed.addEventListener('pointerover', (e) => {
     const btn = e.target.closest('button[data-key]');
     if (btn) hover(dataset.feedTarget(btn.dataset.key));
@@ -142,6 +152,15 @@ async function main() {
   $('panelClose').onclick = () => { settings.set('panelOpen', false); applyPanel(); };
   $('panelOpen').onclick = () => { settings.set('panelOpen', true); applyPanel(); };
   applyPanel();
+
+  const filters = $('filters');
+  filters.open = settings.get('filtersOpen');
+  filters.addEventListener('toggle', () => settings.set('filtersOpen', filters.open));
+
+  // "How levels work": Escape (the dialog's own) and a click on the backdrop close it.
+  const help = $('help');
+  $('legend').addEventListener('click', (e) => { if (e.target.closest('[data-action="help"]')) help.showModal(); });
+  help.addEventListener('click', (e) => { if (e.target === help) help.close(); });
 
   function hover(target) {
     hovered = target;
@@ -165,9 +184,10 @@ async function main() {
   // ---- the country view (risk modes)
   $('details').addEventListener('click', (e) => {
     const btn = e.target.closest('[data-action="country"]');
-    if (btn) openCountry(btn.dataset.place, { toUrl: true });
+    if (btn) return openCountry(btn.dataset.place, { toUrl: true });
+    onListClick(e);
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && countryOpen) closeCountry({ toUrl: true }); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && countryOpen && !help.open) closeCountry({ toUrl: true }); });
 
   async function openCountry(placeId, { toUrl = false } = {}) {
     if (!places.has(placeId) || !(await countryViewer())) return;
@@ -239,8 +259,9 @@ async function main() {
     $('map').setAttribute('aria-label', dataset.mapLabel());
     providerSwitch.render(dataset.providers(), dataset.provider(), dataset.providerSwitchLabel());
     $('asOf').textContent = dataset.header();
+    $('asOf').classList.toggle('is-stale', dataset.stale());
     $('footer').innerHTML = dataset.footer();
-    $('legend').innerHTML = dataset.legend();
+    renderLegend();
     dataset.renderSettings($('datasetSettings'));
     dataset.renderFeed(feed);
     search.setEntries(dataset.searchEntries());

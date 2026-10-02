@@ -3,7 +3,8 @@
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { useBrowser, open, openRaw, sleep, OUT, detailsTitle, withRiskChanges, measureCards, SETTINGS_KEY } from './helpers.mjs';
+import { readFileSync } from 'node:fs';
+import { useBrowser, open, openRaw, sleep, OUT, detailsTitle, withRiskChanges, measureCards, isData, SETTINGS_KEY } from './helpers.mjs';
 
 useBrowser();
 
@@ -61,7 +62,7 @@ describe('mode switch', () => {
     await page.click('#modeSwitch [data-mode="disaster"]');
     await page.waitForFunction(() => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === 'disaster');
     assert.equal(await page.evaluate(() => window.__stayed), true, 'no page reload');
-    assert.match(await text(page, 'asOf'), /^Risk Monitor · updated/);
+    assert.match(await text(page, 'asOf'), /^Updated /);
     assert.equal(await page.$eval('#providerSwitch', el => el.hidden), true);
     assert.match(await text(page, 'legend'), /Normal.*Elevated.*High.*Critical/);
     assert.equal((await saved(page)).mode, 'disaster');
@@ -137,7 +138,7 @@ describe('risk panel', () => {
 
   test('the window and direction filters change the feed and are saved', async () => {
     const page = await openMode('highest', { intercept: withRiskChanges() });
-    const count = () => page.$$eval('#recentList button', els => els.length);
+    const count = () => page.$eval('#recentCount', el => Number(el.textContent));
     const all = await count();
     await page.click('#riskDirectionSeg [data-dir="down"]');
     await sleep(200);
@@ -154,6 +155,84 @@ describe('risk panel', () => {
     assert.ok(keys.some(k => k.startsWith('jp:disaster:')), 'the 1-hour level change');
     assert.ok(!keys.some(k => k.startsWith('it:disaster:')), 'not the 10-day-old one');
     assert.equal((await saved(page)).risk.recentDays, 1);
+    await page.close();
+  });
+
+  test('the overview lists the latest changes; clicking one selects its place', async () => {
+    const page = await openMode('highest', { intercept: withRiskChanges() });
+    const names = await page.$$eval('#details .latest-list .name', els => els.map(e => e.textContent));
+    assert.equal(names.length, 3);
+    assert.equal(names[0], 'Japan', 'the injected 1-hour change is the newest');
+    await page.click('#details .latest-list button');
+    await sleep(900);
+    await page.hover('#footer');
+    assert.equal(await detailsTitle(page), 'Japan');
+    assert.match(await page.evaluate(() => location.hash), /place=jp/);
+    await page.close();
+  });
+
+  test('an empty window says so and offers 90 days', async () => {
+    const none = (req) => isData(req, 'risk/changes.json') && (req.respond({ status: 200, contentType: 'application/json', body: '{"changes":[]}' }), true);
+    const page = await openMode('changes', { stored: { mode: 'changes', risk: { recentDays: 7 } }, intercept: none });
+    assert.match(await text(page, 'recentList'), /No changes in this period. Show 90 days/);
+    assert.match(await text(page, 'details'), /Latest changes\s*No changes in this period\.\s*Show 90 days/);
+    await page.click('#details [data-show-days="90"]');
+    await sleep(200);
+    assert.equal(await checked(page, '#riskWindowSeg'), '90');
+    assert.equal((await saved(page)).risk.recentDays, 90);
+    assert.equal(await page.$$eval('[data-show-days]', els => els.length), 0, 'nothing longer to offer');
+    await page.close();
+  });
+
+  test('the filters are collapsed on a first visit, and stay as the visitor leaves them', async () => {
+    const page = await openRaw({ stored: { filtersOpen: undefined } });
+    await page.waitForSelector('path.country');
+    const isOpen = () => page.$eval('#filters', el => el.open);
+    assert.equal(await isOpen(), false);
+    assert.equal(await page.$eval('#riskLevelChips', el => el.checkVisibility()), false, 'hidden while collapsed');
+    await page.click('#filters summary');
+    assert.equal(await isOpen(), true);
+    await sleep(100);   // the toggle event comes after the click
+    assert.equal((await saved(page)).filtersOpen, true);
+    await page.reload({ waitUntil: 'networkidle0' });
+    assert.equal(await isOpen(), true, 'remembered');
+    await page.close();
+  });
+
+  test('"How levels work" opens from the legend and closes with Escape or the backdrop', async () => {
+    const page = await openMode('highest');
+    const isOpen = () => page.$eval('#help', el => el.open);
+    await page.click('#legend [data-action="help"]');
+    assert.equal(await isOpen(), true);
+    assert.match(await text(page, 'help'), /How levels work[\s\S]*Critical[\s\S]*never sets a level/);
+    await page.keyboard.press('Escape');
+    assert.equal(await isOpen(), false);
+    await page.click('#legend [data-action="help"]');
+    await page.mouse.click(8, 8);   // the backdrop
+    assert.equal(await isOpen(), false);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('data more than 12 hours old is flagged in the header', async () => {
+    const current = JSON.parse(readFileSync(new URL('../../site/data/risk/current.json', import.meta.url), 'utf8'));
+    const body = JSON.stringify({ ...current, asOf: new Date(Date.now() - 30 * 36e5).toISOString() });
+    const old = (req) => isData(req, 'risk/current.json') && (req.respond({ status: 200, contentType: 'application/json', body }), true);
+    const page = await openMode('highest', { intercept: old });
+    assert.match(await text(page, 'asOf'), /^Updated (a day|1 day|yesterday)[^:]*: newer data is delayed/);
+    assert.equal(await page.$eval('#asOf', el => el.classList.contains('is-stale')), true);
+    await page.close();
+  });
+
+  test('a long feed shows its first 8 changes, then all of them', async () => {
+    const page = await openMode('highest', { intercept: withRiskChanges() });
+    const total = await page.$eval('#recentCount', el => Number(el.textContent));
+    assert.ok(total > 8, `${total} changes`);
+    const items = () => page.$$eval('#recentList button[data-key]', els => els.length);
+    assert.equal(await items(), 8);
+    await page.click('#recentList [data-feed-all]');
+    assert.equal(await items(), Math.min(total, 50));
+    assert.equal(await page.$$eval('#recentList [data-feed-all]', els => els.length), 0);
     await page.close();
   });
 

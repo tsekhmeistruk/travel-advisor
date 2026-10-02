@@ -19,7 +19,7 @@
   "label": "Details and settings",
   "show": "Show panel",
   "hide": "Hide panel",
-  "settings": "Settings",
+  "filters": "Filters",
   "theme": "Theme: {mode}",
   "themeModes": {
    "auto": "auto",
@@ -27,6 +27,22 @@
    "dark": "dark"
   },
   "language": "Language"
+ },
+ "help": {
+  "open": "How levels work",
+  "title": "How levels work",
+  "close": "Close",
+  "intro": "In the risk modes every place has a level from 1 to 4 in each category: travel, disasters, wildfires and health. Highest shows the highest of them; the other modes show one.",
+  "levels": {
+   "1": "No alert, and the governments advise normal precautions.",
+   "2": "A government advises increased caution, a WHO outbreak notice in the last 30 days, or a drought alert.",
+   "3": "A government advises reconsidering travel to all or part of it, or a GDACS Orange alert.",
+   "4": "A government advises against all travel, or a GDACS Red alert."
+  },
+  "travel": "Travel is the highest advisory of the governments that cover a place (U.S., Canada, the Netherlands, the UK and Germany). The Travel mode shows one government's own levels instead.",
+  "confidence": "A level rises as soon as a source reports it. A fall is applied once a later update confirms it, so a level doesn't flicker.",
+  "news": "News activity (GDELT) compares protests and violence in the news with a country's normal week. It is shown as unusual or not, and never sets a level.",
+  "ours": "The levels are this site's summary of the sources, not official levels. Each card links to its source."
  },
  "search": {
   "placeholder": "Find a country",
@@ -92,7 +108,8 @@
    },
    "feed": {
     "title": "Level changes in the last {days} days",
-    "empty": "No level changes in this period."
+    "empty": "No level changes in this period.",
+    "showDays": "Show {days} days"
    },
    "legend": {
     "none": "No advisory",
@@ -320,8 +337,9 @@
    "days": "{days} days"
   },
   "mapLabel": "World map coloured by risk level ({mode})",
-  "header": "Risk Monitor · updated {age}",
-  "headerIssue": "Risk Monitor · updated {age} · {source} {status}",
+  "header": "Updated {age}",
+  "headerStale": "Updated {age}: newer data is delayed",
+  "headerIssue": "{base} · {source} {status}",
   "footer": "Sources: {sources}. Risk levels are our summary of them, not official levels. Always check the sources before you travel.",
   "overview": {
    "eyebrow": "World overview · {mode}",
@@ -334,7 +352,8 @@
    "about": {
     "disaster": "Levels rise with GDACS Orange and Red alerts. Green markers are smaller events.",
     "wildfire": "Levels rise only with a GDACS Orange or Red forest-fire alert, which is rare. Green markers are smaller fires."
-   }
+   },
+   "latest": "Latest changes"
   },
   "card": {
    "eyebrow": "Risk by category",
@@ -401,6 +420,8 @@
   "feed": {
    "title": "Changes in the last {window}",
    "empty": "No changes in this period.",
+   "showDays": "Show {days} days",
+   "showAll": "Show all {count}",
    "more": "and {count} more"
   },
   "legend": {

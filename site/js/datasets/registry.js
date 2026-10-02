@@ -8,10 +8,12 @@
 //   id, load()                                  load its data
 //   providers(), provider(), setProvider(id)    sources shown in the provider switch (none: hidden)
 //   mapLabel(), providerSwitchLabel(), header(), footer()
+//   stale()                                     whether the data is older than it should be (the header warns)
 //   style(placeId)                              how the map draws a place (see map/world-map.js)
 //   hasPlace(placeId)                           whether it has data for a place
 //   details(target), tooltip(placeId), legend() HTML for the panel card, tooltip and legend
 //   renderSettings(el), renderFeed(el)          its settings and its list of notable items
+//   showWindow(days)                            widen the feed's window ("Show 90 days" in an empty list)
 //   feedTarget(key), feedKeyFor(target)         map feed items to selection targets and back
 //   searchEntries()                             what the search box can find
 // and optionally, for point markers (events):

@@ -7,6 +7,7 @@ import { indexByPlace, isRecent, latestChange, recentRecords, pulseOpacity, noAd
 
 const ID = 'travel-advisories';
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
+const STALE_DAYS = 7;     // the header warns about data older than this
 
 export function createTravelAdvisories(ctx) {
   const { i18n, manifest, places, client } = ctx;
@@ -162,8 +163,9 @@ export function createTravelAdvisories(ctx) {
     header() {
       const age = i18n.ageDays(data.asOf);
       const params = { agency: tp('agency'), date: i18n.formatDate(data.asOf), age: i18n.relativeAge(age) };
-      return age > 7 ? tx('headerStale', params) : tx('header', params);
+      return age > STALE_DAYS ? tx('headerStale', params) : tx('header', params);
     },
+    stale: () => i18n.ageDays(data.asOf) > STALE_DAYS,
     /** Footer HTML: the translated sentence with the agency linked to its advisory list. */
     footer() {
       const url = safeUrl(data.links?.list);
@@ -255,6 +257,7 @@ export function createTravelAdvisories(ctx) {
       const section = container.closest('.recent');
       section.hidden = windowDays() === 0;
       if (section.hidden) return;
+      const longest = Math.max(...manifest.recentWindows);
       const items = recentRecords(data.records, { windowDays: windowDays(), levels: levels(), ageDays: i18n.ageDays });
       section.querySelector('#recentTitle').textContent = tx('feed.title', { days: windowDays() });
       section.querySelector('#recentCount').textContent = items.length;
@@ -270,8 +273,10 @@ export function createTravelAdvisories(ctx) {
             <span class="what">${arrow(c)}${esc(changeText(c))}</span>
           </button></li>`;
         }).join('')
-        : `<li class="recent-empty">${esc(tx('feed.empty'))}</li>`;
+        : `<li class="recent-empty">${esc(tx('feed.empty'))}${windowDays() < longest
+          ? ` <button class="link-btn" data-show-days="${longest}">${esc(tx('feed.showDays', { days: longest }))}</button>` : ''}</li>`;
     },
+    showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
 
     /** A feed item's target: its first place, or the record itself if it has no place. */
     feedTarget(key) {

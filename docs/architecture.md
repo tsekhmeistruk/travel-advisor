@@ -200,6 +200,8 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
   - It loads the manifest, picks a locale (saved choice, then browser languages, then the default), and loads messages, places and map geometry.
   - It picks the **mode** (the URL hash first, then the saved choice, then Highest), creates that mode's dataset from `MODES` in `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
   - It wires hover and selection *targets* to the details card, tooltip, feed and search.
+  - **Panel order:** header (the data age; stale data is flagged, see `stale()`), mode switch, search, the details card, the feed, then the **Filters** (a `<details>`, collapsed by default, its state saved as `filtersOpen`) and the footer.
+  - The legend ends with an ⓘ button that opens **How levels work** (`<dialog id="help">` in `index.html`, text in `help.*`): the scale, what sets each level, confirmation, and that news activity never sets a level. Escape or the backdrop closes it.
   - Switching modes loads the new dataset first, then swaps it in place: no reload, and the map, zoom and selected place stay.
   - On user actions it writes the mode and the selected place to the URL (`#mode=disaster&place=mx`, `core/url-state.js`), so a view can be linked. A new hash (a link, back and forward) switches to it.
 - **Modes** (`MODES` in `datasets/registry.js`), each a dataset, offered only when the manifest has their data:
@@ -209,10 +211,10 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
   | Travel | one government's advisory level, with the provider switch | `datasets/travel-advisories/` |
   | Highest | the highest level of any risk category | `datasets/risk/` (`view: 'highest'`) |
   | Disasters | the `disaster` category (GDACS) | `datasets/risk/` (`view: 'category'`) |
-| Wildfires | the `wildfire` category (GDACS forest fires) | `datasets/risk/` (`view: 'category'`) |
+  | Wildfires | the `wildfire` category (GDACS forest fires) | `datasets/risk/` (`view: 'category'`) |
   | Changes | the highest level, fading places without a change in the window | `datasets/risk/` (`view: 'changes'`) |
 
-  The risk modes share one factory (`createRiskMode`) and one settings namespace (`risk`: levels, window 24 h / 7 / 30 / 90 days, direction, fade). Their card lists every category with its level and what set it: "2 of 3 governments", or the GDACS alert. Their feed lists every change kind (level, advisory, new or changed event). A pulse still means only a level change. A place with no data is drawn grey and never pulses.
+  The risk modes share one factory (`createRiskMode`) and one settings namespace (`risk`: levels, window 24 h / 7 / 30 / 90 days, direction, fade). Their card lists every category with its level and what set it: "2 of 3 governments", or the GDACS alert. Their overview card shows the three latest changes (a click selects the place). Their feed lists every change kind (level, advisory, new or changed event, news activity), the first 8 until "Show all". An empty list says so and offers "Show 90 days" (`showWindow(days)`). The header says "Updated 2 hours ago", and flags data over 12 hours old (`isStale()` in `risk/logic.js`): GitHub drops scheduled runs. A pulse still means only a level change. A place with no data is drawn grey and never pulses.
 - **Event markers:** a mode may return `markers()` (`[{ id, lon, lat, kind, level }]`), which the map draws with `setMarkers()`: a coloured disc per event, with an icon per kind (earthquake, cyclone, flood, volcano, drought, fire). Markers whose screen positions share a 28px cell become one cluster with a count and the highest level (`map/clusters.js`, pure); clicking a cluster zooms in to split it, and at the closest zoom selects its first event. A selected marker is the target `{ eventId, placeId }`: the card shows the event (the source's facts, our level beside them, the places it affects, a link to the source), and its place is outlined. The Disasters and Wildfires modes mark their category's events; Highest marks only Orange and Red ones; Changes and Travel none.
 - **Country view:** "Country details" on the risk card (and on the Travel card, which borrows a risk mode's viewer, loaded when first opened) opens a full panel view in place of the card, settings and feed (`#…&view=country` in the URL; Back or Escape closes it, selecting another country follows it). It shows every category, the active alerts (click: the event card), each government's advisory in its own words with a link, and the place's changes over 7, 30, 90 days or a year. It loads `risk/places/<id>.json` only when opened.
 - **Data freshness:** `core/data-client.js` revalidates the manifest on every load and asks for each data file with its as-of time (`?v=…`), because GitHub Pages lets browsers cache files for minutes and the data changes hourly.
@@ -220,8 +222,8 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
 - **Datasets** implement the interface documented in `datasets/registry.js`:
   - `load`, plus `providers`, `provider` and `setProvider`;
   - `style`, `details`, `tooltip` and `legend`;
-  - `renderSettings`, `renderFeed`, `feedTarget` and `feedKeyFor`;
-  - `searchEntries`, `header` and `footer`.
+  - `renderSettings`, `renderFeed`, `showWindow`, `feedTarget` and `feedKeyFor`;
+  - `searchEntries`, `header`, `stale` and `footer`.
 
   Each dataset keeps its settings under its own namespace in the saved settings.
 - **i18n** (`core/i18n.js`):

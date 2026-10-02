@@ -64,19 +64,41 @@
 
       <section class="country-view" id="countryView" aria-live="polite" hidden></section>
 
-      <section class="section">
-        <h2 data-i18n="panel.settings">Settings</h2>
-        <div id="datasetSettings"></div>
-      </section>
-
       <section class="section recent">
         <h2><span id="recentTitle"></span> <span class="count" id="recentCount"></span></h2>
         <ul class="recent-list" id="recentList"></ul>
       </section>
 
+      <details class="section filters" id="filters">
+        <summary><h2 data-i18n="panel.filters">Filters</h2></summary>
+        <div id="datasetSettings"></div>
+      </details>
+
       <footer class="panel-footer subtle" id="footer"></footer>
     </aside>
   </div>
+
+  <dialog class="help" id="help" aria-labelledby="helpTitle">
+    <div class="help-body">
+      <div class="help-head">
+        <h2 id="helpTitle" data-i18n="help.title">How levels work</h2>
+        <form method="dialog"><button class="icon-btn ghost" data-i18n-title="help.close" data-i18n-aria-label="help.close">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button></form>
+      </div>
+      <p data-i18n="help.intro"></p>
+      <dl class="help-levels">
+        <div><dt><span class="swatch" style="background:var(--risk-normal)"></span><span data-i18n="risk.levels.1"></span></dt><dd data-i18n="help.levels.1"></dd></div>
+        <div><dt><span class="swatch" style="background:var(--l2)"></span><span data-i18n="risk.levels.2"></span></dt><dd data-i18n="help.levels.2"></dd></div>
+        <div><dt><span class="swatch" style="background:var(--l3)"></span><span data-i18n="risk.levels.3"></span></dt><dd data-i18n="help.levels.3"></dd></div>
+        <div><dt><span class="swatch" style="background:var(--l4)"></span><span data-i18n="risk.levels.4"></span></dt><dd data-i18n="help.levels.4"></dd></div>
+      </dl>
+      <p data-i18n="help.travel"></p>
+      <p data-i18n="help.confidence"></p>
+      <p data-i18n="help.news"></p>
+      <p class="subtle" data-i18n="help.ours"></p>
+    </div>
+  </dialog>
 
   <script src="vendor/d3.min.js"></script>
   <script src="vendor/topojson-client.min.js"></script>
