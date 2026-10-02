@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T00:15:08.805Z",
+ "asOf": "2026-10-02T03:22:15.750Z",
  "sources": {
   "ca": {
    "status": "healthy",
@@ -17,10 +17,10 @@
   },
   "gdacs": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T00:11:46.116Z",
-   "lastAttempt": "2026-10-02T00:11:46.116Z",
+   "lastSuccess": "2026-10-02T03:22:15.748Z",
+   "lastAttempt": "2026-10-02T03:22:15.748Z",
    "consecutiveFailures": 0,
-   "records": 261
+   "records": 260
   },
   "gdelt": {
    "status": "healthy",
