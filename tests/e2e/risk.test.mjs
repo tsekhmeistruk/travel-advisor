@@ -96,7 +96,19 @@ describe('mode switch', () => {
     await page.close();
   });
 
-  test('an unknown mode in the URL or settings falls back to Travel; old settings are migrated', async () => {
+  test('a first visit opens on Highest; a saved Travel is kept', async () => {
+    const first = await openRaw({ stored: {} });
+    await first.waitForSelector('path.country');
+    assert.equal(await checked(first, '#modeSwitch'), 'highest');
+    assert.equal(await first.evaluate(() => document.title), 'Risk Monitor');
+    await first.close();
+    const back = await openRaw({ stored: { mode: 'travel' } });
+    await back.waitForSelector('path.country');
+    assert.equal(await checked(back, '#modeSwitch'), 'travel');
+    await back.close();
+  });
+
+  test('an unknown mode in the URL falls back to the saved one; old settings are migrated to Travel', async () => {
     const page = await openRaw({ hash: '#mode=nope', stored: { dataset: 'travel-advisories' } });
     await page.waitForSelector('path.country');
     assert.equal(await checked(page, '#modeSwitch'), 'travel');

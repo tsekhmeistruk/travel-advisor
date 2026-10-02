@@ -1,6 +1,6 @@
-# Travel Risk Map
+# Risk Monitor
 
-A world map of official travel advisory levels from the **U.S. State Department**, the **Government of Canada**, the **Dutch Ministry of Foreign Affairs**, the **UK Foreign Office** and the **German Foreign Office**. It shows at a glance where the risk is and where the risk level changed recently. The data refreshes automatically every day.
+A world map that monitors countries for changes that matter to travellers: official travel advisory levels from the **U.S. State Department**, the **Government of Canada**, the **Dutch Ministry of Foreign Affairs**, the **UK Foreign Office** and the **German Foreign Office**, disaster alerts (GDACS), outbreak notices (WHO) and unusual news activity (GDELT). It shows at a glance where the risk is and what changed recently. The data refreshes automatically several times a day. (It began as the "Travel Risk Map"; the repository keeps that name.)
 
 **Live site: https://tsekhmeistruk.github.io/travel-advisor/**
 

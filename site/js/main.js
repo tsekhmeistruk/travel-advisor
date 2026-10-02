@@ -55,7 +55,9 @@ async function main() {
   // ---- mode (the URL wins over the saved choice)
   const places = new Map(placeList.map(p => [p.id, p]));
   const modes = MODES.filter(m => m.entry(manifest));
-  const pickMode = (id) => modes.find(m => m.id === id) ?? modes.find(m => m.id === DEFAULT_MODE) ?? modes[0];
+  // The asked-for mode, else the saved one (an unknown mode in a link keeps the visitor's), else the default.
+  const findMode = (id) => modes.find(m => m.id === id);
+  const pickMode = (id) => findMode(id) ?? findMode(settings.get('mode')) ?? findMode(DEFAULT_MODE) ?? modes[0];
   // The country view comes from a risk mode; a mode without one (Travel) borrows one.
   const viewerMode = modes.find(m => m.id === 'highest');
   let borrowedViewer = null;
@@ -66,7 +68,7 @@ async function main() {
     return ds;
   };
   const fromUrl = parseHash(location.hash);
-  let mode = pickMode(fromUrl.mode ?? settings.get('mode'));
+  let mode = pickMode(fromUrl.mode);
   let dataset = await createDataset(mode);
 
   // ---- panel and map
@@ -275,6 +277,8 @@ function migrateSettings(settings) {
     settings.set('dataset', undefined);
   }
   if (settings.get('source') === undefined && settings.get('levels') === undefined) return;
+  // A visitor of the first version only knew the travel map: keep them there.
+  if (!settings.get('mode')) settings.set('mode', 'travel');
   const old = { provider: settings.get('source'), levels: settings.get('levels'), recentDays: settings.get('recentDays'), dimOthers: settings.get('dimOthers') };
   settings.set('travel-advisories', Object.fromEntries(Object.entries(old).filter(([, v]) => v !== undefined)));
   for (const key of ['source', 'levels', 'recentDays', 'dimOthers']) settings.set(key, undefined);

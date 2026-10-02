@@ -4,7 +4,7 @@
   "dir": "ltr"
  },
  "app": {
-  "title": "Travel Risk Map",
+  "title": "Risk Monitor",
   "loadError": "The map data couldn't be loaded. Please reload the page."
  },
  "map": {

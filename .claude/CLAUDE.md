@@ -1,4 +1,4 @@
-# Travel Risk Map: project guide
+# Risk Monitor (formerly Travel Risk Map): project guide
 
 A world map of **data about places**. Today it shows official travel-advisory levels from the U.S., Canada, the Netherlands, the UK and Germany, with a provider switch, a level-change feed and a details panel. GitHub Actions refreshes the data (advisories daily, GDACS disaster alerts hourly), and tests gate every deploy. It's growing into a **risk monitor**: several risk categories per place from several sources (see "The risk layer" in `docs/architecture.md`), plus more providers, languages, and a database later.
 
@@ -74,7 +74,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 - **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). Done so far:
   - **Pipeline:** stores, schedule, source health, the hourly workflow; GDACS (Orange/Red for levels, Green cyclones, floods and volcanoes for markers) and WHO Disease Outbreak News (Health) into `site/data/risk/`, with a file per place.
-  - **Site:** map modes (Travel, Highest, Disasters, Wildfires, Changes), the risk summary card, the change feed, event markers with clustering and an event card, the country view, URL state and cache-busting. Travel is still the default mode.
+  - **Site:** map modes (Travel, Highest, Disasters, Wildfires, Changes), the risk summary card, the change feed, event markers with clustering and an event card, the country view, URL state and cache-busting. The site is called **Risk Monitor** and opens on **Highest** (Oct 2026); a saved mode or a link wins, and visitors with first-version settings stay on Travel. The repo and the localStorage key keep the old name.
   - **Unusual activity without keys:** GDELT news counts give protest and violence activity against each country's normal (never a level); Security and Unrest levels still need ACLED or UCDP.
   - **Waiting for the owner:** NASA FIRMS (a `FIRMS_MAP_KEY` secret; then fire activity and anomalies), ACLED (licence request; UCDP is the fallback) for Security and Unrest, confirming reuse with GDACS and WHO. The owner said (Sep 28, 2026) they may never get these keys: build only on open data, don't plan around them. Australia's Smartraveller has no reachable feed (bot protection), so it's out.
 - **The risk baseline was set on Sep 27, 2026:** the 13 GDACS events of the first fetch aren't "new", and the first build recorded no disaster changes. The same for WHO's first fetch (its first notices set the baseline).

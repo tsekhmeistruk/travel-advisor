@@ -196,9 +196,9 @@ export const measureCards = (page) => page.evaluate(() => {
   };
 });
 
-/** Open with travel-advisory settings, e.g. { provider: 'ca', recentDays: 90 }, and wait for the map. */
+/** Open the Travel mode with travel-advisory settings, e.g. { provider: 'ca', recentDays: 90 }, and wait for the map. */
 export async function open({ settings = {}, ...opts } = {}) {
-  const page = await openRaw({ ...opts, stored: { [DATASET]: settings, ...(opts.stored ?? {}) } });
+  const page = await openRaw({ ...opts, stored: { mode: 'travel', [DATASET]: settings, ...(opts.stored ?? {}) } });
   await page.waitForSelector('path.country');
   return page;
 }

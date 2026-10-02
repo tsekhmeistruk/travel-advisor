@@ -1,7 +1,7 @@
 {
   "name": "travel-risk-map",
   "private": true,
-  "description": "World map of U.S., Canadian and Dutch travel advisory levels, updated daily",
+  "description": "Risk Monitor: world map of official travel advisories, disaster and outbreak alerts and unusual news activity, with recent changes",
   "type": "module",
   "engines": {
     "node": ">=22"

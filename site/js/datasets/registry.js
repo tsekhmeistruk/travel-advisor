@@ -40,4 +40,4 @@ export const MODES = [
   { id: 'wildfire', create: risk({ mode: 'wildfire', view: 'category', category: 'wildfire' }), entry: (m) => m.risk },
   { id: 'changes', create: risk({ mode: 'changes', view: 'changes' }), entry: (m) => m.risk },
 ];
-export const DEFAULT_MODE = 'travel';
+export const DEFAULT_MODE = 'highest';

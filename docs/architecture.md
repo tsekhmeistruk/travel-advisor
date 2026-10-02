@@ -198,7 +198,7 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
 
 - **`main.js`** is the composition root.
   - It loads the manifest, picks a locale (saved choice, then browser languages, then the default), and loads messages, places and map geometry.
-  - It picks the **mode** (the URL hash first, then the saved choice, then Travel), creates that mode's dataset from `MODES` in `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
+  - It picks the **mode** (the URL hash first, then the saved choice, then Highest), creates that mode's dataset from `MODES` in `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
   - It wires hover and selection *targets* to the details card, tooltip, feed and search.
   - Switching modes loads the new dataset first, then swaps it in place: no reload, and the map, zoom and selected place stay.
   - On user actions it writes the mode and the selected place to the URL (`#mode=disaster&place=mx`, `core/url-state.js`), so a view can be linked. A new hash (a link, back and forward) switches to it.
