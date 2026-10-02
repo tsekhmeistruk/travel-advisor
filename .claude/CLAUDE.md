@@ -47,9 +47,9 @@ For **every** change, however small, decide explicitly whether tests must be **a
 | Risk layer: categories, sources, signals, confirmed changes, source health, published `risk/*.json` | `config/categories.json`, `config/sources/<id>.json`; `scripts/lib/risk.mjs` (pure); event upsert in `scripts/lib/events.mjs`; GDACS in `scripts/providers/gdacs/` |
 | What is fetched when (hourly workflow) | `config/schedule.json`; `scripts/lib/schedule.mjs` (pure), `scripts/due.mjs`; `.github/workflows/update.yml` |
 | All pipeline file access | `scripts/lib/store.mjs` (`FileStore`), the seam for a future database |
-| Site bootstrap, interaction targets, mode switching in place, URL state (`#mode=…&place=…`) | `site/js/main.js`; `site/js/core/url-state.js` |
+| Site bootstrap, interaction targets, mode switching in place, the panel views (country, countries list), URL state (`#mode=…&place=…&view=country|list`) | `site/js/main.js`; `site/js/core/url-state.js` |
 | Map modes (Travel, Highest, Disasters, Changes) | `MODES` in `site/js/datasets/registry.js` |
-| Risk modes: levels per category, the summary card, the change feed | `site/js/datasets/risk/logic.js` (pure) and `index.js` |
+| Risk modes: levels per category, the summary card, the change feed, the country view and countries list | `site/js/datasets/risk/logic.js` (pure: `cardModel`, `countryRows`, `sortRows`, …) and `index.js` |
 | Generic map (fills, dots, pulses, event markers, zoom, `clickDistance(6)`) | `site/js/map/world-map.js`; marker clustering and icons in `site/js/map/clusters.js` |
 | Travel-advisory rules (recency, which record covers which place) and views | `site/js/datasets/travel-advisories/logic.js` (pure) and `index.js` |
 | Dataset interface | `site/js/datasets/registry.js` |

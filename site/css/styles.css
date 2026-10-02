@@ -560,6 +560,22 @@ h1, h2 { margin: 0; }
 /* Country view: replaces the card, settings and feed while open */
 .panel.is-country .details, .panel.is-country .section { display: none; }
 .country-view[hidden] { display: none; }
+/* The countries list */
+.list-view { gap: 12px; }
+.list-view .cv-name .count { font-size: 12px; font-weight: 500; vertical-align: middle; color: var(--text-2); background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; }
+.list-filter {
+  width: 100%; padding: 8px 12px;
+  border: 1px solid var(--line); border-radius: 10px;
+  background: var(--panel-2); color: var(--text); font: inherit; font-size: 13.5px;
+}
+.list-filter:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.country-list li { min-height: 34px; }
+.country-list button { padding: 6px 4px; border-radius: 6px; }
+.country-list button:hover { background: var(--panel-2); }
+.country-list button:hover .what { text-decoration: none; }
+.country-list .what { font-weight: 500; }
+.country-list .lvl { flex: none; max-width: 46%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--text-2); font-size: 12.5px; }
+.country-list .date { min-width: 52px; text-align: right; white-space: nowrap; }
 .country-view { display: flex; flex-direction: column; gap: 16px; }
 .cv-head { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
 .cv-head .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); }

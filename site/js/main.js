@@ -74,7 +74,8 @@ async function main() {
   // ---- panel and map
   let hovered = null;
   let selected = null;
-  let countryOpen = false;   // the full country view replaces the card, settings and feed
+  let panelView = null;   // 'country' or 'list': a full panel view in place of the card, feed and filters
+  let fromList = false;   // the country view was opened from the list: Back returns to it
   const modeSwitch = createModeSwitch($('modeSwitch'), { onChange: (id) => switchMode(id, { toUrl: true }) });
   const mapArea = $('mapArea');
   const tooltip = createTooltip($('tooltip'), mapArea);
@@ -171,49 +172,81 @@ async function main() {
     map.setHovered(target?.placeId ?? null);
     renderDetails();
   }
-  function select(target, { zoom = false, toUrl = false } = {}) {
+  /** follow: an open panel view follows the selection (off when a view selects the place itself). */
+  function select(target, { zoom = false, toUrl = false, follow = true } = {}) {
     selected = target;
     map.setSelected(target?.placeId ?? null);
     map.setSelectedMarker(target?.eventId ?? null);
     renderDetails();
     if (zoom && target?.placeId) map.zoomTo(target.placeId);
-    // The open country view follows the selected place, and closes with the selection.
-    if (countryOpen) {
-      if (target?.placeId && !target.eventId) renderCountry(target.placeId);
-      else closeCountry({ toUrl: false });
+    const place = target?.placeId && !target.eventId ? target.placeId : null;
+    if (follow && panelView === 'country') {
+      // The country view follows the selected place, and closes with the selection.
+      if (place) renderCountry(place);
+      else closeView({ all: !!target?.eventId });
+    } else if (follow && panelView === 'list') {
+      // From the list, a place on the map opens its country view (Back returns to the list).
+      if (place) return openCountry(place, { fromList: true, toUrl });
+      if (target?.eventId) closeView({ all: true });
     }
     if (toUrl) writeUrl();
   }
 
-  // ---- the country view (risk modes)
+  // ---- the full panel views (from a risk mode, borrowed in Travel): a country, and the countries list
   $('details').addEventListener('click', (e) => {
     const btn = e.target.closest('[data-action="country"]');
     if (btn) return openCountry(btn.dataset.place, { toUrl: true });
+    if (e.target.closest('[data-action="list"]')) return openList({ toUrl: true });
     onListClick(e);
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && countryOpen && !help.open) closeCountry({ toUrl: true }); });
+  $('listOpen').onclick = () => openList({ toUrl: true });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panelView && !help.open) closeView({ toUrl: true }); });
 
-  async function openCountry(placeId, { toUrl = false } = {}) {
+  /** Show one panel view (or none). The list is kept while its country view is open, for Back. */
+  function showView(kind) {
+    panelView = kind;
+    $('panel').classList.toggle('is-country', !!kind);
+    $('countryView').hidden = kind !== 'country';
+    $('listView').hidden = kind !== 'list';
+    if (kind !== 'country') $('countryView').innerHTML = '';
+    if (!kind || (kind === 'country' && !fromList)) $('listView').innerHTML = '';
+  }
+  async function openCountry(placeId, { toUrl = false, fromList: back = false, zoom = false } = {}) {
     if (!places.has(placeId) || !(await countryViewer())) return;
-    if (selected?.placeId !== placeId || selected?.eventId) select({ placeId });
-    countryOpen = true;
-    $('panel').classList.add('is-country');
-    $('countryView').hidden = false;
+    if (selected?.placeId !== placeId || selected?.eventId) select({ placeId }, { zoom, follow: false });
+    fromList = back;
+    showView('country');
     await renderCountry(placeId);
     if (toUrl) writeUrl();
   }
   async function renderCountry(placeId) {
     const viewer = await countryViewer();
     return viewer.renderCountryView($('countryView'), placeId, {
-      back: () => closeCountry({ toUrl: true }),
-      selectEvent: (id) => { closeCountry(); select(viewer.eventTarget(id), { zoom: true, toUrl: true }); },
+      back: () => closeView({ toUrl: true }),
+      selectEvent: (id) => { closeView({ all: true }); select(viewer.eventTarget(id), { zoom: true, toUrl: true }); },
     });
   }
-  function closeCountry({ toUrl = false } = {}) {
-    countryOpen = false;
-    $('panel').classList.remove('is-country');
-    $('countryView').hidden = true;
-    $('countryView').innerHTML = '';
+  async function openList({ toUrl = false } = {}) {
+    const viewer = await countryViewer();
+    if (!viewer) return;
+    const fresh = !$('listView').childElementCount;
+    fromList = false;
+    showView('list');
+    if (fresh) {
+      viewer.renderCountryList($('listView'), {
+        open: (id) => openCountry(id, { toUrl: true, fromList: true, zoom: true }),
+        back: () => closeView({ toUrl: true }),
+        hover: (id) => hover(id ? { placeId: id } : null),
+      });
+    }
+    if (toUrl) writeUrl();
+  }
+  /** Back: from a country opened in the list, to the list; otherwise (or with all) to the card. */
+  function closeView({ toUrl = false, all = false } = {}) {
+    hovered = null;
+    if (panelView === 'country' && fromList && !all) return openList({ toUrl });
+    fromList = false;
+    showView(null);
     renderDetails();
     if (toUrl) writeUrl();
   }
@@ -231,25 +264,34 @@ async function main() {
     if (selected?.recordKey || selected?.eventId) selected = selected.placeId ? { placeId: selected.placeId } : null;
     map.setSelectedMarker(null);
     refresh();
-    if (countryOpen) {
+    // The views show this mode's levels: redraw them (a kept list, when Back comes to it).
+    $('listView').innerHTML = '';
+    if (panelView === 'country') {
       if (selected?.placeId) await renderCountry(selected.placeId);
-      else closeCountry();
+      else closeView({ all: true });
+    } else if (panelView === 'list') {
+      await openList();
     }
     if (toUrl) writeUrl();
   }
 
   // Written on user actions only, so a plain visit keeps a plain URL.
   function writeUrl() {
-    const view = countryOpen ? 'country' : null;
-    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId, view })}`);
+    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId, view: panelView })}`);
   }
   window.addEventListener('hashchange', async () => {
     const want = parseHash(location.hash);
     if (want.mode) await switchMode(want.mode);
     const place = want.place && places.has(want.place) ? want.place : null;
-    if (place !== (selected?.placeId ?? null)) select(place ? { placeId: place } : null, { zoom: !!place });
-    if (want.view === 'country' && place && !countryOpen) await openCountry(place);
-    else if (want.view !== 'country' && countryOpen) closeCountry();
+    if (place !== (selected?.placeId ?? null)) select(place ? { placeId: place } : null, { zoom: !!place, follow: false });
+    if (want.view === 'country' && place) {
+      if (panelView === 'country') await renderCountry(place);
+      else await openCountry(place);
+    } else if (want.view === 'list') {
+      if (panelView !== 'list') await openList();
+    } else if (panelView) {
+      closeView({ all: true });
+    }
   });
   function renderDetails() {
     const target = hovered ?? selected;
@@ -274,10 +316,9 @@ async function main() {
     renderDetails();
   }
   refresh();
-  if (fromUrl.place && places.has(fromUrl.place)) {
-    select({ placeId: fromUrl.place }, { zoom: true });
-    if (fromUrl.view === 'country') await openCountry(fromUrl.place);
-  }
+  if (fromUrl.place && places.has(fromUrl.place)) select({ placeId: fromUrl.place }, { zoom: true });
+  if (fromUrl.view === 'country' && selected?.placeId) await openCountry(selected.placeId);
+  else if (fromUrl.view === 'list') await openList();
 }
 
 /** Fill elements marked with data-i18n (text) and data-i18n-<attr> (attributes). */

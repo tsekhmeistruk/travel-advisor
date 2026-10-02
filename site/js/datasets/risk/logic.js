@@ -67,6 +67,41 @@ export function filterChanges(changes, { windowDays, direction: dir = 'all', cat
     && (!pulseOnly || PULSE_KINDS.has(c.kind)));
 }
 
+/**
+ * The countries list: every place with its level (in one category, or the highest) and its
+ * latest level change (a change that pulses), or null.
+ * @returns [{ placeId, level, by, latest }]
+ */
+export function countryRows(current, changes, placeIds, { category = null } = {}) {
+  const latest = new Map();
+  for (const c of changes) {   // newest first: the first one seen is a place's latest
+    if (!PULSE_KINDS.has(c.kind) || (category && c.category !== category)) continue;
+    for (const id of changePlaces(c)) if (!latest.has(id)) latest.set(id, c);
+  }
+  return [...placeIds].map((placeId) => {
+    const h = category ? { level: levelOf(current, placeId, category), by: [] } : highest(current, placeId);
+    return { placeId, level: h.level, by: h.by, latest: latest.get(placeId) ?? null };
+  });
+}
+
+export const LIST_SORTS = ['level', 'recent', 'name'];
+
+/**
+ * A sorted copy of countryRows(): by level (highest first, no data last), by latest change
+ * (newest first, none last) or by name. Ties go to the newer change, the higher level, then the name.
+ */
+export function sortRows(rows, sort, nameOf) {
+  const desc = (x, y) => (x < y) - (x > y);
+  const byLevel = (a, b) => desc(a.level ?? 0, b.level ?? 0);
+  const byTime = (a, b) => desc(a.latest ? changeTime(a.latest.at) : 0, b.latest ? changeTime(b.latest.at) : 0);
+  const byName = (a, b) => nameOf(a.placeId).localeCompare(nameOf(b.placeId));
+  const order = { level: [byLevel, byTime, byName], recent: [byTime, byLevel, byName], name: [byName] }[sort] ?? [byName];
+  return [...rows].sort((a, b) => {
+    for (const f of order) { const d = f(a, b); if (d) return d; }
+    return 0;
+  });
+}
+
 /** Changes about one place, newest first (the input is newest first). */
 export function changesFor(placeId, changes) {
   return changes.filter(c => changePlaces(c).includes(placeId));

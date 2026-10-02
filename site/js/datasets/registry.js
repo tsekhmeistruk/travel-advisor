@@ -16,6 +16,9 @@
 //   showWindow(days)                            widen the feed's window ("Show 90 days" in an empty list)
 //   feedTarget(key), feedKeyFor(target)         map feed items to selection targets and back
 //   searchEntries()                             what the search box can find
+// and optionally, for the full panel views (one risk mode's viewer serves a mode without them):
+//   renderCountryView(el, placeId, { back, selectEvent })   a country's every category, alerts and history
+//   renderCountryList(el, { open, back, hover })             every place with its level, sortable and filterable
 // and optionally, for point markers (events):
 //   markers()                                   [{ id, lon, lat, kind, level }] for the map
 //   eventTarget(id), markerTooltip(ids)         a marker's selection target, and its tooltip HTML

@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { createRiskMode, WINDOWS } from '../../../site/js/datasets/risk/index.js';
 import {
   changeTime, ageHours, changePlaces, direction, levelOf, highest, filterChanges, changesFor, pulseOpacity, countByLevel,
-  countDirections, cardModel, isStale,
+  countDirections, cardModel, isStale, countryRows, sortRows,
 } from '../../../site/js/datasets/risk/logic.js';
 import { MODES } from '../../../site/js/datasets/registry.js';
 import { clusterMarkers, MARKER_ICONS } from '../../../site/js/map/clusters.js';
@@ -162,7 +162,9 @@ describe('url state', () => {
     assert.equal(formatHash({}), '');
     assert.deepEqual(parseHash('#mode=highest&place=mx&view=country'), { mode: 'highest', place: 'mx', view: 'country' });
     assert.equal(formatHash({ mode: 'highest', place: 'mx', view: 'country' }), '#mode=highest&place=mx&view=country');
-    assert.equal(formatHash({ mode: 'highest', view: 'country' }), '#mode=highest', 'a view needs a place');
+    assert.equal(formatHash({ mode: 'highest', view: 'country' }), '#mode=highest', 'a country view needs a place');
+    assert.equal(formatHash({ mode: 'highest', view: 'list' }), '#mode=highest&view=list', 'the list does not');
+    assert.deepEqual(parseHash('#mode=highest&view=list'), { mode: 'highest', place: null, view: 'list' });
   });
 });
 
@@ -247,6 +249,7 @@ describe('details card', () => {
     assert.match(html, /href="https:\/\/www\.gdacs\.org\/report\.aspx\?eventid=1"/);
     assert.match(html, /Security and unrest: coming later/);
     assert.match(html, /<button class="link link-btn" data-action="country" data-place="mx">Country details →<\/button>/);
+    assert.match(ds.details(null), /<button class="link link-btn" data-action="list">All countries →<\/button>/, 'the overview opens the list');
   });
   test('a place with no data says so, and without changes says that', () => {
     const html = ds.details({ placeId: 'aq' });
@@ -278,8 +281,10 @@ describe('details card', () => {
   test('a category mode\'s overview says what raises its level', async () => {
     await create({ view: 'category', category: 'wildfire' });
     assert.match(ds.details(null), /Levels rise only with a GDACS Orange or Red forest-fire alert, which is rare\. Green markers are smaller fires\./);
+    assert.doesNotMatch(ds.details(null), /Hover or tap a country/, 'the note replaces the general hint (the card has room for one)');
     await create();
     assert.doesNotMatch(ds.details(null), /Levels rise/, 'not in the highest mode');
+    assert.match(ds.details(null), /Hover or tap a country/, 'the highest mode has the general hint instead');
   });
 
   test('a category mode names that category in the badge and marks its row', async () => {
@@ -534,6 +539,70 @@ describe('country view', () => {
     assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.historyDays, 365);
     click(el, { history: 7 });
     assert.doesNotMatch(el.innerHTML, /U\.S\.: Level 1 → 2/);
+  });
+
+  const ids = (rows) => rows.map(r => r.placeId);
+  const name = (id) => PLACES.get(id).name;
+  test('the countries list: each place\'s level, what set it, and its latest level change', () => {
+    const rows = countryRows(CURRENT, CHANGES, PLACES.keys());
+    assert.deepEqual(rows.find(r => r.placeId === 'mx'), { placeId: 'mx', level: 3, by: ['disaster'], latest: CHANGES[0] });
+    assert.deepEqual(rows.find(r => r.placeId === 'ke').by, ['travel', 'disaster']);
+    assert.equal(rows.find(r => r.placeId === 'aq').latest, null);
+    const disaster = countryRows(CURRENT, CHANGES, PLACES.keys(), { category: 'disaster' });
+    assert.deepEqual(disaster.find(r => r.placeId === 'so'), { placeId: 'so', level: 2, by: [], latest: null }, 'a travel change is not a disaster change');
+    assert.equal(countryRows(CURRENT, CHANGES, ['aq'], { category: 'travel' })[0].level, null, 'no data');
+  });
+  test('sorts by level, by latest change, or by name; ties go to the newer change, then the name', () => {
+    const rows = countryRows(CURRENT, CHANGES, PLACES.keys());
+    assert.deepEqual(ids(sortRows(rows, 'level', name)), ['so', 'mx', 'ke', 'jp', 'aq'], 'Japan changed, Antarctica never');
+    assert.deepEqual(ids(sortRows(rows, 'recent', name)), ['mx', 'so', 'ke', 'jp', 'aq']);
+    assert.deepEqual(ids(sortRows(rows, 'name', name)), ['aq', 'jp', 'ke', 'mx', 'so']);
+    assert.deepEqual(ids(sortRows(rows, 'nope', name)), ['aq', 'jp', 'ke', 'mx', 'so'], 'unknown: by name');
+    const noData = countryRows(CURRENT, [], ['aq', 'jp'], { category: 'travel' });
+    assert.deepEqual(ids(sortRows(noData, 'level', name)), ['jp', 'aq'], 'no data last');
+    assert.equal(rows.length, PLACES.size, 'a copy: the input is left alone');
+  });
+
+  const listContainer = () => {
+    const els = { '#listFilter': { value: '' }, '#listRows': { innerHTML: '' }, '#listCount': { textContent: '' } };
+    return { innerHTML: '', els, querySelector: (sel) => els[sel], querySelectorAll: () => [] };
+  };
+  const listed = (el) => [...el.els['#listRows'].innerHTML.matchAll(/data-place="(\w+)"/g)].map(m => m[1]);
+  test('renders the list sorted by the saved order, filters by name, and saves a new order', async () => {
+    let el = listContainer();
+    ds.renderCountryList(el, { open() {}, back() {}, hover() {} });
+    assert.match(el.innerHTML, /Countries · Highest/);
+    assert.match(el.innerHTML, /data-sort="level" aria-checked="true"/);
+    assert.deepEqual(listed(el), ['so', 'mx', 'ke', 'jp', 'aq']);
+    assert.equal(el.els['#listCount'].textContent, 5);
+    assert.match(el.els['#listRows'].innerHTML, /Mexico<\/span>\s*<span class="lvl">High · Disaster<\/span>[\s\S]*▲<\/span> 5h ago/);
+    click(el, { sort: 'name' });
+    assert.deepEqual(listed(el), ['aq', 'jp', 'ke', 'mx', 'so']);
+    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.listSort, 'name');
+    el.els['#listFilter'].value = 'ke';
+    el.els['#listFilter'].oninput();
+    assert.deepEqual(listed(el), ['ke']);
+    assert.equal(el.els['#listCount'].textContent, '1 of 5');
+    el.els['#listFilter'].value = 'zzz';
+    el.els['#listFilter'].oninput();
+    assert.match(el.els['#listRows'].innerHTML, /No matches/);
+    await create({ view: 'category', category: 'disaster', saved: { listSort: 'bogus' } });
+    el = listContainer();
+    ds.renderCountryList(el, { open() {}, back() {}, hover() {} });
+    assert.deepEqual(listed(el).slice(0, 3), ['mx', 'ke', 'so'], 'disaster levels; an unknown saved order is reset to level');
+    assert.match(el.els['#listRows'].innerHTML, /Somalia<\/span>\s*<span class="lvl">Elevated<\/span>/, 'a category mode: the level alone');
+  });
+  test('the list opens a country, goes back, and previews the hovered place', () => {
+    const el = listContainer();
+    const calls = [];
+    ds.renderCountryList(el, { open: (id) => calls.push(['open', id]), back: () => calls.push(['back']), hover: (id) => calls.push(['hover', id]) });
+    click(el, { place: 'jp' });
+    click(el, { action: 'back' });
+    click(el, {});
+    el.onpointerover({ target: { closest: () => ({ dataset: { place: 'mx' } }) } });
+    el.onpointerover({ target: { closest: () => null } });
+    el.onpointerleave();
+    assert.deepEqual(calls, [['open', 'jp'], ['back'], ['hover', 'mx'], ['hover', null], ['hover', null]]);
   });
 
   test('back and an alert call their handlers', async () => {

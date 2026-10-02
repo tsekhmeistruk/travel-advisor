@@ -48,6 +48,9 @@
           <p class="subtle" id="asOf"></p>
         </div>
         <div class="header-actions">
+          <button class="icon-btn ghost" id="listOpen" data-i18n-title="panel.list" data-i18n-aria-label="panel.list">
+            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="4.5" cy="6" r="1.4" fill="currentColor"/><circle cx="4.5" cy="12" r="1.4" fill="currentColor"/><circle cx="4.5" cy="18" r="1.4" fill="currentColor"/></svg>
+          </button>
           <select class="lang-select" id="language" data-i18n-aria-label="panel.language" data-i18n-title="panel.language" hidden></select>
           <button class="icon-btn ghost" id="themeToggle"></button>
           <button class="icon-btn ghost" id="panelClose" data-i18n-title="panel.hide" data-i18n-aria-label="panel.hide">
@@ -65,6 +68,7 @@
       <section class="card details" id="details" aria-live="polite"></section>
 
       <section class="country-view" id="countryView" aria-live="polite" hidden></section>
+      <section class="country-view list-view" id="listView" hidden></section>
 
       <section class="section recent">
         <h2><span id="recentTitle"></span> <span class="count" id="recentCount"></span></h2>

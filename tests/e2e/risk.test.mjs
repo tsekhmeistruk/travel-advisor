@@ -408,3 +408,77 @@ describe('country view', () => {
     await jp.close();
   });
 });
+
+describe('countries list', () => {
+  const list = (page) => page.evaluate(() => ({
+    open: !document.getElementById('listView').hidden,
+    card: getComputedStyle(document.getElementById('details')).display !== 'none',
+    rows: [...document.querySelectorAll('#listRows button')].map(b => b.dataset.place),
+    hash: location.hash,
+  }));
+
+  for (const [width, height] of [[1440, 860], [390, 844]]) {
+    test(`at ${width}px opens from the overview, sorts, filters, opens a country and comes back`, async () => {
+      const page = await openMode('highest', { width, height, stored: { mode: 'highest', risk: { recentDays: 90, listSort: 'level' } } });
+      await page.click('#details [data-action="list"]');
+      await page.waitForSelector('#listRows button');
+      let s = await list(page);
+      assert.equal(s.open, true);
+      assert.equal(s.card, false, 'in place of the card');
+      assert.ok(s.rows.length > 200, `${s.rows.length} rows`);
+      assert.equal(s.hash, '#mode=highest&view=list');
+      const levels = await page.$$eval('#listRows .swatch', els => els.map(e => e.getAttribute('style')));
+      assert.match(levels[0], /--l4/, 'Critical first');
+      await page.click('#listSort [data-sort="name"]');
+      const names = await page.$$eval('#listRows .what', els => els.map(e => e.textContent));
+      assert.deepEqual(names.slice(0, 5), [...names].sort((a, b) => a.localeCompare(b)).slice(0, 5));
+      await page.type('#listFilter', 'japan');
+      s = await list(page);
+      assert.deepEqual(s.rows, ['jp']);
+      await page.click('#listRows button');
+      await page.waitForSelector('#countryView .cv-name');
+      assert.equal(await page.$eval('#countryView .cv-name', el => el.textContent), 'Japan');
+      assert.equal(await page.evaluate(() => location.hash), '#mode=highest&place=jp&view=country');
+      await page.click('#countryView [data-action="back"]');
+      s = await list(page);
+      assert.equal(s.open, true, 'Back returns to the list');
+      assert.deepEqual(s.rows, ['jp'], 'with its filter');
+      assert.equal(await page.$eval('#listFilter', el => el.value), 'japan');
+      await page.click('#listView [data-action="back"]');
+      s = await list(page);
+      assert.equal(s.open, false);
+      assert.equal(s.card, true);
+      assert.equal((await saved(page)).risk.listSort, 'name', 'the order is saved');
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'no horizontal scroll');
+      assert.deepEqual(page.errors, []);
+      await page.close();
+    });
+  }
+
+  test('a link opens it; Travel opens it from the header; a country on the map opens from it; Escape closes', async () => {
+    const page = await openRaw({ hash: '#mode=disaster&view=list' });
+    await page.waitForSelector('#listRows button');
+    assert.match(await page.$eval('#listView .eyebrow', el => el.textContent), /Disasters/);
+    await page.click('#modeSwitch [data-mode="travel"]');
+    await sleep(300);
+    let s = await list(page);
+    assert.equal(s.open, true, 'kept across modes');
+    assert.match(await page.$eval('#listView .eyebrow', el => el.textContent), /Highest/, 'Travel borrows the highest levels');
+    assert.equal(s.hash, '#mode=travel&view=list');
+    // A country clicked on the map opens its view; Back returns to the list.
+    await page.evaluate(() => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === 'br').dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    await page.waitForSelector('#countryView .cv-name');
+    assert.equal(await page.$eval('#countryView .cv-name', el => el.textContent), 'Brazil');
+    await page.keyboard.press('Escape');
+    assert.equal((await list(page)).open, true, 'Escape: back to the list');
+    await page.keyboard.press('Escape');
+    s = await list(page);
+    assert.equal(s.open, false);
+    assert.equal(s.hash, '#mode=travel&place=br');
+    await page.click('#listOpen');
+    await page.waitForSelector('#listRows button');
+    assert.equal((await list(page)).open, true, 'the header button opens it');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+});

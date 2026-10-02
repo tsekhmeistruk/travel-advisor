@@ -9,7 +9,8 @@
 // names the source facts behind each level (a government's advisory, a GDACS alert).
 
 import { esc, safeUrl } from '../../core/dom.js';
-import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, PULSE_KINDS } from './logic.js';
+import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS } from './logic.js';
+import { prepareEntries, rankMatches } from '../../ui/search.js';
 import { titleSize } from '../travel-advisories/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
@@ -28,7 +29,7 @@ const LEVELS = [1, 2, 3, 4];
 export function createRiskMode(ctx) {
   const { i18n, manifest, places, client, mode, view, category } = ctx;
   const now = () => ctx.now?.() ?? Date.now();
-  const settings = ctx.settings.scope('risk', { levels: LEVELS.slice(), recentDays: 30, direction: 'all', dimOthers: false, historyDays: 90 });
+  const settings = ctx.settings.scope('risk', { levels: LEVELS.slice(), recentDays: 30, direction: 'all', dimOthers: false, historyDays: 90, listSort: 'level' });
   let current = null;
   let changes = [];
   let events = [];
@@ -56,6 +57,7 @@ export function createRiskMode(ctx) {
   if (!Array.isArray(levels())) settings.set('levels', LEVELS.slice());
   if (!['all', 'up', 'down'].includes(settings.get('direction'))) settings.set('direction', 'all');
   if (!HISTORY_WINDOWS.includes(settings.get('historyDays'))) settings.set('historyDays', 90);
+  if (!LIST_SORTS.includes(settings.get('listSort'))) settings.set('listSort', 'level');
 
   const categories = view === 'category' ? new Set([category]) : null;
   const viewLevel = (id) => (view === 'category' ? levelOf(current, id, category) : highest(current, id).level);
@@ -141,8 +143,8 @@ export function createRiskMode(ctx) {
       <p class="moves">${esc(tr('overview.changes', { window: windowText(windowDays()), up: MARK, down: '\u0001' }))
     .replace(MARK, `${arrow('up')} <strong>${moves.up}</strong>`).replace('\u0001', `${arrow('down')} <strong>${moves.down}</strong>`)}</p>
       ${latestHtml()}
-      ${view === 'category' && i18n.has(`risk.overview.about.${category}`) ? `<p class="hint">${esc(tr(`overview.about.${category}`))}</p>` : ''}
-      <p class="hint">${esc(tr('overview.hint'))}</p>`;
+      <p class="hint">${esc(view === 'category' && i18n.has(`risk.overview.about.${category}`) ? tr(`overview.about.${category}`) : tr('overview.hint'))}</p>
+      <div class="card-actions"><button class="link link-btn" data-action="list">${esc(tr('list.open'))}</button></div>`;
   }
 
   /** The newest changes, one line each; a click selects the place (no hover: it would replace the card). */
@@ -395,6 +397,57 @@ export function createRiskMode(ctx) {
         const h = e.target.closest('[data-history]');
         if (h) { settings.set('historyDays', Number(h.dataset.history)); draw(); }
       };
+    },
+
+    /**
+     * The countries list into `container`: every place with its level in this mode, sortable
+     * and filtered by name. open(placeId) opens a country, back() closes the list, hover(placeId
+     * or null) previews a place on the map.
+     */
+    renderCountryList(container, { open, back, hover }) {
+      const rows = countryRows(current, changes, places.keys(), { category: view === 'category' ? category : null });
+      const entries = prepareEntries(rows.map(r => ({ label: placeName(r.placeId), aliases: [places.get(r.placeId).name], placeId: r.placeId })));
+      const sort = () => settings.get('listSort');
+      // In a category mode every row is that category: the level alone says it.
+      const rowLevel = (r) => (view === 'category' ? levelName(r.level) : levelLabel(r.placeId));
+      const rowHtml = (r) => `<li><button data-place="${esc(r.placeId)}" title="${esc(levelLabel(r.placeId))}">
+          <span class="swatch" style="background:${swatch(r.level)}"></span>
+          <span class="what">${esc(placeName(r.placeId))}</span>
+          <span class="lvl">${esc(rowLevel(r))}</span>
+          <span class="date">${r.latest ? `${arrow(direction(r.latest))} ${esc(i18n.shortHours(ageHours(r.latest.at, now())))}` : ''}</span>
+        </button></li>`;
+      container.innerHTML = `
+        <div class="cv-head">
+          <button class="back" data-action="back">← ${esc(tr('country.back'))}</button>
+          <div class="eyebrow">${esc(tr('list.eyebrow', { mode: modeName() }))}</div>
+          <h2 class="cv-name">${esc(tr('list.title'))} <span class="count" id="listCount"></span></h2>
+        </div>
+        <input class="list-filter" id="listFilter" type="search" autocomplete="off" placeholder="${esc(tr('list.filter'))}" aria-label="${esc(tr('list.filter'))}">
+        <div class="segmented" id="listSort" role="radiogroup" aria-label="${esc(tr('list.sort'))}">
+          ${LIST_SORTS.map(s => `<button role="radio" data-sort="${s}" aria-checked="${s === sort()}">${esc(tr(`list.sorts.${s}`))}</button>`).join('')}
+        </div>
+        <ul class="cv-list country-list" id="listRows"></ul>
+        <p class="cv-note">${esc(tr('list.note'))}</p>`;
+      const input = container.querySelector('#listFilter');
+      const update = () => {
+        const q = input.value.trim();
+        const hits = q ? new Set(rankMatches(entries, q, Infinity).map(e => e.placeId)) : null;
+        const shown = sortRows(rows, sort(), placeName).filter(r => !hits || hits.has(r.placeId));
+        container.querySelector('#listRows').innerHTML = shown.length ? shown.map(rowHtml).join('') : `<li class="cv-empty">${esc(i18n.t('search.noMatches'))}</li>`;
+        container.querySelector('#listCount').textContent = hits ? tr('list.count', { shown: shown.length, total: rows.length }) : rows.length;
+        container.querySelectorAll('[data-sort]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.sort === sort())));
+      };
+      update();
+      input.oninput = update;
+      container.onclick = (e) => {
+        if (e.target.closest('[data-action="back"]')) return back();
+        const s = e.target.closest('[data-sort]');
+        if (s) { settings.set('listSort', s.dataset.sort); return update(); }
+        const p = e.target.closest('[data-place]');
+        if (p) open(p.dataset.place);
+      };
+      container.onpointerover = (e) => hover(e.target.closest('[data-place]')?.dataset.place ?? null);
+      container.onpointerleave = () => hover(null);
     },
 
     /**

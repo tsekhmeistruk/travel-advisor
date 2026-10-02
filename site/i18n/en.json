@@ -20,6 +20,7 @@
   "show": "Show panel",
   "hide": "Hide panel",
   "filters": "Filters",
+  "list": "All countries",
   "theme": "Theme: {mode}",
   "themeModes": {
    "auto": "auto",
@@ -64,7 +65,8 @@
      "other": "{count} advisories"
     },
     "recent": "{count} with a level change in the last {days} days, marked with a pulse on the map.",
-    "hint": "Hover or tap a country for details."
+    "hint": "Hover or tap a country for details.",
+    "list": "All countries →"
    },
    "details": {
     "eyebrow": "Travel advisory",
@@ -390,6 +392,20 @@
    "historyWindow": "History period",
    "year": "1 year",
    "note": "Risk levels are our summary of official and UN sources, not official levels. Each government's advisory is in its own words above."
+  },
+  "list": {
+   "open": "All countries →",
+   "eyebrow": "Countries · {mode}",
+   "title": "All countries",
+   "count": "{shown} of {total}",
+   "filter": "Filter by name",
+   "sort": "Sort by",
+   "sorts": {
+    "level": "Level",
+    "recent": "Last change",
+    "name": "Name"
+   },
+   "note": "Levels as in the map mode. Click a country for its details; the time is its latest level change."
   },
   "change": {
    "level": "{category}: {from} → {to}",

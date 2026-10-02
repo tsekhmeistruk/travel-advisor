@@ -178,6 +178,11 @@ describe('header, footer, tooltip, legend', () => {
     assert.ok(!ds.footer().includes('href='), 'javascript: link must not be rendered');
     assert.ok(!ds.details({ placeId: 'mm' }).includes('javascript:'));
   });
+  test('the overview opens the countries list when the site has one', async () => {
+    assert.match(ds.details(null), /data-action="list">All countries →</);
+    await create({}, { countryView: false });
+    assert.doesNotMatch(ds.details(null), /data-action="list"/);
+  });
   test('the header shows the data date, with its age (and a warning) once it is over a week old', async () => {
     assert.equal(ds.header(), 'U.S. State Department advisories · data as of Sep 26, 2026');
     assert.equal(ds.stale(), false);

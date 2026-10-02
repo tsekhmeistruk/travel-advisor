@@ -70,7 +70,8 @@ export function createTravelAdvisories(ctx) {
         ${desc.map(l => `<div><span class="swatch" style="background:var(--l${l})"></span>${esc(levelInfo(l).short)}<b>${counts[l - 1]}</b></div>`).join('')}
       </div>
       ${windowDays() > 0 ? `<p>${esc(tx('overview.recent', { count: MARK, days: windowDays() })).replace(MARK, `<strong>${recentCount}</strong>`)}</p>` : ''}
-      <p class="hint">${esc(tx('overview.hint'))}</p>`;
+      <p class="hint">${esc(tx('overview.hint'))}</p>
+      ${ctx.countryView ? `<div class="card-actions"><button class="link link-btn" data-action="list">${esc(tx('overview.list'))}</button></div>` : ''}`;
   }
 
   function noAdvisoryHtml(placeId) {
