@@ -14,7 +14,7 @@ A world map that monitors countries for changes that matter to travellers: offic
 - **Details panel:** hover or tap a country to see its level, what the level means, when the source last updated it, its level history (the last three changes), whether regional advisories apply, and a link to the official advisory.
 - **Filters** (below the feed, collapsed until opened): show or hide levels, pick the level-change window, fade countries without a recent level change. A theme switch offers light, dark and auto. All of it is remembered in the browser.
 - **How levels work:** the ⓘ in the legend explains the scale and its sources. The header warns when the data is older than it should be.
-- **Search** by any name for a place, including a source's own name (e.g. "Burma"). **Zoom and pan.** The layout works on phones: a tap on the map shows the place in a sheet over the map, with a Details button.
+- **Search** (press `/`) by any name for a place, including a source's own name (e.g. "Burma"). **Zoom and pan.** The layout works on phones: a tap on the map shows the place in a sheet over the map, with a Details button.
 
 ## Data sources
 

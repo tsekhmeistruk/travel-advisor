@@ -23,7 +23,7 @@ main().catch((err) => {
   console.error(err);
   const box = $('loadError');
   if (box) box.hidden = false;
-});
+}).finally(() => $('app')?.removeAttribute('aria-busy'));
 
 async function main() {
   const client = createDataClient();
@@ -219,6 +219,13 @@ async function main() {
   });
   $('listOpen').onclick = () => openList({ toUrl: true });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panelView && !help.open) closeView({ toUrl: true }); });
+  // "/" goes to the search, unless the visitor is typing somewhere.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey || help.open) return;
+    if (e.target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+    e.preventDefault();
+    $('search').focus();
+  });
 
   /** Show one panel view (or none). The list is kept while its country view is open, for Back. */
   function showView(kind) {

@@ -166,3 +166,40 @@ describe('panel', () => {
     await page.close();
   });
 });
+
+describe('loading and keyboard', () => {
+  test('a skeleton shows while the data loads, and is cleared once the map is drawn', async () => {
+    let slow = false;
+    const intercept = async (req) => {
+      if (!slow || !/\/data\/geo\//.test(new URL(req.url()).pathname)) return false;
+      await sleep(1500);
+      return false;
+    };
+    const page = await openRaw({ intercept });
+    await page.waitForSelector('path.country');
+    assert.equal(await page.$eval('#app', el => el.hasAttribute('aria-busy')), false, 'cleared after load');
+    slow = true;
+    await page.evaluate(() => location.reload());
+    await page.waitForSelector('#app[aria-busy="true"]');
+    const skeleton = await page.evaluate(() => ({
+      map: getComputedStyle(document.getElementById('mapArea'), '::before').content,
+      card: getComputedStyle(document.getElementById('details'), '::before').content,
+    }));
+    assert.deepEqual(skeleton, { map: '""', card: '""' });
+    await page.waitForFunction(() => !document.getElementById('app').hasAttribute('aria-busy'), { timeout: 10000 });
+    assert.equal(await page.$$eval('path.country', els => els.length > 200), true);
+    assert.equal(await page.evaluate(() => getComputedStyle(document.getElementById('mapArea'), '::before').content), 'none');
+    await page.close();
+  });
+
+  test('"/" focuses the search, but not while typing in a field', async () => {
+    const page = await open();
+    const focused = () => page.evaluate(() => document.activeElement?.id ?? null);
+    await page.keyboard.press('/');
+    assert.equal(await focused(), 'search');
+    assert.equal(await page.$eval('#search', el => el.value), '', 'the key is not typed');
+    await page.keyboard.type('a/b');
+    assert.equal(await page.$eval('#search', el => el.value), 'a/b', 'typed as usual in the box');
+    await page.close();
+  });
+});
