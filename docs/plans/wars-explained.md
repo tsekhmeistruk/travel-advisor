@@ -1,6 +1,6 @@
 # Wars explained: plan and progress
 
-> **In progress.** This is the live checklist of the "Wars explained" revision, approved by the owner on Oct 2, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part, so the owner can follow progress and an interrupted session can pick up here.
+> **Done (Oct 2, 2026).** This was the live checklist of the "Wars explained" revision, approved by the owner on Oct 2, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part, so the owner can follow progress and an interrupted session can pick up here.
 >
 > **How to resume after an interruption:**
 > 1. Read the repo copy.
@@ -81,9 +81,9 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Status
 
-- **Current step:** 4.5
-- **Done:** parts 0–3; 4.1–4.4
-- **Last commit of this revision:** 72cc78a
+- **Current step:** 5.3
+- **Done:** parts 0–4
+- **Last commit of this revision:** 5a847ba
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -170,12 +170,12 @@ A review of the code and data (Oct 2, 2026) found:
   - [x] unit: the USGS and EONET parsers on real responses; the duplicate rule.
   - [x] data and project: the sources are wired; the events equal a fresh build.
   - [x] e2e: the footer, the empty feed, the Disasters count, a USGS marker card.
-- [ ] 4.5 Ship. Live check: quake markers in Disasters, no GDACS duplicate. Then one update run (`-f sources=usgs,eonet`), watched.
+- [x] 4.5 Ship. Live check: quake markers in Disasters, no GDACS duplicate. Then one update run (`-f sources=usgs,eonet`), watched.
 
 ## Part 5: Docs and wrap-up
 
-- [ ] 5.1 `docs/architecture.md`, README, and `.claude/CLAUDE.md` (code map, panel order, card slots, source quirks for Wikipedia, USGS and EONET, the UCDP fields, current state).
-- [ ] 5.2 Review screenshots: desktop, phone, tablet 768, landscape 844×390, both themes, a war hovered and selected.
+- [x] 5.1 `docs/architecture.md`, README, and `.claude/CLAUDE.md` (code map, panel order, card slots, source quirks for Wikipedia, USGS and EONET, the UCDP fields, current state).
+- [x] 5.2 Review screenshots: desktop, phone, tablet 768, landscape 844×390, both themes, a war hovered and selected.
 - [ ] 5.3 Ship and report.
 
 ---
@@ -184,3 +184,4 @@ A review of the code and data (Oct 2, 2026) found:
 - Part 1: 86cacdf (+ 9239dd4 test fix), deploy green after the test fix (the first deploy failed: two header checks anchored at 'Updated'), live: Sudan's sides SFA, RSF; 4 new, 10 quiet; conflict-events.json 186 KB; update run 37041430778 (ucdp) green. Tests added: parser points and side ids, refetch of outdated versions, stored tables, sides from several dyads, new and quiet, dots, old format refused, data checks of sides and dots, e2e one-line header with delayed sources and the moves line with big numbers. Edited: UCDP fixture (+ a real Sudan-RSF row), parser, conflict and risk-layer tests, header texts, two e2e header checks. Deleted: none.
 - Part 2: 51f0eec (+ 718728f bot-data merge), deploy green, live: risk/wars.json with 38 conflicts (Ukraine A with Belarus, North Korea; Sudan RSF and SFA spelled out); update run 37043453470 (wikipedia) green. Tests added: the parser on real articles (Ukraine, Sudan, Lebanon, Mali, the 2026 Iran war and its template, Venezuela), the fetcher, side matching, risk/wars.json in the risk layer, store and runFetch for a context source, run descriptions, data and project checks. Edited: the provider list, project checks for a context kind. Deleted: none.
 - Part 3: 57ae708 (+ 72cc78a bot-data merge), deploy green, live: Wars list of 72, 1,570 dots, #mode=wars&war=1-309 opens the Sudanese civil war with both sides, #mode=wars&war=1-13243 Russia (with Belarus, North Korea) vs Ukraine, no console errors. Tests added: Wars logic (titles, sides, list, new, quiet, card, focus, dots), the mode's list, card, focus, dots, search and footer, the URL's war, e2e list, hover and click, the card's fixed height for every war (1440, 390), links and search, dots and help, the zoom limits. Edited: conflict and country-view fixtures (sides), overview and place-card checks, the Filters test, the per-mode feed check, shots and live-check lists. Deleted: none.
+- Part 4: 5a847ba, deploy green, live: one-line footers in every mode, Disasters 253 alerts on the map, Wars 1,570 dots, no console errors; update run 37059116610 (usgs, eonet) green, live events: 55 USGS, 32 EONET. Tests added: USGS and EONET parsers and fetchers (real responses cut), distances and duplicates, markers in the risk layer, the marker card, footers per mode, e2e USGS card from the search, the overview count, every footer's help. Edited: footer and empty-feed checks, the Disasters overview text, the provider list. Deleted: none.
