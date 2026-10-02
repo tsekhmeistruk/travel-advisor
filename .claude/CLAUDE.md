@@ -74,6 +74,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 ## Current state and open decisions
 
+- **Wars first, fewer tabs: in progress (approved Oct 2, 2026).** The checklist is `docs/plans/wars-and-minimal.md`: UCDP conflict data (a `conflict` category), a Wars mode as the first view, tabs Wars · Disasters · Travel · All (Wildfires merged into Disasters, Changes removed), the news list off the front, a grouped feed, and Tensions from GDELT country pairs. The AI chat is designed there, to be built later. Resume from its first unchecked box.
 - **UX revision 2: done (Oct 2, 2026).** The checklist and its log are in `docs/plans/ux-revision-2.md`: links zoom and resizes keep the view, the travel level from two or more governments, news activity on its own (not a change), alerts in the search, Share in the country view, country names when zoomed in. For multi-part work, keep a checklist like it, ticked as each item is done.
 - **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). Done so far:
   - **Pipeline:** stores, schedule, source health, the hourly workflow; GDACS (Orange/Red for levels, Green cyclones, floods and volcanoes for markers) and WHO Disease Outbreak News (Health) into `site/data/risk/`, with a file per place.
