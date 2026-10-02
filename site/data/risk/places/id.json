@@ -39,6 +39,7 @@
  "events": [
   "usgs:us6000tyua",
   "usgs:us6000tyjb",
+  "gdacs:WF:1032536",
   "usgs:us6000txur",
   "gdacs:WF:1032480",
   "gdacs:WF:1032502",
