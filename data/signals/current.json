@@ -31,6 +31,312 @@
      ]
     }
    }
+  },
+  "conflict": {
+   "trackedSince": "2026-10-02T06:23:15.235Z",
+   "at": "2026-10-02T06:23:15.235Z",
+   "places": {
+    "af": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ar": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "bd": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "bf": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "bi": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "bj": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "br": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "cd": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "cf": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "cm": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "co": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "dz": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ec": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "et": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "gaza": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "gh": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "gt": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ht": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "id": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "il": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "in": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "iq": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ir": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ke": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "lb": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "lk": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ly": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ml": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "mm": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "mx": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "mz": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ne": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ng": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "pg": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ph": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "pk": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ru": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "sd": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "so": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ss": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "sy": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "td": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "th": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "tz": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ua": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ug": {
+     "level": 2,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ve": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "west-bank": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "ye": {
+     "level": 4,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    },
+    "za": {
+     "level": 3,
+     "basis": [
+      "ucdp:2026-08"
+     ]
+    }
+   }
   }
  },
  "activity": {

@@ -312,6 +312,7 @@
   "noData": "No data",
   "categories": {
    "travel": "Travel",
+   "conflict": "Conflict",
    "disaster": "Disaster",
    "wildfire": "Wildfire",
    "security": "Security",
@@ -338,7 +339,8 @@
   "sources": {
    "gdacs": "GDACS",
    "who": "WHO",
-   "gdelt": "GDELT"
+   "gdelt": "GDELT",
+   "ucdp": "UCDP"
   },
   "status": {
    "delayed": "delayed",
@@ -388,6 +390,16 @@
    },
    "eventBasis": "{source} {alert}: {type}",
    "more": "{text} +{count}",
+   "conflictBasis": {
+    "one": "{deaths} death in 12 months (UCDP)",
+    "other": "{deaths} deaths in 12 months (UCDP)"
+   },
+   "conflictNone": "None recorded in 12 months (UCDP)",
+   "conflictShort": {
+    "one": "{deaths} death (UCDP)",
+    "other": "{deaths} deaths (UCDP)"
+   },
+   "conflictNoneShort": "None recorded (UCDP)",
    "notCovered": "No advisory",
    "unavailable": "Source unavailable",
    "history": "Recent changes",

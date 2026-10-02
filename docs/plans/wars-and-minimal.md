@@ -86,33 +86,33 @@ The research:
 
 ## Part 1: UCDP pipeline and the `conflict` category
 
-- [ ] 1.1 `config/sources/ucdp.json`:
+- [x] 1.1 `config/sources/ucdp.json`:
   - `kind: "conflict"`, links and terms (CC BY 4.0, and the citation UCDP asks for);
   - the URL pattern, `backfillFrom: "24.0.1"`, `staleAfterHours`;
   - `countries`: UCDP `country_id` (Gleditsch–Ward) → place id, for every name in the files;
   - `regions`: Israel's `adm_1` "Gaza Strip" → `gaza`, "West Bank" → `west-bank`;
   - `bands`: 1,000, 100, 25 deaths in 12 months → levels 4, 3, 2;
   - `trend`: escalating when the last 3 months are ≥ 1.5× the previous 3 and ≥ 150 deaths; calming when they are ≤ 0.5× and the previous 3 are ≥ 150.
-- [ ] 1.2 `scripts/providers/ucdp/parse.mjs` (pure):
+- [x] 1.2 `scripts/providers/ucdp/parse.mjs` (pure):
   - a quoted-CSV parser;
   - rows → slim events `{ id, date, place, conflictId, conflict, type, deaths, sideA, sideB, gwA, gwB, lat, lon }`;
   - an unknown country is reported, never placed by guess.
-- [ ] 1.3 `scripts/providers/ucdp/index.mjs`:
+- [x] 1.3 `scripts/providers/ucdp/index.mjs`:
   - asks for the versions after the last stored one, in order (next month; after `.12`, the next year's `.1`);
   - a 404 means "not out yet", which is a success;
   - each version is stored once, in `data/conflict/ucdp/<version>.jsonl`, through `FileStore`;
   - a first run backfills from `backfillFrom`, a few versions per run.
-- [ ] 1.4 `scripts/lib/conflict.mjs` (pure):
+- [x] 1.4 `scripts/lib/conflict.mjs` (pure):
   - merge the versions (dedupe by event id, a later version wins);
   - aggregate per place and per conflict, by month;
   - the rolling 12-month war count per month;
   - bands → levels, escalating and calming;
   - the published `risk/conflict.json`.
-- [ ] 1.5 `buildRisk()` (`scripts/lib/risk.mjs`): a `kind: 'conflict'` branch.
+- [x] 1.5 `buildRisk()` (`scripts/lib/risk.mjs`): a `kind: 'conflict'` branch.
   - Levels go through `updateSignals()` (category `conflict`).
   - Place files get a `conflict` section.
   - A source in `error` keeps its last state.
-- [ ] 1.6 Wiring:
+- [x] 1.6 Wiring:
   - `config/categories.json`: `conflict`;
   - `SOURCES`;
   - `config/schedule.json`;
@@ -120,14 +120,14 @@ The research:
   - the manifest's `risk.conflict`;
   - `FileStore` methods for the versions;
   - the backfill run locally, then `npm run build`.
-- [ ] 1.7 All's card: four rows (Travel, Conflict, Disasters = the higher of `disaster` and `wildfire`, Health). The country view lists the same categories. `risk.categories.conflict` in `en.json`.
+- [x] 1.7 All's card: four rows (Travel, Conflict, Disasters = the higher of `disaster` and `wildfire`, Health). The country view lists the same categories. `risk.categories.conflict` in `en.json`.
 - [ ] 1.8 Tests:
-  - [ ] unit: `ucdp.test.mjs` with a real-row fixture (Ukraine, Gaza and the West Bank, an unnamed conflict, Mexico non-state, a backdated event): parsing, mapping, unknown countries, version stepping.
-  - [ ] unit: `conflict.test.mjs`: dedupe, the rolling war count, bands, escalating and calming.
-  - [ ] unit: `risk.test.mjs` conflict branch (levels, changes, error keeps state); `providers.test.mjs` fetcher (new version, 404, malformed).
-  - [ ] unit site: the four card rows, the merged Disasters row.
-  - [ ] data and project tests: `risk/conflict.json` equals a fresh build, every stored country is mapped, ucdp is wired.
-  - [ ] e2e: the card rows and fixed heights.
+  - [x] unit: `ucdp.test.mjs` with a real-row fixture (Ukraine, Gaza and the West Bank, an unnamed conflict, Mexico non-state, a backdated event): parsing, mapping, unknown countries, version stepping.
+  - [x] unit: `conflict.test.mjs`: dedupe, the rolling war count, bands, escalating and calming.
+  - [x] unit: `risk.test.mjs` conflict branch (levels, changes, error keeps state); `providers.test.mjs` fetcher (new version, 404, malformed).
+  - [x] unit site: the four card rows, the merged Disasters row.
+  - [x] data and project tests: `risk/conflict.json` equals a fresh build, every stored country is mapped, ucdp is wired.
+  - [x] e2e: the card rows and fixed heights.
 - [ ] 1.9 Ship. Live check: All's card shows Conflict for Ukraine. Then one update run (`-f sources=ucdp`), watched.
 
 ## Part 2: The Wars mode

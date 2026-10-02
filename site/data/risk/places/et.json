@@ -67,5 +67,202 @@
     "expected": 69.8
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 4436,
+  "months": [
+   189,
+   617,
+   498,
+   318,
+   288,
+   533,
+   642,
+   257,
+   208,
+   333,
+   242,
+   311
+  ],
+  "byType": {
+   "state": 3681,
+   "nonState": 189,
+   "oneSided": 566
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:16069",
+    "name": "Ethiopia: Government/Amhara",
+    "sideA": "Government of Ethiopia",
+    "sideB": "Fano",
+    "deaths12": 2983,
+    "last": 113,
+    "war": true,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:413",
+    "name": "Ethiopia: Oromiya",
+    "sideA": "Government of Ethiopia",
+    "sideB": "OLA",
+    "deaths12": 537,
+    "last": 22,
+    "war": false,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:267",
+    "name": "Ethiopia: Government",
+    "sideA": "Government of Ethiopia",
+    "sideB": "TPLF",
+    "deaths12": 81,
+    "last": 48,
+    "war": false,
+    "places": [
+     "et",
+     "sd"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:16951",
+    "name": "Ethiopia: Benishangul-Gumuz",
+    "sideA": "Government of Ethiopia",
+    "sideB": "GFNF",
+    "deaths12": 41,
+    "last": 6,
+    "war": false,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:55",
+    "name": null,
+    "sideA": "XXX530",
+    "sideB": "XXX530",
+    "deaths12": 25,
+    "last": 0,
+    "war": false,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:309",
+    "name": "Sudan: Government",
+    "sideA": "Government of Sudan",
+    "sideB": "SFA",
+    "deaths12": 5099,
+    "last": 204,
+    "war": true,
+    "places": [
+     "sd",
+     "td",
+     "et"
+    ],
+    "parties": [
+     "sd"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:16069",
+    "name": "Ethiopia: Government/Amhara",
+    "sideA": "Government of Ethiopia",
+    "sideB": "Fano",
+    "deaths12": 2983,
+    "last": 113,
+    "war": true,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:413",
+    "name": "Ethiopia: Oromiya",
+    "sideA": "Government of Ethiopia",
+    "sideB": "OLA",
+    "deaths12": 537,
+    "last": 22,
+    "war": false,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:267",
+    "name": "Ethiopia: Government",
+    "sideA": "Government of Ethiopia",
+    "sideB": "TPLF",
+    "deaths12": 81,
+    "last": 48,
+    "war": false,
+    "places": [
+     "et",
+     "sd"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:16951",
+    "name": "Ethiopia: Benishangul-Gumuz",
+    "sideA": "Government of Ethiopia",
+    "sideB": "GFNF",
+    "deaths12": 41,
+    "last": 6,
+    "war": false,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   },
+   {
+    "key": "1:55",
+    "name": null,
+    "sideA": "XXX530",
+    "sideB": "XXX530",
+    "deaths12": 25,
+    "last": 0,
+    "war": false,
+    "places": [
+     "et"
+    ],
+    "parties": [
+     "et"
+    ]
+   }
+  ]
  }
 }

@@ -6,6 +6,7 @@
 //   risk sources (kind "events", e.g. gdacs): events -> data/events/<id>.json; events that
 //     expired are moved to data/archive/events/
 //   counts sources (kind "counts", e.g. gdelt): daily counts -> data/counts/<id>.json
+//   conflict sources (kind "conflict", e.g. ucdp): each new monthly version -> data/conflict/<id>/<version>.json
 //
 // Usage: node scripts/fetch.mjs <id>      e.g. node scripts/fetch.mjs ca
 
@@ -25,7 +26,7 @@ export async function runFetch(provider, { store = new FileStore(), logRoot, sle
   let error = null;
   await withRunLog(provider.id, async (log) => {
     try {
-      const run = { events: fetchEvents, counts: fetchCounts }[provider.kind] ?? fetchAdvisories;
+      const run = { events: fetchEvents, counts: fetchCounts, conflict: fetchConflict }[provider.kind] ?? fetchAdvisories;
       records = await run(provider, { store, log, sleep, now });
     } catch (err) {
       error = err;
@@ -65,6 +66,18 @@ async function fetchCounts(provider, { store, log, sleep, now }) {
   log.stat(stats);
   console.log(`Counted ${stats.counted.length} day(s) of ${provider.id}${stats.gaps.length ? `, ${stats.gaps.length} without a file` : ''}; counts through ${data.last}.`);
   return stats.counted.length;
+}
+
+async function fetchConflict(provider, { store, log, sleep, now }) {
+  const config = store.source(provider.id);
+  const stored = store.conflictVersions(provider.id);
+  const { versions, stats } = await provider.fetch({ log, versions: stored, now: now(), config, ...(sleep && { sleep }) });
+  for (const v of versions) store.saveConflictVersion(provider.id, v);
+  log.stat(stats);
+  console.log(versions.length
+    ? `Saved ${provider.id} ${stats.fetched.join(', ')} (${stats.events} events); data through ${stats.through}.`
+    : `No new ${provider.id} version; data through ${stats.through}.`);
+  return stored.length + versions.length;
 }
 
 /** Update data/sources-state.json: every attempt, and the last success. */

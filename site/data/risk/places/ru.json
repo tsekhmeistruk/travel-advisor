@@ -52,5 +52,97 @@
     "expected": 2174.2
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 448,
+  "months": [
+   79,
+   43,
+   46,
+   55,
+   8,
+   2,
+   20,
+   36,
+   49,
+   34,
+   22,
+   54
+  ],
+  "byType": {
+   "state": 446,
+   "nonState": 0,
+   "oneSided": 2
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:13243",
+    "name": "Russia - Ukraine",
+    "sideA": "Government of Russia (Soviet Union)",
+    "sideB": "Government of Ukraine",
+    "deaths12": 97739,
+    "last": 5702,
+    "war": true,
+    "places": [
+     "ua",
+     "ru"
+    ],
+    "parties": [
+     "ru",
+     "ua"
+    ]
+   },
+   {
+    "key": "1:399",
+    "name": "Russia (Soviet Union): Government",
+    "sideA": "Government of Russia (Soviet Union)",
+    "sideB": "Black Spark",
+    "deaths12": 29,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ru"
+    ],
+    "parties": [
+     "ru"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:13243",
+    "name": "Russia - Ukraine",
+    "sideA": "Government of Russia (Soviet Union)",
+    "sideB": "Government of Ukraine",
+    "deaths12": 97739,
+    "last": 5702,
+    "war": true,
+    "places": [
+     "ua",
+     "ru"
+    ],
+    "parties": [
+     "ru",
+     "ua"
+    ]
+   },
+   {
+    "key": "1:399",
+    "name": "Russia (Soviet Union): Government",
+    "sideA": "Government of Russia (Soviet Union)",
+    "sideB": "Black Spark",
+    "deaths12": 29,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ru"
+    ],
+    "parties": [
+     "ru"
+    ]
+   }
+  ]
  }
 }

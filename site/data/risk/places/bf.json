@@ -52,5 +52,79 @@
     "expected": 15.9
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 2599,
+  "months": [
+   215,
+   272,
+   220,
+   164,
+   177,
+   453,
+   129,
+   272,
+   134,
+   253,
+   139,
+   171
+  ],
+  "byType": {
+   "state": 2234,
+   "nonState": 157,
+   "oneSided": 208
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:360",
+    "name": "Burkina Faso: Government",
+    "sideA": "Government of Burkina Faso",
+    "sideB": "JNIM",
+    "deaths12": 2206,
+    "last": 107,
+    "war": true,
+    "places": [
+     "bf"
+    ],
+    "parties": [
+     "bf"
+    ]
+   },
+   {
+    "key": "1:15256",
+    "name": "Benin: Government",
+    "sideA": "Government of Benin",
+    "sideB": "JNIM",
+    "deaths12": 41,
+    "last": 0,
+    "war": false,
+    "places": [
+     "bj",
+     "bf"
+    ],
+    "parties": [
+     "bj"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:360",
+    "name": "Burkina Faso: Government",
+    "sideA": "Government of Burkina Faso",
+    "sideB": "JNIM",
+    "deaths12": 2206,
+    "last": 107,
+    "war": true,
+    "places": [
+     "bf"
+    ],
+    "parties": [
+     "bf"
+    ]
+   }
+  ]
  }
 }

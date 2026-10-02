@@ -67,5 +67,153 @@
     "expected": 37.8
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 1853,
+  "months": [
+   176,
+   200,
+   98,
+   182,
+   215,
+   137,
+   268,
+   126,
+   144,
+   104,
+   81,
+   122
+  ],
+  "byType": {
+   "state": 1697,
+   "nonState": 5,
+   "oneSided": 151
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:222",
+    "name": "Myanmar (Burma): Government",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "PSLF",
+    "deaths12": 1084,
+    "last": 66,
+    "war": true,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   },
+   {
+    "key": "1:223",
+    "name": "Myanmar (Burma): Arakan",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "ULA",
+    "deaths12": 279,
+    "last": 45,
+    "war": false,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   },
+   {
+    "key": "1:221",
+    "name": "Myanmar (Burma): Karen",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "KNU",
+    "deaths12": 166,
+    "last": 0,
+    "war": false,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   },
+   {
+    "key": "1:231",
+    "name": "Myanmar (Burma): Kachin",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "KIO",
+    "deaths12": 133,
+    "last": 0,
+    "war": false,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:222",
+    "name": "Myanmar (Burma): Government",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "PSLF",
+    "deaths12": 1084,
+    "last": 66,
+    "war": true,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   },
+   {
+    "key": "1:223",
+    "name": "Myanmar (Burma): Arakan",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "ULA",
+    "deaths12": 279,
+    "last": 45,
+    "war": false,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   },
+   {
+    "key": "1:221",
+    "name": "Myanmar (Burma): Karen",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "KNU",
+    "deaths12": 166,
+    "last": 0,
+    "war": false,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   },
+   {
+    "key": "1:231",
+    "name": "Myanmar (Burma): Kachin",
+    "sideA": "Government of Myanmar (Burma)",
+    "sideB": "KIO",
+    "deaths12": 133,
+    "last": 0,
+    "war": false,
+    "places": [
+     "mm"
+    ],
+    "parties": [
+     "mm"
+    ]
+   }
+  ]
  }
 }

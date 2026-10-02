@@ -75,5 +75,63 @@
     "expected": 200.4
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 164,
+  "months": [
+   19,
+   29,
+   5,
+   9,
+   0,
+   13,
+   8,
+   17,
+   34,
+   3,
+   13,
+   14
+  ],
+  "byType": {
+   "state": 99,
+   "nonState": 16,
+   "oneSided": 49
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:291",
+    "name": "Indonesia: West Papua",
+    "sideA": "Government of Indonesia",
+    "sideB": "OPM",
+    "deaths12": 98,
+    "last": 5,
+    "war": false,
+    "places": [
+     "id"
+    ],
+    "parties": [
+     "id"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:291",
+    "name": "Indonesia: West Papua",
+    "sideA": "Government of Indonesia",
+    "sideB": "OPM",
+    "deaths12": 98,
+    "last": 5,
+    "war": false,
+    "places": [
+     "id"
+    ],
+    "parties": [
+     "id"
+    ]
+   }
+  ]
  }
 }

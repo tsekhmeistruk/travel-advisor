@@ -52,5 +52,51 @@
     "expected": 80.2
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 6,
+  "months": [
+   6,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "byType": {
+   "state": 6,
+   "nonState": 0,
+   "oneSided": 0
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:234",
+    "name": "Israel: Palestine",
+    "sideA": "Government of Israel",
+    "sideB": "PFLP-GC",
+    "deaths12": 4074,
+    "last": 101,
+    "war": true,
+    "places": [
+     "gaza",
+     "west-bank",
+     "lb",
+     "il",
+     "qa"
+    ],
+    "parties": [
+     "il"
+    ]
+   }
+  ],
+  "partyTo": []
  }
 }

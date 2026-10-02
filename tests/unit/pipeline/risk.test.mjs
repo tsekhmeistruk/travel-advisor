@@ -449,3 +449,59 @@ describe('news activity (counts sources) in the risk layer', () => {
     assert.deepEqual(down.state.activity, state.activity, 'and keeps its last state');
   });
 });
+
+describe('conflict data (UCDP) in the risk layer', () => {
+  const UCDP = {
+    id: 'ucdp', kind: 'conflict', category: 'conflict', staleAfterHours: 240, confirmFallMinutes: 0, links: { home: 'https://ucdp.uu.se/' },
+    windowMonths: 12, seriesMonths: 24, war: { minDeaths: 1000 }, armedConflict: { minDeaths: 25 },
+    bands: [{ minDeaths: 1000, level: 4 }, { minDeaths: 100, level: 3 }, { minDeaths: 25, level: 2 }],
+    trend: { months: 3, upRatio: 1.5, downRatio: 0.5, minDeaths: 150 },
+    regions: { Israel: { 'Gaza Strip': 'gaza' } }, countries: { Mexico: 'mx', Israel: 'il', Somalia: 'so' },
+  };
+  const CATEGORIES = { scale: { type: 'levels', values: [1, 2, 3, 4] }, categories: [{ id: 'travel' }, { id: 'conflict' }] };
+  const meta = { '1:1': { name: 'Somalia: Government', sideA: 'Government of Somalia', sideB: 'Al-Shabaab' }, '1:2': { name: 'Israel: Palestine', sideA: 'Government of Israel', sideB: 'Hamas' } };
+  const version = (v, month, events) => ({ version: v, month, fetchedAt: `${month.slice(0, 4)}-${String(Number(month.slice(5)) + 1).padStart(2, '0')}-20T06:00:00.000Z`, countries: { 70: 'Mexico', 666: 'Israel', 520: 'Somalia' }, conflicts: meta, events });
+  const july = version('26.0.7', '2026-07', [[1, '2026-07-10', 520, '', '1:1', 80], [2, '2026-07-12', 666, 'Gaza Strip', '1:2', 40]]);
+  const august = version('26.0.8', '2026-08', [[3, '2026-08-10', 520, '', '1:1', 60], [4, '2026-08-11', 666, 'Gaza Strip', '1:2', 1]]);
+  const input = (versions, over = {}) => ({
+    index, categories: CATEGORIES, schedule: { ucdp: { everyMinutes: 1440 } }, advisories: { files: {}, history: {} },
+    sources: { ucdp: { config: UCDP, data: { fetchedAt: versions.at(-1).fetchedAt, versions } } }, state: null, log: [],
+    sourcesState: { ucdp: { lastAttempt: versions.at(-1).fetchedAt, lastSuccess: versions.at(-1).fetchedAt } },
+    ...over,
+  });
+
+  test('levels by deaths, the figures published, and a change when a new month moves a level', () => {
+    const first = buildRisk(input([july]));
+    const current = first.files['risk/current.json'];
+    assert.deepEqual(current.categories.conflict, { sources: ['ucdp'], default: 1, status: 'healthy', at: july.fetchedAt });
+    assert.deepEqual([current.places.so.conflict.level, current.places.gaza.conflict.level], [2, 2]);
+    assert.deepEqual(current.places.so.conflict.basis, ['ucdp:2026-07']);
+    assert.deepEqual(first.newChanges, [], 'the first build sets the baseline');
+    assert.equal(first.files['risk/conflict.json'].through, '2026-07');
+    assert.equal(first.files['risk/places/so.json'].conflict.conflicts[0].name, 'Somalia: Government');
+    assert.equal(first.files['risk/places/mx.json'].conflict, undefined, 'no deaths: no conflict section');
+
+    const next = buildRisk(input([july, august], { state: first.state, log: first.newChanges }));
+    assert.deepEqual(next.newChanges.map(c => [c.placeId, c.category, c.from, c.to, c.at]), [['so', 'conflict', 2, 3, august.fetchedAt]], 'Somalia passes 100 deaths');
+    assert.equal(next.files['risk/current.json'].places.gaza.conflict.level, 2, 'Gaza: 41 deaths, still Elevated');
+    const same = buildRisk(input([july, august], { state: next.state, log: next.newChanges }));
+    assert.deepEqual(same.newChanges, [], 'the same data again changes nothing');
+  });
+
+  test('a source that is down keeps its last state and publishes no levels, but its figures stay', () => {
+    const first = buildRisk(input([july]));
+    const down = buildRisk(input([july], { state: first.state, sourcesState: { ucdp: { lastAttempt: '2026-09-30T00:00:00.000Z', lastSuccess: '2026-08-01T00:00:00.000Z' } } }));
+    const current = down.files['risk/current.json'];
+    assert.equal(current.categories.conflict.default, null);
+    assert.equal(current.places.so?.conflict, undefined);
+    assert.deepEqual(down.state.categories.conflict, first.state.categories.conflict);
+    assert.equal(down.files['risk/conflict.json'].through, '2026-07');
+    const none = buildRisk(input([july], { sources: { ucdp: { config: UCDP, data: null } } }));
+    assert.equal(none.files['risk/conflict.json'], undefined, 'nothing fetched yet: no figures');
+  });
+
+  test('a conflict category missing from config/categories.json warns', () => {
+    const { warnings } = buildRisk(input([july], { categories: { ...CATEGORIES, categories: [{ id: 'travel' }] } }));
+    assert.ok(warnings.includes('[ucdp] category "conflict" is not in config/categories.json'));
+  });
+});

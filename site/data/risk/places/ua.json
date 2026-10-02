@@ -52,5 +52,67 @@
     "expected": 1971.2
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 97381,
+  "months": [
+   9298,
+   10281,
+   10350,
+   10117,
+   13372,
+   7436,
+   7772,
+   6857,
+   6656,
+   4725,
+   4869,
+   5648
+  ],
+  "byType": {
+   "state": 97336,
+   "nonState": 0,
+   "oneSided": 45
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:13243",
+    "name": "Russia - Ukraine",
+    "sideA": "Government of Russia (Soviet Union)",
+    "sideB": "Government of Ukraine",
+    "deaths12": 97739,
+    "last": 5702,
+    "war": true,
+    "places": [
+     "ua",
+     "ru"
+    ],
+    "parties": [
+     "ru",
+     "ua"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:13243",
+    "name": "Russia - Ukraine",
+    "sideA": "Government of Russia (Soviet Union)",
+    "sideB": "Government of Ukraine",
+    "deaths12": 97739,
+    "last": 5702,
+    "war": true,
+    "places": [
+     "ua",
+     "ru"
+    ],
+    "parties": [
+     "ru",
+     "ua"
+    ]
+   }
+  ]
  }
 }

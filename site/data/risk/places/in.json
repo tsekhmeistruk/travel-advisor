@@ -97,5 +97,93 @@
     "expected": 2186.8
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 370,
+  "months": [
+   52,
+   22,
+   45,
+   39,
+   61,
+   31,
+   25,
+   33,
+   25,
+   13,
+   8,
+   16
+  ],
+  "byType": {
+   "state": 244,
+   "nonState": 67,
+   "oneSided": 59
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:227",
+    "name": "India: Government",
+    "sideA": "Government of India",
+    "sideB": "CPI-Maoist",
+    "deaths12": 179,
+    "last": 0,
+    "war": false,
+    "places": [
+     "in"
+    ],
+    "parties": [
+     "in"
+    ]
+   },
+   {
+    "key": "1:364",
+    "name": "India: Kashmir",
+    "sideA": "Government of India",
+    "sideB": "Kashmir insurgents",
+    "deaths12": 28,
+    "last": 1,
+    "war": false,
+    "places": [
+     "in"
+    ],
+    "parties": [
+     "in"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:227",
+    "name": "India: Government",
+    "sideA": "Government of India",
+    "sideB": "CPI-Maoist",
+    "deaths12": 179,
+    "last": 0,
+    "war": false,
+    "places": [
+     "in"
+    ],
+    "parties": [
+     "in"
+    ]
+   },
+   {
+    "key": "1:364",
+    "name": "India: Kashmir",
+    "sideA": "Government of India",
+    "sideB": "Kashmir insurgents",
+    "deaths12": 28,
+    "last": 1,
+    "war": false,
+    "places": [
+     "in"
+    ],
+    "parties": [
+     "in"
+    ]
+   }
+  ]
  }
 }

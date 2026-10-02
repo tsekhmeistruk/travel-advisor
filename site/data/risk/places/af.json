@@ -67,5 +67,147 @@
     "expected": 289.2
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 811,
+  "months": [
+   13,
+   148,
+   24,
+   7,
+   12,
+   180,
+   260,
+   37,
+   10,
+   55,
+   9,
+   56
+  ],
+  "byType": {
+   "state": 787,
+   "nonState": 4,
+   "oneSided": 20
+  },
+  "trend": "down",
+  "conflicts": [
+   {
+    "key": "1:11639",
+    "name": "Afghanistan - Pakistan",
+    "sideA": "Government of Afghanistan",
+    "sideB": "Government of Pakistan",
+    "deaths12": 689,
+    "last": 0,
+    "war": false,
+    "places": [
+     "af",
+     "pk"
+    ],
+    "parties": [
+     "af",
+     "pk"
+    ]
+   },
+   {
+    "key": "1:404",
+    "name": "Pakistan: Government",
+    "sideA": "Government of Pakistan",
+    "sideB": "TTP",
+    "deaths12": 2801,
+    "last": 301,
+    "war": true,
+    "places": [
+     "pk",
+     "af"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:13637",
+    "name": "Afghanistan: Islamic State",
+    "sideA": "Government of Afghanistan",
+    "sideB": "IS",
+    "deaths12": 64,
+    "last": 28,
+    "war": false,
+    "places": [
+     "af",
+     "pk"
+    ],
+    "parties": [
+     "af"
+    ]
+   },
+   {
+    "key": "1:333",
+    "name": "Afghanistan: Government",
+    "sideA": "Government of Afghanistan",
+    "sideB": "NRF",
+    "deaths12": 44,
+    "last": 28,
+    "war": false,
+    "places": [
+     "af",
+     "tj"
+    ],
+    "parties": [
+     "af"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:11639",
+    "name": "Afghanistan - Pakistan",
+    "sideA": "Government of Afghanistan",
+    "sideB": "Government of Pakistan",
+    "deaths12": 689,
+    "last": 0,
+    "war": false,
+    "places": [
+     "af",
+     "pk"
+    ],
+    "parties": [
+     "af",
+     "pk"
+    ]
+   },
+   {
+    "key": "1:13637",
+    "name": "Afghanistan: Islamic State",
+    "sideA": "Government of Afghanistan",
+    "sideB": "IS",
+    "deaths12": 64,
+    "last": 28,
+    "war": false,
+    "places": [
+     "af",
+     "pk"
+    ],
+    "parties": [
+     "af"
+    ]
+   },
+   {
+    "key": "1:333",
+    "name": "Afghanistan: Government",
+    "sideA": "Government of Afghanistan",
+    "sideB": "NRF",
+    "deaths12": 44,
+    "last": 28,
+    "war": false,
+    "places": [
+     "af",
+     "tj"
+    ],
+    "parties": [
+     "af"
+    ]
+   }
+  ]
  }
 }

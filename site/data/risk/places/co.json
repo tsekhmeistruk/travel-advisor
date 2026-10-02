@@ -52,5 +52,111 @@
     "expected": 124.2
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 2047,
+  "months": [
+   77,
+   59,
+   124,
+   54,
+   352,
+   192,
+   86,
+   151,
+   178,
+   271,
+   244,
+   259
+  ],
+  "byType": {
+   "state": 398,
+   "nonState": 1113,
+   "oneSided": 536
+  },
+  "trend": "up",
+  "conflicts": [
+   {
+    "key": "1:289",
+    "name": "Colombia: Government",
+    "sideA": "Government of Colombia",
+    "sideB": "ELN",
+    "deaths12": 294,
+    "last": 28,
+    "war": false,
+    "places": [
+     "co"
+    ],
+    "parties": [
+     "co"
+    ]
+   },
+   {
+    "key": "1:35",
+    "name": null,
+    "sideA": "XXX100",
+    "sideB": "XXX100",
+    "deaths12": 83,
+    "last": 31,
+    "war": false,
+    "places": [
+     "co"
+    ],
+    "parties": [
+     "co"
+    ]
+   },
+   {
+    "key": "1:164",
+    "name": null,
+    "sideA": "XXX2",
+    "sideB": "XXX2",
+    "deaths12": 170,
+    "last": 2,
+    "war": false,
+    "places": [
+     "ve",
+     "co",
+     "mx",
+     "us"
+    ],
+    "parties": [
+     "us"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:289",
+    "name": "Colombia: Government",
+    "sideA": "Government of Colombia",
+    "sideB": "ELN",
+    "deaths12": 294,
+    "last": 28,
+    "war": false,
+    "places": [
+     "co"
+    ],
+    "parties": [
+     "co"
+    ]
+   },
+   {
+    "key": "1:35",
+    "name": null,
+    "sideA": "XXX100",
+    "sideB": "XXX100",
+    "deaths12": 83,
+    "last": 31,
+    "war": false,
+    "places": [
+     "co"
+    ],
+    "parties": [
+     "co"
+    ]
+   }
+  ]
  }
 }

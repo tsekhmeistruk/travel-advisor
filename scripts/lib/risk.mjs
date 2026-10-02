@@ -12,6 +12,7 @@
 //   changes.json   changes of the last CHANGE_WINDOW_DAYS days, newest first
 //   events.json    active events (for markers and "why")
 //   health.json    each provider's and source's last success and status
+//   conflict.json  a conflict source's figures (wars, deaths per place and month), see lib/conflict.mjs
 //
 // Counts sources (GDELT news reports) never set a level: they give unusual activity, a status
 // per place and series ("far above normal"), published beside the levels as `activity`.
@@ -19,6 +20,7 @@
 import { levelChangesOf } from './build.mjs';
 import { nameKey } from './text.mjs';
 import { assessAll, rank } from './anomaly.mjs';
+import { conflictSignals } from './conflict.mjs';
 
 const DAY = 864e5;
 export const CHANGE_WINDOW_DAYS = 90;
@@ -340,7 +342,25 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   const events = [];
   const activity = {};
   const activityByPlace = {};
+  let conflict = null;
   for (const [sourceId, { config, data }] of Object.entries(sources)) {
+    if (config.kind === 'conflict') {
+      // Monthly figures (lib/conflict.mjs): published whenever there is data, levels only while the source is up.
+      const c = config.category;
+      if (!catIds.includes(c)) warnings.push(`[${sourceId}] category "${c}" is not in config/categories.json`);
+      const available = data && health[sourceId]?.status !== 'error';
+      catMeta[c] = { sources: [sourceId], default: available ? NORMAL : null, status: health[sourceId]?.status ?? 'error', at: data?.fetchedAt };
+      if (!data) continue;
+      conflict = conflictSignals(sourceId, data, config);
+      warnings.push(...conflict.warnings);
+      if (!available) continue;   // keep the last state
+      const { state: catState, changes } = updateSignals(state?.categories?.[c], conflict.signals, {
+        category: c, at: data.fetchedAt, confirmFallMinutes: config.confirmFallMinutes, sources: [sourceId],
+      });
+      newState.categories[c] = catState;
+      derived.push(...changes);
+      continue;
+    }
     if (config.kind === 'counts') {
       if (!data || health[sourceId]?.status === 'error') continue;   // keep the last state
       const a = activitySignals(sourceId, data, config, state?.activity?.[sourceId]);
@@ -397,7 +417,8 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
     'risk/changes.json': { asOf, windowDays: CHANGE_WINDOW_DAYS, changes: recent },
     'risk/events.json': { asOf, events: events.sort((a, b) => b.startedAt.localeCompare(a.startedAt) || a.id.localeCompare(b.id)) },
     'risk/health.json': { asOf, sources: health },
-    ...placeFiles({ placeIds: [...index.byId.keys()].sort(), advisoryFiles: advisories.files, events, changes: [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')], asOf, activity: activityByPlace }),
+    ...(conflict && { 'risk/conflict.json': conflict.published }),
+    ...placeFiles({ placeIds: [...index.byId.keys()].sort(), advisoryFiles: advisories.files, events, changes: [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')], asOf, activity: activityByPlace, conflict: conflict?.byPlace }),
   };
   return { files, state: newState, newChanges, warnings };
 }
@@ -409,10 +430,11 @@ export const PLACE_HISTORY_DAYS = 365;
 /**
  * One file per place for its country view: each government's advisory (level, title, date,
  * link), the ids of the active events on it, its changes of the last PLACE_HISTORY_DAYS days,
- * newest first, and its news activity (every series' count, expected count and status). No as-of time inside, so a file changes only when its content does.
+ * newest first, its news activity (every series' count, expected count and status), and its
+ * conflict figures (deaths by month and type, the conflicts fought there and those it is a party to). No as-of time inside, so a file changes only when its content does.
  * @param changes  every change known (log, new, advisory), any order
  */
-export function placeFiles({ placeIds, advisoryFiles, events, changes, asOf, activity = {} }) {
+export function placeFiles({ placeIds, advisoryFiles, events, changes, asOf, activity = {}, conflict = {} }) {
   const cutoff = asOf ? new Date(Date.parse(asOf) - PLACE_HISTORY_DAYS * DAY).toISOString().slice(0, 10) : '';
   const advisories = new Map();
   for (const [provider, data] of Object.entries(advisoryFiles)) {
@@ -438,6 +460,7 @@ export function placeFiles({ placeIds, advisoryFiles, events, changes, asOf, act
       events: events.filter(e => e.placeIds.includes(id)).map(e => e.id),
       changes: byPlace.get(id),
       ...Object.fromEntries(Object.entries(activity).filter(([, byP]) => byP[id]).map(([source, byP]) => ['activity', { source, series: byP[id] }])),
+      ...(conflict[id] && { conflict: conflict[id] }),
     };
   }
   return files;

@@ -157,28 +157,52 @@ export function countDirections(changes) {
   return { up: pulsing.filter(c => direction(c) === 'up').length, down: pulsing.filter(c => direction(c) === 'down').length };
 }
 
+// Wildfires are a kind of disaster: on the card they share its row (the higher level, the alerts of both).
+export const ROW_OF = { wildfire: 'disaster' };
+
+/**
+ * The card's rows: one per category, except a category folded into another's row (ROW_OF)
+ * when that one has data too. Each row lists the categories it shows.
+ * @returns [{ category, members: [category] }]
+ */
+export function cardRows(categories) {
+  const ids = Object.keys(categories);
+  return ids.filter(c => !(ROW_OF[c] && categories[ROW_OF[c]]))
+    .map(category => ({ category, members: [category, ...ids.filter(c => ROW_OF[c] === category)] }));
+}
+
 /**
  * Everything the summary card shows for one place.
  * @returns {
  *   highest: { level, by },
- *   rows: [{ category, level, basis, changed, falling }]   basis: { travel: { agree, count } } | { events: [...] } | null;
+ *   rows: [{ category, members, level, basis, changed, falling }]   basis: { travel: { agree, count } } | { events: [...] }
+ *                                                 | { conflict: { deaths12 } } | null (cardRows(): wildfire is in the disaster row);
  *                                                 falling: a lower level awaiting confirmation, or null
  *   trend: 'up' | 'down' | null                   the latest pulsing change in the last 24 hours
  *   history: the place's latest changes (up to `historySize`)
  *   link, linkSource: the first basis event's source page and source id, or null
  * }
  */
-export function cardModel(placeId, { current, changes, events, now, windowDays, historySize = 3 }) {
+export function cardModel(placeId, { current, changes, events, conflict = null, now, windowDays, historySize = 3 }) {
   const eventsById = new Map(events.map(e => [e.id, e]));
   const own = changesFor(placeId, changes);
   const recent = filterChanges(own, { windowDays, now, pulseOnly: true });
-  const rows = Object.keys(current.categories).map(category => {
-    const signal = current.places[placeId]?.[category];
-    const basis = category === 'travel'
-      ? (signal ? { travel: { agree: signal.agree, count: Object.keys(signal.natives).length, ...(signal.strictest && { strictest: signal.strictest }) } } : null)
-      : (signal?.basis?.length ? { events: signal.basis.map(id => eventsById.get(id)).filter(Boolean) } : null);
-    const change = recent.find(c => c.category === category);
-    return { category, level: levelOf(current, placeId, category), basis, changed: change ? direction(change) : null, falling: signal?.falling ?? null };
+  const rows = cardRows(current.categories).map(({ category, members }) => {
+    const signals = members.map(c => current.places[placeId]?.[c]).filter(Boolean);
+    const levels = members.map(c => levelOf(current, placeId, c)).filter(l => l != null);
+    const level = levels.length ? Math.max(...levels) : null;
+    const signal = signals[0];
+    let basis = null;
+    if (category === 'travel') {
+      basis = signal ? { travel: { agree: signal.agree, count: Object.keys(signal.natives).length, ...(signal.strictest && { strictest: signal.strictest }) } } : null;
+    } else if (category === 'conflict') {
+      basis = level != null && conflict ? { conflict: { deaths12: conflict.places?.[placeId]?.deaths12 ?? 0 } } : null;
+    } else {
+      const found = signals.flatMap(s => s.basis ?? []).map(id => eventsById.get(id)).filter(Boolean).sort((a, b) => (b.level ?? 0) - (a.level ?? 0));
+      basis = found.length ? { events: found } : null;
+    }
+    const change = recent.find(c => members.includes(c.category));
+    return { category, members, level, basis, changed: change ? direction(change) : null, falling: signals.find(s => s.falling != null)?.falling ?? null };
   });
   const last24 = filterChanges(own, { windowDays: 1, now, pulseOnly: true })[0];
   const linked = rows.flatMap(r => r.basis?.events ?? []).find(e => e.url);

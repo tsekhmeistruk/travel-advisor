@@ -144,12 +144,27 @@ describe('risk panel', () => {
     await page.keyboard.press('Enter');
     await sleep(900);
     const rows = await page.$$eval('#details .risk-rows li', els => els.map(li => [li.querySelector('.cat').textContent, li.querySelector('.lvl').textContent, li.querySelector('.basis').textContent]));
-    assert.deepEqual(rows.map(r => r[0]), ['Travel', 'Disaster', 'Wildfire', 'Health']);
+    assert.deepEqual(rows.map(r => r[0]), ['Travel', 'Conflict', 'Disaster', 'Health'], 'wildfires are in the Disaster row');
     for (const [, level] of rows) assert.match(level, /^(Normal|Elevated|High|Critical|No data)$/);
     assert.match(rows[0][2], /^\d of \d governments?$/);
-    const disaster = rows[1];
+    assert.match(rows[1][2], /^([\d,]+ deaths?|None recorded) \(UCDP\)$/, 'what the conflict level is based on');
+    const disaster = rows[2];
     if (disaster[1] !== 'Normal') assert.match(disaster[2], /^GDACS (Orange|Red) |^Lowering to /, 'the alert that set it, or a fall awaiting confirmation');
     assert.match(await text(page, 'footer'), /not official levels/);
+    await page.close();
+  });
+
+  test('the conflict row reads its level from UCDP\'s deaths in 12 months (the published figures)', async () => {
+    const page = await openMode('highest');
+    const conflict = await page.evaluate(async () => (await fetch('data/risk/conflict.json')).json());
+    const [placeId, figures] = Object.entries(conflict.places).sort((a, b) => b[1].deaths12 - a[1].deaths12)[0];
+    const name = await page.evaluate(async (id) => (await (await fetch('data/places.json')).json()).find(p => p.id === id).name, placeId);
+    await page.type('#search', name);
+    await page.keyboard.press('Enter');
+    await sleep(900);
+    const row = await page.$$eval('#details .risk-rows li', els => els.map(li => [li.querySelector('.cat').textContent, li.querySelector('.lvl').textContent, li.querySelector('.basis').textContent, li.querySelector('.basis').title]).find(r => r[0] === 'Conflict'));
+    const deaths = figures.deaths12.toLocaleString('en');
+    assert.deepEqual(row, ['Conflict', 'Critical', `${deaths} deaths (UCDP)`, `${deaths} deaths in 12 months (UCDP)`], `${name}, the most deaths`);
     await page.close();
   });
 

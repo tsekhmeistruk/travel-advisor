@@ -29,6 +29,7 @@ const CURRENT = {
   asOf: hoursAgo(2),
   categories: {
     travel: { sources: ['us', 'ca'], default: null },
+    conflict: { sources: ['ucdp'], default: 1, status: 'healthy', at: hoursAgo(2) },
     disaster: { sources: ['gdacs'], default: 1, status: 'healthy', at: hoursAgo(2) },
     wildfire: { sources: ['gdacs'], default: 1, status: 'healthy', at: hoursAgo(2) },
   },
@@ -36,7 +37,7 @@ const CURRENT = {
   places: {
     mx: { travel: { level: 2, natives: { us: 2, ca: 2 }, agree: 2 }, disaster: { level: 3, since: hoursAgo(5), from: 1, basis: ['gdacs:TC:1', 'gdacs:EQ:2'] } },
     jp: { travel: { level: 1, natives: { us: 1, ca: 1 }, agree: 2 } },
-    so: { travel: { level: 4, natives: { us: 4, ca: 3 }, agree: 1 }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
+    so: { travel: { level: 4, natives: { us: 4, ca: 3 }, agree: 1 }, conflict: { level: 4, basis: ['ucdp:2026-08'] }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
     // A stricter government than the travel level (two or more must agree): named on the card.
     ke: { travel: { level: 2, natives: { us: 3, ca: 2 }, agree: 1, strictest: { level: 3, by: ['us'] } }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
   },
@@ -56,7 +57,9 @@ const EVENTS = [
   { id: 'gdacs:EQ:9', source: 'gdacs', ...DATES, category: 'disaster', type: 'earthquake', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Offshore quake', placeIds: [] },
   { id: 'gdacs:DR:3', source: 'gdacs', ...DATES, category: 'disaster', type: 'drought', level: 2, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Drought', placeIds: ['so', 'ke'] },
 ];
-const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json', places: 'risk/places/' };
+const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json', conflict: 'risk/conflict.json', places: 'risk/places/' };
+// The conflict figures (risk/conflict.json), as lib/conflict.mjs publishes them; only what the risk card reads.
+const CONFLICT = { source: 'ucdp', through: '2026-08', places: { so: { deaths12: 3304 }, ke: { deaths12: 1 } } };
 // A place file as the build writes it: advisories, active event ids, a year of changes.
 const MX_FILE = {
   placeId: 'mx',
@@ -74,7 +77,7 @@ async function create({ view = 'highest', category, mode = view === 'category' ?
   storage = new Map(Object.entries({ 'travel-risk-map:settings': JSON.stringify({ risk: saved }) }));
   const settings = createSettings('travel-risk-map:settings', {}, { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) });
   requested = [];
-  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS }, 'risk/places/mx.json': MX_FILE };
+  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS }, 'risk/conflict.json': CONFLICT, 'risk/places/mx.json': MX_FILE };
   const client = { file: async (path, version) => { requested.push([path, version]); if (!files[path]) throw new Error('HTTP 404'); return files[path]; } };
   changes = 0;
   ds = createRiskMode({
@@ -141,10 +144,14 @@ describe('logic', () => {
   test('the card model lists every category with its basis, the 24-hour trend and the place\'s history', () => {
     const m = cardModel('mx', { current: CURRENT, changes: CHANGES, events: EVENTS, now: NOW, windowDays: 30 });
     assert.deepEqual(m.highest, { level: 3, by: ['disaster'] });
-    assert.deepEqual(m.rows.map(r => [r.category, r.level, r.changed]), [['travel', 2, null], ['disaster', 3, 'up'], ['wildfire', 1, null]]);
+    assert.deepEqual(m.rows.map(r => [r.category, r.level, r.changed]), [['travel', 2, null], ['conflict', 1, null], ['disaster', 3, 'up']], 'wildfire is in the disaster row');
     assert.deepEqual(m.rows[0].basis, { travel: { agree: 2, count: 2 } });
-    assert.deepEqual(m.rows[1].basis.events.map(e => e.id), ['gdacs:TC:1', 'gdacs:EQ:2']);
-    assert.equal(m.rows[2].basis, null);
+    assert.deepEqual(m.rows[1].basis, null, 'no conflict figures given: no basis');
+    assert.deepEqual(m.rows[2].basis.events.map(e => e.id), ['gdacs:TC:1', 'gdacs:EQ:2']);
+    assert.deepEqual(m.rows[2].members, ['disaster', 'wildfire']);
+    const so = cardModel('so', { current: CURRENT, changes: CHANGES, events: EVENTS, conflict: CONFLICT, now: NOW, windowDays: 30 });
+    assert.deepEqual(so.rows[1], { category: 'conflict', members: ['conflict'], level: 4, basis: { conflict: { deaths12: 3304 } }, changed: null, falling: null });
+    assert.deepEqual(cardModel('jp', { current: CURRENT, changes: CHANGES, events: EVENTS, conflict: CONFLICT, now: NOW, windowDays: 30 }).rows[1].basis, { conflict: { deaths12: 0 } }, 'Normal: none recorded');
     assert.equal(m.trend, 'up');
     assert.equal(m.history.length, 2);
     assert.equal(m.link, 'https://www.gdacs.org/report.aspx?eventid=1');
@@ -186,12 +193,23 @@ describe('modes registry', () => {
 });
 
 describe('loading', () => {
-  test('loads the three risk files, versioned by their as-of time, and has no providers', () => {
-    assert.deepEqual(requested, [['risk/current.json', CURRENT.asOf], ['risk/changes.json', CURRENT.asOf], ['risk/events.json', CURRENT.asOf]]);
+  test('loads the risk files (and the conflict figures, when published), versioned by their as-of time, and has no providers', async () => {
+    assert.deepEqual(requested, [['risk/current.json', CURRENT.asOf], ['risk/changes.json', CURRENT.asOf], ['risk/events.json', CURRENT.asOf], ['risk/conflict.json', CURRENT.asOf]]);
     assert.deepEqual(ds.providers(), []);
     assert.equal(ds.provider(), null);
     assert.equal(ds.providerSwitchLabel(), '');
     assert.equal(ds.id, 'highest');
+  });
+  test('without published conflict figures, the conflict row has no basis', async () => {
+    const { conflict, ...withoutConflict } = MANIFEST;
+    const settings = createSettings('k', {}, { getItem: () => null, setItem() {} });
+    const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS } };
+    const asked = [];
+    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN, today: new Date(NOW) }), settings, client: { file: async (p) => { asked.push(p); return files[p]; } },
+      manifest: withoutConflict, places: PLACES, changed() {}, mode: 'highest', view: 'highest', now: () => NOW });
+    await mode.load();
+    assert.equal(asked.includes(conflict), false);
+    assert.match(mode.details({ placeId: 'so' }), /Conflict<\/span>\s*<span class="lvl">Critical<\/span>\s*<span class="basis" title="">/);
   });
 });
 
@@ -251,7 +269,10 @@ describe('details card', () => {
     assert.match(html, /Travel<\/span>\s*<span class="lvl">Elevated/);
     assert.match(html, /2 of 2 governments/);
     assert.match(html, /GDACS Orange alert: tropical cyclone \+1/);
-    assert.match(html, /Wildfire<\/span>\s*<span class="lvl">Normal/);
+    assert.match(html, /Conflict<\/span>\s*<span class="lvl">Normal<\/span>\s*<span class="basis" title="None recorded in 12 months \(UCDP\)">None recorded \(UCDP\)</);
+    assert.doesNotMatch(html, /Wildfire<\/span>/, 'wildfires are in the disaster row');
+    assert.match(ds.details({ placeId: 'so' }), /Conflict<\/span>\s*<span class="lvl">Critical<\/span>\s*<span class="basis" title="3,304 deaths in 12 months \(UCDP\)">3,304 deaths \(UCDP\)</, 'short on the row, in full in the title');
+    assert.match(ds.details({ placeId: 'ke' }), /title="1 death in 12 months \(UCDP\)">1 death \(UCDP\)</);
     assert.match(html, /Disaster: Normal → High/);
     assert.match(html, /New GDACS Orange alert: tropical cyclone/);
     assert.match(html, /href="https:\/\/www\.gdacs\.org\/report\.aspx\?eventid=1"/);
@@ -318,8 +339,9 @@ describe('details card', () => {
   });
 
   test('an unavailable source is named on the row; unsafe links are dropped', async () => {
-    await create({ current: { ...CURRENT, categories: { ...CURRENT.categories, wildfire: { sources: ['gdacs'], default: null, status: 'error' } } } });
-    assert.match(ds.details({ placeId: 'jp' }), /Wildfire<\/span>\s*<span class="lvl">No data[\s\S]*Source unavailable/);
+    const down = { sources: ['gdacs'], default: null, status: 'error' };
+    await create({ current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: down, wildfire: down } } });
+    assert.match(ds.details({ placeId: 'jp' }), /Disaster<\/span>\s*<span class="lvl">No data[\s\S]*Source unavailable/);
     assert.doesNotMatch(ds.footer(), /javascript:/);
   });
 });

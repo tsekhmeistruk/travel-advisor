@@ -70,5 +70,125 @@
     "expected": 25.3
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 3558,
+  "months": [
+   323,
+   281,
+   467,
+   661,
+   291,
+   88,
+   149,
+   200,
+   476,
+   177,
+   273,
+   172
+  ],
+  "byType": {
+   "state": 1203,
+   "nonState": 617,
+   "oneSided": 1738
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:283",
+    "name": "DR Congo (Zaire): Government",
+    "sideA": "Government of DR Congo (Zaire)",
+    "sideB": "AFC",
+    "deaths12": 1021,
+    "last": 44,
+    "war": true,
+    "places": [
+     "cd",
+     "bi"
+    ],
+    "parties": [
+     "cd"
+    ]
+   },
+   {
+    "key": "1:14692",
+    "name": "DR Congo (Zaire): Islamic State",
+    "sideA": "Government of DR Congo (Zaire)",
+    "sideB": "IS",
+    "deaths12": 116,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cd"
+    ],
+    "parties": [
+     "cd"
+    ]
+   },
+   {
+    "key": "1:38",
+    "name": null,
+    "sideA": "XXX490",
+    "sideB": "XXX490",
+    "deaths12": 41,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cd"
+    ],
+    "parties": [
+     "cd"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:283",
+    "name": "DR Congo (Zaire): Government",
+    "sideA": "Government of DR Congo (Zaire)",
+    "sideB": "AFC",
+    "deaths12": 1021,
+    "last": 44,
+    "war": true,
+    "places": [
+     "cd",
+     "bi"
+    ],
+    "parties": [
+     "cd"
+    ]
+   },
+   {
+    "key": "1:14692",
+    "name": "DR Congo (Zaire): Islamic State",
+    "sideA": "Government of DR Congo (Zaire)",
+    "sideB": "IS",
+    "deaths12": 116,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cd"
+    ],
+    "parties": [
+     "cd"
+    ]
+   },
+   {
+    "key": "1:38",
+    "name": null,
+    "sideA": "XXX490",
+    "sideB": "XXX490",
+    "deaths12": 41,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cd"
+    ],
+    "parties": [
+     "cd"
+    ]
+   }
+  ]
  }
 }

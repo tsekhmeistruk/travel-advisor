@@ -67,5 +67,123 @@
     "expected": 88.1
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 1833,
+  "months": [
+   116,
+   219,
+   172,
+   27,
+   107,
+   96,
+   95,
+   121,
+   439,
+   73,
+   272,
+   96
+  ],
+  "byType": {
+   "state": 1347,
+   "nonState": 166,
+   "oneSided": 320
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:11347",
+    "name": "Mali: Government",
+    "sideA": "Government of Mali",
+    "sideB": "JNIM",
+    "deaths12": 1088,
+    "last": 78,
+    "war": true,
+    "places": [
+     "ml"
+    ],
+    "parties": [
+     "ml"
+    ]
+   },
+   {
+    "key": "1:16038",
+    "name": "Mali: Government/Azawad",
+    "sideA": "Government of Mali",
+    "sideB": "FLA",
+    "deaths12": 171,
+    "last": 7,
+    "war": false,
+    "places": [
+     "ml"
+    ],
+    "parties": [
+     "ml"
+    ]
+   },
+   {
+    "key": "1:14113",
+    "name": "Mali: Islamic State",
+    "sideA": "Government of Mali",
+    "sideB": "IS",
+    "deaths12": 88,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ml"
+    ],
+    "parties": [
+     "ml"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:11347",
+    "name": "Mali: Government",
+    "sideA": "Government of Mali",
+    "sideB": "JNIM",
+    "deaths12": 1088,
+    "last": 78,
+    "war": true,
+    "places": [
+     "ml"
+    ],
+    "parties": [
+     "ml"
+    ]
+   },
+   {
+    "key": "1:16038",
+    "name": "Mali: Government/Azawad",
+    "sideA": "Government of Mali",
+    "sideB": "FLA",
+    "deaths12": 171,
+    "last": 7,
+    "war": false,
+    "places": [
+     "ml"
+    ],
+    "parties": [
+     "ml"
+    ]
+   },
+   {
+    "key": "1:14113",
+    "name": "Mali: Islamic State",
+    "sideA": "Government of Mali",
+    "sideB": "IS",
+    "deaths12": 88,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ml"
+    ],
+    "parties": [
+     "ml"
+    ]
+   }
+  ]
  }
 }

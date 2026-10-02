@@ -55,5 +55,63 @@
     "expected": 25
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 419,
+  "months": [
+   67,
+   32,
+   54,
+   47,
+   19,
+   33,
+   13,
+   19,
+   37,
+   40,
+   36,
+   22
+  ],
+  "byType": {
+   "state": 212,
+   "nonState": 20,
+   "oneSided": 187
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:14845",
+    "name": "Mozambique: Islamic State",
+    "sideA": "Government of Mozambique",
+    "sideB": "IS",
+    "deaths12": 212,
+    "last": 17,
+    "war": false,
+    "places": [
+     "mz"
+    ],
+    "parties": [
+     "mz"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:14845",
+    "name": "Mozambique: Islamic State",
+    "sideA": "Government of Mozambique",
+    "sideB": "IS",
+    "deaths12": 212,
+    "last": 17,
+    "war": false,
+    "places": [
+     "mz"
+    ],
+    "parties": [
+     "mz"
+    ]
+   }
+  ]
  }
 }

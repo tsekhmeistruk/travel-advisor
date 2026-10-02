@@ -41,7 +41,7 @@ describe('risk data', () => {
   const ISO_TIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
 
   test('the manifest points at every risk file', () => {
-    for (const name of ['current', 'changes', 'events', 'health']) assert.ok(risk(name), name);
+    for (const name of ['current', 'changes', 'events', 'health', 'conflict']) assert.ok(risk(name), name);
     assert.match(manifest.risk.asOf, ISO_TIME);
   });
 
@@ -53,6 +53,8 @@ describe('risk data', () => {
   test('signals are on known places and categories, at known levels, with known facts as basis', () => {
     const current = risk('current');
     const eventIds = new Set(store.sourceIds().flatMap(id => (store.events(id)?.events ?? []).map(e => e.id)));
+    // A conflict level's basis is its source's data month (e.g. "ucdp:2026-08").
+    for (const id of store.sourceIds().filter(s => store.source(s).kind === 'conflict')) eventIds.add(`${id}:${store.conflict(id).versions.at(-1).month}`);
     for (const c of Object.keys(current.categories)) assert.ok(categoryIds.has(c), `category ${c}`);
     for (const [id, signals] of Object.entries(current.places)) {
       assert.ok(placeIds.has(id), `unknown place ${id}`);
@@ -114,6 +116,34 @@ describe('risk data', () => {
     assert.deepEqual(Object.keys(risk('health').sources).sort(), Object.keys(store.schedule()).sort());
     for (const [id, h] of Object.entries(risk('health').sources)) assert.ok(['healthy', 'delayed', 'error'].includes(h.status), id);
   });
+});
+
+describe('conflict data', () => {
+  for (const id of store.sourceIds().filter(s => store.source(s).kind === 'conflict')) {
+    const config = store.source(id);
+    const published = store.published(manifest.risk.conflict);
+    const current = store.published(manifest.risk.current);
+
+    test(`${id}: every country and government in the stored versions is mapped to a place`, () => {
+      const { warnings } = buildAll(readBuildInput(store));
+      assert.deepEqual(warnings.filter(w => w.startsWith(`[${id}] countries not in`)), [], 'add them to `countries` in the source config');
+    });
+
+    test(`${id}: the levels follow the deaths bands, and the war count lists the wars`, () => {
+      assert.equal(published.source, id);
+      assert.equal(published.series.months.at(-1), published.through);
+      for (const [placeId, p] of Object.entries(published.places)) {
+        assert.ok(placeIds.has(placeId), placeId);
+        assert.equal(p.months.length, config.windowMonths, placeId);
+        assert.equal(p.deaths12, p.months.reduce((a, b) => a + b, 0), `${placeId}: deaths12 is the sum of the months`);
+        const band = config.bands.find(b => p.deaths12 >= b.minDeaths)?.level ?? 1;
+        if (current.categories[config.category].status !== 'error') assert.equal(current.places[placeId]?.[config.category]?.level ?? 1, band, `${placeId}: level`);
+      }
+      const wars = Object.values(published.conflicts).filter(c => c.war);
+      assert.equal(published.series.wars.at(-1), wars.length);
+      assert.ok(wars.every(c => c.deaths12 >= published.warDeaths && c.places.length), 'wars have their deaths and places');
+    });
+  }
 });
 
 describe('place registry', () => {

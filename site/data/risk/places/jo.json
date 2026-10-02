@@ -52,5 +52,60 @@
     "expected": 286.6
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 3,
+  "months": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   0
+  ],
+  "byType": {
+   "state": 3,
+   "nonState": 0,
+   "oneSided": 0
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:16905",
+    "name": "Iran - Israel, United States of America",
+    "sideA": "Government of Iran",
+    "sideB": "Government of Israel, Government of United States of America",
+    "deaths12": 3791,
+    "last": 2,
+    "war": true,
+    "places": [
+     "ir",
+     "lk",
+     "kw",
+     "lb",
+     "ae",
+     "iq",
+     "il",
+     "sa",
+     "sy",
+     "bh",
+     "jo",
+     "om"
+    ],
+    "parties": [
+     "il",
+     "ir",
+     "us"
+    ]
+   }
+  ],
+  "partyTo": []
  }
 }

@@ -10,6 +10,7 @@
  },
  "categories": [
   { "id": "travel", "phase": 1 },
+  { "id": "conflict", "phase": 1 },
   { "id": "disaster", "phase": 1 },
   { "id": "wildfire", "phase": 1 },
   { "id": "security", "phase": 2 },

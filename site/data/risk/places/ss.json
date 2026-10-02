@@ -52,5 +52,63 @@
     "expected": 48.7
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 732,
+  "months": [
+   68,
+   16,
+   81,
+   28,
+   108,
+   47,
+   128,
+   23,
+   43,
+   32,
+   49,
+   109
+  ],
+  "byType": {
+   "state": 237,
+   "nonState": 340,
+   "oneSided": 155
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:11345",
+    "name": "South Sudan: Government",
+    "sideA": "Government of South Sudan",
+    "sideB": "SPLM/A - IO",
+    "deaths12": 237,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ss"
+    ],
+    "parties": [
+     "ss"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:11345",
+    "name": "South Sudan: Government",
+    "sideA": "Government of South Sudan",
+    "sideB": "SPLM/A - IO",
+    "deaths12": 237,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ss"
+    ],
+    "parties": [
+     "ss"
+    ]
+   }
+  ]
  }
 }

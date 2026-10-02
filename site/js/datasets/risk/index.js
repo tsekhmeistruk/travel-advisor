@@ -34,6 +34,7 @@ export function createRiskMode(ctx) {
   let current = null;
   let changes = [];
   let events = [];
+  let conflict = null;   // risk/conflict.json, when published
   let feedAll = false;   // "Show all" was clicked (for this page view)
   let newsAll = false;
 
@@ -81,10 +82,12 @@ export function createRiskMode(ctx) {
     ? ` <button class="link-btn" data-show-days="${WINDOWS.at(-1)}">${esc(tr('feed.showDays', { days: WINDOWS.at(-1) }))}</button>` : ''}`;
 
   async function load() {
-    const [c, ch, ev] = await Promise.all([
+    const [c, ch, ev, cf] = await Promise.all([
       client.file(manifest.current, manifest.asOf), client.file(manifest.changes, manifest.asOf), client.file(manifest.events, manifest.asOf),
+      manifest.conflict ? client.file(manifest.conflict, manifest.asOf) : null,
     ]);
     current = c;
+    conflict = cf;
     // News activity is shown as it is now (the news section), never as a change: see isNews().
     changes = ch.changes.filter(x => !isNews(x));
     events = ev.events;
@@ -178,15 +181,23 @@ export function createRiskMode(ctx) {
       const text = tr('card.eventBasis', { source: sourceName(first.source), alert: alertName(first.native.value), type: typeName(first.type) });
       return row.basis.events.length > 1 ? tr('card.more', { text, count: row.basis.events.length - 1 }) : text;
     }
+    if (row.basis?.conflict) {
+      const { deaths12 } = row.basis.conflict;
+      return deaths12 ? tr('card.conflictBasis', { count: deaths12, deaths: i18n.formatNumber(deaths12) }) : tr('card.conflictNone');
+    }
     if (row.category === 'travel') return tr('card.notCovered');
     return row.level == null ? tr('card.unavailable') : '';
   }
 
   /**
-   * The row's basis, short enough for the card: a government stricter than the travel level is
+   * The row's basis, short enough for the card: the conflict deaths without "in 12 months", and a government stricter than the travel level is
    * named by its flag and the level it gives, e.g. "3 of 5 · [NL] Critical" (the title says it in full).
    */
   function basisHtml(row) {
+    if (row.basis?.conflict && row.falling == null) {
+      const { deaths12 } = row.basis.conflict;
+      return esc(deaths12 ? tr('card.conflictShort', { count: deaths12, deaths: i18n.formatNumber(deaths12) }) : tr('card.conflictNoneShort'));
+    }
     const strictest = row.falling == null && row.basis?.travel?.strictest;
     if (!strictest) return esc(basisText(row));
     const id = strictest.by[0];
@@ -196,7 +207,7 @@ export function createRiskMode(ctx) {
 
   function rowsHtml(rows) {
     return rows.map(r => `
-      <li class="${r.category === category ? 'is-focus' : ''}">
+      <li class="${r.members.includes(category) ? 'is-focus' : ''}">
         <span class="swatch" style="background:${swatch(r.level)}"></span>
         <span class="cat">${esc(catName(r.category))}</span>
         <span class="lvl">${esc(levelName(r.level))}</span>
@@ -226,7 +237,7 @@ export function createRiskMode(ctx) {
   }
 
   function cardHtml(placeId) {
-    const m = cardModel(placeId, { current, changes, events, now: now(), windowDays: windowDays() });
+    const m = cardModel(placeId, { current, changes, events, conflict, now: now(), windowDays: windowDays() });
     const name = placeName(placeId);
     const history = m.history.length ? m.history.map(historyRow).join('') : `<li class="since none">${esc(tr('card.noChanges', { days: 90 }))}</li>`;
     const link = safeUrl(m.link);
@@ -272,7 +283,7 @@ export function createRiskMode(ctx) {
   }
 
   function countryHtml(placeId, file) {
-    const m = cardModel(placeId, { current, changes, events, now: now(), windowDays: windowDays() });
+    const m = cardModel(placeId, { current, changes, events, conflict, now: now(), windowDays: windowDays() });
     const name = placeName(placeId);
     const days = settings.get('historyDays');
     const alerts = events.filter(e => (file ? file.events.includes(e.id) : e.placeIds.includes(placeId)));

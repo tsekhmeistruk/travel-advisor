@@ -67,5 +67,140 @@
     "expected": 94.8
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 1272,
+  "months": [
+   178,
+   47,
+   29,
+   47,
+   137,
+   109,
+   101,
+   85,
+   132,
+   250,
+   115,
+   42
+  ],
+  "byType": {
+   "state": 861,
+   "nonState": 105,
+   "oneSided": 306
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:13639",
+    "name": "Niger: Islamic State",
+    "sideA": "Government of Niger",
+    "sideB": "IS",
+    "deaths12": 471,
+    "last": 18,
+    "war": false,
+    "places": [
+     "ne"
+    ],
+    "parties": [
+     "ne"
+    ]
+   },
+   {
+    "key": "1:430",
+    "name": "Niger: Government",
+    "sideA": "Government of Niger",
+    "sideB": "MPLJ",
+    "deaths12": 256,
+    "last": 3,
+    "war": false,
+    "places": [
+     "ne"
+    ],
+    "parties": [
+     "ne"
+    ]
+   },
+   {
+    "key": "1:118",
+    "name": null,
+    "sideA": "XXX436",
+    "sideB": "XXX436",
+    "deaths12": 115,
+    "last": 6,
+    "war": false,
+    "places": [
+     "ne"
+    ],
+    "parties": [
+     "ne"
+    ]
+   },
+   {
+    "key": "1:297",
+    "name": "Nigeria: Government",
+    "sideA": "Government of Nigeria",
+    "sideB": "JAS",
+    "deaths12": 253,
+    "last": 1,
+    "war": false,
+    "places": [
+     "ng",
+     "td",
+     "ne"
+    ],
+    "parties": [
+     "ng"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:13639",
+    "name": "Niger: Islamic State",
+    "sideA": "Government of Niger",
+    "sideB": "IS",
+    "deaths12": 471,
+    "last": 18,
+    "war": false,
+    "places": [
+     "ne"
+    ],
+    "parties": [
+     "ne"
+    ]
+   },
+   {
+    "key": "1:430",
+    "name": "Niger: Government",
+    "sideA": "Government of Niger",
+    "sideB": "MPLJ",
+    "deaths12": 256,
+    "last": 3,
+    "war": false,
+    "places": [
+     "ne"
+    ],
+    "parties": [
+     "ne"
+    ]
+   },
+   {
+    "key": "1:118",
+    "name": null,
+    "sideA": "XXX436",
+    "sideB": "XXX436",
+    "deaths12": 115,
+    "last": 6,
+    "war": false,
+    "places": [
+     "ne"
+    ],
+    "parties": [
+     "ne"
+    ]
+   }
+  ]
  }
 }

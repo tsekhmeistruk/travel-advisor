@@ -54,5 +54,157 @@
     "expected": 1923.3
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 8853,
+  "months": [
+   651,
+   551,
+   560,
+   353,
+   852,
+   751,
+   812,
+   1026,
+   1045,
+   626,
+   611,
+   1015
+  ],
+  "byType": {
+   "state": 4795,
+   "nonState": 1903,
+   "oneSided": 2155
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:119",
+    "name": null,
+    "sideA": "XXX475",
+    "sideB": "XXX475",
+    "deaths12": 2595,
+    "last": 450,
+    "war": true,
+    "places": [
+     "ng"
+    ],
+    "parties": [
+     "ng"
+    ]
+   },
+   {
+    "key": "1:13641",
+    "name": "Nigeria: Islamic State",
+    "sideA": "Government of Nigeria",
+    "sideB": "IS",
+    "deaths12": 1987,
+    "last": 184,
+    "war": true,
+    "places": [
+     "ng"
+    ],
+    "parties": [
+     "ng"
+    ]
+   },
+   {
+    "key": "1:297",
+    "name": "Nigeria: Government",
+    "sideA": "Government of Nigeria",
+    "sideB": "JAS",
+    "deaths12": 253,
+    "last": 1,
+    "war": false,
+    "places": [
+     "ng",
+     "td",
+     "ne"
+    ],
+    "parties": [
+     "ng"
+    ]
+   },
+   {
+    "key": "1:303",
+    "name": "Nigeria: Biafra",
+    "sideA": "Government of Nigeria",
+    "sideB": "IPOB",
+    "deaths12": 38,
+    "last": 5,
+    "war": false,
+    "places": [
+     "ng"
+    ],
+    "parties": [
+     "ng"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:119",
+    "name": null,
+    "sideA": "XXX475",
+    "sideB": "XXX475",
+    "deaths12": 2595,
+    "last": 450,
+    "war": true,
+    "places": [
+     "ng"
+    ],
+    "parties": [
+     "ng"
+    ]
+   },
+   {
+    "key": "1:13641",
+    "name": "Nigeria: Islamic State",
+    "sideA": "Government of Nigeria",
+    "sideB": "IS",
+    "deaths12": 1987,
+    "last": 184,
+    "war": true,
+    "places": [
+     "ng"
+    ],
+    "parties": [
+     "ng"
+    ]
+   },
+   {
+    "key": "1:297",
+    "name": "Nigeria: Government",
+    "sideA": "Government of Nigeria",
+    "sideB": "JAS",
+    "deaths12": 253,
+    "last": 1,
+    "war": false,
+    "places": [
+     "ng",
+     "td",
+     "ne"
+    ],
+    "parties": [
+     "ng"
+    ]
+   },
+   {
+    "key": "1:303",
+    "name": "Nigeria: Biafra",
+    "sideA": "Government of Nigeria",
+    "sideB": "IPOB",
+    "deaths12": 38,
+    "last": 5,
+    "war": false,
+    "places": [
+     "ng"
+    ],
+    "parties": [
+     "ng"
+    ]
+   }
+  ]
  }
 }

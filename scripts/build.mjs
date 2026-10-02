@@ -32,7 +32,8 @@ export function readBuildInput(store = new FileStore()) {
       schedule: store.schedule(),
       sources: Object.fromEntries(store.sourceIds().map(id => {
         const config = store.source(id);
-        return [id, { config, data: config.kind === 'counts' ? store.counts(id) : store.events(id) }];
+        const read = { counts: () => store.counts(id), conflict: () => store.conflict(id) }[config.kind] ?? (() => store.events(id));
+        return [id, { config, data: read() }];
       })),
       state: store.signals(),
       log: [...store.changes(year - 1), ...store.changes(year)],
@@ -66,7 +67,7 @@ export function buildAll(input) {
     ...site.files['manifest.json'],
     risk: {
       asOf: risk.files['risk/current.json'].asOf,
-      ...Object.fromEntries(['current', 'changes', 'events', 'health'].map(name => [name, `risk/${name}.json`])),
+      ...Object.fromEntries(['current', 'changes', 'events', 'health', 'conflict'].filter(name => risk.files[`risk/${name}.json`]).map(name => [name, `risk/${name}.json`])),
       places: 'risk/places/',   // + <placeId>.json, one per place
     },
   };

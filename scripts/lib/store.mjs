@@ -59,6 +59,27 @@ export class FileStore {
     writeFileSync(file, `${head}\n${series.join('\n')}\n}}\n`);
   }
 
+  /** A conflict source's stored versions (e.g. UCDP's "26.0.8"), oldest first. */
+  conflictVersions(source) {
+    return this.#list(`data/conflict/${source}`, '.json').sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));   // 24.0.9 before 24.0.10
+  }
+  /** Every stored version of a conflict source, oldest first: { fetchedAt (the latest's), versions }, or null. */
+  conflict(source) {
+    const versions = this.conflictVersions(source).map(v => this.#readJson('data', 'conflict', source, `${v}.json`));
+    return versions.length ? { fetchedAt: versions.at(-1).fetchedAt, versions } : null;
+  }
+  /** One version, written once: one event per line, so the file reads (and diffs) by event. */
+  saveConflictVersion(source, data) {
+    const file = this.path('data', 'conflict', source, `${data.version}.json`);
+    mkdirSync(dirname(file), { recursive: true });
+    const { events, ...head } = data;
+    const lines = (o) => Object.entries(o).map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n');
+    const { countries, conflicts, ...meta } = head;
+    writeFileSync(file, `{${Object.entries(meta).map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(', ')},\n`
+      + `"countries": {\n${lines(countries)}\n},\n"conflicts": {\n${lines(conflicts)}\n},\n`
+      + `"events": [\n${events.map(e => JSON.stringify(e)).join(',\n')}\n]}\n`);
+  }
+
   /** Confirmed risk signals per place and category, with pending falls: see lib/risk.mjs. */
   signals() { return this.#readJson('data', 'signals', 'current.json', { optional: true }); }
   saveSignals(signals) { this.#writeJson(signals, 'data', 'signals', 'current.json'); }

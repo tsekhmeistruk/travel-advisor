@@ -52,5 +52,93 @@
     "expected": 317.4
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 150,
+  "months": [
+   7,
+   10,
+   8,
+   12,
+   27,
+   1,
+   15,
+   34,
+   7,
+   9,
+   10,
+   10
+  ],
+  "byType": {
+   "state": 128,
+   "nonState": 9,
+   "oneSided": 13
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:209",
+    "name": "Philippines: Government",
+    "sideA": "Government of Philippines",
+    "sideB": "CPP",
+    "deaths12": 88,
+    "last": 3,
+    "war": false,
+    "places": [
+     "ph"
+    ],
+    "parties": [
+     "ph"
+    ]
+   },
+   {
+    "key": "1:14275",
+    "name": "Philippines: Islamic State",
+    "sideA": "Government of Philippines",
+    "sideB": "IS",
+    "deaths12": 34,
+    "last": 7,
+    "war": false,
+    "places": [
+     "ph"
+    ],
+    "parties": [
+     "ph"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:209",
+    "name": "Philippines: Government",
+    "sideA": "Government of Philippines",
+    "sideB": "CPP",
+    "deaths12": 88,
+    "last": 3,
+    "war": false,
+    "places": [
+     "ph"
+    ],
+    "parties": [
+     "ph"
+    ]
+   },
+   {
+    "key": "1:14275",
+    "name": "Philippines: Islamic State",
+    "sideA": "Government of Philippines",
+    "sideB": "IS",
+    "deaths12": 34,
+    "last": 7,
+    "war": false,
+    "places": [
+     "ph"
+    ],
+    "parties": [
+     "ph"
+    ]
+   }
+  ]
  }
 }

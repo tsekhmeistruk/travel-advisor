@@ -12,6 +12,7 @@ import de from '../../../scripts/providers/de/index.mjs';
 import gdacs from '../../../scripts/providers/gdacs/index.mjs';
 import who from '../../../scripts/providers/who/index.mjs';
 import gdelt from '../../../scripts/providers/gdelt/index.mjs';
+import ucdp from '../../../scripts/providers/ucdp/index.mjs';
 import { zip } from './zip-helper.mjs';
 import { PROVIDERS, SOURCES, getProvider } from '../../../scripts/providers/index.mjs';
 
@@ -52,7 +53,7 @@ describe('provider registry', () => {
     assert.equal(getProvider('gdacs'), gdacs, 'sources are found by id too');
   });
   test('rejects an unknown provider with the list of known ones', () => {
-    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, de, gdacs, who, gdelt/);
+    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, de, gdacs, who, gdelt, ucdp$/);
   });
 });
 
@@ -558,5 +559,56 @@ describe('Canada fetcher', () => {
     const { log, stats } = await run({ feed: [{ body: feed(160) }], table: [{ body: table(20) }] });
     assert.deepEqual(stats.sources, ['feed']);
     assert.match(log.warnings.join(), /table unavailable \(only 20 destinations; page structure may have changed\)/);
+  });
+});
+
+describe('UCDP fetcher', () => {
+  const config = JSON.parse(readFileSync(new URL('../../../config/sources/ucdp.json', import.meta.url), 'utf8'));
+  const csv = fixture('ucdp-ged.csv');
+  const NOW = new Date('2026-10-02T06:00:00Z');   // September's file may be out; October's can't be
+  const versionOf = (url) => url.match(/GEDEvent_v(\d+)_0_(\d+)\.csv$/).slice(1).join('.0.');
+
+  test('the first run starts at backfillFrom, oldest first, at most maxVersionsPerRun', async () => {
+    const log = fakeLog({ version: () => ({ body: csv }) });
+    const { versions, stats } = await ucdp.fetch({ log, versions: [], now: NOW, config: { ...config, backfillFrom: '25.0.11', maxVersionsPerRun: 3 } });
+    assert.deepEqual(log.requests.map(r => versionOf(r.url)), ['25.0.11', '25.0.12', '26.0.1']);
+    assert.ok(log.requests.every(r => r.opts.detail === false && !r.opts.binary));
+    assert.deepEqual(versions.map(v => [v.version, v.month, v.fetchedAt, v.events.length]), [
+      ['25.0.11', '2025-11', NOW.toISOString(), 22], ['25.0.12', '2025-12', NOW.toISOString(), 22], ['26.0.1', '2026-01', NOW.toISOString(), 22]]);
+    assert.equal(versions[0].malformed, undefined, 'not stored');
+    assert.deepEqual([stats.fetched, stats.through, stats.events, stats.unmapped], [['25.0.11', '25.0.12', '26.0.1'], '26.0.1', 66, []]);
+  });
+
+  test('continues after the last stored version; a 404 means "not out yet"; no month is asked before it is over', async () => {
+    const log = fakeLog({ version: (url) => (versionOf(url) === '26.0.9' ? { status: 404 } : { body: csv }) });
+    const { versions, stats } = await ucdp.fetch({ log, versions: ['26.0.7'], now: NOW, config });
+    assert.deepEqual(log.requests.map(r => versionOf(r.url)), ['26.0.8', '26.0.9'], 'October (26.0.10) is never tried in October');
+    assert.deepEqual([versions.map(v => v.version), stats.through, stats.skipped], [['26.0.8'], '26.0.8', []]);
+    const none = fakeLog({ version: [{ status: 404 }] });
+    const quiet = await ucdp.fetch({ log: none, versions: ['26.0.8'], now: NOW, config });
+    assert.deepEqual([quiet.versions, quiet.stats.through, none.requests.length], [[], '26.0.8', 1]);
+    const done = fakeLog({ version: () => { throw new Error('no request expected'); } });
+    assert.deepEqual((await ucdp.fetch({ log: done, versions: ['26.0.9'], now: NOW, config })).versions, [], 'September stored: nothing to ask in October');
+  });
+
+  test('a month that never came out is skipped when the next one exists', async () => {
+    const log = fakeLog({ version: (url) => (versionOf(url) === '26.0.6' ? { status: 404 } : { body: csv }) });
+    const { versions, stats } = await ucdp.fetch({ log, versions: ['26.0.5'], now: NOW, config: { ...config, maxVersionsPerRun: 2 } });
+    assert.deepEqual(versions.map(v => v.version), ['26.0.7', '26.0.8']);
+    assert.deepEqual(stats.skipped, ['26.0.6']);
+    assert.ok(log.warnings.some(w => /never came out: 26\.0\.6/.test(w)));
+  });
+
+  test('countries missing from the config are reported; errors are retried, then fail; another format fails', async () => {
+    const log = fakeLog({ version: [{ body: csv }, { status: 404 }] });
+    const { stats } = await ucdp.fetch({ log, versions: ['26.0.7'], now: NOW, config: { ...config, countries: { Ukraine: 'ua' } } });
+    assert.ok(stats.unmapped.includes('Mexico') && !stats.unmapped.includes('Ukraine'));
+    assert.ok(log.warnings.some(w => w.startsWith('UCDP countries not in config/sources/ucdp.json: ')));
+    const { waits, sleep } = recordSleeps();
+    const flaky = fakeLog({ version: [{ status: 503 }, new Error('ECONNRESET'), { body: csv }, { status: 404 }] });
+    assert.deepEqual((await ucdp.fetch({ log: flaky, versions: ['26.0.7'], now: NOW, config, sleep })).stats.fetched, ['26.0.8']);
+    assert.deepEqual(waits, [30000, 60000]);
+    await assert.rejects(ucdp.fetch({ log: fakeLog({ version: () => ({ status: 500 }) }), versions: ['26.0.7'], now: NOW, config, sleep }), /UCDP 26\.0\.8 failed after 3 attempts: HTTP 500/);
+    await assert.rejects(ucdp.fetch({ log: fakeLog({ version: () => ({ body: '<html>' }) }), versions: ['26.0.7'], now: NOW, config }), /not in the expected format/);
   });
 });

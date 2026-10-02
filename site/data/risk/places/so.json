@@ -52,5 +52,93 @@
     "expected": 101.8
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 3619,
+  "months": [
+   222,
+   149,
+   291,
+   116,
+   964,
+   224,
+   154,
+   299,
+   365,
+   366,
+   322,
+   147
+  ],
+  "byType": {
+   "state": 3430,
+   "nonState": 147,
+   "oneSided": 42
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:337",
+    "name": "Somalia: Government",
+    "sideA": "Government of Somalia",
+    "sideB": "Al-Shabaab",
+    "deaths12": 3304,
+    "last": 137,
+    "war": true,
+    "places": [
+     "so"
+    ],
+    "parties": [
+     "so"
+    ]
+   },
+   {
+    "key": "1:14197",
+    "name": "Somalia: Islamic State",
+    "sideA": "Government of Somalia",
+    "sideB": "IS",
+    "deaths12": 99,
+    "last": 0,
+    "war": false,
+    "places": [
+     "so"
+    ],
+    "parties": [
+     "so"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:337",
+    "name": "Somalia: Government",
+    "sideA": "Government of Somalia",
+    "sideB": "Al-Shabaab",
+    "deaths12": 3304,
+    "last": 137,
+    "war": true,
+    "places": [
+     "so"
+    ],
+    "parties": [
+     "so"
+    ]
+   },
+   {
+    "key": "1:14197",
+    "name": "Somalia: Islamic State",
+    "sideA": "Government of Somalia",
+    "sideB": "IS",
+    "deaths12": 99,
+    "last": 0,
+    "war": false,
+    "places": [
+     "so"
+    ],
+    "parties": [
+     "so"
+    ]
+   }
+  ]
  }
 }

@@ -52,5 +52,63 @@
     "expected": 104.7
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 43,
+  "months": [
+   0,
+   5,
+   30,
+   0,
+   1,
+   0,
+   0,
+   5,
+   0,
+   0,
+   0,
+   2
+  ],
+  "byType": {
+   "state": 35,
+   "nonState": 5,
+   "oneSided": 3
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:160",
+    "name": null,
+    "sideA": "XXX500",
+    "sideB": "XXX500",
+    "deaths12": 35,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ug"
+    ],
+    "parties": [
+     "ug"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:160",
+    "name": null,
+    "sideA": "XXX500",
+    "sideB": "XXX500",
+    "deaths12": 35,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ug"
+    ],
+    "parties": [
+     "ug"
+    ]
+   }
+  ]
  }
 }

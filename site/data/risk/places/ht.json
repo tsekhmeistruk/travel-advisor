@@ -52,5 +52,93 @@
     "expected": 110.9
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 639,
+  "months": [
+   105,
+   33,
+   29,
+   22,
+   3,
+   31,
+   83,
+   30,
+   131,
+   26,
+   99,
+   47
+  ],
+  "byType": {
+   "state": 214,
+   "nonState": 99,
+   "oneSided": 326
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:381",
+    "name": "Haiti: Government",
+    "sideA": "Government of Haiti",
+    "sideB": "Viv Ansanm",
+    "deaths12": 142,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ht"
+    ],
+    "parties": [
+     "ht"
+    ]
+   },
+   {
+    "key": "1:70",
+    "name": null,
+    "sideA": "XXX41",
+    "sideB": "XXX41",
+    "deaths12": 72,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ht"
+    ],
+    "parties": [
+     "ht"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:381",
+    "name": "Haiti: Government",
+    "sideA": "Government of Haiti",
+    "sideB": "Viv Ansanm",
+    "deaths12": 142,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ht"
+    ],
+    "parties": [
+     "ht"
+    ]
+   },
+   {
+    "key": "1:70",
+    "name": null,
+    "sideA": "XXX41",
+    "sideB": "XXX41",
+    "deaths12": 72,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ht"
+    ],
+    "parties": [
+     "ht"
+    ]
+   }
+  ]
  }
 }

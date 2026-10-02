@@ -52,5 +52,97 @@
     "expected": 545
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 2475,
+  "months": [
+   115,
+   61,
+   57,
+   210,
+   152,
+   55,
+   72,
+   48,
+   55,
+   50,
+   220,
+   1380
+  ],
+  "byType": {
+   "state": 1967,
+   "nonState": 454,
+   "oneSided": 54
+  },
+  "trend": "up",
+  "conflicts": [
+   {
+    "key": "1:230",
+    "name": "Yemen (North Yemen): Government",
+    "sideA": "Government of Yemen (North Yemen)",
+    "sideB": "Forces of the Presidential Leadership Council",
+    "deaths12": 1871,
+    "last": 1365,
+    "war": true,
+    "places": [
+     "ye",
+     "iq"
+    ],
+    "parties": [
+     "ye"
+    ]
+   },
+   {
+    "key": "1:16470",
+    "name": "Israel - Yemen",
+    "sideA": "Government of Israel",
+    "sideB": "Government of Yemen (North Yemen)",
+    "deaths12": 79,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ye"
+    ],
+    "parties": [
+     "il",
+     "ye"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:230",
+    "name": "Yemen (North Yemen): Government",
+    "sideA": "Government of Yemen (North Yemen)",
+    "sideB": "Forces of the Presidential Leadership Council",
+    "deaths12": 1871,
+    "last": 1365,
+    "war": true,
+    "places": [
+     "ye",
+     "iq"
+    ],
+    "parties": [
+     "ye"
+    ]
+   },
+   {
+    "key": "1:16470",
+    "name": "Israel - Yemen",
+    "sideA": "Government of Israel",
+    "sideB": "Government of Yemen (North Yemen)",
+    "deaths12": 79,
+    "last": 0,
+    "war": false,
+    "places": [
+     "ye"
+    ],
+    "parties": [
+     "il",
+     "ye"
+    ]
+   }
+  ]
  }
 }

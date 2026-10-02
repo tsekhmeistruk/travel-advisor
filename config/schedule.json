@@ -6,5 +6,6 @@
  "de": { "every": "daily-slot" },
  "gdacs": { "everyMinutes": 60 },
  "who": { "everyMinutes": 360 },
- "gdelt": { "everyMinutes": 360 }
+ "gdelt": { "everyMinutes": 360 },
+ "ucdp": { "everyMinutes": 1440 }
 }

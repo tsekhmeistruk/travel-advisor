@@ -52,5 +52,205 @@
     "expected": 1193.2
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 4828,
+  "months": [
+   445,
+   480,
+   368,
+   223,
+   424,
+   325,
+   202,
+   202,
+   401,
+   463,
+   744,
+   551
+  ],
+  "byType": {
+   "state": 4436,
+   "nonState": 82,
+   "oneSided": 310
+  },
+  "trend": "up",
+  "conflicts": [
+   {
+    "key": "1:404",
+    "name": "Pakistan: Government",
+    "sideA": "Government of Pakistan",
+    "sideB": "TTP",
+    "deaths12": 2801,
+    "last": 301,
+    "war": true,
+    "places": [
+     "pk",
+     "af"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:325",
+    "name": "Pakistan: Balochistan",
+    "sideA": "Government of Pakistan",
+    "sideB": "BRAS",
+    "deaths12": 1210,
+    "last": 207,
+    "war": true,
+    "places": [
+     "pk"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:122",
+    "name": null,
+    "sideA": "XXX770",
+    "sideB": "XXX770",
+    "deaths12": 361,
+    "last": 13,
+    "war": false,
+    "places": [
+     "pk"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:11639",
+    "name": "Afghanistan - Pakistan",
+    "sideA": "Government of Afghanistan",
+    "sideB": "Government of Pakistan",
+    "deaths12": 689,
+    "last": 0,
+    "war": false,
+    "places": [
+     "af",
+     "pk"
+    ],
+    "parties": [
+     "af",
+     "pk"
+    ]
+   },
+   {
+    "key": "1:13936",
+    "name": "Pakistan: Islamic State",
+    "sideA": "Government of Pakistan",
+    "sideB": "IS",
+    "deaths12": 52,
+    "last": 1,
+    "war": false,
+    "places": [
+     "pk"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:13637",
+    "name": "Afghanistan: Islamic State",
+    "sideA": "Government of Afghanistan",
+    "sideB": "IS",
+    "deaths12": 64,
+    "last": 28,
+    "war": false,
+    "places": [
+     "af",
+     "pk"
+    ],
+    "parties": [
+     "af"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:404",
+    "name": "Pakistan: Government",
+    "sideA": "Government of Pakistan",
+    "sideB": "TTP",
+    "deaths12": 2801,
+    "last": 301,
+    "war": true,
+    "places": [
+     "pk",
+     "af"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:325",
+    "name": "Pakistan: Balochistan",
+    "sideA": "Government of Pakistan",
+    "sideB": "BRAS",
+    "deaths12": 1210,
+    "last": 207,
+    "war": true,
+    "places": [
+     "pk"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:11639",
+    "name": "Afghanistan - Pakistan",
+    "sideA": "Government of Afghanistan",
+    "sideB": "Government of Pakistan",
+    "deaths12": 689,
+    "last": 0,
+    "war": false,
+    "places": [
+     "af",
+     "pk"
+    ],
+    "parties": [
+     "af",
+     "pk"
+    ]
+   },
+   {
+    "key": "1:122",
+    "name": null,
+    "sideA": "XXX770",
+    "sideB": "XXX770",
+    "deaths12": 361,
+    "last": 13,
+    "war": false,
+    "places": [
+     "pk"
+    ],
+    "parties": [
+     "pk"
+    ]
+   },
+   {
+    "key": "1:13936",
+    "name": "Pakistan: Islamic State",
+    "sideA": "Government of Pakistan",
+    "sideB": "IS",
+    "deaths12": 52,
+    "last": 1,
+    "war": false,
+    "places": [
+     "pk"
+    ],
+    "parties": [
+     "pk"
+    ]
+   }
+  ]
  }
 }

@@ -52,5 +52,153 @@
     "expected": 23.9
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 495,
+  "months": [
+   31,
+   42,
+   36,
+   45,
+   39,
+   31,
+   32,
+   47,
+   32,
+   56,
+   72,
+   32
+  ],
+  "byType": {
+   "state": 268,
+   "nonState": 36,
+   "oneSided": 191
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:14129",
+    "name": "Cameroon: Ambazonia",
+    "sideA": "Government of Cameroon",
+    "sideB": "Ambazonia insurgents",
+    "deaths12": 147,
+    "last": 12,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   },
+   {
+    "key": "1:353",
+    "name": "Cameroon: Government",
+    "sideA": "Government of Cameroon",
+    "sideB": "JAS",
+    "deaths12": 50,
+    "last": 3,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   },
+   {
+    "key": "1:13638",
+    "name": "Cameroon: Islamic State",
+    "sideA": "Government of Cameroon",
+    "sideB": "IS",
+    "deaths12": 41,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   },
+   {
+    "key": "1:28",
+    "name": null,
+    "sideA": "XXX471",
+    "sideB": "XXX471",
+    "deaths12": 30,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:14129",
+    "name": "Cameroon: Ambazonia",
+    "sideA": "Government of Cameroon",
+    "sideB": "Ambazonia insurgents",
+    "deaths12": 147,
+    "last": 12,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   },
+   {
+    "key": "1:353",
+    "name": "Cameroon: Government",
+    "sideA": "Government of Cameroon",
+    "sideB": "JAS",
+    "deaths12": 50,
+    "last": 3,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   },
+   {
+    "key": "1:13638",
+    "name": "Cameroon: Islamic State",
+    "sideA": "Government of Cameroon",
+    "sideB": "IS",
+    "deaths12": 41,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   },
+   {
+    "key": "1:28",
+    "name": null,
+    "sideA": "XXX471",
+    "sideB": "XXX471",
+    "deaths12": 30,
+    "last": 0,
+    "war": false,
+    "places": [
+     "cm"
+    ],
+    "parties": [
+     "cm"
+    ]
+   }
+  ]
  }
 }

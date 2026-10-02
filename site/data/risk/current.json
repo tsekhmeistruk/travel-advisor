@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T06:13:37.487Z",
+ "asOf": "2026-10-02T06:23:17.878Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -19,6 +19,14 @@
     "de"
    ],
    "default": null
+  },
+  "conflict": {
+   "sources": [
+    "ucdp"
+   ],
+   "default": 1,
+   "status": "healthy",
+   "at": "2026-10-02T06:23:15.235Z"
   },
   "disaster": {
    "sources": [
@@ -53,6 +61,10 @@
   "gdelt": {
    "url": "https://www.gdeltproject.org/",
    "terms": "https://www.gdeltproject.org/about.html#termsofuse"
+  },
+  "ucdp": {
+   "url": "https://ucdp.uu.se/",
+   "terms": "https://ucdp.uu.se/downloads/"
   },
   "who": {
    "url": "https://www.who.int/emergencies/disease-outbreak-news",
@@ -117,6 +129,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ag": {
@@ -219,6 +237,12 @@
       "nl"
      ]
     }
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "as": {
@@ -365,6 +389,12 @@
      "de": 1
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "be": {
@@ -391,6 +421,12 @@
      "de": 3
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "bg": {
@@ -436,6 +472,12 @@
      "de": 1
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "bj": {
@@ -449,6 +491,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "bl": {
@@ -531,6 +579,12 @@
      "de": 1
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "bs": {
@@ -647,6 +701,12 @@
      "who:DON:2026-DON617",
      "who:DON:2026-DON618"
     ]
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "cf": {
@@ -660,6 +720,12 @@
      "de": 4
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "cg": {
@@ -743,6 +809,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "cn": {
@@ -769,6 +841,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "cr": {
@@ -930,6 +1008,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ec": {
@@ -943,6 +1027,12 @@
      "de": 1
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ee": {
@@ -1017,6 +1107,12 @@
      "de": 3
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "fi": {
@@ -1119,6 +1215,12 @@
      "de": 4
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "gb": {
@@ -1216,6 +1318,12 @@
       "de"
      ]
     }
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "gi": {
@@ -1346,6 +1454,12 @@
       "us"
      ]
     }
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "gu": {
@@ -1461,6 +1575,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "hu": {
@@ -1487,6 +1607,12 @@
      "de": 1
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ie": {
@@ -1513,6 +1639,12 @@
      "de": 1
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "im": {
@@ -1535,6 +1667,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "io": {
@@ -1558,6 +1696,12 @@
      "de": 4
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ir": {
@@ -1571,6 +1715,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "is": {
@@ -1664,6 +1814,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "kg": {
@@ -1832,6 +1988,12 @@
      "de": 3
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "lc": {
@@ -1877,6 +2039,12 @@
      "de": 1
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "lr": {
@@ -1955,6 +2123,12 @@
      "de": 4
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ma": {
@@ -2076,6 +2250,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "mm": {
@@ -2089,6 +2269,12 @@
      "de": 4
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "mn": {
@@ -2255,6 +2441,12 @@
     "basis": [
      "gdacs:TC:1001325"
     ]
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "my": {
@@ -2281,6 +2473,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "na": {
@@ -2320,6 +2518,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "nf": {
@@ -2342,6 +2546,12 @@
      "de": 3
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ni": {
@@ -2515,6 +2725,12 @@
      "de": 1
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ph": {
@@ -2528,6 +2744,12 @@
      "de": 3
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "pk": {
@@ -2541,6 +2763,12 @@
      "de": 3
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "pl": {
@@ -2709,6 +2937,12 @@
      "de": 4
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "rw": {
@@ -2798,6 +3032,12 @@
      "de": 4
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "se": {
@@ -2911,6 +3151,12 @@
      "de": 4
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "somaliland": {
@@ -2956,6 +3202,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "st": {
@@ -3008,6 +3260,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "sz": {
@@ -3053,6 +3311,12 @@
       "us"
      ]
     }
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "tf": {
@@ -3094,6 +3358,12 @@
       "de"
      ]
     }
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "tj": {
@@ -3260,6 +3530,12 @@
       "us"
      ]
     }
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ua": {
@@ -3273,6 +3549,12 @@
      "de": 4
     },
     "agree": 4
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "ug": {
@@ -3292,6 +3574,12 @@
       "us"
      ]
     }
+   },
+   "conflict": {
+    "level": 2,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "us": {
@@ -3377,6 +3665,12 @@
       "ca"
      ]
     }
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "vg": {
@@ -3440,6 +3734,12 @@
      "de": 4
     },
     "agree": 2
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "wf": {
@@ -3496,6 +3796,12 @@
      "de": 4
     },
     "agree": 5
+   },
+   "conflict": {
+    "level": 4,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "yt": {
@@ -3522,6 +3828,12 @@
      "de": 1
     },
     "agree": 3
+   },
+   "conflict": {
+    "level": 3,
+    "basis": [
+     "ucdp:2026-08"
+    ]
    }
   },
   "zm": {

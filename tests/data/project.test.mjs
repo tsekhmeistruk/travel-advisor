@@ -85,6 +85,21 @@ describe('risk sources are wired up everywhere', () => {
         assert.equal(cfg.levels, undefined, 'no levels');
         return;
       }
+      if (cfg.kind === 'conflict') {
+        // Monthly figures: one category, deaths bands to levels, and every country name mapped to a place.
+        assert.ok(categories.has(cfg.category), `category ${cfg.category} is in config/categories.json`);
+        assert.ok(cfg.staleAfterHours > 0 && cfg.confirmFallMinutes >= 0, 'staleAfterHours, confirmFallMinutes');
+        const mins = cfg.bands.map(b => b.minDeaths);
+        assert.deepEqual(mins, [...mins].sort((a, b) => b - a), 'bands from the highest');
+        assert.ok(cfg.bands.every(b => store.categories().scale.values.includes(b.level) && b.level > 1), 'band levels');
+        assert.ok(cfg.war.minDeaths > cfg.armedConflict.minDeaths && cfg.windowMonths > 0 && cfg.seriesMonths >= cfg.windowMonths, 'war and window');
+        assert.ok(cfg.trend.upRatio > 1 && cfg.trend.downRatio < 1 && cfg.trend.months > 0, 'trend rule');
+        const refs = [...Object.values(cfg.countries), ...Object.values(cfg.regions ?? {}).flatMap(r => Object.values(r))];
+        assert.deepEqual(refs.filter(p => !placeIds.has(p)), [], 'countries and regions refer to known places');
+        assert.ok(Object.keys(cfg.regions ?? {}).every(n => n in cfg.countries), 'a split country is mapped too');
+        assert.equal(cfg.types, undefined, 'no event types');
+        return;
+      }
       assert.ok(cfg.staleAfterHours > 0 && cfg.confirmFallMinutes >= 0, 'staleAfterHours, confirmFallMinutes');
       for (const [code, t] of Object.entries(cfg.types)) {
         assert.ok(categories.has(t.category), `${code}: category ${t.category} is in config/categories.json`);
@@ -138,6 +153,7 @@ describe('translation keys used by the code exist', () => {
     const sources = store.sourceIds().flatMap(id => {
       const cfg = store.source(id);
       if (cfg.kind === 'counts') return [`risk.sources.${id}`, ...Object.keys(cfg.series).map(s => `risk.activity.series.${s}`)];
+      if (cfg.kind === 'conflict') return [`risk.sources.${id}`];
       return [`risk.sources.${id}`, ...Object.values(cfg.types).map(t => `risk.eventTypes.${t.type}`), ...Object.keys(cfg.levels).map(a => `risk.alerts.${a}`)];
     });
     assert.deepEqual([...levels, ...categories, ...sources].filter(k => !has(k)), []);

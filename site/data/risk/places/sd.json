@@ -52,5 +52,99 @@
     "expected": 223.3
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 9940,
+  "months": [
+   326,
+   4595,
+   618,
+   681,
+   835,
+   325,
+   925,
+   427,
+   380,
+   242,
+   314,
+   272
+  ],
+  "byType": {
+   "state": 5071,
+   "nonState": 338,
+   "oneSided": 4531
+  },
+  "trend": "down",
+  "conflicts": [
+   {
+    "key": "1:309",
+    "name": "Sudan: Government",
+    "sideA": "Government of Sudan",
+    "sideB": "SFA",
+    "deaths12": 5099,
+    "last": 204,
+    "war": true,
+    "places": [
+     "sd",
+     "td",
+     "et"
+    ],
+    "parties": [
+     "sd"
+    ]
+   },
+   {
+    "key": "1:31",
+    "name": null,
+    "sideA": "XXX482",
+    "sideB": "XXX482",
+    "deaths12": 84,
+    "last": 3,
+    "war": false,
+    "places": [
+     "cf",
+     "sd"
+    ],
+    "parties": [
+     "cf"
+    ]
+   },
+   {
+    "key": "1:267",
+    "name": "Ethiopia: Government",
+    "sideA": "Government of Ethiopia",
+    "sideB": "TPLF",
+    "deaths12": 81,
+    "last": 48,
+    "war": false,
+    "places": [
+     "et",
+     "sd"
+    ],
+    "parties": [
+     "et"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:309",
+    "name": "Sudan: Government",
+    "sideA": "Government of Sudan",
+    "sideB": "SFA",
+    "deaths12": 5099,
+    "last": 204,
+    "war": true,
+    "places": [
+     "sd",
+     "td",
+     "et"
+    ],
+    "parties": [
+     "sd"
+    ]
+   }
+  ]
  }
 }

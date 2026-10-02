@@ -52,5 +52,153 @@
     "expected": 314.5
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 234,
+  "months": [
+   2,
+   3,
+   3,
+   1,
+   14,
+   14,
+   105,
+   17,
+   19,
+   10,
+   44,
+   2
+  ],
+  "byType": {
+   "state": 222,
+   "nonState": 8,
+   "oneSided": 4
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:77",
+    "name": null,
+    "sideA": "XXX645",
+    "sideB": "XXX645",
+    "deaths12": 102,
+    "last": 2,
+    "war": false,
+    "places": [
+     "iq"
+    ],
+    "parties": [
+     "iq"
+    ]
+   },
+   {
+    "key": "1:259",
+    "name": "Iraq: Government",
+    "sideA": "Government of Iraq",
+    "sideB": "IS",
+    "deaths12": 47,
+    "last": 0,
+    "war": false,
+    "places": [
+     "iq"
+    ],
+    "parties": [
+     "iq"
+    ]
+   },
+   {
+    "key": "1:205",
+    "name": "Iran: Kurdistan",
+    "sideA": "Government of Iran",
+    "sideB": "KDPI",
+    "deaths12": 52,
+    "last": 0,
+    "war": false,
+    "places": [
+     "iq",
+     "ir"
+    ],
+    "parties": [
+     "ir"
+    ]
+   },
+   {
+    "key": "1:230",
+    "name": "Yemen (North Yemen): Government",
+    "sideA": "Government of Yemen (North Yemen)",
+    "sideB": "Forces of the Presidential Leadership Council",
+    "deaths12": 1871,
+    "last": 1365,
+    "war": true,
+    "places": [
+     "ye",
+     "iq"
+    ],
+    "parties": [
+     "ye"
+    ]
+   },
+   {
+    "key": "1:16905",
+    "name": "Iran - Israel, United States of America",
+    "sideA": "Government of Iran",
+    "sideB": "Government of Israel, Government of United States of America",
+    "deaths12": 3791,
+    "last": 2,
+    "war": true,
+    "places": [
+     "ir",
+     "lk",
+     "kw",
+     "lb",
+     "ae",
+     "iq",
+     "il",
+     "sa",
+     "sy",
+     "bh",
+     "jo",
+     "om"
+    ],
+    "parties": [
+     "il",
+     "ir",
+     "us"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:77",
+    "name": null,
+    "sideA": "XXX645",
+    "sideB": "XXX645",
+    "deaths12": 102,
+    "last": 2,
+    "war": false,
+    "places": [
+     "iq"
+    ],
+    "parties": [
+     "iq"
+    ]
+   },
+   {
+    "key": "1:259",
+    "name": "Iraq: Government",
+    "sideA": "Government of Iraq",
+    "sideB": "IS",
+    "deaths12": 47,
+    "last": 0,
+    "war": false,
+    "places": [
+     "iq"
+    ],
+    "parties": [
+     "iq"
+    ]
+   }
+  ]
  }
 }

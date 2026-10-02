@@ -1,0 +1,3665 @@
+{
+ "asOf": "2026-10-02T06:23:15.235Z",
+ "source": "ucdp",
+ "version": "26.0.8",
+ "through": "2026-08",
+ "preliminary": true,
+ "windowMonths": 12,
+ "bands": [
+  1000,
+  100,
+  25
+ ],
+ "warDeaths": 1000,
+ "series": {
+  "months": [
+   "2024-09",
+   "2024-10",
+   "2024-11",
+   "2024-12",
+   "2025-01",
+   "2025-02",
+   "2025-03",
+   "2025-04",
+   "2025-05",
+   "2025-06",
+   "2025-07",
+   "2025-08",
+   "2025-09",
+   "2025-10",
+   "2025-11",
+   "2025-12",
+   "2026-01",
+   "2026-02",
+   "2026-03",
+   "2026-04",
+   "2026-05",
+   "2026-06",
+   "2026-07",
+   "2026-08"
+  ],
+  "deaths": [
+   11612,
+   13811,
+   13410,
+   13377,
+   25770,
+   10683,
+   13356,
+   11451,
+   10525,
+   12335,
+   16843,
+   13264,
+   15667,
+   19784,
+   14875,
+   14102,
+   39181,
+   14873,
+   16210,
+   11804,
+   11959,
+   9084,
+   9467,
+   11118
+  ],
+  "wars": [
+   null,
+   null,
+   null,
+   12,
+   13,
+   13,
+   13,
+   12,
+   13,
+   14,
+   14,
+   14,
+   14,
+   14,
+   14,
+   13,
+   13,
+   15,
+   14,
+   15,
+   16,
+   15,
+   15,
+   16
+  ],
+  "armedConflicts": [
+   null,
+   null,
+   null,
+   72,
+   70,
+   69,
+   71,
+   72,
+   73,
+   71,
+   73,
+   73,
+   74,
+   76,
+   78,
+   76,
+   74,
+   77,
+   79,
+   78,
+   79,
+   79,
+   74,
+   72
+  ]
+ },
+ "conflicts": {
+  "1:13243": {
+   "name": "Russia - Ukraine",
+   "sideA": "Government of Russia (Soviet Union)",
+   "sideB": "Government of Ukraine",
+   "deaths12": 97739,
+   "last": 5702,
+   "war": true,
+   "places": [
+    "ua",
+    "ru"
+   ],
+   "parties": [
+    "ru",
+    "ua"
+   ]
+  },
+  "1:309": {
+   "name": "Sudan: Government",
+   "sideA": "Government of Sudan",
+   "sideB": "SFA",
+   "deaths12": 5099,
+   "last": 204,
+   "war": true,
+   "places": [
+    "sd",
+    "td",
+    "et"
+   ],
+   "parties": [
+    "sd"
+   ]
+  },
+  "1:426": {
+   "name": "Israel: Southern Lebanon",
+   "sideA": "Government of Israel",
+   "sideB": "Hezbollah",
+   "deaths12": 4498,
+   "last": 25,
+   "war": true,
+   "places": [
+    "lb",
+    "il"
+   ],
+   "parties": [
+    "il"
+   ]
+  },
+  "1:234": {
+   "name": "Israel: Palestine",
+   "sideA": "Government of Israel",
+   "sideB": "PFLP-GC",
+   "deaths12": 4074,
+   "last": 101,
+   "war": true,
+   "places": [
+    "gaza",
+    "west-bank",
+    "lb",
+    "il",
+    "qa"
+   ],
+   "parties": [
+    "il"
+   ]
+  },
+  "1:16905": {
+   "name": "Iran - Israel, United States of America",
+   "sideA": "Government of Iran",
+   "sideB": "Government of Israel, Government of United States of America",
+   "deaths12": 3791,
+   "last": 2,
+   "war": true,
+   "places": [
+    "ir",
+    "lk",
+    "kw",
+    "lb",
+    "ae",
+    "iq",
+    "il",
+    "sa",
+    "sy",
+    "bh",
+    "jo",
+    "om"
+   ],
+   "parties": [
+    "il",
+    "ir",
+    "us"
+   ]
+  },
+  "1:337": {
+   "name": "Somalia: Government",
+   "sideA": "Government of Somalia",
+   "sideB": "Al-Shabaab",
+   "deaths12": 3304,
+   "last": 137,
+   "war": true,
+   "places": [
+    "so"
+   ],
+   "parties": [
+    "so"
+   ]
+  },
+  "1:16069": {
+   "name": "Ethiopia: Government/Amhara",
+   "sideA": "Government of Ethiopia",
+   "sideB": "Fano",
+   "deaths12": 2983,
+   "last": 113,
+   "war": true,
+   "places": [
+    "et"
+   ],
+   "parties": [
+    "et"
+   ]
+  },
+  "1:404": {
+   "name": "Pakistan: Government",
+   "sideA": "Government of Pakistan",
+   "sideB": "TTP",
+   "deaths12": 2801,
+   "last": 301,
+   "war": true,
+   "places": [
+    "pk",
+    "af"
+   ],
+   "parties": [
+    "pk"
+   ]
+  },
+  "1:119": {
+   "name": null,
+   "sideA": "XXX475",
+   "sideB": "XXX475",
+   "deaths12": 2595,
+   "last": 450,
+   "war": true,
+   "places": [
+    "ng"
+   ],
+   "parties": [
+    "ng"
+   ]
+  },
+  "1:360": {
+   "name": "Burkina Faso: Government",
+   "sideA": "Government of Burkina Faso",
+   "sideB": "JNIM",
+   "deaths12": 2206,
+   "last": 107,
+   "war": true,
+   "places": [
+    "bf"
+   ],
+   "parties": [
+    "bf"
+   ]
+  },
+  "1:13641": {
+   "name": "Nigeria: Islamic State",
+   "sideA": "Government of Nigeria",
+   "sideB": "IS",
+   "deaths12": 1987,
+   "last": 184,
+   "war": true,
+   "places": [
+    "ng"
+   ],
+   "parties": [
+    "ng"
+   ]
+  },
+  "1:230": {
+   "name": "Yemen (North Yemen): Government",
+   "sideA": "Government of Yemen (North Yemen)",
+   "sideB": "Forces of the Presidential Leadership Council",
+   "deaths12": 1871,
+   "last": 1365,
+   "war": true,
+   "places": [
+    "ye",
+    "iq"
+   ],
+   "parties": [
+    "ye"
+   ]
+  },
+  "1:325": {
+   "name": "Pakistan: Balochistan",
+   "sideA": "Government of Pakistan",
+   "sideB": "BRAS",
+   "deaths12": 1210,
+   "last": 207,
+   "war": true,
+   "places": [
+    "pk"
+   ],
+   "parties": [
+    "pk"
+   ]
+  },
+  "1:11347": {
+   "name": "Mali: Government",
+   "sideA": "Government of Mali",
+   "sideB": "JNIM",
+   "deaths12": 1088,
+   "last": 78,
+   "war": true,
+   "places": [
+    "ml"
+   ],
+   "parties": [
+    "ml"
+   ]
+  },
+  "1:222": {
+   "name": "Myanmar (Burma): Government",
+   "sideA": "Government of Myanmar (Burma)",
+   "sideB": "PSLF",
+   "deaths12": 1084,
+   "last": 66,
+   "war": true,
+   "places": [
+    "mm"
+   ],
+   "parties": [
+    "mm"
+   ]
+  },
+  "1:283": {
+   "name": "DR Congo (Zaire): Government",
+   "sideA": "Government of DR Congo (Zaire)",
+   "sideB": "AFC",
+   "deaths12": 1021,
+   "last": 44,
+   "war": true,
+   "places": [
+    "cd",
+    "bi"
+   ],
+   "parties": [
+    "cd"
+   ]
+  },
+  "1:11639": {
+   "name": "Afghanistan - Pakistan",
+   "sideA": "Government of Afghanistan",
+   "sideB": "Government of Pakistan",
+   "deaths12": 689,
+   "last": 0,
+   "war": false,
+   "places": [
+    "af",
+    "pk"
+   ],
+   "parties": [
+    "af",
+    "pk"
+   ]
+  },
+  "1:413": {
+   "name": "Ethiopia: Oromiya",
+   "sideA": "Government of Ethiopia",
+   "sideB": "OLA",
+   "deaths12": 537,
+   "last": 22,
+   "war": false,
+   "places": [
+    "et"
+   ],
+   "parties": [
+    "et"
+   ]
+  },
+  "1:13639": {
+   "name": "Niger: Islamic State",
+   "sideA": "Government of Niger",
+   "sideB": "IS",
+   "deaths12": 471,
+   "last": 18,
+   "war": false,
+   "places": [
+    "ne"
+   ],
+   "parties": [
+    "ne"
+   ]
+  },
+  "1:122": {
+   "name": null,
+   "sideA": "XXX770",
+   "sideB": "XXX770",
+   "deaths12": 361,
+   "last": 13,
+   "war": false,
+   "places": [
+    "pk"
+   ],
+   "parties": [
+    "pk"
+   ]
+  },
+  "1:289": {
+   "name": "Colombia: Government",
+   "sideA": "Government of Colombia",
+   "sideB": "ELN",
+   "deaths12": 294,
+   "last": 28,
+   "war": false,
+   "places": [
+    "co"
+   ],
+   "parties": [
+    "co"
+   ]
+  },
+  "1:223": {
+   "name": "Myanmar (Burma): Arakan",
+   "sideA": "Government of Myanmar (Burma)",
+   "sideB": "ULA",
+   "deaths12": 279,
+   "last": 45,
+   "war": false,
+   "places": [
+    "mm"
+   ],
+   "parties": [
+    "mm"
+   ]
+  },
+  "1:430": {
+   "name": "Niger: Government",
+   "sideA": "Government of Niger",
+   "sideB": "MPLJ",
+   "deaths12": 256,
+   "last": 3,
+   "war": false,
+   "places": [
+    "ne"
+   ],
+   "parties": [
+    "ne"
+   ]
+  },
+  "1:297": {
+   "name": "Nigeria: Government",
+   "sideA": "Government of Nigeria",
+   "sideB": "JAS",
+   "deaths12": 253,
+   "last": 1,
+   "war": false,
+   "places": [
+    "ng",
+    "td",
+    "ne"
+   ],
+   "parties": [
+    "ng"
+   ]
+  },
+  "1:11345": {
+   "name": "South Sudan: Government",
+   "sideA": "Government of South Sudan",
+   "sideB": "SPLM/A - IO",
+   "deaths12": 237,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ss"
+   ],
+   "parties": [
+    "ss"
+   ]
+  },
+  "1:14845": {
+   "name": "Mozambique: Islamic State",
+   "sideA": "Government of Mozambique",
+   "sideB": "IS",
+   "deaths12": 212,
+   "last": 17,
+   "war": false,
+   "places": [
+    "mz"
+   ],
+   "parties": [
+    "mz"
+   ]
+  },
+  "1:227": {
+   "name": "India: Government",
+   "sideA": "Government of India",
+   "sideB": "CPI-Maoist",
+   "deaths12": 179,
+   "last": 0,
+   "war": false,
+   "places": [
+    "in"
+   ],
+   "parties": [
+    "in"
+   ]
+  },
+  "1:16038": {
+   "name": "Mali: Government/Azawad",
+   "sideA": "Government of Mali",
+   "sideB": "FLA",
+   "deaths12": 171,
+   "last": 7,
+   "war": false,
+   "places": [
+    "ml"
+   ],
+   "parties": [
+    "ml"
+   ]
+  },
+  "1:164": {
+   "name": null,
+   "sideA": "XXX2",
+   "sideB": "XXX2",
+   "deaths12": 170,
+   "last": 2,
+   "war": false,
+   "places": [
+    "ve",
+    "co",
+    "mx",
+    "us"
+   ],
+   "parties": [
+    "us"
+   ]
+  },
+  "1:221": {
+   "name": "Myanmar (Burma): Karen",
+   "sideA": "Government of Myanmar (Burma)",
+   "sideB": "KNU",
+   "deaths12": 166,
+   "last": 0,
+   "war": false,
+   "places": [
+    "mm"
+   ],
+   "parties": [
+    "mm"
+   ]
+  },
+  "1:14129": {
+   "name": "Cameroon: Ambazonia",
+   "sideA": "Government of Cameroon",
+   "sideB": "Ambazonia insurgents",
+   "deaths12": 147,
+   "last": 12,
+   "war": false,
+   "places": [
+    "cm"
+   ],
+   "parties": [
+    "cm"
+   ]
+  },
+  "1:381": {
+   "name": "Haiti: Government",
+   "sideA": "Government of Haiti",
+   "sideB": "Viv Ansanm",
+   "deaths12": 142,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ht"
+   ],
+   "parties": [
+    "ht"
+   ]
+  },
+  "1:231": {
+   "name": "Myanmar (Burma): Kachin",
+   "sideA": "Government of Myanmar (Burma)",
+   "sideB": "KIO",
+   "deaths12": 133,
+   "last": 0,
+   "war": false,
+   "places": [
+    "mm"
+   ],
+   "parties": [
+    "mm"
+   ]
+  },
+  "1:150": {
+   "name": null,
+   "sideA": "XXX652",
+   "sideB": "XXX652",
+   "deaths12": 129,
+   "last": 10,
+   "war": false,
+   "places": [
+    "sy"
+   ],
+   "parties": [
+    "sy"
+   ]
+  },
+  "1:14692": {
+   "name": "DR Congo (Zaire): Islamic State",
+   "sideA": "Government of DR Congo (Zaire)",
+   "sideB": "IS",
+   "deaths12": 116,
+   "last": 0,
+   "war": false,
+   "places": [
+    "cd"
+   ],
+   "parties": [
+    "cd"
+   ]
+  },
+  "1:118": {
+   "name": null,
+   "sideA": "XXX436",
+   "sideB": "XXX436",
+   "deaths12": 115,
+   "last": 6,
+   "war": false,
+   "places": [
+    "ne"
+   ],
+   "parties": [
+    "ne"
+   ]
+  },
+  "1:416": {
+   "name": "Central African Republic: Government",
+   "sideA": "Government of Central African Republic",
+   "sideB": "CPC",
+   "deaths12": 108,
+   "last": 6,
+   "war": false,
+   "places": [
+    "cf"
+   ],
+   "parties": [
+    "cf"
+   ]
+  },
+  "1:77": {
+   "name": null,
+   "sideA": "XXX645",
+   "sideB": "XXX645",
+   "deaths12": 102,
+   "last": 2,
+   "war": false,
+   "places": [
+    "iq"
+   ],
+   "parties": [
+    "iq"
+   ]
+  },
+  "1:294": {
+   "name": "Cambodia (Kampuchea) - Thailand",
+   "sideA": "Government of Cambodia (Kampuchea)",
+   "sideB": "Government of Thailand",
+   "deaths12": 101,
+   "last": 0,
+   "war": false,
+   "places": [
+    "th",
+    "kh"
+   ],
+   "parties": [
+    "kh",
+    "th"
+   ]
+  },
+  "1:14197": {
+   "name": "Somalia: Islamic State",
+   "sideA": "Government of Somalia",
+   "sideB": "IS",
+   "deaths12": 99,
+   "last": 0,
+   "war": false,
+   "places": [
+    "so"
+   ],
+   "parties": [
+    "so"
+   ]
+  },
+  "1:291": {
+   "name": "Indonesia: West Papua",
+   "sideA": "Government of Indonesia",
+   "sideB": "OPM",
+   "deaths12": 98,
+   "last": 5,
+   "war": false,
+   "places": [
+    "id"
+   ],
+   "parties": [
+    "id"
+   ]
+  },
+  "1:209": {
+   "name": "Philippines: Government",
+   "sideA": "Government of Philippines",
+   "sideB": "CPP",
+   "deaths12": 88,
+   "last": 3,
+   "war": false,
+   "places": [
+    "ph"
+   ],
+   "parties": [
+    "ph"
+   ]
+  },
+  "1:14113": {
+   "name": "Mali: Islamic State",
+   "sideA": "Government of Mali",
+   "sideB": "IS",
+   "deaths12": 88,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ml"
+   ],
+   "parties": [
+    "ml"
+   ]
+  },
+  "1:13809": {
+   "name": "Syria: Government/Rojava Kurdistan",
+   "sideA": "Government of Syria",
+   "sideB": "SDF",
+   "deaths12": 85,
+   "last": 0,
+   "war": false,
+   "places": [
+    "sy"
+   ],
+   "parties": [
+    "sy"
+   ]
+  },
+  "1:31": {
+   "name": null,
+   "sideA": "XXX482",
+   "sideB": "XXX482",
+   "deaths12": 84,
+   "last": 3,
+   "war": false,
+   "places": [
+    "cf",
+    "sd"
+   ],
+   "parties": [
+    "cf"
+   ]
+  },
+  "1:35": {
+   "name": null,
+   "sideA": "XXX100",
+   "sideB": "XXX100",
+   "deaths12": 83,
+   "last": 31,
+   "war": false,
+   "places": [
+    "co"
+   ],
+   "parties": [
+    "co"
+   ]
+  },
+  "1:267": {
+   "name": "Ethiopia: Government",
+   "sideA": "Government of Ethiopia",
+   "sideB": "TPLF",
+   "deaths12": 81,
+   "last": 48,
+   "war": false,
+   "places": [
+    "et",
+    "sd"
+   ],
+   "parties": [
+    "et"
+   ]
+  },
+  "1:16470": {
+   "name": "Israel - Yemen",
+   "sideA": "Government of Israel",
+   "sideB": "Government of Yemen (North Yemen)",
+   "deaths12": 79,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ye"
+   ],
+   "parties": [
+    "il",
+    "ye"
+   ]
+  },
+  "1:70": {
+   "name": null,
+   "sideA": "XXX41",
+   "sideB": "XXX41",
+   "deaths12": 72,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ht"
+   ],
+   "parties": [
+    "ht"
+   ]
+  },
+  "1:338": {
+   "name": "Iran: Government",
+   "sideA": "Government of Iran",
+   "sideB": "PJAK",
+   "deaths12": 69,
+   "last": 11,
+   "war": false,
+   "places": [
+    "ir"
+   ],
+   "parties": [
+    "ir"
+   ]
+  },
+  "1:13637": {
+   "name": "Afghanistan: Islamic State",
+   "sideA": "Government of Afghanistan",
+   "sideB": "IS",
+   "deaths12": 64,
+   "last": 28,
+   "war": false,
+   "places": [
+    "af",
+    "pk"
+   ],
+   "parties": [
+    "af"
+   ]
+  },
+  "1:205": {
+   "name": "Iran: Kurdistan",
+   "sideA": "Government of Iran",
+   "sideB": "KDPI",
+   "deaths12": 52,
+   "last": 0,
+   "war": false,
+   "places": [
+    "iq",
+    "ir"
+   ],
+   "parties": [
+    "ir"
+   ]
+  },
+  "1:13936": {
+   "name": "Pakistan: Islamic State",
+   "sideA": "Government of Pakistan",
+   "sideB": "IS",
+   "deaths12": 52,
+   "last": 1,
+   "war": false,
+   "places": [
+    "pk"
+   ],
+   "parties": [
+    "pk"
+   ]
+  },
+  "1:107": {
+   "name": null,
+   "sideA": "XXX70",
+   "sideB": "XXX70",
+   "deaths12": 51,
+   "last": 4,
+   "war": false,
+   "places": [
+    "mx"
+   ],
+   "parties": [
+    "mx"
+   ]
+  },
+  "1:353": {
+   "name": "Cameroon: Government",
+   "sideA": "Government of Cameroon",
+   "sideB": "JAS",
+   "deaths12": 50,
+   "last": 3,
+   "war": false,
+   "places": [
+    "cm"
+   ],
+   "parties": [
+    "cm"
+   ]
+  },
+  "1:259": {
+   "name": "Iraq: Government",
+   "sideA": "Government of Iraq",
+   "sideB": "IS",
+   "deaths12": 47,
+   "last": 0,
+   "war": false,
+   "places": [
+    "iq"
+   ],
+   "parties": [
+    "iq"
+   ]
+  },
+  "1:333": {
+   "name": "Afghanistan: Government",
+   "sideA": "Government of Afghanistan",
+   "sideB": "NRF",
+   "deaths12": 44,
+   "last": 28,
+   "war": false,
+   "places": [
+    "af",
+    "tj"
+   ],
+   "parties": [
+    "af"
+   ]
+  },
+  "1:13604": {
+   "name": "Syria: Islamic State",
+   "sideA": "Government of Syria",
+   "sideB": "IS",
+   "deaths12": 42,
+   "last": 2,
+   "war": false,
+   "places": [
+    "sy"
+   ],
+   "parties": [
+    "sy"
+   ]
+  },
+  "1:38": {
+   "name": null,
+   "sideA": "XXX490",
+   "sideB": "XXX490",
+   "deaths12": 41,
+   "last": 0,
+   "war": false,
+   "places": [
+    "cd"
+   ],
+   "parties": [
+    "cd"
+   ]
+  },
+  "1:13638": {
+   "name": "Cameroon: Islamic State",
+   "sideA": "Government of Cameroon",
+   "sideB": "IS",
+   "deaths12": 41,
+   "last": 0,
+   "war": false,
+   "places": [
+    "cm"
+   ],
+   "parties": [
+    "cm"
+   ]
+  },
+  "1:15256": {
+   "name": "Benin: Government",
+   "sideA": "Government of Benin",
+   "sideB": "JNIM",
+   "deaths12": 41,
+   "last": 0,
+   "war": false,
+   "places": [
+    "bj",
+    "bf"
+   ],
+   "parties": [
+    "bj"
+   ]
+  },
+  "1:16951": {
+   "name": "Ethiopia: Benishangul-Gumuz",
+   "sideA": "Government of Ethiopia",
+   "sideB": "GFNF",
+   "deaths12": 41,
+   "last": 6,
+   "war": false,
+   "places": [
+    "et"
+   ],
+   "parties": [
+    "et"
+   ]
+  },
+  "1:423": {
+   "name": "Thailand: Patani",
+   "sideA": "Government of Thailand",
+   "sideB": "Patani insurgents",
+   "deaths12": 40,
+   "last": 4,
+   "war": false,
+   "places": [
+    "th"
+   ],
+   "parties": [
+    "th"
+   ]
+  },
+  "1:303": {
+   "name": "Nigeria: Biafra",
+   "sideA": "Government of Nigeria",
+   "sideB": "IPOB",
+   "deaths12": 38,
+   "last": 5,
+   "war": false,
+   "places": [
+    "ng"
+   ],
+   "parties": [
+    "ng"
+   ]
+  },
+  "1:160": {
+   "name": null,
+   "sideA": "XXX500",
+   "sideB": "XXX500",
+   "deaths12": 35,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ug"
+   ],
+   "parties": [
+    "ug"
+   ]
+  },
+  "1:76": {
+   "name": null,
+   "sideA": "XXX630",
+   "sideB": "XXX630",
+   "deaths12": 34,
+   "last": 1,
+   "war": false,
+   "places": [
+    "ir"
+   ],
+   "parties": [
+    "ir"
+   ]
+  },
+  "1:14275": {
+   "name": "Philippines: Islamic State",
+   "sideA": "Government of Philippines",
+   "sideB": "IS",
+   "deaths12": 34,
+   "last": 7,
+   "war": false,
+   "places": [
+    "ph"
+   ],
+   "parties": [
+    "ph"
+   ]
+  },
+  "1:167": {
+   "name": null,
+   "sideA": "Government of Venezuela",
+   "sideB": "ELN",
+   "deaths12": 31,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ve"
+   ],
+   "parties": [
+    "ve"
+   ]
+  },
+  "1:28": {
+   "name": null,
+   "sideA": "XXX471",
+   "sideB": "XXX471",
+   "deaths12": 30,
+   "last": 0,
+   "war": false,
+   "places": [
+    "cm"
+   ],
+   "parties": [
+    "cm"
+   ]
+  },
+  "1:399": {
+   "name": "Russia (Soviet Union): Government",
+   "sideA": "Government of Russia (Soviet Union)",
+   "sideB": "Black Spark",
+   "deaths12": 29,
+   "last": 0,
+   "war": false,
+   "places": [
+    "ru"
+   ],
+   "parties": [
+    "ru"
+   ]
+  },
+  "1:364": {
+   "name": "India: Kashmir",
+   "sideA": "Government of India",
+   "sideB": "Kashmir insurgents",
+   "deaths12": 28,
+   "last": 1,
+   "war": false,
+   "places": [
+    "in"
+   ],
+   "parties": [
+    "in"
+   ]
+  },
+  "1:55": {
+   "name": null,
+   "sideA": "XXX530",
+   "sideB": "XXX530",
+   "deaths12": 25,
+   "last": 0,
+   "war": false,
+   "places": [
+    "et"
+   ],
+   "parties": [
+    "et"
+   ]
+  }
+ },
+ "places": {
+  "ae": {
+   "deaths12": 12,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    5,
+    5,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 12,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "af": {
+   "deaths12": 811,
+   "months": [
+    13,
+    148,
+    24,
+    7,
+    12,
+    180,
+    260,
+    37,
+    10,
+    55,
+    9,
+    56
+   ],
+   "byType": {
+    "state": 787,
+    "nonState": 4,
+    "oneSided": 20
+   },
+   "trend": "down",
+   "conflicts": [
+    "1:11639",
+    "1:404",
+    "1:13637",
+    "1:333"
+   ],
+   "partyTo": [
+    "1:11639",
+    "1:13637",
+    "1:333"
+   ]
+  },
+  "ao": {
+   "deaths12": 4,
+   "months": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 3,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ar": {
+   "deaths12": 44,
+   "months": [
+    9,
+    6,
+    6,
+    14,
+    9,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 3,
+    "oneSided": 41
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "bd": {
+   "deaths12": 88,
+   "months": [
+    2,
+    0,
+    0,
+    6,
+    20,
+    3,
+    11,
+    13,
+    5,
+    15,
+    8,
+    5
+   ],
+   "byType": {
+    "state": 8,
+    "nonState": 73,
+    "oneSided": 7
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "bf": {
+   "deaths12": 2599,
+   "months": [
+    215,
+    272,
+    220,
+    164,
+    177,
+    453,
+    129,
+    272,
+    134,
+    253,
+    139,
+    171
+   ],
+   "byType": {
+    "state": 2234,
+    "nonState": 157,
+    "oneSided": 208
+   },
+   "trend": null,
+   "conflicts": [
+    "1:360",
+    "1:15256"
+   ],
+   "partyTo": [
+    "1:360"
+   ]
+  },
+  "bh": {
+   "deaths12": 3,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 3,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "bi": {
+   "deaths12": 82,
+   "months": [
+    2,
+    15,
+    6,
+    32,
+    3,
+    2,
+    1,
+    7,
+    4,
+    3,
+    3,
+    4
+   ],
+   "byType": {
+    "state": 19,
+    "nonState": 4,
+    "oneSided": 59
+   },
+   "trend": null,
+   "conflicts": [
+    "1:283"
+   ],
+   "partyTo": []
+  },
+  "bj": {
+   "deaths12": 47,
+   "months": [
+    4,
+    14,
+    0,
+    3,
+    0,
+    0,
+    20,
+    0,
+    0,
+    0,
+    6,
+    0
+   ],
+   "byType": {
+    "state": 37,
+    "nonState": 0,
+    "oneSided": 10
+   },
+   "trend": null,
+   "conflicts": [
+    "1:15256"
+   ],
+   "partyTo": [
+    "1:15256"
+   ]
+  },
+  "br": {
+   "deaths12": 293,
+   "months": [
+    20,
+    29,
+    23,
+    26,
+    34,
+    20,
+    28,
+    29,
+    20,
+    27,
+    13,
+    24
+   ],
+   "byType": {
+    "state": 4,
+    "nonState": 265,
+    "oneSided": 24
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "bz": {
+   "deaths12": 16,
+   "months": [
+    2,
+    1,
+    0,
+    0,
+    0,
+    5,
+    6,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 16,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ca": {
+   "deaths12": 1,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "cd": {
+   "deaths12": 3558,
+   "months": [
+    323,
+    281,
+    467,
+    661,
+    291,
+    88,
+    149,
+    200,
+    476,
+    177,
+    273,
+    172
+   ],
+   "byType": {
+    "state": 1203,
+    "nonState": 617,
+    "oneSided": 1738
+   },
+   "trend": null,
+   "conflicts": [
+    "1:283",
+    "1:14692",
+    "1:38"
+   ],
+   "partyTo": [
+    "1:283",
+    "1:14692",
+    "1:38"
+   ]
+  },
+  "cf": {
+   "deaths12": 269,
+   "months": [
+    55,
+    7,
+    9,
+    40,
+    34,
+    28,
+    10,
+    29,
+    6,
+    32,
+    8,
+    11
+   ],
+   "byType": {
+    "state": 187,
+    "nonState": 13,
+    "oneSided": 69
+   },
+   "trend": null,
+   "conflicts": [
+    "1:416",
+    "1:31"
+   ],
+   "partyTo": [
+    "1:416",
+    "1:31"
+   ]
+  },
+  "ci": {
+   "deaths12": 12,
+   "months": [
+    0,
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    7
+   ],
+   "byType": {
+    "state": 1,
+    "nonState": 10,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "cl": {
+   "deaths12": 2,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 1,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "cm": {
+   "deaths12": 495,
+   "months": [
+    31,
+    42,
+    36,
+    45,
+    39,
+    31,
+    32,
+    47,
+    32,
+    56,
+    72,
+    32
+   ],
+   "byType": {
+    "state": 268,
+    "nonState": 36,
+    "oneSided": 191
+   },
+   "trend": null,
+   "conflicts": [
+    "1:14129",
+    "1:353",
+    "1:13638",
+    "1:28"
+   ],
+   "partyTo": [
+    "1:14129",
+    "1:353",
+    "1:13638",
+    "1:28"
+   ]
+  },
+  "co": {
+   "deaths12": 2047,
+   "months": [
+    77,
+    59,
+    124,
+    54,
+    352,
+    192,
+    86,
+    151,
+    178,
+    271,
+    244,
+    259
+   ],
+   "byType": {
+    "state": 398,
+    "nonState": 1113,
+    "oneSided": 536
+   },
+   "trend": "up",
+   "conflicts": [
+    "1:289",
+    "1:35",
+    "1:164"
+   ],
+   "partyTo": [
+    "1:289",
+    "1:35"
+   ]
+  },
+  "cr": {
+   "deaths12": 2,
+   "months": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 2,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "de": {
+   "deaths12": 2,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "byType": {
+    "state": 1,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "dj": {
+   "deaths12": 14,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    10,
+    0,
+    4,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 14,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "dm": {
+   "deaths12": 2,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 1,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "do": {
+   "deaths12": 6,
+   "months": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    1,
+    0,
+    1,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 5,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "dz": {
+   "deaths12": 27,
+   "months": [
+    9,
+    0,
+    0,
+    0,
+    0,
+    4,
+    12,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 25,
+    "nonState": 2,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ec": {
+   "deaths12": 240,
+   "months": [
+    49,
+    14,
+    37,
+    21,
+    0,
+    0,
+    67,
+    48,
+    0,
+    3,
+    1,
+    0
+   ],
+   "byType": {
+    "state": 8,
+    "nonState": 191,
+    "oneSided": 41
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "es": {
+   "deaths12": 3,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 3,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "et": {
+   "deaths12": 4436,
+   "months": [
+    189,
+    617,
+    498,
+    318,
+    288,
+    533,
+    642,
+    257,
+    208,
+    333,
+    242,
+    311
+   ],
+   "byType": {
+    "state": 3681,
+    "nonState": 189,
+    "oneSided": 566
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16069",
+    "1:413",
+    "1:267",
+    "1:16951",
+    "1:55",
+    "1:309"
+   ],
+   "partyTo": [
+    "1:16069",
+    "1:413",
+    "1:267",
+    "1:16951",
+    "1:55"
+   ]
+  },
+  "fr": {
+   "deaths12": 1,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 1,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "gaza": {
+   "deaths12": 4010,
+   "months": [
+    2164,
+    666,
+    114,
+    57,
+    161,
+    110,
+    82,
+    132,
+    123,
+    135,
+    169,
+    97
+   ],
+   "byType": {
+    "state": 3996,
+    "nonState": 5,
+    "oneSided": 9
+   },
+   "trend": null,
+   "conflicts": [
+    "1:234"
+   ],
+   "partyTo": []
+  },
+  "gh": {
+   "deaths12": 78,
+   "months": [
+    17,
+    11,
+    4,
+    4,
+    6,
+    1,
+    13,
+    11,
+    5,
+    3,
+    0,
+    3
+   ],
+   "byType": {
+    "state": 15,
+    "nonState": 58,
+    "oneSided": 5
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "gn": {
+   "deaths12": 1,
+   "months": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 1,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "gt": {
+   "deaths12": 28,
+   "months": [
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    14,
+    1,
+    2,
+    0,
+    5
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 19,
+    "oneSided": 9
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "gw": {
+   "deaths12": 1,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "hn": {
+   "deaths12": 20,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    20,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 20
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ht": {
+   "deaths12": 639,
+   "months": [
+    105,
+    33,
+    29,
+    22,
+    3,
+    31,
+    83,
+    30,
+    131,
+    26,
+    99,
+    47
+   ],
+   "byType": {
+    "state": 214,
+    "nonState": 99,
+    "oneSided": 326
+   },
+   "trend": null,
+   "conflicts": [
+    "1:381",
+    "1:70"
+   ],
+   "partyTo": [
+    "1:381",
+    "1:70"
+   ]
+  },
+  "id": {
+   "deaths12": 164,
+   "months": [
+    19,
+    29,
+    5,
+    9,
+    0,
+    13,
+    8,
+    17,
+    34,
+    3,
+    13,
+    14
+   ],
+   "byType": {
+    "state": 99,
+    "nonState": 16,
+    "oneSided": 49
+   },
+   "trend": null,
+   "conflicts": [
+    "1:291"
+   ],
+   "partyTo": [
+    "1:291"
+   ]
+  },
+  "il": {
+   "deaths12": 54,
+   "months": [
+    5,
+    0,
+    0,
+    0,
+    6,
+    11,
+    19,
+    6,
+    4,
+    2,
+    1,
+    0
+   ],
+   "byType": {
+    "state": 33,
+    "nonState": 12,
+    "oneSided": 9
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905",
+    "1:234",
+    "1:426"
+   ],
+   "partyTo": [
+    "1:426",
+    "1:234",
+    "1:16905",
+    "1:16470"
+   ]
+  },
+  "in": {
+   "deaths12": 370,
+   "months": [
+    52,
+    22,
+    45,
+    39,
+    61,
+    31,
+    25,
+    33,
+    25,
+    13,
+    8,
+    16
+   ],
+   "byType": {
+    "state": 244,
+    "nonState": 67,
+    "oneSided": 59
+   },
+   "trend": null,
+   "conflicts": [
+    "1:227",
+    "1:364"
+   ],
+   "partyTo": [
+    "1:227",
+    "1:364"
+   ]
+  },
+  "iq": {
+   "deaths12": 234,
+   "months": [
+    2,
+    3,
+    3,
+    1,
+    14,
+    14,
+    105,
+    17,
+    19,
+    10,
+    44,
+    2
+   ],
+   "byType": {
+    "state": 222,
+    "nonState": 8,
+    "oneSided": 4
+   },
+   "trend": null,
+   "conflicts": [
+    "1:77",
+    "1:259",
+    "1:205",
+    "1:230",
+    "1:16905"
+   ],
+   "partyTo": [
+    "1:77",
+    "1:259"
+   ]
+  },
+  "ir": {
+   "deaths12": 23636,
+   "months": [
+    6,
+    7,
+    1,
+    10,
+    19886,
+    3267,
+    160,
+    127,
+    26,
+    36,
+    95,
+    15
+   ],
+   "byType": {
+    "state": 3732,
+    "nonState": 0,
+    "oneSided": 19904
+   },
+   "trend": "down",
+   "conflicts": [
+    "1:16905",
+    "1:338",
+    "1:76",
+    "1:205"
+   ],
+   "partyTo": [
+    "1:16905",
+    "1:338",
+    "1:205",
+    "1:76"
+   ]
+  },
+  "jm": {
+   "deaths12": 13,
+   "months": [
+    0,
+    5,
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    1,
+    4,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 4,
+    "nonState": 8,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "jo": {
+   "deaths12": 3,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "byType": {
+    "state": 3,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "ke": {
+   "deaths12": 74,
+   "months": [
+    2,
+    1,
+    6,
+    7,
+    4,
+    0,
+    2,
+    7,
+    18,
+    11,
+    16,
+    0
+   ],
+   "byType": {
+    "state": 39,
+    "nonState": 18,
+    "oneSided": 17
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "kh": {
+   "deaths12": 12,
+   "months": [
+    0,
+    0,
+    0,
+    12,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 12,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:294"
+   ],
+   "partyTo": [
+    "1:294"
+   ]
+  },
+  "kw": {
+   "deaths12": 15,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    12,
+    0,
+    0,
+    1,
+    1,
+    0
+   ],
+   "byType": {
+    "state": 15,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "lb": {
+   "deaths12": 4533,
+   "months": [
+    23,
+    32,
+    41,
+    15,
+    22,
+    27,
+    3106,
+    577,
+    349,
+    295,
+    21,
+    25
+   ],
+   "byType": {
+    "state": 4533,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": "down",
+   "conflicts": [
+    "1:426",
+    "1:234",
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "lk": {
+   "deaths12": 135,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    104,
+    0,
+    0,
+    0,
+    28,
+    3
+   ],
+   "byType": {
+    "state": 104,
+    "nonState": 31,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "lr": {
+   "deaths12": 1,
+   "months": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ly": {
+   "deaths12": 40,
+   "months": [
+    1,
+    2,
+    1,
+    5,
+    4,
+    1,
+    2,
+    0,
+    15,
+    3,
+    0,
+    6
+   ],
+   "byType": {
+    "state": 17,
+    "nonState": 20,
+    "oneSided": 3
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ma": {
+   "deaths12": 6,
+   "months": [
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 6,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "md": {
+   "deaths12": 1,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ml": {
+   "deaths12": 1833,
+   "months": [
+    116,
+    219,
+    172,
+    27,
+    107,
+    96,
+    95,
+    121,
+    439,
+    73,
+    272,
+    96
+   ],
+   "byType": {
+    "state": 1347,
+    "nonState": 166,
+    "oneSided": 320
+   },
+   "trend": null,
+   "conflicts": [
+    "1:11347",
+    "1:16038",
+    "1:14113"
+   ],
+   "partyTo": [
+    "1:11347",
+    "1:16038",
+    "1:14113"
+   ]
+  },
+  "mm": {
+   "deaths12": 1853,
+   "months": [
+    176,
+    200,
+    98,
+    182,
+    215,
+    137,
+    268,
+    126,
+    144,
+    104,
+    81,
+    122
+   ],
+   "byType": {
+    "state": 1697,
+    "nonState": 5,
+    "oneSided": 151
+   },
+   "trend": null,
+   "conflicts": [
+    "1:222",
+    "1:223",
+    "1:221",
+    "1:231"
+   ],
+   "partyTo": [
+    "1:222",
+    "1:223",
+    "1:221",
+    "1:231"
+   ]
+  },
+  "mt": {
+   "deaths12": 1,
+   "months": [
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "mx": {
+   "deaths12": 2826,
+   "months": [
+    341,
+    330,
+    199,
+    194,
+    272,
+    150,
+    264,
+    283,
+    240,
+    179,
+    160,
+    214
+   ],
+   "byType": {
+    "state": 69,
+    "nonState": 2583,
+    "oneSided": 174
+   },
+   "trend": null,
+   "conflicts": [
+    "1:107",
+    "1:164"
+   ],
+   "partyTo": [
+    "1:107"
+   ]
+  },
+  "my": {
+   "deaths12": 3,
+   "months": [
+    0,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 3
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "mz": {
+   "deaths12": 419,
+   "months": [
+    67,
+    32,
+    54,
+    47,
+    19,
+    33,
+    13,
+    19,
+    37,
+    40,
+    36,
+    22
+   ],
+   "byType": {
+    "state": 212,
+    "nonState": 20,
+    "oneSided": 187
+   },
+   "trend": null,
+   "conflicts": [
+    "1:14845"
+   ],
+   "partyTo": [
+    "1:14845"
+   ]
+  },
+  "ne": {
+   "deaths12": 1272,
+   "months": [
+    178,
+    47,
+    29,
+    47,
+    137,
+    109,
+    101,
+    85,
+    132,
+    250,
+    115,
+    42
+   ],
+   "byType": {
+    "state": 861,
+    "nonState": 105,
+    "oneSided": 306
+   },
+   "trend": null,
+   "conflicts": [
+    "1:13639",
+    "1:430",
+    "1:118",
+    "1:297"
+   ],
+   "partyTo": [
+    "1:13639",
+    "1:430",
+    "1:118"
+   ]
+  },
+  "ng": {
+   "deaths12": 8853,
+   "months": [
+    651,
+    551,
+    560,
+    353,
+    852,
+    751,
+    812,
+    1026,
+    1045,
+    626,
+    611,
+    1015
+   ],
+   "byType": {
+    "state": 4795,
+    "nonState": 1903,
+    "oneSided": 2155
+   },
+   "trend": null,
+   "conflicts": [
+    "1:119",
+    "1:13641",
+    "1:297",
+    "1:303"
+   ],
+   "partyTo": [
+    "1:119",
+    "1:13641",
+    "1:297",
+    "1:303"
+   ]
+  },
+  "np": {
+   "deaths12": 3,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 3,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "om": {
+   "deaths12": 7,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    3,
+    2,
+    0
+   ],
+   "byType": {
+    "state": 2,
+    "nonState": 0,
+    "oneSided": 5
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "pe": {
+   "deaths12": 6,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    6,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 3,
+    "oneSided": 3
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "pg": {
+   "deaths12": 42,
+   "months": [
+    0,
+    2,
+    6,
+    4,
+    15,
+    5,
+    0,
+    1,
+    4,
+    3,
+    1,
+    1
+   ],
+   "byType": {
+    "state": 2,
+    "nonState": 30,
+    "oneSided": 10
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ph": {
+   "deaths12": 150,
+   "months": [
+    7,
+    10,
+    8,
+    12,
+    27,
+    1,
+    15,
+    34,
+    7,
+    9,
+    10,
+    10
+   ],
+   "byType": {
+    "state": 128,
+    "nonState": 9,
+    "oneSided": 13
+   },
+   "trend": null,
+   "conflicts": [
+    "1:209",
+    "1:14275"
+   ],
+   "partyTo": [
+    "1:209",
+    "1:14275"
+   ]
+  },
+  "pk": {
+   "deaths12": 4828,
+   "months": [
+    445,
+    480,
+    368,
+    223,
+    424,
+    325,
+    202,
+    202,
+    401,
+    463,
+    744,
+    551
+   ],
+   "byType": {
+    "state": 4436,
+    "nonState": 82,
+    "oneSided": 310
+   },
+   "trend": "up",
+   "conflicts": [
+    "1:404",
+    "1:325",
+    "1:122",
+    "1:11639",
+    "1:13936",
+    "1:13637"
+   ],
+   "partyTo": [
+    "1:404",
+    "1:325",
+    "1:11639",
+    "1:122",
+    "1:13936"
+   ]
+  },
+  "qa": {
+   "deaths12": 6,
+   "months": [
+    6,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 6,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:234"
+   ],
+   "partyTo": []
+  },
+  "ru": {
+   "deaths12": 448,
+   "months": [
+    79,
+    43,
+    46,
+    55,
+    8,
+    2,
+    20,
+    36,
+    49,
+    34,
+    22,
+    54
+   ],
+   "byType": {
+    "state": 446,
+    "nonState": 0,
+    "oneSided": 2
+   },
+   "trend": null,
+   "conflicts": [
+    "1:13243",
+    "1:399"
+   ],
+   "partyTo": [
+    "1:13243",
+    "1:399"
+   ]
+  },
+  "sa": {
+   "deaths12": 5,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    4,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 5,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:16905"
+   ],
+   "partyTo": []
+  },
+  "sd": {
+   "deaths12": 9940,
+   "months": [
+    326,
+    4595,
+    618,
+    681,
+    835,
+    325,
+    925,
+    427,
+    380,
+    242,
+    314,
+    272
+   ],
+   "byType": {
+    "state": 5071,
+    "nonState": 338,
+    "oneSided": 4531
+   },
+   "trend": "down",
+   "conflicts": [
+    "1:309",
+    "1:31",
+    "1:267"
+   ],
+   "partyTo": [
+    "1:309"
+   ]
+  },
+  "se": {
+   "deaths12": 8,
+   "months": [
+    3,
+    2,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 7,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "so": {
+   "deaths12": 3619,
+   "months": [
+    222,
+    149,
+    291,
+    116,
+    964,
+    224,
+    154,
+    299,
+    365,
+    366,
+    322,
+    147
+   ],
+   "byType": {
+    "state": 3430,
+    "nonState": 147,
+    "oneSided": 42
+   },
+   "trend": null,
+   "conflicts": [
+    "1:337",
+    "1:14197"
+   ],
+   "partyTo": [
+    "1:337",
+    "1:14197"
+   ]
+  },
+  "ss": {
+   "deaths12": 732,
+   "months": [
+    68,
+    16,
+    81,
+    28,
+    108,
+    47,
+    128,
+    23,
+    43,
+    32,
+    49,
+    109
+   ],
+   "byType": {
+    "state": 237,
+    "nonState": 340,
+    "oneSided": 155
+   },
+   "trend": null,
+   "conflicts": [
+    "1:11345"
+   ],
+   "partyTo": [
+    "1:11345"
+   ]
+  },
+  "sy": {
+   "deaths12": 1033,
+   "months": [
+    124,
+    125,
+    93,
+    117,
+    121,
+    81,
+    63,
+    59,
+    54,
+    60,
+    71,
+    65
+   ],
+   "byType": {
+    "state": 297,
+    "nonState": 151,
+    "oneSided": 585
+   },
+   "trend": null,
+   "conflicts": [
+    "1:150",
+    "1:13809",
+    "1:13604",
+    "1:16905"
+   ],
+   "partyTo": [
+    "1:150",
+    "1:13809",
+    "1:13604"
+   ]
+  },
+  "td": {
+   "deaths12": 229,
+   "months": [
+    4,
+    7,
+    36,
+    0,
+    6,
+    4,
+    44,
+    46,
+    50,
+    14,
+    2,
+    16
+   ],
+   "byType": {
+    "state": 95,
+    "nonState": 132,
+    "oneSided": 2
+   },
+   "trend": null,
+   "conflicts": [
+    "1:297",
+    "1:309"
+   ],
+   "partyTo": []
+  },
+  "tg": {
+   "deaths12": 2,
+   "months": [
+    0,
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 2,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "th": {
+   "deaths12": 130,
+   "months": [
+    1,
+    2,
+    1,
+    89,
+    1,
+    0,
+    8,
+    5,
+    7,
+    6,
+    6,
+    4
+   ],
+   "byType": {
+    "state": 129,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [
+    "1:294",
+    "1:423"
+   ],
+   "partyTo": [
+    "1:294",
+    "1:423"
+   ]
+  },
+  "tj": {
+   "deaths12": 6,
+   "months": [
+    0,
+    0,
+    0,
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "byType": {
+    "state": 6,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [
+    "1:333"
+   ],
+   "partyTo": []
+  },
+  "tn": {
+   "deaths12": 5,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 5,
+    "nonState": 0,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "tr": {
+   "deaths12": 16,
+   "months": [
+    0,
+    2,
+    0,
+    9,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    3,
+    0
+   ],
+   "byType": {
+    "state": 14,
+    "nonState": 0,
+    "oneSided": 2
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "tt": {
+   "deaths12": 19,
+   "months": [
+    7,
+    10,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 19,
+    "oneSided": 0
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "tz": {
+   "deaths12": 202,
+   "months": [
+    0,
+    201,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 202
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "ua": {
+   "deaths12": 97381,
+   "months": [
+    9298,
+    10281,
+    10350,
+    10117,
+    13372,
+    7436,
+    7772,
+    6857,
+    6656,
+    4725,
+    4869,
+    5648
+   ],
+   "byType": {
+    "state": 97336,
+    "nonState": 0,
+    "oneSided": 45
+   },
+   "trend": null,
+   "conflicts": [
+    "1:13243"
+   ],
+   "partyTo": [
+    "1:13243"
+   ]
+  },
+  "ug": {
+   "deaths12": 43,
+   "months": [
+    0,
+    5,
+    30,
+    0,
+    1,
+    0,
+    0,
+    5,
+    0,
+    0,
+    0,
+    2
+   ],
+   "byType": {
+    "state": 35,
+    "nonState": 5,
+    "oneSided": 3
+   },
+   "trend": null,
+   "conflicts": [
+    "1:160"
+   ],
+   "partyTo": [
+    "1:160"
+   ]
+  },
+  "us": {
+   "deaths12": 13,
+   "months": [
+    4,
+    0,
+    0,
+    0,
+    4,
+    0,
+    3,
+    0,
+    0,
+    0,
+    0,
+    2
+   ],
+   "byType": {
+    "state": 5,
+    "nonState": 3,
+    "oneSided": 5
+   },
+   "trend": null,
+   "conflicts": [
+    "1:164"
+   ],
+   "partyTo": [
+    "1:16905",
+    "1:164"
+   ]
+  },
+  "ve": {
+   "deaths12": 181,
+   "months": [
+    11,
+    22,
+    6,
+    0,
+    84,
+    8,
+    11,
+    27,
+    0,
+    3,
+    1,
+    8
+   ],
+   "byType": {
+    "state": 165,
+    "nonState": 6,
+    "oneSided": 10
+   },
+   "trend": null,
+   "conflicts": [
+    "1:164",
+    "1:167"
+   ],
+   "partyTo": [
+    "1:167"
+   ]
+  },
+  "west-bank": {
+   "deaths12": 109,
+   "months": [
+    14,
+    12,
+    11,
+    7,
+    10,
+    14,
+    16,
+    4,
+    4,
+    6,
+    6,
+    5
+   ],
+   "byType": {
+    "state": 52,
+    "nonState": 7,
+    "oneSided": 50
+   },
+   "trend": null,
+   "conflicts": [
+    "1:234"
+   ],
+   "partyTo": []
+  },
+  "ye": {
+   "deaths12": 2475,
+   "months": [
+    115,
+    61,
+    57,
+    210,
+    152,
+    55,
+    72,
+    48,
+    55,
+    50,
+    220,
+    1380
+   ],
+   "byType": {
+    "state": 1967,
+    "nonState": 454,
+    "oneSided": 54
+   },
+   "trend": "up",
+   "conflicts": [
+    "1:230",
+    "1:16470"
+   ],
+   "partyTo": [
+    "1:230",
+    "1:16470"
+   ]
+  },
+  "za": {
+   "deaths12": 241,
+   "months": [
+    4,
+    51,
+    53,
+    7,
+    1,
+    16,
+    22,
+    2,
+    1,
+    23,
+    21,
+    40
+   ],
+   "byType": {
+    "state": 7,
+    "nonState": 194,
+    "oneSided": 40
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  },
+  "zm": {
+   "deaths12": 1,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "byType": {
+    "state": 0,
+    "nonState": 0,
+    "oneSided": 1
+   },
+   "trend": null,
+   "conflicts": [],
+   "partyTo": []
+  }
+ }
+}

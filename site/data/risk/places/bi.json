@@ -52,5 +52,48 @@
     "expected": 1.8
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 82,
+  "months": [
+   2,
+   15,
+   6,
+   32,
+   3,
+   2,
+   1,
+   7,
+   4,
+   3,
+   3,
+   4
+  ],
+  "byType": {
+   "state": 19,
+   "nonState": 4,
+   "oneSided": 59
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:283",
+    "name": "DR Congo (Zaire): Government",
+    "sideA": "Government of DR Congo (Zaire)",
+    "sideB": "AFC",
+    "deaths12": 1021,
+    "last": 44,
+    "war": true,
+    "places": [
+     "cd",
+     "bi"
+    ],
+    "parties": [
+     "cd"
+    ]
+   }
+  ],
+  "partyTo": []
  }
 }

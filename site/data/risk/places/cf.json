@@ -67,5 +67,95 @@
     "expected": 12.8
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 269,
+  "months": [
+   55,
+   7,
+   9,
+   40,
+   34,
+   28,
+   10,
+   29,
+   6,
+   32,
+   8,
+   11
+  ],
+  "byType": {
+   "state": 187,
+   "nonState": 13,
+   "oneSided": 69
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:416",
+    "name": "Central African Republic: Government",
+    "sideA": "Government of Central African Republic",
+    "sideB": "CPC",
+    "deaths12": 108,
+    "last": 6,
+    "war": false,
+    "places": [
+     "cf"
+    ],
+    "parties": [
+     "cf"
+    ]
+   },
+   {
+    "key": "1:31",
+    "name": null,
+    "sideA": "XXX482",
+    "sideB": "XXX482",
+    "deaths12": 84,
+    "last": 3,
+    "war": false,
+    "places": [
+     "cf",
+     "sd"
+    ],
+    "parties": [
+     "cf"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:416",
+    "name": "Central African Republic: Government",
+    "sideA": "Government of Central African Republic",
+    "sideB": "CPC",
+    "deaths12": 108,
+    "last": 6,
+    "war": false,
+    "places": [
+     "cf"
+    ],
+    "parties": [
+     "cf"
+    ]
+   },
+   {
+    "key": "1:31",
+    "name": null,
+    "sideA": "XXX482",
+    "sideB": "XXX482",
+    "deaths12": 84,
+    "last": 3,
+    "war": false,
+    "places": [
+     "cf",
+     "sd"
+    ],
+    "parties": [
+     "cf"
+    ]
+   }
+  ]
  }
 }

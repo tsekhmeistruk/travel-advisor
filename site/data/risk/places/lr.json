@@ -52,5 +52,31 @@
     "expected": 37.6
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 1,
+  "months": [
+   0,
+   0,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "byType": {
+   "state": 0,
+   "nonState": 0,
+   "oneSided": 1
+  },
+  "trend": null,
+  "conflicts": [],
+  "partyTo": []
  }
 }

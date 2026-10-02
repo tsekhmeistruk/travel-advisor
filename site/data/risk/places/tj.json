@@ -52,5 +52,48 @@
     "expected": 7.3
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 6,
+  "months": [
+   0,
+   0,
+   0,
+   5,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1
+  ],
+  "byType": {
+   "state": 6,
+   "nonState": 0,
+   "oneSided": 0
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:333",
+    "name": "Afghanistan: Government",
+    "sideA": "Government of Afghanistan",
+    "sideB": "NRF",
+    "deaths12": 44,
+    "last": 28,
+    "war": false,
+    "places": [
+     "af",
+     "tj"
+    ],
+    "parties": [
+     "af"
+    ]
+   }
+  ],
+  "partyTo": []
  }
 }

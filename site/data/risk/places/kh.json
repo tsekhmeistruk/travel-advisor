@@ -52,5 +52,67 @@
     "expected": 30.3
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 12,
+  "months": [
+   0,
+   0,
+   0,
+   12,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "byType": {
+   "state": 12,
+   "nonState": 0,
+   "oneSided": 0
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:294",
+    "name": "Cambodia (Kampuchea) - Thailand",
+    "sideA": "Government of Cambodia (Kampuchea)",
+    "sideB": "Government of Thailand",
+    "deaths12": 101,
+    "last": 0,
+    "war": false,
+    "places": [
+     "th",
+     "kh"
+    ],
+    "parties": [
+     "kh",
+     "th"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:294",
+    "name": "Cambodia (Kampuchea) - Thailand",
+    "sideA": "Government of Cambodia (Kampuchea)",
+    "sideB": "Government of Thailand",
+    "deaths12": 101,
+    "last": 0,
+    "war": false,
+    "places": [
+     "th",
+     "kh"
+    ],
+    "parties": [
+     "kh",
+     "th"
+    ]
+   }
+  ]
  }
 }

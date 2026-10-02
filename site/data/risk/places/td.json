@@ -70,5 +70,66 @@
     "expected": 29.1
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 229,
+  "months": [
+   4,
+   7,
+   36,
+   0,
+   6,
+   4,
+   44,
+   46,
+   50,
+   14,
+   2,
+   16
+  ],
+  "byType": {
+   "state": 95,
+   "nonState": 132,
+   "oneSided": 2
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:297",
+    "name": "Nigeria: Government",
+    "sideA": "Government of Nigeria",
+    "sideB": "JAS",
+    "deaths12": 253,
+    "last": 1,
+    "war": false,
+    "places": [
+     "ng",
+     "td",
+     "ne"
+    ],
+    "parties": [
+     "ng"
+    ]
+   },
+   {
+    "key": "1:309",
+    "name": "Sudan: Government",
+    "sideA": "Government of Sudan",
+    "sideB": "SFA",
+    "deaths12": 5099,
+    "last": 204,
+    "war": true,
+    "places": [
+     "sd",
+     "td",
+     "et"
+    ],
+    "parties": [
+     "sd"
+    ]
+   }
+  ],
+  "partyTo": []
  }
 }

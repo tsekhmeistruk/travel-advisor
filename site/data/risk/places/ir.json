@@ -52,5 +52,181 @@
     "expected": 3033.3
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 23636,
+  "months": [
+   6,
+   7,
+   1,
+   10,
+   19886,
+   3267,
+   160,
+   127,
+   26,
+   36,
+   95,
+   15
+  ],
+  "byType": {
+   "state": 3732,
+   "nonState": 0,
+   "oneSided": 19904
+  },
+  "trend": "down",
+  "conflicts": [
+   {
+    "key": "1:16905",
+    "name": "Iran - Israel, United States of America",
+    "sideA": "Government of Iran",
+    "sideB": "Government of Israel, Government of United States of America",
+    "deaths12": 3791,
+    "last": 2,
+    "war": true,
+    "places": [
+     "ir",
+     "lk",
+     "kw",
+     "lb",
+     "ae",
+     "iq",
+     "il",
+     "sa",
+     "sy",
+     "bh",
+     "jo",
+     "om"
+    ],
+    "parties": [
+     "il",
+     "ir",
+     "us"
+    ]
+   },
+   {
+    "key": "1:338",
+    "name": "Iran: Government",
+    "sideA": "Government of Iran",
+    "sideB": "PJAK",
+    "deaths12": 69,
+    "last": 11,
+    "war": false,
+    "places": [
+     "ir"
+    ],
+    "parties": [
+     "ir"
+    ]
+   },
+   {
+    "key": "1:76",
+    "name": null,
+    "sideA": "XXX630",
+    "sideB": "XXX630",
+    "deaths12": 34,
+    "last": 1,
+    "war": false,
+    "places": [
+     "ir"
+    ],
+    "parties": [
+     "ir"
+    ]
+   },
+   {
+    "key": "1:205",
+    "name": "Iran: Kurdistan",
+    "sideA": "Government of Iran",
+    "sideB": "KDPI",
+    "deaths12": 52,
+    "last": 0,
+    "war": false,
+    "places": [
+     "iq",
+     "ir"
+    ],
+    "parties": [
+     "ir"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:16905",
+    "name": "Iran - Israel, United States of America",
+    "sideA": "Government of Iran",
+    "sideB": "Government of Israel, Government of United States of America",
+    "deaths12": 3791,
+    "last": 2,
+    "war": true,
+    "places": [
+     "ir",
+     "lk",
+     "kw",
+     "lb",
+     "ae",
+     "iq",
+     "il",
+     "sa",
+     "sy",
+     "bh",
+     "jo",
+     "om"
+    ],
+    "parties": [
+     "il",
+     "ir",
+     "us"
+    ]
+   },
+   {
+    "key": "1:338",
+    "name": "Iran: Government",
+    "sideA": "Government of Iran",
+    "sideB": "PJAK",
+    "deaths12": 69,
+    "last": 11,
+    "war": false,
+    "places": [
+     "ir"
+    ],
+    "parties": [
+     "ir"
+    ]
+   },
+   {
+    "key": "1:205",
+    "name": "Iran: Kurdistan",
+    "sideA": "Government of Iran",
+    "sideB": "KDPI",
+    "deaths12": 52,
+    "last": 0,
+    "war": false,
+    "places": [
+     "iq",
+     "ir"
+    ],
+    "parties": [
+     "ir"
+    ]
+   },
+   {
+    "key": "1:76",
+    "name": null,
+    "sideA": "XXX630",
+    "sideB": "XXX630",
+    "deaths12": 34,
+    "last": 1,
+    "war": false,
+    "places": [
+     "ir"
+    ],
+    "parties": [
+     "ir"
+    ]
+   }
+  ]
  }
 }

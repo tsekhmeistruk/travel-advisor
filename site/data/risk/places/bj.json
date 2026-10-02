@@ -52,5 +52,65 @@
     "expected": 16.4
    }
   }
+ },
+ "conflict": {
+  "through": "2026-08",
+  "deaths12": 47,
+  "months": [
+   4,
+   14,
+   0,
+   3,
+   0,
+   0,
+   20,
+   0,
+   0,
+   0,
+   6,
+   0
+  ],
+  "byType": {
+   "state": 37,
+   "nonState": 0,
+   "oneSided": 10
+  },
+  "trend": null,
+  "conflicts": [
+   {
+    "key": "1:15256",
+    "name": "Benin: Government",
+    "sideA": "Government of Benin",
+    "sideB": "JNIM",
+    "deaths12": 41,
+    "last": 0,
+    "war": false,
+    "places": [
+     "bj",
+     "bf"
+    ],
+    "parties": [
+     "bj"
+    ]
+   }
+  ],
+  "partyTo": [
+   {
+    "key": "1:15256",
+    "name": "Benin: Government",
+    "sideA": "Government of Benin",
+    "sideB": "JNIM",
+    "deaths12": 41,
+    "last": 0,
+    "war": false,
+    "places": [
+     "bj",
+     "bf"
+    ],
+    "parties": [
+     "bj"
+    ]
+   }
+  ]
  }
 }

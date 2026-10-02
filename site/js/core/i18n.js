@@ -11,6 +11,8 @@ const DAY = 864e5;
 export function createI18n({ locale, messages, fallback = null, today = new Date() }) {
   const plural = new Intl.PluralRules(locale);
   const dateFmt = new Intl.DateTimeFormat(locale, { month: 'short', day: 'numeric', year: 'numeric' });
+  const numberFmt = new Intl.NumberFormat(locale);
+  const monthFmt = new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric', timeZone: 'UTC' });
   const relLong = new Intl.RelativeTimeFormat(locale, { numeric: 'auto' });
   const relShort = new Intl.RelativeTimeFormat(locale, { numeric: 'auto', style: 'narrow' });
   let regionNames = null;
@@ -41,6 +43,9 @@ export function createI18n({ locale, messages, fallback = null, today = new Date
     has: (key) => lookup(messages, key) !== undefined || (fallback != null && lookup(fallback, key) !== undefined),
     ageDays,
     formatDate: (iso) => dateFmt.format(parseDay(iso)),
+    formatNumber: (n) => numberFmt.format(n),
+    /** A month ('YYYY-MM'): "August 2026" */
+    formatMonth: (ym) => monthFmt.format(new Date(`${ym}-01T00:00:00Z`)),
     /** "today", "yesterday", "11 days ago", "4 months ago", "2.1 years ago" */
     relativeAge(days) {
       if (days < 45) return relLong.format(-days, 'day');
