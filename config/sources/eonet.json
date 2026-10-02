@@ -1,0 +1,38 @@
+{
+ "id": "eonet",
+ "name": "NASA EONET",
+ "type": "government-science",
+ "authority": "NASA Earth Observatory Natural Event Tracker: volcanoes with an open event (eruptions and unrest, from the Smithsonian's Global Volcanism Program); shown as map markers, never as a level",
+ "links": {
+  "home": "https://eonet.gsfc.nasa.gov/",
+  "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+ },
+ "licence": "NASA open data; credit NASA EONET and the Smithsonian Global Volcanism Program",
+ "markersOnly": true,
+ "staleAfterHours": 48,
+ "confirmFallMinutes": 0,
+ "lookbackDays": 365,
+ "retainEndedDays": 7,
+ "duplicates": { "km": 50 },
+ "scheme": "eonet-status",
+ "levels": {
+  "open": 1,
+  "closed": 1
+ },
+ "types": {
+  "VO": {
+   "type": "volcano",
+   "category": "disaster",
+   "tailDays": 0
+  }
+ },
+ "aliases": {
+  "Kuril Islands": "ru",
+  "Kamchatka": "ru",
+  "Aleutian Islands": "us",
+  "Alaska": "us",
+  "Hawaii": "us",
+  "Galapagos": "ec",
+  "Galápagos": "ec"
+ }
+}

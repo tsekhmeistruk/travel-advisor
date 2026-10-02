@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "usgs:us6000tyny"
+ ],
  "changes": [
   {
    "id": "af:protest:2026-09-30",

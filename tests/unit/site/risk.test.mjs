@@ -86,11 +86,11 @@ const MX_FILE = {
 };
 
 let ds, changes, requested, storage;
-async function create({ view = 'highest', category, mode = view === 'category' ? category : view, saved = {}, current = CURRENT } = {}) {
+async function create({ view = 'highest', category, mode = view === 'category' ? category : view, saved = {}, current = CURRENT, events = EVENTS } = {}) {
   storage = new Map(Object.entries({ 'travel-risk-map:settings': JSON.stringify({ risk: saved }) }));
   const settings = createSettings('travel-risk-map:settings', {}, { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) });
   requested = [];
-  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS }, 'risk/conflict.json': CONFLICT, 'risk/places/mx.json': MX_FILE, 'risk/places/ke.json': KE_FILE };
+  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events }, 'risk/conflict.json': CONFLICT, 'risk/places/mx.json': MX_FILE, 'risk/places/ke.json': KE_FILE };
   const client = { file: async (path, version) => { requested.push([path, version]); if (!files[path]) throw new Error('HTTP 404'); return files[path]; } };
   changes = 0;
   ds = createRiskMode({
@@ -326,19 +326,35 @@ describe('details card', () => {
     assert.match(ds.details(null), /No changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
     const f = fakeFeed();
     ds.renderFeed(f.el);
-    assert.match(f.el.innerHTML, /recent-empty">No changes in this period\. <button class="link-btn" data-show-days="90">/);
+    assert.equal(f.el.innerHTML, '', 'an empty feed is its heading and 0; the card says it once');
     ds.showWindow(90);
     assert.equal(changes, 1);
     assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.recentDays, 90);
     ds.renderFeed(f.el);
     assert.doesNotMatch(f.el.innerHTML + ds.details(null), /data-show-days/, 'nothing longer to offer');
   });
+  test('a marker-only event (a USGS quake): its magnitude alone, no level beside it; USGS\'s note; on the map and in the footer', async () => {
+    const quake = { id: 'usgs:us1', source: 'usgs', ...DATES, category: 'disaster', type: 'earthquake', level: 1, marker: true, native: { scheme: 'usgs-magnitude', value: 'M6' },
+      name: 'M 6.1 - 20 km S of Tecpan, Mexico', severity: 'Magnitude 6.1 mww, depth 10 km', placeIds: ['mx'], point: { lon: -100.6, lat: 17 }, url: 'https://earthquake.usgs.gov/earthquakes/eventpage/us1' };
+    await create({ view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'], events: [...EVENTS, quake] });
+    const html = ds.details({ eventId: 'usgs:us1' });
+    assert.match(html, /USGS alert · Disaster/);
+    assert.match(html, /<span class="swatch"><\/span>Magnitude 6<\/span>/);
+    assert.doesNotMatch(html, /Magnitude 6 · Normal/, 'a marker has no level of ours');
+    assert.match(html, /Magnitude 6\.1 mww, depth 10 km/);
+    assert.match(html, /USGS locates earthquakes worldwide within minutes/);
+    assert.ok(ds.markers().some(m => m.id === 'usgs:us1' && m.kind === 'earthquake'));
+    assert.match(ds.footer(), />USGS<|USGS/);
+    assert.match(ds.details({ eventId: 'gdacs:TC:1' }), /Orange alert · High/, 'a GDACS alert keeps its level beside it');
+  });
+
   test('a category mode\'s overview says what raises its level', async () => {
     await create({ view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'] });
-    assert.match(ds.details(null), /Levels rise with GDACS Orange and Red alerts, wildfires included\. Green markers are smaller events\./);
+    const shown = ds.markers().length;   // the markers the map shows, counted
+    assert.match(ds.details(null), new RegExp(`${shown} alerts? on the map\\. Only GDACS Orange and Red alerts raise a level; Green ones, USGS quakes and NASA volcanoes are markers\\.`));
     assert.doesNotMatch(ds.details(null), /Hover or tap a country/, 'the note replaces the general hint (the card has room for one)');
     await create();
-    assert.doesNotMatch(ds.details(null), /Levels rise/, 'not in the highest mode');
+    assert.doesNotMatch(ds.details(null), /on the map\. Only GDACS/, 'not in the highest mode');
     assert.match(ds.details(null), /Hover or tap a country/, 'the highest mode has the general hint instead');
   });
 
@@ -382,10 +398,14 @@ describe('texts', () => {
     assert.equal(ds.stale(), true);
     assert.equal(ds.header(), 'GDACS delayed · Updated 13 hours ago: newer data is delayed');
   });
-  test('footer: links every source and says the levels are ours', () => {
+  test('footer: one line, the mode\'s sources linked and "How it works" (that the levels are ours is in the help)', async () => {
     const html = ds.footer();
-    assert.match(html, /<a href="https:\/\/www\.gdacs\.org\/"[^>]*>GDACS<\/a>, U\.S\./);
-    assert.match(html, /not official levels/);
+    assert.match(html, /^Sources: .*<a href="https:\/\/www\.gdacs\.org\/"[^>]*>GDACS<\/a>.* · <button class="link-btn" data-action="help">How it works<\/button>$/);
+    assert.match(html, /U\.S\./, 'All: every category\'s sources');
+    assert.doesNotMatch(html, /not official levels/);
+    await create({ view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'] });
+    assert.match(ds.footer(), /GDACS/);
+    assert.doesNotMatch(ds.footer(), /U\.S\./, 'Disasters: its own sources only');
   });
   test('tooltip, map label and legend', () => {
     assert.match(ds.tooltip('mx'), /<strong>Mexico<\/strong>.*High · Disaster.*Disaster: Normal → High · 5 hours ago/);
@@ -505,7 +525,8 @@ describe('feed', () => {
     assert.equal(f.count.textContent, 1);
     await create({ saved: { recentDays: 1, levels: [1, 2] } });
     ds.renderFeed(f.el);
-    assert.match(f.el.innerHTML, /No changes in this period\./);
+    assert.equal(f.el.innerHTML, '', 'nothing changed: the heading and 0');
+    assert.equal(f.count.textContent, 0);
     assert.equal(f.title.textContent, 'Changes in the last 24 hours');
   });
   test('names a change on several places by the first and a count, and caps a long list', async () => {

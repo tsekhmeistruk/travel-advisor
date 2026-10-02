@@ -226,7 +226,7 @@ describe('providers, feed and search', () => {
     await create({ provider: 'xx' });
     assert.equal(ds.provider(), 'us');
   });
-  test('the feed lists recent level changes; an empty one offers the longest window', async () => {
+  test('the feed lists recent level changes; an empty one is its heading alone, the card offers the longest window', async () => {
     const title = { textContent: '' }, count = { textContent: '' };
     const section = { hidden: true, querySelector: (sel) => (sel === '#recentTitle' ? title : count) };
     const el = { innerHTML: '', closest: () => section };
@@ -235,7 +235,9 @@ describe('providers, feed and search', () => {
     assert.match(el.innerHTML, /data-key="Burma"/);
     await create({ levels: [1], recentDays: 7 });
     ds.renderFeed(el);
-    assert.match(el.innerHTML, /No level changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
+    assert.equal(el.innerHTML, '', 'the heading and its 0 say it');
+    assert.equal(count.textContent, 0);
+    assert.match(ds.details(null), /No level changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/, 'the card says it once, and offers more');
     ds.showWindow(90);
     assert.equal(changes, 1);
     ds.renderFeed(el);

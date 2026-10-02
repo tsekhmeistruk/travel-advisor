@@ -273,7 +273,7 @@ export function createWarsMode(ctx) {
         const url = safeUrl(sources[id].url);
         return url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(tr(`sources.${id}`))}</a>` : esc(tr(`sources.${id}`));
       });
-      return `${esc(tw('footer', { sources: MARK })).replace(MARK, links.join(', '))} · <button class="link-btn" data-action="help">${esc(tw('about'))}</button>`;
+      return `${esc(tw('footer', { sources: MARK })).replace(MARK, links.join(', '))} · <button class="link-btn" data-action="help">${esc(i18n.t('help.short'))}</button>`;
     },
     // The Filters only filtered the change feed, which the Wars list replaces.
     settingsHidden: true,

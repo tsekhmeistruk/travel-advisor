@@ -9,6 +9,7 @@ name: Update data
 #   - GDELT news reports (daily counts, for unusual activity): checked every 6 hours, one new file a day
 #   - UCDP conflict data: checked once a day for a new monthly version (one comes out each month)
 #   - Wikipedia: the articles about the wars (who is on each side, a short summary), once a week
+#   - USGS earthquakes (M5+, every hour) and NASA EONET volcanoes (every 6 hours): map markers only
 # Then it builds, commits, and calls the test-and-deploy workflow. A failed fetch keeps that
 # source's previous data; the next run retries it.
 #
@@ -22,7 +23,7 @@ on:
   workflow_dispatch:   # "Run workflow" button: fetches now, without waiting for a slot
     inputs:
       sources:
-        description: 'What to fetch: "all", ids separated by spaces (us ca nl uk de gdacs who gdelt ucdp wikipedia), or "due" (only what is due, like a scheduled run)'
+        description: 'What to fetch: "all", ids separated by spaces (us ca nl uk de gdacs who gdelt ucdp wikipedia usgs eonet), or "due" (only what is due, like a scheduled run)'
         default: all
 
 permissions:
@@ -82,6 +83,18 @@ jobs:
         if: contains(steps.due.outputs.due, ',wikipedia,')
         continue-on-error: true
         run: node scripts/fetch.mjs wikipedia
+
+      - name: Fetch USGS earthquakes
+        id: usgs
+        if: contains(steps.due.outputs.due, ',usgs,')
+        continue-on-error: true
+        run: node scripts/fetch.mjs usgs
+
+      - name: Fetch NASA EONET volcanoes
+        id: eonet
+        if: contains(steps.due.outputs.due, ',eonet,')
+        continue-on-error: true
+        run: node scripts/fetch.mjs eonet
 
       # Only the on-time daily run waits a random time; catch-up runs go straight away.
       - name: Wait a random time
@@ -147,9 +160,9 @@ jobs:
           echo "pushed=true" >> "$GITHUB_OUTPUT"
 
       - name: Report failures
-        if: steps.gdacs.outcome == 'failure' || steps.who.outcome == 'failure' || steps.gdelt.outcome == 'failure' || steps.ucdp.outcome == 'failure' || steps.wikipedia.outcome == 'failure' || steps.us.outcome == 'failure' || steps.ca.outcome == 'failure' || steps.nl.outcome == 'failure' || steps.uk.outcome == 'failure' || steps.de.outcome == 'failure' || steps.build.outcome == 'failure'
+        if: steps.gdacs.outcome == 'failure' || steps.who.outcome == 'failure' || steps.gdelt.outcome == 'failure' || steps.ucdp.outcome == 'failure' || steps.wikipedia.outcome == 'failure' || steps.usgs.outcome == 'failure' || steps.eonet.outcome == 'failure' || steps.us.outcome == 'failure' || steps.ca.outcome == 'failure' || steps.nl.outcome == 'failure' || steps.uk.outcome == 'failure' || steps.de.outcome == 'failure' || steps.build.outcome == 'failure'
         run: |
-          echo "::error::GDACS: ${{ steps.gdacs.outcome }}, WHO: ${{ steps.who.outcome }}, GDELT: ${{ steps.gdelt.outcome }}, UCDP: ${{ steps.ucdp.outcome }}, Wikipedia: ${{ steps.wikipedia.outcome }}, U.S.: ${{ steps.us.outcome }}, Canada: ${{ steps.ca.outcome }}, Netherlands: ${{ steps.nl.outcome }}, UK: ${{ steps.uk.outcome }}, Germany: ${{ steps.de.outcome }}, build: ${{ steps.build.outcome }}. Failed sources kept their previous data; the next hourly run retries them. See the Fetch results table above and logs/fetch/."
+          echo "::error::GDACS: ${{ steps.gdacs.outcome }}, WHO: ${{ steps.who.outcome }}, GDELT: ${{ steps.gdelt.outcome }}, UCDP: ${{ steps.ucdp.outcome }}, Wikipedia: ${{ steps.wikipedia.outcome }}, USGS: ${{ steps.usgs.outcome }}, EONET: ${{ steps.eonet.outcome }}, U.S.: ${{ steps.us.outcome }}, Canada: ${{ steps.ca.outcome }}, Netherlands: ${{ steps.nl.outcome }}, UK: ${{ steps.uk.outcome }}, Germany: ${{ steps.de.outcome }}, build: ${{ steps.build.outcome }}. Failed sources kept their previous data; the next hourly run retries them. See the Fetch results table above and logs/fetch/."
           exit 1
 
   # New data goes live only if all tests pass on it. Runs even when one source failed,

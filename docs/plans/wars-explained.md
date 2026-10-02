@@ -81,9 +81,9 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Status
 
-- **Current step:** 3.8
-- **Done:** parts 0–2; 3.1–3.7
-- **Last commit of this revision:** 718728f
+- **Current step:** 4.5
+- **Done:** parts 0–3; 4.1–4.4
+- **Last commit of this revision:** 72cc78a
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -159,17 +159,17 @@ A review of the code and data (Oct 2, 2026) found:
   - [x] e2e: the Wars list (8, then all); hovering highlights the sides; clicking opens the war card; fixed height; `#war=` and Back; dots and their tooltip; phone.
   - [x] edited: the per-mode loop for Wars, Filters in Wars, the overview, the place card's conflict rows, the shots and live-check lists.
   - [x] deleted: the Wars feed tests.
-- [ ] 3.8 Ship. Live check: the Wars list; `#mode=wars&war=1-309` opens Sudan with SAF vs RSF; dots; no console errors.
+- [x] 3.8 Ship. Live check: the Wars list; `#mode=wars&war=1-309` opens Sudan with SAF vs RSF; dots; no console errors.
 
 ## Part 4: The other modes, USGS and EONET
 
-- [ ] 4.1 A one-line footer in every mode, with "About and sources" opening the help (which lists every source and licence).
-- [ ] 4.2 An empty feed takes one line. The Disasters overview counts the alerts on the map.
-- [ ] 4.3 USGS earthquakes (M5+, the significant and 4.5 feeds) and NASA EONET (volcanoes, storms, wildfires): markers only, hourly, without GDACS duplicates.
-- [ ] 4.4 Tests:
-  - [ ] unit: the USGS and EONET parsers on real responses; the duplicate rule.
-  - [ ] data and project: the sources are wired; the events equal a fresh build.
-  - [ ] e2e: the footer, the empty feed, the Disasters count, a USGS marker card.
+- [x] 4.1 A one-line footer in every mode, with "About and sources" opening the help (which lists every source and licence).
+- [x] 4.2 An empty feed takes one line. The Disasters overview counts the alerts on the map.
+- [x] 4.3 USGS earthquakes (M5+, the week's 4.5 feed) and NASA EONET volcanoes: markers only, without GDACS duplicates. Changed from the plan: EONET's storms are the cyclones GDACS already reports, and its open wildfires are 7,000+ small U.S. fires (8.8 MB), so only its volcanoes are read.
+- [x] 4.4 Tests:
+  - [x] unit: the USGS and EONET parsers on real responses; the duplicate rule.
+  - [x] data and project: the sources are wired; the events equal a fresh build.
+  - [x] e2e: the footer, the empty feed, the Disasters count, a USGS marker card.
 - [ ] 4.5 Ship. Live check: quake markers in Disasters, no GDACS duplicate. Then one update run (`-f sources=usgs,eonet`), watched.
 
 ## Part 5: Docs and wrap-up
@@ -183,3 +183,4 @@ A review of the code and data (Oct 2, 2026) found:
 ## Log (one line per finished part: commit, deploy, tests)
 - Part 1: 86cacdf (+ 9239dd4 test fix), deploy green after the test fix (the first deploy failed: two header checks anchored at 'Updated'), live: Sudan's sides SFA, RSF; 4 new, 10 quiet; conflict-events.json 186 KB; update run 37041430778 (ucdp) green. Tests added: parser points and side ids, refetch of outdated versions, stored tables, sides from several dyads, new and quiet, dots, old format refused, data checks of sides and dots, e2e one-line header with delayed sources and the moves line with big numbers. Edited: UCDP fixture (+ a real Sudan-RSF row), parser, conflict and risk-layer tests, header texts, two e2e header checks. Deleted: none.
 - Part 2: 51f0eec (+ 718728f bot-data merge), deploy green, live: risk/wars.json with 38 conflicts (Ukraine A with Belarus, North Korea; Sudan RSF and SFA spelled out); update run 37043453470 (wikipedia) green. Tests added: the parser on real articles (Ukraine, Sudan, Lebanon, Mali, the 2026 Iran war and its template, Venezuela), the fetcher, side matching, risk/wars.json in the risk layer, store and runFetch for a context source, run descriptions, data and project checks. Edited: the provider list, project checks for a context kind. Deleted: none.
+- Part 3: 57ae708 (+ 72cc78a bot-data merge), deploy green, live: Wars list of 72, 1,570 dots, #mode=wars&war=1-309 opens the Sudanese civil war with both sides, #mode=wars&war=1-13243 Russia (with Belarus, North Korea) vs Ukraine, no console errors. Tests added: Wars logic (titles, sides, list, new, quiet, card, focus, dots), the mode's list, card, focus, dots, search and footer, the URL's war, e2e list, hover and click, the card's fixed height for every war (1440, 390), links and search, dots and help, the zoom limits. Edited: conflict and country-view fixtures (sides), overview and place-card checks, the Filters test, the per-mode feed check, shots and live-check lists. Deleted: none.

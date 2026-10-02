@@ -36,7 +36,10 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "usgs:us6000tymj",
+  "eonet:EONET_20103"
+ ],
  "changes": [],
  "activity": {
   "source": "gdelt",

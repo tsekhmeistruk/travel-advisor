@@ -1,0 +1,838 @@
+{
+ "source": "https://eonet.gsfc.nasa.gov/api/v3/events/geojson?status=open&category=volcanoes",
+ "fetchedAt": "2026-10-02T18:24:38.607Z",
+ "firstFetchedAt": "2026-10-02T18:22:35.410Z",
+ "events": [
+  {
+   "id": "eonet:EONET_10631",
+   "code": "VO",
+   "name": "Sheveluch Volcano, Russia",
+   "country": "Russia",
+   "iso3": [],
+   "point": {
+    "lon": 161.36,
+    "lat": 56.653
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2024-08-17T00:00:00.000Z",
+   "toDate": "2024-08-17T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=300270",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_12367",
+   "code": "VO",
+   "name": "Kilauea Volcano, Hawaii",
+   "country": "Hawaii",
+   "iso3": [],
+   "point": {
+    "lon": -155.287,
+    "lat": 19.421
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2024-12-23T00:00:00.000Z",
+   "toDate": "2024-12-23T00:00:00.000Z",
+   "current": true,
+   "url": "https://science.nasa.gov/earth/earth-observatory/restless-kilauea-launches-lava-and-ash/",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_12813",
+   "code": "VO",
+   "name": "Lewotolok Volcano, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 123.508,
+    "lat": -8.274
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2025-02-19T00:00:00.000Z",
+   "toDate": "2025-02-19T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=264230",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_13342",
+   "code": "VO",
+   "name": "Popocatepetl Volcano, Mexico",
+   "iso3": [],
+   "point": {
+    "lon": -98.622,
+    "lat": 19.023
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2025-04-10T00:00:00.000Z",
+   "toDate": "2025-04-10T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=341090",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_15330",
+   "code": "VO",
+   "name": "Krasheninnikov Volcano, Russia",
+   "country": "Russia",
+   "iso3": [],
+   "point": {
+    "lon": 160.27,
+    "lat": 54.596
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2025-08-25T00:00:00.000Z",
+   "toDate": "2025-08-25T00:00:00.000Z",
+   "current": true,
+   "url": "https://science.nasa.gov/earth/earth-observatory/krasheninnikova-remains-restless/",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_15811",
+   "code": "VO",
+   "name": "Kanlaon Volcano, Philippines",
+   "country": "Philippines",
+   "iso3": [],
+   "point": {
+    "lon": 123.13,
+    "lat": 10.41
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2025-09-10T00:00:00.000Z",
+   "toDate": "2025-09-10T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=272020",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_16202",
+   "code": "VO",
+   "name": "Puracé Volcano, Colombia",
+   "country": "Colombia",
+   "iso3": [],
+   "point": {
+    "lon": -76.395,
+    "lat": 2.31
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2025-12-02T00:00:00.000Z",
+   "toDate": "2025-12-02T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=351060",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_16203",
+   "code": "VO",
+   "name": "Ambae Volcano, Vanuatu",
+   "country": "Vanuatu",
+   "iso3": [],
+   "point": {
+    "lon": 167.835,
+    "lat": -15.389
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2025-12-03T00:00:00.000Z",
+   "toDate": "2025-12-03T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=257030",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_17165",
+   "code": "VO",
+   "name": "Mayon Volcano, Philippines",
+   "country": "Philippines",
+   "iso3": [],
+   "point": {
+    "lon": 123.685,
+    "lat": 13.257
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-01-07T00:00:00.000Z",
+   "toDate": "2026-01-07T00:00:00.000Z",
+   "current": true,
+   "url": "https://science.nasa.gov/earth/earth-observatory/eruption-at-mayon/",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_17166",
+   "code": "VO",
+   "name": "Sabancaya Volcano, Peru",
+   "country": "Peru",
+   "iso3": [],
+   "point": {
+    "lon": -71.857,
+    "lat": -15.787
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2025-12-29T00:00:00.000Z",
+   "toDate": "2025-12-29T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=354006",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20102",
+   "code": "VO",
+   "name": "Masaya Volcano, Nicaragua",
+   "country": "Nicaragua",
+   "iso3": [],
+   "point": {
+    "lon": -86.169,
+    "lat": 11.984
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-04-26T00:00:00.000Z",
+   "toDate": "2026-04-26T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=344100",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20103",
+   "code": "VO",
+   "name": "Rincon de la Vieja Volcano, Costa Rica",
+   "country": "Costa Rica",
+   "iso3": [],
+   "point": {
+    "lon": -85.336,
+    "lat": 10.831
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-04-27T00:00:00.000Z",
+   "toDate": "2026-04-27T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=345020",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20392",
+   "code": "VO",
+   "name": "Ivao Group Volcano, Russia",
+   "country": "Russia",
+   "iso3": [],
+   "point": {
+    "lon": 149.676,
+    "lat": 45.759
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-05-29T00:00:00.000Z",
+   "toDate": "2026-05-29T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=290111",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20395",
+   "code": "VO",
+   "name": "Titan Ridge Volcano, Papua New Guinea",
+   "country": "Papua New Guinea",
+   "iso3": [],
+   "point": {
+    "lon": 147.78,
+    "lat": -3.03
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-05-28T00:00:00.000Z",
+   "toDate": "2026-05-28T00:00:00.000Z",
+   "current": true,
+   "url": "https://science.nasa.gov/earth/earth-observatory/new-eruption-in-the-bismarck-sea/",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20409",
+   "code": "VO",
+   "name": "Telica Volcano, Nicaragua",
+   "country": "Nicaragua",
+   "iso3": [],
+   "point": {
+    "lon": -86.84,
+    "lat": 12.606
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-05-30T00:00:00.000Z",
+   "toDate": "2026-05-30T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=344040",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20410",
+   "code": "VO",
+   "name": "Bezymianny Volcano, Russia",
+   "country": "Russia",
+   "iso3": [],
+   "point": {
+    "lon": 160.595,
+    "lat": 55.972
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-05-16T00:00:00.000Z",
+   "toDate": "2026-05-16T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=300250",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20411",
+   "code": "VO",
+   "name": "Kikai Volcano, Japan",
+   "country": "Japan",
+   "iso3": [],
+   "point": {
+    "lon": 130.305,
+    "lat": 30.793
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-05-17T00:00:00.000Z",
+   "toDate": "2026-05-17T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=282060",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20413",
+   "code": "VO",
+   "name": "Langila Volcano, Papua New Guinea",
+   "country": "Papua New Guinea",
+   "iso3": [],
+   "point": {
+    "lon": 148.42,
+    "lat": -5.525
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-05-08T00:00:00.000Z",
+   "toDate": "2026-05-08T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=252010",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_20710",
+   "code": "VO",
+   "name": "Nevados del Chillan Volcano, Chile",
+   "country": "Chile",
+   "iso3": [],
+   "point": {
+    "lon": -71.378,
+    "lat": -36.868
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2026-06-15T00:00:00.000Z",
+   "toDate": "2026-06-15T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=357070",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_4156",
+   "code": "VO",
+   "name": "Sangay Volcano, Ecuador",
+   "country": "Ecuador",
+   "iso3": [],
+   "point": {
+    "lon": -78.341,
+    "lat": -2.005
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2019-03-26T09:19:10.000Z",
+   "toDate": "2019-03-26T09:19:10.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=352090",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_4269",
+   "code": "VO",
+   "name": "Reventador Volcano, Ecuador",
+   "country": "Ecuador",
+   "iso3": [],
+   "point": {
+    "lon": -77.65,
+    "lat": -0.07
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2019-07-10T00:00:00.000Z",
+   "toDate": "2019-07-10T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=352010",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_4561",
+   "code": "VO",
+   "name": "Semeru Volcano, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 112.922,
+    "lat": -8.108
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2020-01-18T00:00:00.000Z",
+   "toDate": "2020-01-18T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=263300",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_4624",
+   "code": "VO",
+   "name": "Santa Maria Volcano, Guatemala",
+   "country": "Guatemala",
+   "iso3": [],
+   "point": {
+    "lon": -91.552,
+    "lat": 14.757
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2020-03-18T00:00:00.000Z",
+   "toDate": "2020-03-18T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=342030",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_5202",
+   "code": "VO",
+   "name": "Merapi Volcano, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 110.446,
+    "lat": -7.54
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2021-01-07T00:00:00.000Z",
+   "toDate": "2021-01-07T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=263250",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_6104",
+   "code": "VO",
+   "name": "Aira Volcano, Japan",
+   "country": "Japan",
+   "iso3": [],
+   "point": {
+    "lon": 130.657,
+    "lat": 31.593
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2022-06-27T00:00:00.000Z",
+   "toDate": "2022-06-27T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=282080",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_6175",
+   "code": "VO",
+   "name": "Stromboli Volcano, Italy",
+   "country": "Italy",
+   "iso3": [],
+   "point": {
+    "lon": 15.213,
+    "lat": 38.789
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2022-08-07T00:00:00.000Z",
+   "toDate": "2022-08-07T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=211040",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_6369",
+   "code": "VO",
+   "name": "Ibu Volcano, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 127.63,
+    "lat": 1.488
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2023-06-06T00:00:00.000Z",
+   "toDate": "2023-06-06T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=268030",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_6452",
+   "code": "VO",
+   "name": "Dukono Volcano, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 127.878,
+    "lat": 1.699
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2023-11-07T00:00:00.000Z",
+   "toDate": "2023-11-07T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=268010",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_6462",
+   "code": "VO",
+   "name": "Marapi Volcano, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 100.474,
+    "lat": -0.38
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2023-12-03T00:00:00.000Z",
+   "toDate": "2023-12-03T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=261140",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_6470",
+   "code": "VO",
+   "name": "Lewotobi Volcano, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 122.775,
+    "lat": -8.542
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2023-12-28T00:00:00.000Z",
+   "toDate": "2023-12-28T00:00:00.000Z",
+   "current": true,
+   "url": "https://earthobservatory.nasa.gov/images/153549/mount-lewotobi-laki-laki-spews-ash",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_9679",
+   "code": "VO",
+   "name": "Suwanosejima Volcano, Japan",
+   "country": "Japan",
+   "iso3": [],
+   "point": {
+    "lon": 129.714,
+    "lat": 29.638
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2024-08-02T00:00:00.000Z",
+   "toDate": "2024-08-02T00:00:00.000Z",
+   "current": true,
+   "url": "https://volcano.si.edu/volcano.cfm?vn=282030",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  },
+  {
+   "id": "eonet:EONET_980",
+   "code": "VO",
+   "name": "Fuego Volcano, Guatemala",
+   "country": "Guatemala",
+   "iso3": [],
+   "point": {
+    "lon": -90.88,
+    "lat": 14.473
+   },
+   "native": {
+    "scheme": "eonet-status",
+    "value": "open"
+   },
+   "startedAt": "2002-01-04T00:00:00.000Z",
+   "toDate": "2002-01-04T00:00:00.000Z",
+   "current": true,
+   "url": "https://emergency.copernicus.eu/mapping/list-of-components/EMSR289",
+   "firstSeen": "2026-10-02T18:22:35.410Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:35.410Z",
+     "value": "open"
+    }
+   ]
+  }
+ ]
+}

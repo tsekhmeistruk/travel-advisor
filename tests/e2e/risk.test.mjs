@@ -196,7 +196,7 @@ describe('risk panel', () => {
     assert.match(rows[1][2], /^([\d,]+ deaths?|None recorded) \(UCDP\)$/, 'what the conflict level is based on');
     const disaster = rows[2];
     if (disaster[1] !== 'Normal') assert.match(disaster[2], /^GDACS (Orange|Red) |^Lowering to /, 'the alert that set it, or a fall awaiting confirmation');
-    assert.match(await text(page, 'footer'), /not official levels/);
+    assert.match(await text(page, 'footer'), /^Sources: .*GDACS.* · How it works$/, 'one line: the sources and "How it works" (that the levels are ours is in the help)');
     await page.close();
   });
 
@@ -271,10 +271,11 @@ describe('risk panel', () => {
     await page.close();
   });
 
-  test('an empty window says so and offers 90 days', async () => {
+  test('an empty window: the feed is its heading and 0, the card says so once and offers 90 days', async () => {
     const none = (req) => isData(req, 'risk/changes.json') && (req.respond({ status: 200, contentType: 'application/json', body: '{"changes":[]}' }), true);
     const page = await openMode('highest', { stored: { mode: 'highest', risk: { recentDays: 7 } }, intercept: none });
-    assert.match(await text(page, 'recentList'), /No changes in this period. Show 90 days/);
+    assert.equal(await page.$$eval('#recentList li', els => els.length), 0);
+    assert.equal(await text(page, 'recentCount'), '0');
     assert.match(await text(page, 'details'), /Latest changes\s*No changes in this period\.\s*Show 90 days/);
     await page.click('#details [data-show-days="90"]');
     await sleep(200);
@@ -785,4 +786,41 @@ describe('Wars: who fights whom', () => {
       await page.close();
     }
   });
+});
+
+describe('Disasters markers and the one-line footers', () => {
+  const events = JSON.parse(readFileSync(new URL('../../site/data/risk/events.json', import.meta.url), 'utf8')).events;
+
+  test('USGS quakes and EONET volcanoes are markers in Disasters, counted on the overview; a quake\'s card has its magnitude and no level of ours', async () => {
+    const page = await openMode('disaster');
+    const shown = events.filter(e => e.point && ['disaster', 'wildfire'].includes(e.category)).length;
+    assert.match(await text(page, 'details'), new RegExp(`${shown} alerts? on the map\\. Only GDACS Orange and Red alerts raise a level`));
+    const quake = events.find(e => e.source === 'usgs');
+    assert.ok(quake, 'the published events have USGS quakes');
+    assert.ok(events.some(e => e.source === 'eonet'), 'and EONET volcanoes');
+    await page.click('#search');
+    await page.type('#search', quake.name.slice(0, 24));
+    await page.waitForSelector('#searchResults li');
+    await page.keyboard.press('Enter');
+    await sleep(300);
+    await page.hover('#footer');
+    assert.match(await text(page, 'details'), /USGS alert · Disaster/);
+    assert.match(await page.$eval('#details .badge', el => el.textContent), /^Magnitude \d$/, 'no "· Normal": a marker has no level');
+    assert.match(await text(page, 'details'), /USGS locates earthquakes worldwide/);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  for (const mode of ['wars', 'disaster', 'travel', 'highest']) {
+    test(`${mode}: the footer names the mode's sources, and "How it works" opens the help`, async () => {
+      const page = mode === 'travel' ? await open() : await openMode(mode);
+      assert.match(await text(page, 'footer'), / · How it works$/);
+      if (mode === 'disaster') assert.match(await text(page, 'footer'), /GDACS.*USGS.*NASA EONET/);
+      if (mode === 'disaster') assert.doesNotMatch(await text(page, 'footer'), /U\.S\./, 'not the governments: Disasters\' own sources');
+      await page.click('#footer [data-action="help"]');
+      assert.equal(await page.$eval('#help', el => el.open), true);
+      assert.match(await page.$eval('#help', el => el.textContent), /USGS/);
+      await page.close();
+    });
+  }
 });

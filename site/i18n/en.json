@@ -44,8 +44,10 @@
   "conflict": "Conflict counts the deaths in organized violence that UCDP (Uppsala Conflict Data Program) records: fighting between a government and armed groups, between armed groups, and attacks on civilians, where they happened. A war is a conflict with a government on one side and 1,000 or more deaths in 12 months, wherever it is fought. UCDP's figures are preliminary and come out monthly, a month or two behind.",
   "confidence": "A level rises as soon as a source reports it. A fall is applied once a later update confirms it, so a level doesn't flicker.",
   "news": "News activity (GDELT) compares protests and violence in the news with a country's normal week. It is shown as unusual or not, and never sets a level.",
-  "ours": "The levels are this site's summary of the sources, not official levels. Each card links to its source.",
-  "wars": "In Wars, a war's card shows who fights whom: the sides UCDP records (governments and armed groups, with the deaths in their fighting), and, from Wikipedia, the other countries fighting beside them and the countries backing them. Hover or pick a war to colour its two sides on the map. The dots are the deadly events of the latest month, sized by deaths."
+  "ours": "The levels are this site's summary of the sources, not official levels. Each card links to its source: always check the official advisories and alerts before you travel.",
+  "wars": "In Wars, a war's card shows who fights whom: the sides UCDP records (governments and armed groups, with the deaths in their fighting), and, from Wikipedia, the other countries fighting beside them and the countries backing them. Hover or pick a war to colour its two sides on the map. The dots are the deadly events of the latest month, sized by deaths.",
+  "short": "How it works",
+  "markers": "Disasters also shows earthquakes of magnitude 5 and above (USGS) and active volcanoes (NASA EONET) as markers. They never set a level: GDACS's Orange and Red alerts do."
  },
  "search": {
   "placeholder": "Find a country",
@@ -68,7 +70,7 @@
    "providerSwitchTitle": "{agency} advisories",
    "header": "Data as of {date}",
    "headerStale": "Data as of {date} ({age})",
-   "footer": "Levels from the {agency}. Always check the full advisory before you travel.",
+   "footer": "Levels from the {agency}",
    "overview": {
     "eyebrow": "World overview · {provider}",
     "count": {
@@ -332,14 +334,23 @@
    "Green": "Green alert",
    "Orange": "Orange alert",
    "Red": "Red alert",
-   "notice": "Disease Outbreak News"
+   "notice": "Disease Outbreak News",
+   "M5": "Magnitude 5",
+   "M6": "Magnitude 6",
+   "M7": "Magnitude 7",
+   "M8": "Magnitude 8",
+   "M9": "Magnitude 9",
+   "open": "Active",
+   "closed": "No longer active"
   },
   "sources": {
    "gdacs": "GDACS",
    "who": "WHO",
    "gdelt": "GDELT",
    "ucdp": "UCDP",
-   "wikipedia": "Wikipedia"
+   "wikipedia": "Wikipedia",
+   "usgs": "USGS",
+   "eonet": "NASA EONET"
   },
   "status": {
    "delayed": "delayed",
@@ -353,7 +364,7 @@
   "header": "Updated {age}",
   "headerStale": "Updated {age}: newer data is delayed",
   "headerIssue": "{source} {status} · {base}",
-  "footer": "Sources: {sources}. Risk levels are our summary of them, not official levels. Always check the sources before you travel.",
+  "footer": "Sources: {sources}",
   "overview": {
    "eyebrow": "World overview · {mode}",
    "above": {
@@ -363,7 +374,10 @@
    "changes": "Last {window}: {up} raised · {down} lowered",
    "hint": "Hover or tap a country for its risk by category.",
    "about": {
-    "disaster": "Levels rise with GDACS Orange and Red alerts, wildfires included. Green markers are smaller events."
+    "disaster": {
+     "one": "{count} alert on the map. Only GDACS Orange and Red alerts raise a level; Green ones, USGS quakes and NASA volcanoes are markers.",
+     "other": "{count} alerts on the map. Only GDACS Orange and Red alerts raise a level; Green ones, USGS quakes and NASA volcanoes are markers."
+    }
    },
    "latest": "Latest changes"
   },
@@ -494,7 +508,9 @@
    "offshore": "At sea, no country",
    "note": "{source} alerts are automatic estimates. Confirm with national authorities before acting on them.",
    "notes": {
-    "who": "WHO publishes Disease Outbreak News for outbreaks of international concern. Read the notice for WHO's advice to travellers."
+    "who": "WHO publishes Disease Outbreak News for outbreaks of international concern. Read the notice for WHO's advice to travellers.",
+    "usgs": "USGS locates earthquakes worldwide within minutes. Shown from magnitude 5, as markers: GDACS's alerts set the disaster levels.",
+    "eonet": "NASA EONET lists volcanoes with ongoing activity, from the Smithsonian's Global Volcanism Program. Shown as markers: GDACS's alerts set the disaster levels."
    }
   },
   "activity": {
@@ -624,8 +640,7 @@
    "one": "Armed conflict · {deaths} death in 12 months",
    "other": "Armed conflict · {deaths} deaths in 12 months"
   },
-  "footer": "Data: {sources}. Sides and summaries from Wikipedia (CC BY-SA 4.0).",
-  "about": "How it works",
+  "footer": "Data: {sources}; Wikipedia text CC BY-SA 4.0",
   "dots": {
    "event": {
     "one": "{date} · {deaths} death",

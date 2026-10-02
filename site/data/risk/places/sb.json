@@ -36,7 +36,11 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "usgs:us6000tyzl",
+  "usgs:us6000tyx0",
+  "usgs:us6000tywu"
+ ],
  "changes": [],
  "activity": {
   "source": "gdelt",

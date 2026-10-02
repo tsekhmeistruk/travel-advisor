@@ -406,7 +406,7 @@ describe('wars: the list, the war card, the map', () => {
 
   test('the footer is one line with the sources and "How it works"; the wars are in the search; a war in the phone\'s sheet', () => {
     const footer = ds.footer();
-    assert.match(footer, /^Data: <a href="https:\/\/ucdp\.uu\.se\/"[^>]*>UCDP<\/a>\. Sides and summaries from Wikipedia \(CC BY-SA 4\.0\)\. · <button class="link-btn" data-action="help">How it works<\/button>$/);
+    assert.match(footer, /^Data: <a href="https:\/\/ucdp\.uu\.se\/"[^>]*>UCDP<\/a>; Wikipedia text CC BY-SA 4\.0 · <button class="link-btn" data-action="help">How it works<\/button>$/);
     const wars = ds.searchEntries().filter(e => e.target.warKey);
     assert.equal(wars.length, 5);
     assert.deepEqual(wars[1], { label: 'Sudan vs SFA, RSF', aliases: ['Sudanese civil war', 'Sudan: Government'], swatch: 'var(--l4)', sub: 'War · 5,099 deaths in 12 months', target: { warKey: '1:309' } });

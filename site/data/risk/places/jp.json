@@ -37,7 +37,13 @@
   }
  },
  "events": [
-  "gdacs:TC:1001327"
+  "usgs:us6000tyw6",
+  "usgs:us6000tytg",
+  "usgs:us6000tyhk",
+  "gdacs:TC:1001327",
+  "eonet:EONET_20411",
+  "eonet:EONET_9679",
+  "eonet:EONET_6104"
  ],
  "changes": [],
  "activity": {

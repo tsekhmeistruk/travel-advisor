@@ -93,6 +93,8 @@ The fields in `stats` depend on the source:
 
 - **UCDP** (conflict source, from Oct 1, 2026): `fetched` (new monthly versions), `refetched` (stored versions downloaded again because the stored format changed, Oct 2, 2026), `skipped` (months that never came out), `through` (the latest version), `events` (events in the versions read), `unmapped` (country names missing from the config). `calls.version` counts the CSV downloads; a 404 means "not out yet".
 
+- **USGS** and **EONET** (markers-only event sources, from Oct 2, 2026): `events` (stored: USGS's quakes of M5+ in 7 days, EONET's open volcanoes and those closed in the last 7 days), `current`, `received`, `added`, `archived`, as for GDACS. `calls.feed` and `calls.api` are the one request each.
+
 - **Wikipedia** (context source, from Oct 2, 2026): `articles` (titles in the config), `fetched` (read in this run), `failed` (their last copy was kept), `noInfobox` (articles without a war infobox: their summary is still used). `calls.summary`, `calls.lead` and `calls.infobox` count the REST summaries, the lead sections and the infobox templates.
 
 `calls.search` is GDACS's search endpoint, counted like `calls.list`. HTTP 204 means "no events".

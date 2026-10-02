@@ -36,7 +36,10 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "eonet:EONET_20409",
+  "eonet:EONET_20102"
+ ],
  "changes": [
   {
    "id": "ni:violence:2026-09-28",

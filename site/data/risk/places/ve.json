@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "usgs:us6000tz5h"
+ ],
  "changes": [
   {
    "id": "ve:protest:2026-09-28",

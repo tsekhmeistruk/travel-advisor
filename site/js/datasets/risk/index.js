@@ -148,7 +148,7 @@ export function createRiskMode(ctx) {
       <p class="moves">${esc(tr('overview.changes', { window: windowText(windowDays()), up: MARK, down: '\u0001' }))
     .replace(MARK, `${arrow('up')} <strong>${moves.up}</strong>`).replace('\u0001', `${arrow('down')} <strong>${moves.down}</strong>`)}</p>
       ${latestHtml()}
-      <p class="hint">${esc(view === 'category' && i18n.has(`risk.overview.about.${category}`) ? tr(`overview.about.${category}`) : tr('overview.hint'))}</p>
+      <p class="hint">${esc(view === 'category' && i18n.has(`risk.overview.about.${category}`) ? tr(`overview.about.${category}`, { count: mapEvents().length }) : tr('overview.hint'))}</p>
       <div class="card-actions"><button class="link link-btn" data-action="list">${esc(tr('list.open'))}</button></div>`;
   }
 
@@ -399,7 +399,7 @@ export function createRiskMode(ctx) {
     return `
       <div class="eyebrow">${esc(tr('event.eyebrow', { source: sourceName(e.source), category: catName(e.category) }))}</div>
       <h3 class="${titleSize(e.name)}" title="${esc(e.name)}">${esc(e.name)}</h3>
-      ${badge(e.level, tr('event.badge', { alert: alertName(e.native.value), level: levelName(e.level) }))}
+      ${badge(e.level, e.marker ? alertName(e.native.value) : tr('event.badge', { alert: alertName(e.native.value), level: levelName(e.level) }))}
       <p class="desc">${esc(e.severity ?? typeName(e.type))}</p>
       <dl class="meta">
         ${e.startedAt === e.toDate
@@ -413,6 +413,10 @@ export function createRiskMode(ctx) {
 
   /** An event's selection target: the event, on its first place. */
   const targetOf = (e) => ({ eventId: e.id, ...(e.placeIds[0] && { placeId: e.placeIds[0] }) });
+  /** The events on the map: the mode's categories, or every major event (Orange and Red) in the highest mode; hidden levels hide theirs. */
+  const mapEvents = () => events.filter(e => e.point && (categories ? categories.has(e.category) : (e.level ?? 1) >= 3) && levels().includes(e.level ?? 1));
+  /** "How it works": opens the help (main.js), from the footer. */
+  const helpButton = () => `<button class="link-btn" data-action="help">${esc(i18n.t('help.short'))}</button>`;
 
   // ---- the dataset interface
 
@@ -438,13 +442,19 @@ export function createRiskMode(ctx) {
       return issue ? tr('headerIssue', { base, source: sourceName(issue.sources[0]), status: tr(`status.${issue.status}`) }) : base;
     },
     stale: () => isStale(current.asOf, now(), STALE_HOURS),
-    /** Footer HTML: the sources, linked, and that the levels are ours. */
+    /** Footer HTML, one line: this mode's sources, linked, and "How it works" (that the levels are ours is in the help). */
     footer() {
-      const links = Object.entries(current.sources ?? {}).map(([id, s]) => {
-        const url = safeUrl(s.url);
+      const shownCats = Object.keys(current.categories).filter(c => !categories || categories.has(c));
+      const ids = [...new Set([
+        ...shownCats.flatMap(c => current.categories[c].sources ?? []),
+        ...events.filter(e => !categories || categories.has(e.category)).map(e => e.source),
+      ])];
+      // Linked to its site when the risk files name one; else just named.
+      const links = ids.map(id => {
+        const url = safeUrl(current.sources?.[id]?.url);
         return url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(sourceName(id))}</a>` : esc(sourceName(id));
       });
-      return esc(tr('footer', { sources: MARK })).replace(MARK, links.join(', '));
+      return `${esc(tr('footer', { sources: MARK })).replace(MARK, links.join(', '))} · ${helpButton()}`;
     },
 
     style(placeId) {
@@ -550,9 +560,7 @@ export function createRiskMode(ctx) {
      * the highest mode. Hidden levels hide their markers too.
      */
     markers() {
-      return events
-        .filter(e => e.point && (categories ? categories.has(e.category) : (e.level ?? 1) >= 3) && levels().includes(e.level ?? 1))
-        .map(e => ({ id: e.id, lon: e.point.lon, lat: e.point.lat, kind: e.type, level: e.level ?? 1 }));
+      return mapEvents().map(e => ({ id: e.id, lon: e.point.lon, lat: e.point.lat, kind: e.type, level: e.level ?? 1 }));
     },
     /** A marker's selection target: the event, on its first place. */
     eventTarget(id) {
@@ -652,7 +660,7 @@ export function createRiskMode(ctx) {
             </span>
             <span class="what">${arrow(direction(c))}${esc(changeText(c))}${count > 1 ? `<span class="earlier">${esc(tr('feed.earlier', { count: count - 1 }))}</span>` : ''}</span>
           </button></li>`).join('') + tail
-        : `<li class="recent-empty">${emptyHtml(tr('feed.empty'))}</li>`;
+        : '';
     },
     showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
 

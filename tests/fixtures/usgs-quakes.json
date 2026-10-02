@@ -1,0 +1,213 @@
+{
+ "type": "FeatureCollection",
+ "metadata": {
+  "generated": 1790965065000,
+  "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
+  "title": "USGS Magnitude 4.5+ Earthquakes, Past Week",
+  "status": 200,
+  "api": "2.7.0",
+  "count": 140
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 5.8,
+    "place": "165 km SSE of Vilyuchinsk, Russia",
+    "time": 1790958881010,
+    "updated": 1790961820040,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz62",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000tz62.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": 3.738,
+    "alert": "green",
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 518,
+    "net": "us",
+    "code": "6000tz62",
+    "ids": ",us6000tz62,",
+    "sources": ",us,",
+    "types": ",losspager,moment-tensor,origin,phase-data,shakemap,",
+    "nst": 119,
+    "dmin": 1.894,
+    "rms": 0.69,
+    "gap": 44,
+    "magType": "mww",
+    "type": "earthquake",
+    "title": "M 5.8 - 165 km SSE of Vilyuchinsk, Russia"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     159.7398,
+     51.6873,
+     29.477
+    ]
+   },
+   "id": "us6000tz62"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 5,
+    "place": "south of the Fiji Islands",
+    "time": 1790915225754,
+    "updated": 1790916138040,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyzi",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000tyzi.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 385,
+    "net": "us",
+    "code": "6000tyzi",
+    "ids": ",us6000tyzi,",
+    "sources": ",us,",
+    "types": ",origin,phase-data,",
+    "nst": 61,
+    "dmin": 5.399,
+    "rms": 0.82,
+    "gap": 87,
+    "magType": "mb",
+    "type": "earthquake",
+    "title": "M 5.0 - south of the Fiji Islands"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     178.6446,
+     -24.7752,
+     557.245
+    ]
+   },
+   "id": "us6000tyzi"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 4.7,
+    "place": "5 km NNE of Korumburra, Australia",
+    "time": 1790956899581,
+    "updated": 1790964978690,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz1y",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000tz1y.geojson",
+    "felt": 489,
+    "cdi": 5.4,
+    "mmi": null,
+    "alert": null,
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 604,
+    "net": "us",
+    "code": "6000tz1y",
+    "ids": ",us6000tz1y,",
+    "sources": ",us,",
+    "types": ",dyfi,origin,phase-data,",
+    "nst": 27,
+    "dmin": 0.853,
+    "rms": 0.69,
+    "gap": 62,
+    "magType": "mb",
+    "type": "earthquake",
+    "title": "M 4.7 - 5 km NNE of Korumburra, Australia"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     145.8401,
+     -38.3802,
+     10
+    ]
+   },
+   "id": "us6000tz1y"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 4.8,
+    "place": "127 km S of False Pass, Alaska",
+    "time": 1790865979877,
+    "updated": 1790888901440,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyuf",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000tyuf.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": 2.745,
+    "alert": null,
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 354,
+    "net": "us",
+    "code": "6000tyuf",
+    "ids": ",aka2026tljnqz,us6000tyuf,",
+    "sources": ",ak,us,",
+    "types": ",origin,phase-data,shakemap,",
+    "nst": 68,
+    "dmin": 0.97,
+    "rms": 0.83,
+    "gap": 166,
+    "magType": "mb",
+    "type": "earthquake",
+    "title": "M 4.8 - 127 km S of False Pass, Alaska"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -163.7238,
+     53.7226,
+     35
+    ]
+   },
+   "id": "us6000tyuf"
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "mag": 4.5,
+    "place": "101 km NE of Ruteng, Indonesia",
+    "time": 1790923686954,
+    "updated": 1790925874040,
+    "tz": null,
+    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyzy",
+    "detail": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/us6000tyzy.geojson",
+    "felt": null,
+    "cdi": null,
+    "mmi": null,
+    "alert": null,
+    "status": "reviewed",
+    "tsunami": 0,
+    "sig": 312,
+    "net": "us",
+    "code": "6000tyzy",
+    "ids": ",us6000tyzy,",
+    "sources": ",us,",
+    "types": ",origin,phase-data,",
+    "nst": 16,
+    "dmin": 3.21,
+    "rms": 1.18,
+    "gap": 129,
+    "magType": "mb",
+    "type": "earthquake",
+    "title": "M 4.5 - 101 km NE of Ruteng, Indonesia"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.0985,
+     -7.9511,
+     10
+    ]
+   },
+   "id": "us6000tyzy"
+  }
+ ]
+}

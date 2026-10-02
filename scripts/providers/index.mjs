@@ -7,6 +7,7 @@
 // SOURCES: risk sources that report events (default export { id, kind: 'events', source,
 // fetch }), daily counts (kind: 'counts'), monthly conflict data (kind: 'conflict') or context
 // (kind: 'context': articles about wars, never a level), configured in config/sources/<id>.json.
+// An events source with `markersOnly` in its config (usgs, eonet) adds map markers, never a level.
 //
 // Every id also needs an entry in config/schedule.json and a step in the update workflow.
 
@@ -20,9 +21,11 @@ import who from './who/index.mjs';
 import gdelt from './gdelt/index.mjs';
 import ucdp from './ucdp/index.mjs';
 import wikipedia from './wikipedia/index.mjs';
+import usgs from './usgs/index.mjs';
+import eonet from './eonet/index.mjs';
 
 export const PROVIDERS = { us, ca, nl, uk, de };
-export const SOURCES = { gdacs, who, gdelt, ucdp, wikipedia };
+export const SOURCES = { gdacs, who, gdelt, ucdp, wikipedia, usgs, eonet };
 
 export function getProvider(id) {
   const p = PROVIDERS[id] ?? SOURCES[id];

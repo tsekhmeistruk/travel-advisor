@@ -1,0 +1,1457 @@
+{
+ "source": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
+ "fetchedAt": "2026-10-02T18:22:34.617Z",
+ "firstFetchedAt": "2026-10-02T18:22:34.617Z",
+ "events": [
+  {
+   "id": "usgs:us6000txpf",
+   "code": "EQ",
+   "name": "M 5.0 - 13 km N of Xunchang, China",
+   "country": "China",
+   "iso3": [],
+   "point": {
+    "lon": 104.703,
+    "lat": 28.574
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-25T21:01:27.262Z",
+   "toDate": "2026-09-25T21:01:27.262Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txpf",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txpi",
+   "code": "EQ",
+   "name": "M 6.6 - 80 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.61,
+    "lat": -21.298
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M6"
+   },
+   "severity": "Magnitude 6.6 mww, depth 10 km",
+   "startedAt": "2026-09-25T21:23:03.309Z",
+   "toDate": "2026-09-25T21:23:03.309Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txpi",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M6"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txq2",
+   "code": "EQ",
+   "name": "M 5.1 - 78 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.574,
+    "lat": -21.273
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "startedAt": "2026-09-25T22:07:34.791Z",
+   "toDate": "2026-09-25T22:07:34.791Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txq2",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txqi",
+   "code": "EQ",
+   "name": "M 5.5 - 61 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.445,
+    "lat": -21.375
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.5 mww, depth 10 km",
+   "startedAt": "2026-09-25T23:39:41.392Z",
+   "toDate": "2026-09-25T23:39:41.392Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txqi",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txqk",
+   "code": "EQ",
+   "name": "M 5.4 - 69 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.435,
+    "lat": -21.202
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.4 mb, depth 10 km",
+   "startedAt": "2026-09-25T23:52:35.158Z",
+   "toDate": "2026-09-25T23:52:35.158Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txqk",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txql",
+   "code": "EQ",
+   "name": "M 5.0 - 15 km NNW of Xunchang, China",
+   "country": "China",
+   "iso3": [],
+   "point": {
+    "lon": 104.643,
+    "lat": 28.579
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-25T23:57:33.361Z",
+   "toDate": "2026-09-25T23:57:33.361Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txql",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txqu",
+   "code": "EQ",
+   "name": "M 5.3 - 58 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.372,
+    "lat": -21.288
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.3 mb, depth 10 km",
+   "startedAt": "2026-09-26T01:10:19.430Z",
+   "toDate": "2026-09-26T01:10:19.430Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txqu",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txrf",
+   "code": "EQ",
+   "name": "M 5.1 - 64 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.403,
+    "lat": -21.227
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "startedAt": "2026-09-26T05:50:48.716Z",
+   "toDate": "2026-09-26T05:50:48.716Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txrf",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txrn",
+   "code": "EQ",
+   "name": "M 5.1 - 68 km NE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.423,
+    "lat": -21.194
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "startedAt": "2026-09-26T07:08:02.558Z",
+   "toDate": "2026-09-26T07:08:02.558Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txrn",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txrq",
+   "code": "EQ",
+   "name": "M 5.0 - 84 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.614,
+    "lat": -21.225
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mww, depth 10 km",
+   "startedAt": "2026-09-26T07:22:12.908Z",
+   "toDate": "2026-09-26T07:22:12.908Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txrq",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txrs",
+   "code": "EQ",
+   "name": "M 5.0 - 78 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.548,
+    "lat": -21.212
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-26T08:24:58.743Z",
+   "toDate": "2026-09-26T08:24:58.743Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txrs",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txsz",
+   "code": "EQ",
+   "name": "M 5.0 - 76 km NE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.468,
+    "lat": -21.128
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-26T12:14:20.648Z",
+   "toDate": "2026-09-26T12:14:20.648Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txsz",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txt0",
+   "code": "EQ",
+   "name": "M 5.2 - 58 km NE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.323,
+    "lat": -21.218
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.2 mb, depth 10 km",
+   "startedAt": "2026-09-26T12:14:58.406Z",
+   "toDate": "2026-09-26T12:14:58.406Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txt0",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txtc",
+   "code": "EQ",
+   "name": "M 5.6 - 72 km ESE of Kokopo, Papua New Guinea",
+   "country": "Papua New Guinea",
+   "iso3": [],
+   "point": {
+    "lon": 152.861,
+    "lat": -4.629
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.6 mww, depth 70 km",
+   "startedAt": "2026-09-26T14:08:18.875Z",
+   "toDate": "2026-09-26T14:08:18.875Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txtc",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txtn",
+   "code": "EQ",
+   "name": "M 5.0 - 78 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.573,
+    "lat": -21.268
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mww, depth 10 km",
+   "startedAt": "2026-09-26T15:01:36.315Z",
+   "toDate": "2026-09-26T15:01:36.315Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txtn",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txtz",
+   "code": "EQ",
+   "name": "M 5.2 - 148 km NW of Kilmia, Yemen",
+   "country": "Yemen",
+   "iso3": [],
+   "point": {
+    "lon": 51.457,
+    "lat": 13.287
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.2 mww, depth 10 km",
+   "startedAt": "2026-09-26T16:33:43.256Z",
+   "toDate": "2026-09-26T16:33:43.256Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txtz",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txur",
+   "code": "EQ",
+   "name": "M 5.0 - 52 km NNW of Ruteng, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 120.329,
+    "lat": -8.158
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-26T19:37:01.212Z",
+   "toDate": "2026-09-26T19:37:01.212Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txur",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txvu",
+   "code": "EQ",
+   "name": "M 5.0 - 61 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.457,
+    "lat": -21.43
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-27T01:18:25.822Z",
+   "toDate": "2026-09-27T01:18:25.822Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txvu",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txw5",
+   "code": "EQ",
+   "name": "M 5.1 - 90 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.707,
+    "lat": -21.286
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "startedAt": "2026-09-27T02:22:10.562Z",
+   "toDate": "2026-09-27T02:22:10.562Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txw5",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000txzj",
+   "code": "EQ",
+   "name": "M 5.0 - 191 km NW of Oula Xiuma, China",
+   "country": "China",
+   "iso3": [],
+   "point": {
+    "lon": 99.554,
+    "lat": 35.386
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-27T16:43:10.268Z",
+   "toDate": "2026-09-27T16:43:10.268Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txzj",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty0j",
+   "code": "EQ",
+   "name": "M 5.0 - South Sandwich Islands region",
+   "iso3": [],
+   "point": {
+    "lon": -25.894,
+    "lat": -59.059
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 104 km",
+   "startedAt": "2026-09-27T21:13:33.366Z",
+   "toDate": "2026-09-27T21:13:33.366Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty0j",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty2b",
+   "code": "EQ",
+   "name": "M 5.3 - 60 km NE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.355,
+    "lat": -21.224
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.3 mww, depth 10 km",
+   "startedAt": "2026-09-28T03:25:06.893Z",
+   "toDate": "2026-09-28T03:25:06.893Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty2b",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty2e",
+   "code": "EQ",
+   "name": "M 5.1 - South Sandwich Islands region",
+   "iso3": [],
+   "point": {
+    "lon": -25.278,
+    "lat": -57.67
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 35 km",
+   "startedAt": "2026-09-28T03:43:44.172Z",
+   "toDate": "2026-09-28T03:43:44.172Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty2e",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty2u",
+   "code": "EQ",
+   "name": "M 5.4 - 231 km WSW of Port McNeill, Canada",
+   "country": "Canada",
+   "iso3": [],
+   "point": {
+    "lon": -130.221,
+    "lat": 50.053
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.4 mww, depth 10 km",
+   "startedAt": "2026-09-28T04:41:21.639Z",
+   "toDate": "2026-09-28T04:41:21.639Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty2u",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty33",
+   "code": "EQ",
+   "name": "M 5.1 - 78 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.546,
+    "lat": -21.206
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "startedAt": "2026-09-28T05:28:08.891Z",
+   "toDate": "2026-09-28T05:28:08.891Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty33",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty38",
+   "code": "EQ",
+   "name": "M 5.2 - 67 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.427,
+    "lat": -21.225
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.2 mb, depth 10 km",
+   "startedAt": "2026-09-28T05:45:29.689Z",
+   "toDate": "2026-09-28T05:45:29.689Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty38",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty43",
+   "code": "EQ",
+   "name": "M 5.2 - 190 km WSW of Port McNeill, Canada",
+   "country": "Canada",
+   "iso3": [],
+   "point": {
+    "lon": -129.679,
+    "lat": 50.171
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.2 mww, depth 10 km",
+   "startedAt": "2026-09-28T09:13:39.402Z",
+   "toDate": "2026-09-28T09:13:39.402Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty43",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000ty57",
+   "code": "EQ",
+   "name": "M 5.4 - north of Svalbard",
+   "iso3": [],
+   "point": {
+    "lon": -7.192,
+    "lat": 82.639
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.4 mww, depth 10 km",
+   "startedAt": "2026-09-28T13:22:39.769Z",
+   "toDate": "2026-09-28T13:22:39.769Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000ty57",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tya5",
+   "code": "EQ",
+   "name": "M 5.3 - 76 km NE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.409,
+    "lat": -21.072
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.3 mww, depth 10 km",
+   "startedAt": "2026-09-29T03:23:54.418Z",
+   "toDate": "2026-09-29T03:23:54.418Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tya5",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tybr",
+   "code": "EQ",
+   "name": "M 5.0 - 77 km ENE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.592,
+    "lat": -21.345
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-29T10:42:57.409Z",
+   "toDate": "2026-09-29T10:42:57.409Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tybr",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyc1",
+   "code": "EQ",
+   "name": "M 5.4 - 99 km SSE of Pangai, Tonga",
+   "country": "Tonga",
+   "iso3": [],
+   "point": {
+    "lon": -174.081,
+    "lat": -20.677
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.4 mb, depth 10 km",
+   "startedAt": "2026-09-29T12:40:35.064Z",
+   "toDate": "2026-09-29T12:40:35.064Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyc1",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyc3",
+   "code": "EQ",
+   "name": "M 5.5 - southern Mid-Atlantic Ridge",
+   "iso3": [],
+   "point": {
+    "lon": -16.077,
+    "lat": -35.276
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.5 mww, depth 10 km",
+   "startedAt": "2026-09-29T13:06:09.941Z",
+   "toDate": "2026-09-29T13:06:09.941Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyc3",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyhi",
+   "code": "EQ",
+   "name": "M 5.4 - Balleny Islands region",
+   "iso3": [],
+   "point": {
+    "lon": 169.216,
+    "lat": -63.009
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.4 mww, depth 10 km",
+   "startedAt": "2026-09-30T04:48:06.031Z",
+   "toDate": "2026-09-30T04:48:06.031Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyhi",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyhk",
+   "code": "EQ",
+   "name": "M 5.6 - 74 km S of Yonakuni, Japan",
+   "country": "Japan",
+   "iso3": [],
+   "point": {
+    "lon": 122.915,
+    "lat": 23.803
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.6 mww, depth 11 km",
+   "startedAt": "2026-09-30T05:00:24.971Z",
+   "toDate": "2026-09-30T05:00:24.971Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyhk",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyid",
+   "code": "EQ",
+   "name": "M 5.0 - 83 km NE of Tadine, New Caledonia",
+   "country": "New Caledonia",
+   "iso3": [],
+   "point": {
+    "lon": 168.424,
+    "lat": -20.988
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-09-30T06:50:03.339Z",
+   "toDate": "2026-09-30T06:50:03.339Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyid",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyik",
+   "code": "EQ",
+   "name": "M 5.2 - Balleny Islands region",
+   "iso3": [],
+   "point": {
+    "lon": 171.414,
+    "lat": -63.562
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.2 mww, depth 10 km",
+   "startedAt": "2026-09-30T07:07:16.005Z",
+   "toDate": "2026-09-30T07:07:16.005Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyik",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyit",
+   "code": "EQ",
+   "name": "M 5.1 - 121 km S of Kokopo, Papua New Guinea",
+   "country": "Papua New Guinea",
+   "iso3": [],
+   "point": {
+    "lon": 152.133,
+    "lat": -5.435
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 28 km",
+   "startedAt": "2026-09-30T08:15:17.486Z",
+   "toDate": "2026-09-30T08:15:17.486Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyit",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyjb",
+   "code": "EQ",
+   "name": "M 5.0 - 27 km N of Kupang, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 123.646,
+    "lat": -9.924
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 19 km",
+   "startedAt": "2026-09-30T10:58:50.586Z",
+   "toDate": "2026-09-30T10:58:50.586Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyjb",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyku",
+   "code": "EQ",
+   "name": "M 5.0 - 142 km SE of Petropavlovsk-Kamchatsky, Russia",
+   "country": "Russia",
+   "iso3": [],
+   "point": {
+    "lon": 160.333,
+    "lat": 52.317
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 35 km",
+   "startedAt": "2026-09-30T18:21:19.257Z",
+   "toDate": "2026-09-30T18:21:19.257Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyku",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tymj",
+   "code": "EQ",
+   "name": "M 5.6 - 94 km SW of Tamarindo, Costa Rica",
+   "country": "Costa Rica",
+   "iso3": [],
+   "point": {
+    "lon": -86.506,
+    "lat": 9.753
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.6 mww, depth 8 km",
+   "startedAt": "2026-09-30T21:55:26.169Z",
+   "toDate": "2026-09-30T21:55:26.169Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tymj",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyny",
+   "code": "EQ",
+   "name": "M 5.2 - 7 km ESE of Baghlān, Afghanistan",
+   "country": "Afghanistan",
+   "iso3": [],
+   "point": {
+    "lon": 68.782,
+    "lat": 36.099
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.2 mb, depth 50 km",
+   "startedAt": "2026-10-01T01:29:20.694Z",
+   "toDate": "2026-10-01T01:29:20.694Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyny",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyq7",
+   "code": "EQ",
+   "name": "M 5.0 - 38 km WSW of Palimbang, Philippines",
+   "country": "Philippines",
+   "iso3": [],
+   "point": {
+    "lon": 123.86,
+    "lat": 6.112
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-10-01T05:34:10.634Z",
+   "toDate": "2026-10-01T05:34:10.634Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyq7",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyt8",
+   "code": "EQ",
+   "name": "M 5.3 - Balleny Islands region",
+   "iso3": [],
+   "point": {
+    "lon": 165.955,
+    "lat": -62.535
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.3 mww, depth 10 km",
+   "startedAt": "2026-09-27T15:41:04.974Z",
+   "toDate": "2026-09-27T15:41:04.974Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyt8",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tytg",
+   "code": "EQ",
+   "name": "M 5.3 - 0 km NNE of Yōkaichiba, Japan",
+   "country": "Japan",
+   "iso3": [],
+   "point": {
+    "lon": 140.551,
+    "lat": 35.703
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.3 mww, depth 42 km",
+   "startedAt": "2026-10-01T12:27:11.864Z",
+   "toDate": "2026-10-01T12:27:11.864Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tytg",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyua",
+   "code": "EQ",
+   "name": "M 5.0 - 176 km NNE of Ruteng, Indonesia",
+   "country": "Indonesia",
+   "iso3": [],
+   "point": {
+    "lon": 120.914,
+    "lat": -7.08
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-10-01T14:19:59.078Z",
+   "toDate": "2026-10-01T14:19:59.078Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyua",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyw6",
+   "code": "EQ",
+   "name": "M 5.1 - 108 km ENE of Miyako, Japan",
+   "country": "Japan",
+   "iso3": [],
+   "point": {
+    "lon": 143.173,
+    "lat": 39.878
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mww, depth 35 km",
+   "startedAt": "2026-10-01T17:17:20.097Z",
+   "toDate": "2026-10-01T17:17:20.097Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyw6",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tywu",
+   "code": "EQ",
+   "name": "M 5.1 - 171 km SE of Lata, Solomon Islands",
+   "country": "Solomon Islands",
+   "iso3": [],
+   "point": {
+    "lon": 166.961,
+    "lat": -11.771
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mww, depth 10 km",
+   "startedAt": "2026-10-01T19:38:01.795Z",
+   "toDate": "2026-10-01T19:38:01.795Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tywu",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyx0",
+   "code": "EQ",
+   "name": "M 5.1 - 176 km SE of Lata, Solomon Islands",
+   "country": "Solomon Islands",
+   "iso3": [],
+   "point": {
+    "lon": 167.092,
+    "lat": -11.673
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "startedAt": "2026-10-01T20:00:34.322Z",
+   "toDate": "2026-10-01T20:00:34.322Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyx0",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyzi",
+   "code": "EQ",
+   "name": "M 5.0 - south of the Fiji Islands",
+   "iso3": [],
+   "point": {
+    "lon": 178.645,
+    "lat": -24.775
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 557 km",
+   "startedAt": "2026-10-02T04:27:05.754Z",
+   "toDate": "2026-10-02T04:27:05.754Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyzi",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tyzl",
+   "code": "EQ",
+   "name": "M 5.1 - 159 km SE of Gizo, Solomon Islands",
+   "country": "Solomon Islands",
+   "iso3": [],
+   "point": {
+    "lon": 158.022,
+    "lat": -8.933
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "startedAt": "2026-10-02T04:44:53.423Z",
+   "toDate": "2026-10-02T04:44:53.423Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyzl",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tz0x",
+   "code": "EQ",
+   "name": "M 5.0 - 63 km SW of Panguna, Papua New Guinea",
+   "country": "Papua New Guinea",
+   "iso3": [],
+   "point": {
+    "lon": 155.014,
+    "lat": -6.637
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 38 km",
+   "startedAt": "2026-10-02T11:14:14.383Z",
+   "toDate": "2026-10-02T11:14:14.383Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz0x",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tz1c",
+   "code": "EQ",
+   "name": "M 5.0 - 6 km E of Inglewood, New Zealand",
+   "country": "New Zealand",
+   "iso3": [],
+   "point": {
+    "lon": 174.26,
+    "lat": -39.16
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-10-02T13:57:15.838Z",
+   "toDate": "2026-10-02T13:57:15.838Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz1c",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tz5h",
+   "code": "EQ",
+   "name": "M 5.0 - 26 km SSW of Güiria, Venezuela",
+   "country": "Venezuela",
+   "iso3": [],
+   "point": {
+    "lon": -62.422,
+    "lat": 10.37
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-10-02T16:31:25.762Z",
+   "toDate": "2026-10-02T16:31:25.762Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz5h",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tz62",
+   "code": "EQ",
+   "name": "M 5.8 - 165 km SSE of Vilyuchinsk, Russia",
+   "country": "Russia",
+   "iso3": [],
+   "point": {
+    "lon": 159.74,
+    "lat": 51.687
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5.8 mww, depth 29 km",
+   "startedAt": "2026-10-02T16:34:41.010Z",
+   "toDate": "2026-10-02T16:34:41.010Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz62",
+   "firstSeen": "2026-10-02T18:22:34.617Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  }
+ ]
+}

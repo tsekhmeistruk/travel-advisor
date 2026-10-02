@@ -37,6 +37,9 @@
   }
  },
  "events": [
+  "usgs:us6000tyua",
+  "usgs:us6000tyjb",
+  "usgs:us6000txur",
   "gdacs:WF:1032480",
   "gdacs:WF:1032502",
   "gdacs:WF:1032521",
@@ -59,7 +62,14 @@
   "gdacs:WF:1032483",
   "gdacs:WF:1032487",
   "gdacs:WF:1032344",
-  "gdacs:WF:1032345"
+  "gdacs:WF:1032345",
+  "eonet:EONET_12813",
+  "eonet:EONET_6470",
+  "eonet:EONET_6462",
+  "eonet:EONET_6452",
+  "eonet:EONET_6369",
+  "eonet:EONET_5202",
+  "eonet:EONET_4561"
  ],
  "changes": [],
  "activity": {

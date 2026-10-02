@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "eonet:EONET_20710"
+ ],
  "changes": [],
  "activity": {
   "source": "gdelt",

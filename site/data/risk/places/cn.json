@@ -36,7 +36,11 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "usgs:us6000txzj",
+  "usgs:us6000txql",
+  "usgs:us6000txpf"
+ ],
  "changes": [
   {
    "id": "cn:disaster:2026-10-01T07:48:29.839Z",

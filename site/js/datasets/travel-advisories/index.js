@@ -202,7 +202,7 @@ export function createTravelAdvisories(ctx) {
     footer() {
       const url = safeUrl(data.links?.list);
       const agency = url ? `<a id="sourceLink" href="${esc(url)}" target="_blank" rel="noopener">${esc(tp('agency'))}</a>` : esc(tp('agency'));
-      return esc(tx('footer', { agency: MARK })).replace(MARK, agency);
+      return `${esc(tx('footer', { agency: MARK })).replace(MARK, agency)} · <button class="link-btn" data-action="help">${esc(i18n.t('help.short'))}</button>`;
     },
 
     /** How the map draws a place (see WorldMap). */
@@ -304,7 +304,7 @@ export function createTravelAdvisories(ctx) {
             <span class="what">${arrow(c)}${esc(changeText(c))}</span>
           </button></li>`;
         }).join('')
-        : `<li class="recent-empty">${emptyHtml()}</li>`;
+        : '';   // the heading and 0 say it; the overview card says so too, and offers more days
     },
     showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
 

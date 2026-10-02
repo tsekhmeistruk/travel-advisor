@@ -170,6 +170,24 @@ export function eventSignals(sourceId, data, config, index) {
   return { byCategory, events, warnings };
 }
 
+/** The distance in km between two points ({ lon, lat }), along the Earth's surface. */
+export function distanceKm(a, b) {
+  const rad = (d) => (d * Math.PI) / 180;
+  const h = Math.sin(rad(b.lat - a.lat) / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(rad(b.lon - a.lon) / 2) ** 2;
+  return 2 * 6371 * Math.asin(Math.min(1, Math.sqrt(h)));
+}
+
+/**
+ * A markers-only source's event that another source already reports: the same type within
+ * `rule.km` (and, with `rule.hours`, starting within that many hours: a quake is a moment, a
+ * volcano erupts for months). The map then shows the other one only.
+ */
+export function isDuplicate(marker, others, rule) {
+  if (!marker.point || !rule) return false;
+  return others.some(e => e.type === marker.type && e.point && distanceKm(e.point, marker.point) <= rule.km
+    && (rule.hours == null || Math.abs(Date.parse(e.startedAt) - Date.parse(marker.startedAt)) <= rule.hours * 36e5));
+}
+
 // ---- confirmed signal state and level changes
 
 /**
@@ -382,6 +400,7 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   let conflict = null;
   let tensionsByPlace = {};
   const contexts = [];
+  const markerEvents = [];   // from markers-only sources: added after the others, without duplicates
   for (const [sourceId, { config, data, pairs }] of Object.entries(sources)) {
     if (config.kind === 'context') {
       // Articles about the wars: read with the conflict figures below, never a level.
@@ -420,6 +439,15 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
       }
       continue;
     }
+    if (config.markersOnly) {
+      // Map markers only (USGS quakes, EONET volcanoes): never a level or a change, and an event
+      // another source reports (GDACS) is shown once, as that source's.
+      if (!data || health[sourceId]?.status === 'error') continue;
+      const signals = eventSignals(sourceId, data, config, index);
+      warnings.push(...signals.warnings);
+      markerEvents.push(...signals.events.map(e => ({ event: { ...e, marker: true }, rule: config.duplicates })));
+      continue;
+    }
     const cats = [...new Set(Object.values(config.types).map(t => t.category))];
     for (const c of cats) if (!catIds.includes(c)) warnings.push(`[${sourceId}] category "${c}" is not in config/categories.json`);
     const available = data && health[sourceId]?.status !== 'error';
@@ -454,6 +482,9 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   const cutoff = asOf ? new Date(now - CHANGE_WINDOW_DAYS * DAY).toISOString().slice(0, 10) : '';
   const recent = [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')]
     .filter(c => c.at >= cutoff).sort(byTime).reverse();
+
+  const leveled = [...events];
+  events.push(...markerEvents.filter(m => !isDuplicate(m.event, leveled, m.rule)).map(m => m.event));
 
   // The context of the wars, once the conflict figures are known.
   let wars = null;

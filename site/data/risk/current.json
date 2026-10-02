@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T17:50:48.155Z",
+ "asOf": "2026-10-02T18:24:38.607Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -54,6 +54,10 @@
   }
  },
  "sources": {
+  "eonet": {
+   "url": "https://eonet.gsfc.nasa.gov/",
+   "terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+  },
   "gdacs": {
    "url": "https://www.gdacs.org/",
    "terms": "https://www.gdacs.org/documents/2025/GDACS_Terms_of_use_Mar_25.pdf"
@@ -65,6 +69,10 @@
   "ucdp": {
    "url": "https://ucdp.uu.se/",
    "terms": "https://ucdp.uu.se/downloads/"
+  },
+  "usgs": {
+   "url": "https://earthquake.usgs.gov/earthquakes/map/",
+   "terms": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
   },
   "who": {
    "url": "https://www.who.int/emergencies/disease-outbreak-news",

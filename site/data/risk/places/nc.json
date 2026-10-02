@@ -36,7 +36,28 @@
    "own": false
   }
  },
- "events": [],
+ "events": [
+  "usgs:us6000tyid",
+  "usgs:us6000tybr",
+  "usgs:us6000tya5",
+  "usgs:us6000ty38",
+  "usgs:us6000ty33",
+  "usgs:us6000ty2b",
+  "usgs:us6000txw5",
+  "usgs:us6000txvu",
+  "usgs:us6000txtn",
+  "usgs:us6000txt0",
+  "usgs:us6000txsz",
+  "usgs:us6000txrs",
+  "usgs:us6000txrq",
+  "usgs:us6000txrn",
+  "usgs:us6000txrf",
+  "usgs:us6000txqu",
+  "usgs:us6000txqk",
+  "usgs:us6000txqi",
+  "usgs:us6000txq2",
+  "usgs:us6000txpi"
+ ],
  "changes": [
   {
    "id": "advisory:us:New Caledonia:2026-05-21",

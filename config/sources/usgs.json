@@ -1,0 +1,51 @@
+{
+ "id": "usgs",
+ "name": "USGS",
+ "type": "government-science",
+ "authority": "U.S. Geological Survey, Earthquake Hazards Program: earthquakes worldwide, located within minutes; shown here from magnitude 5 as map markers, never as a level",
+ "links": {
+  "home": "https://earthquake.usgs.gov/earthquakes/map/",
+  "terms": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits"
+ },
+ "licence": "Public domain (U.S. Government work); credit USGS",
+ "markersOnly": true,
+ "staleAfterHours": 6,
+ "confirmFallMinutes": 0,
+ "lookbackDays": 7,
+ "retainEndedDays": 7,
+ "minMagnitude": 5,
+ "duplicates": { "km": 100, "hours": 2 },
+ "scheme": "usgs-magnitude",
+ "levels": {
+  "M5": 1,
+  "M6": 1,
+  "M7": 1,
+  "M8": 1,
+  "M9": 1
+ },
+ "types": {
+  "EQ": {
+   "type": "earthquake",
+   "category": "disaster",
+   "tailDays": 7
+  }
+ },
+ "aliases": {
+  "Alaska": "us",
+  "California": "us",
+  "CA": "us",
+  "Hawaii": "us",
+  "Nevada": "us",
+  "Oregon": "us",
+  "Washington": "us",
+  "Idaho": "us",
+  "Montana": "us",
+  "Wyoming": "us",
+  "Utah": "us",
+  "Texas": "us",
+  "Oklahoma": "us",
+  "New Mexico": "us",
+  "Mexico": "mx",
+  "Russia": "ru"
+ }
+}

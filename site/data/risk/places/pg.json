@@ -37,6 +37,9 @@
   }
  },
  "events": [
+  "usgs:us6000tz0x",
+  "usgs:us6000tyit",
+  "usgs:us6000txtc",
   "gdacs:WF:1032454",
   "gdacs:WF:1032479",
   "gdacs:WF:1032522",
@@ -48,7 +51,9 @@
   "gdacs:WF:1032503",
   "gdacs:WF:1032394",
   "gdacs:WF:1032482",
-  "gdacs:WF:1032327"
+  "gdacs:WF:1032327",
+  "eonet:EONET_20395",
+  "eonet:EONET_20413"
  ],
  "changes": [],
  "activity": {

@@ -37,7 +37,8 @@
   }
  },
  "events": [
-  "gdacs:WF:1032229"
+  "gdacs:WF:1032229",
+  "eonet:EONET_16203"
  ],
  "changes": [],
  "activity": {
