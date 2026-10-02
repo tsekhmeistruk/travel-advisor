@@ -73,6 +73,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 ## Current state and open decisions
 
+- **UX revision 2: in progress.** The approved checklist is `docs/plans/ux-revision-2.md`. Tick each box there as soon as its item is done, and commit the doc with each part. **When resuming, read it first** and continue from the first unchecked box.
 - **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). Done so far:
   - **Pipeline:** stores, schedule, source health, the hourly workflow; GDACS (Orange/Red for levels, Green cyclones, floods and volcanoes for markers) and WHO Disease Outbreak News (Health) into `site/data/risk/`, with a file per place.
   - **Site:** map modes (Travel, Highest, Disasters, Wildfires, Changes), the risk summary card, the change feed, event markers with clustering and an event card, the country view, URL state and cache-busting. The site is called **Risk Monitor** and opens on **Highest** (Oct 2026); a saved mode or a link wins, and visitors with first-version settings stay on Travel. The repo and the localStorage key keep the old name.
