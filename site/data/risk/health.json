@@ -38,8 +38,8 @@
   },
   "ucdp": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T17:05:09.105Z",
-   "lastAttempt": "2026-10-02T17:05:09.105Z",
+   "lastSuccess": "2026-10-02T17:32:55.609Z",
+   "lastAttempt": "2026-10-02T17:32:55.609Z",
    "consecutiveFailures": 0,
    "records": 32
   },
