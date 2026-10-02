@@ -21,10 +21,10 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-10-02T18:27:37.720Z",
-  "lastSuccess": "2026-10-02T18:27:37.720Z",
-  "durationMs": 8308,
-  "records": 265,
+  "lastAttempt": "2026-10-02T22:33:35.214Z",
+  "lastSuccess": "2026-10-02T22:33:35.214Z",
+  "durationMs": 6473,
+  "records": 267,
   "consecutiveFailures": 0
  },
  "gdelt": {
@@ -63,16 +63,16 @@
   "consecutiveFailures": 0
  },
  "usgs": {
-  "lastAttempt": "2026-10-02T20:12:57.403Z",
-  "lastSuccess": "2026-10-02T20:12:57.403Z",
-  "durationMs": 186,
-  "records": 55,
+  "lastAttempt": "2026-10-02T22:33:42.180Z",
+  "lastSuccess": "2026-10-02T22:33:42.180Z",
+  "durationMs": 181,
+  "records": 54,
   "consecutiveFailures": 0
  },
  "who": {
-  "lastAttempt": "2026-10-02T13:11:41.250Z",
-  "lastSuccess": "2026-10-02T13:11:41.250Z",
-  "durationMs": 747,
+  "lastAttempt": "2026-10-02T22:33:41.750Z",
+  "lastSuccess": "2026-10-02T22:33:41.750Z",
+  "durationMs": 326,
   "records": 6,
   "consecutiveFailures": 0
  },

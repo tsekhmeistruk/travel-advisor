@@ -1,6 +1,58 @@
 {
- "asOf": "2026-10-02T20:12:57.677Z",
+ "asOf": "2026-10-02T22:33:42.181Z",
  "events": [
+  {
+   "id": "usgs:us6000tz8l",
+   "source": "usgs",
+   "type": "earthquake",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "name": "M 5.0 - 171 km SE of Vilyuchinsk, Russia",
+   "country": "Russia",
+   "severity": "Magnitude 5 mb, depth 31 km",
+   "placeIds": [
+    "ru"
+   ],
+   "point": {
+    "lon": 159.884,
+    "lat": 51.689
+   },
+   "startedAt": "2026-10-02T20:54:15.391Z",
+   "toDate": "2026-10-02T20:54:15.391Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz8l",
+   "marker": true
+  },
+  {
+   "id": "usgs:us6000tz8c",
+   "source": "usgs",
+   "type": "earthquake",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "name": "M 5.1 - 199 km SSE of Vilyuchinsk, Russia",
+   "country": "Russia",
+   "severity": "Magnitude 5.1 mb, depth 10 km",
+   "placeIds": [
+    "ru"
+   ],
+   "point": {
+    "lon": 159.665,
+    "lat": 51.315
+   },
+   "startedAt": "2026-10-02T20:27:27.120Z",
+   "toDate": "2026-10-02T20:27:27.120Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz8c",
+   "marker": true
+  },
   {
    "id": "usgs:us6000tz7b",
    "source": "usgs",
@@ -600,19 +652,19 @@
     "value": "Green"
    },
    "name": "Tropical Cyclone CHOI-WAN-26",
-   "country": "Northern Mariana Islands, Guam",
+   "country": "Northern Mariana Islands, Guam, Russian Federation",
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 204 km/h)",
    "placeIds": [
     "gu"
    ],
    "point": {
-    "lon": 144.6,
-    "lat": 17.7
+    "lon": 144.7,
+    "lat": 18.1
    },
    "startedAt": "2026-09-30T00:00:00.000Z",
-   "toDate": "2026-10-02T12:00:00.000Z",
+   "toDate": "2026-10-02T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=11&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=12&eventtype=TC"
   },
   {
    "id": "gdacs:WF:1032517",
@@ -888,6 +940,31 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1032496&episodeid=3&eventtype=WF"
   },
   {
+   "id": "gdacs:WF:1032538",
+   "source": "gdacs",
+   "type": "wildfire",
+   "category": "wildfire",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Forest fires in Australia",
+   "country": "Australia",
+   "severity": "Green impact for forestfire in 5005 ha",
+   "placeIds": [
+    "au"
+   ],
+   "point": {
+    "lon": 150.118,
+    "lat": -26.381
+   },
+   "startedAt": "2026-09-29T00:00:00.000Z",
+   "toDate": "2026-10-02T00:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032538&episodeid=1&eventtype=WF"
+  },
+  {
    "id": "gdacs:TC:1001330",
    "source": "gdacs",
    "type": "cyclone",
@@ -1147,7 +1224,7 @@
    },
    "name": "Forest fires in Australia",
    "country": "Australia",
-   "severity": "Green impact for forestfire in 40361 ha",
+   "severity": "Green impact for forestfire in 40501 ha",
    "placeIds": [
     "au"
    ],
@@ -1158,7 +1235,7 @@
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032478&episodeid=11&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032478&episodeid=12&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032484",
@@ -1222,7 +1299,7 @@
    },
    "name": "Forest fires in Australia",
    "country": "Australia",
-   "severity": "Green impact for forestfire in 31544 ha",
+   "severity": "Green impact for forestfire in 31574 ha",
    "placeIds": [
     "au"
    ],
@@ -1233,7 +1310,7 @@
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032497&episodeid=8&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032497&episodeid=9&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032498",
@@ -1247,18 +1324,18 @@
    },
    "name": "Forest fires in Australia",
    "country": "Australia",
-   "severity": "Green impact for forestfire in 12178 ha",
+   "severity": "Green impact for forestfire in 13274 ha",
    "placeIds": [
     "au"
    ],
    "point": {
-    "lon": 144.558,
-    "lat": -15.586
+    "lon": 144.559,
+    "lat": -15.585
    },
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032498&episodeid=8&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032498&episodeid=9&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032499",
@@ -1372,7 +1449,7 @@
    },
    "name": "Forest fires in Indonesia",
    "country": "Indonesia",
-   "severity": "Green impact for forestfire in 5163 ha",
+   "severity": "Green impact for forestfire in 5191 ha",
    "placeIds": [
     "id"
    ],
@@ -1383,7 +1460,7 @@
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032536&episodeid=1&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032536&episodeid=2&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032537",
@@ -1523,13 +1600,13 @@
     "mx"
    ],
    "point": {
-    "lon": -110.8,
+    "lon": -111.1,
     "lat": 19.3
    },
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-10-02T15:00:00.000Z",
+   "toDate": "2026-10-02T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=22&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=23&eventtype=TC"
   },
   {
    "id": "usgs:us6000txw5",
@@ -1770,7 +1847,7 @@
    },
    "name": "Forest fires in Australia",
    "country": "Australia",
-   "severity": "Green impact for forestfire in 8077 ha",
+   "severity": "Green impact for forestfire in 8081 ha",
    "placeIds": [
     "au"
    ],
@@ -1781,7 +1858,7 @@
    "startedAt": "2026-09-27T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032518&episodeid=5&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032518&episodeid=6&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032523",
@@ -2648,84 +2725,6 @@
    "marker": true
   },
   {
-   "id": "usgs:us6000txq2",
-   "source": "usgs",
-   "type": "earthquake",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "usgs-magnitude",
-    "value": "M5"
-   },
-   "name": "M 5.1 - 78 km ENE of Tadine, New Caledonia",
-   "country": "New Caledonia",
-   "severity": "Magnitude 5.1 mb, depth 10 km",
-   "placeIds": [
-    "nc"
-   ],
-   "point": {
-    "lon": 168.574,
-    "lat": -21.273
-   },
-   "startedAt": "2026-09-25T22:07:34.791Z",
-   "toDate": "2026-09-25T22:07:34.791Z",
-   "current": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txq2",
-   "marker": true
-  },
-  {
-   "id": "usgs:us6000txpi",
-   "source": "usgs",
-   "type": "earthquake",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "usgs-magnitude",
-    "value": "M6"
-   },
-   "name": "M 6.6 - 80 km ENE of Tadine, New Caledonia",
-   "country": "New Caledonia",
-   "severity": "Magnitude 6.6 mww, depth 10 km",
-   "placeIds": [
-    "nc"
-   ],
-   "point": {
-    "lon": 168.61,
-    "lat": -21.298
-   },
-   "startedAt": "2026-09-25T21:23:03.309Z",
-   "toDate": "2026-09-25T21:23:03.309Z",
-   "current": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txpi",
-   "marker": true
-  },
-  {
-   "id": "usgs:us6000txpf",
-   "source": "usgs",
-   "type": "earthquake",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "usgs-magnitude",
-    "value": "M5"
-   },
-   "name": "M 5.0 - 13 km N of Xunchang, China",
-   "country": "China",
-   "severity": "Magnitude 5 mb, depth 10 km",
-   "placeIds": [
-    "cn"
-   ],
-   "point": {
-    "lon": 104.703,
-    "lat": 28.574
-   },
-   "startedAt": "2026-09-25T21:01:27.262Z",
-   "toDate": "2026-09-25T21:01:27.262Z",
-   "current": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txpf",
-   "marker": true
-  },
-  {
    "id": "who:DON:2026-DON618",
    "source": "who",
    "type": "outbreak",
@@ -2882,7 +2881,7 @@
    },
    "name": "Forest fires in Tanzania",
    "country": "Tanzania",
-   "severity": "Green impact for forestfire in 21853 ha",
+   "severity": "Green impact for forestfire in 22082 ha",
    "placeIds": [
     "tz"
    ],
@@ -2893,7 +2892,7 @@
    "startedAt": "2026-09-25T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032435&episodeid=15&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032435&episodeid=16&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032436",
@@ -2957,18 +2956,18 @@
    },
    "name": "Forest fires in Papua New Guinea",
    "country": "Papua New Guinea",
-   "severity": "Green impact for forestfire in 17424 ha",
+   "severity": "Green impact for forestfire in 17642 ha",
    "placeIds": [
     "pg"
    ],
    "point": {
     "lon": 141.425,
-    "lat": -8.21
+    "lat": -8.209
    },
    "startedAt": "2026-09-25T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032454&episodeid=11&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032454&episodeid=12&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032455",
@@ -3207,7 +3206,7 @@
    },
    "name": "Forest fires in Indonesia",
    "country": "Indonesia",
-   "severity": "Green impact for forestfire in 7472 ha",
+   "severity": "Green impact for forestfire in 7497 ha",
    "placeIds": [
     "id"
    ],
@@ -3218,7 +3217,7 @@
    "startedAt": "2026-09-25T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032521&episodeid=4&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032521&episodeid=5&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032416",
@@ -3732,7 +3731,7 @@
    },
    "name": "Forest fires in Indonesia",
    "country": "Indonesia",
-   "severity": "Green impact for forestfire in 6720 ha",
+   "severity": "Green impact for forestfire in 6740 ha",
    "placeIds": [
     "id"
    ],
@@ -3743,7 +3742,7 @@
    "startedAt": "2026-09-23T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032526&episodeid=3&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032526&episodeid=4&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032527",
@@ -3833,18 +3832,18 @@
    },
    "name": "Forest fires in Australia",
    "country": "Australia",
-   "severity": "Green impact for forestfire in 28709 ha",
+   "severity": "Green impact for forestfire in 29061 ha",
    "placeIds": [
     "au"
    ],
    "point": {
     "lon": 138.414,
-    "lat": -18.76
+    "lat": -18.759
    },
    "startedAt": "2026-09-22T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032385&episodeid=17&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032385&episodeid=18&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032406",
@@ -3858,18 +3857,18 @@
    },
    "name": "Forest fires in Australia",
    "country": "Australia",
-   "severity": "Green impact for forestfire in 7545 ha",
+   "severity": "Green impact for forestfire in 7698 ha",
    "placeIds": [
     "au"
    ],
    "point": {
     "lon": 142.092,
-    "lat": -12.114
+    "lat": -12.112
    },
    "startedAt": "2026-09-22T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032406&episodeid=15&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032406&episodeid=16&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032429",
@@ -4158,7 +4157,7 @@
    },
    "name": "Forest fires in Papua New Guinea",
    "country": "Papua New Guinea",
-   "severity": "Green impact for forestfire in 8341 ha",
+   "severity": "Green impact for forestfire in 8379 ha",
    "placeIds": [
     "pg"
    ],
@@ -4169,7 +4168,7 @@
    "startedAt": "2026-09-21T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032423&episodeid=14&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032423&episodeid=15&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032475",
@@ -4183,7 +4182,7 @@
    },
    "name": "Forest fires in Papua New Guinea, Indonesia",
    "country": "Papua New Guinea, Indonesia",
-   "severity": "Green impact for forestfire in 11666 ha",
+   "severity": "Green impact for forestfire in 11762 ha",
    "placeIds": [
     "id",
     "pg"
@@ -4195,7 +4194,7 @@
    "startedAt": "2026-09-21T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032475&episodeid=10&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032475&episodeid=11&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032503",
@@ -4606,7 +4605,7 @@
    },
    "name": "Forest fires in Papua New Guinea",
    "country": "Papua New Guinea",
-   "severity": "Green impact for forestfire in 8581 ha",
+   "severity": "Green impact for forestfire in 8602 ha",
    "placeIds": [
     "pg"
    ],
@@ -4617,7 +4616,7 @@
    "startedAt": "2026-09-19T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032394&episodeid=15&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032394&episodeid=16&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032412",
@@ -4656,18 +4655,18 @@
    },
    "name": "Forest fires in Indonesia",
    "country": "Indonesia",
-   "severity": "Green impact for forestfire in 6862 ha",
+   "severity": "Green impact for forestfire in 6913 ha",
    "placeIds": [
     "id"
    ],
    "point": {
-    "lon": 116.808,
+    "lon": 116.809,
     "lat": 0.199
    },
    "startedAt": "2026-09-19T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032448&episodeid=14&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032448&episodeid=15&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032505",
@@ -4681,18 +4680,18 @@
    },
    "name": "Forest fires in Tanzania",
    "country": "Tanzania",
-   "severity": "Green impact for forestfire in 5496 ha",
+   "severity": "Green impact for forestfire in 5966 ha",
    "placeIds": [
     "tz"
    ],
    "point": {
-    "lon": 34.263,
-    "lat": -8.063
+    "lon": 34.267,
+    "lat": -8.062
    },
    "startedAt": "2026-09-19T00:00:00.000Z",
-   "toDate": "2026-10-01T00:00:00.000Z",
+   "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032505&episodeid=2&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032505&episodeid=3&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032515",
@@ -4968,6 +4967,31 @@
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1032482&episodeid=8&eventtype=WF"
+  },
+  {
+   "id": "gdacs:WF:1032539",
+   "source": "gdacs",
+   "type": "wildfire",
+   "category": "wildfire",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Forest fires in Indonesia",
+   "country": "Indonesia",
+   "severity": "Green impact for forestfire in 5062 ha",
+   "placeIds": [
+    "id"
+   ],
+   "point": {
+    "lon": 116.785,
+    "lat": 0.022
+   },
+   "startedAt": "2026-09-18T00:00:00.000Z",
+   "toDate": "2026-10-02T00:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032539&episodeid=1&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032217",
@@ -5581,18 +5605,18 @@
    },
    "name": "Tropical Cyclone NOLO-26",
    "country": "United States",
-   "severity": "Tropical Storm (maximum wind speed of 250 km/h)",
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 250 km/h)",
    "placeIds": [
     "us"
    ],
    "point": {
-    "lon": -167.2,
-    "lat": 23.2
+    "lon": -167.8,
+    "lat": 23.3
    },
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-10-02T15:00:00.000Z",
+   "toDate": "2026-10-02T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=48&eventtype=TC"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=49&eventtype=TC"
   },
   {
    "id": "who:DON:2026-DON617",

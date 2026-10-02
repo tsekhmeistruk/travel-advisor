@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-10-02T18:27:37.723Z",
+ "fetchedAt": "2026-10-02T22:33:35.217Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -305,8 +305,8 @@
     "ITA"
    ],
    "point": {
-    "lon": 14.946,
-    "lat": 37.878
+    "lon": 14.731,
+    "lat": 36.926
    },
    "native": {
     "scheme": "gdacs-alert",
@@ -1087,19 +1087,19 @@
     "USA"
    ],
    "point": {
-    "lon": -167.2,
-    "lat": 23.2
+    "lon": -167.8,
+    "lat": 23.3
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 48,
-   "severity": "Tropical Storm (maximum wind speed of 250 km/h)",
+   "episode": 49,
+   "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 250 km/h)",
    "startedAt": "2026-09-13T21:00:00.000Z",
-   "toDate": "2026-10-02T15:00:00.000Z",
+   "toDate": "2026-10-02T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=48&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001321&episodeid=49&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1311,19 +1311,19 @@
     "MEX"
    ],
    "point": {
-    "lon": -110.8,
+    "lon": -111.1,
     "lat": 19.3
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 22,
+   "episode": 23,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 194 km/h)",
    "startedAt": "2026-09-27T09:00:00.000Z",
-   "toDate": "2026-10-02T15:00:00.000Z",
+   "toDate": "2026-10-02T21:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=22&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001329&episodeid=23&eventtype=TC",
    "firstSeen": "2026-09-27T17:38:30.045Z",
    "revisions": [
     {
@@ -1390,24 +1390,24 @@
    "id": "gdacs:TC:1001332",
    "code": "TC",
    "name": "Tropical Cyclone CHOI-WAN-26",
-   "country": "Northern Mariana Islands, Guam",
+   "country": "Northern Mariana Islands, Guam, Russian Federation",
    "iso3": [
     "GUM"
    ],
    "point": {
-    "lon": 144.6,
-    "lat": 17.7
+    "lon": 144.7,
+    "lat": 18.1
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 11,
+   "episode": 12,
    "severity": "Hurricane/Typhoon > 74 mph (maximum wind speed of 204 km/h)",
    "startedAt": "2026-09-30T00:00:00.000Z",
-   "toDate": "2026-10-02T12:00:00.000Z",
+   "toDate": "2026-10-02T18:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=11&eventtype=TC",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1001332&episodeid=12&eventtype=TC",
    "firstSeen": "2026-09-30T06:41:45.737Z",
    "revisions": [
     {
@@ -3644,18 +3644,18 @@
    ],
    "point": {
     "lon": 138.414,
-    "lat": -18.76
+    "lat": -18.759
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 17,
-   "severity": "Green impact for forestfire in 28709 ha",
+   "episode": 18,
+   "severity": "Green impact for forestfire in 29061 ha",
    "startedAt": "2026-09-22T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032385&episodeid=17&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032385&episodeid=18&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -3830,12 +3830,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 15,
-   "severity": "Green impact for forestfire in 8581 ha",
+   "episode": 16,
+   "severity": "Green impact for forestfire in 8602 ha",
    "startedAt": "2026-09-19T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032394&episodeid=15&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032394&episodeid=16&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -4094,18 +4094,18 @@
    ],
    "point": {
     "lon": 142.092,
-    "lat": -12.114
+    "lat": -12.112
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 15,
-   "severity": "Green impact for forestfire in 7545 ha",
+   "episode": 16,
+   "severity": "Green impact for forestfire in 7698 ha",
    "startedAt": "2026-09-22T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032406&episodeid=15&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032406&episodeid=16&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -4580,12 +4580,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 14,
-   "severity": "Green impact for forestfire in 8341 ha",
+   "episode": 15,
+   "severity": "Green impact for forestfire in 8379 ha",
    "startedAt": "2026-09-21T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032423&episodeid=14&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032423&episodeid=15&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -4940,12 +4940,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 15,
-   "severity": "Green impact for forestfire in 21853 ha",
+   "episode": 16,
+   "severity": "Green impact for forestfire in 22082 ha",
    "startedAt": "2026-09-25T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032435&episodeid=15&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032435&episodeid=16&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -5323,19 +5323,19 @@
     "IDN"
    ],
    "point": {
-    "lon": 116.808,
+    "lon": 116.809,
     "lat": 0.199
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 14,
-   "severity": "Green impact for forestfire in 6862 ha",
+   "episode": 15,
+   "severity": "Green impact for forestfire in 6913 ha",
    "startedAt": "2026-09-19T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032448&episodeid=14&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032448&episodeid=15&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -5505,18 +5505,18 @@
    ],
    "point": {
     "lon": 141.425,
-    "lat": -8.21
+    "lat": -8.209
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 11,
-   "severity": "Green impact for forestfire in 17424 ha",
+   "episode": 12,
+   "severity": "Green impact for forestfire in 17642 ha",
    "startedAt": "2026-09-25T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032454&episodeid=11&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032454&episodeid=12&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -6142,12 +6142,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 10,
-   "severity": "Green impact for forestfire in 11666 ha",
+   "episode": 11,
+   "severity": "Green impact for forestfire in 11762 ha",
    "startedAt": "2026-09-21T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032475&episodeid=10&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032475&episodeid=11&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -6232,12 +6232,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 11,
-   "severity": "Green impact for forestfire in 40361 ha",
+   "episode": 12,
+   "severity": "Green impact for forestfire in 40501 ha",
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032478&episodeid=11&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032478&episodeid=12&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -6802,12 +6802,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 8,
-   "severity": "Green impact for forestfire in 31544 ha",
+   "episode": 9,
+   "severity": "Green impact for forestfire in 31574 ha",
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032497&episodeid=8&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032497&episodeid=9&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -6825,19 +6825,19 @@
     "AUS"
    ],
    "point": {
-    "lon": 144.558,
-    "lat": -15.586
+    "lon": 144.559,
+    "lat": -15.585
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 8,
-   "severity": "Green impact for forestfire in 12178 ha",
+   "episode": 9,
+   "severity": "Green impact for forestfire in 13274 ha",
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032498&episodeid=8&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032498&episodeid=9&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -7035,19 +7035,19 @@
     "TZA"
    ],
    "point": {
-    "lon": 34.263,
-    "lat": -8.063
+    "lon": 34.267,
+    "lat": -8.062
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 2,
-   "severity": "Green impact for forestfire in 5496 ha",
+   "episode": 3,
+   "severity": "Green impact for forestfire in 5966 ha",
    "startedAt": "2026-09-19T00:00:00.000Z",
-   "toDate": "2026-10-01T00:00:00.000Z",
+   "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032505&episodeid=2&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032505&episodeid=3&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -7432,12 +7432,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 5,
-   "severity": "Green impact for forestfire in 8077 ha",
+   "episode": 6,
+   "severity": "Green impact for forestfire in 8081 ha",
    "startedAt": "2026-09-27T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032518&episodeid=5&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032518&episodeid=6&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -7522,12 +7522,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 4,
-   "severity": "Green impact for forestfire in 7472 ha",
+   "episode": 5,
+   "severity": "Green impact for forestfire in 7497 ha",
    "startedAt": "2026-09-25T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032521&episodeid=4&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032521&episodeid=5&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -7672,12 +7672,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 3,
-   "severity": "Green impact for forestfire in 6720 ha",
+   "episode": 4,
+   "severity": "Green impact for forestfire in 6740 ha",
    "startedAt": "2026-09-23T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032526&episodeid=3&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032526&episodeid=4&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
    "revisions": [
     {
@@ -7973,12 +7973,12 @@
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 1,
-   "severity": "Green impact for forestfire in 5163 ha",
+   "episode": 2,
+   "severity": "Green impact for forestfire in 5191 ha",
    "startedAt": "2026-09-28T00:00:00.000Z",
    "toDate": "2026-10-02T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032536&episodeid=1&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032536&episodeid=2&eventtype=WF",
    "firstSeen": "2026-10-02T18:27:37.723Z",
    "revisions": [
     {
@@ -8013,6 +8013,66 @@
    "revisions": [
     {
      "at": "2026-10-02T18:27:37.723Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:WF:1032538",
+   "code": "WF",
+   "name": "Forest fires in Australia",
+   "country": "Australia",
+   "iso3": [
+    "AUS"
+   ],
+   "point": {
+    "lon": 150.118,
+    "lat": -26.381
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Green impact for forestfire in 5005 ha",
+   "startedAt": "2026-09-29T00:00:00.000Z",
+   "toDate": "2026-10-02T00:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032538&episodeid=1&eventtype=WF",
+   "firstSeen": "2026-10-02T22:33:35.217Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T22:33:35.217Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:WF:1032539",
+   "code": "WF",
+   "name": "Forest fires in Indonesia",
+   "country": "Indonesia",
+   "iso3": [
+    "IDN"
+   ],
+   "point": {
+    "lon": 116.785,
+    "lat": 0.022
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Green impact for forestfire in 5062 ha",
+   "startedAt": "2026-09-18T00:00:00.000Z",
+   "toDate": "2026-10-02T00:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032539&episodeid=1&eventtype=WF",
+   "firstSeen": "2026-10-02T22:33:35.217Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T22:33:35.217Z",
      "value": "Green"
     }
    ]
