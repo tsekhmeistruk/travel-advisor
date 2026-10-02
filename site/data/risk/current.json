@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T07:37:26.734Z",
+ "asOf": "2026-10-02T13:11:41.251Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -34,7 +34,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-02T06:13:22.734Z"
+   "at": "2026-10-02T13:11:33.761Z"
   },
   "wildfire": {
    "sources": [
@@ -42,7 +42,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-02T06:13:22.734Z"
+   "at": "2026-10-02T13:11:33.761Z"
   },
   "health": {
    "sources": [
@@ -50,7 +50,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-02T06:13:30.909Z"
+   "at": "2026-10-02T13:11:41.251Z"
   }
  },
  "sources": {
@@ -276,6 +276,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "au": {
@@ -363,6 +371,14 @@
      "de": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "bb": {
@@ -408,6 +424,14 @@
      "de": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "bf": {
@@ -637,6 +661,14 @@
      "de": 4
     },
     "agree": 4
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "bz": {
@@ -758,6 +790,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "ci": {
@@ -925,6 +965,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "de": {
@@ -937,6 +985,14 @@
      "uk": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "dj": {
@@ -969,6 +1025,14 @@
      "de": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "dm": {
@@ -1094,6 +1158,14 @@
      "de": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "et": {
@@ -1189,6 +1261,14 @@
      "de": 1
     },
     "agree": 3
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "ga": {
@@ -1562,6 +1642,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "ht": {
@@ -1594,6 +1682,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "id": {
@@ -1626,6 +1722,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "il": {
@@ -1747,6 +1851,14 @@
      "de": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "je": {
@@ -2026,6 +2138,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "lk": {
@@ -2097,6 +2217,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "lv": {
@@ -2173,6 +2301,14 @@
       "uk"
      ]
     }
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "me": {
@@ -2186,6 +2322,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "mf": {
@@ -2583,6 +2727,14 @@
      "de": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "no": {
@@ -2596,6 +2748,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "northern-cyprus": {
@@ -2782,6 +2942,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "pm": {
@@ -2905,6 +3073,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "rs": {
@@ -2924,6 +3100,14 @@
       "us"
      ]
     }
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "ru": {
@@ -2937,6 +3121,14 @@
      "de": 4
     },
     "agree": 4
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    },
    "conflict": {
     "level": 3,
@@ -3051,6 +3243,14 @@
      "de": 1
     },
     "agree": 2
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "sg": {
@@ -3087,6 +3287,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "sk": {
@@ -3100,6 +3308,14 @@
      "de": 1
     },
     "agree": 5
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "sl": {
@@ -3125,6 +3341,14 @@
      "de": 1
     },
     "agree": 4
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    }
   },
   "sn": {
@@ -3549,6 +3773,14 @@
      "de": 4
     },
     "agree": 4
+   },
+   "disaster": {
+    "level": 2,
+    "since": "2026-10-02T13:11:33.761Z",
+    "from": 1,
+    "basis": [
+     "gdacs:DR:1018332"
+    ]
    },
    "conflict": {
     "level": 4,

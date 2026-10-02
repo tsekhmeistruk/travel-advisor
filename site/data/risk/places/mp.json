@@ -15,9 +15,7 @@
    "own": false
   }
  },
- "events": [
-  "gdacs:TC:1001332"
- ],
+ "events": [],
  "changes": [],
  "activity": {
   "source": "gdelt",

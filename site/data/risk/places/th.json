@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:FL:1104122"
+ ],
  "changes": [
   {
    "id": "advisory:us:Thailand:2026-07-07",

@@ -36,8 +36,27 @@
    "own": true
   }
  },
- "events": [],
- "changes": [],
+ "events": [
+  "gdacs:DR:1018332"
+ ],
+ "changes": [
+  {
+   "id": "li:disaster:2026-10-02T13:11:33.761Z",
+   "at": "2026-10-02T13:11:33.761Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "li",
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "basis": [
+    "gdacs:DR:1018332"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {

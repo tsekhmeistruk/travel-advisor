@@ -2,8 +2,152 @@
  "categories": {
   "disaster": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-10-02T06:13:22.734Z",
+   "at": "2026-10-02T13:11:33.761Z",
    "places": {
+    "at": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "ba": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "be": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "by": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "ch": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "cz": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "de": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "dk": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "es": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "fr": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "hr": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "hu": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "ie": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "it": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "li": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "lu": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "md": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "me": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
     "mx": {
      "level": 4,
      "since": "2026-09-29T05:42:11.152Z",
@@ -11,17 +155,105 @@
      "basis": [
       "gdacs:TC:1001325"
      ]
+    },
+    "nl": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "no": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "pl": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "ro": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "rs": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "ru": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "se": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "si": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "sk": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "sm": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
+    },
+    "ua": {
+     "level": 2,
+     "since": "2026-10-02T13:11:33.761Z",
+     "from": 1,
+     "basis": [
+      "gdacs:DR:1018332"
+     ]
     }
    }
   },
   "wildfire": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-10-02T06:13:22.734Z",
+   "at": "2026-10-02T13:11:33.761Z",
    "places": {}
   },
   "health": {
    "trackedSince": "2026-09-27T18:04:53.636Z",
-   "at": "2026-10-02T06:13:30.909Z",
+   "at": "2026-10-02T13:11:41.251Z",
    "places": {
     "cd": {
      "level": 2,

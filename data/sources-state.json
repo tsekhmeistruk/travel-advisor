@@ -14,10 +14,10 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-10-02T06:13:22.733Z",
-  "lastSuccess": "2026-10-02T06:13:22.733Z",
-  "durationMs": 8111,
-  "records": 260,
+  "lastAttempt": "2026-10-02T13:11:33.759Z",
+  "lastSuccess": "2026-10-02T13:11:33.759Z",
+  "durationMs": 7431,
+  "records": 262,
   "consecutiveFailures": 0
  },
  "gdelt": {
@@ -56,9 +56,9 @@
   "consecutiveFailures": 0
  },
  "who": {
-  "lastAttempt": "2026-10-02T06:13:30.908Z",
-  "lastSuccess": "2026-10-02T06:13:30.908Z",
-  "durationMs": 463,
+  "lastAttempt": "2026-10-02T13:11:41.250Z",
+  "lastSuccess": "2026-10-02T13:11:41.250Z",
+  "durationMs": 747,
   "records": 6,
   "consecutiveFailures": 0
  }
