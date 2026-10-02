@@ -73,7 +73,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 ## Current state and open decisions
 
-- **UX revision 2: in progress.** The approved checklist is `docs/plans/ux-revision-2.md`. Tick each box there as soon as its item is done, and commit the doc with each part. **When resuming, read it first** and continue from the first unchecked box.
+- **UX revision 2: done (Oct 2, 2026).** The checklist and its log are in `docs/plans/ux-revision-2.md`: links zoom and resizes keep the view, the travel level from two or more governments, news activity on its own (not a change), alerts in the search, Share in the country view, country names when zoomed in. For multi-part work, keep a checklist like it, ticked as each item is done.
 - **Risk Monitor: in progress.** The plan (approved Sep 27, 2026) is the Claude Doc "Global Risk Monitor — Implementation Plan" (https://claude.ai/code/artifact/24e886a7-05d1-4445-90b1-53261a8c5e96). Done so far:
   - **Pipeline:** stores, schedule, source health, the hourly workflow; GDACS (Orange/Red for levels, Green cyclones, floods and volcanoes for markers) and WHO Disease Outbreak News (Health) into `site/data/risk/`, with a file per place.
   - **Site:** map modes (Travel, Highest, Disasters, Wildfires, Changes), the risk summary card, the change feed, event markers with clustering and an event card, the country view, URL state and cache-busting. The site is called **Risk Monitor** and opens on **Highest** (Oct 2026); a saved mode or a link wins, and visitors with first-version settings stay on Travel. The repo and the localStorage key keep the old name.
@@ -86,7 +86,14 @@ For **every** change, however small, decide explicitly whether tests must be **a
   - a longer window option (180 days or 1 year), since level changes are rare and 90 days is often nearly empty;
   - translation groundwork (a pseudo-locale, per-locale card tests, language in the URL). Canada's feed has French fields that are deliberately unused for now;
   - a GitHub noreply email for commits;
-  - self-hosting the Inter font instead of Google Fonts.
+  - self-hosting the Inter font instead of Google Fonts;
+  - from the UX revision 2 review (Oct 2, 2026), not chosen yet:
+    - the tablet and landscape layout: from 761 to about 1024px the map is about 400px wide, the mode pill is cut off and the provider switch covers the zoom buttons;
+    - a bigger map on phones (a one-line legend, pinch to zoom instead of +/−);
+    - an accessibility pass: every hover is announced (aria-live on the card), focus falls to <body> when a view opens, `--text-3` is 3.1:1 contrast;
+    - active alerts in Disasters and Wildfires (about 140 fire alerts are on the map, the panel says nothing about them);
+    - a watchlist and "since your last visit";
+    - a data-status view (`risk/health.json` is published but unused) and auto-refresh of an open tab.
 
 ## Agent gotchas (this environment)
 

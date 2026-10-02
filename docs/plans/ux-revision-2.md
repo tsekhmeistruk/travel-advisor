@@ -1,6 +1,6 @@
 # UX revision 2: plan and progress
 
-> **This is the live checklist** of the second UX revision, approved by the owner on Oct 2, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part, so the owner can follow progress and an interrupted session can pick up here.
+> **Done (Oct 2, 2026).** This was the live checklist of the second UX revision, approved by the owner on Oct 2, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part, so the owner can follow progress and an interrupted session can pick up here.
 >
 > **How to resume after an interruption:**
 > 1. Read the repo copy.
@@ -39,9 +39,9 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Status
 
-- **Current step:** 6.6 (ship)
-- **Done:** parts 0–5; 6.1–6.5
-- **Last commit of this revision:** 3480ce1 (part 5)
+- **Current step:** done
+- **Done:** parts 0–7
+- **Last commit of this revision:** b5ae3cd (part 6)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -175,15 +175,15 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
     - no two boxes intersect, all are inside the map;
     - hover and click still reach the countries.
 - [x] 6.5 Docs: architecture (the map), README.
-- [ ] 6.6 Ship. Live check: zooming into Europe shows names.
+- [x] 6.6 Ship. Live check: zooming into Europe shows names.
 
 ## Part 7: Wrap-up
 
-- [ ] 7.1 `.claude/CLAUDE.md`:
+- [x] 7.1 `.claude/CLAUDE.md`:
   - "Current state": revision 2 done, linking this doc;
   - add the not-chosen items to "Offered to the user, not decided yet".
-- [ ] 7.2 Tick the remaining boxes and set Status to done; commit and push the doc; the deploy goes green.
-- [ ] 7.3 Stop any local server that was started. Report each part, with its tests added, edited and deleted.
+- [x] 7.2 Tick the remaining boxes and set Status to done; commit and push the doc; the deploy goes green.
+- [x] 7.3 Stop any local server that was started. Report each part, with its tests added, edited and deleted.
 
 ## Log (one line per finished part: commit, deploy, tests)
 
@@ -192,3 +192,5 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 - Part 3: d1a678a, deploy green, live: feed has no GDELT items (47 → 13), news section lists 29 places (5 shown), no console errors. Also fixed: hidden .recent sections showed (feed with highlighting Off, empty news section in Travel); travel agree counts the level itself. Tests added: unit isNews/cardModel history, news not in feed/latest/tooltip/histories, newsRows order, renderNews order/cap/Show all/hidden, Travel latest changes; e2e news section + withRiskChanges news injection. Edited: quiet line tests, feed-off test checks visibility, travel agree expectations. Deleted: anomaly-in-feed and back-to-normal tests and their i18n keys.
 - Part 4: 5b018c6, deploy green, live: "polo" finds Tropical Cyclone POLO-26 (Red) and Enter opens its card; prompt "Find a country or alert"; no console errors in any mode. Tests added: unit alert entries (order, target, offshore, prompt), Green fires left out + severity order + category filter; e2e alert search (card, marker, zoom, Travel prompt). Edited: the search entry unit test. Deleted: none.
 - Part 5: 3480ce1, deploy green, live: Share copies https://tsekhmeistruk.github.io/travel-advisor/#mode=highest&place=et&view=country and shows "Link copied"; no console errors. Tests added: unit Share button + handler; e2e Share copies the exact link, toast shows and hides. Edited: the country view handler test (now with share). Deleted: none.
+- Part 6: b5ae3cd, deploy green, live: a link to Germany shows 27 country names, no console errors. Tests added: unit placeLabels (labels.test.mjs, 100% coverage); e2e labels (none at world zoom, no overlaps, inside the map and clear of switches/legend, clicks reach countries). Edited: none. Deleted: none.
+- Part 7: CLAUDE.md marks revision 2 done and lists the review items not chosen under "Offered"; local server stopped.
