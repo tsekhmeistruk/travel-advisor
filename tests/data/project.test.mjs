@@ -82,6 +82,13 @@ describe('risk sources are wired up everywhere', () => {
         assert.ok(a.windowDays > 0 && a.baselineDays > a.windowDays && a.far.minRatio > a.above.minRatio && a.stay.maxP > a.above.maxP, 'anomaly rules');
         assert.ok(cfg.backfillDays >= a.windowDays + a.baselineDays && cfg.historyDays >= cfg.backfillDays, 'history for a baseline');
         assert.deepEqual(Object.values(cfg.fips).filter(p => !placeIds.has(p)), [], 'fips codes refer to known places');
+        if (cfg.pairs) {
+          // Tensions: military events between two countries, per pair (never a level).
+          const p = cfg.pairs;
+          assert.ok(p.rootCodes.length && p.minTotal > 0 && p.historyDays >= p.anomaly.windowDays + p.anomaly.baselineDays, 'pairs: codes, pruning, history for a baseline');
+          assert.ok(p.anomaly.far.minRatio > p.anomaly.above.minRatio && p.anomaly.above.minCount > 0, 'pairs: anomaly rules');
+          assert.deepEqual(Object.values(p.actors ?? {}).flat().filter(id => !placeIds.has(id)), [], 'pairs: actors refer to known places');
+        }
         assert.equal(cfg.levels, undefined, 'no levels');
         return;
       }

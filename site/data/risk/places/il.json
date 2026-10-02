@@ -43,13 +43,13 @@
   "series": {
    "protest": {
     "status": "above",
-    "count": 567,
-    "expected": 222.7
+    "count": 464,
+    "expected": 229.6
    },
    "violence": {
     "status": "normal",
-    "count": 3359,
-    "expected": 3269.3
+    "count": 3380,
+    "expected": 3278.9
    }
   }
  },
@@ -222,5 +222,63 @@
     ]
    }
   ]
- }
+ },
+ "tensions": [
+  {
+   "key": "ARE|ISR",
+   "status": "far",
+   "count": 58,
+   "expected": 4.1,
+   "sides": [
+    [
+     "ae"
+    ],
+    [
+     "il"
+    ]
+   ]
+  },
+  {
+   "key": "EGY|ISR",
+   "status": "above",
+   "count": 83,
+   "expected": 17.8,
+   "sides": [
+    [
+     "eg"
+    ],
+    [
+     "il"
+    ]
+   ]
+  },
+  {
+   "key": "ISR|OMN",
+   "status": "above",
+   "count": 28,
+   "expected": 1.2,
+   "sides": [
+    [
+     "il"
+    ],
+    [
+     "om"
+    ]
+   ]
+  },
+  {
+   "key": "ISR|UKR",
+   "status": "above",
+   "count": 27,
+   "expected": 7.4,
+   "sides": [
+    [
+     "il"
+    ],
+    [
+     "ua"
+    ]
+   ]
+  }
+ ]
 }

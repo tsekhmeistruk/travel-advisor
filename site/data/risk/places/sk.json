@@ -63,8 +63,8 @@
    },
    "violence": {
     "status": "far",
-    "count": 42,
-    "expected": 5
+    "count": 48,
+    "expected": 4.9
    }
   }
  }

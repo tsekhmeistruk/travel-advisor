@@ -46,3 +46,10 @@
 {"id":"xk:protest:2026-09-30","at":"2026-09-30","kind":"anomaly","category":"unrest","placeId":"xk","series":"protest","source":"gdelt","from":"above","to":"normal","up":false,"count":3,"expected":1.4}
 {"id":"cn:disaster:2026-10-01T07:48:29.839Z","at":"2026-10-01T07:48:29.839Z","kind":"level","category":"disaster","placeId":"cn","from":3,"to":1,"up":false,"basis":[],"sources":["gdacs"]}
 {"id":"in:disaster:2026-10-02T06:13:22.734Z","at":"2026-10-02T06:13:22.734Z","kind":"level","category":"disaster","placeId":"in","from":3,"to":1,"up":false,"basis":[],"sources":["gdacs"]}
+{"id":"cf:violence:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"security","placeId":"cf","series":"violence","source":"gdelt","from":"above","to":"normal","up":false,"count":4,"expected":14.3}
+{"id":"cz:violence:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"security","placeId":"cz","series":"violence","source":"gdelt","from":"above","to":"normal","up":false,"count":17,"expected":24.8}
+{"id":"eg:violence:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"security","placeId":"eg","series":"violence","source":"gdelt","from":"normal","to":"above","up":true,"count":270,"expected":132.7}
+{"id":"iq:protest:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"unrest","placeId":"iq","series":"protest","source":"gdelt","from":"normal","to":"above","up":true,"count":29,"expected":12}
+{"id":"re:protest:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"unrest","placeId":"re","series":"protest","source":"gdelt","from":"normal","to":"above","up":true,"count":9,"expected":0}
+{"id":"re:violence:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"security","placeId":"re","series":"violence","source":"gdelt","from":"normal","to":"far","up":true,"count":13,"expected":2.1}
+{"id":"so:violence:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"security","placeId":"so","series":"violence","source":"gdelt","from":"normal","to":"above","up":true,"count":233,"expected":101.8}

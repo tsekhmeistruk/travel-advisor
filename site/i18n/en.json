@@ -536,7 +536,6 @@
   "escalating": "Escalating: more deaths in the last 3 months",
   "calming": "Calming: fewer deaths in the last 3 months",
   "none": "none",
-  "note": "UCDP's preliminary figures, a month or two behind.",
   "perMonth": "Deaths per month",
   "peak": " · peak {deaths}",
   "conflicts": "Conflicts",
@@ -566,6 +565,12 @@
   "unnamedNoParty": "Armed conflict in {place}",
   "otherViolence": "Also {groups} killed between armed groups and {civilians} in attacks on civilians.",
   "countryTitle": "Armed violence (UCDP)",
-  "countryNote": "Deaths in organized violence that UCDP recorded here, by month. Preliminary figures, a month or two behind; UCDP revises them yearly."
+  "countryNote": "Deaths in organized violence that UCDP recorded here, by month. Preliminary figures, a month or two behind; UCDP revises them yearly.",
+  "tensionsTitle": "Tensions · news, {days} days",
+  "tensionsAbout": "Pairs of countries with far more military news between them than usual: threats, troops on alert, fighting (GDELT). News volume, not verified incidents, and never a level.",
+  "tensionTitle": "{pair}: {count} military news reports between them in {days} days, usually about {expected} (GDELT)",
+  "tensionFigures": "{count} military reports between them in {days} days, usually about {expected}",
+  "tensionsCountry": "Tensions with other countries",
+  "tensionShort": "{count} · usually {expected}"
  }
 }

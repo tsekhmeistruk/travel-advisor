@@ -39,6 +39,20 @@
  "events": [],
  "changes": [
   {
+   "id": "cz:violence:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "cz",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 17,
+   "expected": 24.8
+  },
+  {
    "id": "cz:protest:2026-09-29",
    "at": "2026-09-29",
    "kind": "anomaly",
@@ -76,9 +90,9 @@
     "expected": 1.7
    },
    "violence": {
-    "status": "above",
-    "count": 53,
-    "expected": 22
+    "status": "normal",
+    "count": 17,
+    "expected": 24.8
    }
   }
  }

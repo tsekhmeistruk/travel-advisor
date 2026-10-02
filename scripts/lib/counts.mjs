@@ -49,6 +49,12 @@ function trim(data, historyDays) {
   return { ...data, first, gaps: data.gaps.filter(d => d >= first) };
 }
 
+/** Without the places (or pairs) whose series together counted fewer than `minTotal` in the whole history. */
+export function prune(data, minTotal) {
+  const total = (s) => Object.values(s).reduce((n, arr) => n + arr.reduce((a, b) => a + b, 0), 0);
+  return { ...data, series: Object.fromEntries(Object.entries(data.series).filter(([, s]) => total(s) >= minTotal)) };
+}
+
 /**
  * The count of a window of days ending at `end`, leaving out gaps.
  * @returns { sum, days }  days: how many days of the window had data

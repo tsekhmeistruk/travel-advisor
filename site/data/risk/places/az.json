@@ -58,14 +58,44 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 9,
-    "expected": 9.5
+    "count": 10,
+    "expected": 9.2
    },
    "violence": {
     "status": "above",
-    "count": 134,
-    "expected": 49.7
+    "count": 156,
+    "expected": 50.3
    }
   }
- }
+ },
+ "tensions": [
+  {
+   "key": "ARM|AZE",
+   "status": "above",
+   "count": 66,
+   "expected": 13.4,
+   "sides": [
+    [
+     "am"
+    ],
+    [
+     "az"
+    ]
+   ]
+  },
+  {
+   "key": "AZE|UKR",
+   "status": "above",
+   "count": 26,
+   "expected": 3.3,
+   "sides": [
+    [
+     "az"
+    ],
+    [
+     "ua"
+    ]
+   ]
+  }
+ ]
 }

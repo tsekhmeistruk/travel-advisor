@@ -66,8 +66,8 @@
    },
    "violence": {
     "status": "above",
-    "count": 52,
-    "expected": 25.3
+    "count": 46,
+    "expected": 25.8
    }
   }
  },

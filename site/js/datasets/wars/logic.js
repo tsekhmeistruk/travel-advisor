@@ -82,6 +82,17 @@ export function placeModel(conflict, placeId) {
   };
 }
 
+/**
+ * Tensions: pairs of countries whose military news (threats, force posture, fighting between them)
+ * is above its normal (GDELT, published in current.activity.gdelt.tensions), the biggest surge
+ * first: the most reports above the expected count. Never a level.
+ * @returns [{ key, sides: [[placeId]], status, count, expected }]
+ */
+export function tensionRows(tensions, max = Infinity) {
+  return Object.entries(tensions?.pairs ?? {}).map(([key, p]) => ({ key, ...p }))
+    .sort((a, b) => (b.count - b.expected) - (a.count - a.expected) || a.key.localeCompare(b.key)).slice(0, max);
+}
+
 /** Sparkline points ("x,y x,y …") in a w × h box, with `pad` around; the lowest value sits at the bottom. */
 export function sparkPoints(values, w, h, pad = 2) {
   if (!values.length) return '';

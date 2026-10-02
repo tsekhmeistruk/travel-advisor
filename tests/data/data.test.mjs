@@ -118,6 +118,21 @@ describe('risk data', () => {
   });
 });
 
+describe('tensions (news between countries)', () => {
+  test('each pair above normal is on known places, keyed by its two sorted codes, and never a level', () => {
+    const current = store.published(manifest.risk.current);
+    const tensions = current.activity?.gdelt?.tensions;
+    if (!tensions) return;
+    for (const [key, t] of Object.entries(tensions.pairs)) {
+      const codes = key.split('|');
+      assert.deepEqual(codes, [...codes].sort(), key);
+      assert.ok(t.sides.length === 2 && t.sides.flat().every(id => placeIds.has(id)), `${key}: places`);
+      assert.ok(['above', 'far'].includes(t.status) && t.count > t.expected, key);
+    }
+    assert.equal(Object.keys(current.categories).includes('tensions'), false);
+  });
+});
+
 describe('conflict data', () => {
   for (const id of store.sourceIds().filter(s => store.source(s).kind === 'conflict')) {
     const config = store.source(id);

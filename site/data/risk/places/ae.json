@@ -43,13 +43,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 6,
-    "expected": 6.1
+    "count": 7,
+    "expected": 6
    },
    "violence": {
     "status": "normal",
-    "count": 99,
-    "expected": 84.8
+    "count": 127,
+    "expected": 85.2
    }
   }
  },
@@ -107,5 +107,21 @@
    }
   ],
   "partyTo": []
- }
+ },
+ "tensions": [
+  {
+   "key": "ARE|ISR",
+   "status": "far",
+   "count": 58,
+   "expected": 4.1,
+   "sides": [
+    [
+     "ae"
+    ],
+    [
+     "il"
+    ]
+   ]
+  }
+ ]
 }

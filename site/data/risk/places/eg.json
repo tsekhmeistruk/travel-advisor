@@ -37,20 +37,65 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "eg:violence:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "eg",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 270,
+   "expected": 132.7
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
     "status": "normal",
     "count": 9,
-    "expected": 9.9
+    "expected": 10.2
    },
    "violence": {
-    "status": "normal",
-    "count": 227,
-    "expected": 134.7
+    "status": "above",
+    "count": 270,
+    "expected": 132.7
    }
   }
- }
+ },
+ "tensions": [
+  {
+   "key": "EGY|ERI",
+   "status": "above",
+   "count": 24,
+   "expected": 0,
+   "sides": [
+    [
+     "eg"
+    ],
+    [
+     "er"
+    ]
+   ]
+  },
+  {
+   "key": "EGY|ISR",
+   "status": "above",
+   "count": 83,
+   "expected": 17.8,
+   "sides": [
+    [
+     "eg"
+    ],
+    [
+     "il"
+    ]
+   ]
+  }
+ ]
 }

@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T06:40:45.031Z",
+ "asOf": "2026-10-02T07:26:17.023Z",
  "windowDays": 90,
  "changes": [
   {
@@ -29,6 +29,104 @@
    "sources": [
     "gdacs"
    ]
+  },
+  {
+   "id": "so:violence:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "so",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 233,
+   "expected": 101.8
+  },
+  {
+   "id": "re:violence:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "re",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "far",
+   "up": true,
+   "count": 13,
+   "expected": 2.1
+  },
+  {
+   "id": "re:protest:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "re",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 9,
+   "expected": 0
+  },
+  {
+   "id": "iq:protest:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "iq",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 29,
+   "expected": 12
+  },
+  {
+   "id": "eg:violence:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "eg",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 270,
+   "expected": 132.7
+  },
+  {
+   "id": "cz:violence:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "cz",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 17,
+   "expected": 24.8
+  },
+  {
+   "id": "cf:violence:2026-10-01",
+   "at": "2026-10-01",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "cf",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 4,
+   "expected": 14.3
   },
   {
    "id": "xk:protest:2026-09-30",

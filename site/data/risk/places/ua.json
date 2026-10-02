@@ -43,13 +43,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 32,
-    "expected": 84
+    "count": 36,
+    "expected": 83
    },
    "violence": {
     "status": "normal",
-    "count": 1773,
-    "expected": 1971.2
+    "count": 1662,
+    "expected": 1960.7
    }
   }
  },
@@ -114,5 +114,35 @@
     ]
    }
   ]
- }
+ },
+ "tensions": [
+  {
+   "key": "AZE|UKR",
+   "status": "above",
+   "count": 26,
+   "expected": 3.3,
+   "sides": [
+    [
+     "az"
+    ],
+    [
+     "ua"
+    ]
+   ]
+  },
+  {
+   "key": "ISR|UKR",
+   "status": "above",
+   "count": 27,
+   "expected": 7.4,
+   "sides": [
+    [
+     "il"
+    ],
+    [
+     "ua"
+    ]
+   ]
+  }
+ ]
 }

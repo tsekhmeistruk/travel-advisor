@@ -275,9 +275,17 @@ export function createRiskMode(ctx) {
     }).join('');
     const body = meta.learning ? `<p class="cv-empty">${esc(tr('activity.learning'))}</p>`
       : rows ? `<ul class="cv-list">${rows}</ul>` : `<p class="cv-empty">${esc(tr('activity.none'))}</p>`;
+    // Tensions: military news between this country and another, above the pair's normal.
+    const tensions = (file?.tensions ?? []).map(t => {
+      const pair = t.sides.map(side => side.map(placeName).join(', ')).join(' – ');
+      const figures = i18n.t('wars.tensionFigures', { count: t.count, expected: Math.round(t.expected), days: meta.windowDays });
+      return `<li class="activity ${esc(t.status)}"><span class="who">${esc(pair)}</span>
+        <span class="what" title="${esc(figures)}">${esc(figures)}</span><span class="date">${esc(tr(`activity.status.${t.status}`))}</span></li>`;
+    }).join('');
     return `<section class="cv-section">
         <h3 class="cv-title">${esc(tr('activity.title'))}</h3>
         ${body}
+        ${tensions ? `<h4 class="cv-sub">${esc(i18n.t('wars.tensionsCountry'))}</h4><ul class="cv-list tensions">${tensions}</ul>` : ''}
         <p class="cv-note">${esc(tr('activity.note', { source: sourceName(Object.keys(current.activity)[0]), weeks: Math.round(meta.baselineDays / 7) }))}</p>
       </section>`;
   }

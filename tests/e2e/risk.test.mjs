@@ -190,6 +190,9 @@ describe('risk panel', () => {
     const conflict = await page.evaluate(async () => (await fetch('data/risk/conflict.json')).json());
     assert.equal(await page.$eval('#details .wars-count b', el => el.textContent), String(conflict.series.wars.at(-1)));
     assert.match(await text(page, 'asOf'), /^Conflict data to \w+ \d{4}$/);
+    const tensions = await page.$$eval('#details .wars-tensions button[data-place]', els => els.map(b => b.querySelector('.name').textContent));
+    const published = Object.keys((await page.evaluate(async () => (await fetch('data/risk/current.json')).json())).activity?.gdelt?.tensions?.pairs ?? {});
+    assert.equal(tensions.length, Math.min(3, published.length), 'up to three tensions, as published');
     const chip = await page.$('#details .wars-chips button[data-place]');
     if (chip) {
       const place = await chip.evaluate(b => b.dataset.place);

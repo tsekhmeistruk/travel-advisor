@@ -294,6 +294,40 @@ export function activitySignals(sourceId, data, config, prev) {
   return { state: { ...meta, places: state.places }, published: { ...meta, places: published }, byPlace: result.places, changes };
 }
 
+/**
+ * Tensions: military events between two countries in the news (force posture, fighting, threats
+ * of force) against the pair's own normal, with the same rules as places (`pairs.anomaly`).
+ * Never a level and never a change: published as they are now, above normal only.
+ * Pairs are keyed by the source's country codes ("POL|RUS"); a code is placed by the config's
+ * `pairs.actors` (PSE: Gaza and the West Bank), else by ISO alpha-3. Regions (AFR, EUR, WST…)
+ * are on no place and left out.
+ * @param pairs  lib/counts.mjs data of the pair counts
+ * @param prev   the stored statuses ({ key: { military: status } })
+ * @returns { state, published: { through, learning, windowDays, baselineDays, pairs: { key: { status, count, expected, sides } } }, byPlace: { placeId: [{ key, … }] } }
+ */
+export function tensionSignals(pairs, config, prev, index) {
+  const rules = config.pairs.anomaly;
+  const result = assessAll(pairs, rules, prev ?? {});
+  const placesOf = (code) => config.pairs.actors?.[code] ?? [index.byCode.get(code)].filter(Boolean);
+  const state = {};
+  const published = {};
+  const byPlace = {};
+  for (const [key, series] of Object.entries(result.places)) {
+    const v = series.military;
+    if (!v || v.status === 'normal') continue;
+    const sides = key.split('|').map(placesOf);
+    if (sides.some(s => !s.length)) continue;
+    state[key] = { military: v.status };
+    published[key] = { ...v, sides };
+    for (const id of sides.flat()) (byPlace[id] ??= []).push({ key, ...published[key] });
+  }
+  return {
+    state,
+    published: { through: result.through, learning: result.learning, windowDays: rules.windowDays, baselineDays: rules.baselineDays, pairs: published },
+    byPlace,
+  };
+}
+
 // ---- the whole risk layer
 
 /**
@@ -302,7 +336,7 @@ export function activitySignals(sourceId, data, config, prev) {
  *   categories   config/categories.json
  *   schedule     config/schedule.json
  *   advisories   { files: { providerId: published data }, history, flags: { providerId: flag code } }
- *   sources      { id: { config, data: stored events | null } }
+ *   sources      { id: { config, data: stored events | counts | conflict versions | null, pairs?: pair counts } }
  *   state        data/signals/current.json (or null)
  *   log          stored change log entries (this year and last)
  *   sourcesState data/sources-state.json
@@ -343,7 +377,8 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   const activity = {};
   const activityByPlace = {};
   let conflict = null;
-  for (const [sourceId, { config, data }] of Object.entries(sources)) {
+  let tensionsByPlace = {};
+  for (const [sourceId, { config, data, pairs }] of Object.entries(sources)) {
     if (config.kind === 'conflict') {
       // Monthly figures (lib/conflict.mjs): published whenever there is data, levels only while the source is up.
       const c = config.category;
@@ -368,6 +403,12 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
       activity[sourceId] = a.published;
       activityByPlace[sourceId] = a.byPlace;
       derived.push(...a.changes);
+      if (config.pairs && pairs?.last) {
+        const t = tensionSignals(pairs, config, state?.activity?.[sourceId]?.pairs, index);
+        newState.activity[sourceId] = { ...a.state, pairs: t.state };
+        activity[sourceId] = { ...a.published, tensions: t.published };
+        tensionsByPlace = t.byPlace;
+      }
       continue;
     }
     const cats = [...new Set(Object.values(config.types).map(t => t.category))];
@@ -418,7 +459,7 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
     'risk/events.json': { asOf, events: events.sort((a, b) => b.startedAt.localeCompare(a.startedAt) || a.id.localeCompare(b.id)) },
     'risk/health.json': { asOf, sources: health },
     ...(conflict && { 'risk/conflict.json': conflict.published }),
-    ...placeFiles({ placeIds: [...index.byId.keys()].sort(), advisoryFiles: advisories.files, events, changes: [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')], asOf, activity: activityByPlace, conflict: conflict?.byPlace }),
+    ...placeFiles({ placeIds: [...index.byId.keys()].sort(), advisoryFiles: advisories.files, events, changes: [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')], asOf, activity: activityByPlace, conflict: conflict?.byPlace, tensions: tensionsByPlace }),
   };
   return { files, state: newState, newChanges, warnings };
 }
@@ -434,7 +475,7 @@ export const PLACE_HISTORY_DAYS = 365;
  * conflict figures (deaths by month and type, the conflicts fought there and those it is a party to). No as-of time inside, so a file changes only when its content does.
  * @param changes  every change known (log, new, advisory), any order
  */
-export function placeFiles({ placeIds, advisoryFiles, events, changes, asOf, activity = {}, conflict = {} }) {
+export function placeFiles({ placeIds, advisoryFiles, events, changes, asOf, activity = {}, conflict = {}, tensions = {} }) {
   const cutoff = asOf ? new Date(Date.parse(asOf) - PLACE_HISTORY_DAYS * DAY).toISOString().slice(0, 10) : '';
   const advisories = new Map();
   for (const [provider, data] of Object.entries(advisoryFiles)) {
@@ -461,6 +502,7 @@ export function placeFiles({ placeIds, advisoryFiles, events, changes, asOf, act
       changes: byPlace.get(id),
       ...Object.fromEntries(Object.entries(activity).filter(([, byP]) => byP[id]).map(([source, byP]) => ['activity', { source, series: byP[id] }])),
       ...(conflict[id] && { conflict: conflict[id] }),
+      ...(tensions[id] && { tensions: tensions[id] }),
     };
   }
   return files;

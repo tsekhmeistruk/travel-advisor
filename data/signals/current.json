@@ -341,7 +341,7 @@
  },
  "activity": {
   "gdelt": {
-   "through": "2026-09-30",
+   "through": "2026-10-01",
    "learning": false,
    "windowDays": 7,
    "baselineDays": 84,
@@ -365,16 +365,13 @@
     "cd": {
      "violence": "above"
     },
-    "cf": {
-     "violence": "above"
-    },
-    "cz": {
-     "violence": "above"
-    },
     "do": {
      "protest": "above"
     },
     "ee": {
+     "violence": "above"
+    },
+    "eg": {
      "violence": "above"
     },
     "er": {
@@ -393,6 +390,9 @@
      "violence": "far"
     },
     "il": {
+     "protest": "above"
+    },
+    "iq": {
      "protest": "above"
     },
     "jm": {
@@ -417,6 +417,10 @@
     "pl": {
      "protest": "above"
     },
+    "re": {
+     "protest": "above",
+     "violence": "far"
+    },
     "rs": {
      "protest": "above"
     },
@@ -424,6 +428,9 @@
      "violence": "far"
     },
     "sn": {
+     "violence": "above"
+    },
+    "so": {
      "violence": "above"
     },
     "tt": {
@@ -434,6 +441,38 @@
     },
     "ve": {
      "protest": "far"
+    }
+   },
+   "pairs": {
+    "AFG|PAK": {
+     "military": "above"
+    },
+    "ARE|ISR": {
+     "military": "far"
+    },
+    "ARM|AZE": {
+     "military": "above"
+    },
+    "AZE|UKR": {
+     "military": "above"
+    },
+    "EGY|ERI": {
+     "military": "above"
+    },
+    "EGY|ISR": {
+     "military": "above"
+    },
+    "ERI|SDN": {
+     "military": "above"
+    },
+    "GBR|IRN": {
+     "military": "above"
+    },
+    "ISR|OMN": {
+     "military": "above"
+    },
+    "ISR|UKR": {
+     "military": "above"
     }
    }
   }

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createWarsMode } from '../../../site/js/datasets/wars/index.js';
 import {
-  windowMonths, bandRows, conflictTitle, conflictName, overviewModel, placeModel, sparkPoints, barRects, conflictUrl,
+  windowMonths, bandRows, conflictTitle, conflictName, overviewModel, placeModel, sparkPoints, barRects, conflictUrl, tensionRows,
 } from '../../../site/js/datasets/wars/logic.js';
 import { createI18n } from '../../../site/js/core/i18n.js';
 import { createSettings } from '../../../site/js/core/settings.js';
@@ -17,7 +17,9 @@ const PLACES = new Map([
   ['ua', { id: 'ua', name: 'Ukraine', iso2: 'UA' }], ['ru', { id: 'ru', name: 'Russia', iso2: 'RU' }],
   ['mx', { id: 'mx', name: 'Mexico', iso2: 'MX' }], ['ye', { id: 'ye', name: 'Yemen', iso2: 'YE' }],
   ['lb', { id: 'lb', name: 'Lebanon', iso2: 'LB' }], ['ng', { id: 'ng', name: 'Nigeria', iso2: 'NG' }],
-  ['fr', { id: 'fr', name: 'France', iso2: 'FR' }],
+  ['fr', { id: 'fr', name: 'France', iso2: 'FR' }], ['af', { id: 'af', name: 'Afghanistan', iso2: 'AF' }], ['pk', { id: 'pk', name: 'Pakistan', iso2: 'PK' }],
+  ['gb', { id: 'gb', name: 'United Kingdom', iso2: 'GB' }], ['ir', { id: 'ir', name: 'Iran', iso2: 'IR' }], ['il', { id: 'il', name: 'Israel', iso2: 'IL' }],
+  ['ae', { id: 'ae', name: 'United Arab Emirates', iso2: 'AE' }], ['gaza', { id: 'gaza', name: 'Gaza' }], ['west-bank', { id: 'west-bank', name: 'West Bank' }],
 ]);
 const twelve = (last, before = 0) => [before, before, before, before, before, before, before, before, before, ...last];
 const CONFLICT = {
@@ -51,6 +53,13 @@ const CURRENT = {
   sources: { ucdp: { url: 'https://ucdp.uu.se/' } },
   places: Object.fromEntries(Object.entries(CONFLICT.places).map(([id, p]) => [id, { conflict: { level: CONFLICT.bands.findIndex(b => p.deaths12 >= b) === -1 ? 1 : 4 - CONFLICT.bands.findIndex(b => p.deaths12 >= b), basis: ['ucdp:2026-08'] } }])),
 };
+// Tensions as the build publishes them (current.activity.gdelt.tensions): above normal only.
+const TENSIONS = { through: '2026-10-01', learning: false, windowDays: 7, baselineDays: 84, pairs: {
+  'ARE|ISR': { status: 'far', count: 58, expected: 4.1, sides: [['ae'], ['il']] },
+  'AFG|PAK': { status: 'above', count: 209, expected: 56.9, sides: [['af'], ['pk']] },
+  'GBR|IRN': { status: 'above', count: 102, expected: 22.1, sides: [['gb'], ['ir']] },
+  'ISR|PSE': { status: 'above', count: 90, expected: 20, sides: [['il'], ['gaza', 'west-bank']] },
+} };
 const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json', conflict: 'risk/conflict.json', places: 'risk/places/' };
 
 let ds;
@@ -104,6 +113,12 @@ describe('logic', () => {
     assert.deepEqual(placeModel({ ...CONFLICT, places: { ...CONFLICT.places, ru: { ...CONFLICT.places.ru, conflicts: [] } } }, 'ru').elsewhere.map(c => c.key), ['1:13243'], 'a party to a war fought elsewhere');
     assert.equal(placeModel(CONFLICT, 'fr'), null);
   });
+  test('tensions: the biggest surge first (reports above the expected count), at most max', () => {
+    assert.deepEqual(tensionRows(TENSIONS).map(t => t.key), ['AFG|PAK', 'GBR|IRN', 'ISR|PSE', 'ARE|ISR']);
+    assert.deepEqual(tensionRows(TENSIONS, 2).map(t => t.key), ['AFG|PAK', 'GBR|IRN']);
+    assert.deepEqual(tensionRows(undefined), []);
+    assert.deepEqual(tensionRows(TENSIONS)[2].sides, [['il'], ['gaza', 'west-bank']]);
+  });
   test('the sparkline and bars fit their box', () => {
     assert.equal(sparkPoints([12, 16, 14], 100, 30, 2), '2,28 50,2 98,15');
     assert.equal(sparkPoints([5, 5], 100, 30), '2,15 98,15', 'flat: the middle');
@@ -126,6 +141,18 @@ describe('the mode', () => {
     assert.match(html, /Escalating<\/div><div class="wars-chips"><button data-place="ye">Yemen<span class="arrow up"/);
     assert.match(html, /Calming<\/div><div class="wars-chips"><button data-place="lb">Lebanon<span class="arrow down"/);
     assert.match(html, /data-action="list"/);
+  });
+  test('the overview\'s tensions: three pairs, biggest surge first, each selecting its first country; none says so', async () => {
+    await create({ current: { ...CURRENT, activity: { gdelt: { tensions: TENSIONS } } } });
+    const html = ds.details(null);
+    assert.match(html, /Tensions · news, 7 days/);
+    const rows = [...html.matchAll(/<button data-place="([\w-]+)" title="([^"]+)">\s*<span class="name">([^<]+)<\/span><span class="when">([^<]+)</g)].map(m => [m[1], m[3], m[4]]);
+    assert.deepEqual(rows, [['af', 'Afghanistan – Pakistan', '209 · usually 57'], ['gb', 'United Kingdom – Iran', '102 · usually 22'], ['il', 'Israel – Gaza, West Bank', '90 · usually 20']]);
+    assert.match(html, /title="Afghanistan – Pakistan: 209 military news reports between them in 7 days, usually about 57 \(GDELT\)"/);
+    await create({ current: { ...CURRENT, activity: { gdelt: { tensions: { ...TENSIONS, pairs: {} } } } } });
+    assert.match(ds.details(null), /Tensions · news, 7 days<\/div>\s*<p class="latest-empty">none<\/p>/);
+    await create();
+    assert.doesNotMatch(ds.details(null), /Tensions/, 'no news source: no section');
   });
   test('nothing escalating says so; one month of data draws no sparkline', async () => {
     const quiet = { ...CONFLICT, places: { ua: { ...CONFLICT.places.ua } }, series: { months: ['2026-08'], wars: [16], armedConflicts: [72], deaths: [11118] } };

@@ -262,7 +262,7 @@ describe('Germany fetcher', () => {
 });
 
 describe('GDELT fetcher', () => {
-  const config = JSON.parse(readFileSync(new URL('../../../config/sources/gdelt.json', import.meta.url), 'utf8'));
+  const { pairs: pairsConfig, ...config } = JSON.parse(readFileSync(new URL('../../../config/sources/gdelt.json', import.meta.url), 'utf8'));
   const csv = readFileSync(new URL('../../fixtures/gdelt-events.csv', import.meta.url));
   const file = zip('x.export.CSV', csv);
   const NOW = new Date('2026-09-28T12:00:00Z');   // yesterday: 2026-09-27
@@ -305,6 +305,28 @@ describe('GDELT fetcher', () => {
     assert.deepEqual(waits, [30000, 60000]);
     await assert.rejects(gdelt.fetch({ log: fakeLog({ daily: () => ({ status: 500 }) }), previous, now: NOW, config, sleep }), /Daily file failed after 3 attempts: HTTP 500/);
     await assert.rejects(gdelt.fetch({ log: fakeLog({ daily: () => ({ body: Buffer.from('<html>') }) }), previous, now: NOW, config }), /Not a zip archive/);
+  });
+
+  test('pairs: kept in their own store, backfilled on their own; each day is read once for both', async () => {
+    const pairsFile = zip('x.export.CSV', readFileSync(new URL('../../fixtures/gdelt-pairs.csv', import.meta.url)));
+    const withPairs = { ...config, pairs: pairsConfig, backfillDays: 5, maxDaysPerRun: 10 };
+    const previous = { first: '2026-09-20', last: '2026-09-25', gaps: [], series: { fr: { protest: [1, 1, 1, 1, 1, 1] } } };
+    const log = fakeLog({ daily: () => ({ body: pairsFile }) });
+    const { data, pairs, stats } = await gdelt.fetch({ log, previous, previousPairs: null, now: NOW, config: withPairs });
+    assert.deepEqual(log.requests.map(r => dayOf(r.url)), ['20260923', '20260924', '20260925', '20260926', '20260927'], 'from the pairs\' backfill start');
+    assert.deepEqual([data.first, data.last, data.series.fr.protest.length], ['2026-09-20', '2026-09-27', 8], 'the counts only add their new days');
+    assert.deepEqual([pairs.first, pairs.last], ['2026-09-23', '2026-09-27']);
+    assert.deepEqual(pairs.series['RUS|UKR'].military, [5, 5, 5, 5, 5]);
+    assert.equal(pairs.series['SAU|YEM'], undefined, 'fewer than minTotal reports: dropped');
+    assert.deepEqual([stats.pairsThrough, stats.pairs], ['2026-09-27', 3]);
+
+    const later = fakeLog({ daily: (url) => (dayOf(url) === '20260928' ? { status: 404 } : { body: pairsFile }) });
+    const next = await gdelt.fetch({ log: later, previous: data, previousPairs: { ...pairs, last: '2026-09-26' }, now: new Date('2026-09-29T12:00:00Z'), config: withPairs });
+    assert.deepEqual(later.requests.map(r => dayOf(r.url)), ['20260927', '20260928'], 'a day the pairs lack is read again; yesterday not out yet');
+    assert.equal(next.data.last, '2026-09-27', 'the counts had it already');
+    const empty = { first: '2026-09-18', last: '2026-09-20', gaps: [], series: {} };
+    const old = await gdelt.fetch({ log: fakeLog({ daily: () => ({ status: 404 }) }), previous: empty, previousPairs: empty, now: NOW, config: { ...withPairs, maxDaysPerRun: 1 } });
+    assert.deepEqual([old.data.gaps.at(-1), old.pairs.gaps.at(-1)], ['2026-09-21', '2026-09-21'], 'an old day without a file is a gap in both');
   });
 });
 

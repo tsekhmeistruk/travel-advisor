@@ -63,8 +63,8 @@
    },
    "violence": {
     "status": "above",
-    "count": 553,
-    "expected": 289.2
+    "count": 562,
+    "expected": 298.5
    }
   }
  },
@@ -209,5 +209,21 @@
     ]
    }
   ]
- }
+ },
+ "tensions": [
+  {
+   "key": "AFG|PAK",
+   "status": "above",
+   "count": 209,
+   "expected": 56.9,
+   "sides": [
+    [
+     "af"
+    ],
+    [
+     "pk"
+    ]
+   ]
+  }
+ ]
 }

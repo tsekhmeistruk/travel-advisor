@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T06:40:45.031Z",
+ "asOf": "2026-10-02T07:26:17.023Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -3871,7 +3871,7 @@
  },
  "activity": {
   "gdelt": {
-   "through": "2026-09-30",
+   "through": "2026-10-01",
    "learning": false,
    "windowDays": 7,
    "baselineDays": 84,
@@ -3884,57 +3884,43 @@
      },
      "violence": {
       "status": "above",
-      "count": 553,
-      "expected": 289.2
+      "count": 562,
+      "expected": 298.5
      }
     },
     "ag": {
      "violence": {
       "status": "above",
-      "count": 21,
-      "expected": 8
+      "count": 18,
+      "expected": 8.3
      }
     },
     "am": {
      "violence": {
       "status": "above",
-      "count": 75,
-      "expected": 36.8
+      "count": 92,
+      "expected": 38.3
      }
     },
     "ar": {
      "violence": {
       "status": "above",
-      "count": 77,
-      "expected": 44.1
+      "count": 69,
+      "expected": 44.9
      }
     },
     "az": {
      "violence": {
       "status": "above",
-      "count": 134,
-      "expected": 49.7
+      "count": 156,
+      "expected": 50.3
      }
     },
     "cd": {
      "violence": {
       "status": "above",
-      "count": 52,
-      "expected": 25.3
-     }
-    },
-    "cf": {
-     "violence": {
-      "status": "above",
-      "count": 24,
-      "expected": 12.8
-     }
-    },
-    "cz": {
-     "violence": {
-      "status": "above",
-      "count": 53,
-      "expected": 22
+      "count": 46,
+      "expected": 25.8
      }
     },
     "do": {
@@ -3947,71 +3933,85 @@
     "ee": {
      "violence": {
       "status": "above",
-      "count": 32,
-      "expected": 13.8
+      "count": 23,
+      "expected": 14.5
+     }
+    },
+    "eg": {
+     "violence": {
+      "status": "above",
+      "count": 270,
+      "expected": 132.7
      }
     },
     "er": {
      "violence": {
       "status": "far",
-      "count": 70,
-      "expected": 7.4
+      "count": 84,
+      "expected": 8.9
      }
     },
     "es": {
      "protest": {
       "status": "above",
-      "count": 96,
+      "count": 107,
       "expected": 42.8
      }
     },
     "et": {
      "violence": {
       "status": "far",
-      "count": 672,
-      "expected": 69.8
+      "count": 546,
+      "expected": 85.9
      }
     },
     "fr": {
      "protest": {
       "status": "above",
-      "count": 134,
-      "expected": 43.8
+      "count": 168,
+      "expected": 44.1
      }
     },
     "gg": {
      "violence": {
       "status": "far",
-      "count": 10,
+      "count": 12,
       "expected": 1.3
      }
     },
     "il": {
      "protest": {
       "status": "above",
-      "count": 567,
-      "expected": 222.7
+      "count": 464,
+      "expected": 229.6
+     }
+    },
+    "iq": {
+     "protest": {
+      "status": "above",
+      "count": 29,
+      "expected": 12
      }
     },
     "jm": {
      "protest": {
       "status": "far",
-      "count": 17,
-      "expected": 4.1
+      "count": 12,
+      "expected": 4.7
      }
     },
     "ls": {
      "violence": {
       "status": "above",
-      "count": 28,
-      "expected": 13.1
+      "count": 27,
+      "expected": 12.8
      }
     },
     "lu": {
      "violence": {
       "status": "above",
-      "count": 12,
-      "expected": 5.4
+      "count": 11,
+      "expected": 5.3
      }
     },
     "mm": {
@@ -4022,50 +4022,69 @@
      },
      "violence": {
       "status": "far",
-      "count": 142,
-      "expected": 37.8
+      "count": 139,
+      "expected": 37.9
      }
     },
     "na": {
      "violence": {
       "status": "above",
-      "count": 46,
-      "expected": 24.8
+      "count": 40,
+      "expected": 25.2
      }
     },
     "ne": {
      "protest": {
       "status": "above",
-      "count": 7,
+      "count": 9,
       "expected": 2
      }
     },
     "pl": {
      "protest": {
       "status": "above",
-      "count": 19,
-      "expected": 8.8
+      "count": 20,
+      "expected": 8.7
+     }
+    },
+    "re": {
+     "protest": {
+      "status": "above",
+      "count": 9,
+      "expected": 0
+     },
+     "violence": {
+      "status": "far",
+      "count": 13,
+      "expected": 2.1
      }
     },
     "rs": {
      "protest": {
       "status": "above",
-      "count": 13,
-      "expected": 4.6
+      "count": 16,
+      "expected": 4.3
      }
     },
     "sk": {
      "violence": {
       "status": "far",
-      "count": 42,
-      "expected": 5
+      "count": 48,
+      "expected": 4.9
      }
     },
     "sn": {
      "violence": {
       "status": "above",
-      "count": 18,
-      "expected": 8.3
+      "count": 15,
+      "expected": 8.7
+     }
+    },
+    "so": {
+     "violence": {
+      "status": "above",
+      "count": 233,
+      "expected": 101.8
      }
     },
     "tt": {
@@ -4078,15 +4097,153 @@
     "vc": {
      "violence": {
       "status": "above",
-      "count": 23,
-      "expected": 10.1
+      "count": 22,
+      "expected": 10.2
      }
     },
     "ve": {
      "protest": {
       "status": "far",
       "count": 60,
-      "expected": 16.2
+      "expected": 16.5
+     }
+    }
+   },
+   "tensions": {
+    "through": "2026-10-01",
+    "learning": false,
+    "windowDays": 7,
+    "baselineDays": 84,
+    "pairs": {
+     "AFG|PAK": {
+      "status": "above",
+      "count": 209,
+      "expected": 56.9,
+      "sides": [
+       [
+        "af"
+       ],
+       [
+        "pk"
+       ]
+      ]
+     },
+     "ARE|ISR": {
+      "status": "far",
+      "count": 58,
+      "expected": 4.1,
+      "sides": [
+       [
+        "ae"
+       ],
+       [
+        "il"
+       ]
+      ]
+     },
+     "ARM|AZE": {
+      "status": "above",
+      "count": 66,
+      "expected": 13.4,
+      "sides": [
+       [
+        "am"
+       ],
+       [
+        "az"
+       ]
+      ]
+     },
+     "AZE|UKR": {
+      "status": "above",
+      "count": 26,
+      "expected": 3.3,
+      "sides": [
+       [
+        "az"
+       ],
+       [
+        "ua"
+       ]
+      ]
+     },
+     "EGY|ERI": {
+      "status": "above",
+      "count": 24,
+      "expected": 0,
+      "sides": [
+       [
+        "eg"
+       ],
+       [
+        "er"
+       ]
+      ]
+     },
+     "EGY|ISR": {
+      "status": "above",
+      "count": 83,
+      "expected": 17.8,
+      "sides": [
+       [
+        "eg"
+       ],
+       [
+        "il"
+       ]
+      ]
+     },
+     "ERI|SDN": {
+      "status": "above",
+      "count": 28,
+      "expected": 0.8,
+      "sides": [
+       [
+        "er"
+       ],
+       [
+        "sd"
+       ]
+      ]
+     },
+     "GBR|IRN": {
+      "status": "above",
+      "count": 102,
+      "expected": 22.1,
+      "sides": [
+       [
+        "gb"
+       ],
+       [
+        "ir"
+       ]
+      ]
+     },
+     "ISR|OMN": {
+      "status": "above",
+      "count": 28,
+      "expected": 1.2,
+      "sides": [
+       [
+        "il"
+       ],
+       [
+        "om"
+       ]
+      ]
+     },
+     "ISR|UKR": {
+      "status": "above",
+      "count": 27,
+      "expected": 7.4,
+      "sides": [
+       [
+        "il"
+       ],
+       [
+        "ua"
+       ]
+      ]
      }
     }
    }

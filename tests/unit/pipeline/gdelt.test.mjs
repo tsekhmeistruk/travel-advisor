@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { deflateRawSync } from 'node:zlib';
 import { zip } from './zip-helper.mjs';
 import { unzipFirst } from '../../../scripts/lib/zip.mjs';
-import { addDay, addDays, dayIndex, emptyCounts, windowSum } from '../../../scripts/lib/counts.mjs';
+import { addDay, addDays, dayIndex, emptyCounts, windowSum, prune } from '../../../scripts/lib/counts.mjs';
 import { poissonTail, assess, assessAll, changeRatio, rank } from '../../../scripts/lib/anomaly.mjs';
 import { countEvents, fileDay } from '../../../scripts/providers/gdelt/parse.mjs';
 
@@ -15,6 +15,9 @@ const CONFIG = JSON.parse(readFileSync(new URL('../../../config/sources/gdelt.js
 // 59 real lines of a daily file (Sep 27, 2026): protests in France, fights in Ethiopia, assaults
 // in the U.S., mass violence in Syria, protests without a location, fights at sea, other events.
 const CSV = readFileSync(new URL('../../fixtures/gdelt-events.csv', import.meta.url), 'utf8');
+// 16 real lines (Sep 30, 2026) of military events between countries: Russia and Ukraine, Israel and
+// Palestine, Poland and Russia, threats of force, a region, one country on both sides, a missing actor.
+const PAIRS = readFileSync(new URL('../../fixtures/gdelt-pairs.csv', import.meta.url), 'utf8');
 
 describe('unzipFirst', () => {
   test('reads the one file of a deflated or stored archive', () => {
@@ -48,6 +51,12 @@ describe('daily counts', () => {
     assert.deepEqual(windowSum(d, 'fr', 'protest', '2026-09-04', 7), { sum: 8, days: 2 });
     assert.deepEqual(windowSum(d, 'xx', 'protest', '2026-09-04', 2), { sum: 0, days: 1 });
     assert.throws(() => addDay(d, '2026-09-04', {}, opts), /not after/);
+  });
+  test('prune drops the places (or pairs) with too few reports in the whole history', () => {
+    let d = addDay(emptyCounts(), '2026-09-01', { 'RUS|UKR': { military: 9 }, 'SAU|YEM': { military: 1 } }, opts);
+    d = addDay(d, '2026-09-02', { 'RUS|UKR': { military: 3 } }, opts);
+    assert.deepEqual(Object.keys(prune(d, 10).series), ['RUS|UKR']);
+    assert.deepEqual(prune(d, 10).last, '2026-09-02');
   });
   test('keeps the last historyDays days', () => {
     let d = emptyCounts();
@@ -121,4 +130,21 @@ describe('countEvents on a real daily file', () => {
     assert.throws(() => countEvents('', CONFIG), /not in the expected format/);
   });
   test('names the daily file by its day', () => assert.equal(fileDay('2026-09-27'), '20260927'));
+});
+
+describe('military events between countries (pairs)', () => {
+  test('counted per pair of country codes, sorted, once per event: force posture, fighting, threats of force', () => {
+    const { pairs } = countEvents(PAIRS, CONFIG);
+    assert.deepEqual(pairs, {
+      'RUS|UKR': { military: 5 }, 'ISR|PSE': { military: 4 }, 'POL|RUS': { military: 2 }, 'SAU|YEM': { military: 1 }, 'AFR|ZAF': { military: 1 },
+    }, 'not one country on both sides, a missing actor, or a consultation; regions stay (the build leaves them out)');
+  });
+  test('the place counts are as before; without a pairs config, no pairs', () => {
+    const withPairs = countEvents(CSV, CONFIG);
+    const { pairs, ...plain } = CONFIG;
+    const without = countEvents(CSV, plain);
+    assert.deepEqual(withPairs.counts, without.counts);
+    assert.equal('pairs' in without, false);
+    assert.deepEqual(countEvents(PAIRS, plain).counts, countEvents(PAIRS, CONFIG).counts, 'fights still count as violence where they happened');
+  });
 });

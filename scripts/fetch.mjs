@@ -5,7 +5,8 @@
 //   travel-advisory providers (kind "advisories", the default): entries -> data/snapshots/
 //   risk sources (kind "events", e.g. gdacs): events -> data/events/<id>.json; events that
 //     expired are moved to data/archive/events/
-//   counts sources (kind "counts", e.g. gdelt): daily counts -> data/counts/<id>.json
+//   counts sources (kind "counts", e.g. gdelt): daily counts -> data/counts/<id>.json (and pair counts
+//     -> data/counts/<id>-pairs.json)
 //   conflict sources (kind "conflict", e.g. ucdp): each new monthly version -> data/conflict/<id>/<version>.json
 //
 // Usage: node scripts/fetch.mjs <id>      e.g. node scripts/fetch.mjs ca
@@ -61,8 +62,12 @@ async function fetchEvents(provider, { store, log, sleep, now }) {
 
 async function fetchCounts(provider, { store, log, sleep, now }) {
   const config = store.source(provider.id);
-  const { data, stats } = await provider.fetch({ log, previous: store.counts(provider.id), now: now(), config, ...(sleep && { sleep }) });
+  const pairsId = `${provider.id}-pairs`;
+  const { data, pairs, stats } = await provider.fetch({
+    log, previous: store.counts(provider.id), ...(config.pairs && { previousPairs: store.counts(pairsId) }), now: now(), config, ...(sleep && { sleep }),
+  });
   store.saveCounts(provider.id, data);
+  if (pairs) store.saveCounts(pairsId, pairs);
   log.stat(stats);
   console.log(`Counted ${stats.counted.length} day(s) of ${provider.id}${stats.gaps.length ? `, ${stats.gaps.length} without a file` : ''}; counts through ${data.last}.`);
   return stats.counted.length;

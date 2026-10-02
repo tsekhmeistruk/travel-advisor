@@ -43,13 +43,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 12,
-    "expected": 8.3
+    "count": 10,
+    "expected": 8.4
    },
    "violence": {
     "status": "normal",
-    "count": 178,
-    "expected": 223.3
+    "count": 194,
+    "expected": 218.3
    }
   }
  },
@@ -146,5 +146,21 @@
     ]
    }
   ]
- }
+ },
+ "tensions": [
+  {
+   "key": "ERI|SDN",
+   "status": "above",
+   "count": 28,
+   "expected": 0.8,
+   "sides": [
+    [
+     "er"
+    ],
+    [
+     "sd"
+    ]
+   ]
+  }
+ ]
 }

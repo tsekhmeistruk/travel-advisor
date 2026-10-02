@@ -4,7 +4,7 @@ import { placeIndex } from '../../../scripts/lib/build.mjs';
 import { addDay, addDays, emptyCounts } from '../../../scripts/lib/counts.mjs';
 import {
   healthStatus, travelSignals, travelLevel, eventLevel, isActive, eventPlaces, eventSignals, updateSignals, eventChanges,
-  advisoryChanges, buildRisk, placeFiles, activitySignals, CHANGE_WINDOW_DAYS, PLACE_HISTORY_DAYS,
+  advisoryChanges, buildRisk, placeFiles, activitySignals, tensionSignals, CHANGE_WINDOW_DAYS, PLACE_HISTORY_DAYS,
 } from '../../../scripts/lib/risk.mjs';
 
 const PLACES = [
@@ -503,5 +503,61 @@ describe('conflict data (UCDP) in the risk layer', () => {
   test('a conflict category missing from config/categories.json warns', () => {
     const { warnings } = buildRisk(input([july], { categories: { ...CATEGORIES, categories: [{ id: 'travel' }] } }));
     assert.ok(warnings.includes('[ucdp] category "conflict" is not in config/categories.json'));
+  });
+});
+
+describe('tensions (GDELT pairs) in the risk layer', () => {
+  const PAIRS_CONFIG = {
+    rootCodes: ['15', '19', '20'], eventCodes: ['138'], historyDays: 100, minTotal: 10, actors: { PSE: ['gaza', 'west-bank'] },
+    anomaly: { windowDays: 7, baselineDays: 84, above: { minCount: 15, minExcess: 8, minRatio: 3, maxP: 0.001 }, far: { minCount: 30, minRatio: 6, maxP: 0.0001 }, stay: { maxP: 0.05 } },
+  };
+  // 91 days: Israel–Palestine far above its normal in the last week, Mexico–Somalia steady, a region pair, an unknown code.
+  const pairCounts = (lastWeek = 60, days = 91) => {
+    let d = emptyCounts();
+    for (let i = 0; i < days; i++) {
+      const week = i >= days - 7;
+      d = addDay(d, addDays('2026-06-29', i), { 'ISR|PSE': { military: week ? lastWeek : 2 }, 'MEX|SOM': { military: 3 }, 'AFR|ISR': { military: week ? 50 : 1 }, 'ISR|XYZ': { military: week ? 50 : 1 } }, { historyDays: 100 });
+    }
+    return d;
+  };
+  const config = { pairs: PAIRS_CONFIG };
+
+  test('pairs above their normal, by place; regions and unknown codes left out; statuses kept for the next assessment', () => {
+    const t = tensionSignals(pairCounts(), config, undefined, index);
+    assert.deepEqual(Object.keys(t.published.pairs), ['ISR|PSE']);
+    assert.deepEqual(t.published.pairs['ISR|PSE'], { status: 'far', count: 420, expected: 14, sides: [['il'], ['gaza', 'west-bank']] });
+    assert.deepEqual([t.published.through, t.published.learning, t.published.windowDays], ['2026-09-27', false, 7]);
+    assert.deepEqual(t.state, { 'ISR|PSE': { military: 'far' } });
+    assert.deepEqual(Object.keys(t.byPlace).sort(), ['gaza', 'il', 'west-bank']);
+    assert.equal(t.byPlace.il[0].key, 'ISR|PSE');
+    const quiet = tensionSignals(pairCounts(2), config, t.state, index);
+    assert.deepEqual([quiet.published.pairs, quiet.state], [{}, {}], 'back to normal: nothing published');
+  });
+
+  test('buildRisk publishes them beside the news activity and in place files; never a level or a change', () => {
+    const GDELT = {
+      id: 'gdelt', kind: 'counts', staleAfterHours: 72, pairs: PAIRS_CONFIG, links: { home: 'https://www.gdeltproject.org/' },
+      series: { protest: { category: 'unrest', rootCodes: ['14'] } },
+      anomaly: { windowDays: 7, baselineDays: 84, above: { minCount: 5, minExcess: 3, minRatio: 2, maxP: 0.01 }, far: { minCount: 10, minRatio: 4, maxP: 0.001 }, stay: { maxP: 0.05 } },
+    };
+    let counts = emptyCounts();
+    for (let i = 0; i < 91; i++) counts = addDay(counts, addDays('2026-06-29', i), { mx: { protest: 1 } }, { historyDays: 400 });
+    const input = {
+      index, categories: { scale: { type: 'levels', values: [1, 2, 3, 4] }, categories: [{ id: 'travel' }, { id: 'unrest' }] },
+      schedule: { gdelt: { everyMinutes: 360 } }, advisories: { files: {}, history: {} },
+      sources: { gdelt: { config: GDELT, data: counts, pairs: pairCounts() } }, state: null, log: [],
+      sourcesState: { gdelt: { lastAttempt: T0, lastSuccess: T0 } },
+    };
+    const first = buildRisk(input);
+    const current = first.files['risk/current.json'];
+    assert.equal(current.activity.gdelt.tensions.pairs['ISR|PSE'].status, 'far');
+    assert.equal(current.places.il, undefined, 'no level');
+    assert.deepEqual(first.files['risk/places/gaza.json'].tensions.map(t => t.key), ['ISR|PSE']);
+    assert.equal(first.files['risk/places/mx.json'].tensions, undefined);
+    assert.deepEqual(first.state.activity.gdelt.pairs, { 'ISR|PSE': { military: 'far' } });
+    const next = buildRisk({ ...input, sources: { gdelt: { config: GDELT, data: addDay(counts, '2026-09-28', { mx: { protest: 1 } }, { historyDays: 400 }), pairs: addDay(pairCounts(), '2026-09-28', {}, { historyDays: 100 }) } }, state: first.state, log: first.newChanges });
+    assert.deepEqual(next.newChanges.filter(c => c.placeIds?.includes('il') || c.placeId === 'il'), [], 'never a change');
+    const none = buildRisk({ ...input, sources: { gdelt: { config: GDELT, data: counts, pairs: null } } });
+    assert.equal(none.files['risk/current.json'].activity.gdelt.tensions, undefined, 'no pair counts yet: no tensions');
   });
 });

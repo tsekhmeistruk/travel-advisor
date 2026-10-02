@@ -605,6 +605,10 @@ h1, h2 { margin: 0; }
   font: inherit; font-size: 12px; font-weight: 600; color: var(--text); cursor: pointer;
 }
 .wars-trend button:hover, .wars-trend button:focus-visible { border-color: var(--text-3); }
+.wars-tensions { width: 100%; margin-top: 8px; }
+.wars-tensions .latest-list { margin-top: 2px; }
+.wars-tensions .latest-list button { padding: 1px 6px; }
+.wars-tensions .name { max-width: 66%; }
 .wars-bars { width: 100%; margin-top: 8px; }
 .wars-bars .history-label .dim { text-transform: none; letter-spacing: 0; font-weight: 500; }
 .wars-bars svg { display: block; width: 100%; height: 46px; margin-top: 6px; }
@@ -823,3 +827,5 @@ h1, h2 { margin: 0; }
 }
 .cv-list.conflicts .what { white-space: normal; }
 .recent-list .earlier { color: var(--text-3); }
+.cv-sub { margin: 12px 0 2px; font-size: 12px; font-weight: 600; color: var(--text-2); }
+.cv-list.tensions .who { flex: none; max-width: 45%; }

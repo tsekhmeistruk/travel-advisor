@@ -9,7 +9,7 @@ import { esc, safeUrl } from '../../core/dom.js';
 import { createRiskMode } from '../risk/index.js';
 import { levelOf } from '../risk/logic.js';
 import { titleSize } from '../travel-advisories/logic.js';
-import { overviewModel, placeModel, bandRows, conflictName, sparkPoints, barRects, conflictUrl } from './logic.js';
+import { overviewModel, placeModel, bandRows, conflictName, sparkPoints, barRects, conflictUrl, tensionRows } from './logic.js';
 
 const SPARK = { w: 120, h: 34 };
 const BARS = { w: 320, h: 46 };
@@ -44,6 +44,19 @@ export function createWarsMode(ctx) {
       </div>`;
   }
 
+  /** "Afghanistan – Pakistan": each side's places. */
+  const pairName = (t) => t.sides.map(side => side.map(placeName).join(', ')).join(' – ');
+
+  /** The overview's Tensions: up to three pairs, as buttons to the first side's place; the figures in the title. */
+  function tensionsHtml() {
+    const tensions = base.data().current.activity?.gdelt?.tensions;
+    if (!tensions) return '';
+    const rows = tensionRows(tensions, 3).map(t => `<li><button data-place="${esc(t.sides[0][0])}" title="${esc(tw('tensionTitle', { pair: pairName(t), count: t.count, expected: num(Math.round(t.expected)), days: tensions.windowDays }))}">
+        <span class="name">${esc(pairName(t))}</span><span class="when">${esc(tw('tensionShort', { count: num(t.count), expected: num(Math.round(t.expected)) }))}</span></button></li>`).join('');
+    return `<div class="wars-tensions" title="${esc(tw('tensionsAbout'))}"><div class="history-label">${esc(tw('tensionsTitle', { days: tensions.windowDays }))}</div>
+        ${rows ? `<ul class="latest-list">${rows}</ul>` : `<p class="latest-empty">${esc(tw('none'))}</p>`}</div>`;
+  }
+
   function placeButtons(ids, dir) {
     return ids.map(id => `<button data-place="${esc(id)}">${esc(placeName(id))}${arrow(dir)}</button>`).join('');
   }
@@ -66,7 +79,7 @@ export function createWarsMode(ctx) {
       <p class="wars-deaths">${deathsText}</p>
       ${row('escalatingTitle', m.escalating, 'up')}
       ${row('calmingTitle', m.calming, 'down')}
-      <p class="hint">${esc(tw('note'))}</p>
+      ${tensionsHtml()}
       <div class="card-actions"><button class="link link-btn" data-action="list">${esc(tr('list.open'))}</button></div>`;
   }
 

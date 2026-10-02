@@ -65,9 +65,9 @@ The research:
 
 ## Status
 
-- **Current step:** 3.6
-- **Done:** parts 0–2
-- **Last commit of this revision:** 737d09f (part 2)
+- **Current step:** 4.6
+- **Done:** parts 0–3
+- **Last commit of this revision:** d8e6814 (part 3)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -153,18 +153,18 @@ The research:
   - [x] unit: `groupFeed()`; the merged Disasters level and markers.
   - [x] e2e: four tabs; the redirects; the grouped feed; the edited mode lists (`RISK_MODES`, shots, live-check).
   - [x] deleted: the Changes-view and news-list tests.
-- [ ] 3.6 Ship. Live check: four tabs; `#mode=changes` opens Wars.
+- [x] 3.6 Ship. Live check: four tabs; `#mode=changes` opens Wars.
 
 ## Part 4: Tensions (GDELT pairs)
 
-- [ ] 4.1 `countEvents()` also counts pairs: actor country codes (columns 7 and 17) different and both mapped (`actors` in `config/sources/gdelt.json`); force posture (15), fighting (19, 20) and threats of military force (138).
-- [ ] 4.2 Pair counts in `data/counts/gdelt.json`; the anomaly with a stricter `pairs` rule; published as `activity.gdelt.pairs`.
-- [ ] 4.3 A one-off local backfill of 98 days.
-- [ ] 4.4 Site: Tensions in the Wars overview (at most three) and in the country view. Never a level or a pulse.
+- [x] 4.1 `countEvents()` also counts pairs: actor country codes (columns 7 and 17) different and both mapped (`actors` in `config/sources/gdelt.json`); force posture (15), fighting (19, 20) and threats of military force (138).
+- [x] 4.2 Pair counts in `data/counts/gdelt.json`; the anomaly with a stricter `pairs` rule; published as `activity.gdelt.pairs`.
+- [x] 4.3 A one-off local backfill of 98 days.
+- [x] 4.4 Site: Tensions in the Wars overview (at most three) and in the country view. Never a level or a pulse.
 - [ ] 4.5 Tests:
-  - [ ] unit: pair counting from real rows; region codes dropped; the anomaly.
-  - [ ] unit site: the Tensions list.
-  - [ ] e2e: Tensions shown.
+  - [x] unit: pair counting from real rows; region codes dropped; the anomaly.
+  - [x] unit site: the Tensions list.
+  - [x] e2e: Tensions shown.
 - [ ] 4.6 Ship. Live check: Tensions lists pairs.
 
 ## Part 5: Docs and wrap-up
@@ -199,3 +199,4 @@ The research:
 
 - Part 0: fe66b8e, deploy green. Part 1: 940faca, deploy green, live: All's card shows Ukraine Conflict Critical (97,381 deaths, UCDP), 142 places above Normal, no console errors; update run 36974703851 (ucdp) green: no new version, data through 26.0.8. Tests added: ucdp parser, conflict logic, buildRisk conflict branch, UCDP fetcher, FileStore versions, runFetch conflict kind, data (mapping, bands, war count), project (conflict config), e2e conflict row. Edited: card rows (unit, e2e), risk loading, manifest list, basis check. Deleted: none.
 - Part 2: 737d09f, deploy green, live: Wars opens with 16 wars, header 'Conflict data to August 2026', Yemen's card zooms, no console errors in any mode. Tests added: wars logic and view (unit), country view conflict section, registry (Wars first, default, needs conflict data), wars text keys (project), e2e Wars overview and Wars in the per-mode loop (injected Yemen conflict change). Edited: first visit opens Wars, mode count 6, alert-click test hovers off the feed, shots and live-check lists (live-check reads the war count). Deleted: none.
+- Part 3: d8e6814, deploy green, live: tabs Wars, Disasters, Travel, All; #mode=changes opens Wars and #mode=wildfire opens Disasters; feed 3 grouped rows (was 14); no news list; no console errors. Tests added: groupFeed, Disasters with wildfires, redirects and four tabs (e2e), grouped feed (e2e). Edited: registry, feed counts, countryRows by categories, notes and header, layout and empty-window tests, Chile marker test, news e2e, tool lists. Deleted: Changes fading, fade-switch and legend cases, newsRows and news section tests.

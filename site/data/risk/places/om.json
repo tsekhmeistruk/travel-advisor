@@ -44,12 +44,12 @@
    "protest": {
     "status": "normal",
     "count": 3,
-    "expected": 4.1
+    "expected": 3.9
    },
    "violence": {
     "status": "normal",
-    "count": 63,
-    "expected": 84.9
+    "count": 84,
+    "expected": 85.9
    }
   }
  },
@@ -107,5 +107,21 @@
    }
   ],
   "partyTo": []
- }
+ },
+ "tensions": [
+  {
+   "key": "ISR|OMN",
+   "status": "above",
+   "count": 28,
+   "expected": 1.2,
+   "sides": [
+    [
+     "il"
+    ],
+    [
+     "om"
+    ]
+   ]
+  }
+ ]
 }

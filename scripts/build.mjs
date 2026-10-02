@@ -33,7 +33,7 @@ export function readBuildInput(store = new FileStore()) {
       sources: Object.fromEntries(store.sourceIds().map(id => {
         const config = store.source(id);
         const read = { counts: () => store.counts(id), conflict: () => store.conflict(id) }[config.kind] ?? (() => store.events(id));
-        return [id, { config, data: read() }];
+        return [id, { config, data: read(), ...(config.pairs && { pairs: store.counts(`${id}-pairs`) }) }];
       })),
       state: store.signals(),
       log: [...store.changes(year - 1), ...store.changes(year)],

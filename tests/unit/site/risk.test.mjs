@@ -816,6 +816,18 @@ describe('news activity on the site', () => {
     assert.match(el.innerHTML, /not verified incidents, compared with this country&#39;s own last 12 weeks\. They never set a risk level\./);
   });
 
+  test('the country view lists the place\'s tensions with other countries (military news above the pair\'s normal)', async () => {
+    const tension = { key: 'KEN|SOM', status: 'above', count: 40, expected: 9.6, sides: [['ke'], ['so']] };
+    await withActivity({ file: { ...MX_FILE, activity: { source: 'gdelt', series: ACTIVITY.gdelt.places.mx }, tensions: [tension] } });
+    const el = { innerHTML: '' };
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    assert.match(el.innerHTML, /Tensions with other countries<\/h4><ul class="cv-list tensions"><li class="activity above"><span class="who">Kenya – Somalia<\/span>/);
+    assert.match(el.innerHTML, /40 military reports between them in 7 days, usually about 10/);
+    await withActivity({ file: MX_FILE });
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    assert.doesNotMatch(el.innerHTML, /Tensions with other countries/);
+  });
+
   test('while the baseline is being collected, or with no counts, the country view says so', async () => {
     await withActivity({ activity: { gdelt: { ...ACTIVITY.gdelt, learning: true, places: {} } } });
     const el = { innerHTML: '' };

@@ -36,14 +36,30 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 306,
-    "expected": 220.3
+    "count": 292,
+    "expected": 221.8
    },
    "violence": {
     "status": "normal",
-    "count": 2000,
-    "expected": 2370
+    "count": 2012,
+    "expected": 2363.3
    }
   }
- }
+ },
+ "tensions": [
+  {
+   "key": "GBR|IRN",
+   "status": "above",
+   "count": 102,
+   "expected": 22.1,
+   "sides": [
+    [
+     "gb"
+    ],
+    [
+     "ir"
+    ]
+   ]
+  }
+ ]
 }

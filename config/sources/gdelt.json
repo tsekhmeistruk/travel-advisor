@@ -46,6 +46,42 @@
    "maxP": 0.05
   }
  },
+ "pairs": {
+  "rootCodes": [
+   "15",
+   "19",
+   "20"
+  ],
+  "eventCodes": [
+   "138"
+  ],
+  "historyDays": 100,
+  "minTotal": 10,
+  "actors": {
+   "PSE": [
+    "gaza",
+    "west-bank"
+   ]
+  },
+  "anomaly": {
+   "windowDays": 7,
+   "baselineDays": 84,
+   "above": {
+    "minCount": 20,
+    "minExcess": 10,
+    "minRatio": 3,
+    "maxP": 0.001
+   },
+   "far": {
+    "minCount": 30,
+    "minRatio": 6,
+    "maxP": 0.0001
+   },
+   "stay": {
+    "maxP": 0.05
+   }
+  }
+ },
  "fips": {
   "AA": "aw",
   "AC": "ag",
