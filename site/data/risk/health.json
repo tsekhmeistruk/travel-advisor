@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T06:23:17.878Z",
+ "asOf": "2026-10-02T06:40:45.031Z",
  "sources": {
   "ca": {
    "status": "healthy",
@@ -38,8 +38,8 @@
   },
   "ucdp": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T06:23:17.878Z",
-   "lastAttempt": "2026-10-02T06:23:17.878Z",
+   "lastSuccess": "2026-10-02T06:40:45.031Z",
+   "lastAttempt": "2026-10-02T06:40:45.031Z",
    "consecutiveFailures": 0,
    "records": 32
   },
