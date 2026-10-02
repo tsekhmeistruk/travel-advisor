@@ -14,9 +14,9 @@
   "consecutiveFailures": 0
  },
  "eonet": {
-  "lastAttempt": "2026-10-02T18:24:38.606Z",
-  "lastSuccess": "2026-10-02T18:24:38.606Z",
-  "durationMs": 353,
+  "lastAttempt": "2026-10-02T20:12:57.676Z",
+  "lastSuccess": "2026-10-02T20:12:57.676Z",
+  "durationMs": 219,
   "records": 32,
   "consecutiveFailures": 0
  },
@@ -63,10 +63,10 @@
   "consecutiveFailures": 0
  },
  "usgs": {
-  "lastAttempt": "2026-10-02T18:22:34.616Z",
-  "lastSuccess": "2026-10-02T18:22:34.616Z",
-  "durationMs": 153,
-  "records": 54,
+  "lastAttempt": "2026-10-02T20:12:57.403Z",
+  "lastSuccess": "2026-10-02T20:12:57.403Z",
+  "durationMs": 186,
+  "records": 55,
   "consecutiveFailures": 0
  },
  "who": {

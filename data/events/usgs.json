@@ -1,6 +1,6 @@
 {
  "source": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
- "fetchedAt": "2026-10-02T18:22:34.617Z",
+ "fetchedAt": "2026-10-02T20:12:57.404Z",
  "firstFetchedAt": "2026-10-02T18:22:34.617Z",
  "events": [
   {
@@ -1449,6 +1449,33 @@
    "revisions": [
     {
      "at": "2026-10-02T18:22:34.617Z",
+     "value": "M5"
+    }
+   ]
+  },
+  {
+   "id": "usgs:us6000tz7b",
+   "code": "EQ",
+   "name": "M 5.0 - 179 km SSE of Vilyuchinsk, Russia",
+   "country": "Russia",
+   "iso3": [],
+   "point": {
+    "lon": 159.831,
+    "lat": 51.578
+   },
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "startedAt": "2026-10-02T18:25:20.940Z",
+   "toDate": "2026-10-02T18:25:20.940Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tz7b",
+   "firstSeen": "2026-10-02T20:12:57.404Z",
+   "revisions": [
+    {
+     "at": "2026-10-02T20:12:57.404Z",
      "value": "M5"
     }
    ]

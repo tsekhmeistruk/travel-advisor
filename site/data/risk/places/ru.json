@@ -37,6 +37,7 @@
   }
  },
  "events": [
+  "usgs:us6000tz7b",
   "usgs:us6000tz62",
   "usgs:us6000tyku",
   "eonet:EONET_20392",
