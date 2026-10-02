@@ -62,7 +62,7 @@ describe('mode switch', () => {
     await page.click('#modeSwitch [data-mode="disaster"]');
     await page.waitForFunction(() => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === 'disaster');
     assert.equal(await page.evaluate(() => window.__stayed), true, 'no page reload');
-    assert.match(await text(page, 'asOf'), /^Updated /);
+    assert.match(await text(page, 'asOf'), /^([A-Z]+ delayed · )?Updated /, 'a delayed source may come first');
     assert.equal(await page.$eval('#providerSwitch', el => el.hidden), true);
     assert.match(await text(page, 'legend'), /Normal.*Elevated.*High.*Critical/);
     assert.equal((await saved(page)).mode, 'disaster');
@@ -319,7 +319,7 @@ describe('risk panel', () => {
     const body = JSON.stringify({ ...current, asOf: new Date(Date.now() - 30 * 36e5).toISOString() });
     const old = (req) => isData(req, 'risk/current.json') && (req.respond({ status: 200, contentType: 'application/json', body }), true);
     const page = await openMode('highest', { intercept: old });
-    assert.match(await text(page, 'asOf'), /^Updated (a day|1 day|yesterday)[^:]*: newer data is delayed/);
+    assert.match(await text(page, 'asOf'), /^([A-Z]+ delayed · )?Updated (a day|1 day|yesterday)[^:]*: newer data is delayed/);
     assert.equal(await page.$eval('#asOf', el => el.classList.contains('is-stale')), true);
     await page.close();
   });
