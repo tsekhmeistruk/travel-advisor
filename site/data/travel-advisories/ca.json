@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "ca",
- "asOf": "2026-10-01",
+ "asOf": "2026-10-02",
  "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "links": {
   "list": "https://travel.gc.ca/travelling/advisories"
@@ -1413,7 +1413,7 @@
   {
    "title": "Mongolia",
    "level": 1,
-   "updated": "2026-09-24",
+   "updated": "2026-10-01",
    "url": "https://travel.gc.ca/destinations/mongolia",
    "places": [
     "mn"

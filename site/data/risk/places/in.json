@@ -39,6 +39,20 @@
  "events": [],
  "changes": [
   {
+   "id": "in:disaster:2026-10-02T06:13:22.734Z",
+   "at": "2026-10-02T06:13:22.734Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "in",
+   "from": 3,
+   "to": 1,
+   "up": false,
+   "basis": [],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
    "id": "in:disaster:2026-09-28T11:59:27.360Z",
    "at": "2026-09-28T11:59:27.360Z",
    "kind": "level",

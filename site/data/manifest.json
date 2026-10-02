@@ -28,38 +28,38 @@
     {
      "id": "us",
      "flag": "us",
-     "asOf": "2026-10-01",
+     "asOf": "2026-10-02",
      "file": "travel-advisories/us.json"
     },
     {
      "id": "ca",
      "flag": "ca",
-     "asOf": "2026-10-01",
+     "asOf": "2026-10-02",
      "file": "travel-advisories/ca.json"
     },
     {
      "id": "nl",
      "flag": "nl",
-     "asOf": "2026-10-01",
+     "asOf": "2026-10-02",
      "file": "travel-advisories/nl.json"
     },
     {
      "id": "uk",
      "flag": "gb",
-     "asOf": "2026-10-01",
+     "asOf": "2026-10-02",
      "file": "travel-advisories/uk.json"
     },
     {
      "id": "de",
      "flag": "de",
-     "asOf": "2026-10-01",
+     "asOf": "2026-10-02",
      "file": "travel-advisories/de.json"
     }
    ]
   }
  ],
  "risk": {
-  "asOf": "2026-10-02T03:22:15.750Z",
+  "asOf": "2026-10-02T06:13:37.487Z",
   "current": "risk/current.json",
   "changes": "risk/changes.json",
   "events": "risk/events.json",

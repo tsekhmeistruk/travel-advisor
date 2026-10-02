@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-10-02T03:22:15.750Z",
+ "fetchedAt": "2026-10-02T06:13:22.734Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -49,7 +49,7 @@
    "episode": 23,
    "severity": "Medium impact for agricultural drought in 1717124 km2",
    "startedAt": "2025-12-21T00:00:00.000Z",
-   "toDate": "2026-09-29T00:00:00.000Z",
+   "toDate": "2026-09-30T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1018332&episodeid=23&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -118,7 +118,7 @@
    "episode": 10,
    "severity": "Medium impact for agricultural drought in 840372 km2",
    "startedAt": "2026-04-21T00:00:00.000Z",
-   "toDate": "2026-09-29T00:00:00.000Z",
+   "toDate": "2026-09-30T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027449&episodeid=10&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -160,7 +160,7 @@
    "episode": 10,
    "severity": "Medium impact for agricultural drought in 2451121 km2",
    "startedAt": "2026-06-21T00:00:00.000Z",
-   "toDate": "2026-09-29T00:00:00.000Z",
+   "toDate": "2026-09-30T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027450&episodeid=10&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -193,7 +193,7 @@
    "episode": 7,
    "severity": "Medium impact for agricultural drought in 233797 km2",
    "startedAt": "2026-05-21T00:00:00.000Z",
-   "toDate": "2026-09-29T00:00:00.000Z",
+   "toDate": "2026-09-30T00:00:00.000Z",
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027465&episodeid=7&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
@@ -1359,9 +1359,7 @@
    "code": "TC",
    "name": "Tropical Cyclone CHOI-WAN-26",
    "country": "Northern Mariana Islands",
-   "iso3": [
-    "MNP"
-   ],
+   "iso3": [],
    "point": {
     "lon": 144.7,
     "lat": 17
