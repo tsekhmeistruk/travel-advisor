@@ -1,6 +1,6 @@
 # Architecture
 
-This project is a map of the world that shows **data about places**. Today the data is official travel-advisory levels from the U.S., Canada and the Netherlands. The code is built so that more **providers** (other governments), other **datasets** (flights, statistics), more **languages** and a **database** can be added without restructuring.
+This project is a map of the world that shows **data about places**: wars and armed conflicts (UCDP), tensions in the news (GDELT), official travel-advisory levels from five governments, disaster alerts (GDACS) and outbreak notices (WHO). The code is built so that more **providers** (other governments), other **datasets** (flights, statistics), more **languages** and a **database** can be added without restructuring.
 
 ## Principles
 
@@ -29,14 +29,17 @@ config/                        hand-edited configuration (future: reference tabl
   places.json                  place registry (generated once by scripts/tools/generate-places.mjs, then reviewed)
   datasets/<id>.json           dataset definition: scale, providers, settings options
   providers/<id>.json          provider mapping: home, territories, coveredBy, aliases, codes, list-only entries
-  categories.json              risk categories (travel, disaster, wildfire, …) and their 1–4 scale
+  categories.json              risk categories (travel, conflict, disaster, wildfire, …) and their 1–4 scale
   sources/<id>.json            a risk source: type, authority, level map, event types and categories, codes
+                               (ucdp: country names, deaths bands, the war threshold, trends)
   schedule.json                how often each provider and source is fetched
 data/                          pipeline state (future: database tables)
   snapshots/<dataset>/<p>.json latest fetch of each provider
   history/<dataset>.json       level history per provider and record
   events/<source>.json         a risk source's current events (and those ended in the last 90 days)
   counts/<source>.json         a counts source's daily counts per place and series (GDELT news reports)
+  counts/<source>-pairs.json   its daily counts per pair of countries (GDELT military news: tensions)
+  conflict/<source>/<v>.json   a conflict source's monthly versions, written once (UCDP: one event per line)
   archive/events/<source>/<yyyy>.jsonl   events that left the current file
   signals/current.json         confirmed risk signals per category and place, with pending falls
   changes/<yyyy>.jsonl         the risk change log (append-only)
@@ -50,7 +53,8 @@ scripts/                       the data pipeline (Node 22, no dependencies)
   log-summary.mjs              fetch log as a table
   lib/                         pure logic: build.mjs (matching, level history), merge.mjs (merge with the previous
                                snapshot, level-change confirmation), risk.mjs (signals, changes, health),
-                               events.mjs (event upsert), schedule.mjs (due check), text.mjs;
+                               events.mjs (event upsert), schedule.mjs (due check), text.mjs, conflict.mjs (UCDP
+                               figures, war count, bands, trends), counts.mjs and anomaly.mjs (news activity);
                                I/O boundary: store.mjs; logging: fetch-log.mjs, log-summary.mjs (Fetch results table)
   providers/<id>/              index.mjs (network), parse.mjs (pure parsing)
   tools/generate-places.mjs    regenerates config/places.json
@@ -66,7 +70,7 @@ site/                          the published website: deployed as-is
     main.js                    composition root: loads data, creates the dataset and map, wires the panel
     core/                      i18n, settings, data client, URL state, DOM helpers (pure except dom.js)
     map/                       world-map.js (generic map), splits.js (map geometry fixes)
-    datasets/                  registry.js (modes, dataset interface), travel-advisories/ and risk/ (logic.js pure, index.js views)
+    datasets/                  registry.js (modes, dataset interface), travel-advisories/, risk/ and wars/ (logic.js pure, index.js views)
     ui/                        search, mode switch, provider switch, theme, language picker, tooltip
 tests/
   unit/pipeline, unit/site     pure logic, with real-response fixtures in tests/fixtures/
@@ -107,6 +111,7 @@ The product is growing from a travel-advisory map into a risk monitor: several s
 "No data" is never a level: an uncovered place, or a source that is down, has no signal rather than Normal.
 
 - **Travel** is the level that at least two of the governments covering a place give, or the only one's where one covers it (`travelLevel()`), so one government alone, or one misread advisory, doesn't set it. The signal keeps each government's own level (`natives`), how many give this very level (`agree`), and a stricter government (`strictest: { level, by }`), which the card names by its flag. (Until Oct 2, 2026 it was the highest of them: one government alone set the level in 43 places.) Its changes come from the advisory level history, as before, so changing this rule records no change.
+- **Conflict** comes from UCDP's monthly candidate events (`lib/conflict.mjs`, source kind `conflict`): a place's deaths in organized violence over 12 months (state-based, non-state and one-sided, where they happened) give its level through `bands` (25 Elevated, 100 High, 1,000 Critical). Events are placed by UCDP's country names (`countries`), Israel's by region first (Gaza Strip, West Bank). A later version wins for an event it repeats. The figures (`risk/conflict.json`): the war count per month (state-based conflicts, a government on one side, with 1,000+ deaths in the 12 months to that month), each place's months, deaths by type, trend (`up`: the last 3 months ≥ 1.5× the 3 before and ≥ 150 deaths; `down`: ≤ 0.5× and the 3 before ≥ 150), the conflicts fought there and those it is a party to (the governments on its sides; "XXX475" is an unnamed group fighting the government of country 475). Levels change only when a new month comes out (`confirmFallMinutes` 0); a source in `error` keeps its state and publishes no levels, but its figures stay.
 - **Event categories** (`disaster`, `wildfire` from GDACS; `health` from WHO Disease Outbreak News, a notice being Elevated for 30 days) come from a source's active events: `config/sources/<id>.json` maps each native value to a level (GDACS: Green 1, Orange 3, Red 4), caps some types (drought at 2), and gives each type a tail after its end (earthquake 7 days). An event on no place (offshore) only warns.
 - **Confirmation:** a rise is recorded at once. A fall is recorded only when a fetch at least `confirmFallMinutes` later still shows it; until then the signal keeps its level with a `pending` fall. The first run of a category sets a baseline without changes, and events of a source's first fetch aren't "new".
 - **Idempotent:** change ids are built from the place, category and fetch time (or event id and revision time), and the build's "now" is the newest fetch time in its inputs, so building the same data twice changes nothing.
@@ -123,6 +128,8 @@ A **counts source** (`kind: "counts"`, today GDELT) never sets a level. GDELT co
 - **Hysteresis:** a status holds while the ratio stays at least half of the one that entered it and p ≤ 0.05.
 - **Percentages** are shown only from an expected count of 2, so 0 → 1 never reads "+100%".
 - **Learning:** it needs about 3/4 of the baseline (a backfill of 98 days is fetched once).
+
+**Tensions** use the same files and rules on pairs of countries: military events between two different countries' actors (CAMEO 15 force posture, 19 and 20 fighting, 138 threats of military force), counted per pair of the source's country codes in `data/counts/gdelt-pairs.json` (its own days, so it backfills on its own; pairs below `pairs.minTotal` reports are pruned), judged by `tensionSignals()` with a stricter `pairs.anomaly` rule (20+ reports, 10+ above expected, 3×). Codes are placed by `pairs.actors` (PSE: Gaza and the West Bank) or ISO alpha-3; regions (AFR, EUR, WST) are left out. Published as `activity.gdelt.tensions` and as each place's `tensions`; never a level, a change or a pulse.
 
 Statuses above normal are published as `activity` in `risk/current.json`, each place's figures in its place file, and a change of status is a change of kind `anomaly` (listed, never pulsed). The card shows them in its "coming later" slot ("News: Protest reports far above normal (GDELT)"), and the country view as figures against the normal.
 
@@ -194,6 +201,21 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
 { "id": "et:violence:2026-09-27", "at": "2026-09-27", "kind": "anomaly", "category": "security", "placeId": "et",
   "series": "violence", "source": "gdelt", "from": "normal", "to": "far", "up": true, "count": 640, "expected": 56.5 }
 
+// risk/conflict.json: a conflict source's figures (lib/conflict.mjs)
+{ "asOf": "…", "source": "ucdp", "version": "26.0.8", "through": "2026-08", "preliminary": true,
+  "links": { "home": "https://ucdp.uu.se/", "conflict": "https://ucdp.uu.se/conflict/" },
+  "windowMonths": 12, "bands": [1000, 100, 25], "warDeaths": 1000,
+  "series": { "months": ["2024-09", …], "wars": [null, …, 16], "armedConflicts": [null, …, 72], "deaths": [11612, …, 11118] },
+  "conflicts": { "1:13243": { "name": "Russia - Ukraine", "sideA": "…", "sideB": "…", "deaths12": 97739, "last": 5702,
+                              "war": true, "places": ["ua", "ru"], "parties": ["ru", "ua"] } },
+  "places": { "ua": { "deaths12": 97381, "months": [9298, …, 5648], "byType": { "state": 97336, "nonState": 0, "oneSided": 45 },
+                      "trend": null, "conflicts": ["1:13243"], "partyTo": ["1:13243"] } } }
+// place files add "conflict" (the place's figures, conflicts spelled out) and "tensions"
+
+// risk/current.json, beside the news activity: tensions (never a level)
+"activity": { "gdelt": { …, "tensions": { "through": "2026-10-01", "learning": false, "windowDays": 7, "baselineDays": 84,
+  "pairs": { "AFG|PAK": { "status": "above", "count": 209, "expected": 56.9, "sides": [["af"], ["pk"]] } } } } }
+
 // risk/health.json
 { "asOf": "…", "sources": { "gdacs": { "status": "healthy", "lastSuccess": "…", "lastAttempt": "…", "consecutiveFailures": 0, "records": 13 } } }
 ```
@@ -202,7 +224,7 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
 
 - **`main.js`** is the composition root.
   - It loads the manifest, picks a locale (saved choice, then browser languages, then the default), and loads messages, places and map geometry.
-  - It picks the **mode** (the URL hash first, then the saved choice, then Highest), creates that mode's dataset from `MODES` in `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
+  - It picks the **mode** (the URL hash first, then the saved choice, then Wars; `RENAMED` maps old ids), creates that mode's dataset from `MODES` in `datasets/registry.js`, and creates the `WorldMap` with the dataset's `style` function.
   - It wires hover and selection *targets* to the details card, tooltip, feed and search.
   - **On the map**, top centre: the mode switch (`ui/controls.js`), and in Travel the provider switch below it (`.map-top`); on phones the mode switch is a full-width row that scrolls if it must, with the zoom controls and provider switch below it. The map keeps the mode row clear (`topInset` of `WorldMap`).
   - **Panel order:** header (one line, the data age: "Updated 2 hours ago" in the risk modes, "Data as of Oct 1, 2026" in Travel, whose agency is named in the overview and footer; stale data is flagged, see `stale()`), search, the details card, the feed, then the **Filters** (a `<details>`, collapsed by default, its state saved as `filtersOpen`) and the footer.
@@ -213,14 +235,15 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
 
   | Mode | Colours places by | Module |
   |---|---|---|
+  | Wars (the default) | the `conflict` category: deaths in armed violence over 12 months (UCDP) | `datasets/wars/`, built on the risk mode |
+  | Disasters | the `disaster` and `wildfire` categories (GDACS), the higher of the two | `datasets/risk/` (`view: 'category'`, `categories`) |
   | Travel | one government's advisory level, with the provider switch | `datasets/travel-advisories/` |
-  | Highest | the highest level of any risk category | `datasets/risk/` (`view: 'highest'`) |
-  | Disasters | the `disaster` category (GDACS) | `datasets/risk/` (`view: 'category'`) |
-  | Wildfires | the `wildfire` category (GDACS forest fires) | `datasets/risk/` (`view: 'category'`) |
-  | Changes | the highest level, fading places whose level didn't change in the window (news activity or an alert alone doesn't count) | `datasets/risk/` (`view: 'changes'`) |
+  | All | the highest level of any risk category | `datasets/risk/` (`view: 'highest'`, id `highest`) |
 
-  The risk modes share one factory (`createRiskMode`) and one settings namespace (`risk`: levels, window 24 h / 7 / 30 / 90 days, direction, fade). Their card lists every category with its level and what set it: "2 of 3 governments", or the GDACS alert. Their overview card shows the three latest changes (a click selects the place). Their feed lists level changes, advisory changes and new or changed alerts, the first 8 until "Show all". **News activity is not a change** (`isNews()` in `risk/logic.js`): the published anomaly records are left out of the feed, "Latest changes", tooltips, the card and country-view histories, and the Changes mode's fading. Instead, Highest and Changes have an **Unusual news activity** section below the feed (`renderNews(el)`, from `newsRows()`: the places with unusual activity now, "far above" first, 5 until "Show all"), and the card's news line says "News: no unusual activity (GDELT)" when there is none. Travel's overview shows its latest level changes too. An empty list says so and offers "Show 90 days" (`showWindow(days)`). The header says "Updated 2 hours ago", and flags data over 12 hours old (`isStale()` in `risk/logic.js`): GitHub drops scheduled runs. A pulse still means only a level change. A place with no data is drawn grey and never pulses.
-- **Event markers:** a mode may return `markers()` (`[{ id, lon, lat, kind, level }]`), which the map draws with `setMarkers()`: a coloured disc per event, with an icon per kind (earthquake, cyclone, flood, volcano, drought, fire). Markers whose screen positions share a 28px cell become one cluster with a count and the highest level (`map/clusters.js`, pure); clicking a cluster zooms in to split it, and at the closest zoom selects its first event. A selected marker is the target `{ eventId, placeId }`: the card shows the event (the source's facts, our level beside them, the places it affects, a link to the source), and its place is outlined. The Disasters and Wildfires modes mark their category's events; Highest marks only Orange and Red ones; Changes and Travel none.
+  The Wildfires and Changes modes were merged into Disasters and removed (Oct 2026): `RENAMED` in `registry.js` sends their old links and saved modes to Disasters and Wars. The **Wars** mode is the risk mode on the `conflict` category with its own cards: the overview (the war count and its sparkline, the latest month's deaths against the month before, escalating and calming places as buttons, and up to three Tensions), and a place card (12 monthly bars, the conflicts fought there or that it is a party to, violence with no government as a side, a link to UCDP); its header names the data month. The country view of every mode has an "Armed violence (UCDP)" section after the categories. The risk card keeps four rows: Travel, Conflict, Disaster (with wildfires, `cardRows()`), Health.
+
+  The risk modes share one factory (`createRiskMode`) and one settings namespace (`risk`: levels, window 24 h / 7 / 30 / 90 days, direction, fade). Their card lists every category with its level and what set it: "2 of 3 governments", or the GDACS alert. Their overview card shows the three latest changes (a click selects the place). Their feed lists level changes, advisory changes and new or changed alerts, one row per place and category (`groupFeed()`: the newest, "and 3 earlier"), the first 8 until "Show all". **News activity is not a change** (`isNews()` in `risk/logic.js`): the published anomaly records are left out of the feed, "Latest changes", tooltips, the card and country-view histories, and the fading ("Fade places without a recent change"). It is shown as it is now: on the card's news line ("News: protest reports far above normal (GDELT)", or "no unusual activity") and in the country view, with the place's tensions. (A front-page list of it was removed in Oct 2026: it led with noise.) Travel's overview shows its latest level changes too. An empty list says so and offers "Show 90 days" (`showWindow(days)`). The header says "Updated 2 hours ago", and flags data over 12 hours old (`isStale()` in `risk/logic.js`): GitHub drops scheduled runs. A pulse still means only a level change. A place with no data is drawn grey and never pulses.
+- **Event markers:** a mode may return `markers()` (`[{ id, lon, lat, kind, level }]`), which the map draws with `setMarkers()`: a coloured disc per event, with an icon per kind (earthquake, cyclone, flood, volcano, drought, fire). Markers whose screen positions share a 28px cell become one cluster with a count and the highest level (`map/clusters.js`, pure); clicking a cluster zooms in to split it, and at the closest zoom selects its first event. A selected marker is the target `{ eventId, placeId }`: the card shows the event (the source's facts, our level beside them, the places it affects, a link to the source), and its place is outlined. Disasters marks its categories' events (wildfires included); All marks only Orange and Red ones; Wars and Travel none.
 - **Country view:** "Country details" on the risk card (and on the Travel card, which borrows a risk mode's viewer, loaded when first opened) opens a full panel view in place of the card, settings and feed (`#…&view=country` in the URL; Back or Escape closes it, selecting another country follows it). It shows every category, the active alerts (click: the event card), each government's advisory in its own words with a link, and the place's changes over 7, 30, 90 days or a year. It loads `risk/places/<id>.json` only when opened. **Share** (beside Back) gives the link to the view (`#mode=…&place=…&view=country`): the share sheet on a touch screen (`navigator.share`), otherwise the link is copied and a toast says "Link copied" (`#toast`, fixed to the viewport).
 - **Loading:** `#app` is `aria-busy` until `main()` settles (drawn, or the error box shown); meanwhile CSS draws a pulsing outline of the world and of the card. **`/`** focuses the search (not while typing in a field).
 - **Search** (`ui/search.js`) finds what the dataset's `searchEntries()` lists: every place, and in the risk modes also the active alerts by name (the mode's category only, in a category mode; Green forest fires are left out, as each repeats a generic name). The prompt comes from `searchPlaceholder()` ("Find a country or alert"). Choosing an alert shows its card and zooms to its marker (`WorldMap.zoomToMarker()`), or to its place when the mode shows no marker.
@@ -231,7 +254,7 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
 - **Datasets** implement the interface documented in `datasets/registry.js`:
   - `load`, plus `providers`, `provider` and `setProvider`;
   - `style`, `details`, `tooltip` and `legend`;
-  - `renderSettings`, `renderFeed`, `showWindow`, `feedTarget` and `feedKeyFor` (and optionally `renderNews`);
+  - `renderSettings`, `renderFeed`, `showWindow`, `feedTarget` and `feedKeyFor`;
   - `searchEntries` (and optionally `searchPlaceholder`), `header`, `stale` and `footer`.
 
   Each dataset keeps its settings under its own namespace in the saved settings.
@@ -257,15 +280,16 @@ The manifest also has `risk: { asOf, current, changes, events, health, places }`
    - add a real-response fixture and unit tests for `parse.mjs`, and fetcher tests in `providers.test.mjs`;
    - the browser tests read providers from the manifest, so the new one is tested at desktop and phone widths automatically.
 
-### Add a risk source (events, e.g. GDACS)
+### Add a risk source (events, e.g. GDACS; or monthly conflict data, e.g. UCDP)
 1. **Fetcher:** write `scripts/providers/<id>/index.mjs`, exporting `{ id, kind: 'events', source, fetch({ log, previous, now, config }) → { events, expired, stats } }`, with the pure parsing in `parse.mjs`. Parse only the source's facts: keep its level as `native: { scheme, value }` and leave our level to the build. Leave out fields that change on every request, so the committed events file changes only when an event does. Merge with `mergeEvents()` (`lib/events.mjs`). Every request goes through `log.request()`.
 2. **Registry:** add the module to `SOURCES` in `scripts/providers/index.mjs`.
 3. **Config:** add `config/sources/<id>.json`: `name`, `type`, `authority`, `links.home` and `links.terms`, `staleAfterHours`, `confirmFallMinutes`, `lookbackDays`, `retainEndedDays`, the `scheme` and its `levels` map, `types` (each with `type`, `category`, `tailDays`, optional `maxLevel`), and `codes` for codes that aren't one place. Categories must exist in `config/categories.json`.
 4. **Schedule and workflow:** `"<id>": { "everyMinutes": 60 }` in `config/schedule.json`, and a step as for providers.
 5. **Tests:** a real-response fixture, parser tests, fetcher tests in `providers.test.mjs`. `project.test.mjs` checks the wiring.
+6. **A conflict source** (`kind: "conflict"`, like UCDP) instead stores each version it fetches (`saveConflictVersion`) and gives `config.category`, `countries`, `bands`, `war`, `armedConflict`, `trend` and `windowMonths`; `lib/conflict.mjs` turns the versions into levels and `risk/conflict.json`.
 
 ### Add a map mode
-- **For a risk category** (e.g. `wildfire` once it has enough data): add `{ id, create: risk({ mode, view: 'category', category }), entry: (m) => m.risk }` to `MODES` in `datasets/registry.js`, and `modes.<id>.label` and `.title` to every locale. The browser tests in `tests/e2e/risk.test.mjs` list the risk modes they check.
+- **For a risk category:** add `{ id, create: risk({ mode, view: 'category', category, categories? }), entry: (m) => m.risk }` to `MODES` in `datasets/registry.js` (`categories` shows several as one, like Disasters), and `modes.<id>.label` and `.title` to every locale. A mode with its own cards wraps the risk mode, as `datasets/wars/` does. The browser tests in `tests/e2e/risk.test.mjs` list the risk modes they check. A removed mode goes into `RENAMED`, so old links still open something.
 - **For another dataset** (e.g. flights):
   1. **Scale:** decide the dataset's value scale. It may not be levels 1–4. Colour classes are the dataset's choice; add CSS tokens for them.
   2. **Pipeline:** add `config/datasets/<id>.json` and its providers, as above. If the published record shape differs, add a builder next to `buildProvider` and dispatch on the dataset in `buildSite`. The manifest already lists datasets.

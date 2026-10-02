@@ -1,6 +1,6 @@
 # Wars first, fewer tabs: plan and progress
 
-> **In progress.** This is the live checklist of the "Wars first" revision, approved by the owner on Oct 2, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part, so the owner can follow progress and an interrupted session can pick up here.
+> **Done (Oct 2, 2026).** This was the live checklist of the "Wars first" revision, approved by the owner on Oct 2, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part, so the owner can follow progress and an interrupted session can pick up here.
 >
 > **How to resume after an interruption:**
 > 1. Read the repo copy.
@@ -65,9 +65,9 @@ The research:
 
 ## Status
 
-- **Current step:** 4.6
-- **Done:** parts 0–3
-- **Last commit of this revision:** d8e6814 (part 3)
+- **Current step:** 5.3
+- **Done:** parts 0–4
+- **Last commit of this revision:** f214057 (part 4)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -165,12 +165,12 @@ The research:
   - [x] unit: pair counting from real rows; region codes dropped; the anomaly.
   - [x] unit site: the Tensions list.
   - [x] e2e: Tensions shown.
-- [ ] 4.6 Ship. Live check: Tensions lists pairs.
+- [x] 4.6 Ship. Live check: Tensions lists pairs.
 
 ## Part 5: Docs and wrap-up
 
-- [ ] 5.1 `docs/architecture.md`, README, and `.claude/CLAUDE.md` (code map, source quirks for UCDP and the GDELT pairs, current state).
-- [ ] 5.2 Review screenshots: desktop, phone, tablet 768, landscape 844×390, both themes.
+- [x] 5.1 `docs/architecture.md`, README, and `.claude/CLAUDE.md` (code map, source quirks for UCDP and the GDELT pairs, current state).
+- [x] 5.2 Review screenshots: desktop, phone, tablet 768, landscape 844×390, both themes.
 - [ ] 5.3 Ship and report.
 
 ---
@@ -200,3 +200,4 @@ The research:
 - Part 0: fe66b8e, deploy green. Part 1: 940faca, deploy green, live: All's card shows Ukraine Conflict Critical (97,381 deaths, UCDP), 142 places above Normal, no console errors; update run 36974703851 (ucdp) green: no new version, data through 26.0.8. Tests added: ucdp parser, conflict logic, buildRisk conflict branch, UCDP fetcher, FileStore versions, runFetch conflict kind, data (mapping, bands, war count), project (conflict config), e2e conflict row. Edited: card rows (unit, e2e), risk loading, manifest list, basis check. Deleted: none.
 - Part 2: 737d09f, deploy green, live: Wars opens with 16 wars, header 'Conflict data to August 2026', Yemen's card zooms, no console errors in any mode. Tests added: wars logic and view (unit), country view conflict section, registry (Wars first, default, needs conflict data), wars text keys (project), e2e Wars overview and Wars in the per-mode loop (injected Yemen conflict change). Edited: first visit opens Wars, mode count 6, alert-click test hovers off the feed, shots and live-check lists (live-check reads the war count). Deleted: none.
 - Part 3: d8e6814, deploy green, live: tabs Wars, Disasters, Travel, All; #mode=changes opens Wars and #mode=wildfire opens Disasters; feed 3 grouped rows (was 14); no news list; no console errors. Tests added: groupFeed, Disasters with wildfires, redirects and four tabs (e2e), grouped feed (e2e). Edited: registry, feed counts, countryRows by categories, notes and header, layout and empty-window tests, Chile marker test, news e2e, tool lists. Deleted: Changes fading, fade-switch and legend cases, newsRows and news section tests.
+- Part 4: f214057, deploy green, live: Wars overview lists Tensions (Afghanistan – Pakistan 209 · usually 57, United Kingdom – Iran, Egypt – Israel), Pakistan's country view lists its tension, no console errors; update run 36979530374 (gdelt) green. Pairs backfilled 98 days locally (997 pairs, 10 above normal). Tests added: pair counting (real fixture), prune, fetcher with pairs, tensionSignals and buildRisk, tensionRows and overview Tensions, country view tensions, project and data checks, e2e. Edited: GDELT fetcher tests without pairs. Deleted: the overview's preliminary note.
