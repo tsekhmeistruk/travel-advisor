@@ -127,7 +127,7 @@ describe('panel', () => {
     assert.deepEqual(await ours(), changes.changed.slice(0, 2));
     await page.click('#recentSeg button[data-days="0"]');
     await sleep(200);
-    assert.equal(await page.evaluate(() => document.querySelector('.recent').hidden), true, 'feed hidden when highlighting is off');
+    assert.equal(await page.evaluate(() => document.querySelector('.recent').checkVisibility()), false, 'feed hidden when highlighting is off');
     await page.close();
   });
 

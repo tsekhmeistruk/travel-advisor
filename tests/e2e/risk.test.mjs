@@ -253,6 +253,31 @@ describe('risk panel', () => {
     await page.close();
   });
 
+  test('news activity has its own section, not the feed; a row selects its place; none in Disasters or Travel', async () => {
+    const page = await openMode('highest', { intercept: withRiskChanges() });
+    const keys = await page.$$eval('#recentList button[data-key]', els => els.map(b => b.dataset.key));
+    assert.ok(keys.includes('test:event') && !keys.includes('test:news'), 'the 3-hour-old anomaly is not listed between the newer changes');
+    assert.equal(await page.$eval('#recentList', el => /GDELT/.test(el.textContent)), false, 'no news item in the feed');
+    assert.equal(await page.$eval('#newsSection', el => el.checkVisibility()), true);
+    const first = await page.$eval('#newsList button[data-place]', b => ({ place: b.dataset.place, text: b.textContent.replace(/\s+/g, ' ').trim() }));
+    assert.deepEqual(first, { place: 'nz', text: 'New Zealand Protest reports far above normal' }, 'the most unusual first');
+    await page.click('#newsList button[data-place="nz"]');
+    await sleep(900);
+    await page.hover('#footer');
+    assert.equal(await detailsTitle(page), 'New Zealand');
+    assert.match(await page.evaluate(() => location.hash), /place=nz/);
+    assert.match(await page.$eval('#details', el => el.textContent), /News: Protest reports far above normal \(GDELT\)/);
+    const mode = (id) => page.waitForFunction((m) => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === m, {}, id);
+    await page.click('#modeSwitch [data-mode="disaster"]');
+    await mode('disaster');
+    assert.equal(await page.$eval('#newsSection', el => el.checkVisibility()), false, 'a category mode');
+    await page.click('#modeSwitch [data-mode="travel"]');
+    await mode('travel');
+    assert.equal(await page.$eval('#newsSection', el => el.checkVisibility()), false, 'Travel');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
   test('hovering a feed item previews that place; clicking selects it', async () => {
     const page = await openMode('disaster', { intercept: withRiskChanges() });
     const first = await page.$('#recentList button');

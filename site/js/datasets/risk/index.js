@@ -9,14 +9,15 @@
 // names the source facts behind each level (a government's advisory, a GDACS alert).
 
 import { esc, safeUrl } from '../../core/dom.js';
-import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS } from './logic.js';
+import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, newsRows } from './logic.js';
 import { prepareEntries, rankMatches } from '../../ui/search.js';
 import { titleSize } from '../travel-advisories/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 export const WINDOWS = [1, 7, 30, 90];
 export const HISTORY_WINDOWS = [7, 30, 90, 365];
-const FEED_SHORT = 8;      // the feed shows this many until "Show all" (it can be long: news activity)
+const FEED_SHORT = 8;      // the feed shows this many until "Show all"
+const NEWS_SHORT = 5;      // and the news section this many
 const FEED_LIMIT = 50;
 const LATEST = 3;          // changes on the overview card
 const STALE_HOURS = 12;    // updates are hourly: older data means runs were dropped
@@ -34,6 +35,7 @@ export function createRiskMode(ctx) {
   let changes = [];
   let events = [];
   let feedAll = false;   // "Show all" was clicked (for this page view)
+  let newsAll = false;
 
   const tr = (key, params) => i18n.t(`risk.${key}`, params);
   const levelName = (l) => (l == null ? tr('noData') : tr(`levels.${l}`));
@@ -72,8 +74,8 @@ export function createRiskMode(ctx) {
     return memo.list;
   }
 
-  /** The feed's changes: the window's, on shown levels (news activity has none). */
-  const feedItems = () => shown().filter(c => c.kind === 'anomaly' || c.to == null || levels().includes(c.to));
+  /** The feed's changes: the window's, on shown levels. */
+  const feedItems = () => shown().filter(c => c.to == null || levels().includes(c.to));
   /** An empty list: says so, and offers the longest window. */
   const emptyHtml = (text) => `${esc(text)}${windowDays() < WINDOWS.at(-1)
     ? ` <button class="link-btn" data-show-days="${WINDOWS.at(-1)}">${esc(tr('feed.showDays', { days: WINDOWS.at(-1) }))}</button>` : ''}`;
@@ -83,7 +85,8 @@ export function createRiskMode(ctx) {
       client.file(manifest.current, manifest.asOf), client.file(manifest.changes, manifest.asOf), client.file(manifest.events, manifest.asOf),
     ]);
     current = c;
-    changes = ch.changes;
+    // News activity is shown as it is now (the news section), never as a change: see isNews().
+    changes = ch.changes.filter(x => !isNews(x));
     events = ev.events;
     memo = null;
   }
@@ -97,7 +100,6 @@ export function createRiskMode(ctx) {
       if (c.from != null) return tr('change.advisory', { provider, from: c.from, to: c.to });
       return tr(c.up ? 'change.advisoryUp' : 'change.advisoryDown', { provider, to: c.to });
     }
-    if (c.kind === 'anomaly') return tr('change.anomaly', { series: seriesName(c.series), status: tr(`activity.change.${c.to}`), source: sourceName(c.source) });
     const params = { source: sourceName(c.source), alert: alertName(c.native), type: typeName(c.type) };
     if (c.new) return tr('change.eventNew', params);
     return tr(c.up ? 'change.eventUp' : 'change.eventDown', params);
@@ -151,7 +153,7 @@ export function createRiskMode(ctx) {
   function latestHtml() {
     const items = feedItems().slice(0, LATEST);
     const rows = items.map(c => `<li><button data-key="${esc(c.id)}" title="${esc(`${changeName(c)}: ${changeText(c)}`)}">
-        <span class="swatch" style="background:${swatch(c.kind === 'anomaly' ? null : c.to)}"></span>
+        <span class="swatch" style="background:${swatch(c.to)}"></span>
         <span class="name">${esc(changeName(c))}</span>
         ${arrow(direction(c))}<span class="what">${esc(changeText(c))}</span>
         <span class="when">${esc(i18n.shortHours(ageHours(c.at, now())))}</span>
@@ -212,7 +214,10 @@ export function createRiskMode(ctx) {
   }
   function newsLine(placeId) {
     const items = activityOf(placeId);
-    if (!items.length) return `<p class="later">${esc(tr('card.later'))}</p>`;
+    if (!items.length) {
+      const source = Object.keys(current.activity ?? {})[0];
+      return `<p class="later">${source ? esc(tr('activity.quiet', { source: sourceName(source) })) : ''}</p>`;
+    }
     const text = tr('activity.line', {
       items: items.map(i => tr('activity.item', { series: seriesName(i.series), status: tr(`activity.status.${i.status}`) })).join(' · '),
       source: sourceName(items[0].source),
@@ -287,7 +292,7 @@ export function createRiskMode(ctx) {
         ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(tr('country.official', { date: i18n.formatDate(a.updated) }))}">↗</a>` : ''}
       </li>`;
     }).join('');
-    const all = file ? file.changes : changesFor(placeId, changes);
+    const all = (file ? file.changes : changesFor(placeId, changes)).filter(c => !isNews(c));
     const history = all.filter(c => ageHours(c.at, now()) <= days * 24);
     return `
       <div class="cv-head">
@@ -570,7 +575,7 @@ export function createRiskMode(ctx) {
       container.innerHTML = items.length
         ? items.slice(0, limit).map(c => `<li><button data-key="${esc(c.id)}" title="${esc(changeText(c))}">
             <span class="row">
-              <span class="swatch" style="--c:${swatch(c.kind === 'anomaly' ? null : c.to)}"></span>
+              <span class="swatch" style="--c:${swatch(c.to)}"></span>
               <span class="name">${esc(changeName(c))}</span>
               <span class="when">${esc(i18n.shortHours(ageHours(c.at, now())))}</span>
             </span>
@@ -579,6 +584,33 @@ export function createRiskMode(ctx) {
         : `<li class="recent-empty">${emptyHtml(tr('feed.empty'))}</li>`;
     },
     showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
+
+    /**
+     * Unusual news activity now, by place: protests and violence in the news against each
+     * country's normal (GDELT), never a level. Not in a category mode. Rows carry data-place.
+     */
+    renderNews(container) {
+      const section = container.closest('.news');
+      const rows = view === 'category' ? [] : newsRows(current.activity, placeName);
+      section.hidden = !rows.length;
+      if (section.hidden) return;
+      section.querySelector('#newsCount').textContent = rows.length;
+      const limit = newsAll ? rows.length : NEWS_SHORT;
+      const what = (r) => r.items.map(i => tr('activity.item', { series: seriesName(i.series), status: tr(`activity.status.${i.status}`) })).join(' · ');
+      container.innerHTML = rows.slice(0, limit).map(r => `<li class="${esc(r.status)}"><button data-place="${esc(r.placeId)}" title="${esc(`${what(r)} (${sourceName(r.source)})`)}">
+            <span class="row">
+              <span class="swatch"></span>
+              <span class="name">${esc(placeName(r.placeId))}</span>
+            </span>
+            <span class="what">${esc(what(r))}</span>
+          </button></li>`).join('')
+        + (rows.length > limit ? `<li class="recent-more"><button class="link-btn" data-news-all>${esc(tr('news.showAll', { count: rows.length }))}</button></li>` : '');
+      container.onclick = (e) => {
+        if (!e.target.closest('[data-news-all]')) return;
+        newsAll = true;
+        this.renderNews(container);
+      };
+    },
 
     /** A feed item's target: its first place, and its event when it is about one (the card then shows the event). */
     feedTarget(key) {

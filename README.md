@@ -10,7 +10,8 @@ A world map that monitors countries for changes that matter to travellers: offic
 - **Risk level by colour:** each country is filled by its advisory level, from 1 (normal precautions) to 4 (do not travel). Countries with no advisory are grey.
 - **Mode switch** at the top of the map, and in Travel the **source switch** (U.S. / Canada / Netherlands / U.K. / Germany) below it. Each source uses its own level wording, links and data. On phones it shows flags only.
 - **Level changes:** a country pulses on the map when its level went up or down in the last 7, 30 or 90 days. Only the level (the colour) counts. Text edits and reissues at the same level don't, and for details the site links to the official advisory.
-- **Change feed:** "Level changes in the last N days" lists each change, e.g. "▲ Level 2 → 3", newest first. The risk modes also show the three latest changes on the overview card. An empty period offers a longer one.
+- **Change feed:** "Level changes in the last N days" lists each change, e.g. "▲ Level 2 → 3", newest first; the overview card shows the three latest. The risk modes list level changes and new or changed alerts. An empty period offers a longer one.
+- **Unusual news activity:** where protests or violence are in the news far more than usual (GDELT), listed on its own below the feed; it is never a level or a change.
 - **Details panel:** hover or tap a country to see its level, what the level means, when the source last updated it, its level history (the last three changes), whether regional advisories apply, and a link to the official advisory.
 - **Filters** (below the feed, collapsed until opened): show or hide levels, pick the level-change window, fade countries without a recent level change. A theme switch offers light, dark and auto. All of it is remembered in the browser.
 - **How levels work:** the ⓘ in the legend explains the scale and its sources. The header warns when the data is older than it should be.

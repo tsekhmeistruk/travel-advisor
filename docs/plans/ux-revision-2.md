@@ -39,9 +39,9 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Status
 
-- **Current step:** 2.6 (ship)
-- **Done:** parts 0–1; 2.1–2.5
-- **Last commit of this revision:** eb89206 (part 1)
+- **Current step:** 3.7 (ship)
+- **Done:** parts 0–2; 3.1–3.6
+- **Last commit of this revision:** 05cb8c1 (part 2)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -81,7 +81,7 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 - [x] 2.1 `travelSignals()` (`scripts/lib/risk.mjs:60`):
   - sort the levels from high to low; the level is the second one, or the only one when a single government covers the place;
-  - `agree` is the number of governments at this level or above;
+  - `agree` is the number of governments at this very level (changed from "or above" in part 3: "5 of 5" at Normal said nothing);
   - add `strictest: { level, by: [providerIds] }` only when a government is stricter.
 - [x] 2.2 Run `npm run build` to regenerate `site/data/risk/**`. There's no stored travel state, and travel changes come from `advisoryChanges()`, so no change is recorded. Check that `site/data/risk/changes.json` didn't grow.
 - [x] 2.3 Site:
@@ -99,34 +99,34 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
   - `docs/architecture.md:105` (the Travel signal);
   - README "What it shows";
   - `.claude/CLAUDE.md` (the risk-layer note, "Current state").
-- [ ] 2.6 Ship. Live check: the overview shows about 141 places above Normal.
-- [ ] 2.7 Run `gh workflow run update.yml --ref main -f sources=gdacs`, `gh run watch` it until green, then `git pull`.
+- [x] 2.6 Ship. Live check: the overview shows about 141 places above Normal.
+- [x] 2.7 Run `gh workflow run update.yml --ref main -f sources=gdacs`, `gh run watch` it until green, then `git pull`.
 
 ## Part 3: Signal over noise
 
-- [ ] 3.1 Keep `kind: 'anomaly'` out of:
+- [x] 3.1 Keep `kind: 'anomaly'` out of:
   - `feedItems()`, which also feeds "Latest changes";
   - `tooltip()`, `feedKeyFor()`;
   - `cardModel().history` (`logic.js`);
   - the country view history (`countryHtml()`).
 
   The pipeline keeps publishing these records. Delete what becomes unused: the anomaly branch of `changeText()`, and the keys `risk.change.anomaly` and `risk.activity.change.*`.
-- [ ] 3.2 "Unusual news activity" section, in Highest and Changes only:
+- [x] 3.2 "Unusual news activity" section, in Highest and Changes only:
   - in `index.html`: `<section class="section news" id="newsSection">` with a heading, a count, `#newsList`, and a one-line note (news counts, never a level);
   - an optional dataset method `renderNews(el)`, documented in `datasets/registry.js`. In the risk dataset it reads `current.activity[source].places`;
   - rows: place and "Violence reports far above normal", from `activity.item` and `activity.status.*`. Order: `far`, then `above`, then by count/expected, then by name;
   - the first 5, then "Show all N" (the `data-feed-all` pattern);
   - `main.js` shows the section only when the dataset renders it. Rows carry `data-place`: click selects with zoom, hover previews, wired like the feed.
-- [ ] 3.3 Card slot: "Security and unrest: coming later" (`card.later`) becomes "News: no unusual activity (GDELT)" (new `risk.activity.quiet`, in `newsLine()`). The slot stays, so the height stays fixed. Delete `risk.card.later`.
-- [ ] 3.4 Travel overview: "Latest level changes", the top 3 of `recentRecords()` (`travel-advisories/logic.js:39`), as `data-key` buttons (main's `onListClick` handles them). Empty: the empty state with "Show 90 days". Off: hidden.
-- [ ] 3.5 Tests:
-  - [ ] unit, rewrite the anomaly tests (~712, ~721 in `tests/unit/site/risk.test.mjs`): an anomaly is not in the feed, Latest changes, the tooltip or the history, and doesn't un-fade in the Changes mode.
-  - [ ] unit: `renderNews` order, cap and Show all; hidden in category modes and without activity.
-  - [ ] unit, edit: the quiet line replaces "coming later" (~250, ~682-688); the cardModel history excludes anomalies.
-  - [ ] unit: the Travel overview's latest changes and their empty state (`dataset.test.mjs`).
-  - [ ] e2e: `withRiskChanges()` (`tests/e2e/helpers.mjs`) gains an injected anomaly and an activity entry in `risk/current.json`. The feed doesn't list the anomaly; the news section lists the place and a click selects it; the section is hidden in Disasters and Travel.
-  - [ ] `measureCards()` keeps the fixed card height in every mode; `tests/data/project.test.mjs` keys pass.
-- [ ] 3.6 Docs: `docs/architecture.md` (feed kinds, the news section, `renderNews`), README, `.claude/CLAUDE.md` ("Only level changes count", now with alerts).
+- [x] 3.3 Card slot: "Security and unrest: coming later" (`card.later`) becomes "News: no unusual activity (GDELT)" (new `risk.activity.quiet`, in `newsLine()`). The slot stays, so the height stays fixed. Delete `risk.card.later`.
+- [x] 3.4 Travel overview: "Latest level changes", the top 3 of `recentRecords()` (`travel-advisories/logic.js:39`), as `data-key` buttons (main's `onListClick` handles them). Empty: the empty state with "Show 90 days". Off: hidden.
+- [x] 3.5 Tests:
+  - [x] unit, rewrite the anomaly tests (~712, ~721 in `tests/unit/site/risk.test.mjs`): an anomaly is not in the feed, Latest changes, the tooltip or the history, and doesn't un-fade in the Changes mode.
+  - [x] unit: `renderNews` order, cap and Show all; hidden in category modes and without activity.
+  - [x] unit, edit: the quiet line replaces "coming later" (~250, ~682-688); the cardModel history excludes anomalies.
+  - [x] unit: the Travel overview's latest changes and their empty state (`dataset.test.mjs`).
+  - [x] e2e: `withRiskChanges()` (`tests/e2e/helpers.mjs`) gains an injected anomaly and an activity entry in `risk/current.json`. The feed doesn't list the anomaly; the news section lists the place and a click selects it; the section is hidden in Disasters and Travel.
+  - [x] `measureCards()` keeps the fixed card height in every mode; `tests/data/project.test.mjs` keys pass.
+- [x] 3.6 Docs: `docs/architecture.md` (feed kinds, the news section, `renderNews`), README, `.claude/CLAUDE.md` ("Only level changes count", now with alerts).
 - [ ] 3.7 Ship. Live check: the feed has no GDELT items, and the news section lists the countries.
 
 ## Part 4: Search finds alerts
@@ -188,3 +188,4 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 ## Log (one line per finished part: commit, deploy, tests)
 
 - Part 1: eb89206, deploy green, live check passed (link zooms to scale 10, one-line headers, no console errors). Tests added: e2e link zoom + resize keeps view, e2e panel doesn't move between modes (1440, 390), unit Changes fade ignores news. Edited: unit Travel header texts, e2e provider-switch test. Deleted: none.
+- Part 2: 05cb8c1, deploy green, live overview 141 places above Normal (was 162), no console errors; update run 36959859838 (gdacs) green, built with the new rule (bot commit c842ed2). Tests added: travelLevel cases (Bahrain, Georgia, Argentina, India), site unit for the stricter flag. Edited: travelSignals unit tests, data test checks travelLevel(). Deleted: none.

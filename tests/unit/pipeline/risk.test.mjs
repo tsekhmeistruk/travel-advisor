@@ -58,9 +58,9 @@ describe('travelSignals', () => {
       us: file([{ level: 4, places: ['so'], covers: ['somaliland'] }, { level: 2, places: ['mx'] }, { level: 2, places: ['ar'] }]),
       ca: file([{ level: 3, places: ['so'] }, { level: 2, places: ['mx'] }, { level: 3, places: ['somaliland'] }]),
     });
-    assert.deepEqual(s.get('so'), { level: 3, natives: { us: 4, ca: 3 }, agree: 2, strictest: { level: 4, by: ['us'] } }, 'one government alone does not set it');
+    assert.deepEqual(s.get('so'), { level: 3, natives: { us: 4, ca: 3 }, agree: 1, strictest: { level: 4, by: ['us'] } }, 'one government alone does not set it');
     assert.deepEqual(s.get('mx'), { level: 2, natives: { us: 2, ca: 2 }, agree: 2 }, 'they agree: none is stricter');
-    assert.deepEqual(s.get('somaliland'), { level: 3, natives: { us: 4, ca: 3 }, agree: 2, strictest: { level: 4, by: ['us'] } });
+    assert.deepEqual(s.get('somaliland'), { level: 3, natives: { us: 4, ca: 3 }, agree: 1, strictest: { level: 4, by: ['us'] } });
     assert.deepEqual(s.get('ar'), { level: 2, natives: { us: 2 }, agree: 1 }, 'one government covers it: its level');
     assert.equal(s.get('jp'), undefined, 'no government covers it: no signal, not Normal');
   });

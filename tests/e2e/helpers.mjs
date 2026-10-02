@@ -124,10 +124,13 @@ export const isData = (req, path) => new URL(req.url()).pathname.endsWith(`/data
  * 5 days ago, and a new GDACS event 2 hours ago. Also serves the real events plus three test
  * events with positions: two close together in Japan (one cluster at world zoom), one in
  * Chile, and two at the same point in Iceland (a cluster that never splits). Returns the places that changed, newest first, and the test events' ids.
+ * News activity too: far above normal protest reports in New Zealand, 400 against a normal of
+ * 1 (so it heads the news section), with the anomaly change that started it (`news`).
  */
 export function withRiskChanges() {
   const data = JSON.parse(readFileSync(new URL('../../site/data/risk/changes.json', import.meta.url), 'utf8'));
   const events = JSON.parse(readFileSync(new URL('../../site/data/risk/events.json', import.meta.url), 'utf8'));
+  const current = JSON.parse(readFileSync(new URL('../../site/data/risk/current.json', import.meta.url), 'utf8'));
   const ago = (hours) => new Date(Date.now() - hours * 36e5).toISOString();
   const level = (placeId, hours, from, to) => ({ id: `${placeId}:disaster:${ago(hours)}`, at: ago(hours), kind: 'level', category: 'disaster', placeId, from, to, up: to > from, basis: [], sources: ['gdacs'] });
   const added = [
@@ -151,9 +154,13 @@ export function withRiskChanges() {
     event('gdacs:VO:902', -19, 64.6, ['is'], 'Orange', 3, 'volcano'),
     event('gdacs:EQ:903', -19, 64.6, ['is'], 'Orange', 3, 'earthquake'),
   ];
+  const news = { id: 'test:news', at: ago(3), kind: 'anomaly', category: 'unrest', placeId: 'nz', series: 'protest', source: 'gdelt', from: 'normal', to: 'far', up: true, count: 400, expected: 1 };
+  const gdelt = current.activity?.gdelt ?? { through: ago(24).slice(0, 10), learning: false, windowDays: 7, baselineDays: 84, places: {} };
+  const activity = { ...current.activity, gdelt: { ...gdelt, places: { ...gdelt.places, nz: { protest: { status: 'far', count: 400, expected: 1 } } } } };
   const bodies = {
-    'risk/changes.json': JSON.stringify({ ...data, changes: [...added, ...data.changes] }),
+    'risk/changes.json': JSON.stringify({ ...data, changes: [news, ...added, ...data.changes] }),
     'risk/events.json': JSON.stringify({ ...events, events: [...testEvents, ...events.events] }),
+    'risk/current.json': JSON.stringify({ ...current, activity }),
   };
   const intercept = (req) => {
     const path = Object.keys(bodies).find(p => isData(req, p));
@@ -163,11 +170,11 @@ export function withRiskChanges() {
     if (!place) return false;
     const file = JSON.parse(readFileSync(new URL(`../../site/data/risk/places/${place}.json`, import.meta.url), 'utf8'));
     const own = (c) => (c.placeIds ?? [c.placeId]).includes(place);
-    const body = JSON.stringify({ ...file, changes: [...added.filter(own), ...file.changes], events: [...testEvents.filter(e => e.placeIds.includes(place)).map(e => e.id), ...file.events] });
+    const body = JSON.stringify({ ...file, changes: [...[news, ...added].filter(own), ...file.changes], events: [...testEvents.filter(e => e.placeIds.includes(place)).map(e => e.id), ...file.events] });
     req.respond({ status: 200, contentType: 'application/json', body });
     return true;
   };
-  return Object.assign(intercept, { places: ['jp', 'cl', 'au', 'ph', 'pe', 'it', 'tr'], events: testEvents.map(e => e.id) });
+  return Object.assign(intercept, { places: ['jp', 'cl', 'au', 'ph', 'pe', 'it', 'tr'], events: testEvents.map(e => e.id), news });
 }
 
 /** Hover every country and dot, measuring the details card each time, plus map and feed counts. */

@@ -178,6 +178,16 @@ describe('header, footer, tooltip, legend', () => {
     assert.ok(!ds.footer().includes('href='), 'javascript: link must not be rendered');
     assert.ok(!ds.details({ placeId: 'mm' }).includes('javascript:'));
   });
+  test('the overview lists the latest level changes; an empty window offers the longest; Off hides them', async () => {
+    const latest = ds.details(null).split('class="latest"')[1];
+    assert.match(latest, /Latest level changes/);
+    assert.deepEqual([...latest.matchAll(/data-key="([^"]+)"/g)].map(m => m[1]), ['Burma', 'Israel and Palestine'], 'newest first, the window\'s only');
+    assert.match(latest, /class="name">Myanmar<[\s\S]*?Level 3 → 4/);
+    await create({ levels: [1] });
+    assert.match(ds.details(null), /class="latest-empty">No level changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
+    await create({ recentDays: 0 });
+    assert.doesNotMatch(ds.details(null), /class="latest"/, 'highlighting off');
+  });
   test('the overview opens the countries list when the site has one', async () => {
     assert.match(ds.details(null), /data-action="list">All countries →</);
     await create({}, { countryView: false });

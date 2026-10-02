@@ -63,7 +63,7 @@ export function travelLevel(natives) {
 
 /**
  * The travel category per place: its travelLevel(), with each government's own level (its
- * native value), how many give this level or higher (`agree`), and `strictest`
+ * native value), how many give this very level (`agree`), and `strictest`
  * { level, by: [providers] } when a government gives a higher one. A place's own advisory wins
  * over one that merely covers it (as on the map).
  * @param files  { providerId: published provider data }
@@ -85,7 +85,7 @@ export function travelSignals(files) {
     const values = Object.values(natives);
     const top = Math.max(...values);
     signals.set(id, {
-      level, natives, agree: values.filter(l => l >= level).length,
+      level, natives, agree: values.filter(l => l === level).length,
       ...(top > level && { strictest: { level: top, by: Object.keys(natives).filter(p => natives[p] === top) } }),
     });
   }

@@ -8,6 +8,7 @@ import { indexByPlace, isRecent, latestChange, recentRecords, pulseOpacity, noAd
 const ID = 'travel-advisories';
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 const STALE_DAYS = 7;     // the header warns about data older than this
+const LATEST = 3;         // level changes on the overview card
 
 export function createTravelAdvisories(ctx) {
   const { i18n, manifest, places, client } = ctx;
@@ -34,6 +35,15 @@ export function createTravelAdvisories(ctx) {
   if (!manifest.providers.some(p => p.id === settings.get('provider'))) settings.set('provider', manifest.providers[0].id);
   if (!manifest.recentWindows.includes(windowDays())) settings.set('recentDays', manifest.defaultRecentWindow);
   if (!Array.isArray(levels())) settings.set('levels', levelsAll.slice());
+
+  /** The records with a level change in the window, on shown levels, newest change first. */
+  const changedRecords = () => recentRecords(data.records, { windowDays: windowDays(), levels: levels(), ageDays: i18n.ageDays });
+  /** An empty list: says so, and offers the longest window. */
+  function emptyHtml() {
+    const longest = Math.max(...manifest.recentWindows);
+    return `${esc(tx('feed.empty'))}${windowDays() < longest
+      ? ` <button class="link-btn" data-show-days="${longest}">${esc(tx('feed.showDays', { days: longest }))}</button>` : ''}`;
+  }
 
   async function load() {
     const entry = manifest.providers.find(p => p.id === settings.get('provider'));
@@ -70,8 +80,27 @@ export function createTravelAdvisories(ctx) {
         ${desc.map(l => `<div><span class="swatch" style="background:var(--l${l})"></span>${esc(levelInfo(l).short)}<b>${counts[l - 1]}</b></div>`).join('')}
       </div>
       ${windowDays() > 0 ? `<p>${esc(tx('overview.recent', { count: MARK, days: windowDays() })).replace(MARK, `<strong>${recentCount}</strong>`)}</p>` : ''}
+      ${windowDays() > 0 ? latestHtml() : ''}
       <p class="hint">${esc(tx('overview.hint'))}</p>
       ${ctx.countryView ? `<div class="card-actions"><button class="link link-btn" data-action="list">${esc(tx('overview.list'))}</button></div>` : ''}`;
+  }
+
+  /** The three latest level changes, one line each; a click selects the place (data-key, as in the feed). */
+  function latestHtml() {
+    const items = changedRecords().slice(0, LATEST);
+    const rows = items.map((r) => {
+      const c = latestChange(r);
+      return `<li><button data-key="${esc(r.title)}" title="${esc(`${recordName(r)}: ${changeText(c)}`)}">
+          <span class="swatch" style="background:var(--l${r.level})"></span>
+          <span class="name">${esc(recordName(r))}</span>
+          ${arrow(c)}<span class="what">${esc(changeText(c))}</span>
+          <span class="when">${esc(i18n.shortAge(i18n.ageDays(c.date)))}</span>
+        </button></li>`;
+    }).join('');
+    return `<div class="latest">
+        <div class="history-label">${esc(tx('overview.latest'))}</div>
+        ${items.length ? `<ul class="latest-list">${rows}</ul>` : `<p class="latest-empty">${emptyHtml()}</p>`}
+      </div>`;
   }
 
   function noAdvisoryHtml(placeId) {
@@ -260,8 +289,7 @@ export function createTravelAdvisories(ctx) {
       const section = container.closest('.recent');
       section.hidden = windowDays() === 0;
       if (section.hidden) return;
-      const longest = Math.max(...manifest.recentWindows);
-      const items = recentRecords(data.records, { windowDays: windowDays(), levels: levels(), ageDays: i18n.ageDays });
+      const items = changedRecords();
       section.querySelector('#recentTitle').textContent = tx('feed.title', { days: windowDays() });
       section.querySelector('#recentCount').textContent = items.length;
       container.innerHTML = items.length
@@ -276,8 +304,7 @@ export function createTravelAdvisories(ctx) {
             <span class="what">${arrow(c)}${esc(changeText(c))}</span>
           </button></li>`;
         }).join('')
-        : `<li class="recent-empty">${esc(tx('feed.empty'))}${windowDays() < longest
-          ? ` <button class="link-btn" data-show-days="${longest}">${esc(tx('feed.showDays', { days: longest }))}</button>` : ''}</li>`;
+        : `<li class="recent-empty">${emptyHtml()}</li>`;
     },
     showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
 

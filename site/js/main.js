@@ -150,6 +150,18 @@ async function main() {
   });
   feed.addEventListener('pointerleave', () => hover(null));
 
+  // The news section: a row selects its place (with zoom); hovering previews it.
+  const newsList = $('newsList');
+  newsList.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-place]');
+    if (btn) select({ placeId: btn.dataset.place }, { zoom: true, toUrl: true });
+  });
+  newsList.addEventListener('pointerover', (e) => {
+    const btn = e.target.closest('button[data-place]');
+    if (btn) hover({ placeId: btn.dataset.place });
+  });
+  newsList.addEventListener('pointerleave', () => hover(null));
+
   function applyPanel() {
     $('app').classList.toggle('panel-collapsed', !settings.get('panelOpen'));
     $('panelOpen').hidden = settings.get('panelOpen');
@@ -323,6 +335,7 @@ async function main() {
     $('details').innerHTML = dataset.details(target);
     const key = dataset.feedKeyFor(target);
     feed.querySelectorAll('button[data-key]').forEach(b => b.classList.toggle('is-active', b.dataset.key === key));
+    newsList.querySelectorAll('button[data-place]').forEach(b => b.classList.toggle('is-active', b.dataset.place === target?.placeId));
   }
 
   function refresh() {
@@ -335,6 +348,8 @@ async function main() {
     renderLegend();
     dataset.renderSettings($('datasetSettings'));
     dataset.renderFeed(feed);
+    if (dataset.renderNews) dataset.renderNews(newsList);
+    else $('newsSection').hidden = true;
     search.setEntries(dataset.searchEntries());
     map.setStyle((id) => dataset.style(id));
     map.setMarkers(dataset.markers?.() ?? []);

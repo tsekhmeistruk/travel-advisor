@@ -87,6 +87,13 @@
         <ul class="recent-list" id="recentList"></ul>
       </section>
 
+      <!-- Unusual news activity now (risk modes without a category): never a level, never a change. -->
+      <section class="section recent news" id="newsSection" hidden>
+        <h2><span data-i18n="risk.news.title">Unusual news activity</span> <span class="count" id="newsCount"></span></h2>
+        <ul class="recent-list news-list" id="newsList"></ul>
+        <p class="subtle news-note" data-i18n="risk.news.note"></p>
+      </section>
+
       <details class="section filters" id="filters">
         <summary><h2 data-i18n="panel.filters">Filters</h2></summary>
         <div id="datasetSettings"></div>

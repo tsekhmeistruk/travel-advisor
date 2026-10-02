@@ -71,7 +71,8 @@
     },
     "recent": "{count} with a level change in the last {days} days, marked with a pulse on the map.",
     "hint": "Hover or tap a country for details.",
-    "list": "All countries →"
+    "list": "All countries →",
+    "latest": "Latest level changes"
    },
    "details": {
     "eyebrow": "Travel advisory",
@@ -378,14 +379,13 @@
     "other": "{agree} of {count} · {flag} {level}"
    },
    "travelStricterTitle": {
-    "one": "{agree} of {count} government gives this level or higher; {provider} gives {level}",
-    "other": "{agree} of {count} governments give this level or higher; {provider} gives {level}"
+    "one": "{agree} of {count} governments gives this level; {provider} gives {level}",
+    "other": "{agree} of {count} governments give this level; {provider} gives {level}"
    },
    "eventBasis": "{source} {alert}: {type}",
    "more": "{text} +{count}",
    "notCovered": "No advisory",
    "unavailable": "Source unavailable",
-   "later": "Security and unrest: coming later",
    "history": "Recent changes",
    "noChanges": "No changes in the last {days} days.",
    "report": "{source} report ↗",
@@ -429,8 +429,7 @@
    "eventUp": "{source} {type}: raised to {alert}",
    "eventDown": "{source} {type}: lowered to {alert}",
    "raised": "Raised",
-   "lowered": "Lowered",
-   "anomaly": "{series} {status} ({source})"
+   "lowered": "Lowered"
   },
   "tooltip": {
    "change": "{change} · {age}"
@@ -452,6 +451,11 @@
    "showDays": "Show {days} days",
    "showAll": "Show all {count}",
    "more": "and {count} more"
+  },
+  "news": {
+   "title": "Unusual news activity",
+   "showAll": "Show all {count}",
+   "note": "News reports of protests and violence (GDELT) compared with each country's normal week: not verified incidents, and never a risk level."
   },
   "legend": {
    "none": "No data",
@@ -493,11 +497,7 @@
    "learning": "Collecting a baseline first: this needs about 12 weeks of history.",
    "none": "No news reports of protests or violence counted here.",
    "note": "Counts of news reports coded by {source}, not verified incidents, compared with this country's own last {weeks} weeks. They never set a risk level.",
-   "change": {
-    "normal": "back to normal",
-    "above": "above normal",
-    "far": "far above normal"
-   }
+   "quiet": "News: no unusual activity ({source})"
   }
  },
  "places": {}

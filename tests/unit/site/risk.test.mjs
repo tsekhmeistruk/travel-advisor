@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 import { createRiskMode, WINDOWS } from '../../../site/js/datasets/risk/index.js';
 import {
   changeTime, ageHours, changePlaces, direction, levelOf, highest, filterChanges, changesFor, pulseOpacity, countByLevel,
-  countDirections, cardModel, isStale, countryRows, sortRows,
+  countDirections, cardModel, isStale, countryRows, sortRows, newsRows, isNews,
 } from '../../../site/js/datasets/risk/logic.js';
 import { MODES } from '../../../site/js/datasets/registry.js';
 import { clusterMarkers, MARKER_ICONS } from '../../../site/js/map/clusters.js';
@@ -38,7 +38,7 @@ const CURRENT = {
     jp: { travel: { level: 1, natives: { us: 1, ca: 1 }, agree: 2 } },
     so: { travel: { level: 4, natives: { us: 4, ca: 3 }, agree: 1 }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
     // A stricter government than the travel level (two or more must agree): named on the card.
-    ke: { travel: { level: 2, natives: { us: 3, ca: 2 }, agree: 2, strictest: { level: 3, by: ['us'] } }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
+    ke: { travel: { level: 2, natives: { us: 3, ca: 2 }, agree: 1, strictest: { level: 3, by: ['us'] } }, disaster: { level: 2, basis: ['gdacs:DR:3'] } },
   },
 };
 const CHANGES = [
@@ -151,6 +151,13 @@ describe('logic', () => {
     const aq = cardModel('aq', { current: CURRENT, changes: CHANGES, events: EVENTS, now: NOW, windowDays: 30 });
     assert.deepEqual([aq.rows[0].basis, aq.trend, aq.link, aq.history], [null, null, null, []]);
   });
+  test('the card history leaves news activity out: it is not a change', () => {
+    const news = { id: 'mx:protest', at: hoursAgo(1), kind: 'anomaly', placeId: 'mx', series: 'protest', from: 'normal', to: 'far', up: true };
+    assert.equal(isNews(news), true);
+    assert.equal(isNews(CHANGES[0]), false);
+    const m = cardModel('mx', { current: CURRENT, changes: [news, ...CHANGES], events: EVENTS, now: NOW, windowDays: 30 });
+    assert.deepEqual(m.history.map(c => c.id), [CHANGES[0].id, CHANGES[1].id]);
+  });
 });
 
 describe('url state', () => {
@@ -248,13 +255,14 @@ describe('details card', () => {
     assert.match(html, /Disaster: Normal → High/);
     assert.match(html, /New GDACS Orange alert: tropical cyclone/);
     assert.match(html, /href="https:\/\/www\.gdacs\.org\/report\.aspx\?eventid=1"/);
-    assert.match(html, /Security and unrest: coming later/);
+    assert.match(html, /<p class="later"><\/p>/, 'no news source published: the slot stays, empty');
+    assert.doesNotMatch(html, /coming later/);
     assert.match(html, /<button class="link link-btn" data-action="country" data-place="mx">Country details →<\/button>/);
     assert.match(ds.details(null), /<button class="link link-btn" data-action="list">All countries →<\/button>/, 'the overview opens the list');
   });
   test('a government stricter than the travel level is named on the row by its flag, in full in the title', () => {
     const html = ds.details({ placeId: 'ke' });
-    assert.match(html, /Travel<\/span>\s*<span class="lvl">Elevated<\/span>[^<]*(<span class="arrow[^>]*>▼<\/span>)?\s*<span class="basis" title="2 of 2 governments give this level or higher; U\.S\. gives High">2 of 2 · <img class="flag mini" src="assets\/flags\/us\.svg" alt="U\.S\."[^>]*> High<\/span>/);
+    assert.match(html, /Travel<\/span>\s*<span class="lvl">Elevated<\/span>[^<]*(<span class="arrow[^>]*>▼<\/span>)?\s*<span class="basis" title="1 of 2 governments give this level; U\.S\. gives High">1 of 2 · <img class="flag mini" src="assets\/flags\/us\.svg" alt="U\.S\."[^>]*> High<\/span>/);
     assert.match(ds.details({ placeId: 'mx' }), /title="2 of 2 governments">2 of 2 governments</, 'they agree: the plain count');
   });
   test('a place with no data says so, and without changes says that', () => {
@@ -689,9 +697,8 @@ describe('news activity on the site', () => {
     await withActivity();
     const html = ds.details({ placeId: 'mx' });
     assert.match(html, /<p class="later news"[^>]*>News: Protest reports far above normal · Violence reports above normal \(GDELT\)<\/p>/);
-    assert.doesNotMatch(html, /Security and unrest: coming later/);
     assert.doesNotMatch(html, /<span class="cat">(Unrest|Security)/, 'no category row');
-    assert.match(ds.details({ placeId: 'jp' }), /Security and unrest: coming later/, 'nothing unusual: the usual line');
+    assert.match(ds.details({ placeId: 'jp' }), /<p class="later">News: no unusual activity \(GDELT\)<\/p>/, 'nothing unusual: says so');
   });
 
   test('the country view shows each series\' week against its normal, a percentage only from 2 expected', async () => {
@@ -715,13 +722,21 @@ describe('news activity on the site', () => {
     assert.match(el.innerHTML, /No news reports of protests or violence counted here\./);
   });
 
-  test('an anomaly is listed in the feed with a neutral dot, whatever levels are shown, and never pulses', async () => {
-    await withActivity({ levels: [4] });
+  test('news activity is not listed as a change: not in the feed, Latest changes, tooltip or either history', async () => {
+    await withActivity({ file: { ...MX_FILE, changes: [ANOMALY, ...MX_FILE.changes], activity: { source: 'gdelt', series: ACTIVITY.gdelt.places.mx } } });
     const f = fakeFeed();
     ds.renderFeed(f.el);
-    assert.match(f.el.innerHTML, /data-key="mx:protest:2026-09-27"[\s\S]*?--c:var\(--land-none\)[\s\S]*?Protest reports far above normal \(GDELT\)/);
-    assert.equal(ds.style('mx').pulse, null, 'Mexico\'s level change is hidden (High), and the anomaly never pulses');
-    assert.match(ds.details({ placeId: 'mx' }), /Protest reports far above normal \(GDELT\)/, 'in the place\'s recent changes');
+    assert.equal(f.count.textContent, 5, 'the five changes, not the anomaly');
+    assert.doesNotMatch(f.el.innerHTML, /mx:protest|GDELT/);
+    assert.equal(ds.feedTarget('mx:protest:2026-09-27'), null, 'not a feed item');
+    assert.doesNotMatch(ds.details(null), /Protest reports/, 'not in the latest changes');
+    assert.doesNotMatch(ds.tooltip('mx'), /Protest reports/);
+    assert.doesNotMatch(ds.details({ placeId: 'mx' }).split('Recent changes')[1], /Protest reports/, 'not in the card history');
+    const el = { innerHTML: '' };
+    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    assert.match(el.innerHTML, /cv-history/);
+    assert.doesNotMatch(el.innerHTML.split('cv-history')[1], /Protest reports/, 'not in the country history');
+    assert.match(el.innerHTML, /far above normal/, 'shown as it is now, in the country view\'s news section');
   });
 
   test('in the Changes mode, news activity alone is not a change: the place stays faded', async () => {
@@ -733,15 +748,56 @@ describe('news activity on the site', () => {
     assert.equal(mode.style('mx').dim, false, 'a level change');
   });
 
-  test('an anomaly that ends reads "back to normal"', async () => {
-    const back = { ...ANOMALY, id: 'x', from: 'far', to: 'normal', up: false };
-    await withActivity();
-    const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: [back] }, 'risk/events.json': { events: [] } };
-    const settings = createSettings('k2', {}, { getItem: () => null, setItem: () => {} });
-    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'highest', view: 'highest', now: () => NOW });
+  // Seven places: far before above, then by how far above normal, then by name; "normal" isn't listed.
+  const MANY = { gdelt: { ...ACTIVITY.gdelt, places: {
+    mx: { protest: { status: 'above', count: 30, expected: 10 } },
+    jp: { violence: { status: 'far', count: 40, expected: 4 } },
+    so: { protest: { status: 'far', count: 90, expected: 3 } },
+    ke: { protest: { status: 'above', count: 12, expected: 2 } },
+    aq: { protest: { status: 'above', count: 6, expected: 2 } },
+    il: { protest: { status: 'above', count: 5, expected: 0.5 } },
+    zz: { violence: { status: 'normal', count: 5, expected: 5 } },
+  } } };
+  test('newsRows: most unusual first, each place\'s series, "normal" left out', () => {
+    const rows = newsRows(MANY, (id) => PLACES.get(id)?.name ?? id);
+    assert.deepEqual(rows.map(r => [r.placeId, r.status, r.ratio]), [['so', 'far', 30], ['jp', 'far', 10], ['ke', 'above', 6], ['il', 'above', 5], ['aq', 'above', 3], ['mx', 'above', 3]]);
+    assert.deepEqual(newsRows(ACTIVITY, (id) => id)[0].items.map(i => i.series), ['protest', 'violence'], 'far before above');
+    assert.deepEqual(newsRows(undefined, (id) => id), []);
+  });
+
+  const fakeNews = () => {
+    const count = { textContent: '' };
+    const section = { hidden: true, querySelector: () => count };
+    return { el: { innerHTML: '', closest: () => section }, section, count };
+  };
+  test('the news section lists the unusual activity now, most unusual first, 5 until "Show all"', async () => {
+    await withActivity({ activity: MANY });
+    const n = fakeNews();
+    ds.renderNews(n.el);
+    assert.equal(n.section.hidden, false);
+    assert.equal(n.count.textContent, 6);
+    assert.deepEqual([...n.el.innerHTML.matchAll(/data-place="(\w+)"/g)].map(m => m[1]), ['so', 'jp', 'ke', 'il', 'aq']);
+    assert.match(n.el.innerHTML, /<li class="far"><button data-place="so" title="Protest reports far above normal \(GDELT\)">/);
+    assert.match(n.el.innerHTML, /class="name">Somalia<[\s\S]*?class="what">Protest reports far above normal</);
+    assert.match(n.el.innerHTML, /data-news-all>Show all 6</);
+    n.el.onclick({ target: { closest: () => null } });
+    assert.equal((n.el.innerHTML.match(/data-place=/g) ?? []).length, 5, 'another click changes nothing');
+    n.el.onclick({ target: { closest: (sel) => (sel === '[data-news-all]' ? {} : null) } });
+    assert.equal((n.el.innerHTML.match(/data-place=/g) ?? []).length, 6);
+    assert.doesNotMatch(n.el.innerHTML, /data-news-all/);
+  });
+  test('the news section is hidden in a category mode and without unusual activity', async () => {
+    await withActivity({ activity: { gdelt: { ...ACTIVITY.gdelt, places: {} } } });
+    const n = fakeNews();
+    n.section.hidden = false;
+    ds.renderNews(n.el);
+    assert.equal(n.section.hidden, true, 'nothing unusual');
+    const files = { 'risk/current.json': { ...CURRENT, activity: MANY }, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS } };
+    const settings = createSettings('k4', {}, { getItem: () => null, setItem: () => {} });
+    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'disaster', view: 'category', category: 'disaster', now: () => NOW });
     await mode.load();
-    const f = fakeFeed();
-    mode.renderFeed(f.el);
-    assert.match(f.el.innerHTML, /Protest reports back to normal \(GDELT\)/);
+    n.section.hidden = false;
+    mode.renderNews(n.el);
+    assert.equal(n.section.hidden, true, 'a category mode');
   });
 });

@@ -18,6 +18,35 @@ export function ageHours(at, now) {
   return Math.max(0, (now - changeTime(at)) / HOUR);
 }
 
+/**
+ * News activity (a GDELT anomaly starting or ending) is published as a change, but it isn't
+ * one: it never moves a level. The site lists level changes and alerts as changes, and news
+ * activity only as it is now (newsRows()).
+ */
+export const isNews = (c) => c.kind === 'anomaly';
+
+const NEWS_RANK = { far: 2, above: 1 };
+
+/**
+ * Places with unusual news activity now, from the published statuses
+ * (current.activity[source].places[placeId][series] = { status, count, expected }), most unusual first:
+ * "far above" before "above", then by how far above normal, then by name.
+ * @returns [{ placeId, source, status, ratio, items: [{ series, status, count, expected }] }]
+ */
+export function newsRows(activity, nameOf) {
+  const rows = [];
+  for (const [source, a] of Object.entries(activity ?? {})) {
+    for (const [placeId, series] of Object.entries(a.places ?? {})) {
+      const items = Object.entries(series).map(([name, v]) => ({ series: name, ...v }))
+        .filter(i => NEWS_RANK[i.status])
+        .sort((x, y) => NEWS_RANK[y.status] - NEWS_RANK[x.status] || x.series.localeCompare(y.series));
+      if (!items.length) continue;
+      rows.push({ placeId, source, status: items[0].status, ratio: Math.max(...items.map(i => i.count / Math.max(i.expected, 1))), items });
+    }
+  }
+  return rows.sort((a, b) => NEWS_RANK[b.status] - NEWS_RANK[a.status] || b.ratio - a.ratio || nameOf(a.placeId).localeCompare(nameOf(b.placeId)));
+}
+
 /** Whether data published at `asOf` is more than `hours` old (scheduled updates can be dropped). */
 export function isStale(asOf, now, hours) {
   return ageHours(asOf, now) > hours;
@@ -153,5 +182,5 @@ export function cardModel(placeId, { current, changes, events, now, windowDays, 
   });
   const last24 = filterChanges(own, { windowDays: 1, now, pulseOnly: true })[0];
   const linked = rows.flatMap(r => r.basis?.events ?? []).find(e => e.url);
-  return { highest: highest(current, placeId), rows, trend: last24 ? direction(last24) : null, history: own.slice(0, historySize), link: linked?.url ?? null, linkSource: linked?.source ?? null };
+  return { highest: highest(current, placeId), rows, trend: last24 ? direction(last24) : null, history: own.filter(c => !isNews(c)).slice(0, historySize), link: linked?.url ?? null, linkSource: linked?.source ?? null };
 }
