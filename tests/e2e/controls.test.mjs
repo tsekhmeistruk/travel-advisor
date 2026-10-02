@@ -46,10 +46,10 @@ describe('switches on the map', () => {
       const travel = await layout(page);
       assert.ok(travel.providers >= 3, `${travel.providers} providers`);
       assert.deepEqual(travel, { ...travel, modesOverZoom: false, providersOverZoom: false, modesOverProviders: false, inside: true, activeVisible: true, pageScroll: false });
-      await page.click('#modeSwitch [data-mode="changes"]');
+      await page.click('#modeSwitch [data-mode="highest"]');
       await page.waitForFunction(() => document.getElementById('providerSwitch').hidden);
-      const changes = await layout(page);
-      assert.deepEqual(changes, { ...changes, modesOverZoom: false, inside: true, activeVisible: true, pageScroll: false }, 'the last mode stays in view');
+      const last = await layout(page);
+      assert.deepEqual(last, { ...last, modesOverZoom: false, inside: true, activeVisible: true, pageScroll: false }, 'the last mode (All) stays in view');
       await page.close();
     });
   }
@@ -377,7 +377,8 @@ describe('phone sheet', () => {
   });
 
   test('at 390px a tapped marker shows its event; a search does not open the sheet', async () => {
-    const page = await openRaw({ width: 390, height: 844, stored: { mode: 'disaster' }, intercept: withRiskChanges() });
+    // Green alerts hidden: Disasters also marks the many Green forest fires, which cluster with Chile's.
+    const page = await openRaw({ width: 390, height: 844, stored: { mode: 'disaster', risk: { levels: [2, 3, 4] } }, intercept: withRiskChanges() });
     await page.waitForSelector('.marker');
     const box = await page.evaluate(() => {
       const m = [...document.querySelectorAll('.marker')].find(e => e.__data__.items.some(i => i.id === 'gdacs:EQ:0'));

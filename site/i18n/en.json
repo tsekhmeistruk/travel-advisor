@@ -33,7 +33,7 @@
   "open": "How levels work",
   "title": "How levels work",
   "close": "Close",
-  "intro": "In the risk modes every place has a level from 1 to 4 in each category: travel, conflict, disasters (with wildfires) and health. Highest shows the highest of them; the other modes show one.",
+  "intro": "In the risk modes every place has a level from 1 to 4 in each category: travel, conflict, disasters (with wildfires) and health. All shows the highest of them; the other modes show one.",
   "levels": {
    "1": "No alert, the governments advise normal precautions, and fewer than 25 deaths in armed violence in 12 months.",
    "2": "Governments advise increased caution, or 25+ deaths in armed violence in 12 months, or a WHO outbreak notice in the last 30 days, or a drought alert.",
@@ -291,20 +291,12 @@
    "title": "Official travel advisories, one government at a time"
   },
   "highest": {
-   "label": "Highest",
-   "title": "The highest risk level of any category: travel, disasters, wildfires and health"
+   "label": "All",
+   "title": "Every risk: the highest level of travel, conflict, disasters and health"
   },
   "disaster": {
    "label": "Disasters",
-   "title": "Natural disasters: GDACS alerts for earthquakes, cyclones, floods, volcanoes and droughts"
-  },
-  "wildfire": {
-   "label": "Wildfires",
-   "title": "Forest fires: GDACS alerts"
-  },
-  "changes": {
-   "label": "Changes",
-   "title": "Where a risk level changed recently"
+   "title": "Natural disasters and wildfires: GDACS alerts for earthquakes, cyclones, floods, volcanoes, droughts and forest fires"
   }
  },
  "risk": {
@@ -369,8 +361,7 @@
    "changes": "In the last {window}: {up} raised, {down} lowered.",
    "hint": "Hover or tap a country for its risk by category.",
    "about": {
-    "disaster": "Levels rise with GDACS Orange and Red alerts. Green markers are smaller events.",
-    "wildfire": "Levels rise only with a GDACS Orange or Red forest-fire alert, which is rare. Green markers are smaller fires."
+    "disaster": "Levels rise with GDACS Orange and Red alerts, wildfires included. Green markers are smaller events."
    },
    "latest": "Latest changes"
   },
@@ -472,12 +463,11 @@
    "empty": "No changes in this period.",
    "showDays": "Show {days} days",
    "showAll": "Show all {count}",
-   "more": "and {count} more"
-  },
-  "news": {
-   "title": "Unusual news activity",
-   "showAll": "Show all {count}",
-   "note": "News reports of protests and violence (GDELT) compared with each country's normal week: not verified incidents, and never a risk level."
+   "more": "and {count} more",
+   "earlier": {
+    "one": " · and {count} earlier",
+    "other": " · and {count} earlier"
+   }
   },
   "search": {
    "placeholder": "Find a country or alert",

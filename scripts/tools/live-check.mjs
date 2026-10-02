@@ -10,7 +10,7 @@ import { launch, openPage } from './browser.mjs';
 
 const { values: o, positionals } = parseArgs({ allowPositionals: true, options: { base: { type: 'string', default: 'https://tsekhmeistruk.github.io/travel-advisor/' } } });
 const base = o.base.replace(/\/?$/, '/');
-const hashes = [...['wars', 'travel', 'highest', 'disaster', 'wildfire', 'changes'].map(m => `#mode=${m}`), ...positionals];
+const hashes = [...['wars', 'disaster', 'travel', 'highest'].map(m => `#mode=${m}`), ...positionals];
 
 const browser = await launch();
 let errors = 0;
@@ -19,7 +19,7 @@ try {
     const page = await openPage(browser, `${base}?live=${Date.now()}${hash}`, { settle: 1500 });
     const info = await page.evaluate(() => ({
       header: document.getElementById('asOf')?.textContent,
-      card: document.querySelector('#details h3')?.textContent,
+      card: document.querySelector('#details h3, #details .wars-count')?.textContent.trim(),
       feed: document.getElementById('recentCount')?.textContent,
       zoom: document.querySelector('.viewport')?.getAttribute('transform')?.match(/scale\(([\d.]+)/)?.[1],
     }));

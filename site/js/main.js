@@ -13,7 +13,7 @@ import { createSettings } from './core/settings.js';
 import { createDataClient } from './core/data-client.js';
 import { parseHash, formatHash } from './core/url-state.js';
 import { WorldMap } from './map/world-map.js';
-import { MODES, DEFAULT_MODE } from './datasets/registry.js';
+import { MODES, DEFAULT_MODE, RENAMED } from './datasets/registry.js';
 import { createSearch } from './ui/search.js';
 import { createProviderSwitch, createModeSwitch, createThemeToggle, createLanguagePicker, createTooltip } from './ui/controls.js';
 
@@ -56,7 +56,7 @@ async function main() {
   const places = new Map(placeList.map(p => [p.id, p]));
   const modes = MODES.filter(m => m.entry(manifest));
   // The asked-for mode, else the saved one (an unknown mode in a link keeps the visitor's), else the default.
-  const findMode = (id) => modes.find(m => m.id === id);
+  const findMode = (id) => modes.find(m => m.id === (RENAMED[id] ?? id));
   const pickMode = (id) => findMode(id) ?? findMode(settings.get('mode')) ?? findMode(DEFAULT_MODE) ?? modes[0];
   // The country view comes from a risk mode; a mode without one (Travel) borrows one.
   const viewerMode = modes.find(m => m.id === 'highest');
@@ -152,18 +152,6 @@ async function main() {
     if (btn) hover(dataset.feedTarget(btn.dataset.key));
   });
   feed.addEventListener('pointerleave', () => hover(null));
-
-  // The news section: a row selects its place (with zoom); hovering previews it.
-  const newsList = $('newsList');
-  newsList.addEventListener('click', (e) => {
-    const btn = e.target.closest('button[data-place]');
-    if (btn) select({ placeId: btn.dataset.place }, { zoom: true, toUrl: true });
-  });
-  newsList.addEventListener('pointerover', (e) => {
-    const btn = e.target.closest('button[data-place]');
-    if (btn) hover({ placeId: btn.dataset.place });
-  });
-  newsList.addEventListener('pointerleave', () => hover(null));
 
   function applyPanel() {
     $('app').classList.toggle('panel-collapsed', !settings.get('panelOpen'));
@@ -366,7 +354,6 @@ async function main() {
     $('details').innerHTML = dataset.details(target);
     const key = dataset.feedKeyFor(target);
     feed.querySelectorAll('button[data-key]').forEach(b => b.classList.toggle('is-active', b.dataset.key === key));
-    newsList.querySelectorAll('button[data-place]').forEach(b => b.classList.toggle('is-active', b.dataset.place === target?.placeId));
   }
 
   function refresh() {
@@ -379,8 +366,6 @@ async function main() {
     renderLegend();
     dataset.renderSettings($('datasetSettings'));
     dataset.renderFeed(feed);
-    if (dataset.renderNews) dataset.renderNews(newsList);
-    else $('newsSection').hidden = true;
     search.setEntries(dataset.searchEntries());
     const placeholder = dataset.searchPlaceholder?.() ?? i18n.t('search.placeholder');
     $('search').placeholder = placeholder;
@@ -411,8 +396,10 @@ function translateStaticText(i18n) {
  *  - `dataset` named the active dataset before there were modes; travel advisories is now the
  *    Travel mode
  *  - the first version kept travel-advisory options at the top level
+ *  - the Wildfires and Changes modes were merged into Disasters and Wars (RENAMED)
  */
 function migrateSettings(settings) {
+  if (RENAMED[settings.get('mode')]) settings.set('mode', RENAMED[settings.get('mode')]);
   if (settings.get('dataset') !== undefined) {
     if (settings.get('dataset') === 'travel-advisories' && !settings.get('mode')) settings.set('mode', 'travel');
     settings.set('dataset', undefined);

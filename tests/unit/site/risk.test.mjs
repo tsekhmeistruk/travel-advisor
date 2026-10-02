@@ -7,9 +7,9 @@ import { readFileSync } from 'node:fs';
 import { createRiskMode, WINDOWS } from '../../../site/js/datasets/risk/index.js';
 import {
   changeTime, ageHours, changePlaces, direction, levelOf, highest, filterChanges, changesFor, pulseOpacity, countByLevel,
-  countDirections, cardModel, isStale, countryRows, sortRows, newsRows, isNews,
+  countDirections, cardModel, isStale, countryRows, sortRows, isNews, levelIn, groupFeed,
 } from '../../../site/js/datasets/risk/logic.js';
-import { MODES, DEFAULT_MODE } from '../../../site/js/datasets/registry.js';
+import { MODES, DEFAULT_MODE, RENAMED } from '../../../site/js/datasets/registry.js';
 import { clusterMarkers, MARKER_ICONS } from '../../../site/js/map/clusters.js';
 import { createI18n } from '../../../site/js/core/i18n.js';
 import { createSettings } from '../../../site/js/core/settings.js';
@@ -196,9 +196,11 @@ describe('url state', () => {
 describe('modes registry', () => {
   test('offers travel always, and the risk modes only when the manifest has risk data', () => {
     const withRisk = { datasets: [{ id: 'travel-advisories' }], risk: MANIFEST };
-    assert.deepEqual(MODES.filter(m => m.entry(withRisk)).map(m => m.id), ['wars', 'travel', 'highest', 'disaster', 'wildfire', 'changes']);
+    assert.deepEqual(MODES.filter(m => m.entry(withRisk)).map(m => m.id), ['wars', 'disaster', 'travel', 'highest'], 'Wars, Disasters, Travel, All');
     const { conflict, ...noConflict } = MANIFEST;
-    assert.deepEqual(MODES.filter(m => m.entry({ datasets: [], risk: noConflict })).map(m => m.id), ['highest', 'disaster', 'wildfire', 'changes'], 'Wars needs the conflict figures');
+    assert.deepEqual(MODES.filter(m => m.entry({ datasets: [], risk: noConflict })).map(m => m.id), ['disaster', 'highest'], 'Wars needs the conflict figures');
+    assert.deepEqual(RENAMED, { wildfire: 'disaster', changes: 'wars' }, 'old links and saved modes go to their successor');
+    assert.equal(EN.modes.highest.label, 'All');
     assert.equal(DEFAULT_MODE, 'wars');
     assert.deepEqual(MODES.filter(m => m.entry({ datasets: [{ id: 'travel-advisories' }] })).map(m => m.id), ['travel']);
     for (const m of MODES) assert.ok(EN.modes[m.id]?.label && EN.modes[m.id]?.title, `${m.id}: label and title`);
@@ -247,11 +249,6 @@ describe('map style', () => {
     assert.deepEqual(ds.style('mx'), { cls: 'none', muted: false, dim: false, dot: false, pulse: null });
     assert.equal(ds.hasPlace('mx'), false);
   });
-  test('the changes mode fades places without a change in the window', async () => {
-    await create({ view: 'changes' });
-    assert.equal(ds.style('mx').dim, false);
-    assert.equal(ds.style('jp').dim, true);
-  });
   test('hidden levels are muted and do not pulse; fading and the direction filter apply', async () => {
     await create({ saved: { levels: [1, 2, 4] } });
     assert.equal(ds.style('mx').muted, true);
@@ -270,7 +267,7 @@ describe('map style', () => {
 describe('details card', () => {
   test('the overview counts places per level and the rises and falls in the window', () => {
     const html = ds.details(null);
-    assert.match(html, /World overview · Highest/);
+    assert.match(html, /World overview · All/);
     assert.match(html, /3 places above Normal/);
     assert.match(html, /In the last 30 days: .*<strong>2<\/strong> raised, .*<strong>1<\/strong> lowered\./);
   });
@@ -308,14 +305,14 @@ describe('details card', () => {
   test('the overview lists the three latest changes, newest first, as buttons to their place', () => {
     const latest = ds.details(null).split('class="latest"')[1];
     assert.match(latest, /Latest changes/);
-    assert.deepEqual([...latest.matchAll(/class="name">([^<]+)</g)].map(m => m[1]), ['Mexico', 'Mexico', 'Offshore quake']);
+    assert.deepEqual([...latest.matchAll(/class="name">([^<]+)</g)].map(m => m[1]), ['Mexico', 'Offshore quake', 'Somalia'], 'one row per place and category');
     const keys = [...latest.matchAll(/data-key="([^"]+)"/g)].map(m => m[1]);
     assert.deepEqual(keys, ds.details(null).match(/data-key="([^"]+)"/g).map(k => k.slice(10, -1)));
     assert.deepEqual(ds.feedTarget(keys[0]), { placeId: 'mx' });
     assert.match(latest, /Disaster: Normal → High/);
   });
   test('an empty window says so and offers the longest one; at the longest it only says so', async () => {
-    await create({ view: 'changes', saved: { recentDays: 1, levels: [1, 2] } });
+    await create({ saved: { recentDays: 1, levels: [1, 2] } });
     assert.match(ds.details(null), /No changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
     const f = fakeFeed();
     ds.renderFeed(f.el);
@@ -327,8 +324,8 @@ describe('details card', () => {
     assert.doesNotMatch(f.el.innerHTML + ds.details(null), /data-show-days/, 'nothing longer to offer');
   });
   test('a category mode\'s overview says what raises its level', async () => {
-    await create({ view: 'category', category: 'wildfire' });
-    assert.match(ds.details(null), /Levels rise only with a GDACS Orange or Red forest-fire alert, which is rare\. Green markers are smaller fires\./);
+    await create({ view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'] });
+    assert.match(ds.details(null), /Levels rise with GDACS Orange and Red alerts, wildfires included\. Green markers are smaller events\./);
     assert.doesNotMatch(ds.details(null), /Hover or tap a country/, 'the note replaces the general hint (the card has room for one)');
     await create();
     assert.doesNotMatch(ds.details(null), /Levels rise/, 'not in the highest mode');
@@ -365,7 +362,7 @@ describe('texts', () => {
     assert.equal(ds.stale(), false);
     await create({ current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'delayed' } } } });
     assert.equal(ds.header(), 'Updated 2 hours ago · GDACS delayed');
-    await create({ view: 'category', category: 'wildfire', current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'error' } } } });
+    await create({ view: 'category', category: 'conflict', current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'error' } } } });
     assert.equal(ds.header(), 'Updated 2 hours ago', 'only this mode\'s categories count');
   });
   test('header: data over 12 hours old is flagged as delayed', async () => {
@@ -383,7 +380,7 @@ describe('texts', () => {
   test('tooltip, map label and legend', () => {
     assert.match(ds.tooltip('mx'), /<strong>Mexico<\/strong>.*High · Disaster.*Disaster: Normal → High · 5 hours ago/);
     assert.doesNotMatch(ds.tooltip('aq'), /arrow/);
-    assert.equal(ds.mapLabel(), 'World map coloured by risk level (Highest)');
+    assert.equal(ds.mapLabel(), 'World map coloured by risk level (All)');
     assert.match(ds.legend(), /Normal.*Elevated.*High.*Critical.*No data.*Level changed ≤ 30 days/);
   });
   test('search lists every place with its level, then the active alerts by name', () => {
@@ -407,7 +404,8 @@ describe('texts', () => {
       return mode.searchEntries().filter(e => e.target.eventId).map(e => e.target.eventId);
     };
     assert.deepEqual(await make({ mode: 'highest', view: 'highest' }), ['gdacs:TC:1', 'gdacs:EQ:2', 'gdacs:EQ:9', 'gdacs:WF:2', 'gdacs:DR:3'], 'the Orange fire, not the Green one; most severe first (the drought is Elevated)');
-    assert.deepEqual(await make({ mode: 'wildfire', view: 'category', category: 'wildfire' }), ['gdacs:WF:2']);
+    assert.deepEqual(await make({ mode: 'disaster', view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'] }), ['gdacs:TC:1', 'gdacs:EQ:2', 'gdacs:EQ:9', 'gdacs:WF:2', 'gdacs:DR:3'], 'Disasters finds the Orange fire too');
+    assert.deepEqual(await make({ mode: 'wars', view: 'category', category: 'conflict' }), [], 'a category without alerts');
   });
   test('the event name is escaped wherever it appears', async () => {
     const f = fakeFeed();
@@ -437,11 +435,43 @@ describe('settings', () => {
     assert.equal(ds.style('jp').dim, true);
     assert.equal(changes, 4);
   });
-  test('the changes mode has no fade switch: it always fades', async () => {
-    await create({ view: 'changes' });
-    const el = { innerHTML: '' };
-    ds.renderSettings(el);
-    assert.doesNotMatch(el.innerHTML, /riskDimToggle/);
+});
+
+describe('Disasters (with wildfires)', () => {
+  test('the level is the higher of the two; markers, the list, the feed and the tooltip take both', async () => {
+    const fire = { id: 'gdacs:WF:7', source: 'gdacs', ...DATES, category: 'wildfire', type: 'wildfire', level: 3, native: { scheme: 'gdacs-alert', value: 'Orange' }, name: 'Forest fires in Japan', placeIds: ['jp'], point: { lon: 139, lat: 36 } };
+    const current = { ...CURRENT, places: { ...CURRENT.places, jp: { ...CURRENT.places.jp, wildfire: { level: 3, basis: ['gdacs:WF:7'] } } } };
+    const fireChange = { id: `jp:wildfire:${hoursAgo(3)}`, at: hoursAgo(3), kind: 'level', category: 'wildfire', placeId: 'jp', from: 1, to: 3, up: true, basis: ['gdacs:WF:7'] };
+    const files = { 'risk/current.json': current, 'risk/changes.json': { changes: [fireChange, ...CHANGES] }, 'risk/events.json': { events: [fire, ...EVENTS] } };
+    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN, today: new Date(NOW) }), settings: createSettings('k6', {}, { getItem: () => null, setItem() {} }), client: { file: async (p) => files[p] },
+      manifest: MANIFEST, places: PLACES, changed() {}, mode: 'disaster', view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'], now: () => NOW });
+    await mode.load();
+    assert.equal(levelIn(current, 'jp', new Set(['disaster', 'wildfire'])), 3);
+    assert.equal(levelIn(current, 'xx', ['travel']), null, 'no data in any');
+    assert.equal(mode.style('jp').cls, 'l3');
+    assert.ok(mode.style('jp').pulse > 0, 'a wildfire level change pulses here');
+    assert.deepEqual(mode.markers().map(m => m.id), ['gdacs:WF:7']);
+    assert.match(mode.tooltip('jp'), /Disaster · High/);
+    const f = fakeFeed();
+    mode.renderFeed(f.el);
+    assert.match(f.el.innerHTML, /Wildfire: Normal → High/);
+    assert.equal(countryRows(current, [fireChange], ['jp'], { categories: new Set(['disaster', 'wildfire']) })[0].level, 3);
+  });
+});
+
+describe('feed grouping', () => {
+  test('a place\'s changes in a category are one row, by its newest; other categories and placeless alerts stay apart', () => {
+    const at = (h) => hoursAgo(h);
+    const list = [
+      { id: 'a', at: at(1), kind: 'level', category: 'disaster', placeId: 'mx' },
+      { id: 'b', at: at(2), kind: 'event', category: 'disaster', placeIds: ['mx'] },
+      { id: 'c', at: at(3), kind: 'advisory', category: 'travel', placeIds: ['mx', 'gt'] },
+      { id: 'd', at: at(4), kind: 'event', category: 'disaster', placeIds: [] },
+      { id: 'e', at: at(5), kind: 'event', category: 'disaster', placeIds: [] },
+      { id: 'f', at: at(6), kind: 'level', category: 'disaster', placeId: 'mx' },
+    ];
+    assert.deepEqual(groupFeed(list).map(g => [g.change.id, g.count]), [['a', 3], ['c', 1], ['d', 1], ['e', 1]]);
+    assert.deepEqual(groupFeed([]), []);
   });
 });
 
@@ -451,9 +481,10 @@ describe('feed', () => {
     ds.renderFeed(f.el);
     assert.equal(f.section.hidden, false);
     assert.equal(f.title.textContent, 'Changes in the last 30 days');
-    assert.equal(f.count.textContent, 5);
+    assert.equal(f.count.textContent, 4, 'Mexico\'s level change and its cyclone alert are one row');
     const names = [...f.el.innerHTML.matchAll(/class="name">([^<]+)</g)].map(m => m[1]);
-    assert.deepEqual(names, ['Mexico', 'Mexico', 'Offshore quake', 'Somalia', 'Kenya']);
+    assert.deepEqual(names, ['Mexico', 'Offshore quake', 'Somalia', 'Kenya']);
+    assert.match(f.el.innerHTML, /Disaster: Normal → High<span class="earlier"> · and 1 earlier<\/span>/);
     assert.match(f.el.innerHTML, /GDACS earthquake: lowered to Orange alert/);
     assert.match(f.el.innerHTML, /5h ago/);
   });
@@ -468,11 +499,12 @@ describe('feed', () => {
     assert.equal(f.title.textContent, 'Changes in the last 24 hours');
   });
   test('names a change on several places by the first and a count, and caps a long list', async () => {
-    const many = Array.from({ length: 55 }, (_, i) => ({ id: `c${i}`, at: hoursAgo(i), kind: 'level', category: 'disaster', placeId: 'mx', from: 1, to: 2, up: true }));
+    // Alerts on no place: a row each (a place's changes would be one row).
+    const many = Array.from({ length: 55 }, (_, i) => ({ id: `c${i}`, at: hoursAgo(i), kind: 'event', category: 'disaster', source: 'gdacs', eventId: `gdacs:EQ:${100 + i}`, type: 'earthquake', placeIds: [], to: 3, native: 'Orange', new: true }));
     const wide = { id: 'wide', at: hoursAgo(1), kind: 'event', category: 'disaster', source: 'gdacs', eventId: 'gdacs:DR:3', type: 'drought', placeIds: ['ke', 'so'], to: 2, native: 'Orange', new: true };
     const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: [wide, ...many] }, 'risk/events.json': { events: EVENTS } };
     const settings = createSettings('k', {}, { getItem: () => null, setItem: () => {} });
-    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'changes', view: 'changes', now: () => NOW });
+    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'highest', view: 'highest', now: () => NOW });
     await mode.load();
     const f = fakeFeed();
     mode.renderFeed(f.el);
@@ -517,14 +549,14 @@ describe('markers', () => {
     await ds.load();
   }
 
-  test('a category mode marks its events, the highest mode only major ones, the changes mode none', async () => {
+  test('a category mode marks its events, the highest mode only major ones', async () => {
     await withEvents({ view: 'category', category: 'disaster' });
     assert.deepEqual(ds.markers().map(m => m.id), ['gdacs:TC:1', 'gdacs:EQ:2', 'gdacs:DR:3'], 'events without a position are left out');
     assert.deepEqual(ds.markers()[0], { id: 'gdacs:TC:1', lon: 0, lat: 0, kind: 'cyclone', level: 3 });
     await withEvents({ view: 'highest' });
     assert.deepEqual(ds.markers().map(m => m.id), ['gdacs:TC:1', 'gdacs:EQ:2']);
-    await withEvents({ view: 'changes' });
-    assert.deepEqual(ds.markers(), []);
+    await withEvents({ view: 'category', category: 'conflict' });
+    assert.deepEqual(ds.markers(), [], 'no events in this category');
   });
 
   test('a marker selects its event on its first place; its tooltip names it, a cluster lists them', async () => {
@@ -559,10 +591,8 @@ describe('markers', () => {
     assert.equal(ds.feedKeyFor({ eventId: 'gdacs:none', placeId: 'mx' }), CHANGES[0].id, 'falls back to the place');
   });
 
-  test('the legend explains markers where there are any', async () => {
+  test('the legend explains the markers', async () => {
     assert.match(ds.legend(), /legend-marker/);
-    await create({ view: 'changes' });
-    assert.doesNotMatch(ds.legend(), /legend-marker/);
   });
 });
 
@@ -634,9 +664,9 @@ describe('country view', () => {
     assert.deepEqual(rows.find(r => r.placeId === 'mx'), { placeId: 'mx', level: 3, by: ['disaster'], latest: CHANGES[0] });
     assert.deepEqual(rows.find(r => r.placeId === 'ke').by, ['travel', 'disaster']);
     assert.equal(rows.find(r => r.placeId === 'aq').latest, null);
-    const disaster = countryRows(CURRENT, CHANGES, PLACES.keys(), { category: 'disaster' });
+    const disaster = countryRows(CURRENT, CHANGES, PLACES.keys(), { categories: new Set(['disaster']) });
     assert.deepEqual(disaster.find(r => r.placeId === 'so'), { placeId: 'so', level: 2, by: [], latest: null }, 'a travel change is not a disaster change');
-    assert.equal(countryRows(CURRENT, CHANGES, ['aq'], { category: 'travel' })[0].level, null, 'no data');
+    assert.equal(countryRows(CURRENT, CHANGES, ['aq'], { categories: new Set(['travel']) })[0].level, null, 'no data');
   });
   test('sorts by level, by latest change, or by name; ties go to the newer change, then the name', () => {
     const rows = countryRows(CURRENT, CHANGES, PLACES.keys());
@@ -644,7 +674,7 @@ describe('country view', () => {
     assert.deepEqual(ids(sortRows(rows, 'recent', name)), ['mx', 'so', 'ke', 'jp', 'aq']);
     assert.deepEqual(ids(sortRows(rows, 'name', name)), ['aq', 'jp', 'ke', 'mx', 'so']);
     assert.deepEqual(ids(sortRows(rows, 'nope', name)), ['aq', 'jp', 'ke', 'mx', 'so'], 'unknown: by name');
-    const noData = countryRows(CURRENT, [], ['aq', 'jp'], { category: 'travel' });
+    const noData = countryRows(CURRENT, [], ['aq', 'jp'], { categories: new Set(['travel']) });
     assert.deepEqual(ids(sortRows(noData, 'level', name)), ['jp', 'aq'], 'no data last');
     assert.equal(rows.length, PLACES.size, 'a copy: the input is left alone');
   });
@@ -657,7 +687,7 @@ describe('country view', () => {
   test('renders the list sorted by the saved order, filters by name, and saves a new order', async () => {
     let el = listContainer();
     ds.renderCountryList(el, { open() {}, back() {}, hover() {} });
-    assert.match(el.innerHTML, /Countries · Highest/);
+    assert.match(el.innerHTML, /Countries · All/);
     assert.match(el.innerHTML, /data-sort="level" aria-checked="true"/);
     assert.deepEqual(listed(el), ['so', 'mx', 'ke', 'jp', 'aq']);
     assert.equal(el.els['#listCount'].textContent, 5);
@@ -800,7 +830,7 @@ describe('news activity on the site', () => {
     await withActivity({ file: { ...MX_FILE, changes: [ANOMALY, ...MX_FILE.changes], activity: { source: 'gdelt', series: ACTIVITY.gdelt.places.mx } } });
     const f = fakeFeed();
     ds.renderFeed(f.el);
-    assert.equal(f.count.textContent, 5, 'the five changes, not the anomaly');
+    assert.equal(f.count.textContent, 4, 'the changes (four rows), not the anomaly');
     assert.doesNotMatch(f.el.innerHTML, /mx:protest|GDELT/);
     assert.equal(ds.feedTarget('mx:protest:2026-09-27'), null, 'not a feed item');
     assert.doesNotMatch(ds.details(null), /Protest reports/, 'not in the latest changes');
@@ -811,67 +841,5 @@ describe('news activity on the site', () => {
     assert.match(el.innerHTML, /cv-history/);
     assert.doesNotMatch(el.innerHTML.split('cv-history')[1], /Protest reports/, 'not in the country history');
     assert.match(el.innerHTML, /far above normal/, 'shown as it is now, in the country view\'s news section');
-  });
-
-  test('in the Changes mode, news activity alone is not a change: the place stays faded', async () => {
-    const files = { 'risk/current.json': CURRENT, 'risk/changes.json': { changes: [{ ...ANOMALY, id: 'jp:protest', placeId: 'jp' }, ...CHANGES] }, 'risk/events.json': { events: EVENTS } };
-    const settings = createSettings('k3', {}, { getItem: () => null, setItem: () => {} });
-    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'changes', view: 'changes', now: () => NOW });
-    await mode.load();
-    assert.equal(mode.style('jp').dim, true, 'only news activity in the window');
-    assert.equal(mode.style('mx').dim, false, 'a level change');
-  });
-
-  // Seven places: far before above, then by how far above normal, then by name; "normal" isn't listed.
-  const MANY = { gdelt: { ...ACTIVITY.gdelt, places: {
-    mx: { protest: { status: 'above', count: 30, expected: 10 } },
-    jp: { violence: { status: 'far', count: 40, expected: 4 } },
-    so: { protest: { status: 'far', count: 90, expected: 3 } },
-    ke: { protest: { status: 'above', count: 12, expected: 2 } },
-    aq: { protest: { status: 'above', count: 6, expected: 2 } },
-    il: { protest: { status: 'above', count: 5, expected: 0.5 } },
-    zz: { violence: { status: 'normal', count: 5, expected: 5 } },
-  } } };
-  test('newsRows: most unusual first, each place\'s series, "normal" left out', () => {
-    const rows = newsRows(MANY, (id) => PLACES.get(id)?.name ?? id);
-    assert.deepEqual(rows.map(r => [r.placeId, r.status, r.ratio]), [['so', 'far', 30], ['jp', 'far', 10], ['ke', 'above', 6], ['il', 'above', 5], ['aq', 'above', 3], ['mx', 'above', 3]]);
-    assert.deepEqual(newsRows(ACTIVITY, (id) => id)[0].items.map(i => i.series), ['protest', 'violence'], 'far before above');
-    assert.deepEqual(newsRows(undefined, (id) => id), []);
-  });
-
-  const fakeNews = () => {
-    const count = { textContent: '' };
-    const section = { hidden: true, querySelector: () => count };
-    return { el: { innerHTML: '', closest: () => section }, section, count };
-  };
-  test('the news section lists the unusual activity now, most unusual first, 5 until "Show all"', async () => {
-    await withActivity({ activity: MANY });
-    const n = fakeNews();
-    ds.renderNews(n.el);
-    assert.equal(n.section.hidden, false);
-    assert.equal(n.count.textContent, 6);
-    assert.deepEqual([...n.el.innerHTML.matchAll(/data-place="(\w+)"/g)].map(m => m[1]), ['so', 'jp', 'ke', 'il', 'aq']);
-    assert.match(n.el.innerHTML, /<li class="far"><button data-place="so" title="Protest reports far above normal \(GDELT\)">/);
-    assert.match(n.el.innerHTML, /class="name">Somalia<[\s\S]*?class="what">Protest reports far above normal</);
-    assert.match(n.el.innerHTML, /data-news-all>Show all 6</);
-    n.el.onclick({ target: { closest: () => null } });
-    assert.equal((n.el.innerHTML.match(/data-place=/g) ?? []).length, 5, 'another click changes nothing');
-    n.el.onclick({ target: { closest: (sel) => (sel === '[data-news-all]' ? {} : null) } });
-    assert.equal((n.el.innerHTML.match(/data-place=/g) ?? []).length, 6);
-    assert.doesNotMatch(n.el.innerHTML, /data-news-all/);
-  });
-  test('the news section is hidden in a category mode and without unusual activity', async () => {
-    await withActivity({ activity: { gdelt: { ...ACTIVITY.gdelt, places: {} } } });
-    const n = fakeNews();
-    n.section.hidden = false;
-    ds.renderNews(n.el);
-    assert.equal(n.section.hidden, true, 'nothing unusual');
-    const files = { 'risk/current.json': { ...CURRENT, activity: MANY }, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS } };
-    const settings = createSettings('k4', {}, { getItem: () => null, setItem: () => {} });
-    const mode = createRiskMode({ i18n: createI18n({ locale: 'en', messages: EN }), settings, client: { file: async (p) => files[p] }, manifest: MANIFEST, places: PLACES, changed() {}, mode: 'disaster', view: 'category', category: 'disaster', now: () => NOW });
-    await mode.load();
-    n.section.hidden = false;
-    mode.renderNews(n.el);
-    assert.equal(n.section.hidden, true, 'a category mode');
   });
 });

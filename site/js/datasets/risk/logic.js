@@ -21,31 +21,9 @@ export function ageHours(at, now) {
 /**
  * News activity (a GDELT anomaly starting or ending) is published as a change, but it isn't
  * one: it never moves a level. The site lists level changes and alerts as changes, and news
- * activity only as it is now (newsRows()).
+ * activity only as it is now (the card's news line and the country view).
  */
 export const isNews = (c) => c.kind === 'anomaly';
-
-const NEWS_RANK = { far: 2, above: 1 };
-
-/**
- * Places with unusual news activity now, from the published statuses
- * (current.activity[source].places[placeId][series] = { status, count, expected }), most unusual first:
- * "far above" before "above", then by how far above normal, then by name.
- * @returns [{ placeId, source, status, ratio, items: [{ series, status, count, expected }] }]
- */
-export function newsRows(activity, nameOf) {
-  const rows = [];
-  for (const [source, a] of Object.entries(activity ?? {})) {
-    for (const [placeId, series] of Object.entries(a.places ?? {})) {
-      const items = Object.entries(series).map(([name, v]) => ({ series: name, ...v }))
-        .filter(i => NEWS_RANK[i.status])
-        .sort((x, y) => NEWS_RANK[y.status] - NEWS_RANK[x.status] || x.series.localeCompare(y.series));
-      if (!items.length) continue;
-      rows.push({ placeId, source, status: items[0].status, ratio: Math.max(...items.map(i => i.count / Math.max(i.expected, 1))), items });
-    }
-  }
-  return rows.sort((a, b) => NEWS_RANK[b.status] - NEWS_RANK[a.status] || b.ratio - a.ratio || nameOf(a.placeId).localeCompare(nameOf(b.placeId)));
-}
 
 /** Whether data published at `asOf` is more than `hours` old (scheduled updates can be dropped). */
 export function isStale(asOf, now, hours) {
@@ -67,6 +45,12 @@ export function levelOf(current, placeId, category) {
   const meta = current.categories[category];
   if (!meta) return null;
   return current.places[placeId]?.[category]?.level ?? meta.default ?? null;
+}
+
+/** A place's level over some categories (a mode that shows several, e.g. disasters with wildfires): the highest, null if none has data. */
+export function levelIn(current, placeId, categories) {
+  const levels = [...categories].map(c => levelOf(current, placeId, c)).filter(l => l != null);
+  return levels.length ? Math.max(...levels) : null;
 }
 
 /**
@@ -97,18 +81,18 @@ export function filterChanges(changes, { windowDays, direction: dir = 'all', cat
 }
 
 /**
- * The countries list: every place with its level (in one category, or the highest) and its
+ * The countries list: every place with its level (in some categories, or the highest) and its
  * latest level change (a change that pulses), or null.
  * @returns [{ placeId, level, by, latest }]
  */
-export function countryRows(current, changes, placeIds, { category = null } = {}) {
+export function countryRows(current, changes, placeIds, { categories = null } = {}) {
   const latest = new Map();
   for (const c of changes) {   // newest first: the first one seen is a place's latest
-    if (!PULSE_KINDS.has(c.kind) || (category && c.category !== category)) continue;
+    if (!PULSE_KINDS.has(c.kind) || (categories && !categories.has(c.category))) continue;
     for (const id of changePlaces(c)) if (!latest.has(id)) latest.set(id, c);
   }
   return [...placeIds].map((placeId) => {
-    const h = category ? { level: levelOf(current, placeId, category), by: [] } : highest(current, placeId);
+    const h = categories ? { level: levelIn(current, placeId, categories), by: [] } : highest(current, placeId);
     return { placeId, level: h.level, by: h.by, latest: latest.get(placeId) ?? null };
   });
 }
@@ -129,6 +113,24 @@ export function sortRows(rows, sort, nameOf) {
     for (const f of order) { const d = f(a, b); if (d) return d; }
     return 0;
   });
+}
+
+/**
+ * The feed's rows: a place's changes in one category are one row (one cyclone moving a level up
+ * and down, and its alert with it, is one story), shown by its newest change with how many there
+ * were; a change on no place is a row of its own. Newest first, as the input.
+ * @returns [{ change (the newest), count }]
+ */
+export function groupFeed(changes) {
+  const groups = new Map();
+  for (const c of changes) {
+    const place = changePlaces(c)[0];
+    const key = place ? `${place}|${c.category}` : c.id;
+    const g = groups.get(key);
+    if (g) g.count++;
+    else groups.set(key, { change: c, count: 1 });
+  }
+  return [...groups.values()];
 }
 
 /** Changes about one place, newest first (the input is newest first). */

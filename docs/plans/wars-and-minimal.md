@@ -65,9 +65,9 @@ The research:
 
 ## Status
 
-- **Current step:** 2.6
-- **Done:** parts 0–1
-- **Last commit of this revision:** 940faca (part 1)
+- **Current step:** 3.6
+- **Done:** parts 0–2
+- **Last commit of this revision:** 737d09f (part 2)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -141,18 +141,18 @@ The research:
 - [ ] 2.5 Tests:
   - [x] unit site: wars logic (counts, sparkline, escalating and calming, a party to a war, non-state wording).
   - [x] e2e: a fresh visitor gets Wars; a saved mode stays; the overview and place cards; the fixed height; phone.
-- [ ] 2.6 Ship. Live check: Wars opens first and shows the war count.
+- [x] 2.6 Ship. Live check: Wars opens first and shows the war count.
 
 ## Part 3: The minimal pass
 
-- [ ] 3.1 Remove the Wildfires and Changes modes; `RENAMED` redirects old links and saved modes. Disasters shows `disaster` and `wildfire` together. Highest is labelled "All".
-- [ ] 3.2 Delete the Changes view's code paths. "Fade others" stays in Filters.
-- [ ] 3.3 The news list leaves the front: `renderNews` is offered in no mode, and the country view keeps the figures.
-- [ ] 3.4 `groupFeed()` (`risk/logic.js`, pure): one row per place and event or category, newest first.
+- [x] 3.1 Remove the Wildfires and Changes modes; `RENAMED` redirects old links and saved modes. Disasters shows `disaster` and `wildfire` together. Highest is labelled "All".
+- [x] 3.2 Delete the Changes view's code paths. "Fade others" stays in Filters.
+- [x] 3.3 The news list leaves the front: `renderNews` is offered in no mode, and the country view keeps the figures.
+- [x] 3.4 `groupFeed()` (`risk/logic.js`, pure): one row per place and event or category, newest first.
 - [ ] 3.5 Tests:
-  - [ ] unit: `groupFeed()`; the merged Disasters level and markers.
-  - [ ] e2e: four tabs; the redirects; the grouped feed; the edited mode lists (`RISK_MODES`, shots, live-check).
-  - [ ] deleted: the Changes-view and news-list tests.
+  - [x] unit: `groupFeed()`; the merged Disasters level and markers.
+  - [x] e2e: four tabs; the redirects; the grouped feed; the edited mode lists (`RISK_MODES`, shots, live-check).
+  - [x] deleted: the Changes-view and news-list tests.
 - [ ] 3.6 Ship. Live check: four tabs; `#mode=changes` opens Wars.
 
 ## Part 4: Tensions (GDELT pairs)
@@ -198,3 +198,4 @@ The research:
 ## Log (one line per finished part: commit, deploy, tests)
 
 - Part 0: fe66b8e, deploy green. Part 1: 940faca, deploy green, live: All's card shows Ukraine Conflict Critical (97,381 deaths, UCDP), 142 places above Normal, no console errors; update run 36974703851 (ucdp) green: no new version, data through 26.0.8. Tests added: ucdp parser, conflict logic, buildRisk conflict branch, UCDP fetcher, FileStore versions, runFetch conflict kind, data (mapping, bands, war count), project (conflict config), e2e conflict row. Edited: card rows (unit, e2e), risk loading, manifest list, basis check. Deleted: none.
+- Part 2: 737d09f, deploy green, live: Wars opens with 16 wars, header 'Conflict data to August 2026', Yemen's card zooms, no console errors in any mode. Tests added: wars logic and view (unit), country view conflict section, registry (Wars first, default, needs conflict data), wars text keys (project), e2e Wars overview and Wars in the per-mode loop (injected Yemen conflict change). Edited: first visit opens Wars, mode count 6, alert-click test hovers off the feed, shots and live-check lists (live-check reads the war count). Deleted: none.

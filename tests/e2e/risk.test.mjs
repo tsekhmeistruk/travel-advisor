@@ -1,4 +1,4 @@
-// Browser tests of the map modes: Travel, Highest, Disasters and Changes. Real published risk
+// Browser tests of the map modes: Wars, Disasters, Travel and All (Highest). Real published risk
 // data, plus changes of known ages from withRiskChanges() (real ones are rare, as for levels).
 
 import { test, describe, before, after } from 'node:test';
@@ -8,9 +8,9 @@ import { useBrowser, open, openRaw, sleep, OUT, detailsTitle, withRiskChanges, m
 
 useBrowser();
 
-const RISK_MODES = ['wars', 'highest', 'disaster', 'wildfire', 'changes'];
+const RISK_MODES = ['wars', 'highest', 'disaster'];
 // Pulses each mode must show with withRiskChanges(): its category's level changes, or all of them.
-const MIN_PULSES = { wars: 1, highest: 7, disaster: 4, wildfire: 1, changes: 7 };
+const MIN_PULSES = { wars: 1, highest: 7, disaster: 5 };   // Disasters: its level changes and the wildfire one
 const saved = (page) => page.evaluate((key) => JSON.parse(localStorage.getItem(key)), SETTINGS_KEY);
 const classOf = (page, id) => page.evaluate((placeId) => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === placeId)?.getAttribute('class'), id);
 const text = (page, id) => page.$eval(`#${id}`, el => el.textContent);
@@ -91,10 +91,24 @@ describe('mode switch', () => {
     await sleep(900);
     assert.equal(await checked(page, '#modeSwitch'), 'disaster', 'the URL wins over the saved mode');
     assert.equal(await detailsTitle(page), 'Mexico');
-    await page.evaluate(() => { location.hash = '#mode=changes'; });
-    await page.waitForFunction(() => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === 'changes');
+    await page.evaluate(() => { location.hash = '#mode=highest'; });
+    await page.waitForFunction(() => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === 'highest');
     assert.match(await detailsTitle(page), /places? above Normal/, 'no place in the new hash: the overview');
     await page.close();
+  });
+
+  test('four tabs; the old Changes and Wildfires modes lead to Wars and Disasters, in a link or saved', async () => {
+    const page = await openRaw({ hash: '#mode=changes', stored: { mode: 'travel' } });
+    await page.waitForSelector('path.country');
+    assert.deepEqual(await page.$$eval('#modeSwitch [role="radio"]', els => els.map(b => b.textContent.trim())), ['Wars', 'Disasters', 'Travel', 'All']);
+    assert.equal(await checked(page, '#modeSwitch'), 'wars', '#mode=changes');
+    await page.close();
+    const fires = await openRaw({ stored: { mode: 'wildfire' } });
+    await fires.waitForSelector('path.country');
+    assert.equal(await checked(fires, '#modeSwitch'), 'disaster', 'a saved Wildfires');
+    assert.equal((await saved(fires)).mode, 'disaster', 'and the saved mode is migrated');
+    assert.equal(await fires.$$eval('#newsSection', els => els.length), 0, 'no news list on the front');
+    await fires.close();
   });
 
   for (const [width, height] of [[1440, 860], [390, 844]]) {
@@ -227,7 +241,7 @@ describe('risk panel', () => {
 
   test('an empty window says so and offers 90 days', async () => {
     const none = (req) => isData(req, 'risk/changes.json') && (req.respond({ status: 200, contentType: 'application/json', body: '{"changes":[]}' }), true);
-    const page = await openMode('changes', { stored: { mode: 'changes', risk: { recentDays: 7 } }, intercept: none });
+    const page = await openMode('highest', { stored: { mode: 'highest', risk: { recentDays: 7 } }, intercept: none });
     assert.match(await text(page, 'recentList'), /No changes in this period. Show 90 days/);
     assert.match(await text(page, 'details'), /Latest changes\s*No changes in this period\.\s*Show 90 days/);
     await page.click('#details [data-show-days="90"]');
@@ -278,6 +292,22 @@ describe('risk panel', () => {
     await page.close();
   });
 
+  test('the feed groups a place\'s changes in a category into one row, saying how many earlier ones', async () => {
+    const extra = (req) => {
+      if (!isData(req, 'risk/changes.json')) return false;
+      const data = JSON.parse(readFileSync(new URL('../../site/data/risk/changes.json', import.meta.url), 'utf8'));
+      const ago = (h) => new Date(Date.now() - h * 36e5).toISOString();
+      const lvl = (h, from, to) => ({ id: `fj:disaster:${ago(h)}`, at: ago(h), kind: 'level', category: 'disaster', placeId: 'fj', from, to, up: to > from, basis: [], sources: ['gdacs'] });
+      req.respond({ status: 200, contentType: 'application/json', body: JSON.stringify({ ...data, changes: [lvl(1, 3, 2), lvl(5, 4, 3), lvl(9, 1, 4), ...data.changes] }) });
+      return true;
+    };
+    const page = await openMode('highest', { intercept: extra });
+    const rows = await page.$$eval('#recentList button[data-key]', els => els.filter(b => b.dataset.key.startsWith('fj:')).map(b => b.textContent.replace(/\s+/g, ' ').trim()));
+    assert.equal(rows.length, 1, 'Fiji\'s three disaster changes: one row');
+    assert.match(rows[0], /Fiji .*Disaster: High → Elevated · and 2 earlier/);
+    await page.close();
+  });
+
   test('a long feed shows its first 8 changes, then all of them', async () => {
     const page = await openMode('highest', { intercept: withRiskChanges() });
     const total = await page.$eval('#recentCount', el => Number(el.textContent));
@@ -290,27 +320,16 @@ describe('risk panel', () => {
     await page.close();
   });
 
-  test('news activity has its own section, not the feed; a row selects its place; none in Disasters or Travel', async () => {
+  test('news activity is not in the feed; the card says it, as it is now', async () => {
     const page = await openMode('highest', { intercept: withRiskChanges() });
     const keys = await page.$$eval('#recentList button[data-key]', els => els.map(b => b.dataset.key));
     assert.ok(keys.includes('test:event') && !keys.includes('test:news'), 'the 3-hour-old anomaly is not listed between the newer changes');
     assert.equal(await page.$eval('#recentList', el => /GDELT/.test(el.textContent)), false, 'no news item in the feed');
-    assert.equal(await page.$eval('#newsSection', el => el.checkVisibility()), true);
-    const first = await page.$eval('#newsList button[data-place]', b => ({ place: b.dataset.place, text: b.textContent.replace(/\s+/g, ' ').trim() }));
-    assert.deepEqual(first, { place: 'nz', text: 'New Zealand Protest reports far above normal' }, 'the most unusual first');
-    await page.click('#newsList button[data-place="nz"]');
+    await page.type('#search', 'new zealand');
+    await page.keyboard.press('Enter');
     await sleep(900);
     await page.hover('#footer');
-    assert.equal(await detailsTitle(page), 'New Zealand');
-    assert.match(await page.evaluate(() => location.hash), /place=nz/);
     assert.match(await page.$eval('#details', el => el.textContent), /News: Protest reports far above normal \(GDELT\)/);
-    const mode = (id) => page.waitForFunction((m) => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === m, {}, id);
-    await page.click('#modeSwitch [data-mode="disaster"]');
-    await mode('disaster');
-    assert.equal(await page.$eval('#newsSection', el => el.checkVisibility()), false, 'a category mode');
-    await page.click('#modeSwitch [data-mode="travel"]');
-    await mode('travel');
-    assert.equal(await page.$eval('#newsSection', el => el.checkVisibility()), false, 'Travel');
     assert.deepEqual(page.errors, []);
     await page.close();
   });
@@ -406,7 +425,7 @@ describe('event markers', () => {
     await page.close();
   });
 
-  test('the highest mode shows only major alerts, the changes and travel modes none; hidden levels hide markers', async () => {
+  test('the highest mode shows only major alerts, Wars and Travel none; hidden levels hide markers', async () => {
     const page = await openMode('highest', { intercept: withRiskChanges() });
     const ids = async () => (await markers(page)).flatMap(m => m.id.replace(/^cluster:/, '').split('|'));
     assert.ok((await ids()).includes('gdacs:TC:900'));
@@ -414,7 +433,7 @@ describe('event markers', () => {
     await page.click('#riskLevelChips [data-level="4"]');
     await sleep(200);
     assert.ok(!(await ids()).includes('gdacs:TC:900'), 'Critical hidden');
-    await page.click('#modeSwitch [data-mode="changes"]');
+    await page.click('#modeSwitch [data-mode="wars"]');
     await sleep(300);
     assert.equal((await markers(page)).length, 0);
     await page.click('#modeSwitch [data-mode="travel"]');
@@ -429,7 +448,7 @@ describe('event markers', () => {
       assert.equal(await page.$eval('#modeSwitch', el => !!el.closest('#mapArea')), true);
       const cut = await page.$$eval('#modeSwitch button', els => els.filter(b => b.scrollWidth > b.clientWidth + 1).map(b => b.textContent));
       assert.deepEqual(cut, []);
-      assert.equal(await page.$$eval('#modeSwitch button', els => els.length), 6);
+      assert.equal(await page.$$eval('#modeSwitch button', els => els.length), 4);
       await page.close();
     });
   }
@@ -575,7 +594,7 @@ describe('countries list', () => {
     await sleep(300);
     let s = await list(page);
     assert.equal(s.open, true, 'kept across modes');
-    assert.match(await page.$eval('#listView .eyebrow', el => el.textContent), /Highest/, 'Travel borrows the highest levels');
+    assert.match(await page.$eval('#listView .eyebrow', el => el.textContent), /All/, 'Travel borrows the highest levels (All)');
     assert.equal(s.hash, '#mode=travel&view=list');
     // A country clicked on the map opens its view; Back returns to the list.
     await page.evaluate(() => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === 'br').dispatchEvent(new MouseEvent('click', { bubbles: true })));

@@ -787,12 +787,6 @@ h1, h2 { margin: 0; }
 .recent-list .swatch { border-radius: 50%; background: var(--c); }
 .recent-list .when { margin-left: auto; color: var(--text-3); font-size: 12px; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .recent-empty { color: var(--text-3); font-size: 13px; padding: 4px 6px; }
-/* News activity: a hollow dot (it has no level); "far above normal" stands out. */
-.news-list .swatch { background: transparent; box-shadow: inset 0 0 0 2px var(--text-3); }
-.news-list li.far .swatch { box-shadow: inset 0 0 0 2px var(--text-2); }
-.news-list li.far .what { color: var(--text); font-weight: 500; }
-.news-list .what { padding-left: 19px; }
-.news-note { margin: 6px 0 0; font-size: 12px; color: var(--text-3); line-height: 1.45; }
 .recent-list .recent-empty .link-btn, .recent-list .recent-more .link-btn { display: inline; width: auto; padding: 0; font-size: 13px; color: var(--accent); }
 .recent-list .recent-more { padding: 6px 6px 0; }
 .recent-list .recent-more .link-btn:hover { background: none; }
@@ -828,3 +822,4 @@ h1, h2 { margin: 0; }
   }
 }
 .cv-list.conflicts .what { white-space: normal; }
+.recent-list .earlier { color: var(--text-3); }

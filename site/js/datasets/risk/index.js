@@ -1,15 +1,14 @@
 // The risk modes: the map coloured by our risk level (1–4) per place, from the published risk
 // files. One factory serves every risk mode (see ../registry.js):
-//   view 'highest'   the highest level of any category
-//   view 'category'  one category, e.g. disaster
-//   view 'changes'   the highest level, with places that had no change in the window faded
+//   view 'highest'   the highest level of any category (the All mode)
+//   view 'category'  one category, e.g. conflict, or a few shown as one (disasters with wildfires)
 // Implements the dataset interface described in ../registry.js. Pure rules are in ./logic.js.
 //
 // Our levels are a summary of the sources, never presented as a source's own level: the card
 // names the source facts behind each level (a government's advisory, a GDACS alert).
 
 import { esc, safeUrl } from '../../core/dom.js';
-import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, newsRows } from './logic.js';
+import { levelOf, levelIn, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, groupFeed } from './logic.js';
 import { prepareEntries, rankMatches } from '../../ui/search.js';
 import { titleSize } from '../travel-advisories/logic.js';
 import { barRects, conflictName, conflictUrl, windowMonths } from '../wars/logic.js';
@@ -18,7 +17,6 @@ const MARK = '\u0000';   // placeholder for HTML inserted into an escaped messag
 export const WINDOWS = [1, 7, 30, 90];
 export const HISTORY_WINDOWS = [7, 30, 90, 365];
 const FEED_SHORT = 8;      // the feed shows this many until "Show all"
-const NEWS_SHORT = 5;      // and the news section this many
 const FEED_LIMIT = 50;
 const LATEST = 3;          // changes on the overview card
 const STALE_HOURS = 12;    // updates are hourly: older data means runs were dropped
@@ -26,7 +24,7 @@ const LEVELS = [1, 2, 3, 4];
 
 /**
  * @param ctx  { i18n, settings, client, manifest (the manifest's `risk` entry), places, changed,
- *              mode (its id), view, category, now? }
+ *              mode (its id), view, category, categories? (the categories shown, default [category]), now? }
  */
 export function createRiskMode(ctx) {
   const { i18n, manifest, places, client, mode, view, category } = ctx;
@@ -37,7 +35,6 @@ export function createRiskMode(ctx) {
   let events = [];
   let conflict = null;   // risk/conflict.json, when published
   let feedAll = false;   // "Show all" was clicked (for this page view)
-  let newsAll = false;
 
   const tr = (key, params) => i18n.t(`risk.${key}`, params);
   const levelName = (l) => (l == null ? tr('noData') : tr(`levels.${l}`));
@@ -63,8 +60,8 @@ export function createRiskMode(ctx) {
   if (!HISTORY_WINDOWS.includes(settings.get('historyDays'))) settings.set('historyDays', 90);
   if (!LIST_SORTS.includes(settings.get('listSort'))) settings.set('listSort', 'level');
 
-  const categories = view === 'category' ? new Set([category]) : null;
-  const viewLevel = (id) => (view === 'category' ? levelOf(current, id, category) : highest(current, id).level);
+  const categories = view === 'category' ? new Set(ctx.categories ?? [category]) : null;
+  const viewLevel = (id) => (view === 'category' ? levelIn(current, id, categories) : highest(current, id).level);
 
   // The changes the map and feed show, recomputed only when the settings change.
   let memo = null;
@@ -78,6 +75,8 @@ export function createRiskMode(ctx) {
 
   /** The feed's changes: the window's, on shown levels. */
   const feedItems = () => shown().filter(c => c.to == null || levels().includes(c.to));
+  /** The feed's rows: a place's changes in a category grouped (groupFeed). */
+  const feedRows = () => groupFeed(feedItems());
   /** An empty list: says so, and offers the longest window. */
   const emptyHtml = (text) => `${esc(text)}${windowDays() < WINDOWS.at(-1)
     ? ` <button class="link-btn" data-show-days="${WINDOWS.at(-1)}">${esc(tr('feed.showDays', { days: WINDOWS.at(-1) }))}</button>` : ''}`;
@@ -121,7 +120,7 @@ export function createRiskMode(ctx) {
   }
 
   function levelLabel(id) {
-    if (view === 'category') return tr('card.categoryLevel', { category: catName(category), level: levelName(levelOf(current, id, category)) });
+    if (view === 'category') return tr('card.categoryLevel', { category: catName(category), level: levelName(viewLevel(id)) });
     const h = highest(current, id);
     if (h.level == null) return levelName(null);
     return h.by.length ? tr('card.highestBy', { level: levelName(h.level), categories: h.by.map(catName).join(', ') }) : tr('card.highest', { level: levelName(h.level) });
@@ -155,7 +154,7 @@ export function createRiskMode(ctx) {
 
   /** The newest changes, one line each; a click selects the place (no hover: it would replace the card). */
   function latestHtml() {
-    const items = feedItems().slice(0, LATEST);
+    const items = feedRows().slice(0, LATEST).map(g => g.change);
     const rows = items.map(c => `<li><button data-key="${esc(c.id)}" title="${esc(`${changeName(c)}: ${changeText(c)}`)}">
         <span class="swatch" style="background:${swatch(c.to)}"></span>
         <span class="name">${esc(changeName(c))}</span>
@@ -445,7 +444,7 @@ export function createRiskMode(ctx) {
       return {
         cls: fillClass(level),
         muted,
-        dim: (view === 'changes' || settings.get('dimOthers')) && !changed,
+        dim: settings.get('dimOthers') && !changed,
         // Every place is covered (GDACS is global), so a dot for every tiny Normal place would
         // cover the oceans: only places above Normal get one. Search still finds the others.
         dot: level > 1,
@@ -487,7 +486,7 @@ export function createRiskMode(ctx) {
      * or null) previews a place on the map.
      */
     renderCountryList(container, { open, back, hover }) {
-      const rows = countryRows(current, changes, places.keys(), { category: view === 'category' ? category : null });
+      const rows = countryRows(current, changes, places.keys(), { categories });
       const entries = prepareEntries(rows.map(r => ({ label: placeName(r.placeId), aliases: [places.get(r.placeId).name], placeId: r.placeId })));
       const sort = () => settings.get('listSort');
       // In a category mode every row is that category: the level alone says it.
@@ -533,13 +532,12 @@ export function createRiskMode(ctx) {
     },
 
     /**
-     * Event markers for the map: the mode's category, or every major event (Orange and Red) in
-     * the highest mode; none in the changes mode. Hidden levels hide their markers too.
+     * Event markers for the map: the mode's categories, or every major event (Orange and Red) in
+     * the highest mode. Hidden levels hide their markers too.
      */
     markers() {
-      if (view === 'changes') return [];
       return events
-        .filter(e => e.point && (view === 'category' ? e.category === category : (e.level ?? 1) >= 3) && levels().includes(e.level ?? 1))
+        .filter(e => e.point && (categories ? categories.has(e.category) : (e.level ?? 1) >= 3) && levels().includes(e.level ?? 1))
         .map(e => ({ id: e.id, lon: e.point.lon, lat: e.point.lat, kind: e.type, level: e.level ?? 1 }));
     },
     /** A marker's selection target: the event, on its first place. */
@@ -569,7 +567,7 @@ export function createRiskMode(ctx) {
       return LEVELS.map(l => `<span class="legend-item"><span class="swatch" style="background:${swatch(l)}"></span>${esc(levelName(l))}</span>`).join('')
         + `<span class="legend-item"><span class="swatch none"></span>${esc(tr('legend.none'))}</span>`
         + `<span class="legend-item"><span class="legend-pulse"></span>${esc(tr('legend.recent', { window: windowText(windowDays()) }))}</span>`
-        + (view === 'changes' ? '' : `<span class="legend-item"><span class="legend-marker"></span>${esc(tr('legend.markers'))}</span>`);
+        + `<span class="legend-item"><span class="legend-marker"></span>${esc(tr('legend.markers'))}</span>`;
     },
 
     renderSettings(container) {
@@ -593,10 +591,10 @@ export function createRiskMode(ctx) {
             ${['all', 'up', 'down'].map(d => `<button role="radio" data-dir="${d}" aria-checked="${d === dir}">${esc(tr(`settings.${d}`))}</button>`).join('')}
           </div>
         </div>
-        ${view === 'changes' ? '' : `<label class="setting row">
+        <label class="setting row">
           <span class="setting-label">${esc(tr('settings.dim'))}</span>
           <span class="switch"><input type="checkbox" id="riskDimToggle" ${settings.get('dimOthers') ? 'checked' : ''}><span></span></span>
-        </label>`}`;
+        </label>`;
       container.onclick = (e) => {
         const chip = e.target.closest('.chip');
         if (chip) {
@@ -618,7 +616,7 @@ export function createRiskMode(ctx) {
     renderFeed(container) {
       const section = container.closest('.recent');
       section.hidden = false;
-      const items = feedItems();
+      const items = feedRows();
       section.querySelector('#recentTitle').textContent = tr('feed.title', { window: windowText(windowDays()) });
       section.querySelector('#recentCount').textContent = items.length;
       const limit = feedAll ? FEED_LIMIT : FEED_SHORT;
@@ -632,44 +630,17 @@ export function createRiskMode(ctx) {
         this.renderFeed(container);
       };
       container.innerHTML = items.length
-        ? items.slice(0, limit).map(c => `<li><button data-key="${esc(c.id)}" title="${esc(changeText(c))}">
+        ? items.slice(0, limit).map(({ change: c, count }) => `<li><button data-key="${esc(c.id)}" title="${esc(changeText(c))}">
             <span class="row">
               <span class="swatch" style="--c:${swatch(c.to)}"></span>
               <span class="name">${esc(changeName(c))}</span>
               <span class="when">${esc(i18n.shortHours(ageHours(c.at, now())))}</span>
             </span>
-            <span class="what">${arrow(direction(c))}${esc(changeText(c))}</span>
+            <span class="what">${arrow(direction(c))}${esc(changeText(c))}${count > 1 ? `<span class="earlier">${esc(tr('feed.earlier', { count: count - 1 }))}</span>` : ''}</span>
           </button></li>`).join('') + tail
         : `<li class="recent-empty">${emptyHtml(tr('feed.empty'))}</li>`;
     },
     showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
-
-    /**
-     * Unusual news activity now, by place: protests and violence in the news against each
-     * country's normal (GDELT), never a level. Not in a category mode. Rows carry data-place.
-     */
-    renderNews(container) {
-      const section = container.closest('.news');
-      const rows = view === 'category' ? [] : newsRows(current.activity, placeName);
-      section.hidden = !rows.length;
-      if (section.hidden) return;
-      section.querySelector('#newsCount').textContent = rows.length;
-      const limit = newsAll ? rows.length : NEWS_SHORT;
-      const what = (r) => r.items.map(i => tr('activity.item', { series: seriesName(i.series), status: tr(`activity.status.${i.status}`) })).join(' · ');
-      container.innerHTML = rows.slice(0, limit).map(r => `<li class="${esc(r.status)}"><button data-place="${esc(r.placeId)}" title="${esc(`${what(r)} (${sourceName(r.source)})`)}">
-            <span class="row">
-              <span class="swatch"></span>
-              <span class="name">${esc(placeName(r.placeId))}</span>
-            </span>
-            <span class="what">${esc(what(r))}</span>
-          </button></li>`).join('')
-        + (rows.length > limit ? `<li class="recent-more"><button class="link-btn" data-news-all>${esc(tr('news.showAll', { count: rows.length }))}</button></li>` : '');
-      container.onclick = (e) => {
-        if (!e.target.closest('[data-news-all]')) return;
-        newsAll = true;
-        this.renderNews(container);
-      };
-    },
 
     /** A feed item's target: its first place, and its event when it is about one (the card then shows the event). */
     feedTarget(key) {

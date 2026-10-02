@@ -17,8 +17,6 @@
 //   feedTarget(key), feedKeyFor(target)         map feed items to selection targets and back
 //   searchEntries()                             what the search box can find
 //   searchPlaceholder()                         optional: its prompt ("Find a country or alert")
-// and optionally
-//   renderNews(el)                              its list of unusual news activity (hidden without)
 // and optionally, for the full panel views (one risk mode's viewer serves a mode without them):
 //   renderCountryView(el, placeId, { back, selectEvent })   a country's every category, alerts and history
 //   renderCountryList(el, { open, back, hover })             every place with its level, sortable and filterable
@@ -44,10 +42,12 @@ const risk = (options) => (ctx) => createRiskMode({ ...ctx, ...options });
  */
 export const MODES = [
   { id: 'wars', create: createWarsMode, entry: (m) => (m.risk?.conflict ? m.risk : undefined) },
+  // Wildfires are disasters too: one mode for both.
+  { id: 'disaster', create: risk({ mode: 'disaster', view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'] }), entry: (m) => m.risk },
   { id: 'travel', create: createTravelAdvisories, entry: (m) => m.datasets.find(d => d.id === 'travel-advisories') },
   { id: 'highest', create: risk({ mode: 'highest', view: 'highest' }), entry: (m) => m.risk },
-  { id: 'disaster', create: risk({ mode: 'disaster', view: 'category', category: 'disaster' }), entry: (m) => m.risk },
-  { id: 'wildfire', create: risk({ mode: 'wildfire', view: 'category', category: 'wildfire' }), entry: (m) => m.risk },
-  { id: 'changes', create: risk({ mode: 'changes', view: 'changes' }), entry: (m) => m.risk },
 ];
 export const DEFAULT_MODE = 'wars';
+
+/** Modes that were merged or removed (Oct 2026), for old links and saved settings: their successor. */
+export const RENAMED = { wildfire: 'disaster', changes: 'wars' };
