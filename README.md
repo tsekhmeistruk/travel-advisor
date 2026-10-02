@@ -73,7 +73,7 @@ If a source uses a name the build can't match to a place, the build stops and li
 
 ## Tests
 
-Every deploy is gated by these tests (292 in total). Coverage is enforced: deploys fail if unit and data tests cover less than 90% of lines. See [tests/README.md](tests/README.md) for the layout and conventions.
+Every deploy is gated by these tests (over 600 in total). Coverage is enforced: deploys fail if unit and data tests cover less than 90% of lines. See [tests/README.md](tests/README.md) for the layout and conventions.
 
 | Suite | Command | What it checks |
 |---|---|---|
@@ -82,6 +82,16 @@ Every deploy is gated by these tests (292 in total). Coverage is enforced: deplo
 | Browser | `npm run test:e2e` | **Every source** (read from the manifest) on desktop and phone, with injected level changes of known ages, so pulses and the feed are always tested.<br>**Details card:** stays one fixed size.<br>**Every control:** clicks with small hand movement, drag, zoom buttons, tooltip, theme, panel, level filter, fading, feed, keyboard search.<br>**Error states:** the load-error message.<br>**Accessibility:** every control has an accessible label.<br>**Languages:** a fake second, right-to-left locale proves the language picker, persistence, and translated names and dates. |
 
 The browser tests use a local Chrome or Edge (set `CHROME_PATH` to override) and save screenshots to `test-output/`.
+
+## Dev tools
+
+```sh
+npm run shots                                  # screenshots of every mode (desktop light, phone dark) to test-output/shots/
+npm run shots -- 'europe=#mode=highest&place=de' --phone --dark   # any view; see scripts/tools/screenshots.mjs
+npm run live-check                             # the live site in every mode: console errors, header, card
+npm run merge-bot-data                         # after git fetch: merge the bot's data commits and rebuild
+npm run tick -- docs/plans/<plan>.md 1.1,1.2   # tick a plan checklist
+```
 
 ## Logs
 

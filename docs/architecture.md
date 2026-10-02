@@ -54,6 +54,10 @@ scripts/                       the data pipeline (Node 22, no dependencies)
                                I/O boundary: store.mjs; logging: fetch-log.mjs, log-summary.mjs (Fetch results table)
   providers/<id>/              index.mjs (network), parse.mjs (pure parsing)
   tools/generate-places.mjs    regenerates config/places.json
+  tools/screenshots.mjs        npm run shots: screenshots of any view (serves site/ itself)
+  tools/live-check.mjs         npm run live-check: every mode on the live site, console errors
+  tools/merge-bot-data.mjs     npm run merge-bot-data: merge the bot's data commits, rebuild
+  tools/tick.mjs               npm run tick: tick a plan checklist in docs/plans/
 site/                          the published website: deployed as-is
   index.html, css/, vendor/ (d3, topojson), assets/flags/
   i18n/<locale>.json           all interface text

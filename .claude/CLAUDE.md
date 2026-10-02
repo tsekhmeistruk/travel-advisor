@@ -56,7 +56,8 @@ For **every** change, however small, decide explicitly whether tests must be **a
 | All interface text | `site/i18n/<locale>.json`; `site/js/core/i18n.js` does the formatting (Intl) |
 | Site data loading | `site/js/core/data-client.js`, the seam for a future API |
 | Run log (every request, retries, challenges, stats) and the **Fetch results** table ("🔔 level changed: …" when a level moves) | `scripts/lib/fetch-log.mjs`, `scripts/lib/log-summary.mjs`; field reference in `logs/README.md` |
-| Browser-test setup, including `withLevelChanges()` and `withRiskChanges()` (inject changes of known ages), `measureCards()`, `isData()` (matches data URLs, which carry `?v=`) | `tests/e2e/helpers.mjs` |
+| Browser-test setup, including `withLevelChanges()` and `withRiskChanges()` (inject changes of known ages, test events, and news activity for New Zealand), `measureCards()`, `isData()` (matches data URLs, which carry `?v=`) | `tests/e2e/helpers.mjs` |
+| Dev tools: `npm run shots` (screenshots), `npm run live-check` (the live site after a deploy), `npm run merge-bot-data` (after the bot committed), `npm run tick` (plan checklists) | `scripts/tools/` (`browser.mjs` launches Chrome or Edge) |
 
 ## Conventions
 
@@ -100,7 +101,13 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **Bash mangles code:** heredocs and `echo -e` have eaten backslashes in regexes and even produced NUL characters. Write code with the Write or Edit tools, or put an edit script in the scratchpad and run it with `node`.
 - **`String.replace` in edit scripts:** a string replacement treats `$$`, `$&`, `$'` and a dollar sign before a backtick specially (`$$eval` became `$eval`). Pass a function instead: `s.replace(a, () => b)`.
 - **Scratch files** (screenshot scripts, one-off migrations) go in the session scratchpad, never in the repo. `test-output/` is git-ignored, but keep it for screenshots.
-- **Stop background servers** you started (`npm start`) before finishing.
+- **Stop background servers** you started (`npm start`) before finishing. A background command stops after 30 minutes by default: give a server `timeout: 7200000`. `npm run shots` starts and stops its own server, so it rarely needs one.
+- **`node -e "…"` in bash eats `$(…)` and `$('id')`** (bash substitutes them), and backslashes in regexes. Use an edit script written with the Write tool.
+- **Screenshots and settings:** to start a page with saved settings, seed localStorage with `page.evaluateOnNewDocument` (`openPage()` in `scripts/tools/browser.mjs` does). Setting it after load doesn't work: the app writes its own copy back. Use a fresh browser context per view, or settings leak between pages.
+- **`[hidden]` loses to a `display` rule:** an element whose class sets `display` (e.g. `.recent { display: flex }`) stays visible with `hidden`; add `.x[hidden] { display: none }`. Browser tests must check what is seen (`el.checkVisibility()`), not the `hidden` property.
+- **The map's ResizeObserver fires once right after startup:** `WorldMap.layout()` ignores an unchanged size, so a zoom started at load survives. Don't reset the transform in it.
+- **Clipboard in browser tests:** `page.browserContext().overridePermissions(origin, ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write'])`, then `navigator.clipboard.readText()`.
+- **UX reviews:** the owner likes a review from screenshots of the live site in many states (`npm run shots`, desktop, phone, tablet 768 and landscape 844×390, both themes, hovers and links), backed by measurements of the data. Offer the findings as choices; tablet widths (761–1024px) are known to be weak.
 - **Don't re-run the update workflow for all sources many times in a row;** that calls the rate-limited U.S. API. A manual run with `-f sources=gdacs` doesn't. One verification run after a pipeline change is fine.
 
 ## Source quirks (learned the hard way)
@@ -177,6 +184,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 
 ## Verifying changes
 
+- **The whole loop** (checklist, tests, screenshots, commit, merging bot commits, deploy, live check, report) is the **`ship-change`** skill.
 - **Before every push,** use the **`verify-site`** skill, or run:
   - `npm ci` once;
   - `npm run test:coverage` for the unit and data tests with enforced coverage (90% lines, 85% branches, 85% functions), a few seconds;
