@@ -12,9 +12,14 @@
  "lookbackDays": 30,
  "retainEndedDays": 90,
  "minor": {
-  "types": ["TC", "FL", "VO"],
-  "lookbackDays": 14,
-  "retainEndedDays": 14
+  "types": [
+   "TC",
+   "FL",
+   "VO",
+   "WF"
+  ],
+  "lookbackDays": 7,
+  "retainEndedDays": 7
  },
  "scheme": "gdacs-alert",
  "levels": {
@@ -23,12 +28,37 @@
   "Red": 4
  },
  "types": {
-  "EQ": { "type": "earthquake", "category": "disaster", "tailDays": 7 },
-  "TC": { "type": "cyclone", "category": "disaster", "tailDays": 3 },
-  "FL": { "type": "flood", "category": "disaster", "tailDays": 3 },
-  "VO": { "type": "volcano", "category": "disaster", "tailDays": 7 },
-  "DR": { "type": "drought", "category": "disaster", "tailDays": 0, "maxLevel": 2 },
-  "WF": { "type": "wildfire", "category": "wildfire", "tailDays": 3 }
+  "EQ": {
+   "type": "earthquake",
+   "category": "disaster",
+   "tailDays": 7
+  },
+  "TC": {
+   "type": "cyclone",
+   "category": "disaster",
+   "tailDays": 3
+  },
+  "FL": {
+   "type": "flood",
+   "category": "disaster",
+   "tailDays": 3
+  },
+  "VO": {
+   "type": "volcano",
+   "category": "disaster",
+   "tailDays": 7
+  },
+  "DR": {
+   "type": "drought",
+   "category": "disaster",
+   "tailDays": 0,
+   "maxLevel": 2
+  },
+  "WF": {
+   "type": "wildfire",
+   "category": "wildfire",
+   "tailDays": 3
+  }
  },
  "codes": {
   "PSE": [

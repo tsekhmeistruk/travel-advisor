@@ -30,6 +30,7 @@
   }
  },
  "events": [
+  "gdacs:WF:1032460",
   "gdacs:TC:1001321"
  ],
  "changes": [],

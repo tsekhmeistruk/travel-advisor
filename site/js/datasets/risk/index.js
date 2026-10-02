@@ -127,6 +127,7 @@ export function createRiskMode(ctx) {
       </div>
       <p class="moves">${esc(tr('overview.changes', { window: windowText(windowDays()), up: MARK, down: '\u0001' }))
     .replace(MARK, `${arrow('up')} <strong>${moves.up}</strong>`).replace('\u0001', `${arrow('down')} <strong>${moves.down}</strong>`)}</p>
+      ${view === 'category' && i18n.has(`risk.overview.about.${category}`) ? `<p class="hint">${esc(tr(`overview.about.${category}`))}</p>` : ''}
       <p class="hint">${esc(tr('overview.hint'))}</p>`;
   }
 

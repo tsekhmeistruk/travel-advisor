@@ -4,9 +4,10 @@
 // Source: the public GDACS API (no key), search endpoint, newest first, pages of at most 100.
 // Two queries:
 //   major  Orange and Red alerts of every type over `lookbackDays`: the ones that raise a level
-//   minor  Green alerts of `minor.types` (cyclones, floods, volcanoes) over `minor.lookbackDays`,
-//          for map markers only. Green earthquakes and forest fires are left out: several
-//          hundred a week, too many to show and too small to matter.
+//   minor  Green alerts of `minor.types` (cyclones, floods, volcanoes, forest fires) over
+//          `minor.lookbackDays`, for map markers only: without them, the Wildfires mode would
+//          show nothing between rare Orange alerts. Green earthquakes are left out: hundreds a
+//          week, mostly small.
 // Ongoing events and their latest episode are always inside the windows. Ended minor events
 // are dropped after `minor.retainEndedDays`, major ones after `retainEndedDays`.
 // Parsing is in ./parse.mjs, the merge with stored events in lib/events.mjs.

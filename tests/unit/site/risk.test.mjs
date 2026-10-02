@@ -253,6 +253,13 @@ describe('details card', () => {
     assert.match(html, /No changes in the last 90 days\./);
     assert.doesNotMatch(html, /report ↗/);
   });
+  test('a category mode\'s overview says what raises its level', async () => {
+    await create({ view: 'category', category: 'wildfire' });
+    assert.match(ds.details(null), /Levels rise only with a GDACS Orange or Red forest-fire alert, which is rare\. Green markers are smaller fires\./);
+    await create();
+    assert.doesNotMatch(ds.details(null), /Levels rise/, 'not in the highest mode');
+  });
+
   test('a category mode names that category in the badge and marks its row', async () => {
     await create({ view: 'category', category: 'disaster' });
     const html = ds.details({ placeId: 'so' });

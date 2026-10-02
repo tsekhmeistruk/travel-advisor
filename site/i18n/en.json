@@ -330,7 +330,11 @@
     "other": "{count} places above Normal"
    },
    "changes": "In the last {window}: {up} raised, {down} lowered.",
-   "hint": "Hover or tap a country for its risk by category."
+   "hint": "Hover or tap a country for its risk by category.",
+   "about": {
+    "disaster": "Levels rise with GDACS Orange and Red alerts. Green markers are smaller events.",
+    "wildfire": "Levels rise only with a GDACS Orange or Red forest-fire alert, which is rare. Green markers are smaller fires."
+   }
   },
   "card": {
    "eyebrow": "Risk by category",

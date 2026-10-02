@@ -124,7 +124,7 @@ describe('GDACS fetcher', () => {
     const log = fakeLog({ search: [{ body }, { body: green }] });
     const { events, stats } = await gdacs.fetch({ log, previous: [], now: NOW, config: fullConfig });
     const minor = new URL(log.requests[1].url).searchParams;
-    assert.deepEqual([minor.get('alertlevel'), minor.get('eventlist'), minor.get('fromDate')], ['Green', 'TC;FL;VO', '2026-09-13']);
+    assert.deepEqual([minor.get('alertlevel'), minor.get('eventlist'), minor.get('fromDate')], ['Green', 'TC;FL;VO;WF', '2026-09-20']);
     assert.equal(events.length, 13 + 12);
     assert.ok(events.some(e => e.native.value === 'Green' && e.current));
     assert.equal(stats.received, 25);

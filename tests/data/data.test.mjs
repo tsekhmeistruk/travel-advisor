@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import { FileStore } from '../../scripts/lib/store.mjs';
 import { readBuildInput, buildAll } from '../../scripts/build.mjs';
 import { SPLIT_SHAPE_NAMES } from '../../site/js/map/splits.js';
+import { rank } from '../../scripts/lib/anomaly.mjs';
 
 const store = new FileStore();
 const manifest = store.published('manifest.json');
@@ -75,7 +76,10 @@ describe('risk data', () => {
       assert.ok(c.at >= oldest && c.at <= tomorrow + 'T', `${c.id} outside the window`);
       if (i > 0) assert.ok(c.at <= changes[i - 1].at, `${c.id}: changes must be newest first`);
       for (const id of [...(c.placeIds ?? []), ...(c.placeId ? [c.placeId] : [])]) assert.ok(placeIds.has(id), `${c.id}: unknown place ${id}`);
-      if (c.from != null && c.to != null) assert.equal(c.up, c.to > c.from, `${c.id}: direction`);
+      // Levels compare as numbers; an anomaly's from/to are statuses (normal < above < far).
+      const order = c.kind === 'anomaly' ? rank : (x) => x;
+      if (c.kind === 'anomaly') assert.ok(['normal', 'above', 'far'].includes(c.from) && ['normal', 'above', 'far'].includes(c.to), `${c.id}: statuses`);
+      if (c.from != null && c.to != null) assert.equal(c.up, order(c.to) > order(c.from), `${c.id}: direction`);
     });
   });
 
