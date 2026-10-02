@@ -65,9 +65,9 @@ The research:
 
 ## Status
 
-- **Current step:** 5.3
-- **Done:** parts 0–4
-- **Last commit of this revision:** f214057 (part 4)
+- **Current step:** done
+- **Done:** parts 0–5
+- **Last commit of this revision:** 5c5769e (part 5)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -121,7 +121,7 @@ The research:
   - `FileStore` methods for the versions;
   - the backfill run locally, then `npm run build`.
 - [x] 1.7 All's card: four rows (Travel, Conflict, Disasters = the higher of `disaster` and `wildfire`, Health). The country view lists the same categories. `risk.categories.conflict` in `en.json`.
-- [ ] 1.8 Tests:
+- [x] 1.8 Tests:
   - [x] unit: `ucdp.test.mjs` with a real-row fixture (Ukraine, Gaza and the West Bank, an unnamed conflict, Mexico non-state, a backdated event): parsing, mapping, unknown countries, version stepping.
   - [x] unit: `conflict.test.mjs`: dedupe, the rolling war count, bands, escalating and calming.
   - [x] unit: `risk.test.mjs` conflict branch (levels, changes, error keeps state); `providers.test.mjs` fetcher (new version, 404, malformed).
@@ -138,7 +138,7 @@ The research:
   - its own `load`, overview and place cards (the fixed card height), legend and header.
 - [x] 2.3 `MODES`: Wars first, `DEFAULT_MODE = 'wars'`. The country view gets a Conflict section (monthly bars, conflicts, parties, a link to UCDP).
 - [x] 2.4 Text: the `modes.wars.*` and wars card strings, the help dialog (bands, war count), the footer's sources.
-- [ ] 2.5 Tests:
+- [x] 2.5 Tests:
   - [x] unit site: wars logic (counts, sparkline, escalating and calming, a party to a war, non-state wording).
   - [x] e2e: a fresh visitor gets Wars; a saved mode stays; the overview and place cards; the fixed height; phone.
 - [x] 2.6 Ship. Live check: Wars opens first and shows the war count.
@@ -149,7 +149,7 @@ The research:
 - [x] 3.2 Delete the Changes view's code paths. "Fade others" stays in Filters.
 - [x] 3.3 The news list leaves the front: `renderNews` is offered in no mode, and the country view keeps the figures.
 - [x] 3.4 `groupFeed()` (`risk/logic.js`, pure): one row per place and event or category, newest first.
-- [ ] 3.5 Tests:
+- [x] 3.5 Tests:
   - [x] unit: `groupFeed()`; the merged Disasters level and markers.
   - [x] e2e: four tabs; the redirects; the grouped feed; the edited mode lists (`RISK_MODES`, shots, live-check).
   - [x] deleted: the Changes-view and news-list tests.
@@ -161,7 +161,7 @@ The research:
 - [x] 4.2 Pair counts in `data/counts/gdelt.json`; the anomaly with a stricter `pairs` rule; published as `activity.gdelt.pairs`.
 - [x] 4.3 A one-off local backfill of 98 days.
 - [x] 4.4 Site: Tensions in the Wars overview (at most three) and in the country view. Never a level or a pulse.
-- [ ] 4.5 Tests:
+- [x] 4.5 Tests:
   - [x] unit: pair counting from real rows; region codes dropped; the anomaly.
   - [x] unit site: the Tensions list.
   - [x] e2e: Tensions shown.
@@ -171,7 +171,7 @@ The research:
 
 - [x] 5.1 `docs/architecture.md`, README, and `.claude/CLAUDE.md` (code map, source quirks for UCDP and the GDELT pairs, current state).
 - [x] 5.2 Review screenshots: desktop, phone, tablet 768, landscape 844×390, both themes.
-- [ ] 5.3 Ship and report.
+- [x] 5.3 Ship and report.
 
 ---
 
@@ -201,3 +201,4 @@ The research:
 - Part 2: 737d09f, deploy green, live: Wars opens with 16 wars, header 'Conflict data to August 2026', Yemen's card zooms, no console errors in any mode. Tests added: wars logic and view (unit), country view conflict section, registry (Wars first, default, needs conflict data), wars text keys (project), e2e Wars overview and Wars in the per-mode loop (injected Yemen conflict change). Edited: first visit opens Wars, mode count 6, alert-click test hovers off the feed, shots and live-check lists (live-check reads the war count). Deleted: none.
 - Part 3: d8e6814, deploy green, live: tabs Wars, Disasters, Travel, All; #mode=changes opens Wars and #mode=wildfire opens Disasters; feed 3 grouped rows (was 14); no news list; no console errors. Tests added: groupFeed, Disasters with wildfires, redirects and four tabs (e2e), grouped feed (e2e). Edited: registry, feed counts, countryRows by categories, notes and header, layout and empty-window tests, Chile marker test, news e2e, tool lists. Deleted: Changes fading, fade-switch and legend cases, newsRows and news section tests.
 - Part 4: f214057, deploy green, live: Wars overview lists Tensions (Afghanistan – Pakistan 209 · usually 57, United Kingdom – Iran, Egypt – Israel), Pakistan's country view lists its tension, no console errors; update run 36979530374 (gdelt) green. Pairs backfilled 98 days locally (997 pairs, 10 above normal). Tests added: pair counting (real fixture), prune, fetcher with pairs, tensionSignals and buildRisk, tensionRows and overview Tensions, country view tensions, project and data checks, e2e. Edited: GDELT fetcher tests without pairs. Deleted: the overview's preliminary note.
+- Part 5: 5c5769e, deploy green, live: four modes ok, Wars 16 wars, no console errors; README, architecture and CLAUDE.md updated; review screenshots at 1440 (light, dark), 390, 768 (the four tabs fit) and 844x390. Tests: none added, edited or deleted (docs).
