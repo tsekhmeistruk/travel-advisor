@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "uk",
- "asOf": "2026-10-01",
+ "asOf": "2026-10-02",
  "source": "https://www.gov.uk/api/content/foreign-travel-advice",
  "links": {
   "list": "https://www.gov.uk/foreign-travel-advice"

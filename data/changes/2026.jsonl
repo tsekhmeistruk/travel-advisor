@@ -45,3 +45,4 @@
 {"id":"tn:protest:2026-09-30","at":"2026-09-30","kind":"anomaly","category":"unrest","placeId":"tn","series":"protest","source":"gdelt","from":"above","to":"normal","up":false,"count":9,"expected":6.6}
 {"id":"xk:protest:2026-09-30","at":"2026-09-30","kind":"anomaly","category":"unrest","placeId":"xk","series":"protest","source":"gdelt","from":"above","to":"normal","up":false,"count":3,"expected":1.4}
 {"id":"cn:disaster:2026-10-01T07:48:29.839Z","at":"2026-10-01T07:48:29.839Z","kind":"level","category":"disaster","placeId":"cn","from":3,"to":1,"up":false,"basis":[],"sources":["gdacs"]}
+{"id":"in:disaster:2026-10-02T06:13:22.734Z","at":"2026-10-02T06:13:22.734Z","kind":"level","category":"disaster","placeId":"in","from":3,"to":1,"up":false,"basis":[],"sources":["gdacs"]}

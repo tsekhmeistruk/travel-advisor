@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "de",
- "asOf": "2026-10-01",
+ "asOf": "2026-10-02",
  "source": "https://www.auswaertiges-amt.de/opendata/travelwarning",
  "links": {
   "list": "https://www.auswaertiges-amt.de/de/ReiseUndSicherheit/reise-und-sicherheitshinweise"

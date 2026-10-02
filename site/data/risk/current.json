@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T03:22:15.750Z",
+ "asOf": "2026-10-02T06:13:37.487Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -26,7 +26,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-02T03:22:15.750Z"
+   "at": "2026-10-02T06:13:22.734Z"
   },
   "wildfire": {
    "sources": [
@@ -34,7 +34,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-02T03:22:15.750Z"
+   "at": "2026-10-02T06:13:22.734Z"
   },
   "health": {
    "sources": [
@@ -42,7 +42,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-02T00:15:07.940Z"
+   "at": "2026-10-02T06:13:30.909Z"
   }
  },
  "sources": {
@@ -1535,15 +1535,6 @@
      "de": 3
     },
     "agree": 2
-   },
-   "disaster": {
-    "level": 3,
-    "since": "2026-09-28T11:59:27.360Z",
-    "from": 1,
-    "basis": [
-     "gdacs:FL:1104121"
-    ],
-    "falling": 1
    }
   },
   "io": {
