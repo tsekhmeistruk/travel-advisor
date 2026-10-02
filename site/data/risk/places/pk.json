@@ -80,10 +80,47 @@
    {
     "key": "1:404",
     "name": "Pakistan: Government",
-    "sideA": "Government of Pakistan",
-    "sideB": "TTP",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 2801
+      }
+     ],
+     "b": [
+      {
+       "name": "TTP",
+       "deaths": 2578
+      },
+      {
+       "name": "IMP",
+       "deaths": 215
+      },
+      {
+       "name": "Jamaat-ul-Ahrar",
+       "deaths": 8
+      }
+     ]
+    },
     "deaths12": 2801,
+    "civilians12": 222,
     "last": 301,
+    "months": [
+     328,
+     391,
+     306,
+     171,
+     87,
+     217,
+     105,
+     101,
+     221,
+     284,
+     289,
+     301
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "pk",
@@ -96,10 +133,39 @@
    {
     "key": "1:325",
     "name": "Pakistan: Balochistan",
-    "sideA": "Government of Pakistan",
-    "sideB": "BRAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 1210
+      }
+     ],
+     "b": [
+      {
+       "name": "BRAS",
+       "deaths": 1210
+      }
+     ]
+    },
     "deaths12": 1210,
+    "civilians12": 50,
     "last": 207,
+    "months": [
+     35,
+     53,
+     16,
+     46,
+     294,
+     43,
+     48,
+     28,
+     73,
+     150,
+     217,
+     207
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "pk"
@@ -111,10 +177,53 @@
    {
     "key": "1:122",
     "name": null,
-    "sideA": "XXX770",
-    "sideB": "XXX770",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "pk",
+       "deaths": 333
+      },
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 28
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "pk",
+       "deaths": 333
+      },
+      {
+       "name": "Jaishul Hind",
+       "deaths": 14
+      },
+      {
+       "name": "TIF",
+       "deaths": 14
+      }
+     ]
+    },
     "deaths12": 361,
+    "civilians12": 15,
     "last": 13,
+    "months": [
+     30,
+     21,
+     14,
+     0,
+     17,
+     4,
+     8,
+     5,
+     19,
+     50,
+     180,
+     13
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "pk"
@@ -126,10 +235,40 @@
    {
     "key": "1:11639",
     "name": "Afghanistan - Pakistan",
-    "sideA": "Government of Afghanistan",
-    "sideB": "Government of Pakistan",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Afghanistan",
+       "place": "af",
+       "deaths": 689
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 689
+      }
+     ]
+    },
     "deaths12": 689,
+    "civilians12": 373,
     "last": 0,
+    "months": [
+     0,
+     131,
+     21,
+     9,
+     0,
+     171,
+     281,
+     68,
+     8,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "af",
@@ -143,10 +282,39 @@
    {
     "key": "1:13936",
     "name": "Pakistan: Islamic State",
-    "sideA": "Government of Pakistan",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 52
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 52
+      }
+     ]
+    },
     "deaths12": 52,
+    "civilians12": 9,
     "last": 1,
+    "months": [
+     17,
+     4,
+     2,
+     0,
+     0,
+     3,
+     0,
+     1,
+     18,
+     2,
+     4,
+     1
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "pk"
@@ -158,10 +326,39 @@
    {
     "key": "1:13637",
     "name": "Afghanistan: Islamic State",
-    "sideA": "Government of Afghanistan",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Afghanistan",
+       "place": "af",
+       "deaths": 64
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 64
+      }
+     ]
+    },
     "deaths12": 64,
+    "civilians12": 6,
     "last": 28,
+    "months": [
+     5,
+     0,
+     0,
+     0,
+     11,
+     15,
+     0,
+     0,
+     0,
+     2,
+     3,
+     28
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "af",
@@ -176,10 +373,47 @@
    {
     "key": "1:404",
     "name": "Pakistan: Government",
-    "sideA": "Government of Pakistan",
-    "sideB": "TTP",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 2801
+      }
+     ],
+     "b": [
+      {
+       "name": "TTP",
+       "deaths": 2578
+      },
+      {
+       "name": "IMP",
+       "deaths": 215
+      },
+      {
+       "name": "Jamaat-ul-Ahrar",
+       "deaths": 8
+      }
+     ]
+    },
     "deaths12": 2801,
+    "civilians12": 222,
     "last": 301,
+    "months": [
+     328,
+     391,
+     306,
+     171,
+     87,
+     217,
+     105,
+     101,
+     221,
+     284,
+     289,
+     301
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "pk",
@@ -192,10 +426,39 @@
    {
     "key": "1:325",
     "name": "Pakistan: Balochistan",
-    "sideA": "Government of Pakistan",
-    "sideB": "BRAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 1210
+      }
+     ],
+     "b": [
+      {
+       "name": "BRAS",
+       "deaths": 1210
+      }
+     ]
+    },
     "deaths12": 1210,
+    "civilians12": 50,
     "last": 207,
+    "months": [
+     35,
+     53,
+     16,
+     46,
+     294,
+     43,
+     48,
+     28,
+     73,
+     150,
+     217,
+     207
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "pk"
@@ -207,10 +470,40 @@
    {
     "key": "1:11639",
     "name": "Afghanistan - Pakistan",
-    "sideA": "Government of Afghanistan",
-    "sideB": "Government of Pakistan",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Afghanistan",
+       "place": "af",
+       "deaths": 689
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 689
+      }
+     ]
+    },
     "deaths12": 689,
+    "civilians12": 373,
     "last": 0,
+    "months": [
+     0,
+     131,
+     21,
+     9,
+     0,
+     171,
+     281,
+     68,
+     8,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "af",
@@ -224,10 +517,53 @@
    {
     "key": "1:122",
     "name": null,
-    "sideA": "XXX770",
-    "sideB": "XXX770",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "pk",
+       "deaths": 333
+      },
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 28
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "pk",
+       "deaths": 333
+      },
+      {
+       "name": "Jaishul Hind",
+       "deaths": 14
+      },
+      {
+       "name": "TIF",
+       "deaths": 14
+      }
+     ]
+    },
     "deaths12": 361,
+    "civilians12": 15,
     "last": 13,
+    "months": [
+     30,
+     21,
+     14,
+     0,
+     17,
+     4,
+     8,
+     5,
+     19,
+     50,
+     180,
+     13
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "pk"
@@ -239,10 +575,39 @@
    {
     "key": "1:13936",
     "name": "Pakistan: Islamic State",
-    "sideA": "Government of Pakistan",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Pakistan",
+       "place": "pk",
+       "deaths": 52
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 52
+      }
+     ]
+    },
     "deaths12": 52,
+    "civilians12": 9,
     "last": 1,
+    "months": [
+     17,
+     4,
+     2,
+     0,
+     0,
+     3,
+     0,
+     1,
+     18,
+     2,
+     4,
+     1
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "pk"

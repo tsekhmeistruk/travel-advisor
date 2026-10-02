@@ -80,10 +80,39 @@
    {
     "key": "1:11345",
     "name": "South Sudan: Government",
-    "sideA": "Government of South Sudan",
-    "sideB": "SPLM/A - IO",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of South Sudan",
+       "place": "ss",
+       "deaths": 237
+      }
+     ],
+     "b": [
+      {
+       "name": "SPLM/A - IO",
+       "deaths": 237
+      }
+     ]
+    },
     "deaths12": 237,
+    "civilians12": 27,
     "last": 0,
+    "months": [
+     68,
+     16,
+     2,
+     28,
+     88,
+     20,
+     13,
+     0,
+     0,
+     0,
+     2,
+     0
+    ],
+    "first": "2024-10",
     "war": false,
     "places": [
      "ss"
@@ -97,10 +126,39 @@
    {
     "key": "1:11345",
     "name": "South Sudan: Government",
-    "sideA": "Government of South Sudan",
-    "sideB": "SPLM/A - IO",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of South Sudan",
+       "place": "ss",
+       "deaths": 237
+      }
+     ],
+     "b": [
+      {
+       "name": "SPLM/A - IO",
+       "deaths": 237
+      }
+     ]
+    },
     "deaths12": 237,
+    "civilians12": 27,
     "last": 0,
+    "months": [
+     68,
+     16,
+     2,
+     28,
+     88,
+     20,
+     13,
+     0,
+     0,
+     0,
+     2,
+     0
+    ],
+    "first": "2024-10",
     "war": false,
     "places": [
      "ss"

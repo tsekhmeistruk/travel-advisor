@@ -13,6 +13,7 @@
 //   events.json    active events (for markers and "why")
 //   health.json    each provider's and source's last success and status
 //   conflict.json  a conflict source's figures (wars, deaths per place and month), see lib/conflict.mjs
+//   conflict-events.json  its latest month's events with a point on the map (dots)
 //
 // Counts sources (GDELT news reports) never set a level: they give unusual activity, a status
 // per place and series ("far above normal"), published beside the levels as `activity`.
@@ -458,7 +459,7 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
     'risk/changes.json': { asOf, windowDays: CHANGE_WINDOW_DAYS, changes: recent },
     'risk/events.json': { asOf, events: events.sort((a, b) => b.startedAt.localeCompare(a.startedAt) || a.id.localeCompare(b.id)) },
     'risk/health.json': { asOf, sources: health },
-    ...(conflict && { 'risk/conflict.json': conflict.published }),
+    ...(conflict && { 'risk/conflict.json': conflict.published, 'risk/conflict-events.json': conflict.events }),
     ...placeFiles({ placeIds: [...index.byId.keys()].sort(), advisoryFiles: advisories.files, events, changes: [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')], asOf, activity: activityByPlace, conflict: conflict?.byPlace, tensions: tensionsByPlace }),
   };
   return { files, state: newState, newChanges, warnings };

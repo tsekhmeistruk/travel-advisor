@@ -104,10 +104,39 @@
    {
     "key": "1:291",
     "name": "Indonesia: West Papua",
-    "sideA": "Government of Indonesia",
-    "sideB": "OPM",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Indonesia",
+       "place": "id",
+       "deaths": 98
+      }
+     ],
+     "b": [
+      {
+       "name": "OPM",
+       "deaths": 98
+      }
+     ]
+    },
     "deaths12": 98,
+    "civilians12": 32,
     "last": 5,
+    "months": [
+     5,
+     25,
+     4,
+     5,
+     0,
+     10,
+     4,
+     15,
+     16,
+     3,
+     6,
+     5
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "id"
@@ -121,10 +150,39 @@
    {
     "key": "1:291",
     "name": "Indonesia: West Papua",
-    "sideA": "Government of Indonesia",
-    "sideB": "OPM",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Indonesia",
+       "place": "id",
+       "deaths": 98
+      }
+     ],
+     "b": [
+      {
+       "name": "OPM",
+       "deaths": 98
+      }
+     ]
+    },
     "deaths12": 98,
+    "civilians12": 32,
     "last": 5,
+    "months": [
+     5,
+     25,
+     4,
+     5,
+     0,
+     10,
+     4,
+     15,
+     16,
+     3,
+     6,
+     5
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "id"

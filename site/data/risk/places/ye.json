@@ -80,10 +80,43 @@
    {
     "key": "1:230",
     "name": "Yemen (North Yemen): Government",
-    "sideA": "Government of Yemen (North Yemen)",
-    "sideB": "Forces of the Presidential Leadership Council",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Yemen (North Yemen)",
+       "place": "ye",
+       "deaths": 1871
+      }
+     ],
+     "b": [
+      {
+       "name": "Forces of the Presidential Leadership Council",
+       "deaths": 1847
+      },
+      {
+       "name": "Nakf al-Karama",
+       "deaths": 24
+      }
+     ]
+    },
     "deaths12": 1871,
+    "civilians12": 179,
     "last": 1365,
+    "months": [
+     21,
+     38,
+     33,
+     24,
+     12,
+     18,
+     47,
+     24,
+     32,
+     37,
+     220,
+     1365
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ye",
@@ -96,10 +129,40 @@
    {
     "key": "1:16470",
     "name": "Israel - Yemen",
-    "sideA": "Government of Israel",
-    "sideB": "Government of Yemen (North Yemen)",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 79
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Yemen (North Yemen)",
+       "place": "ye",
+       "deaths": 79
+      }
+     ]
+    },
     "deaths12": 79,
+    "civilians12": 47,
     "last": 0,
+    "months": [
+     79,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2025-01",
     "war": false,
     "places": [
      "ye"
@@ -114,10 +177,43 @@
    {
     "key": "1:230",
     "name": "Yemen (North Yemen): Government",
-    "sideA": "Government of Yemen (North Yemen)",
-    "sideB": "Forces of the Presidential Leadership Council",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Yemen (North Yemen)",
+       "place": "ye",
+       "deaths": 1871
+      }
+     ],
+     "b": [
+      {
+       "name": "Forces of the Presidential Leadership Council",
+       "deaths": 1847
+      },
+      {
+       "name": "Nakf al-Karama",
+       "deaths": 24
+      }
+     ]
+    },
     "deaths12": 1871,
+    "civilians12": 179,
     "last": 1365,
+    "months": [
+     21,
+     38,
+     33,
+     24,
+     12,
+     18,
+     47,
+     24,
+     32,
+     37,
+     220,
+     1365
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ye",
@@ -130,10 +226,40 @@
    {
     "key": "1:16470",
     "name": "Israel - Yemen",
-    "sideA": "Government of Israel",
-    "sideB": "Government of Yemen (North Yemen)",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 79
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Yemen (North Yemen)",
+       "place": "ye",
+       "deaths": 79
+      }
+     ]
+    },
     "deaths12": 79,
+    "civilians12": 47,
     "last": 0,
+    "months": [
+     79,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2025-01",
     "war": false,
     "places": [
      "ye"

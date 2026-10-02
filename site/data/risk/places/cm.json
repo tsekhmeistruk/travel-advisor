@@ -80,10 +80,39 @@
    {
     "key": "1:14129",
     "name": "Cameroon: Ambazonia",
-    "sideA": "Government of Cameroon",
-    "sideB": "Ambazonia insurgents",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cameroon",
+       "place": "cm",
+       "deaths": 147
+      }
+     ],
+     "b": [
+      {
+       "name": "Ambazonia insurgents",
+       "deaths": 147
+      }
+     ]
+    },
     "deaths12": 147,
+    "civilians12": 14,
     "last": 12,
+    "months": [
+     11,
+     1,
+     12,
+     19,
+     13,
+     3,
+     10,
+     18,
+     14,
+     20,
+     14,
+     12
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cm"
@@ -95,10 +124,39 @@
    {
     "key": "1:353",
     "name": "Cameroon: Government",
-    "sideA": "Government of Cameroon",
-    "sideB": "JAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cameroon",
+       "place": "cm",
+       "deaths": 50
+      }
+     ],
+     "b": [
+      {
+       "name": "JAS",
+       "deaths": 50
+      }
+     ]
+    },
     "deaths12": 50,
+    "civilians12": 2,
     "last": 3,
+    "months": [
+     2,
+     1,
+     2,
+     1,
+     2,
+     0,
+     7,
+     5,
+     5,
+     11,
+     11,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cm"
@@ -110,10 +168,39 @@
    {
     "key": "1:13638",
     "name": "Cameroon: Islamic State",
-    "sideA": "Government of Cameroon",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cameroon",
+       "place": "cm",
+       "deaths": 41
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 41
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 4,
     "last": 0,
+    "months": [
+     0,
+     6,
+     1,
+     7,
+     0,
+     11,
+     8,
+     2,
+     0,
+     2,
+     4,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cm"
@@ -125,10 +212,40 @@
    {
     "key": "1:28",
     "name": null,
-    "sideA": "XXX471",
-    "sideB": "XXX471",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "cm",
+       "deaths": 30
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "cm",
+       "deaths": 30
+      }
+     ]
+    },
     "deaths12": 30,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     0,
+     28,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "cm"
@@ -142,10 +259,39 @@
    {
     "key": "1:14129",
     "name": "Cameroon: Ambazonia",
-    "sideA": "Government of Cameroon",
-    "sideB": "Ambazonia insurgents",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cameroon",
+       "place": "cm",
+       "deaths": 147
+      }
+     ],
+     "b": [
+      {
+       "name": "Ambazonia insurgents",
+       "deaths": 147
+      }
+     ]
+    },
     "deaths12": 147,
+    "civilians12": 14,
     "last": 12,
+    "months": [
+     11,
+     1,
+     12,
+     19,
+     13,
+     3,
+     10,
+     18,
+     14,
+     20,
+     14,
+     12
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cm"
@@ -157,10 +303,39 @@
    {
     "key": "1:353",
     "name": "Cameroon: Government",
-    "sideA": "Government of Cameroon",
-    "sideB": "JAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cameroon",
+       "place": "cm",
+       "deaths": 50
+      }
+     ],
+     "b": [
+      {
+       "name": "JAS",
+       "deaths": 50
+      }
+     ]
+    },
     "deaths12": 50,
+    "civilians12": 2,
     "last": 3,
+    "months": [
+     2,
+     1,
+     2,
+     1,
+     2,
+     0,
+     7,
+     5,
+     5,
+     11,
+     11,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cm"
@@ -172,10 +347,39 @@
    {
     "key": "1:13638",
     "name": "Cameroon: Islamic State",
-    "sideA": "Government of Cameroon",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cameroon",
+       "place": "cm",
+       "deaths": 41
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 41
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 4,
     "last": 0,
+    "months": [
+     0,
+     6,
+     1,
+     7,
+     0,
+     11,
+     8,
+     2,
+     0,
+     2,
+     4,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cm"
@@ -187,10 +391,40 @@
    {
     "key": "1:28",
     "name": null,
-    "sideA": "XXX471",
-    "sideB": "XXX471",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "cm",
+       "deaths": 30
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "cm",
+       "deaths": 30
+      }
+     ]
+    },
     "deaths12": 30,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     0,
+     28,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "cm"

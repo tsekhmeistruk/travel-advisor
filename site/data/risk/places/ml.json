@@ -95,10 +95,39 @@
    {
     "key": "1:11347",
     "name": "Mali: Government",
-    "sideA": "Government of Mali",
-    "sideB": "JNIM",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mali",
+       "place": "ml",
+       "deaths": 1088
+      }
+     ],
+     "b": [
+      {
+       "name": "JNIM",
+       "deaths": 1088
+      }
+     ]
+    },
     "deaths12": 1088,
+    "civilians12": 213,
     "last": 78,
+    "months": [
+     81,
+     145,
+     97,
+     18,
+     15,
+     68,
+     58,
+     90,
+     257,
+     54,
+     127,
+     78
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ml"
@@ -110,10 +139,39 @@
    {
     "key": "1:16038",
     "name": "Mali: Government/Azawad",
-    "sideA": "Government of Mali",
-    "sideB": "FLA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mali",
+       "place": "ml",
+       "deaths": 171
+      }
+     ],
+     "b": [
+      {
+       "name": "FLA",
+       "deaths": 171
+      }
+     ]
+    },
     "deaths12": 171,
+    "civilians12": 20,
     "last": 7,
+    "months": [
+     3,
+     4,
+     4,
+     0,
+     0,
+     5,
+     2,
+     18,
+     0,
+     1,
+     127,
+     7
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ml"
@@ -125,10 +183,39 @@
    {
     "key": "1:14113",
     "name": "Mali: Islamic State",
-    "sideA": "Government of Mali",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mali",
+       "place": "ml",
+       "deaths": 88
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 88
+      }
+     ]
+    },
     "deaths12": 88,
+    "civilians12": 12,
     "last": 0,
+    "months": [
+     0,
+     3,
+     2,
+     0,
+     49,
+     6,
+     7,
+     0,
+     21,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ml"
@@ -142,10 +229,39 @@
    {
     "key": "1:11347",
     "name": "Mali: Government",
-    "sideA": "Government of Mali",
-    "sideB": "JNIM",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mali",
+       "place": "ml",
+       "deaths": 1088
+      }
+     ],
+     "b": [
+      {
+       "name": "JNIM",
+       "deaths": 1088
+      }
+     ]
+    },
     "deaths12": 1088,
+    "civilians12": 213,
     "last": 78,
+    "months": [
+     81,
+     145,
+     97,
+     18,
+     15,
+     68,
+     58,
+     90,
+     257,
+     54,
+     127,
+     78
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ml"
@@ -157,10 +273,39 @@
    {
     "key": "1:16038",
     "name": "Mali: Government/Azawad",
-    "sideA": "Government of Mali",
-    "sideB": "FLA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mali",
+       "place": "ml",
+       "deaths": 171
+      }
+     ],
+     "b": [
+      {
+       "name": "FLA",
+       "deaths": 171
+      }
+     ]
+    },
     "deaths12": 171,
+    "civilians12": 20,
     "last": 7,
+    "months": [
+     3,
+     4,
+     4,
+     0,
+     0,
+     5,
+     2,
+     18,
+     0,
+     1,
+     127,
+     7
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ml"
@@ -172,10 +317,39 @@
    {
     "key": "1:14113",
     "name": "Mali: Islamic State",
-    "sideA": "Government of Mali",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mali",
+       "place": "ml",
+       "deaths": 88
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 88
+      }
+     ]
+    },
     "deaths12": 88,
+    "civilians12": 12,
     "last": 0,
+    "months": [
+     0,
+     3,
+     2,
+     0,
+     49,
+     6,
+     7,
+     0,
+     21,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ml"

@@ -8,13 +8,24 @@
 //
 // Only the facts the build needs are kept, as the source gave them (places are mapped in the
 // build, so a mapping fix needs no new download):
+//   format     FORMAT: the build refuses a version stored in another format, and the fetcher
+//              downloads it again
 //   month      the month the version covers ("2026-08")
 //   countries  { countryId: UCDP's name }
-//   conflicts  { "type:conflictId": { name, sideA, sideB } }   (UCDP reuses an id across types)
-//   events     [[id, date, countryId, region (adm_1), "type:conflictId", deaths]]
+//   actors     { actorId: UCDP's name }   ("Government of Sudan", "RSF", "Civilians", "XXX475")
+//   conflicts  { "type:conflictId": { name } }   (UCDP reuses an id across types)
+//   events     [[id, date, countryId, region (adm_1), "type:conflictId", deaths,
+//                sideA, sideB (actor ids: who fought, the dyad), civilian deaths,
+//                latitude, longitude (2 decimals, or null), precision (where_prec: 1 the exact
+//                place … 4 a province, 6 only the country, 7 at sea or in the air)]]
+//
+// A conflict has one or more dyads: Sudan's government fought the RSF, the SFA and the SPLM-North
+// in one conflict, so its sides are read from every event, not from the conflict.
 
-const COLUMNS = ['id', 'type_of_violence', 'conflict_new_id', 'conflict_name', 'side_a', 'side_b',
-  'country', 'country_id', 'adm_1', 'date_start', 'best'];
+export const FORMAT = 2;
+
+const COLUMNS = ['id', 'type_of_violence', 'conflict_new_id', 'conflict_name', 'side_a_new_id', 'side_a', 'side_b_new_id', 'side_b',
+  'country', 'country_id', 'adm_1', 'date_start', 'best', 'deaths_civilians', 'latitude', 'longitude', 'where_prec'];
 // The files vary: most have a header (quoted or not, one with an extra leading "#" column), and
 // v24.0.1 has none. A file without a header is read in the standard order of these 49 columns.
 const STANDARD = ('id relid year active_year code_status type_of_violence conflict_dset_id conflict_new_id conflict_name '
@@ -56,6 +67,7 @@ export function parseVersion(csv) {
   const missing = COLUMNS.filter(c => col[c] < 0);
   if (missing.length) throw new Error(`UCDP file not in the expected format (missing ${missing.join(', ')})`);
   const countries = {};
+  const actors = {};
   const conflicts = {};
   const events = [];
   let malformed = 0;
@@ -65,18 +77,31 @@ export function parseVersion(csv) {
     const date = r[col.date_start]?.slice(0, 10);
     const countryId = Number(r[col.country_id]);
     const type = r[col.type_of_violence];
-    if (r.length !== header.length || !Number.isInteger(deaths) || !/^\d{4}-\d\d-\d\d$/.test(date ?? '') || !countryId || !['1', '2', '3'].includes(type)) {
+    const sideA = Number(r[col.side_a_new_id]);
+    const sideB = Number(r[col.side_b_new_id]);
+    if (r.length !== header.length || !Number.isInteger(deaths) || !/^\d{4}-\d\d-\d\d$/.test(date ?? '') || !countryId || !['1', '2', '3'].includes(type)
+      || !/^\d+$/.test(r[col.side_a_new_id]) || !/^\d+$/.test(r[col.side_b_new_id])) {
       malformed++;
       continue;
     }
     const key = `${type}:${r[col.conflict_new_id]}`;
     countries[countryId] = r[col.country];
-    conflicts[key] ??= { name: r[col.conflict_name], sideA: r[col.side_a], sideB: r[col.side_b] };
-    events.push([Number(r[col.id]), date, countryId, r[col.adm_1], key, deaths]);
+    actors[sideA] = r[col.side_a];
+    actors[sideB] = r[col.side_b];
+    conflicts[key] ??= { name: r[col.conflict_name] };
+    events.push([Number(r[col.id]), date, countryId, r[col.adm_1], key, deaths, sideA, sideB,
+      Number(r[col.deaths_civilians]) || 0, coordinate(r[col.latitude]), coordinate(r[col.longitude]), Number(r[col.where_prec]) || null]);
   }
   if (!events.length || malformed > events.length) throw new Error(`UCDP file not in the expected format (${events.length} events, ${malformed} malformed rows)`);
   events.sort((a, b) => a[1].localeCompare(b[1]) || a[0] - b[0]);
-  return { countries: sortKeys(countries), conflicts: sortKeys(conflicts), events, malformed };
+  return { format: FORMAT, countries: sortKeys(countries), actors: sortKeys(actors), conflicts: sortKeys(conflicts), events, malformed };
+}
+
+/** A latitude or longitude to 2 decimals (about 1 km), or null when there is none. */
+function coordinate(text) {
+  if (text == null || text.trim() === '') return null;
+  const n = Number(text);
+  return Number.isFinite(n) ? Math.round(n * 100) / 100 : null;
 }
 
 // ---- versions: "26.0.8" is the 8th month of 2026

@@ -125,10 +125,39 @@
    {
     "key": "1:227",
     "name": "India: Government",
-    "sideA": "Government of India",
-    "sideB": "CPI-Maoist",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of India",
+       "place": "in",
+       "deaths": 179
+      }
+     ],
+     "b": [
+      {
+       "name": "CPI-Maoist",
+       "deaths": 179
+      }
+     ]
+    },
     "deaths12": 179,
+    "civilians12": 7,
     "last": 0,
+    "months": [
+     37,
+     7,
+     26,
+     33,
+     46,
+     17,
+     1,
+     7,
+     5,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "in"
@@ -140,10 +169,39 @@
    {
     "key": "1:364",
     "name": "India: Kashmir",
-    "sideA": "Government of India",
-    "sideB": "Kashmir insurgents",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of India",
+       "place": "in",
+       "deaths": 28
+      }
+     ],
+     "b": [
+      {
+       "name": "Kashmir insurgents",
+       "deaths": 28
+      }
+     ]
+    },
     "deaths12": 28,
+    "civilians12": 2,
     "last": 1,
+    "months": [
+     5,
+     0,
+     0,
+     1,
+     7,
+     7,
+     2,
+     1,
+     1,
+     1,
+     2,
+     1
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "in"
@@ -157,10 +215,39 @@
    {
     "key": "1:227",
     "name": "India: Government",
-    "sideA": "Government of India",
-    "sideB": "CPI-Maoist",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of India",
+       "place": "in",
+       "deaths": 179
+      }
+     ],
+     "b": [
+      {
+       "name": "CPI-Maoist",
+       "deaths": 179
+      }
+     ]
+    },
     "deaths12": 179,
+    "civilians12": 7,
     "last": 0,
+    "months": [
+     37,
+     7,
+     26,
+     33,
+     46,
+     17,
+     1,
+     7,
+     5,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "in"
@@ -172,10 +259,39 @@
    {
     "key": "1:364",
     "name": "India: Kashmir",
-    "sideA": "Government of India",
-    "sideB": "Kashmir insurgents",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of India",
+       "place": "in",
+       "deaths": 28
+      }
+     ],
+     "b": [
+      {
+       "name": "Kashmir insurgents",
+       "deaths": 28
+      }
+     ]
+    },
     "deaths12": 28,
+    "civilians12": 2,
     "last": 1,
+    "months": [
+     5,
+     0,
+     0,
+     1,
+     7,
+     7,
+     2,
+     1,
+     1,
+     1,
+     2,
+     1
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "in"

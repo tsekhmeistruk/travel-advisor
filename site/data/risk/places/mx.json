@@ -230,10 +230,49 @@
    {
     "key": "1:107",
     "name": null,
-    "sideA": "XXX70",
-    "sideB": "XXX70",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "mx",
+       "deaths": 50
+      },
+      {
+       "name": "Government of Mexico",
+       "place": "mx",
+       "deaths": 1
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "mx",
+       "deaths": 50
+      },
+      {
+       "name": "Sinaloa Cartel",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 51,
+    "civilians12": 1,
     "last": 4,
+    "months": [
+     0,
+     0,
+     15,
+     0,
+     17,
+     0,
+     1,
+     0,
+     1,
+     0,
+     13,
+     4
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "mx"
@@ -245,10 +284,58 @@
    {
     "key": "1:164",
     "name": null,
-    "sideA": "XXX2",
-    "sideB": "XXX2",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 116
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 81
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 32
+      },
+      {
+       "name": "ELN",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 170,
+    "civilians12": 4,
     "last": 2,
+    "months": [
+     14,
+     48,
+     16,
+     0,
+     82,
+     0,
+     6,
+     2,
+     0,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
     "war": false,
     "places": [
      "ve",
@@ -257,7 +344,8 @@
      "us"
     ],
     "parties": [
-     "us"
+     "us",
+     "ve"
     ]
    }
   ],
@@ -265,10 +353,49 @@
    {
     "key": "1:107",
     "name": null,
-    "sideA": "XXX70",
-    "sideB": "XXX70",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "mx",
+       "deaths": 50
+      },
+      {
+       "name": "Government of Mexico",
+       "place": "mx",
+       "deaths": 1
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "mx",
+       "deaths": 50
+      },
+      {
+       "name": "Sinaloa Cartel",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 51,
+    "civilians12": 1,
     "last": 4,
+    "months": [
+     0,
+     0,
+     15,
+     0,
+     17,
+     0,
+     1,
+     0,
+     1,
+     0,
+     13,
+     4
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "mx"

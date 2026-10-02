@@ -80,10 +80,67 @@
    {
     "key": "1:234",
     "name": "Israel: Palestine",
-    "sideA": "Government of Israel",
-    "sideB": "PFLP-GC",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 4074
+      }
+     ],
+     "b": [
+      {
+       "name": "Hamas",
+       "deaths": 3987
+      },
+      {
+       "name": "PIJ",
+       "deaths": 64
+      },
+      {
+       "name": "Palestinian insurgents",
+       "deaths": 17
+      },
+      {
+       "name": "PFLP-GC",
+       "deaths": 2
+      },
+      {
+       "name": "Fatah",
+       "deaths": 1
+      },
+      {
+       "name": "Palestinian Mujahideen Movement",
+       "deaths": 1
+      },
+      {
+       "name": "PFLP",
+       "deaths": 1
+      },
+      {
+       "name": "PRC",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 4074,
+    "civilians12": 603,
     "last": 101,
+    "months": [
+     2180,
+     671,
+     118,
+     59,
+     163,
+     122,
+     93,
+     135,
+     127,
+     135,
+     170,
+     101
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "gaza",

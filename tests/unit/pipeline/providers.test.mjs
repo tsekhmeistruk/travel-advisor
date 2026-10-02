@@ -596,9 +596,25 @@ describe('UCDP fetcher', () => {
     assert.deepEqual(log.requests.map(r => versionOf(r.url)), ['25.0.11', '25.0.12', '26.0.1']);
     assert.ok(log.requests.every(r => r.opts.detail === false && !r.opts.binary));
     assert.deepEqual(versions.map(v => [v.version, v.month, v.fetchedAt, v.events.length]), [
-      ['25.0.11', '2025-11', NOW.toISOString(), 22], ['25.0.12', '2025-12', NOW.toISOString(), 22], ['26.0.1', '2026-01', NOW.toISOString(), 22]]);
+      ['25.0.11', '2025-11', NOW.toISOString(), 23], ['25.0.12', '2025-12', NOW.toISOString(), 23], ['26.0.1', '2026-01', NOW.toISOString(), 23]]);
     assert.equal(versions[0].malformed, undefined, 'not stored');
-    assert.deepEqual([stats.fetched, stats.through, stats.events, stats.unmapped], [['25.0.11', '25.0.12', '26.0.1'], '26.0.1', 66, []]);
+    assert.deepEqual([stats.fetched, stats.through, stats.events, stats.unmapped], [['25.0.11', '25.0.12', '26.0.1'], '26.0.1', 69, []]);
+    assert.equal(stats.refetched, undefined, 'nothing downloaded again');
+  });
+
+  test('versions stored in an older format are downloaded again first, within the same limit', async () => {
+    assert.equal(ucdp.format, 2);
+    const log = fakeLog({ version: () => ({ body: csv }) });
+    const { versions, stats } = await ucdp.fetch({ log, versions: ['26.0.5', '26.0.6', '26.0.7'], outdated: ['26.0.5', '26.0.6', '26.0.7'], now: NOW, config: { ...config, maxVersionsPerRun: 2 } });
+    assert.deepEqual(log.requests.map(r => versionOf(r.url)), ['26.0.5', '26.0.6'], 'the limit: no new version this run');
+    assert.deepEqual(versions.map(v => [v.version, v.format]), [['26.0.5', 2], ['26.0.6', 2]]);
+    assert.deepEqual([stats.refetched, stats.fetched, stats.through], [['26.0.5', '26.0.6'], [], '26.0.7']);
+    assert.ok(log.warnings.some(w => /1 version\(s\) still in an older format/.test(w)));
+    const next = fakeLog({ version: (url) => (versionOf(url) === '26.0.9' ? { status: 404 } : { body: csv }) });
+    const after = await ucdp.fetch({ log: next, versions: ['26.0.5', '26.0.6', '26.0.7'], outdated: ['26.0.7'], now: NOW, config });
+    assert.deepEqual(next.requests.map(r => versionOf(r.url)), ['26.0.7', '26.0.8', '26.0.9'], 'then the new ones');
+    assert.deepEqual([after.stats.refetched, after.stats.fetched], [['26.0.7'], ['26.0.8']]);
+    await assert.rejects(ucdp.fetch({ log: fakeLog({ version: [{ status: 404 }] }), versions: ['24.0.1'], outdated: ['24.0.1'], now: NOW, config }), /UCDP 24\.0\.1 is stored in an older format and is no longer published/);
   });
 
   test('continues after the last stored version; a 404 means "not out yet"; no month is asked before it is over', async () => {

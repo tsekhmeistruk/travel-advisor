@@ -99,10 +99,40 @@
    {
     "key": "1:13243",
     "name": "Russia - Ukraine",
-    "sideA": "Government of Russia (Soviet Union)",
-    "sideB": "Government of Ukraine",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Russia (Soviet Union)",
+       "place": "ru",
+       "deaths": 97739
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Ukraine",
+       "place": "ua",
+       "deaths": 97739
+      }
+     ]
+    },
     "deaths12": 97739,
+    "civilians12": 2802,
     "last": 5702,
+    "months": [
+     9374,
+     10316,
+     10395,
+     10160,
+     13373,
+     7435,
+     7789,
+     6885,
+     6676,
+     4757,
+     4877,
+     5702
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ua",
@@ -116,10 +146,39 @@
    {
     "key": "1:399",
     "name": "Russia (Soviet Union): Government",
-    "sideA": "Government of Russia (Soviet Union)",
-    "sideB": "Black Spark",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Russia (Soviet Union)",
+       "place": "ru",
+       "deaths": 29
+      }
+     ],
+     "b": [
+      {
+       "name": "Black Spark",
+       "deaths": 29
+      }
+     ]
+    },
     "deaths12": 29,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     29,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "ru"
@@ -133,10 +192,40 @@
    {
     "key": "1:13243",
     "name": "Russia - Ukraine",
-    "sideA": "Government of Russia (Soviet Union)",
-    "sideB": "Government of Ukraine",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Russia (Soviet Union)",
+       "place": "ru",
+       "deaths": 97739
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Ukraine",
+       "place": "ua",
+       "deaths": 97739
+      }
+     ]
+    },
     "deaths12": 97739,
+    "civilians12": 2802,
     "last": 5702,
+    "months": [
+     9374,
+     10316,
+     10395,
+     10160,
+     13373,
+     7435,
+     7789,
+     6885,
+     6676,
+     4757,
+     4877,
+     5702
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ua",
@@ -150,10 +239,39 @@
    {
     "key": "1:399",
     "name": "Russia (Soviet Union): Government",
-    "sideA": "Government of Russia (Soviet Union)",
-    "sideB": "Black Spark",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Russia (Soviet Union)",
+       "place": "ru",
+       "deaths": 29
+      }
+     ],
+     "b": [
+      {
+       "name": "Black Spark",
+       "deaths": 29
+      }
+     ]
+    },
     "deaths12": 29,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     29,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "ru"

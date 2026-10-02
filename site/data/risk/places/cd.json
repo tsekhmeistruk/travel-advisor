@@ -98,10 +98,43 @@
    {
     "key": "1:283",
     "name": "DR Congo (Zaire): Government",
-    "sideA": "Government of DR Congo (Zaire)",
-    "sideB": "AFC",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of DR Congo (Zaire)",
+       "place": "cd",
+       "deaths": 1021
+      }
+     ],
+     "b": [
+      {
+       "name": "AFC",
+       "deaths": 901
+      },
+      {
+       "name": "CRP",
+       "deaths": 120
+      }
+     ]
+    },
     "deaths12": 1021,
+    "civilians12": 617,
     "last": 44,
+    "months": [
+     49,
+     7,
+     47,
+     526,
+     61,
+     20,
+     21,
+     76,
+     80,
+     12,
+     78,
+     44
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "cd",
@@ -114,10 +147,39 @@
    {
     "key": "1:14692",
     "name": "DR Congo (Zaire): Islamic State",
-    "sideA": "Government of DR Congo (Zaire)",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of DR Congo (Zaire)",
+       "place": "cd",
+       "deaths": 116
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 116
+      }
+     ]
+    },
     "deaths12": 116,
+    "civilians12": 36,
     "last": 0,
+    "months": [
+     9,
+     16,
+     0,
+     1,
+     23,
+     2,
+     22,
+     11,
+     17,
+     8,
+     7,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cd"
@@ -129,10 +191,49 @@
    {
     "key": "1:38",
     "name": null,
-    "sideA": "XXX490",
-    "sideB": "XXX490",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "cd",
+       "deaths": 37
+      },
+      {
+       "name": "Government of DR Congo (Zaire)",
+       "place": "cd",
+       "deaths": 4
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "cd",
+       "deaths": 37
+      },
+      {
+       "name": "VDP",
+       "deaths": 4
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 38,
     "last": 0,
+    "months": [
+     4,
+     0,
+     0,
+     35,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cd"
@@ -146,10 +247,43 @@
    {
     "key": "1:283",
     "name": "DR Congo (Zaire): Government",
-    "sideA": "Government of DR Congo (Zaire)",
-    "sideB": "AFC",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of DR Congo (Zaire)",
+       "place": "cd",
+       "deaths": 1021
+      }
+     ],
+     "b": [
+      {
+       "name": "AFC",
+       "deaths": 901
+      },
+      {
+       "name": "CRP",
+       "deaths": 120
+      }
+     ]
+    },
     "deaths12": 1021,
+    "civilians12": 617,
     "last": 44,
+    "months": [
+     49,
+     7,
+     47,
+     526,
+     61,
+     20,
+     21,
+     76,
+     80,
+     12,
+     78,
+     44
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "cd",
@@ -162,10 +296,39 @@
    {
     "key": "1:14692",
     "name": "DR Congo (Zaire): Islamic State",
-    "sideA": "Government of DR Congo (Zaire)",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of DR Congo (Zaire)",
+       "place": "cd",
+       "deaths": 116
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 116
+      }
+     ]
+    },
     "deaths12": 116,
+    "civilians12": 36,
     "last": 0,
+    "months": [
+     9,
+     16,
+     0,
+     1,
+     23,
+     2,
+     22,
+     11,
+     17,
+     8,
+     7,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cd"
@@ -177,10 +340,49 @@
    {
     "key": "1:38",
     "name": null,
-    "sideA": "XXX490",
-    "sideB": "XXX490",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "cd",
+       "deaths": 37
+      },
+      {
+       "name": "Government of DR Congo (Zaire)",
+       "place": "cd",
+       "deaths": 4
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "cd",
+       "deaths": 37
+      },
+      {
+       "name": "VDP",
+       "deaths": 4
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 38,
     "last": 0,
+    "months": [
+     4,
+     0,
+     0,
+     35,
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cd"

@@ -361,6 +361,7 @@ async function main() {
     $('map').setAttribute('aria-label', dataset.mapLabel());
     providerSwitch.render(dataset.providers(), dataset.provider(), dataset.providerSwitchLabel());
     $('asOf').textContent = dataset.header();
+    $('asOf').title = $('asOf').textContent;
     $('asOf').classList.toggle('is-stale', dataset.stale());
     $('footer').innerHTML = dataset.footer();
     renderLegend();

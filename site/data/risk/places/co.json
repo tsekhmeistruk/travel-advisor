@@ -80,10 +80,71 @@
    {
     "key": "1:289",
     "name": "Colombia: Government",
-    "sideA": "Government of Colombia",
-    "sideB": "ELN",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Colombia",
+       "place": "co",
+       "deaths": 294
+      }
+     ],
+     "b": [
+      {
+       "name": "FARC-EMC",
+       "deaths": 134
+      },
+      {
+       "name": "ELN",
+       "deaths": 101
+      },
+      {
+       "name": "EMBF",
+       "deaths": 37
+      },
+      {
+       "name": "EGC",
+       "deaths": 10
+      },
+      {
+       "name": "FARC- Frente 57 Yair Bermúdez",
+       "deaths": 4
+      },
+      {
+       "name": "FARC - Segunda Marquetalia",
+       "deaths": 3
+      },
+      {
+       "name": "Guerrilla Coordinadora Nacional Ejército Bolivariano",
+       "deaths": 3
+      },
+      {
+       "name": "Comuneros del Sur",
+       "deaths": 1
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 294,
+    "civilians12": 13,
     "last": 28,
+    "months": [
+     25,
+     6,
+     40,
+     26,
+     25,
+     27,
+     35,
+     15,
+     23,
+     28,
+     16,
+     28
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "co"
@@ -95,10 +156,57 @@
    {
     "key": "1:35",
     "name": null,
-    "sideA": "XXX100",
-    "sideB": "XXX100",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "co",
+       "deaths": 62
+      },
+      {
+       "name": "Government of Colombia",
+       "place": "co",
+       "deaths": 21
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "co",
+       "deaths": 62
+      },
+      {
+       "name": "Autodefensas Conquistadoras de la Sierra Nevada",
+       "deaths": 10
+      },
+      {
+       "name": "EGC",
+       "deaths": 10
+      },
+      {
+       "name": "Los Pepes",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 83,
+    "civilians12": 6,
     "last": 31,
+    "months": [
+     3,
+     2,
+     1,
+     0,
+     13,
+     5,
+     1,
+     9,
+     12,
+     5,
+     1,
+     31
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "co"
@@ -110,10 +218,58 @@
    {
     "key": "1:164",
     "name": null,
-    "sideA": "XXX2",
-    "sideB": "XXX2",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 116
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 81
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 32
+      },
+      {
+       "name": "ELN",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 170,
+    "civilians12": 4,
     "last": 2,
+    "months": [
+     14,
+     48,
+     16,
+     0,
+     82,
+     0,
+     6,
+     2,
+     0,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
     "war": false,
     "places": [
      "ve",
@@ -122,7 +278,8 @@
      "us"
     ],
     "parties": [
-     "us"
+     "us",
+     "ve"
     ]
    }
   ],
@@ -130,10 +287,71 @@
    {
     "key": "1:289",
     "name": "Colombia: Government",
-    "sideA": "Government of Colombia",
-    "sideB": "ELN",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Colombia",
+       "place": "co",
+       "deaths": 294
+      }
+     ],
+     "b": [
+      {
+       "name": "FARC-EMC",
+       "deaths": 134
+      },
+      {
+       "name": "ELN",
+       "deaths": 101
+      },
+      {
+       "name": "EMBF",
+       "deaths": 37
+      },
+      {
+       "name": "EGC",
+       "deaths": 10
+      },
+      {
+       "name": "FARC- Frente 57 Yair Bermúdez",
+       "deaths": 4
+      },
+      {
+       "name": "FARC - Segunda Marquetalia",
+       "deaths": 3
+      },
+      {
+       "name": "Guerrilla Coordinadora Nacional Ejército Bolivariano",
+       "deaths": 3
+      },
+      {
+       "name": "Comuneros del Sur",
+       "deaths": 1
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 294,
+    "civilians12": 13,
     "last": 28,
+    "months": [
+     25,
+     6,
+     40,
+     26,
+     25,
+     27,
+     35,
+     15,
+     23,
+     28,
+     16,
+     28
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "co"
@@ -145,10 +363,57 @@
    {
     "key": "1:35",
     "name": null,
-    "sideA": "XXX100",
-    "sideB": "XXX100",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "co",
+       "deaths": 62
+      },
+      {
+       "name": "Government of Colombia",
+       "place": "co",
+       "deaths": 21
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "co",
+       "deaths": 62
+      },
+      {
+       "name": "Autodefensas Conquistadoras de la Sierra Nevada",
+       "deaths": 10
+      },
+      {
+       "name": "EGC",
+       "deaths": 10
+      },
+      {
+       "name": "Los Pepes",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 83,
+    "civilians12": 6,
     "last": 31,
+    "months": [
+     3,
+     2,
+     1,
+     0,
+     13,
+     5,
+     1,
+     9,
+     12,
+     5,
+     1,
+     31
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "co"

@@ -98,10 +98,43 @@
    {
     "key": "1:297",
     "name": "Nigeria: Government",
-    "sideA": "Government of Nigeria",
-    "sideB": "JAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 253
+      }
+     ],
+     "b": [
+      {
+       "name": "JAS",
+       "deaths": 250
+      },
+      {
+       "name": "JNIM",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 253,
+    "civilians12": 59,
     "last": 1,
+    "months": [
+     2,
+     1,
+     6,
+     8,
+     25,
+     4,
+     104,
+     7,
+     76,
+     0,
+     19,
+     1
+    ],
+    "first": "2024-05",
     "war": false,
     "places": [
      "ng",
@@ -115,10 +148,43 @@
    {
     "key": "1:309",
     "name": "Sudan: Government",
-    "sideA": "Government of Sudan",
-    "sideB": "SFA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Sudan",
+       "place": "sd",
+       "deaths": 5099
+      }
+     ],
+     "b": [
+      {
+       "name": "SFA",
+       "deaths": 4813
+      },
+      {
+       "name": "RSF",
+       "deaths": 286
+      }
+     ]
+    },
     "deaths12": 5099,
+    "civilians12": 2232,
     "last": 204,
+    "months": [
+     289,
+     757,
+     603,
+     463,
+     593,
+     307,
+     837,
+     408,
+     198,
+     195,
+     245,
+     204
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "sd",

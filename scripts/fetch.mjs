@@ -76,13 +76,16 @@ async function fetchCounts(provider, { store, log, sleep, now }) {
 async function fetchConflict(provider, { store, log, sleep, now }) {
   const config = store.source(provider.id);
   const stored = store.conflictVersions(provider.id);
-  const { versions, stats } = await provider.fetch({ log, versions: stored, now: now(), config, ...(sleep && { sleep }) });
+  // Versions stored in an older format are downloaded again (the build refuses them).
+  const outdated = provider.format ? (store.conflict(provider.id)?.versions ?? []).filter(v => v.format !== provider.format).map(v => v.version) : [];
+  const { versions, stats } = await provider.fetch({ log, versions: stored, outdated, now: now(), config, ...(sleep && { sleep }) });
   for (const v of versions) store.saveConflictVersion(provider.id, v);
   log.stat(stats);
-  console.log(versions.length
+  if (stats.refetched?.length) console.log(`Downloaded ${provider.id} ${stats.refetched.join(', ')} again (a newer stored format).`);
+  console.log(stats.fetched.length
     ? `Saved ${provider.id} ${stats.fetched.join(', ')} (${stats.events} events); data through ${stats.through}.`
     : `No new ${provider.id} version; data through ${stats.through}.`);
-  return stored.length + versions.length;
+  return new Set([...stored, ...versions.map(v => v.version)]).size;
 }
 
 /** Update data/sources-state.json: every attempt, and the last success. */

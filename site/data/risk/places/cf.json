@@ -109,10 +109,55 @@
    {
     "key": "1:416",
     "name": "Central African Republic: Government",
-    "sideA": "Government of Central African Republic",
-    "sideB": "CPC",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Central African Republic",
+       "place": "cf",
+       "deaths": 108
+      }
+     ],
+     "b": [
+      {
+       "name": "ASP",
+       "deaths": 28
+      },
+      {
+       "name": "CMSPR",
+       "deaths": 24
+      },
+      {
+       "name": "CPC",
+       "deaths": 20
+      },
+      {
+       "name": "CPC - Ndalé faction",
+       "deaths": 20
+      },
+      {
+       "name": "CPC-F",
+       "deaths": 16
+      }
+     ]
+    },
     "deaths12": 108,
+    "civilians12": 14,
     "last": 6,
+    "months": [
+     31,
+     0,
+     3,
+     37,
+     2,
+     0,
+     0,
+     0,
+     1,
+     28,
+     0,
+     6
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cf"
@@ -124,10 +169,53 @@
    {
     "key": "1:31",
     "name": null,
-    "sideA": "XXX482",
-    "sideB": "XXX482",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "cf",
+       "deaths": 56
+      },
+      {
+       "name": "Government of Central African Republic",
+       "place": "cf",
+       "deaths": 28
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "cf",
+       "deaths": 56
+      },
+      {
+       "name": "AAKG",
+       "deaths": 26
+      },
+      {
+       "name": "PRNC",
+       "deaths": 2
+      }
+     ]
+    },
     "deaths12": 84,
+    "civilians12": 7,
     "last": 3,
+    "months": [
+     5,
+     0,
+     4,
+     0,
+     24,
+     21,
+     8,
+     17,
+     0,
+     0,
+     2,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cf",
@@ -142,10 +230,55 @@
    {
     "key": "1:416",
     "name": "Central African Republic: Government",
-    "sideA": "Government of Central African Republic",
-    "sideB": "CPC",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Central African Republic",
+       "place": "cf",
+       "deaths": 108
+      }
+     ],
+     "b": [
+      {
+       "name": "ASP",
+       "deaths": 28
+      },
+      {
+       "name": "CMSPR",
+       "deaths": 24
+      },
+      {
+       "name": "CPC",
+       "deaths": 20
+      },
+      {
+       "name": "CPC - Ndalé faction",
+       "deaths": 20
+      },
+      {
+       "name": "CPC-F",
+       "deaths": 16
+      }
+     ]
+    },
     "deaths12": 108,
+    "civilians12": 14,
     "last": 6,
+    "months": [
+     31,
+     0,
+     3,
+     37,
+     2,
+     0,
+     0,
+     0,
+     1,
+     28,
+     0,
+     6
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cf"
@@ -157,10 +290,53 @@
    {
     "key": "1:31",
     "name": null,
-    "sideA": "XXX482",
-    "sideB": "XXX482",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "cf",
+       "deaths": 56
+      },
+      {
+       "name": "Government of Central African Republic",
+       "place": "cf",
+       "deaths": 28
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "cf",
+       "deaths": 56
+      },
+      {
+       "name": "AAKG",
+       "deaths": 26
+      },
+      {
+       "name": "PRNC",
+       "deaths": 2
+      }
+     ]
+    },
     "deaths12": 84,
+    "civilians12": 7,
     "last": 3,
+    "months": [
+     5,
+     0,
+     4,
+     0,
+     24,
+     21,
+     8,
+     17,
+     0,
+     0,
+     2,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cf",

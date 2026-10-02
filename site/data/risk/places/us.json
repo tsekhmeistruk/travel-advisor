@@ -77,10 +77,58 @@
    {
     "key": "1:164",
     "name": null,
-    "sideA": "XXX2",
-    "sideB": "XXX2",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 116
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 81
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 32
+      },
+      {
+       "name": "ELN",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 170,
+    "civilians12": 4,
     "last": 2,
+    "months": [
+     14,
+     48,
+     16,
+     0,
+     82,
+     0,
+     6,
+     2,
+     0,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
     "war": false,
     "places": [
      "ve",
@@ -89,7 +137,8 @@
      "us"
     ],
     "parties": [
-     "us"
+     "us",
+     "ve"
     ]
    }
   ],
@@ -97,10 +146,45 @@
    {
     "key": "1:16905",
     "name": "Iran - Israel, United States of America",
-    "sideA": "Government of Iran",
-    "sideB": "Government of Israel, Government of United States of America",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iran",
+       "place": "ir",
+       "deaths": 3791
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 3791
+      },
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 3791
+      }
+     ]
+    },
     "deaths12": 3791,
+    "civilians12": 1745,
     "last": 2,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     3275,
+     296,
+     129,
+     19,
+     6,
+     64,
+     2
+    ],
+    "first": "2026-02",
     "war": true,
     "places": [
      "ir",
@@ -125,10 +209,58 @@
    {
     "key": "1:164",
     "name": null,
-    "sideA": "XXX2",
-    "sideB": "XXX2",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 116
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 81
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 32
+      },
+      {
+       "name": "ELN",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 170,
+    "civilians12": 4,
     "last": 2,
+    "months": [
+     14,
+     48,
+     16,
+     0,
+     82,
+     0,
+     6,
+     2,
+     0,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
     "war": false,
     "places": [
      "ve",
@@ -137,6 +269,69 @@
      "us"
     ],
     "parties": [
+     "us",
+     "ve"
+    ]
+   },
+   {
+    "key": "1:77",
+    "name": null,
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iraq",
+       "place": "iq",
+       "deaths": 93
+      },
+      {
+       "name": null,
+       "place": "iq",
+       "deaths": 9
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 93
+      },
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 93
+      },
+      {
+       "name": null,
+       "place": "iq",
+       "deaths": 9
+      }
+     ]
+    },
+    "deaths12": 102,
+    "civilians12": 8,
+    "last": 2,
+    "months": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     87,
+     9,
+     2,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
+    "war": false,
+    "places": [
+     "iq"
+    ],
+    "parties": [
+     "il",
+     "iq",
      "us"
     ]
    }

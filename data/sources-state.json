@@ -35,9 +35,9 @@
   "consecutiveFailures": 0
  },
  "ucdp": {
-  "lastAttempt": "2026-10-02T06:40:45.031Z",
-  "lastSuccess": "2026-10-02T06:40:45.031Z",
-  "durationMs": 1084,
+  "lastAttempt": "2026-10-02T17:05:09.105Z",
+  "lastSuccess": "2026-10-02T17:05:09.105Z",
+  "durationMs": 2692,
   "records": 32,
   "consecutiveFailures": 0
  },

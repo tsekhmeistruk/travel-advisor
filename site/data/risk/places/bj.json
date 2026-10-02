@@ -80,10 +80,39 @@
    {
     "key": "1:15256",
     "name": "Benin: Government",
-    "sideA": "Government of Benin",
-    "sideB": "JNIM",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Benin",
+       "place": "bj",
+       "deaths": 41
+      }
+     ],
+     "b": [
+      {
+       "name": "JNIM",
+       "deaths": 41
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     3,
+     5,
+     0,
+     0,
+     0,
+     0,
+     20,
+     0,
+     7,
+     0,
+     6,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "bj",
@@ -98,10 +127,39 @@
    {
     "key": "1:15256",
     "name": "Benin: Government",
-    "sideA": "Government of Benin",
-    "sideB": "JNIM",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Benin",
+       "place": "bj",
+       "deaths": 41
+      }
+     ],
+     "b": [
+      {
+       "name": "JNIM",
+       "deaths": 41
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     3,
+     5,
+     0,
+     0,
+     0,
+     0,
+     20,
+     0,
+     7,
+     0,
+     6,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "bj",

@@ -95,10 +95,47 @@
    {
     "key": "1:337",
     "name": "Somalia: Government",
-    "sideA": "Government of Somalia",
-    "sideB": "Al-Shabaab",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Somalia",
+       "place": "so",
+       "deaths": 3304
+      }
+     ],
+     "b": [
+      {
+       "name": "Al-Shabaab",
+       "deaths": 3215
+      },
+      {
+       "name": "Forces of Laftagareen",
+       "deaths": 58
+      },
+      {
+       "name": "SFC",
+       "deaths": 31
+      }
+     ]
+    },
     "deaths12": 3304,
+    "civilians12": 64,
     "last": 137,
+    "months": [
+     165,
+     117,
+     228,
+     112,
+     953,
+     211,
+     117,
+     272,
+     338,
+     337,
+     317,
+     137
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "so"
@@ -110,10 +147,39 @@
    {
     "key": "1:14197",
     "name": "Somalia: Islamic State",
-    "sideA": "Government of Somalia",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Somalia",
+       "place": "so",
+       "deaths": 99
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 99
+      }
+     ]
+    },
     "deaths12": 99,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     39,
+     32,
+     15,
+     0,
+     3,
+     0,
+     0,
+     10,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-05",
     "war": false,
     "places": [
      "so"
@@ -127,10 +193,47 @@
    {
     "key": "1:337",
     "name": "Somalia: Government",
-    "sideA": "Government of Somalia",
-    "sideB": "Al-Shabaab",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Somalia",
+       "place": "so",
+       "deaths": 3304
+      }
+     ],
+     "b": [
+      {
+       "name": "Al-Shabaab",
+       "deaths": 3215
+      },
+      {
+       "name": "Forces of Laftagareen",
+       "deaths": 58
+      },
+      {
+       "name": "SFC",
+       "deaths": 31
+      }
+     ]
+    },
     "deaths12": 3304,
+    "civilians12": 64,
     "last": 137,
+    "months": [
+     165,
+     117,
+     228,
+     112,
+     953,
+     211,
+     117,
+     272,
+     338,
+     337,
+     317,
+     137
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "so"
@@ -142,10 +245,39 @@
    {
     "key": "1:14197",
     "name": "Somalia: Islamic State",
-    "sideA": "Government of Somalia",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Somalia",
+       "place": "so",
+       "deaths": 99
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 99
+      }
+     ]
+    },
     "deaths12": 99,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     39,
+     32,
+     15,
+     0,
+     3,
+     0,
+     0,
+     10,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-05",
     "war": false,
     "places": [
      "so"

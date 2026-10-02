@@ -113,14 +113,16 @@ describe('FileStore', () => {
     const root = tmp();
     const store = new FileStore(root);
     assert.deepEqual([store.conflictVersions('ucdp'), store.conflict('ucdp')], [[], null]);
-    const v = (version, month) => ({ version, month, fetchedAt: `${month}-28T00:00:00.000Z`, countries: { 369: 'Ukraine' }, conflicts: { '1:13243': { name: 'Russia - Ukraine', sideA: 'A', sideB: 'B' } }, events: [[1, `${month}-01`, 369, '', '1:13243', 5], [2, `${month}-02`, 369, 'Kyiv oblast', '1:13243', 1]] });
+    const v = (version, month) => ({ version, month, fetchedAt: `${month}-28T00:00:00.000Z`, format: 2, countries: { 369: 'Ukraine' }, actors: { 57: 'Government of Russia (Soviet Union)', 61: 'Government of Ukraine' }, conflicts: { '1:13243': { name: 'Russia - Ukraine' } }, events: [[1, `${month}-01`, 369, '', '1:13243', 5, 57, 61, 0, 50.45, 30.52, 1], [2, `${month}-02`, 369, 'Kyiv oblast', '1:13243', 1, 57, 61, 1, null, null, 6]] });
     for (const x of [v('24.0.10', '2024-10'), v('24.0.9', '2024-09'), v('25.0.1', '2025-01')]) store.saveConflictVersion('ucdp', x);
     assert.deepEqual(store.conflictVersions('ucdp'), ['24.0.9', '24.0.10', '25.0.1'], 'by number, not as text');
     const all = store.conflict('ucdp');
     assert.equal(all.fetchedAt, '2025-01-28T00:00:00.000Z', 'the latest version\'s');
     assert.deepEqual(all.versions[1], v('24.0.10', '2024-10'));
     const lines = readFileSync(join(root, 'data', 'conflict', 'ucdp', '25.0.1.json'), 'utf8').split('\n');
-    assert.deepEqual(lines.slice(-4), ['[1,"2025-01-01",369,"","1:13243",5],', '[2,"2025-01-02",369,"Kyiv oblast","1:13243",1]', ']}', '']);
+    assert.deepEqual(lines.slice(-4), ['[1,"2025-01-01",369,"","1:13243",5,57,61,0,50.45,30.52,1],', '[2,"2025-01-02",369,"Kyiv oblast","1:13243",1,57,61,1,null,null,6]', ']}', '']);
+    assert.equal(lines[0], '{"version": "25.0.1", "month": "2025-01", "fetchedAt": "2025-01-28T00:00:00.000Z", "format": 2,', 'the scalars first');
+    assert.ok(lines.includes('"actors": {') && lines.includes('"61": "Government of Ukraine"'), 'each table one entry per line');
     rmSync(root, { recursive: true });
   });
 
@@ -238,6 +240,22 @@ describe('runFetch', () => {
     assert.equal(store.state.cf.records, 2, 'records: the versions stored');
     await runFetch({ ...source, fetch: async () => ({ versions: [], stats: { fetched: [], through: '26.0.7', events: 0 } }) }, { store, logRoot: root, now: clock('2026-10-03T06:00:00Z') });
     assert.deepEqual([saved.length, store.state.cf.records, store.state.cf.consecutiveFailures], [1, 1, 0], 'no new version is a success');
+    rmSync(root, { recursive: true });
+  });
+
+  test('a conflict source with a stored format gets the versions stored in another format, to download again', async () => {
+    const root = tmp();
+    const saved = [];
+    const store = {
+      source: (id) => ({ id }), conflictVersions: () => ['26.0.6', '26.0.7'], saveConflictVersion: (id, v) => saved.push(v.version),
+      conflict: () => ({ versions: [{ version: '26.0.6' }, { version: '26.0.7', format: 2 }] }), sourcesState: () => ({}), saveSourcesState: (st) => { store.state = st; },
+    };
+    let seen;
+    const source = { id: 'cf', kind: 'conflict', format: 2, source: 'https://example.test/cf', fetch: async (args) => { seen = args; return { versions: [{ version: '26.0.6' }, { version: '26.0.8' }], stats: { fetched: ['26.0.8'], refetched: ['26.0.6'], through: '26.0.8', events: 3 } }; } };
+    await runFetch(source, { store, logRoot: root, now: clock('2026-10-02T06:00:00Z') });
+    assert.deepEqual(seen.outdated, ['26.0.6']);
+    assert.deepEqual(saved, ['26.0.6', '26.0.8']);
+    assert.equal(store.state.cf.records, 3, 'a version downloaded again is counted once');
     rmSync(root, { recursive: true });
   });
 

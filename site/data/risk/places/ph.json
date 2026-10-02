@@ -80,10 +80,39 @@
    {
     "key": "1:209",
     "name": "Philippines: Government",
-    "sideA": "Government of Philippines",
-    "sideB": "CPP",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Philippines",
+       "place": "ph",
+       "deaths": 88
+      }
+     ],
+     "b": [
+      {
+       "name": "CPP",
+       "deaths": 88
+      }
+     ]
+    },
     "deaths12": 88,
+    "civilians12": 12,
     "last": 3,
+    "months": [
+     4,
+     1,
+     4,
+     10,
+     22,
+     1,
+     5,
+     24,
+     6,
+     6,
+     2,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ph"
@@ -95,10 +124,39 @@
    {
     "key": "1:14275",
     "name": "Philippines: Islamic State",
-    "sideA": "Government of Philippines",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Philippines",
+       "place": "ph",
+       "deaths": 34
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 34
+      }
+     ]
+    },
     "deaths12": 34,
+    "civilians12": 1,
     "last": 7,
+    "months": [
+     0,
+     0,
+     0,
+     1,
+     5,
+     0,
+     5,
+     10,
+     1,
+     0,
+     5,
+     7
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ph"
@@ -112,10 +170,39 @@
    {
     "key": "1:209",
     "name": "Philippines: Government",
-    "sideA": "Government of Philippines",
-    "sideB": "CPP",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Philippines",
+       "place": "ph",
+       "deaths": 88
+      }
+     ],
+     "b": [
+      {
+       "name": "CPP",
+       "deaths": 88
+      }
+     ]
+    },
     "deaths12": 88,
+    "civilians12": 12,
     "last": 3,
+    "months": [
+     4,
+     1,
+     4,
+     10,
+     22,
+     1,
+     5,
+     24,
+     6,
+     6,
+     2,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ph"
@@ -127,10 +214,39 @@
    {
     "key": "1:14275",
     "name": "Philippines: Islamic State",
-    "sideA": "Government of Philippines",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Philippines",
+       "place": "ph",
+       "deaths": 34
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 34
+      }
+     ]
+    },
     "deaths12": 34,
+    "civilians12": 1,
     "last": 7,
+    "months": [
+     0,
+     0,
+     0,
+     1,
+     5,
+     0,
+     5,
+     10,
+     1,
+     0,
+     5,
+     7
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ph"

@@ -95,10 +95,58 @@
    {
     "key": "1:164",
     "name": null,
-    "sideA": "XXX2",
-    "sideB": "XXX2",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 116
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 81
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 32
+      },
+      {
+       "name": "ELN",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 170,
+    "civilians12": 4,
     "last": 2,
+    "months": [
+     14,
+     48,
+     16,
+     0,
+     82,
+     0,
+     6,
+     2,
+     0,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
     "war": false,
     "places": [
      "ve",
@@ -107,16 +155,56 @@
      "us"
     ],
     "parties": [
-     "us"
+     "us",
+     "ve"
     ]
    },
    {
     "key": "1:167",
     "name": null,
-    "sideA": "Government of Venezuela",
-    "sideB": "ELN",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "ve",
+       "deaths": 30
+      },
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 1
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ve",
+       "deaths": 30
+      },
+      {
+       "name": "ELN",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 31,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     3,
+     0,
+     2,
+     25,
+     0,
+     1,
+     0,
+     0
+    ],
+    "first": "2026-01",
     "war": false,
     "places": [
      "ve"
@@ -128,12 +216,118 @@
   ],
   "partyTo": [
    {
+    "key": "1:164",
+    "name": null,
+    "sides": {
+     "a": [
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 116
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 81
+      },
+      {
+       "name": null,
+       "place": "us",
+       "deaths": 54
+      },
+      {
+       "name": "Tren de Aragua",
+       "deaths": 32
+      },
+      {
+       "name": "ELN",
+       "deaths": 3
+      }
+     ]
+    },
+    "deaths12": 170,
+    "civilians12": 4,
+    "last": 2,
+    "months": [
+     14,
+     48,
+     16,
+     0,
+     82,
+     0,
+     6,
+     2,
+     0,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
+    "war": false,
+    "places": [
+     "ve",
+     "co",
+     "mx",
+     "us"
+    ],
+    "parties": [
+     "us",
+     "ve"
+    ]
+   },
+   {
     "key": "1:167",
     "name": null,
-    "sideA": "Government of Venezuela",
-    "sideB": "ELN",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "ve",
+       "deaths": 30
+      },
+      {
+       "name": "Government of Venezuela",
+       "place": "ve",
+       "deaths": 1
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ve",
+       "deaths": 30
+      },
+      {
+       "name": "ELN",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 31,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     3,
+     0,
+     2,
+     25,
+     0,
+     1,
+     0,
+     0
+    ],
+    "first": "2026-01",
     "war": false,
     "places": [
      "ve"

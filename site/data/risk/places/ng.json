@@ -82,10 +82,97 @@
    {
     "key": "1:119",
     "name": null,
-    "sideA": "XXX475",
-    "sideB": "XXX475",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "ng",
+       "deaths": 2367
+      },
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 228
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ng",
+       "deaths": 2367
+      },
+      {
+       "name": "Forces of Ado Alero",
+       "deaths": 81
+      },
+      {
+       "name": "Forces of Abasu Aiki",
+       "deaths": 41
+      },
+      {
+       "name": "Forces of Bello Turji",
+       "deaths": 38
+      },
+      {
+       "name": "Forces of Isiya Kwashen Garwa",
+       "deaths": 24
+      },
+      {
+       "name": "Forces of Gwaska Dankarami",
+       "deaths": 13
+      },
+      {
+       "name": "Forces of Dogo Gide",
+       "deaths": 11
+      },
+      {
+       "name": "Forces of Mamuda",
+       "deaths": 6
+      },
+      {
+       "name": "Forces of Muhammad Gwaska",
+       "deaths": 4
+      },
+      {
+       "name": "Forces of Muhammadu",
+       "deaths": 3
+      },
+      {
+       "name": "Forces of Alhaji Ummaru Dan Najeriya",
+       "deaths": 2
+      },
+      {
+       "name": "Forces of Auta",
+       "deaths": 2
+      },
+      {
+       "name": "Mahmuda",
+       "deaths": 2
+      },
+      {
+       "name": "Forces of Bojo",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 2595,
+    "civilians12": 134,
     "last": 450,
+    "months": [
+     198,
+     166,
+     109,
+     98,
+     337,
+     88,
+     261,
+     252,
+     308,
+     136,
+     192,
+     450
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ng"
@@ -97,10 +184,39 @@
    {
     "key": "1:13641",
     "name": "Nigeria: Islamic State",
-    "sideA": "Government of Nigeria",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 1987
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 1987
+      }
+     ]
+    },
     "deaths12": 1987,
+    "civilians12": 141,
     "last": 184,
+    "months": [
+     150,
+     162,
+     114,
+     50,
+     138,
+     111,
+     205,
+     310,
+     397,
+     98,
+     68,
+     184
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ng"
@@ -112,10 +228,43 @@
    {
     "key": "1:297",
     "name": "Nigeria: Government",
-    "sideA": "Government of Nigeria",
-    "sideB": "JAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 253
+      }
+     ],
+     "b": [
+      {
+       "name": "JAS",
+       "deaths": 250
+      },
+      {
+       "name": "JNIM",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 253,
+    "civilians12": 59,
     "last": 1,
+    "months": [
+     2,
+     1,
+     6,
+     8,
+     25,
+     4,
+     104,
+     7,
+     76,
+     0,
+     19,
+     1
+    ],
+    "first": "2024-05",
     "war": false,
     "places": [
      "ng",
@@ -129,10 +278,39 @@
    {
     "key": "1:303",
     "name": "Nigeria: Biafra",
-    "sideA": "Government of Nigeria",
-    "sideB": "IPOB",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 38
+      }
+     ],
+     "b": [
+      {
+       "name": "IPOB",
+       "deaths": 38
+      }
+     ]
+    },
     "deaths12": 38,
+    "civilians12": 0,
     "last": 5,
+    "months": [
+     8,
+     4,
+     0,
+     0,
+     2,
+     3,
+     1,
+     0,
+     8,
+     4,
+     3,
+     5
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ng"
@@ -146,10 +324,97 @@
    {
     "key": "1:119",
     "name": null,
-    "sideA": "XXX475",
-    "sideB": "XXX475",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "ng",
+       "deaths": 2367
+      },
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 228
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ng",
+       "deaths": 2367
+      },
+      {
+       "name": "Forces of Ado Alero",
+       "deaths": 81
+      },
+      {
+       "name": "Forces of Abasu Aiki",
+       "deaths": 41
+      },
+      {
+       "name": "Forces of Bello Turji",
+       "deaths": 38
+      },
+      {
+       "name": "Forces of Isiya Kwashen Garwa",
+       "deaths": 24
+      },
+      {
+       "name": "Forces of Gwaska Dankarami",
+       "deaths": 13
+      },
+      {
+       "name": "Forces of Dogo Gide",
+       "deaths": 11
+      },
+      {
+       "name": "Forces of Mamuda",
+       "deaths": 6
+      },
+      {
+       "name": "Forces of Muhammad Gwaska",
+       "deaths": 4
+      },
+      {
+       "name": "Forces of Muhammadu",
+       "deaths": 3
+      },
+      {
+       "name": "Forces of Alhaji Ummaru Dan Najeriya",
+       "deaths": 2
+      },
+      {
+       "name": "Forces of Auta",
+       "deaths": 2
+      },
+      {
+       "name": "Mahmuda",
+       "deaths": 2
+      },
+      {
+       "name": "Forces of Bojo",
+       "deaths": 1
+      }
+     ]
+    },
     "deaths12": 2595,
+    "civilians12": 134,
     "last": 450,
+    "months": [
+     198,
+     166,
+     109,
+     98,
+     337,
+     88,
+     261,
+     252,
+     308,
+     136,
+     192,
+     450
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ng"
@@ -161,10 +426,39 @@
    {
     "key": "1:13641",
     "name": "Nigeria: Islamic State",
-    "sideA": "Government of Nigeria",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 1987
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 1987
+      }
+     ]
+    },
     "deaths12": 1987,
+    "civilians12": 141,
     "last": 184,
+    "months": [
+     150,
+     162,
+     114,
+     50,
+     138,
+     111,
+     205,
+     310,
+     397,
+     98,
+     68,
+     184
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ng"
@@ -176,10 +470,43 @@
    {
     "key": "1:297",
     "name": "Nigeria: Government",
-    "sideA": "Government of Nigeria",
-    "sideB": "JAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 253
+      }
+     ],
+     "b": [
+      {
+       "name": "JAS",
+       "deaths": 250
+      },
+      {
+       "name": "JNIM",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 253,
+    "civilians12": 59,
     "last": 1,
+    "months": [
+     2,
+     1,
+     6,
+     8,
+     25,
+     4,
+     104,
+     7,
+     76,
+     0,
+     19,
+     1
+    ],
+    "first": "2024-05",
     "war": false,
     "places": [
      "ng",
@@ -193,10 +520,39 @@
    {
     "key": "1:303",
     "name": "Nigeria: Biafra",
-    "sideA": "Government of Nigeria",
-    "sideB": "IPOB",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 38
+      }
+     ],
+     "b": [
+      {
+       "name": "IPOB",
+       "deaths": 38
+      }
+     ]
+    },
     "deaths12": 38,
+    "civilians12": 0,
     "last": 5,
+    "months": [
+     8,
+     4,
+     0,
+     0,
+     2,
+     3,
+     1,
+     0,
+     8,
+     4,
+     3,
+     5
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ng"

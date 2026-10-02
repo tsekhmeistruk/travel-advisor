@@ -42,6 +42,9 @@ export function readBuildInput(store = new FileStore()) {
   };
 }
 
+/** The risk files the manifest points at: manifest key -> file name (risk/<name>.json). */
+export const RISK_FILES = { current: 'current', changes: 'changes', events: 'events', health: 'health', conflict: 'conflict', conflictEvents: 'conflict-events' };
+
 /**
  * The advisory files (buildSite) plus the risk layer (buildRisk), and the manifest entry that
  * points at the risk files. Pure: `history` in the input is mutated as buildSite documents.
@@ -67,7 +70,7 @@ export function buildAll(input) {
     ...site.files['manifest.json'],
     risk: {
       asOf: risk.files['risk/current.json'].asOf,
-      ...Object.fromEntries(['current', 'changes', 'events', 'health', 'conflict'].filter(name => risk.files[`risk/${name}.json`]).map(name => [name, `risk/${name}.json`])),
+      ...Object.fromEntries(Object.entries(RISK_FILES).filter(([, name]) => risk.files[`risk/${name}.json`]).map(([key, name]) => [key, `risk/${name}.json`])),
       places: 'risk/places/',   // + <placeId>.json, one per place
     },
   };

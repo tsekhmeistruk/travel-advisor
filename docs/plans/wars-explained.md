@@ -81,8 +81,8 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Status
 
-- **Current step:** 1.1
-- **Done:** part 0
+- **Current step:** 1.6
+- **Done:** part 0; 1.1–1.5
 - **Last commit of this revision:** (none yet)
 
 ## Every part ends with the same checks (the "ship" boxes)
@@ -102,12 +102,12 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Part 1: UCDP keeps the sides, civilians and points
 
-- [ ] 1.1 `scripts/providers/ucdp/parse.mjs`:
+- [x] 1.1 `scripts/providers/ucdp/parse.mjs`:
   - also keep the side ids and names, `deaths_civilians`, `latitude`, `longitude` and `where_prec`;
   - a per-version `actors` table (id → name);
   - a `format` number, so an old-format file is refused instead of misread.
-- [ ] 1.2 Download the stored versions again (a `refetch` option in the fetcher, through `FileStore`), then `npm run build`. Levels and the war count stay the same.
-- [ ] 1.3 `scripts/lib/conflict.mjs` publishes:
+- [x] 1.2 Download the stored versions again (a `refetch` option in the fetcher, through `FileStore`), then `npm run build`. Levels and the war count stay the same.
+- [x] 1.3 `scripts/lib/conflict.mjs` publishes:
   - per conflict:
     - `sides` (every actor with deaths in the window, by deaths, governments mapped to places);
     - `months` (12);
@@ -116,11 +116,11 @@ A review of the code and data (Oct 2, 2026) found:
   - top level:
     - `new` (armed conflicts first seen in the last 12 months);
     - `ended` (100+ deaths in the 12 months before, none in the last 3).
-- [ ] 1.4 A published `risk/ucdp-events.json`: the latest month's located events (no country-wide rows), in the manifest.
-- [ ] 1.5 Tests:
-  - [ ] unit: the parser (new columns, actors, old format refused) with real rows, including a Sudan RSF row.
-  - [ ] unit: conflict sides from several dyads, `new`, `ended`, the events file.
-  - [ ] data and project: the events file equals a fresh build; the manifest lists it.
+- [x] 1.4 A published `risk/ucdp-events.json`: the latest month's located events (no country-wide rows), in the manifest.
+- [x] 1.5 Tests:
+  - [x] unit: the parser (new columns, actors, old format refused) with real rows, including a Sudan RSF row.
+  - [x] unit: conflict sides from several dyads, `new`, `ended`, the events file.
+  - [x] data and project: the events file equals a fresh build; the manifest lists it.
 - [ ] 1.6 Ship. Live check: `conflict.json` has Sudan's sides with RSF. Then one update run (`-f sources=ucdp`), watched.
 
 ## Part 2: Wikipedia context

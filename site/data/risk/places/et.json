@@ -95,10 +95,39 @@
    {
     "key": "1:16069",
     "name": "Ethiopia: Government/Amhara",
-    "sideA": "Government of Ethiopia",
-    "sideB": "Fano",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 2983
+      }
+     ],
+     "b": [
+      {
+       "name": "Fano",
+       "deaths": 2983
+      }
+     ]
+    },
     "deaths12": 2983,
+    "civilians12": 60,
     "last": 113,
+    "months": [
+     68,
+     404,
+     324,
+     154,
+     193,
+     395,
+     590,
+     190,
+     111,
+     270,
+     171,
+     113
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "et"
@@ -110,10 +139,39 @@
    {
     "key": "1:413",
     "name": "Ethiopia: Oromiya",
-    "sideA": "Government of Ethiopia",
-    "sideB": "OLA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 537
+      }
+     ],
+     "b": [
+      {
+       "name": "OLA",
+       "deaths": 537
+      }
+     ]
+    },
     "deaths12": 537,
+    "civilians12": 1,
     "last": 22,
+    "months": [
+     84,
+     153,
+     76,
+     0,
+     40,
+     94,
+     0,
+     34,
+     7,
+     9,
+     18,
+     22
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "et"
@@ -125,10 +183,39 @@
    {
     "key": "1:267",
     "name": "Ethiopia: Government",
-    "sideA": "Government of Ethiopia",
-    "sideB": "TPLF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 81
+      }
+     ],
+     "b": [
+      {
+       "name": "TPLF",
+       "deaths": 81
+      }
+     ]
+    },
     "deaths12": 81,
+    "civilians12": 6,
     "last": 48,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     18,
+     0,
+     0,
+     4,
+     0,
+     11,
+     0,
+     48
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "et",
@@ -141,10 +228,43 @@
    {
     "key": "1:16951",
     "name": "Ethiopia: Benishangul-Gumuz",
-    "sideA": "Government of Ethiopia",
-    "sideB": "GFNF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 41
+      }
+     ],
+     "b": [
+      {
+       "name": "GFNF",
+       "deaths": 39
+      },
+      {
+       "name": "BDF",
+       "deaths": 2
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 35,
     "last": 6,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     33,
+     2,
+     0,
+     6
+    ],
+    "first": "2026-05",
     "war": false,
     "places": [
      "et"
@@ -156,10 +276,40 @@
    {
     "key": "1:55",
     "name": null,
-    "sideA": "XXX530",
-    "sideB": "XXX530",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "et",
+       "deaths": 25
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "et",
+       "deaths": 25
+      }
+     ]
+    },
     "deaths12": 25,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     2,
+     1,
+     16,
+     3,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     2,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "et"
@@ -171,10 +321,43 @@
    {
     "key": "1:309",
     "name": "Sudan: Government",
-    "sideA": "Government of Sudan",
-    "sideB": "SFA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Sudan",
+       "place": "sd",
+       "deaths": 5099
+      }
+     ],
+     "b": [
+      {
+       "name": "SFA",
+       "deaths": 4813
+      },
+      {
+       "name": "RSF",
+       "deaths": 286
+      }
+     ]
+    },
     "deaths12": 5099,
+    "civilians12": 2232,
     "last": 204,
+    "months": [
+     289,
+     757,
+     603,
+     463,
+     593,
+     307,
+     837,
+     408,
+     198,
+     195,
+     245,
+     204
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "sd",
@@ -190,10 +373,39 @@
    {
     "key": "1:16069",
     "name": "Ethiopia: Government/Amhara",
-    "sideA": "Government of Ethiopia",
-    "sideB": "Fano",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 2983
+      }
+     ],
+     "b": [
+      {
+       "name": "Fano",
+       "deaths": 2983
+      }
+     ]
+    },
     "deaths12": 2983,
+    "civilians12": 60,
     "last": 113,
+    "months": [
+     68,
+     404,
+     324,
+     154,
+     193,
+     395,
+     590,
+     190,
+     111,
+     270,
+     171,
+     113
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "et"
@@ -205,10 +417,39 @@
    {
     "key": "1:413",
     "name": "Ethiopia: Oromiya",
-    "sideA": "Government of Ethiopia",
-    "sideB": "OLA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 537
+      }
+     ],
+     "b": [
+      {
+       "name": "OLA",
+       "deaths": 537
+      }
+     ]
+    },
     "deaths12": 537,
+    "civilians12": 1,
     "last": 22,
+    "months": [
+     84,
+     153,
+     76,
+     0,
+     40,
+     94,
+     0,
+     34,
+     7,
+     9,
+     18,
+     22
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "et"
@@ -220,10 +461,39 @@
    {
     "key": "1:267",
     "name": "Ethiopia: Government",
-    "sideA": "Government of Ethiopia",
-    "sideB": "TPLF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 81
+      }
+     ],
+     "b": [
+      {
+       "name": "TPLF",
+       "deaths": 81
+      }
+     ]
+    },
     "deaths12": 81,
+    "civilians12": 6,
     "last": 48,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     18,
+     0,
+     0,
+     4,
+     0,
+     11,
+     0,
+     48
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "et",
@@ -236,10 +506,43 @@
    {
     "key": "1:16951",
     "name": "Ethiopia: Benishangul-Gumuz",
-    "sideA": "Government of Ethiopia",
-    "sideB": "GFNF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 41
+      }
+     ],
+     "b": [
+      {
+       "name": "GFNF",
+       "deaths": 39
+      },
+      {
+       "name": "BDF",
+       "deaths": 2
+      }
+     ]
+    },
     "deaths12": 41,
+    "civilians12": 35,
     "last": 6,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     33,
+     2,
+     0,
+     6
+    ],
+    "first": "2026-05",
     "war": false,
     "places": [
      "et"
@@ -251,10 +554,40 @@
    {
     "key": "1:55",
     "name": null,
-    "sideA": "XXX530",
-    "sideB": "XXX530",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "et",
+       "deaths": 25
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "et",
+       "deaths": 25
+      }
+     ]
+    },
     "deaths12": 25,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     2,
+     1,
+     16,
+     3,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     2,
+     0
+    ],
+    "first": "2024-03",
     "war": false,
     "places": [
      "et"

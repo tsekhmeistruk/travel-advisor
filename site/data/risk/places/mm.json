@@ -95,10 +95,55 @@
    {
     "key": "1:222",
     "name": "Myanmar (Burma): Government",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "PSLF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 1084
+      }
+     ],
+     "b": [
+      {
+       "name": "NUG",
+       "deaths": 608
+      },
+      {
+       "name": "SCEF",
+       "deaths": 392
+      },
+      {
+       "name": "PSLF",
+       "deaths": 65
+      },
+      {
+       "name": "CNF",
+       "deaths": 13
+      },
+      {
+       "name": "CPU",
+       "deaths": 6
+      }
+     ]
+    },
     "deaths12": 1084,
+    "civilians12": 677,
     "last": 66,
+    "months": [
+     91,
+     119,
+     53,
+     100,
+     163,
+     61,
+     100,
+     97,
+     112,
+     73,
+     49,
+     66
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "mm"
@@ -110,10 +155,39 @@
    {
     "key": "1:223",
     "name": "Myanmar (Burma): Arakan",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "ULA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 279
+      }
+     ],
+     "b": [
+      {
+       "name": "ULA",
+       "deaths": 279
+      }
+     ]
+    },
     "deaths12": 279,
+    "civilians12": 243,
     "last": 45,
+    "months": [
+     23,
+     20,
+     23,
+     60,
+     8,
+     40,
+     14,
+     6,
+     5,
+     14,
+     21,
+     45
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mm"
@@ -125,10 +199,39 @@
    {
     "key": "1:221",
     "name": "Myanmar (Burma): Karen",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "KNU",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 166
+      }
+     ],
+     "b": [
+      {
+       "name": "KNU",
+       "deaths": 166
+      }
+     ]
+    },
     "deaths12": 166,
+    "civilians12": 142,
     "last": 0,
+    "months": [
+     4,
+     9,
+     2,
+     13,
+     17,
+     19,
+     102,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mm"
@@ -140,10 +243,39 @@
    {
     "key": "1:231",
     "name": "Myanmar (Burma): Kachin",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "KIO",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 133
+      }
+     ],
+     "b": [
+      {
+       "name": "KIO",
+       "deaths": 133
+      }
+     ]
+    },
     "deaths12": 133,
+    "civilians12": 72,
     "last": 0,
+    "months": [
+     36,
+     30,
+     2,
+     4,
+     23,
+     8,
+     30,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mm"
@@ -157,10 +289,55 @@
    {
     "key": "1:222",
     "name": "Myanmar (Burma): Government",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "PSLF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 1084
+      }
+     ],
+     "b": [
+      {
+       "name": "NUG",
+       "deaths": 608
+      },
+      {
+       "name": "SCEF",
+       "deaths": 392
+      },
+      {
+       "name": "PSLF",
+       "deaths": 65
+      },
+      {
+       "name": "CNF",
+       "deaths": 13
+      },
+      {
+       "name": "CPU",
+       "deaths": 6
+      }
+     ]
+    },
     "deaths12": 1084,
+    "civilians12": 677,
     "last": 66,
+    "months": [
+     91,
+     119,
+     53,
+     100,
+     163,
+     61,
+     100,
+     97,
+     112,
+     73,
+     49,
+     66
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "mm"
@@ -172,10 +349,39 @@
    {
     "key": "1:223",
     "name": "Myanmar (Burma): Arakan",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "ULA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 279
+      }
+     ],
+     "b": [
+      {
+       "name": "ULA",
+       "deaths": 279
+      }
+     ]
+    },
     "deaths12": 279,
+    "civilians12": 243,
     "last": 45,
+    "months": [
+     23,
+     20,
+     23,
+     60,
+     8,
+     40,
+     14,
+     6,
+     5,
+     14,
+     21,
+     45
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mm"
@@ -187,10 +393,39 @@
    {
     "key": "1:221",
     "name": "Myanmar (Burma): Karen",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "KNU",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 166
+      }
+     ],
+     "b": [
+      {
+       "name": "KNU",
+       "deaths": 166
+      }
+     ]
+    },
     "deaths12": 166,
+    "civilians12": 142,
     "last": 0,
+    "months": [
+     4,
+     9,
+     2,
+     13,
+     17,
+     19,
+     102,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mm"
@@ -202,10 +437,39 @@
    {
     "key": "1:231",
     "name": "Myanmar (Burma): Kachin",
-    "sideA": "Government of Myanmar (Burma)",
-    "sideB": "KIO",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Myanmar (Burma)",
+       "place": "mm",
+       "deaths": 133
+      }
+     ],
+     "b": [
+      {
+       "name": "KIO",
+       "deaths": 133
+      }
+     ]
+    },
     "deaths12": 133,
+    "civilians12": 72,
     "last": 0,
+    "months": [
+     36,
+     30,
+     2,
+     4,
+     23,
+     8,
+     30,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mm"

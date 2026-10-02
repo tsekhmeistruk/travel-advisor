@@ -26,6 +26,7 @@
   { "minDeaths": 25, "level": 2 }
  ],
  "trend": { "months": 3, "upRatio": 1.5, "downRatio": 0.5, "minDeaths": 150 },
+ "quiet": { "months": 3, "minDeaths": 100 },
  "regions": {
   "Israel": { "Gaza Strip": "gaza", "West Bank": "west-bank" }
  },

@@ -98,10 +98,40 @@
    {
     "key": "1:294",
     "name": "Cambodia (Kampuchea) - Thailand",
-    "sideA": "Government of Cambodia (Kampuchea)",
-    "sideB": "Government of Thailand",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cambodia (Kampuchea)",
+       "place": "kh",
+       "deaths": 101
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Thailand",
+       "place": "th",
+       "deaths": 101
+      }
+     ]
+    },
     "deaths12": 101,
+    "civilians12": 44,
     "last": 0,
+    "months": [
+     0,
+     0,
+     0,
+     101,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2025-05",
     "war": false,
     "places": [
      "th",
@@ -115,10 +145,39 @@
    {
     "key": "1:423",
     "name": "Thailand: Patani",
-    "sideA": "Government of Thailand",
-    "sideB": "Patani insurgents",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Thailand",
+       "place": "th",
+       "deaths": 40
+      }
+     ],
+     "b": [
+      {
+       "name": "Patani insurgents",
+       "deaths": 40
+      }
+     ]
+    },
     "deaths12": 40,
+    "civilians12": 3,
     "last": 4,
+    "months": [
+     1,
+     2,
+     0,
+     0,
+     1,
+     0,
+     8,
+     5,
+     7,
+     6,
+     6,
+     4
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "th"
@@ -132,10 +191,40 @@
    {
     "key": "1:294",
     "name": "Cambodia (Kampuchea) - Thailand",
-    "sideA": "Government of Cambodia (Kampuchea)",
-    "sideB": "Government of Thailand",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Cambodia (Kampuchea)",
+       "place": "kh",
+       "deaths": 101
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Thailand",
+       "place": "th",
+       "deaths": 101
+      }
+     ]
+    },
     "deaths12": 101,
+    "civilians12": 44,
     "last": 0,
+    "months": [
+     0,
+     0,
+     0,
+     101,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2025-05",
     "war": false,
     "places": [
      "th",
@@ -149,10 +238,39 @@
    {
     "key": "1:423",
     "name": "Thailand: Patani",
-    "sideA": "Government of Thailand",
-    "sideB": "Patani insurgents",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Thailand",
+       "place": "th",
+       "deaths": 40
+      }
+     ],
+     "b": [
+      {
+       "name": "Patani insurgents",
+       "deaths": 40
+      }
+     ]
+    },
     "deaths12": 40,
+    "civilians12": 3,
     "last": 4,
+    "months": [
+     1,
+     2,
+     0,
+     0,
+     1,
+     0,
+     8,
+     5,
+     7,
+     6,
+     6,
+     4
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "th"

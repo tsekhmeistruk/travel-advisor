@@ -269,7 +269,7 @@ describe('details card', () => {
     const html = ds.details(null);
     assert.match(html, /World overview · All/);
     assert.match(html, /3 places above Normal/);
-    assert.match(html, /In the last 30 days: .*<strong>2<\/strong> raised, .*<strong>1<\/strong> lowered\./);
+    assert.match(html, /Last 30 days: .*<strong>2<\/strong> raised · .*<strong>1<\/strong> lowered/);
   });
   test('a place shows every category, what set its level, and its recent changes', () => {
     const html = ds.details({ placeId: 'mx' });
@@ -361,7 +361,7 @@ describe('texts', () => {
     assert.equal(ds.header(), 'Updated 2 hours ago');
     assert.equal(ds.stale(), false);
     await create({ current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'delayed' } } } });
-    assert.equal(ds.header(), 'Updated 2 hours ago · GDACS delayed');
+    assert.equal(ds.header(), 'GDACS delayed · Updated 2 hours ago', 'the issue first: an ellipsis cuts the end');
     await create({ view: 'category', category: 'conflict', current: { ...CURRENT, categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'error' } } } });
     assert.equal(ds.header(), 'Updated 2 hours ago', 'only this mode\'s categories count');
   });
@@ -370,7 +370,7 @@ describe('texts', () => {
     assert.equal(isStale(hoursAgo(13), NOW, 12), true);
     await create({ current: { ...CURRENT, asOf: hoursAgo(13), categories: { ...CURRENT.categories, disaster: { ...CURRENT.categories.disaster, status: 'delayed' } } } });
     assert.equal(ds.stale(), true);
-    assert.equal(ds.header(), 'Updated 13 hours ago: newer data is delayed · GDACS delayed');
+    assert.equal(ds.header(), 'GDACS delayed · Updated 13 hours ago: newer data is delayed');
   });
   test('footer: links every source and says the levels are ours', () => {
     const html = ds.footer();

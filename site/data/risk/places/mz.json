@@ -83,10 +83,39 @@
    {
     "key": "1:14845",
     "name": "Mozambique: Islamic State",
-    "sideA": "Government of Mozambique",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mozambique",
+       "place": "mz",
+       "deaths": 212
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 212
+      }
+     ]
+    },
     "deaths12": 212,
+    "civilians12": 7,
     "last": 17,
+    "months": [
+     10,
+     8,
+     11,
+     42,
+     19,
+     33,
+     0,
+     10,
+     2,
+     29,
+     31,
+     17
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mz"
@@ -100,10 +129,39 @@
    {
     "key": "1:14845",
     "name": "Mozambique: Islamic State",
-    "sideA": "Government of Mozambique",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Mozambique",
+       "place": "mz",
+       "deaths": 212
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 212
+      }
+     ]
+    },
     "deaths12": 212,
+    "civilians12": 7,
     "last": 17,
+    "months": [
+     10,
+     8,
+     11,
+     42,
+     19,
+     33,
+     0,
+     10,
+     2,
+     29,
+     31,
+     17
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "mz"

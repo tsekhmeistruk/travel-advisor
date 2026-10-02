@@ -74,9 +74,12 @@ export class FileStore {
     mkdirSync(dirname(file), { recursive: true });
     const { events, ...head } = data;
     const lines = (o) => Object.entries(o).map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(',\n');
-    const { countries, conflicts, ...meta } = head;
-    writeFileSync(file, `{${Object.entries(meta).map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(', ')},\n`
-      + `"countries": {\n${lines(countries)}\n},\n"conflicts": {\n${lines(conflicts)}\n},\n`
+    // The scalars on the first line, then each table (countries, actors, conflicts), one entry per line.
+    const isTable = (v) => v !== null && typeof v === 'object';
+    const meta = Object.entries(head).filter(([, v]) => !isTable(v));
+    const tables = Object.entries(head).filter(([, v]) => isTable(v));
+    writeFileSync(file, `{${meta.map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(', ')},\n`
+      + tables.map(([k, v]) => `${JSON.stringify(k)}: {\n${lines(v)}\n},\n`).join('')
       + `"events": [\n${events.map(e => JSON.stringify(e)).join(',\n')}\n]}\n`);
   }
 

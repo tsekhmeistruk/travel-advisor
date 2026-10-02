@@ -80,10 +80,43 @@
    {
     "key": "1:309",
     "name": "Sudan: Government",
-    "sideA": "Government of Sudan",
-    "sideB": "SFA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Sudan",
+       "place": "sd",
+       "deaths": 5099
+      }
+     ],
+     "b": [
+      {
+       "name": "SFA",
+       "deaths": 4813
+      },
+      {
+       "name": "RSF",
+       "deaths": 286
+      }
+     ]
+    },
     "deaths12": 5099,
+    "civilians12": 2232,
     "last": 204,
+    "months": [
+     289,
+     757,
+     603,
+     463,
+     593,
+     307,
+     837,
+     408,
+     198,
+     195,
+     245,
+     204
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "sd",
@@ -97,10 +130,53 @@
    {
     "key": "1:31",
     "name": null,
-    "sideA": "XXX482",
-    "sideB": "XXX482",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "cf",
+       "deaths": 56
+      },
+      {
+       "name": "Government of Central African Republic",
+       "place": "cf",
+       "deaths": 28
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "cf",
+       "deaths": 56
+      },
+      {
+       "name": "AAKG",
+       "deaths": 26
+      },
+      {
+       "name": "PRNC",
+       "deaths": 2
+      }
+     ]
+    },
     "deaths12": 84,
+    "civilians12": 7,
     "last": 3,
+    "months": [
+     5,
+     0,
+     4,
+     0,
+     24,
+     21,
+     8,
+     17,
+     0,
+     0,
+     2,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "cf",
@@ -113,10 +189,39 @@
    {
     "key": "1:267",
     "name": "Ethiopia: Government",
-    "sideA": "Government of Ethiopia",
-    "sideB": "TPLF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Ethiopia",
+       "place": "et",
+       "deaths": 81
+      }
+     ],
+     "b": [
+      {
+       "name": "TPLF",
+       "deaths": 81
+      }
+     ]
+    },
     "deaths12": 81,
+    "civilians12": 6,
     "last": 48,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     18,
+     0,
+     0,
+     4,
+     0,
+     11,
+     0,
+     48
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "et",
@@ -131,10 +236,43 @@
    {
     "key": "1:309",
     "name": "Sudan: Government",
-    "sideA": "Government of Sudan",
-    "sideB": "SFA",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Sudan",
+       "place": "sd",
+       "deaths": 5099
+      }
+     ],
+     "b": [
+      {
+       "name": "SFA",
+       "deaths": 4813
+      },
+      {
+       "name": "RSF",
+       "deaths": 286
+      }
+     ]
+    },
     "deaths12": 5099,
+    "civilians12": 2232,
     "last": 204,
+    "months": [
+     289,
+     757,
+     603,
+     463,
+     593,
+     307,
+     837,
+     408,
+     198,
+     195,
+     245,
+     204
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "sd",

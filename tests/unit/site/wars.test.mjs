@@ -194,7 +194,7 @@ describe('the mode', () => {
     assert.equal(ds.stale(), false, 'monthly data: the month says how old it is');
     assert.equal(ds.id, 'wars');
     await create({ current: { ...CURRENT, categories: { ...CURRENT.categories, conflict: { ...CURRENT.categories.conflict, status: 'delayed' } } } });
-    assert.equal(ds.header(), 'Conflict data to August 2026 · UCDP delayed');
+    assert.equal(ds.header(), 'UCDP delayed · Conflict data to August 2026');
   });
   test('a place without data (the source down) says so', async () => {
     await create({ current: { ...CURRENT, categories: { conflict: { sources: ['ucdp'], default: null, status: 'error' } }, places: {} } });

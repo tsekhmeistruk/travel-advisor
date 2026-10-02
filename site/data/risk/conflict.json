@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-02T06:23:15.235Z",
+ "asOf": "2026-10-02T17:05:09.184Z",
  "source": "ucdp",
  "version": "26.0.8",
  "through": "2026-08",
@@ -124,10 +124,40 @@
  "conflicts": {
   "1:13243": {
    "name": "Russia - Ukraine",
-   "sideA": "Government of Russia (Soviet Union)",
-   "sideB": "Government of Ukraine",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Russia (Soviet Union)",
+      "place": "ru",
+      "deaths": 97739
+     }
+    ],
+    "b": [
+     {
+      "name": "Government of Ukraine",
+      "place": "ua",
+      "deaths": 97739
+     }
+    ]
+   },
    "deaths12": 97739,
+   "civilians12": 2802,
    "last": 5702,
+   "months": [
+    9374,
+    10316,
+    10395,
+    10160,
+    13373,
+    7435,
+    7789,
+    6885,
+    6676,
+    4757,
+    4877,
+    5702
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "ua",
@@ -140,10 +170,43 @@
   },
   "1:309": {
    "name": "Sudan: Government",
-   "sideA": "Government of Sudan",
-   "sideB": "SFA",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Sudan",
+      "place": "sd",
+      "deaths": 5099
+     }
+    ],
+    "b": [
+     {
+      "name": "SFA",
+      "deaths": 4813
+     },
+     {
+      "name": "RSF",
+      "deaths": 286
+     }
+    ]
+   },
    "deaths12": 5099,
+   "civilians12": 2232,
    "last": 204,
+   "months": [
+    289,
+    757,
+    603,
+    463,
+    593,
+    307,
+    837,
+    408,
+    198,
+    195,
+    245,
+    204
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "sd",
@@ -156,10 +219,39 @@
   },
   "1:426": {
    "name": "Israel: Southern Lebanon",
-   "sideA": "Government of Israel",
-   "sideB": "Hezbollah",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Israel",
+      "place": "il",
+      "deaths": 4498
+     }
+    ],
+    "b": [
+     {
+      "name": "Hezbollah",
+      "deaths": 4498
+     }
+    ]
+   },
    "deaths12": 4498,
+   "civilians12": 307,
    "last": 25,
+   "months": [
+    23,
+    32,
+    41,
+    13,
+    22,
+    21,
+    3087,
+    573,
+    345,
+    295,
+    21,
+    25
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "lb",
@@ -171,10 +263,67 @@
   },
   "1:234": {
    "name": "Israel: Palestine",
-   "sideA": "Government of Israel",
-   "sideB": "PFLP-GC",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Israel",
+      "place": "il",
+      "deaths": 4074
+     }
+    ],
+    "b": [
+     {
+      "name": "Hamas",
+      "deaths": 3987
+     },
+     {
+      "name": "PIJ",
+      "deaths": 64
+     },
+     {
+      "name": "Palestinian insurgents",
+      "deaths": 17
+     },
+     {
+      "name": "PFLP-GC",
+      "deaths": 2
+     },
+     {
+      "name": "Fatah",
+      "deaths": 1
+     },
+     {
+      "name": "Palestinian Mujahideen Movement",
+      "deaths": 1
+     },
+     {
+      "name": "PFLP",
+      "deaths": 1
+     },
+     {
+      "name": "PRC",
+      "deaths": 1
+     }
+    ]
+   },
    "deaths12": 4074,
+   "civilians12": 603,
    "last": 101,
+   "months": [
+    2180,
+    671,
+    118,
+    59,
+    163,
+    122,
+    93,
+    135,
+    127,
+    135,
+    170,
+    101
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "gaza",
@@ -189,10 +338,45 @@
   },
   "1:16905": {
    "name": "Iran - Israel, United States of America",
-   "sideA": "Government of Iran",
-   "sideB": "Government of Israel, Government of United States of America",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Iran",
+      "place": "ir",
+      "deaths": 3791
+     }
+    ],
+    "b": [
+     {
+      "name": "Government of Israel",
+      "place": "il",
+      "deaths": 3791
+     },
+     {
+      "name": "Government of United States of America",
+      "place": "us",
+      "deaths": 3791
+     }
+    ]
+   },
    "deaths12": 3791,
+   "civilians12": 1745,
    "last": 2,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    3275,
+    296,
+    129,
+    19,
+    6,
+    64,
+    2
+   ],
+   "first": "2026-02",
    "war": true,
    "places": [
     "ir",
@@ -216,10 +400,47 @@
   },
   "1:337": {
    "name": "Somalia: Government",
-   "sideA": "Government of Somalia",
-   "sideB": "Al-Shabaab",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Somalia",
+      "place": "so",
+      "deaths": 3304
+     }
+    ],
+    "b": [
+     {
+      "name": "Al-Shabaab",
+      "deaths": 3215
+     },
+     {
+      "name": "Forces of Laftagareen",
+      "deaths": 58
+     },
+     {
+      "name": "SFC",
+      "deaths": 31
+     }
+    ]
+   },
    "deaths12": 3304,
+   "civilians12": 64,
    "last": 137,
+   "months": [
+    165,
+    117,
+    228,
+    112,
+    953,
+    211,
+    117,
+    272,
+    338,
+    337,
+    317,
+    137
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "so"
@@ -230,10 +451,39 @@
   },
   "1:16069": {
    "name": "Ethiopia: Government/Amhara",
-   "sideA": "Government of Ethiopia",
-   "sideB": "Fano",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Ethiopia",
+      "place": "et",
+      "deaths": 2983
+     }
+    ],
+    "b": [
+     {
+      "name": "Fano",
+      "deaths": 2983
+     }
+    ]
+   },
    "deaths12": 2983,
+   "civilians12": 60,
    "last": 113,
+   "months": [
+    68,
+    404,
+    324,
+    154,
+    193,
+    395,
+    590,
+    190,
+    111,
+    270,
+    171,
+    113
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "et"
@@ -244,10 +494,47 @@
   },
   "1:404": {
    "name": "Pakistan: Government",
-   "sideA": "Government of Pakistan",
-   "sideB": "TTP",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Pakistan",
+      "place": "pk",
+      "deaths": 2801
+     }
+    ],
+    "b": [
+     {
+      "name": "TTP",
+      "deaths": 2578
+     },
+     {
+      "name": "IMP",
+      "deaths": 215
+     },
+     {
+      "name": "Jamaat-ul-Ahrar",
+      "deaths": 8
+     }
+    ]
+   },
    "deaths12": 2801,
+   "civilians12": 222,
    "last": 301,
+   "months": [
+    328,
+    391,
+    306,
+    171,
+    87,
+    217,
+    105,
+    101,
+    221,
+    284,
+    289,
+    301
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "pk",
@@ -259,10 +546,97 @@
   },
   "1:119": {
    "name": null,
-   "sideA": "XXX475",
-   "sideB": "XXX475",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "ng",
+      "deaths": 2367
+     },
+     {
+      "name": "Government of Nigeria",
+      "place": "ng",
+      "deaths": 228
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "ng",
+      "deaths": 2367
+     },
+     {
+      "name": "Forces of Ado Alero",
+      "deaths": 81
+     },
+     {
+      "name": "Forces of Abasu Aiki",
+      "deaths": 41
+     },
+     {
+      "name": "Forces of Bello Turji",
+      "deaths": 38
+     },
+     {
+      "name": "Forces of Isiya Kwashen Garwa",
+      "deaths": 24
+     },
+     {
+      "name": "Forces of Gwaska Dankarami",
+      "deaths": 13
+     },
+     {
+      "name": "Forces of Dogo Gide",
+      "deaths": 11
+     },
+     {
+      "name": "Forces of Mamuda",
+      "deaths": 6
+     },
+     {
+      "name": "Forces of Muhammad Gwaska",
+      "deaths": 4
+     },
+     {
+      "name": "Forces of Muhammadu",
+      "deaths": 3
+     },
+     {
+      "name": "Forces of Alhaji Ummaru Dan Najeriya",
+      "deaths": 2
+     },
+     {
+      "name": "Forces of Auta",
+      "deaths": 2
+     },
+     {
+      "name": "Mahmuda",
+      "deaths": 2
+     },
+     {
+      "name": "Forces of Bojo",
+      "deaths": 1
+     }
+    ]
+   },
    "deaths12": 2595,
+   "civilians12": 134,
    "last": 450,
+   "months": [
+    198,
+    166,
+    109,
+    98,
+    337,
+    88,
+    261,
+    252,
+    308,
+    136,
+    192,
+    450
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "ng"
@@ -273,10 +647,39 @@
   },
   "1:360": {
    "name": "Burkina Faso: Government",
-   "sideA": "Government of Burkina Faso",
-   "sideB": "JNIM",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Burkina Faso",
+      "place": "bf",
+      "deaths": 2206
+     }
+    ],
+    "b": [
+     {
+      "name": "JNIM",
+      "deaths": 2206
+     }
+    ]
+   },
    "deaths12": 2206,
+   "civilians12": 44,
    "last": 107,
+   "months": [
+    151,
+    250,
+    164,
+    151,
+    155,
+    413,
+    113,
+    237,
+    95,
+    252,
+    118,
+    107
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "bf"
@@ -287,10 +690,39 @@
   },
   "1:13641": {
    "name": "Nigeria: Islamic State",
-   "sideA": "Government of Nigeria",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Nigeria",
+      "place": "ng",
+      "deaths": 1987
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 1987
+     }
+    ]
+   },
    "deaths12": 1987,
+   "civilians12": 141,
    "last": 184,
+   "months": [
+    150,
+    162,
+    114,
+    50,
+    138,
+    111,
+    205,
+    310,
+    397,
+    98,
+    68,
+    184
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "ng"
@@ -301,10 +733,43 @@
   },
   "1:230": {
    "name": "Yemen (North Yemen): Government",
-   "sideA": "Government of Yemen (North Yemen)",
-   "sideB": "Forces of the Presidential Leadership Council",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Yemen (North Yemen)",
+      "place": "ye",
+      "deaths": 1871
+     }
+    ],
+    "b": [
+     {
+      "name": "Forces of the Presidential Leadership Council",
+      "deaths": 1847
+     },
+     {
+      "name": "Nakf al-Karama",
+      "deaths": 24
+     }
+    ]
+   },
    "deaths12": 1871,
+   "civilians12": 179,
    "last": 1365,
+   "months": [
+    21,
+    38,
+    33,
+    24,
+    12,
+    18,
+    47,
+    24,
+    32,
+    37,
+    220,
+    1365
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "ye",
@@ -316,10 +781,39 @@
   },
   "1:325": {
    "name": "Pakistan: Balochistan",
-   "sideA": "Government of Pakistan",
-   "sideB": "BRAS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Pakistan",
+      "place": "pk",
+      "deaths": 1210
+     }
+    ],
+    "b": [
+     {
+      "name": "BRAS",
+      "deaths": 1210
+     }
+    ]
+   },
    "deaths12": 1210,
+   "civilians12": 50,
    "last": 207,
+   "months": [
+    35,
+    53,
+    16,
+    46,
+    294,
+    43,
+    48,
+    28,
+    73,
+    150,
+    217,
+    207
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "pk"
@@ -330,10 +824,39 @@
   },
   "1:11347": {
    "name": "Mali: Government",
-   "sideA": "Government of Mali",
-   "sideB": "JNIM",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Mali",
+      "place": "ml",
+      "deaths": 1088
+     }
+    ],
+    "b": [
+     {
+      "name": "JNIM",
+      "deaths": 1088
+     }
+    ]
+   },
    "deaths12": 1088,
+   "civilians12": 213,
    "last": 78,
+   "months": [
+    81,
+    145,
+    97,
+    18,
+    15,
+    68,
+    58,
+    90,
+    257,
+    54,
+    127,
+    78
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "ml"
@@ -344,10 +867,55 @@
   },
   "1:222": {
    "name": "Myanmar (Burma): Government",
-   "sideA": "Government of Myanmar (Burma)",
-   "sideB": "PSLF",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Myanmar (Burma)",
+      "place": "mm",
+      "deaths": 1084
+     }
+    ],
+    "b": [
+     {
+      "name": "NUG",
+      "deaths": 608
+     },
+     {
+      "name": "SCEF",
+      "deaths": 392
+     },
+     {
+      "name": "PSLF",
+      "deaths": 65
+     },
+     {
+      "name": "CNF",
+      "deaths": 13
+     },
+     {
+      "name": "CPU",
+      "deaths": 6
+     }
+    ]
+   },
    "deaths12": 1084,
+   "civilians12": 677,
    "last": 66,
+   "months": [
+    91,
+    119,
+    53,
+    100,
+    163,
+    61,
+    100,
+    97,
+    112,
+    73,
+    49,
+    66
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "mm"
@@ -358,10 +926,43 @@
   },
   "1:283": {
    "name": "DR Congo (Zaire): Government",
-   "sideA": "Government of DR Congo (Zaire)",
-   "sideB": "AFC",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of DR Congo (Zaire)",
+      "place": "cd",
+      "deaths": 1021
+     }
+    ],
+    "b": [
+     {
+      "name": "AFC",
+      "deaths": 901
+     },
+     {
+      "name": "CRP",
+      "deaths": 120
+     }
+    ]
+   },
    "deaths12": 1021,
+   "civilians12": 617,
    "last": 44,
+   "months": [
+    49,
+    7,
+    47,
+    526,
+    61,
+    20,
+    21,
+    76,
+    80,
+    12,
+    78,
+    44
+   ],
+   "first": "2024-01",
    "war": true,
    "places": [
     "cd",
@@ -373,10 +974,40 @@
   },
   "1:11639": {
    "name": "Afghanistan - Pakistan",
-   "sideA": "Government of Afghanistan",
-   "sideB": "Government of Pakistan",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Afghanistan",
+      "place": "af",
+      "deaths": 689
+     }
+    ],
+    "b": [
+     {
+      "name": "Government of Pakistan",
+      "place": "pk",
+      "deaths": 689
+     }
+    ]
+   },
    "deaths12": 689,
+   "civilians12": 373,
    "last": 0,
+   "months": [
+    0,
+    131,
+    21,
+    9,
+    0,
+    171,
+    281,
+    68,
+    8,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-03",
    "war": false,
    "places": [
     "af",
@@ -389,10 +1020,39 @@
   },
   "1:413": {
    "name": "Ethiopia: Oromiya",
-   "sideA": "Government of Ethiopia",
-   "sideB": "OLA",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Ethiopia",
+      "place": "et",
+      "deaths": 537
+     }
+    ],
+    "b": [
+     {
+      "name": "OLA",
+      "deaths": 537
+     }
+    ]
+   },
    "deaths12": 537,
+   "civilians12": 1,
    "last": 22,
+   "months": [
+    84,
+    153,
+    76,
+    0,
+    40,
+    94,
+    0,
+    34,
+    7,
+    9,
+    18,
+    22
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "et"
@@ -403,10 +1063,39 @@
   },
   "1:13639": {
    "name": "Niger: Islamic State",
-   "sideA": "Government of Niger",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Niger",
+      "place": "ne",
+      "deaths": 471
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 471
+     }
+    ]
+   },
    "deaths12": 471,
+   "civilians12": 34,
    "last": 18,
+   "months": [
+    84,
+    7,
+    2,
+    35,
+    72,
+    21,
+    48,
+    11,
+    5,
+    109,
+    59,
+    18
+   ],
+   "first": "2024-02",
    "war": false,
    "places": [
     "ne"
@@ -417,10 +1106,53 @@
   },
   "1:122": {
    "name": null,
-   "sideA": "XXX770",
-   "sideB": "XXX770",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "pk",
+      "deaths": 333
+     },
+     {
+      "name": "Government of Pakistan",
+      "place": "pk",
+      "deaths": 28
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "pk",
+      "deaths": 333
+     },
+     {
+      "name": "Jaishul Hind",
+      "deaths": 14
+     },
+     {
+      "name": "TIF",
+      "deaths": 14
+     }
+    ]
+   },
    "deaths12": 361,
+   "civilians12": 15,
    "last": 13,
+   "months": [
+    30,
+    21,
+    14,
+    0,
+    17,
+    4,
+    8,
+    5,
+    19,
+    50,
+    180,
+    13
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "pk"
@@ -431,10 +1163,71 @@
   },
   "1:289": {
    "name": "Colombia: Government",
-   "sideA": "Government of Colombia",
-   "sideB": "ELN",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Colombia",
+      "place": "co",
+      "deaths": 294
+     }
+    ],
+    "b": [
+     {
+      "name": "FARC-EMC",
+      "deaths": 134
+     },
+     {
+      "name": "ELN",
+      "deaths": 101
+     },
+     {
+      "name": "EMBF",
+      "deaths": 37
+     },
+     {
+      "name": "EGC",
+      "deaths": 10
+     },
+     {
+      "name": "FARC- Frente 57 Yair Bermúdez",
+      "deaths": 4
+     },
+     {
+      "name": "FARC - Segunda Marquetalia",
+      "deaths": 3
+     },
+     {
+      "name": "Guerrilla Coordinadora Nacional Ejército Bolivariano",
+      "deaths": 3
+     },
+     {
+      "name": "Comuneros del Sur",
+      "deaths": 1
+     },
+     {
+      "name": "Tren de Aragua",
+      "deaths": 1
+     }
+    ]
+   },
    "deaths12": 294,
+   "civilians12": 13,
    "last": 28,
+   "months": [
+    25,
+    6,
+    40,
+    26,
+    25,
+    27,
+    35,
+    15,
+    23,
+    28,
+    16,
+    28
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "co"
@@ -445,10 +1238,39 @@
   },
   "1:223": {
    "name": "Myanmar (Burma): Arakan",
-   "sideA": "Government of Myanmar (Burma)",
-   "sideB": "ULA",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Myanmar (Burma)",
+      "place": "mm",
+      "deaths": 279
+     }
+    ],
+    "b": [
+     {
+      "name": "ULA",
+      "deaths": 279
+     }
+    ]
+   },
    "deaths12": 279,
+   "civilians12": 243,
    "last": 45,
+   "months": [
+    23,
+    20,
+    23,
+    60,
+    8,
+    40,
+    14,
+    6,
+    5,
+    14,
+    21,
+    45
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "mm"
@@ -459,10 +1281,43 @@
   },
   "1:430": {
    "name": "Niger: Government",
-   "sideA": "Government of Niger",
-   "sideB": "MPLJ",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Niger",
+      "place": "ne",
+      "deaths": 256
+     }
+    ],
+    "b": [
+     {
+      "name": "JNIM",
+      "deaths": 252
+     },
+     {
+      "name": "MPLJ",
+      "deaths": 4
+     }
+    ]
+   },
    "deaths12": 256,
+   "civilians12": 9,
    "last": 3,
+   "months": [
+    19,
+    0,
+    25,
+    0,
+    20,
+    6,
+    0,
+    3,
+    79,
+    101,
+    0,
+    3
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ne"
@@ -473,10 +1328,43 @@
   },
   "1:297": {
    "name": "Nigeria: Government",
-   "sideA": "Government of Nigeria",
-   "sideB": "JAS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Nigeria",
+      "place": "ng",
+      "deaths": 253
+     }
+    ],
+    "b": [
+     {
+      "name": "JAS",
+      "deaths": 250
+     },
+     {
+      "name": "JNIM",
+      "deaths": 3
+     }
+    ]
+   },
    "deaths12": 253,
+   "civilians12": 59,
    "last": 1,
+   "months": [
+    2,
+    1,
+    6,
+    8,
+    25,
+    4,
+    104,
+    7,
+    76,
+    0,
+    19,
+    1
+   ],
+   "first": "2024-05",
    "war": false,
    "places": [
     "ng",
@@ -489,10 +1377,39 @@
   },
   "1:11345": {
    "name": "South Sudan: Government",
-   "sideA": "Government of South Sudan",
-   "sideB": "SPLM/A - IO",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of South Sudan",
+      "place": "ss",
+      "deaths": 237
+     }
+    ],
+    "b": [
+     {
+      "name": "SPLM/A - IO",
+      "deaths": 237
+     }
+    ]
+   },
    "deaths12": 237,
+   "civilians12": 27,
    "last": 0,
+   "months": [
+    68,
+    16,
+    2,
+    28,
+    88,
+    20,
+    13,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "first": "2024-10",
    "war": false,
    "places": [
     "ss"
@@ -503,10 +1420,39 @@
   },
   "1:14845": {
    "name": "Mozambique: Islamic State",
-   "sideA": "Government of Mozambique",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Mozambique",
+      "place": "mz",
+      "deaths": 212
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 212
+     }
+    ]
+   },
    "deaths12": 212,
+   "civilians12": 7,
    "last": 17,
+   "months": [
+    10,
+    8,
+    11,
+    42,
+    19,
+    33,
+    0,
+    10,
+    2,
+    29,
+    31,
+    17
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "mz"
@@ -517,10 +1463,39 @@
   },
   "1:227": {
    "name": "India: Government",
-   "sideA": "Government of India",
-   "sideB": "CPI-Maoist",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of India",
+      "place": "in",
+      "deaths": 179
+     }
+    ],
+    "b": [
+     {
+      "name": "CPI-Maoist",
+      "deaths": 179
+     }
+    ]
+   },
    "deaths12": 179,
+   "civilians12": 7,
    "last": 0,
+   "months": [
+    37,
+    7,
+    26,
+    33,
+    46,
+    17,
+    1,
+    7,
+    5,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "in"
@@ -531,10 +1506,39 @@
   },
   "1:16038": {
    "name": "Mali: Government/Azawad",
-   "sideA": "Government of Mali",
-   "sideB": "FLA",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Mali",
+      "place": "ml",
+      "deaths": 171
+     }
+    ],
+    "b": [
+     {
+      "name": "FLA",
+      "deaths": 171
+     }
+    ]
+   },
    "deaths12": 171,
+   "civilians12": 20,
    "last": 7,
+   "months": [
+    3,
+    4,
+    4,
+    0,
+    0,
+    5,
+    2,
+    18,
+    0,
+    1,
+    127,
+    7
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ml"
@@ -545,10 +1549,58 @@
   },
   "1:164": {
    "name": null,
-   "sideA": "XXX2",
-   "sideB": "XXX2",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of United States of America",
+      "place": "us",
+      "deaths": 116
+     },
+     {
+      "name": null,
+      "place": "us",
+      "deaths": 54
+     }
+    ],
+    "b": [
+     {
+      "name": "Government of Venezuela",
+      "place": "ve",
+      "deaths": 81
+     },
+     {
+      "name": null,
+      "place": "us",
+      "deaths": 54
+     },
+     {
+      "name": "Tren de Aragua",
+      "deaths": 32
+     },
+     {
+      "name": "ELN",
+      "deaths": 3
+     }
+    ]
+   },
    "deaths12": 170,
+   "civilians12": 4,
    "last": 2,
+   "months": [
+    14,
+    48,
+    16,
+    0,
+    82,
+    0,
+    6,
+    2,
+    0,
+    0,
+    0,
+    2
+   ],
+   "first": "2024-04",
    "war": false,
    "places": [
     "ve",
@@ -557,15 +1609,45 @@
     "us"
    ],
    "parties": [
-    "us"
+    "us",
+    "ve"
    ]
   },
   "1:221": {
    "name": "Myanmar (Burma): Karen",
-   "sideA": "Government of Myanmar (Burma)",
-   "sideB": "KNU",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Myanmar (Burma)",
+      "place": "mm",
+      "deaths": 166
+     }
+    ],
+    "b": [
+     {
+      "name": "KNU",
+      "deaths": 166
+     }
+    ]
+   },
    "deaths12": 166,
+   "civilians12": 142,
    "last": 0,
+   "months": [
+    4,
+    9,
+    2,
+    13,
+    17,
+    19,
+    102,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "mm"
@@ -576,10 +1658,39 @@
   },
   "1:14129": {
    "name": "Cameroon: Ambazonia",
-   "sideA": "Government of Cameroon",
-   "sideB": "Ambazonia insurgents",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Cameroon",
+      "place": "cm",
+      "deaths": 147
+     }
+    ],
+    "b": [
+     {
+      "name": "Ambazonia insurgents",
+      "deaths": 147
+     }
+    ]
+   },
    "deaths12": 147,
+   "civilians12": 14,
    "last": 12,
+   "months": [
+    11,
+    1,
+    12,
+    19,
+    13,
+    3,
+    10,
+    18,
+    14,
+    20,
+    14,
+    12
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "cm"
@@ -590,10 +1701,39 @@
   },
   "1:381": {
    "name": "Haiti: Government",
-   "sideA": "Government of Haiti",
-   "sideB": "Viv Ansanm",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Haiti",
+      "place": "ht",
+      "deaths": 142
+     }
+    ],
+    "b": [
+     {
+      "name": "Viv Ansanm",
+      "deaths": 142
+     }
+    ]
+   },
    "deaths12": 142,
+   "civilians12": 21,
    "last": 0,
+   "months": [
+    24,
+    24,
+    10,
+    10,
+    3,
+    19,
+    18,
+    19,
+    3,
+    3,
+    9,
+    0
+   ],
+   "first": "2024-02",
    "war": false,
    "places": [
     "ht"
@@ -604,10 +1744,39 @@
   },
   "1:231": {
    "name": "Myanmar (Burma): Kachin",
-   "sideA": "Government of Myanmar (Burma)",
-   "sideB": "KIO",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Myanmar (Burma)",
+      "place": "mm",
+      "deaths": 133
+     }
+    ],
+    "b": [
+     {
+      "name": "KIO",
+      "deaths": 133
+     }
+    ]
+   },
    "deaths12": 133,
+   "civilians12": 72,
    "last": 0,
+   "months": [
+    36,
+    30,
+    2,
+    4,
+    23,
+    8,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "mm"
@@ -618,10 +1787,40 @@
   },
   "1:150": {
    "name": null,
-   "sideA": "XXX652",
-   "sideB": "XXX652",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "sy",
+      "deaths": 129
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "sy",
+      "deaths": 129
+     }
+    ]
+   },
    "deaths12": 129,
+   "civilians12": 42,
    "last": 10,
+   "months": [
+    6,
+    18,
+    3,
+    10,
+    5,
+    17,
+    2,
+    19,
+    8,
+    12,
+    19,
+    10
+   ],
+   "first": "2024-05",
    "war": false,
    "places": [
     "sy"
@@ -632,10 +1831,39 @@
   },
   "1:14692": {
    "name": "DR Congo (Zaire): Islamic State",
-   "sideA": "Government of DR Congo (Zaire)",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of DR Congo (Zaire)",
+      "place": "cd",
+      "deaths": 116
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 116
+     }
+    ]
+   },
    "deaths12": 116,
+   "civilians12": 36,
    "last": 0,
+   "months": [
+    9,
+    16,
+    0,
+    1,
+    23,
+    2,
+    22,
+    11,
+    17,
+    8,
+    7,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "cd"
@@ -646,10 +1874,49 @@
   },
   "1:118": {
    "name": null,
-   "sideA": "XXX436",
-   "sideB": "XXX436",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "ne",
+      "deaths": 109
+     },
+     {
+      "name": "Government of Niger",
+      "place": "ne",
+      "deaths": 6
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "ne",
+      "deaths": 109
+     },
+     {
+      "name": "MPLJ",
+      "deaths": 6
+     }
+    ]
+   },
    "deaths12": 115,
+   "civilians12": 67,
    "last": 6,
+   "months": [
+    46,
+    20,
+    2,
+    0,
+    2,
+    30,
+    0,
+    5,
+    0,
+    4,
+    0,
+    6
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ne"
@@ -660,10 +1927,55 @@
   },
   "1:416": {
    "name": "Central African Republic: Government",
-   "sideA": "Government of Central African Republic",
-   "sideB": "CPC",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Central African Republic",
+      "place": "cf",
+      "deaths": 108
+     }
+    ],
+    "b": [
+     {
+      "name": "ASP",
+      "deaths": 28
+     },
+     {
+      "name": "CMSPR",
+      "deaths": 24
+     },
+     {
+      "name": "CPC",
+      "deaths": 20
+     },
+     {
+      "name": "CPC - Ndalé faction",
+      "deaths": 20
+     },
+     {
+      "name": "CPC-F",
+      "deaths": 16
+     }
+    ]
+   },
    "deaths12": 108,
+   "civilians12": 14,
    "last": 6,
+   "months": [
+    31,
+    0,
+    3,
+    37,
+    2,
+    0,
+    0,
+    0,
+    1,
+    28,
+    0,
+    6
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "cf"
@@ -674,24 +1986,101 @@
   },
   "1:77": {
    "name": null,
-   "sideA": "XXX645",
-   "sideB": "XXX645",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Iraq",
+      "place": "iq",
+      "deaths": 93
+     },
+     {
+      "name": null,
+      "place": "iq",
+      "deaths": 9
+     }
+    ],
+    "b": [
+     {
+      "name": "Government of Israel",
+      "place": "il",
+      "deaths": 93
+     },
+     {
+      "name": "Government of United States of America",
+      "place": "us",
+      "deaths": 93
+     },
+     {
+      "name": null,
+      "place": "iq",
+      "deaths": 9
+     }
+    ]
+   },
    "deaths12": 102,
+   "civilians12": 8,
    "last": 2,
+   "months": [
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    87,
+    9,
+    2,
+    0,
+    0,
+    2
+   ],
+   "first": "2024-04",
    "war": false,
    "places": [
     "iq"
    ],
    "parties": [
-    "iq"
+    "il",
+    "iq",
+    "us"
    ]
   },
   "1:294": {
    "name": "Cambodia (Kampuchea) - Thailand",
-   "sideA": "Government of Cambodia (Kampuchea)",
-   "sideB": "Government of Thailand",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Cambodia (Kampuchea)",
+      "place": "kh",
+      "deaths": 101
+     }
+    ],
+    "b": [
+     {
+      "name": "Government of Thailand",
+      "place": "th",
+      "deaths": 101
+     }
+    ]
+   },
    "deaths12": 101,
+   "civilians12": 44,
    "last": 0,
+   "months": [
+    0,
+    0,
+    0,
+    101,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2025-05",
    "war": false,
    "places": [
     "th",
@@ -704,10 +2093,39 @@
   },
   "1:14197": {
    "name": "Somalia: Islamic State",
-   "sideA": "Government of Somalia",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Somalia",
+      "place": "so",
+      "deaths": 99
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 99
+     }
+    ]
+   },
    "deaths12": 99,
+   "civilians12": 0,
    "last": 0,
+   "months": [
+    39,
+    32,
+    15,
+    0,
+    3,
+    0,
+    0,
+    10,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-05",
    "war": false,
    "places": [
     "so"
@@ -718,10 +2136,39 @@
   },
   "1:291": {
    "name": "Indonesia: West Papua",
-   "sideA": "Government of Indonesia",
-   "sideB": "OPM",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Indonesia",
+      "place": "id",
+      "deaths": 98
+     }
+    ],
+    "b": [
+     {
+      "name": "OPM",
+      "deaths": 98
+     }
+    ]
+   },
    "deaths12": 98,
+   "civilians12": 32,
    "last": 5,
+   "months": [
+    5,
+    25,
+    4,
+    5,
+    0,
+    10,
+    4,
+    15,
+    16,
+    3,
+    6,
+    5
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "id"
@@ -732,10 +2179,39 @@
   },
   "1:209": {
    "name": "Philippines: Government",
-   "sideA": "Government of Philippines",
-   "sideB": "CPP",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Philippines",
+      "place": "ph",
+      "deaths": 88
+     }
+    ],
+    "b": [
+     {
+      "name": "CPP",
+      "deaths": 88
+     }
+    ]
+   },
    "deaths12": 88,
+   "civilians12": 12,
    "last": 3,
+   "months": [
+    4,
+    1,
+    4,
+    10,
+    22,
+    1,
+    5,
+    24,
+    6,
+    6,
+    2,
+    3
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ph"
@@ -746,10 +2222,39 @@
   },
   "1:14113": {
    "name": "Mali: Islamic State",
-   "sideA": "Government of Mali",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Mali",
+      "place": "ml",
+      "deaths": 88
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 88
+     }
+    ]
+   },
    "deaths12": 88,
+   "civilians12": 12,
    "last": 0,
+   "months": [
+    0,
+    3,
+    2,
+    0,
+    49,
+    6,
+    7,
+    0,
+    21,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ml"
@@ -760,10 +2265,39 @@
   },
   "1:13809": {
    "name": "Syria: Government/Rojava Kurdistan",
-   "sideA": "Government of Syria",
-   "sideB": "SDF",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Syria",
+      "place": "sy",
+      "deaths": 85
+     }
+    ],
+    "b": [
+     {
+      "name": "SDF",
+      "deaths": 85
+     }
+    ]
+   },
    "deaths12": 85,
+   "civilians12": 32,
    "last": 0,
+   "months": [
+    12,
+    0,
+    7,
+    0,
+    66,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "sy"
@@ -774,10 +2308,53 @@
   },
   "1:31": {
    "name": null,
-   "sideA": "XXX482",
-   "sideB": "XXX482",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "cf",
+      "deaths": 56
+     },
+     {
+      "name": "Government of Central African Republic",
+      "place": "cf",
+      "deaths": 28
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "cf",
+      "deaths": 56
+     },
+     {
+      "name": "AAKG",
+      "deaths": 26
+     },
+     {
+      "name": "PRNC",
+      "deaths": 2
+     }
+    ]
+   },
    "deaths12": 84,
+   "civilians12": 7,
    "last": 3,
+   "months": [
+    5,
+    0,
+    4,
+    0,
+    24,
+    21,
+    8,
+    17,
+    0,
+    0,
+    2,
+    3
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "cf",
@@ -789,10 +2366,57 @@
   },
   "1:35": {
    "name": null,
-   "sideA": "XXX100",
-   "sideB": "XXX100",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "co",
+      "deaths": 62
+     },
+     {
+      "name": "Government of Colombia",
+      "place": "co",
+      "deaths": 21
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "co",
+      "deaths": 62
+     },
+     {
+      "name": "Autodefensas Conquistadoras de la Sierra Nevada",
+      "deaths": 10
+     },
+     {
+      "name": "EGC",
+      "deaths": 10
+     },
+     {
+      "name": "Los Pepes",
+      "deaths": 1
+     }
+    ]
+   },
    "deaths12": 83,
+   "civilians12": 6,
    "last": 31,
+   "months": [
+    3,
+    2,
+    1,
+    0,
+    13,
+    5,
+    1,
+    9,
+    12,
+    5,
+    1,
+    31
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "co"
@@ -803,10 +2427,39 @@
   },
   "1:267": {
    "name": "Ethiopia: Government",
-   "sideA": "Government of Ethiopia",
-   "sideB": "TPLF",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Ethiopia",
+      "place": "et",
+      "deaths": 81
+     }
+    ],
+    "b": [
+     {
+      "name": "TPLF",
+      "deaths": 81
+     }
+    ]
+   },
    "deaths12": 81,
+   "civilians12": 6,
    "last": 48,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    18,
+    0,
+    0,
+    4,
+    0,
+    11,
+    0,
+    48
+   ],
+   "first": "2024-02",
    "war": false,
    "places": [
     "et",
@@ -818,10 +2471,40 @@
   },
   "1:16470": {
    "name": "Israel - Yemen",
-   "sideA": "Government of Israel",
-   "sideB": "Government of Yemen (North Yemen)",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Israel",
+      "place": "il",
+      "deaths": 79
+     }
+    ],
+    "b": [
+     {
+      "name": "Government of Yemen (North Yemen)",
+      "place": "ye",
+      "deaths": 79
+     }
+    ]
+   },
    "deaths12": 79,
+   "civilians12": 47,
    "last": 0,
+   "months": [
+    79,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2025-01",
    "war": false,
    "places": [
     "ye"
@@ -833,10 +2516,53 @@
   },
   "1:70": {
    "name": null,
-   "sideA": "XXX41",
-   "sideB": "XXX41",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Haiti",
+      "place": "ht",
+      "deaths": 39
+     },
+     {
+      "name": null,
+      "place": "ht",
+      "deaths": 33
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "ht",
+      "deaths": 33
+     },
+     {
+      "name": "Kokorat sans ras",
+      "deaths": 21
+     },
+     {
+      "name": "Gran Grif",
+      "deaths": 18
+     }
+    ]
+   },
    "deaths12": 72,
+   "civilians12": 0,
    "last": 0,
+   "months": [
+    18,
+    0,
+    0,
+    0,
+    0,
+    11,
+    3,
+    1,
+    26,
+    5,
+    8,
+    0
+   ],
+   "first": "2024-02",
    "war": false,
    "places": [
     "ht"
@@ -847,10 +2573,47 @@
   },
   "1:338": {
    "name": "Iran: Government",
-   "sideA": "Government of Iran",
-   "sideB": "PJAK",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Iran",
+      "place": "ir",
+      "deaths": 69
+     }
+    ],
+    "b": [
+     {
+      "name": "Jaish al-Adl",
+      "deaths": 53
+     },
+     {
+      "name": "PJAK",
+      "deaths": 15
+     },
+     {
+      "name": "Ansar al-Furqan",
+      "deaths": 1
+     }
+    ]
+   },
    "deaths12": 69,
+   "civilians12": 3,
    "last": 11,
+   "months": [
+    4,
+    2,
+    0,
+    0,
+    1,
+    7,
+    7,
+    6,
+    3,
+    17,
+    11,
+    11
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ir"
@@ -861,10 +2624,39 @@
   },
   "1:13637": {
    "name": "Afghanistan: Islamic State",
-   "sideA": "Government of Afghanistan",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Afghanistan",
+      "place": "af",
+      "deaths": 64
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 64
+     }
+    ]
+   },
    "deaths12": 64,
+   "civilians12": 6,
    "last": 28,
+   "months": [
+    5,
+    0,
+    0,
+    0,
+    11,
+    15,
+    0,
+    0,
+    0,
+    2,
+    3,
+    28
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "af",
@@ -876,10 +2668,51 @@
   },
   "1:205": {
    "name": "Iran: Kurdistan",
-   "sideA": "Government of Iran",
-   "sideB": "KDPI",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Iran",
+      "place": "ir",
+      "deaths": 52
+     }
+    ],
+    "b": [
+     {
+      "name": "KDPI",
+      "deaths": 19
+     },
+     {
+      "name": "PAK",
+      "deaths": 18
+     },
+     {
+      "name": "Komalah",
+      "deaths": 10
+     },
+     {
+      "name": "PKK",
+      "deaths": 5
+     }
+    ]
+   },
    "deaths12": 52,
+   "civilians12": 4,
    "last": 0,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    15,
+    8,
+    0,
+    12,
+    16,
+    0
+   ],
+   "first": "2026-02",
    "war": false,
    "places": [
     "iq",
@@ -891,10 +2724,39 @@
   },
   "1:13936": {
    "name": "Pakistan: Islamic State",
-   "sideA": "Government of Pakistan",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Pakistan",
+      "place": "pk",
+      "deaths": 52
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 52
+     }
+    ]
+   },
    "deaths12": 52,
+   "civilians12": 9,
    "last": 1,
+   "months": [
+    17,
+    4,
+    2,
+    0,
+    0,
+    3,
+    0,
+    1,
+    18,
+    2,
+    4,
+    1
+   ],
+   "first": "2024-02",
    "war": false,
    "places": [
     "pk"
@@ -905,10 +2767,49 @@
   },
   "1:107": {
    "name": null,
-   "sideA": "XXX70",
-   "sideB": "XXX70",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "mx",
+      "deaths": 50
+     },
+     {
+      "name": "Government of Mexico",
+      "place": "mx",
+      "deaths": 1
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "mx",
+      "deaths": 50
+     },
+     {
+      "name": "Sinaloa Cartel",
+      "deaths": 1
+     }
+    ]
+   },
    "deaths12": 51,
+   "civilians12": 1,
    "last": 4,
+   "months": [
+    0,
+    0,
+    15,
+    0,
+    17,
+    0,
+    1,
+    0,
+    1,
+    0,
+    13,
+    4
+   ],
+   "first": "2024-03",
    "war": false,
    "places": [
     "mx"
@@ -919,10 +2820,39 @@
   },
   "1:353": {
    "name": "Cameroon: Government",
-   "sideA": "Government of Cameroon",
-   "sideB": "JAS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Cameroon",
+      "place": "cm",
+      "deaths": 50
+     }
+    ],
+    "b": [
+     {
+      "name": "JAS",
+      "deaths": 50
+     }
+    ]
+   },
    "deaths12": 50,
+   "civilians12": 2,
    "last": 3,
+   "months": [
+    2,
+    1,
+    2,
+    1,
+    2,
+    0,
+    7,
+    5,
+    5,
+    11,
+    11,
+    3
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "cm"
@@ -933,10 +2863,39 @@
   },
   "1:259": {
    "name": "Iraq: Government",
-   "sideA": "Government of Iraq",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Iraq",
+      "place": "iq",
+      "deaths": 47
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 47
+     }
+    ]
+   },
    "deaths12": 47,
+   "civilians12": 1,
    "last": 0,
+   "months": [
+    2,
+    3,
+    1,
+    0,
+    8,
+    2,
+    0,
+    0,
+    15,
+    9,
+    7,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "iq"
@@ -947,10 +2906,59 @@
   },
   "1:333": {
    "name": "Afghanistan: Government",
-   "sideA": "Government of Afghanistan",
-   "sideB": "NRF",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Afghanistan",
+      "place": "af",
+      "deaths": 44
+     }
+    ],
+    "b": [
+     {
+      "name": "NRF",
+      "deaths": 20
+     },
+     {
+      "name": "Forces of Juma Khan Fateh",
+      "deaths": 16
+     },
+     {
+      "name": "AFF",
+      "deaths": 6
+     },
+     {
+      "name": "NMF",
+      "deaths": 2
+     },
+     {
+      "name": "ARF",
+      "deaths": 0
+     },
+     {
+      "name": "AUF",
+      "deaths": 0
+     }
+    ]
+   },
    "deaths12": 44,
+   "civilians12": 1,
    "last": 28,
+   "months": [
+    7,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    6,
+    28
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "af",
@@ -962,10 +2970,39 @@
   },
   "1:13604": {
    "name": "Syria: Islamic State",
-   "sideA": "Government of Syria",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Syria",
+      "place": "sy",
+      "deaths": 42
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 42
+     }
+    ]
+   },
    "deaths12": 42,
+   "civilians12": 1,
    "last": 2,
+   "months": [
+    1,
+    0,
+    0,
+    5,
+    0,
+    8,
+    11,
+    1,
+    6,
+    5,
+    3,
+    2
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "sy"
@@ -976,10 +3013,49 @@
   },
   "1:38": {
    "name": null,
-   "sideA": "XXX490",
-   "sideB": "XXX490",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "cd",
+      "deaths": 37
+     },
+     {
+      "name": "Government of DR Congo (Zaire)",
+      "place": "cd",
+      "deaths": 4
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "cd",
+      "deaths": 37
+     },
+     {
+      "name": "VDP",
+      "deaths": 4
+     }
+    ]
+   },
    "deaths12": 41,
+   "civilians12": 38,
    "last": 0,
+   "months": [
+    4,
+    0,
+    0,
+    35,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "cd"
@@ -990,10 +3066,39 @@
   },
   "1:13638": {
    "name": "Cameroon: Islamic State",
-   "sideA": "Government of Cameroon",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Cameroon",
+      "place": "cm",
+      "deaths": 41
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 41
+     }
+    ]
+   },
    "deaths12": 41,
+   "civilians12": 4,
    "last": 0,
+   "months": [
+    0,
+    6,
+    1,
+    7,
+    0,
+    11,
+    8,
+    2,
+    0,
+    2,
+    4,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "cm"
@@ -1004,10 +3109,39 @@
   },
   "1:15256": {
    "name": "Benin: Government",
-   "sideA": "Government of Benin",
-   "sideB": "JNIM",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Benin",
+      "place": "bj",
+      "deaths": 41
+     }
+    ],
+    "b": [
+     {
+      "name": "JNIM",
+      "deaths": 41
+     }
+    ]
+   },
    "deaths12": 41,
+   "civilians12": 0,
    "last": 0,
+   "months": [
+    3,
+    5,
+    0,
+    0,
+    0,
+    0,
+    20,
+    0,
+    7,
+    0,
+    6,
+    0
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "bj",
@@ -1019,10 +3153,43 @@
   },
   "1:16951": {
    "name": "Ethiopia: Benishangul-Gumuz",
-   "sideA": "Government of Ethiopia",
-   "sideB": "GFNF",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Ethiopia",
+      "place": "et",
+      "deaths": 41
+     }
+    ],
+    "b": [
+     {
+      "name": "GFNF",
+      "deaths": 39
+     },
+     {
+      "name": "BDF",
+      "deaths": 2
+     }
+    ]
+   },
    "deaths12": 41,
+   "civilians12": 35,
    "last": 6,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    33,
+    2,
+    0,
+    6
+   ],
+   "first": "2026-05",
    "war": false,
    "places": [
     "et"
@@ -1033,10 +3200,39 @@
   },
   "1:423": {
    "name": "Thailand: Patani",
-   "sideA": "Government of Thailand",
-   "sideB": "Patani insurgents",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Thailand",
+      "place": "th",
+      "deaths": 40
+     }
+    ],
+    "b": [
+     {
+      "name": "Patani insurgents",
+      "deaths": 40
+     }
+    ]
+   },
    "deaths12": 40,
+   "civilians12": 3,
    "last": 4,
+   "months": [
+    1,
+    2,
+    0,
+    0,
+    1,
+    0,
+    8,
+    5,
+    7,
+    6,
+    6,
+    4
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "th"
@@ -1047,10 +3243,39 @@
   },
   "1:303": {
    "name": "Nigeria: Biafra",
-   "sideA": "Government of Nigeria",
-   "sideB": "IPOB",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Nigeria",
+      "place": "ng",
+      "deaths": 38
+     }
+    ],
+    "b": [
+     {
+      "name": "IPOB",
+      "deaths": 38
+     }
+    ]
+   },
    "deaths12": 38,
+   "civilians12": 0,
    "last": 5,
+   "months": [
+    8,
+    4,
+    0,
+    0,
+    2,
+    3,
+    1,
+    0,
+    8,
+    4,
+    3,
+    5
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ng"
@@ -1061,10 +3286,49 @@
   },
   "1:160": {
    "name": null,
-   "sideA": "XXX500",
-   "sideB": "XXX500",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Uganda",
+      "place": "ug",
+      "deaths": 29
+     },
+     {
+      "name": null,
+      "place": "ug",
+      "deaths": 6
+     }
+    ],
+    "b": [
+     {
+      "name": "Forces of Christian Asuman Muganzi",
+      "deaths": 29
+     },
+     {
+      "name": null,
+      "place": "ug",
+      "deaths": 6
+     }
+    ]
+   },
    "deaths12": 35,
+   "civilians12": 1,
    "last": 0,
+   "months": [
+    0,
+    5,
+    30,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-02",
    "war": false,
    "places": [
     "ug"
@@ -1075,10 +3339,40 @@
   },
   "1:76": {
    "name": null,
-   "sideA": "XXX630",
-   "sideB": "XXX630",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "ir",
+      "deaths": 34
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "ir",
+      "deaths": 34
+     }
+    ]
+   },
    "deaths12": 34,
+   "civilians12": 2,
    "last": 1,
+   "months": [
+    2,
+    3,
+    1,
+    8,
+    4,
+    2,
+    0,
+    2,
+    2,
+    0,
+    9,
+    1
+   ],
+   "first": "2024-03",
    "war": false,
    "places": [
     "ir"
@@ -1089,10 +3383,39 @@
   },
   "1:14275": {
    "name": "Philippines: Islamic State",
-   "sideA": "Government of Philippines",
-   "sideB": "IS",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Philippines",
+      "place": "ph",
+      "deaths": 34
+     }
+    ],
+    "b": [
+     {
+      "name": "IS",
+      "deaths": 34
+     }
+    ]
+   },
    "deaths12": 34,
+   "civilians12": 1,
    "last": 7,
+   "months": [
+    0,
+    0,
+    0,
+    1,
+    5,
+    0,
+    5,
+    10,
+    1,
+    0,
+    5,
+    7
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "ph"
@@ -1103,10 +3426,49 @@
   },
   "1:167": {
    "name": null,
-   "sideA": "Government of Venezuela",
-   "sideB": "ELN",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "ve",
+      "deaths": 30
+     },
+     {
+      "name": "Government of Venezuela",
+      "place": "ve",
+      "deaths": 1
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "ve",
+      "deaths": 30
+     },
+     {
+      "name": "ELN",
+      "deaths": 1
+     }
+    ]
+   },
    "deaths12": 31,
+   "civilians12": 1,
    "last": 0,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    3,
+    0,
+    2,
+    25,
+    0,
+    1,
+    0,
+    0
+   ],
+   "first": "2026-01",
    "war": false,
    "places": [
     "ve"
@@ -1117,10 +3479,40 @@
   },
   "1:28": {
    "name": null,
-   "sideA": "XXX471",
-   "sideB": "XXX471",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "cm",
+      "deaths": 30
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "cm",
+      "deaths": 30
+     }
+    ]
+   },
    "deaths12": 30,
+   "civilians12": 1,
    "last": 0,
+   "months": [
+    0,
+    28,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-03",
    "war": false,
    "places": [
     "cm"
@@ -1131,10 +3523,39 @@
   },
   "1:399": {
    "name": "Russia (Soviet Union): Government",
-   "sideA": "Government of Russia (Soviet Union)",
-   "sideB": "Black Spark",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of Russia (Soviet Union)",
+      "place": "ru",
+      "deaths": 29
+     }
+    ],
+    "b": [
+     {
+      "name": "Black Spark",
+      "deaths": 29
+     }
+    ]
+   },
    "deaths12": 29,
+   "civilians12": 0,
    "last": 0,
+   "months": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    29,
+    0,
+    0,
+    0
+   ],
+   "first": "2024-03",
    "war": false,
    "places": [
     "ru"
@@ -1145,10 +3566,39 @@
   },
   "1:364": {
    "name": "India: Kashmir",
-   "sideA": "Government of India",
-   "sideB": "Kashmir insurgents",
+   "sides": {
+    "a": [
+     {
+      "name": "Government of India",
+      "place": "in",
+      "deaths": 28
+     }
+    ],
+    "b": [
+     {
+      "name": "Kashmir insurgents",
+      "deaths": 28
+     }
+    ]
+   },
    "deaths12": 28,
+   "civilians12": 2,
    "last": 1,
+   "months": [
+    5,
+    0,
+    0,
+    1,
+    7,
+    7,
+    2,
+    1,
+    1,
+    1,
+    2,
+    1
+   ],
+   "first": "2024-01",
    "war": false,
    "places": [
     "in"
@@ -1159,10 +3609,40 @@
   },
   "1:55": {
    "name": null,
-   "sideA": "XXX530",
-   "sideB": "XXX530",
+   "sides": {
+    "a": [
+     {
+      "name": null,
+      "place": "et",
+      "deaths": 25
+     }
+    ],
+    "b": [
+     {
+      "name": null,
+      "place": "et",
+      "deaths": 25
+     }
+    ]
+   },
    "deaths12": 25,
+   "civilians12": 0,
    "last": 0,
+   "months": [
+    2,
+    1,
+    16,
+    3,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    2,
+    0
+   ],
+   "first": "2024-03",
    "war": false,
    "places": [
     "et"
@@ -1172,6 +3652,108 @@
    ]
   }
  },
+ "new": [
+  "1:16905",
+  "1:205",
+  "1:16951",
+  "1:167"
+ ],
+ "quiet": [
+  {
+   "key": "1:299",
+   "name": "Syria: Government",
+   "deaths": 2238,
+   "lastDeaths": "2025-07",
+   "parties": [
+    "sy"
+   ]
+  },
+  {
+   "key": "1:14609",
+   "name": "Iran - Israel",
+   "deaths": 1243,
+   "lastDeaths": "2026-05",
+   "parties": [
+    "il",
+    "ir"
+   ]
+  },
+  {
+   "key": "1:11639",
+   "name": "Afghanistan - Pakistan",
+   "deaths": 694,
+   "lastDeaths": "2026-05",
+   "parties": [
+    "af",
+    "pk"
+   ]
+  },
+  {
+   "key": "1:14197",
+   "name": "Somalia: Islamic State",
+   "deaths": 308,
+   "lastDeaths": "2026-04",
+   "parties": [
+    "so"
+   ]
+  },
+  {
+   "key": "1:227",
+   "name": "India: Government",
+   "deaths": 230,
+   "lastDeaths": "2026-05",
+   "parties": [
+    "in"
+   ]
+  },
+  {
+   "key": "1:221",
+   "name": "Myanmar (Burma): Karen",
+   "deaths": 194,
+   "lastDeaths": "2026-03",
+   "parties": [
+    "mm"
+   ]
+  },
+  {
+   "key": "1:14113",
+   "name": "Mali: Islamic State",
+   "deaths": 191,
+   "lastDeaths": "2026-05",
+   "parties": [
+    "ml"
+   ]
+  },
+  {
+   "key": "1:231",
+   "name": "Myanmar (Burma): Kachin",
+   "deaths": 148,
+   "lastDeaths": "2026-03",
+   "parties": [
+    "mm"
+   ]
+  },
+  {
+   "key": "1:294",
+   "name": "Cambodia (Kampuchea) - Thailand",
+   "deaths": 145,
+   "lastDeaths": "2025-12",
+   "parties": [
+    "kh",
+    "th"
+   ]
+  },
+  {
+   "key": "1:16470",
+   "name": "Israel - Yemen",
+   "deaths": 105,
+   "lastDeaths": "2025-09",
+   "parties": [
+    "il",
+    "ye"
+   ]
+  }
+ ],
  "places": {
   "ae": {
    "deaths12": 12,
@@ -2184,6 +4766,7 @@
     "1:426",
     "1:234",
     "1:16905",
+    "1:77",
     "1:16470"
    ]
   },
@@ -3524,7 +6107,8 @@
    ],
    "partyTo": [
     "1:16905",
-    "1:164"
+    "1:164",
+    "1:77"
    ]
   },
   "ve": {
@@ -3554,6 +6138,7 @@
     "1:167"
    ],
    "partyTo": [
+    "1:164",
     "1:167"
    ]
   },

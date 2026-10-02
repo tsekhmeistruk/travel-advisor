@@ -111,21 +111,50 @@ describe('mode switch', () => {
     await fires.close();
   });
 
+  test('the overview\'s raised and lowered line stays one line, however big the numbers', async () => {
+    const data = JSON.parse(readFileSync(new URL('../../site/data/risk/changes.json', import.meta.url), 'utf8'));
+    const places = ['ua', 'sm', 'sk', 'si', 'se', 'pl', 'no', 'lt', 'lv', 'ee'];
+    const change = (i, up) => {
+      const at = new Date(Date.now() - (2 + i) * 36e5).toISOString();
+      return { id: `${places[i % 10]}:disaster:${at}`, at, kind: 'level', category: 'disaster', placeId: places[i % 10], from: up ? 1 : 2, to: up ? 2 : 1, up, basis: [], sources: ['gdacs'] };
+    };
+    const many = [...Array.from({ length: 1234 }, (_, i) => change(i, true)), ...Array.from({ length: 567 }, (_, i) => change(i, false))];
+    const body = JSON.stringify({ ...data, changes: [...many, ...data.changes] });
+    const page = await openMode('disaster', { intercept: (req) => isData(req, 'risk/changes.json') && (req.respond({ status: 200, contentType: 'application/json', body }), true) });
+    await page.waitForSelector('#details .moves');
+    const m = await page.$eval('#details .moves', el => ({ text: el.textContent, h: el.getBoundingClientRect().height, line: parseFloat(getComputedStyle(el).lineHeight) }));
+    assert.match(m.text, /▲ \d{4} raised · ▼ \d{3} lowered/, 'the injected 1,234 and 567, plus the real ones');
+    assert.ok(m.h < m.line * 1.5, `one line: ${m.h}px for a ${m.line}px line`);
+    assert.ok(await page.$eval('#details', el => el.scrollHeight <= el.clientHeight + 1), 'the card holds');
+    await page.close();
+  });
+
+  // Fresh and healthy, or stale with every source delayed: the header stays one line either way.
+  const currentAs = (state) => {
+    const current = JSON.parse(readFileSync(new URL('../../site/data/risk/current.json', import.meta.url), 'utf8'));
+    if (state === 'fresh') return { ...current, asOf: new Date().toISOString(), categories: Object.fromEntries(Object.entries(current.categories).map(([c, m]) => [c, { ...m, status: 'healthy' }])) };
+    return { ...current, asOf: new Date(Date.now() - 3 * 86400000).toISOString(), categories: Object.fromEntries(Object.entries(current.categories).map(([c, m]) => [c, { ...m, status: 'delayed' }])) };
+  };
   for (const [width, height] of [[1440, 860], [390, 844]]) {
-    test(`at ${width}px the panel does not move between Travel and the risk modes`, async () => {
-      // Fresh risk data, so the header is its usual one line (stale data adds a warning).
-      const current = JSON.parse(readFileSync(new URL('../../site/data/risk/current.json', import.meta.url), 'utf8'));
-      const body = JSON.stringify({ ...current, asOf: new Date().toISOString() });
-      const fresh = (req) => isData(req, 'risk/current.json') && (req.respond({ status: 200, contentType: 'application/json', body }), true);
-      // The UK has the longest agency name, which used to wrap the Travel header.
-      const page = await open({ width, height, settings: { provider: 'uk' }, intercept: fresh });
-      const top = () => page.$eval('#search', el => Math.round(el.getBoundingClientRect().top + scrollY));
-      const travel = await top();
-      await page.click('#modeSwitch [data-mode="highest"]');
-      await page.waitForFunction(() => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === 'highest');
-      assert.equal(await top(), travel);
-      await page.close();
-    });
+    for (const state of ['fresh', 'delayed']) {
+      test(`at ${width}px the panel does not move between Travel and the risk modes (${state} data)`, async () => {
+        const body = JSON.stringify(currentAs(state));
+        const serve = (req) => isData(req, 'risk/current.json') && (req.respond({ status: 200, contentType: 'application/json', body }), true);
+        // The UK has the longest agency name, which used to wrap the Travel header.
+        const page = await open({ width, height, settings: { provider: 'uk' }, intercept: serve });
+        const top = () => page.$eval('#search', el => Math.round(el.getBoundingClientRect().top + scrollY));
+        const travel = await top();
+        for (const mode of ['highest', 'disaster', 'wars']) {
+          await page.click(`#modeSwitch [data-mode="${mode}"]`);
+          await page.waitForFunction((m) => document.querySelector('#modeSwitch [aria-checked="true"]').dataset.mode === m, {}, mode);
+          assert.equal(await top(), travel, mode);
+          if (state === 'delayed' && mode !== 'wars') {
+            assert.match(await page.$eval('#asOf', el => el.title), /delayed/, `${mode}: the whole header in the tooltip`);
+          }
+        }
+        await page.close();
+      });
+    }
   }
 
   test('a first visit opens on Wars; a saved Travel or Highest is kept', async () => {

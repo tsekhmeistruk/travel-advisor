@@ -95,10 +95,39 @@
    {
     "key": "1:13639",
     "name": "Niger: Islamic State",
-    "sideA": "Government of Niger",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Niger",
+       "place": "ne",
+       "deaths": 471
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 471
+      }
+     ]
+    },
     "deaths12": 471,
+    "civilians12": 34,
     "last": 18,
+    "months": [
+     84,
+     7,
+     2,
+     35,
+     72,
+     21,
+     48,
+     11,
+     5,
+     109,
+     59,
+     18
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ne"
@@ -110,10 +139,43 @@
    {
     "key": "1:430",
     "name": "Niger: Government",
-    "sideA": "Government of Niger",
-    "sideB": "MPLJ",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Niger",
+       "place": "ne",
+       "deaths": 256
+      }
+     ],
+     "b": [
+      {
+       "name": "JNIM",
+       "deaths": 252
+      },
+      {
+       "name": "MPLJ",
+       "deaths": 4
+      }
+     ]
+    },
     "deaths12": 256,
+    "civilians12": 9,
     "last": 3,
+    "months": [
+     19,
+     0,
+     25,
+     0,
+     20,
+     6,
+     0,
+     3,
+     79,
+     101,
+     0,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ne"
@@ -125,10 +187,49 @@
    {
     "key": "1:118",
     "name": null,
-    "sideA": "XXX436",
-    "sideB": "XXX436",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "ne",
+       "deaths": 109
+      },
+      {
+       "name": "Government of Niger",
+       "place": "ne",
+       "deaths": 6
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ne",
+       "deaths": 109
+      },
+      {
+       "name": "MPLJ",
+       "deaths": 6
+      }
+     ]
+    },
     "deaths12": 115,
+    "civilians12": 67,
     "last": 6,
+    "months": [
+     46,
+     20,
+     2,
+     0,
+     2,
+     30,
+     0,
+     5,
+     0,
+     4,
+     0,
+     6
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ne"
@@ -140,10 +241,43 @@
    {
     "key": "1:297",
     "name": "Nigeria: Government",
-    "sideA": "Government of Nigeria",
-    "sideB": "JAS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Nigeria",
+       "place": "ng",
+       "deaths": 253
+      }
+     ],
+     "b": [
+      {
+       "name": "JAS",
+       "deaths": 250
+      },
+      {
+       "name": "JNIM",
+       "deaths": 3
+      }
+     ]
+    },
     "deaths12": 253,
+    "civilians12": 59,
     "last": 1,
+    "months": [
+     2,
+     1,
+     6,
+     8,
+     25,
+     4,
+     104,
+     7,
+     76,
+     0,
+     19,
+     1
+    ],
+    "first": "2024-05",
     "war": false,
     "places": [
      "ng",
@@ -159,10 +293,39 @@
    {
     "key": "1:13639",
     "name": "Niger: Islamic State",
-    "sideA": "Government of Niger",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Niger",
+       "place": "ne",
+       "deaths": 471
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 471
+      }
+     ]
+    },
     "deaths12": 471,
+    "civilians12": 34,
     "last": 18,
+    "months": [
+     84,
+     7,
+     2,
+     35,
+     72,
+     21,
+     48,
+     11,
+     5,
+     109,
+     59,
+     18
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ne"
@@ -174,10 +337,43 @@
    {
     "key": "1:430",
     "name": "Niger: Government",
-    "sideA": "Government of Niger",
-    "sideB": "MPLJ",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Niger",
+       "place": "ne",
+       "deaths": 256
+      }
+     ],
+     "b": [
+      {
+       "name": "JNIM",
+       "deaths": 252
+      },
+      {
+       "name": "MPLJ",
+       "deaths": 4
+      }
+     ]
+    },
     "deaths12": 256,
+    "civilians12": 9,
     "last": 3,
+    "months": [
+     19,
+     0,
+     25,
+     0,
+     20,
+     6,
+     0,
+     3,
+     79,
+     101,
+     0,
+     3
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ne"
@@ -189,10 +385,49 @@
    {
     "key": "1:118",
     "name": null,
-    "sideA": "XXX436",
-    "sideB": "XXX436",
+    "sides": {
+     "a": [
+      {
+       "name": null,
+       "place": "ne",
+       "deaths": 109
+      },
+      {
+       "name": "Government of Niger",
+       "place": "ne",
+       "deaths": 6
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ne",
+       "deaths": 109
+      },
+      {
+       "name": "MPLJ",
+       "deaths": 6
+      }
+     ]
+    },
     "deaths12": 115,
+    "civilians12": 67,
     "last": 6,
+    "months": [
+     46,
+     20,
+     2,
+     0,
+     2,
+     30,
+     0,
+     5,
+     0,
+     4,
+     0,
+     6
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "ne"

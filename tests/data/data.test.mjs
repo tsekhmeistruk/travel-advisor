@@ -41,7 +41,8 @@ describe('risk data', () => {
   const ISO_TIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
 
   test('the manifest points at every risk file', () => {
-    for (const name of ['current', 'changes', 'events', 'health', 'conflict']) assert.ok(risk(name), name);
+    for (const name of ['current', 'changes', 'events', 'health', 'conflict', 'conflictEvents']) assert.ok(risk(name), name);
+    assert.equal(manifest.risk.conflictEvents, 'risk/conflict-events.json');
     assert.match(manifest.risk.asOf, ISO_TIME);
   });
 
@@ -157,6 +158,35 @@ describe('conflict data', () => {
       const wars = Object.values(published.conflicts).filter(c => c.war);
       assert.equal(published.series.wars.at(-1), wars.length);
       assert.ok(wars.every(c => c.deaths12 >= published.warDeaths && c.places.length), 'wars have their deaths and places');
+    });
+
+    test(`${id}: every listed conflict names its two sides; a government on a side is a place and a party`, () => {
+      for (const [key, c] of Object.entries(published.conflicts)) {
+        assert.ok(c.sides.a.length && c.sides.b.length, `${key}: both sides`);
+        for (const actor of [...c.sides.a, ...c.sides.b]) {
+          assert.ok(actor.name === null || typeof actor.name === 'string', key);
+          if (actor.place) assert.ok(placeIds.has(actor.place) && c.parties.includes(actor.place), `${key}: ${actor.name} is a party`);
+          if (/^Government of /.test(actor.name ?? '')) assert.ok(actor.place, `${key}: ${actor.name} has no place: add it to \`countries\``);
+        }
+        assert.equal(c.months.length, config.windowMonths, key);
+        assert.equal(c.deaths12, c.months.reduce((a, b) => a + b, 0), `${key}: deaths12 is the sum of its months`);
+        assert.ok(c.civilians12 >= 0 && c.civilians12 <= c.deaths12, key);
+        assert.match(c.first, /^\d{4}-\d\d$/, key);
+      }
+      for (const key of published.new) assert.ok(published.conflicts[key], `new ${key} is listed`);
+      for (const q of published.quiet) assert.ok(q.deaths >= config.quiet.minDeaths && q.lastDeaths < published.through && q.parties.every(p => placeIds.has(p)), q.key);
+    });
+
+    test(`${id}: the month's dots are in the latest month, on the map, each with its names`, () => {
+      const dots = store.published(manifest.risk.conflictEvents);
+      assert.equal(dots.through, published.through);
+      assert.ok(dots.events.length > 100, `${dots.events.length} dots`);
+      for (const [lat, lon, deaths, date, key, a, b, place] of dots.events) {
+        assert.ok(Math.abs(lat) <= 90 && Math.abs(lon) <= 180 && deaths > 0, key);
+        assert.equal(date.slice(0, 7), dots.through);
+        assert.ok(key in dots.conflicts && a in dots.actors && b in dots.actors, key);
+        assert.ok(place === null || placeIds.has(place), place);
+      }
     });
   }
 });

@@ -95,25 +95,101 @@
    {
     "key": "1:77",
     "name": null,
-    "sideA": "XXX645",
-    "sideB": "XXX645",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iraq",
+       "place": "iq",
+       "deaths": 93
+      },
+      {
+       "name": null,
+       "place": "iq",
+       "deaths": 9
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 93
+      },
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 93
+      },
+      {
+       "name": null,
+       "place": "iq",
+       "deaths": 9
+      }
+     ]
+    },
     "deaths12": 102,
+    "civilians12": 8,
     "last": 2,
+    "months": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     87,
+     9,
+     2,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
     "war": false,
     "places": [
      "iq"
     ],
     "parties": [
-     "iq"
+     "il",
+     "iq",
+     "us"
     ]
    },
    {
     "key": "1:259",
     "name": "Iraq: Government",
-    "sideA": "Government of Iraq",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iraq",
+       "place": "iq",
+       "deaths": 47
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 47
+      }
+     ]
+    },
     "deaths12": 47,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     2,
+     3,
+     1,
+     0,
+     8,
+     2,
+     0,
+     0,
+     15,
+     9,
+     7,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "iq"
@@ -125,10 +201,51 @@
    {
     "key": "1:205",
     "name": "Iran: Kurdistan",
-    "sideA": "Government of Iran",
-    "sideB": "KDPI",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iran",
+       "place": "ir",
+       "deaths": 52
+      }
+     ],
+     "b": [
+      {
+       "name": "KDPI",
+       "deaths": 19
+      },
+      {
+       "name": "PAK",
+       "deaths": 18
+      },
+      {
+       "name": "Komalah",
+       "deaths": 10
+      },
+      {
+       "name": "PKK",
+       "deaths": 5
+      }
+     ]
+    },
     "deaths12": 52,
+    "civilians12": 4,
     "last": 0,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     15,
+     8,
+     0,
+     12,
+     16,
+     0
+    ],
+    "first": "2026-02",
     "war": false,
     "places": [
      "iq",
@@ -141,10 +258,43 @@
    {
     "key": "1:230",
     "name": "Yemen (North Yemen): Government",
-    "sideA": "Government of Yemen (North Yemen)",
-    "sideB": "Forces of the Presidential Leadership Council",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Yemen (North Yemen)",
+       "place": "ye",
+       "deaths": 1871
+      }
+     ],
+     "b": [
+      {
+       "name": "Forces of the Presidential Leadership Council",
+       "deaths": 1847
+      },
+      {
+       "name": "Nakf al-Karama",
+       "deaths": 24
+      }
+     ]
+    },
     "deaths12": 1871,
+    "civilians12": 179,
     "last": 1365,
+    "months": [
+     21,
+     38,
+     33,
+     24,
+     12,
+     18,
+     47,
+     24,
+     32,
+     37,
+     220,
+     1365
+    ],
+    "first": "2024-01",
     "war": true,
     "places": [
      "ye",
@@ -157,10 +307,45 @@
    {
     "key": "1:16905",
     "name": "Iran - Israel, United States of America",
-    "sideA": "Government of Iran",
-    "sideB": "Government of Israel, Government of United States of America",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iran",
+       "place": "ir",
+       "deaths": 3791
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 3791
+      },
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 3791
+      }
+     ]
+    },
     "deaths12": 3791,
+    "civilians12": 1745,
     "last": 2,
+    "months": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     3275,
+     296,
+     129,
+     19,
+     6,
+     64,
+     2
+    ],
+    "first": "2026-02",
     "war": true,
     "places": [
      "ir",
@@ -187,25 +372,101 @@
    {
     "key": "1:77",
     "name": null,
-    "sideA": "XXX645",
-    "sideB": "XXX645",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iraq",
+       "place": "iq",
+       "deaths": 93
+      },
+      {
+       "name": null,
+       "place": "iq",
+       "deaths": 9
+      }
+     ],
+     "b": [
+      {
+       "name": "Government of Israel",
+       "place": "il",
+       "deaths": 93
+      },
+      {
+       "name": "Government of United States of America",
+       "place": "us",
+       "deaths": 93
+      },
+      {
+       "name": null,
+       "place": "iq",
+       "deaths": 9
+      }
+     ]
+    },
     "deaths12": 102,
+    "civilians12": 8,
     "last": 2,
+    "months": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     87,
+     9,
+     2,
+     0,
+     0,
+     2
+    ],
+    "first": "2024-04",
     "war": false,
     "places": [
      "iq"
     ],
     "parties": [
-     "iq"
+     "il",
+     "iq",
+     "us"
     ]
    },
    {
     "key": "1:259",
     "name": "Iraq: Government",
-    "sideA": "Government of Iraq",
-    "sideB": "IS",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Iraq",
+       "place": "iq",
+       "deaths": 47
+      }
+     ],
+     "b": [
+      {
+       "name": "IS",
+       "deaths": 47
+      }
+     ]
+    },
     "deaths12": 47,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     2,
+     3,
+     1,
+     0,
+     8,
+     2,
+     0,
+     0,
+     15,
+     9,
+     7,
+     0
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "iq"

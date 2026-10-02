@@ -455,14 +455,16 @@ describe('conflict data (UCDP) in the risk layer', () => {
     id: 'ucdp', kind: 'conflict', category: 'conflict', staleAfterHours: 240, confirmFallMinutes: 0, links: { home: 'https://ucdp.uu.se/' },
     windowMonths: 12, seriesMonths: 24, war: { minDeaths: 1000 }, armedConflict: { minDeaths: 25 },
     bands: [{ minDeaths: 1000, level: 4 }, { minDeaths: 100, level: 3 }, { minDeaths: 25, level: 2 }],
-    trend: { months: 3, upRatio: 1.5, downRatio: 0.5, minDeaths: 150 },
+    trend: { months: 3, upRatio: 1.5, downRatio: 0.5, minDeaths: 150 }, quiet: { months: 3, minDeaths: 100 },
     regions: { Israel: { 'Gaza Strip': 'gaza' } }, countries: { Mexico: 'mx', Israel: 'il', Somalia: 'so' },
   };
   const CATEGORIES = { scale: { type: 'levels', values: [1, 2, 3, 4] }, categories: [{ id: 'travel' }, { id: 'conflict' }] };
-  const meta = { '1:1': { name: 'Somalia: Government', sideA: 'Government of Somalia', sideB: 'Al-Shabaab' }, '1:2': { name: 'Israel: Palestine', sideA: 'Government of Israel', sideB: 'Hamas' } };
-  const version = (v, month, events) => ({ version: v, month, fetchedAt: `${month.slice(0, 4)}-${String(Number(month.slice(5)) + 1).padStart(2, '0')}-20T06:00:00.000Z`, countries: { 70: 'Mexico', 666: 'Israel', 520: 'Somalia' }, conflicts: meta, events });
-  const july = version('26.0.7', '2026-07', [[1, '2026-07-10', 520, '', '1:1', 80], [2, '2026-07-12', 666, 'Gaza Strip', '1:2', 40]]);
-  const august = version('26.0.8', '2026-08', [[3, '2026-08-10', 520, '', '1:1', 60], [4, '2026-08-11', 666, 'Gaza Strip', '1:2', 1]]);
+  const meta = { '1:1': { name: 'Somalia: Government' }, '1:2': { name: 'Israel: Palestine' } };
+  const actors = { 95: 'Government of Somalia', 717: 'Al-Shabaab', 121: 'Government of Israel', 209: 'Hamas' };
+  const version = (v, month, events) => ({ version: v, month, fetchedAt: `${month.slice(0, 4)}-${String(Number(month.slice(5)) + 1).padStart(2, '0')}-20T06:00:00.000Z`, format: 2, countries: { 70: 'Mexico', 666: 'Israel', 520: 'Somalia' }, actors, conflicts: meta, events });
+  // [id, date, country, region, conflict, deaths, side A, side B, civilians, lat, lon, precision]
+  const july = version('26.0.7', '2026-07', [[1, '2026-07-10', 520, '', '1:1', 80, 95, 717, 0, 2.04, 45.34, 1], [2, '2026-07-12', 666, 'Gaza Strip', '1:2', 40, 121, 209, 12, 31.5, 34.47, 2]]);
+  const august = version('26.0.8', '2026-08', [[3, '2026-08-10', 520, '', '1:1', 60, 95, 717, 0, 2.04, 45.34, 1], [4, '2026-08-11', 666, 'Gaza Strip', '1:2', 1, 121, 209, 1, null, null, 6]]);
   const input = (versions, over = {}) => ({
     index, categories: CATEGORIES, schedule: { ucdp: { everyMinutes: 1440 } }, advisories: { files: {}, history: {} },
     sources: { ucdp: { config: UCDP, data: { fetchedAt: versions.at(-1).fetchedAt, versions } } }, state: null, log: [],
@@ -479,6 +481,8 @@ describe('conflict data (UCDP) in the risk layer', () => {
     assert.deepEqual(first.newChanges, [], 'the first build sets the baseline');
     assert.equal(first.files['risk/conflict.json'].through, '2026-07');
     assert.equal(first.files['risk/places/so.json'].conflict.conflicts[0].name, 'Somalia: Government');
+    assert.deepEqual(first.files['risk/places/so.json'].conflict.conflicts[0].sides.b, [{ name: 'Al-Shabaab', deaths: 80 }], 'who fought: from the events');
+    assert.deepEqual(first.files['risk/conflict-events.json'].events.map(e => e.slice(0, 3)), [[2.04, 45.34, 80], [31.5, 34.47, 40]], 'the month\'s dots');
     assert.equal(first.files['risk/places/mx.json'].conflict, undefined, 'no deaths: no conflict section');
 
     const next = buildRisk(input([july, august], { state: first.state, log: first.newChanges }));

@@ -80,10 +80,49 @@
    {
     "key": "1:160",
     "name": null,
-    "sideA": "XXX500",
-    "sideB": "XXX500",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Uganda",
+       "place": "ug",
+       "deaths": 29
+      },
+      {
+       "name": null,
+       "place": "ug",
+       "deaths": 6
+      }
+     ],
+     "b": [
+      {
+       "name": "Forces of Christian Asuman Muganzi",
+       "deaths": 29
+      },
+      {
+       "name": null,
+       "place": "ug",
+       "deaths": 6
+      }
+     ]
+    },
     "deaths12": 35,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     0,
+     5,
+     30,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ug"
@@ -97,10 +136,49 @@
    {
     "key": "1:160",
     "name": null,
-    "sideA": "XXX500",
-    "sideB": "XXX500",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Uganda",
+       "place": "ug",
+       "deaths": 29
+      },
+      {
+       "name": null,
+       "place": "ug",
+       "deaths": 6
+      }
+     ],
+     "b": [
+      {
+       "name": "Forces of Christian Asuman Muganzi",
+       "deaths": 29
+      },
+      {
+       "name": null,
+       "place": "ug",
+       "deaths": 6
+      }
+     ]
+    },
     "deaths12": 35,
+    "civilians12": 1,
     "last": 0,
+    "months": [
+     0,
+     5,
+     30,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ug"

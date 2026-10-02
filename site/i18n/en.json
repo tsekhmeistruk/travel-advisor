@@ -350,7 +350,7 @@
   "mapLabel": "World map coloured by risk level ({mode})",
   "header": "Updated {age}",
   "headerStale": "Updated {age}: newer data is delayed",
-  "headerIssue": "{base} · {source} {status}",
+  "headerIssue": "{source} {status} · {base}",
   "footer": "Sources: {sources}. Risk levels are our summary of them, not official levels. Always check the sources before you travel.",
   "overview": {
    "eyebrow": "World overview · {mode}",
@@ -358,7 +358,7 @@
     "one": "{count} place above Normal",
     "other": "{count} places above Normal"
    },
-   "changes": "In the last {window}: {up} raised, {down} lowered.",
+   "changes": "Last {window}: {up} raised · {down} lowered",
    "hint": "Hover or tap a country for its risk by category.",
    "about": {
     "disaster": "Levels rise with GDACS Orange and Red alerts, wildfires included. Green markers are smaller events."

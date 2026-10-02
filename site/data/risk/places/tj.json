@@ -80,10 +80,59 @@
    {
     "key": "1:333",
     "name": "Afghanistan: Government",
-    "sideA": "Government of Afghanistan",
-    "sideB": "NRF",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Afghanistan",
+       "place": "af",
+       "deaths": 44
+      }
+     ],
+     "b": [
+      {
+       "name": "NRF",
+       "deaths": 20
+      },
+      {
+       "name": "Forces of Juma Khan Fateh",
+       "deaths": 16
+      },
+      {
+       "name": "AFF",
+       "deaths": 6
+      },
+      {
+       "name": "NMF",
+       "deaths": 2
+      },
+      {
+       "name": "ARF",
+       "deaths": 0
+      },
+      {
+       "name": "AUF",
+       "deaths": 0
+      }
+     ]
+    },
     "deaths12": 44,
+    "civilians12": 1,
     "last": 28,
+    "months": [
+     7,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     6,
+     28
+    ],
+    "first": "2024-01",
     "war": false,
     "places": [
      "af",

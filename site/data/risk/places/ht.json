@@ -80,10 +80,39 @@
    {
     "key": "1:381",
     "name": "Haiti: Government",
-    "sideA": "Government of Haiti",
-    "sideB": "Viv Ansanm",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Haiti",
+       "place": "ht",
+       "deaths": 142
+      }
+     ],
+     "b": [
+      {
+       "name": "Viv Ansanm",
+       "deaths": 142
+      }
+     ]
+    },
     "deaths12": 142,
+    "civilians12": 21,
     "last": 0,
+    "months": [
+     24,
+     24,
+     10,
+     10,
+     3,
+     19,
+     18,
+     19,
+     3,
+     3,
+     9,
+     0
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ht"
@@ -95,10 +124,53 @@
    {
     "key": "1:70",
     "name": null,
-    "sideA": "XXX41",
-    "sideB": "XXX41",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Haiti",
+       "place": "ht",
+       "deaths": 39
+      },
+      {
+       "name": null,
+       "place": "ht",
+       "deaths": 33
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ht",
+       "deaths": 33
+      },
+      {
+       "name": "Kokorat sans ras",
+       "deaths": 21
+      },
+      {
+       "name": "Gran Grif",
+       "deaths": 18
+      }
+     ]
+    },
     "deaths12": 72,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     18,
+     0,
+     0,
+     0,
+     0,
+     11,
+     3,
+     1,
+     26,
+     5,
+     8,
+     0
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ht"
@@ -112,10 +184,39 @@
    {
     "key": "1:381",
     "name": "Haiti: Government",
-    "sideA": "Government of Haiti",
-    "sideB": "Viv Ansanm",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Haiti",
+       "place": "ht",
+       "deaths": 142
+      }
+     ],
+     "b": [
+      {
+       "name": "Viv Ansanm",
+       "deaths": 142
+      }
+     ]
+    },
     "deaths12": 142,
+    "civilians12": 21,
     "last": 0,
+    "months": [
+     24,
+     24,
+     10,
+     10,
+     3,
+     19,
+     18,
+     19,
+     3,
+     3,
+     9,
+     0
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ht"
@@ -127,10 +228,53 @@
    {
     "key": "1:70",
     "name": null,
-    "sideA": "XXX41",
-    "sideB": "XXX41",
+    "sides": {
+     "a": [
+      {
+       "name": "Government of Haiti",
+       "place": "ht",
+       "deaths": 39
+      },
+      {
+       "name": null,
+       "place": "ht",
+       "deaths": 33
+      }
+     ],
+     "b": [
+      {
+       "name": null,
+       "place": "ht",
+       "deaths": 33
+      },
+      {
+       "name": "Kokorat sans ras",
+       "deaths": 21
+      },
+      {
+       "name": "Gran Grif",
+       "deaths": 18
+      }
+     ]
+    },
     "deaths12": 72,
+    "civilians12": 0,
     "last": 0,
+    "months": [
+     18,
+     0,
+     0,
+     0,
+     0,
+     11,
+     3,
+     1,
+     26,
+     5,
+     8,
+     0
+    ],
+    "first": "2024-02",
     "war": false,
     "places": [
      "ht"
