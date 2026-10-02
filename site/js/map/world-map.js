@@ -10,6 +10,8 @@
 //     pulse: null, or 0..1 opacity of an animated "recently changed" marker
 //   }
 //
+// Zoomed in (×2.5 or more), the map names the places that have room, largest first (labels.js).
+//
 // Point markers (events: an earthquake, a cyclone) come from setMarkers([{ id, lon, lat, kind,
 // level }]). They keep a fixed pixel size while zooming, and markers closer than a grid cell
 // on screen are drawn as one cluster with a count (see clusters.js).
@@ -18,10 +20,13 @@
 
 import { splitFeatures } from './splits.js';
 import { clusterMarkers, MARKER_ICONS } from './clusters.js';
+import { placeLabels } from './labels.js';
 
 const DOT_AREA = 14;             // px² at zoom 1; smaller shapes also get a hoverable dot
 const POLAR = new Set(['aq']);   // drawn faded: huge on this projection, rarely relevant
 const MAX_ZOOM = 24;
+const LABEL_ZOOM = 2.5;          // names from this zoom on
+const LABEL_AREA = 1600;         // px² on screen a place needs for its name
 
 export class WorldMap {
   /**
@@ -30,16 +35,20 @@ export class WorldMap {
    * @param opts.places                place registry
    * @param opts.bottomInset()         px to keep clear at the bottom (e.g. the legend)
    * @param opts.topInset()            px to keep clear at the top (e.g. the mode switch)
+   * @param opts.labelFor(placeId)      a place's name, for the labels when zoomed in (none: no labels)
+   * @param opts.labelInsets()         { top, bottom } px the labels keep clear (default: the insets above)
    * @param opts.onHover(region|null, event), opts.onMove(event), opts.onSelect(region|null)
    * @param opts.onMarkerHover(cluster|null, event), opts.onMarkerSelect(cluster)
    *   a cluster is { id, items: [markers], x, y, level }; one marker is a cluster of one
    */
-  constructor({ svg, container, topo, places, bottomInset = () => 0, topInset = () => 0, onHover = () => {}, onMove = () => {}, onSelect = () => {}, onMarkerHover = () => {}, onMarkerSelect = () => {} }) {
+  constructor({ svg, container, topo, places, bottomInset = () => 0, topInset = () => 0, labelFor = () => null, labelInsets = null, onHover = () => {}, onMove = () => {}, onSelect = () => {}, onMarkerHover = () => {}, onMarkerSelect = () => {} }) {
     const { d3, topojson } = globalThis;
     this.d3 = d3;
     this.container = container;
     this.bottomInset = bottomInset;
     this.topInset = topInset;
+    this.labelFor = labelFor;
+    this.labelInsets = labelInsets ?? (() => ({ top: this.topInset() + 16, bottom: this.bottomInset() + 16 }));
     this.handlers = { onHover, onMove, onSelect, onMarkerHover, onMarkerSelect };
     this.markers = [];
     this.selectedMarker = null;
@@ -71,6 +80,7 @@ export class WorldMap {
     this.selectOutline = this.viewport.append('path').attr('class', 'select-outline');
     const overlay = this.svg.append('g').attr('class', 'overlay');
     this.dotLayer = overlay.append('g').attr('class', 'dots');
+    this.labelLayer = overlay.append('g').attr('class', 'labels');   // under the markers
     this.markerLayer = overlay.append('g').attr('class', 'markers');
     this.pulseLayer = overlay.append('g').attr('class', 'pulses');
 
@@ -236,6 +246,24 @@ export class WorldMap {
   }
 
   // Markers are clustered in screen space, so this runs on every zoom step (a few dozen markers).
+  /** Names of the places with room for one, once zoomed in (in screen space, like the markers). */
+  #renderLabels() {
+    const t = this.transform;
+    const list = t.k < LABEL_ZOOM ? [] : placeLabels(
+      this.regions.filter(r => r.feature && r.anchor).map(r => ({
+        key: r.key, x: t.applyX(r.anchor[0]), y: t.applyY(r.anchor[1]), area: r.areaPx * t.k * t.k, text: (r.label ??= this.labelFor(r.key)),
+      })),
+      { width: this.width, height: this.height, ...this.labelInsets(), minArea: LABEL_AREA },
+    );
+    this.labelLayer.selectAll('text')
+      .data(list, d => d.key)
+      .join('text')
+      .attr('class', 'map-label')
+      .attr('x', d => d.x)
+      .attr('y', d => d.y)
+      .text(d => d.text);
+  }
+
   #renderMarkers() {
     const t = this.transform;
     const clusters = clusterMarkers(this.markers.map(m => ({ ...m, x: t.applyX(m.xy[0]), y: t.applyY(m.xy[1]) })));
@@ -282,6 +310,7 @@ export class WorldMap {
     const place = (sel) => sel.attr('transform', r => `translate(${t.applyX(r.anchor[0])},${t.applyY(r.anchor[1])})`);
     place(this.dotLayer.selectAll('.dot'));
     place(this.pulseLayer.selectAll('.pulse'));
+    this.#renderLabels();
     this.#renderMarkers();
     // Once a tiny shape is big enough to hover directly, retire its dot.
     this.dotLayer.selectAll('.dot').attr('display', r => (r.feature && r.areaPx * t.k * t.k > DOT_AREA * 4) ? 'none' : null);

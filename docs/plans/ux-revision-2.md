@@ -39,9 +39,9 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 
 ## Status
 
-- **Current step:** 5.6 (ship)
-- **Done:** parts 0–4; 5.1–5.5
-- **Last commit of this revision:** 5b018c6 (part 4)
+- **Current step:** 6.6 (ship)
+- **Done:** parts 0–5; 6.1–6.5
+- **Last commit of this revision:** 3480ce1 (part 5)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -154,27 +154,27 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
   - [x] unit: the share action calls its handler.
   - [x] e2e: grant the clipboard permissions, click Share: the clipboard holds `…#mode=highest&place=jp&view=country`, and the toast shows.
 - [x] 5.5 Docs: architecture (the country view), README.
-- [ ] 5.6 Ship. Live check: Share copies the link.
+- [x] 5.6 Ship. Live check: Share copies the link.
 
 ## Part 6: Country names when zoomed in
 
-- [ ] 6.1 New `site/js/map/labels.js`: pure `placeLabels(candidates, { width, height, top, bottom, charWidth, minArea, max })`.
+- [x] 6.1 New `site/js/map/labels.js`: pure `placeLabels(candidates, { width, height, top, bottom, charWidth, minArea, max })`.
   - Candidates are `{ key, x, y, area, text }`.
   - Largest first; a box is estimated from the text length; skip a box that overlaps a placed one, leaves the view, or falls under the insets.
   - At most about 80.
-- [ ] 6.2 `WorldMap`:
+- [x] 6.2 `WorldMap`:
   - a new `labelFor(placeId)` option; `main.js` passes `id => i18n.placeName(places.get(id))`;
   - a label layer in the screen-space `overlay`, after the dots and before the markers;
   - `#applyTransform()` updates it: no labels below k = 2.5; above it, regions with `areaPx · k²` ≥ 1600 px².
-- [ ] 6.3 CSS `.map-label`: 11.5px, weight 600, `fill: var(--text)`, a `var(--panel)` halo (`paint-order: stroke`), `pointer-events: none`. Both themes.
-- [ ] 6.4 Tests:
-  - [ ] unit (`tests/unit/site/labels.test.mjs`): largest first, no overlaps, insets, cap, area threshold.
-  - [ ] e2e:
+- [x] 6.3 CSS `.map-label`: 11.5px, weight 600, `fill: var(--text)`, a `var(--panel)` halo (`paint-order: stroke`), `pointer-events: none`. Both themes.
+- [x] 6.4 Tests:
+  - [x] unit (`tests/unit/site/labels.test.mjs`): largest first, no overlaps, insets, cap, area threshold.
+  - [x] e2e:
     - no labels at k = 1;
     - after choosing Germany in the search, the labels include "Germany";
     - no two boxes intersect, all are inside the map;
     - hover and click still reach the countries.
-- [ ] 6.5 Docs: architecture (the map), README.
+- [x] 6.5 Docs: architecture (the map), README.
 - [ ] 6.6 Ship. Live check: zooming into Europe shows names.
 
 ## Part 7: Wrap-up
@@ -191,3 +191,4 @@ Offered but not chosen this round (they go into the "Offered" list in `.claude/C
 - Part 2: 05cb8c1, deploy green, live overview 141 places above Normal (was 162), no console errors; update run 36959859838 (gdacs) green, built with the new rule (bot commit c842ed2). Tests added: travelLevel cases (Bahrain, Georgia, Argentina, India), site unit for the stricter flag. Edited: travelSignals unit tests, data test checks travelLevel(). Deleted: none.
 - Part 3: d1a678a, deploy green, live: feed has no GDELT items (47 → 13), news section lists 29 places (5 shown), no console errors. Also fixed: hidden .recent sections showed (feed with highlighting Off, empty news section in Travel); travel agree counts the level itself. Tests added: unit isNews/cardModel history, news not in feed/latest/tooltip/histories, newsRows order, renderNews order/cap/Show all/hidden, Travel latest changes; e2e news section + withRiskChanges news injection. Edited: quiet line tests, feed-off test checks visibility, travel agree expectations. Deleted: anomaly-in-feed and back-to-normal tests and their i18n keys.
 - Part 4: 5b018c6, deploy green, live: "polo" finds Tropical Cyclone POLO-26 (Red) and Enter opens its card; prompt "Find a country or alert"; no console errors in any mode. Tests added: unit alert entries (order, target, offshore, prompt), Green fires left out + severity order + category filter; e2e alert search (card, marker, zoom, Travel prompt). Edited: the search entry unit test. Deleted: none.
+- Part 5: 3480ce1, deploy green, live: Share copies https://tsekhmeistruk.github.io/travel-advisor/#mode=highest&place=et&view=country and shows "Link copied"; no console errors. Tests added: unit Share button + handler; e2e Share copies the exact link, toast shows and hides. Edited: the country view handler test (now with share). Deleted: none.

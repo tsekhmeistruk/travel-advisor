@@ -110,6 +110,9 @@ async function main() {
     bottomInset: () => $('legend').offsetHeight,
     // The mode switch's row (the provider switch below it may overlap the map's top edge).
     topInset: () => $('modeSwitch').offsetHeight,
+    labelFor: (id) => (places.has(id) ? i18n.placeName(places.get(id)) : null),
+    // Labels stay clear of everything on top of the map: both switches, and the legend.
+    labelInsets: () => ({ top: $('mapTop').getBoundingClientRect().bottom - mapArea.getBoundingClientRect().top + 4, bottom: $('legend').offsetHeight + 20 }),
     onHover: (region, event) => {
       hover(region ? { placeId: region.key } : null);
       if (region && event.pointerType === 'mouse') tooltip.show(dataset.tooltip(region.key), event);

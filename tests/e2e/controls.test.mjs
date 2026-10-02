@@ -152,6 +152,31 @@ describe('map interaction', () => {
     await page.close();
   });
 
+  test('country names show once zoomed in: without overlaps, inside the map, and clicks still reach the countries', async () => {
+    const page = await open();
+    assert.equal(await page.$$eval('.map-label', els => els.length), 0, 'none at world zoom');
+    await page.type('#search', 'germany');
+    await page.keyboard.press('Enter');
+    await sleep(1200);
+    const labels = await page.$$eval('.map-label', els => els.map(e => { const r = e.getBoundingClientRect(); return { text: e.textContent, x0: r.left, x1: r.right, y0: r.top, y1: r.bottom }; }));
+    assert.ok(labels.length >= 8, `${labels.length} labels`);
+    assert.ok(labels.some(l => l.text === 'Germany') && labels.some(l => l.text === 'France'), labels.map(l => l.text).join(', '));
+    const overlap = (a, b) => a.x0 < b.x1 - 1 && a.x1 > b.x0 + 1 && a.y0 < b.y1 - 1 && a.y1 > b.y0 + 1;
+    for (let i = 0; i < labels.length; i++) for (let j = i + 1; j < labels.length; j++) assert.equal(overlap(labels[i], labels[j]), false, `${labels[i].text} overlaps ${labels[j].text}`);
+    const clear = await page.evaluate((list) => {
+      const m = document.getElementById('mapArea').getBoundingClientRect();
+      const top = document.getElementById('mapTop').getBoundingClientRect().bottom;
+      const legend = document.getElementById('legend').getBoundingClientRect().top;
+      return list.every(l => l.x0 >= m.left && l.x1 <= m.right && l.y0 >= top && l.y1 <= legend);
+    }, labels);
+    assert.equal(clear, true, 'inside the map, clear of the switches and the legend');
+    // A click on a label selects the country under it.
+    const france = labels.find(l => l.text === 'France');
+    await click(page, { x: (france.x0 + france.x1) / 2, y: (france.y0 + france.y1) / 2 });
+    assert.equal(await detailsTitle(page), 'France');
+    await page.close();
+  });
+
   test('a tiny place can be selected through its dot', async () => {
     const page = await open({ settings: { provider: 'us' } });
     const id = await page.evaluate(() => document.querySelector('.dot')?.__data__.key);

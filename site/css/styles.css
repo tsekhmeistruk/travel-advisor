@@ -129,6 +129,13 @@ h1, h2 { margin: 0; }
 .l3 { fill: var(--l3); }
 .l4 { fill: var(--l4); }
 .r1 { fill: var(--risk-normal); }
+/* Country names, zoomed in: a halo keeps them readable on any fill; clicks go to the map. */
+.map-label {
+  font-size: 11.5px; font-weight: 600; fill: var(--text);
+  stroke: var(--panel); stroke-width: 3px; stroke-linejoin: round; paint-order: stroke;
+  text-anchor: middle; dominant-baseline: central;
+  pointer-events: none; user-select: none;
+}
 .country.is-muted, .dot.is-muted { fill: var(--land-muted); }
 .country.is-dim, .dot.is-dim { opacity: .28; }
 .country.is-polar { opacity: .45; }
