@@ -14,9 +14,9 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-10-02T00:03:51.928Z",
-  "lastSuccess": "2026-10-02T00:03:51.928Z",
-  "durationMs": 7247,
+  "lastAttempt": "2026-10-02T00:11:46.116Z",
+  "lastSuccess": "2026-10-02T00:11:46.116Z",
+  "durationMs": 4049,
   "records": 261,
   "consecutiveFailures": 0
  },
