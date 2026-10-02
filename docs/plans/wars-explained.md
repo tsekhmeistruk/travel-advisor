@@ -81,8 +81,8 @@ A review of the code and data (Oct 2, 2026) found:
 
 ## Status
 
-- **Current step:** 1.6
-- **Done:** part 0; 1.1–1.5
+- **Current step:** 2.7
+- **Done:** parts 0–1; 2.1–2.6
 - **Last commit of this revision:** (none yet)
 
 ## Every part ends with the same checks (the "ship" boxes)
@@ -121,29 +121,29 @@ A review of the code and data (Oct 2, 2026) found:
   - [x] unit: the parser (new columns, actors, old format refused) with real rows, including a Sudan RSF row.
   - [x] unit: conflict sides from several dyads, `new`, `ended`, the events file.
   - [x] data and project: the events file equals a fresh build; the manifest lists it.
-- [ ] 1.6 Ship. Live check: `conflict.json` has Sudan's sides with RSF. Then one update run (`-f sources=ucdp`), watched.
+- [x] 1.6 Ship. Live check: `conflict.json` has Sudan's sides with RSF. Then one update run (`-f sources=ucdp`), watched.
 
 ## Part 2: Wikipedia context
 
-- [ ] 2.1 `config/sources/wikipedia.json`:
+- [x] 2.1 `config/sources/wikipedia.json`:
   - `kind: "context"` (never a level or a change);
   - the licence and the User-Agent;
   - `articles`: UCDP conflict key → article title, checked by hand for every war and the larger armed conflicts.
-- [ ] 2.2 `scripts/providers/wikipedia/parse.mjs` (pure):
+- [x] 2.2 `scripts/providers/wikipedia/parse.mjs` (pure):
   - the infobox's combatants, backers and start date;
   - the REST summary (extract, URL, revision, lead image);
   - the Commons licence of the map.
-- [ ] 2.3 `scripts/providers/wikipedia/index.mjs`:
+- [x] 2.3 `scripts/providers/wikipedia/index.mjs`:
   - per article, the summary and the infobox (and the map's licence);
   - weekly in `config/schedule.json`;
   - stored through `FileStore`;
   - a failed article keeps its last entry.
-- [ ] 2.4 Build: a published `risk/wars.json` (in the manifest). A war without an article is a warning, and the site falls back to UCDP's sides.
-- [ ] 2.5 Wiring: `SOURCES`, `update.yml`, the Fetch results table, `logs/README.md`.
-- [ ] 2.6 Tests:
-  - [ ] unit: the infobox parser on real wikitext (Ukraine, Sudan, Myanmar, Gaza, DR Congo, no infobox).
-  - [ ] unit: the fetcher (failure keeps the last entry, the User-Agent), the build and its fallback.
-  - [ ] data and project: `risk/wars.json` equals a fresh build; the source is wired.
+- [x] 2.4 Build: a published `risk/wars.json` (in the manifest). A war without an article is a warning, and the site falls back to UCDP's sides.
+- [x] 2.5 Wiring: `SOURCES`, `update.yml`, the Fetch results table, `logs/README.md`.
+- [x] 2.6 Tests:
+  - [x] unit: the infobox parser on real wikitext (Ukraine, Sudan, Myanmar, Gaza, DR Congo, no infobox).
+  - [x] unit: the fetcher (failure keeps the last entry, the User-Agent), the build and its fallback.
+  - [x] data and project: `risk/wars.json` equals a fresh build; the source is wired.
 - [ ] 2.7 Ship. Live check: `risk/wars.json` has the sides and backers of Ukraine and Sudan. Then one update run (`-f sources=wikipedia`), watched.
 
 ## Part 3: The Wars panel
@@ -181,5 +181,4 @@ A review of the code and data (Oct 2, 2026) found:
 ---
 
 ## Log (one line per finished part: commit, deploy, tests)
-
-- (empty)
+- Part 1: 86cacdf (+ 9239dd4 test fix), deploy green after the test fix (the first deploy failed: two header checks anchored at 'Updated'), live: Sudan's sides SFA, RSF; 4 new, 10 quiet; conflict-events.json 186 KB; update run 37041430778 (ucdp) green. Tests added: parser points and side ids, refetch of outdated versions, stored tables, sides from several dyads, new and quiet, dots, old format refused, data checks of sides and dots, e2e one-line header with delayed sources and the moves line with big numbers. Edited: UCDP fixture (+ a real Sudan-RSF row), parser, conflict and risk-layer tests, header texts, two e2e header checks. Deleted: none.

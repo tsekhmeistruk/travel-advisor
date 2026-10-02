@@ -32,7 +32,7 @@ export function readBuildInput(store = new FileStore()) {
       schedule: store.schedule(),
       sources: Object.fromEntries(store.sourceIds().map(id => {
         const config = store.source(id);
-        const read = { counts: () => store.counts(id), conflict: () => store.conflict(id) }[config.kind] ?? (() => store.events(id));
+        const read = { counts: () => store.counts(id), conflict: () => store.conflict(id), context: () => store.context(id) }[config.kind] ?? (() => store.events(id));
         return [id, { config, data: read(), ...(config.pairs && { pairs: store.counts(`${id}-pairs`) }) }];
       })),
       state: store.signals(),
@@ -43,7 +43,7 @@ export function readBuildInput(store = new FileStore()) {
 }
 
 /** The risk files the manifest points at: manifest key -> file name (risk/<name>.json). */
-export const RISK_FILES = { current: 'current', changes: 'changes', events: 'events', health: 'health', conflict: 'conflict', conflictEvents: 'conflict-events' };
+export const RISK_FILES = { current: 'current', changes: 'changes', events: 'events', health: 'health', conflict: 'conflict', conflictEvents: 'conflict-events', wars: 'wars' };
 
 /**
  * The advisory files (buildSite) plus the risk layer (buildRisk), and the manifest entry that

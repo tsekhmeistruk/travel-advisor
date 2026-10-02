@@ -126,6 +126,17 @@ describe('FileStore', () => {
     rmSync(root, { recursive: true });
   });
 
+  test('saves and reads a context source\'s articles', () => {
+    const root = tmp();
+    const store = new FileStore(root);
+    assert.equal(store.context('wikipedia'), null);
+    const data = { fetchedAt: '2026-10-02T12:00:00.000Z', articles: { 'Gaza war': { title: 'Gaza war', sides: [] } } };
+    store.saveContext('wikipedia', data);
+    assert.deepEqual(store.context('wikipedia'), data);
+    assert.ok(readFileSync(join(root, 'data', 'context', 'wikipedia.json'), 'utf8').endsWith('\n'));
+    rmSync(root, { recursive: true });
+  });
+
   test('saves and reads events, signals, the change log by year, and the sources state', () => {
     const root = tmp();
     const store = new FileStore(root);
@@ -240,6 +251,19 @@ describe('runFetch', () => {
     assert.equal(store.state.cf.records, 2, 'records: the versions stored');
     await runFetch({ ...source, fetch: async () => ({ versions: [], stats: { fetched: [], through: '26.0.7', events: 0 } }) }, { store, logRoot: root, now: clock('2026-10-03T06:00:00Z') });
     assert.deepEqual([saved.length, store.state.cf.records, store.state.cf.consecutiveFailures], [1, 1, 0], 'no new version is a success');
+    rmSync(root, { recursive: true });
+  });
+
+  test('a context source gets its last articles and config, and saves the new ones', async () => {
+    const root = tmp();
+    let saved = null;
+    const store = { source: (id) => ({ id, articles: {} }), context: () => ({ fetchedAt: 'before', articles: { A: {} } }), saveContext: (id, d) => { saved = [id, d]; }, sourcesState: () => ({}), saveSourcesState: (st) => { store.state = st; } };
+    let seen;
+    const source = { id: 'cx', kind: 'context', source: 'https://example.test/cx', fetch: async (args) => { seen = args; return { data: { fetchedAt: 'now', articles: { A: {}, B: {} } }, stats: { articles: 2, fetched: 1, failed: ['A'], noInfobox: [] } }; } };
+    await runFetch(source, { store, logRoot: root, now: clock('2026-10-02T06:00:00Z') });
+    assert.deepEqual([seen.previous.fetchedAt, seen.config.id], ['before', 'cx']);
+    assert.deepEqual(saved, ['cx', { fetchedAt: 'now', articles: { A: {}, B: {} } }]);
+    assert.deepEqual([store.state.cx.records, store.state.cx.consecutiveFailures], [2, 0], 'records: the articles kept');
     rmSync(root, { recursive: true });
   });
 
@@ -391,6 +415,13 @@ describe('log summary', () => {
     const many = { ...ok, stats: { events: 20, current: 9, added: Array.from({ length: 9 }, (_, i) => `e${i}`) } };
     assert.equal(describeRun(many), '20 events (9 current) · 9 new');
     assert.equal(callSummary({ requests: 1, statuses: { 204: 1 }, errors: 0, challenges: 0 }), '1× 204');
+  });
+  test('describes a conflict source run (versions) and a context source run (articles)', () => {
+    assert.equal(describeRun({ ...ok, stats: { fetched: ['26.0.9'], skipped: [], through: '26.0.9', events: 1800, unmapped: [] } }), '1800 events · new: 26.0.9, data through 26.0.9');
+    assert.equal(describeRun({ ...ok, stats: { fetched: [], refetched: ['24.0.1', '24.0.2'], skipped: [], through: '26.0.8', events: 3600, unmapped: [] } }),
+      '3600 events · no new version, data through 26.0.8 · 2 downloaded again (a newer stored format)');
+    assert.equal(describeRun({ ...ok, stats: { articles: 35, fetched: 34, failed: ['Mali War'], noInfobox: ['A', 'B'] } }),
+      '34 of 35 articles read · last copy kept: Mali War · 2 without a war infobox');
   });
 });
 

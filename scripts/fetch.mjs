@@ -8,6 +8,7 @@
 //   counts sources (kind "counts", e.g. gdelt): daily counts -> data/counts/<id>.json (and pair counts
 //     -> data/counts/<id>-pairs.json)
 //   conflict sources (kind "conflict", e.g. ucdp): each new monthly version -> data/conflict/<id>/<version>.json
+//   context sources (kind "context", e.g. wikipedia): the articles -> data/context/<id>.json
 //
 // Usage: node scripts/fetch.mjs <id>      e.g. node scripts/fetch.mjs ca
 
@@ -27,7 +28,7 @@ export async function runFetch(provider, { store = new FileStore(), logRoot, sle
   let error = null;
   await withRunLog(provider.id, async (log) => {
     try {
-      const run = { events: fetchEvents, counts: fetchCounts, conflict: fetchConflict }[provider.kind] ?? fetchAdvisories;
+      const run = { events: fetchEvents, counts: fetchCounts, conflict: fetchConflict, context: fetchContext }[provider.kind] ?? fetchAdvisories;
       records = await run(provider, { store, log, sleep, now });
     } catch (err) {
       error = err;
@@ -86,6 +87,15 @@ async function fetchConflict(provider, { store, log, sleep, now }) {
     ? `Saved ${provider.id} ${stats.fetched.join(', ')} (${stats.events} events); data through ${stats.through}.`
     : `No new ${provider.id} version; data through ${stats.through}.`);
   return new Set([...stored, ...versions.map(v => v.version)]).size;
+}
+
+async function fetchContext(provider, { store, log, sleep, now }) {
+  const config = store.source(provider.id);
+  const { data, stats } = await provider.fetch({ log, previous: store.context(provider.id), now: now(), config, ...(sleep && { sleep }) });
+  store.saveContext(provider.id, data);
+  log.stat(stats);
+  console.log(`Saved ${stats.fetched} of ${stats.articles} ${provider.id} articles${stats.failed.length ? ` (${stats.failed.length} kept from before)` : ''}.`);
+  return Object.keys(data.articles).length;
 }
 
 /** Update data/sources-state.json: every attempt, and the last success. */

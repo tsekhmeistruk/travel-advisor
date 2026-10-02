@@ -61,5 +61,12 @@
   "durationMs": 747,
   "records": 6,
   "consecutiveFailures": 0
+ },
+ "wikipedia": {
+  "lastAttempt": "2026-10-02T17:36:35.030Z",
+  "lastSuccess": "2026-10-02T17:36:35.030Z",
+  "durationMs": 56961,
+  "records": 35,
+  "consecutiveFailures": 0
  }
 }

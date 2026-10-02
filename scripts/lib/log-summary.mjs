@@ -125,7 +125,14 @@ export function describe(e) {
   const parts = [];
   if (s.advisories != null) parts.push(`${s.advisories} advisories`);
   if (s.destinations != null) parts.push(`${s.destinations} destinations${s.sources ? ` (${s.sources.join(' + ')})` : ''}`);
-  if (s.events != null) parts.push(`${s.events} events (${s.current} current)`);
+  if (s.events != null) parts.push(s.current != null ? `${s.events} events (${s.current} current)` : `${s.events} events`);
+  // A conflict source (UCDP): the monthly versions.
+  if (Array.isArray(s.fetched)) parts.push(s.fetched.length ? `new: ${s.fetched.join(', ')}, data through ${s.through}` : `no new version, data through ${s.through}`);
+  if (s.refetched?.length) parts.push(`${s.refetched.length} downloaded again (a newer stored format)`);
+  // A context source (Wikipedia): the articles.
+  if (s.articles != null) parts.push(`${s.fetched} of ${s.articles} articles read`);
+  if (Array.isArray(s.failed) && s.failed.length) parts.push(`last copy kept: ${s.failed.join(', ')}`);
+  if (s.noInfobox?.length) parts.push(`${s.noInfobox.length} without a war infobox`);
   if (s.alertChanged?.length) parts.push(`🔔 alert changed: ${s.alertChanged.join(', ')}`);
   if (s.added?.length) parts.push(s.added.length <= 6 ? `new: ${s.added.join(', ')}` : `${s.added.length} new`);
   if (s.archived) parts.push(`${s.archived} archived`);

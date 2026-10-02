@@ -41,7 +41,7 @@ describe('risk data', () => {
   const ISO_TIME = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$/;
 
   test('the manifest points at every risk file', () => {
-    for (const name of ['current', 'changes', 'events', 'health', 'conflict', 'conflictEvents']) assert.ok(risk(name), name);
+    for (const name of ['current', 'changes', 'events', 'health', 'conflict', 'conflictEvents', 'wars']) assert.ok(risk(name), name);
     assert.equal(manifest.risk.conflictEvents, 'risk/conflict-events.json');
     assert.match(manifest.risk.asOf, ISO_TIME);
   });
@@ -175,6 +175,21 @@ describe('conflict data', () => {
       }
       for (const key of published.new) assert.ok(published.conflicts[key], `new ${key} is listed`);
       for (const q of published.quiet) assert.ok(q.deaths >= config.quiet.minDeaths && q.lastDeaths < published.through && q.parties.every(p => placeIds.has(p)), q.key);
+    });
+
+    test(`${id}: the context of the wars: each for a listed or quiet conflict, with a link, and countries by place`, () => {
+      const wars = store.published(manifest.risk.wars);
+      const quiet = new Set(published.quiet.map(q => q.key));
+      assert.ok(Object.keys(wars.conflicts).length >= 10, 'most wars have an article');
+      for (const [key, w] of Object.entries(wars.conflicts)) {
+        assert.ok(published.conflicts[key] || quiet.has(key), key);
+        assert.match(w.url, /^https:\/\/en\.wikipedia\.org\/wiki\//, key);
+        assert.ok(w.extract.length > 50, `${key}: extract`);
+        if (w.map) assert.match(w.map, /^https:\/\/en\.wikipedia\.org\/wiki\/File:/, key);
+        for (const s of Object.values(w.sides ?? {})) assert.ok([...s.with, ...s.backers].every(p => placeIds.has(p)), `${key}: places`);
+      }
+      const ukraine = wars.conflicts['1:13243'];
+      if (ukraine) assert.ok(ukraine.sides.a.with.includes('by'), 'Belarus with Russia (a check of the matching on real data)');
     });
 
     test(`${id}: the month's dots are in the latest month, on the map, each with its names`, () => {

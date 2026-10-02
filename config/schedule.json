@@ -7,5 +7,6 @@
  "gdacs": { "everyMinutes": 60 },
  "who": { "everyMinutes": 360 },
  "gdelt": { "everyMinutes": 360 },
- "ucdp": { "everyMinutes": 1440 }
+ "ucdp": { "everyMinutes": 1440 },
+ "wikipedia": { "everyMinutes": 10080 }
 }

@@ -1,0 +1,906 @@
+{
+ "asOf": "2026-10-02T17:36:35.031Z",
+ "source": "wikipedia",
+ "licence": "CC BY-SA 4.0",
+ "links": {
+  "home": "https://en.wikipedia.org/",
+  "terms": "https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License"
+ },
+ "conflicts": {
+  "1:13243": {
+   "title": "Russo-Ukrainian war (2022–present)",
+   "url": "https://en.wikipedia.org/wiki/Russo-Ukrainian_war_(2022%E2%80%93present)",
+   "extract": "On 24 February 2022, Russia invaded Ukraine, starting the largest and deadliest war in Europe since World War II, in a major escalation of the existing war between the two countries that began when Russia attacked Ukraine in 2014. The fighting has caused hundreds of thousands of military casualties and tens of thousands of Ukrainian civilian casualties. Russian troops \noccupy roughly 20% of Ukraine. From a population of 41 million, about 8 million Ukrainians have been internally displaced and 6–7 million have fled the country, creating Europe's largest refugee crisis since World War II.",
+   "start": "2022-02",
+   "map": "https://en.wikipedia.org/wiki/File:2022_Russian_invasion_of_Ukraine.svg",
+   "revised": "2026-09-29T00:31:39Z",
+   "sides": {
+    "a": {
+     "with": [
+      "by",
+      "kp"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:309": {
+   "title": "Sudanese civil war (2023–present)",
+   "url": "https://en.wikipedia.org/wiki/Sudanese_civil_war_(2023%E2%80%93present)",
+   "extract": "Since April 2023, there has been a civil war in Sudan between the two main factions of the country's military government. The conflict involves the internationally recognized government of Sudan led by the Sudanese Armed Forces (SAF), under General Abdel Fattah al-Burhan; against the rival Government of Peace and Unity led by the Rapid Support Forces (RSF) paramilitary group, commanded by General Hemedti. Smaller armed groups have also taken part on both sides, most notably Sudan Liberation Movement splinter groups, the Tamazuj militia, and the Darfur Joint Protection Force.",
+   "start": "2023-04",
+   "map": "https://en.wikipedia.org/wiki/File:War_in_Sudan_(2023).svg",
+   "revised": "2026-10-01T23:10:09Z",
+   "sides": {
+    "a": {
+     "with": [
+      "eg"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {
+    "SFA": "Sudan Founding Alliance",
+    "RSF": "Rapid Support Forces"
+   }
+  },
+  "1:426": {
+   "title": "2026 Lebanon war",
+   "url": "https://en.wikipedia.org/wiki/2026_Lebanon_war",
+   "extract": "Since 2 March 2026, there has been an ongoing war in Lebanon between Israel and the militant group Hezbollah, with Israel invading parts of Lebanon. It is a resumption of major fighting in the Hezbollah–Israel conflict, and part of the wider conflict in the Middle East. The war has precipitated a humanitarian crisis, resulted in the deaths of more than 4,000 people from Israeli strikes in Lebanon, and seen the forced displacement of over 1 million.",
+   "start": "2026-03",
+   "map": "https://en.wikipedia.org/wiki/File:2026_Lebanon_War_Map.svg",
+   "revised": "2026-09-28T03:48:19Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [
+      "ir"
+     ],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:234": {
+   "title": "Gaza war",
+   "url": "https://en.wikipedia.org/wiki/Gaza_war",
+   "extract": "The Gaza war is an armed conflict in the Gaza Strip and Israel, fought as part of the unresolved Israeli–Palestinian and Gaza–Israel conflicts. The war began on 7 October 2023, when Palestinian militant group Hamas led an attack on Israel, in which 1,195 Israelis and foreign nationals were killed and 251 were taken hostage. Since the start of the Israeli offensive that followed, over 74,000 Palestinians in Gaza have been killed; several studies in The Lancet indicate this figure is likely a significant undercount. Many scholarly sources and international organizations—including UN bodies, NGOs, and the International Association of Genocide Scholars—have concluded that Israel's actions in Gaza constitute genocide under international law. Several countries have also stated that genocide is occurring and have supported legal proceedings before the International Court of Justice. Israel and its supporters, including the United States, deny that genocide has occurred.",
+   "start": "2023-10",
+   "map": "https://en.wikipedia.org/wiki/File:October_2023_Gaza%E2%88%92Israel_conflict.svg",
+   "revised": "2026-10-01T16:20:05Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:16905": {
+   "title": "2026 Iran war",
+   "url": "https://en.wikipedia.org/wiki/2026_Iran_war",
+   "extract": "Since 28 February 2026, the United States and Israel have been at war with Iran and its regional allies. The war follows the Twelve-Day War in June 2025 and sporadic fighting during the Middle Eastern crisis sparked by the Gaza war (2023–present). Amid ongoing US–Iran negotiations regarding Iran's nuclear program, the war began when the US and Israel conducted hundreds of air strikes on targets across Iran, including strikes that assassinated Supreme Leader Ali Khamenei alongside several other Iranian officials.",
+   "start": "2026-02",
+   "map": null,
+   "revised": "2026-10-02T16:36:05Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [
+      "sa",
+      "ae",
+      "kw",
+      "bh",
+      "ye"
+     ],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:14609": {
+   "title": "Iran–Israel conflict",
+   "url": "https://en.wikipedia.org/wiki/Iran%E2%80%93Israel_conflict",
+   "extract": "The Iran–Israel conflict is a long-standing geopolitical and military confrontation between the Islamic Republic of Iran and the State of Israel, involving proxy hostilities since 1985 and direct clashes since 2024.",
+   "start": "1979-02",
+   "map": null,
+   "revised": "2026-09-21T16:52:42Z",
+   "sides": null,
+   "names": {}
+  },
+  "1:337": {
+   "title": "Somali Civil War (2009–present)",
+   "url": "https://en.wikipedia.org/wiki/Somali_Civil_War_(2009%E2%80%93present)",
+   "extract": "The ongoing phase of the Somali Civil War began in 2009 and is concentrated in southern and central Somalia, primarily between the forces of the Federal Government of Somalia (FGS), assisted by African Union peacekeeping forces, and the Islamist militant group al-Shabaab, which pledged allegiance to al-Qaeda in 2012.",
+   "start": "2009-01",
+   "map": "https://en.wikipedia.org/wiki/File:Map_of_the_Somali_Civil_War.svg",
+   "revised": "2026-09-28T15:52:45Z",
+   "sides": {
+    "a": {
+     "with": [
+      "bi",
+      "dj",
+      "eg",
+      "et",
+      "ke",
+      "ug",
+      "gh",
+      "ng",
+      "sl"
+     ],
+     "backers": [
+      "fr",
+      "de",
+      "it",
+      "om",
+      "ru",
+      "sa",
+      "gb",
+      "br",
+      "fi",
+      "in",
+      "id",
+      "np",
+      "se",
+      "th",
+      "tr",
+      "zw"
+     ]
+    },
+    "b": {
+     "with": [
+      "af"
+     ],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:16069": {
+   "title": "Fano insurgency",
+   "url": "https://en.wikipedia.org/wiki/Fano_insurgency",
+   "extract": "The Fano insurgency is an armed conflict and insurgency in the Amhara Region of Ethiopia that began in April 2023 between the Fano militia and the Ethiopian government. The conflict started after the government attempted to dissolve the Amhara Special Forces and other regional forces as part of a plan to reform and centralize the country's security apparatus, and integrate them into the federal armed forces. This move led to protests and armed resistance by local forces under Fano.",
+   "start": "2023-04",
+   "map": "https://en.wikipedia.org/wiki/File:Amhara_conflict_map.svg",
+   "revised": "2026-10-02T08:02:50Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:404": {
+   "title": "Insurgency in Khyber Pakhtunkhwa",
+   "url": "https://en.wikipedia.org/wiki/Insurgency_in_Khyber_Pakhtunkhwa",
+   "extract": "Since 2004, an insurgency has been fought in the Pakistani province of Khyber Pakhtunkhwa by Islamist militant groups such as the Tehrik-i-Taliban Pakistan (TTP), Jundallah, Lashkar-e-Islam (LeI), the Tehreek-e-Nafaz-e-Shariat-e-Mohammadi (TNSM), Al-Qaeda, and their Central Asian allies such as the Islamic State – Khorasan Province (ISKP), Islamic Movement of Uzbekistan, East Turkistan Movement, Jamaat-ul-Ahrar, Ittihad-ul-Mujahideen Pakistan, and elements of organised crime. Before being transformed into an insurgency in 2017, the conflict was a war.",
+   "start": "2004-03",
+   "map": null,
+   "revised": "2026-10-02T10:55:26Z",
+   "sides": {
+    "a": {
+     "with": [
+      "us"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": [
+      "af"
+     ]
+    }
+   },
+   "names": {}
+  },
+  "1:119": {
+   "title": "Nigerian bandit conflict",
+   "url": "https://en.wikipedia.org/wiki/Nigerian_bandit_conflict",
+   "extract": "The Nigerian bandit conflict is an ongoing conflict between the country's federal government and various gangs and ethnic militias. Starting in 2011, the insecurity remaining from the conflict between the Fulani and Hausa ethnic groups quickly allowed other criminal and jihadist elements to form in the region.",
+   "start": "2011",
+   "map": null,
+   "revised": "2026-09-28T12:38:43Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ne"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:360": {
+   "title": "Islamist insurgency in Burkina Faso",
+   "url": "https://en.wikipedia.org/wiki/Islamist_insurgency_in_Burkina_Faso",
+   "extract": "The Islamist insurgency in Burkina Faso is an ongoing war and civil conflict that began in August 2015, between the Government of Burkina Faso and Jihadist African wings of Al-Qaeda such as: Jama'at Nasr al-Islam wal-Muslimin (JNIM), Ansarul Islam, and the Islamic State in the Greater Sahara (ISGS).",
+   "start": "2015-08",
+   "map": "https://en.wikipedia.org/wiki/File:Jihadist_Insurgency_in_Burkina_Faso.svg",
+   "revised": "2026-09-26T11:39:08Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ml",
+      "ne",
+      "ru"
+     ],
+     "backers": [
+      "tr",
+      "cn"
+     ]
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {
+    "JNIM": "Jama'at Nasr al-Islam wal-Muslimin"
+   }
+  },
+  "1:13641": {
+   "title": "Boko Haram insurgency",
+   "url": "https://en.wikipedia.org/wiki/Boko_Haram_insurgency",
+   "extract": "The Boko Haram insurgency began in July 2009, when the militant Islamist and jihadist rebel group Boko Haram started an armed rebellion against the government of Nigeria. Boko Haram targets both Muslims and Christians. Attacks are often directed at individuals perceived as supporting the Nigerian government or Islamic State after the split between them, including civil servants, local defense groups, Muslim leaders who oppose the group and other rebels like al-Qaeda and Islamic State. Most attacks are not based on the religion of the victims.",
+   "start": "2009-07",
+   "map": null,
+   "revised": "2026-10-01T22:33:07Z",
+   "sides": {
+    "a": {
+     "with": [
+      "cm",
+      "bj"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:297": {
+   "title": "Boko Haram insurgency",
+   "url": "https://en.wikipedia.org/wiki/Boko_Haram_insurgency",
+   "extract": "The Boko Haram insurgency began in July 2009, when the militant Islamist and jihadist rebel group Boko Haram started an armed rebellion against the government of Nigeria. Boko Haram targets both Muslims and Christians. Attacks are often directed at individuals perceived as supporting the Nigerian government or Islamic State after the split between them, including civil servants, local defense groups, Muslim leaders who oppose the group and other rebels like al-Qaeda and Islamic State. Most attacks are not based on the religion of the victims.",
+   "start": "2009-07",
+   "map": null,
+   "revised": "2026-10-01T22:33:07Z",
+   "sides": {
+    "a": {
+     "with": [
+      "cm",
+      "bj"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:230": {
+   "title": "Yemeni civil war (2014–present)",
+   "url": "https://en.wikipedia.org/wiki/Yemeni_civil_war_(2014%E2%80%93present)",
+   "extract": "The Yemeni civil war is an ongoing multilateral civil war that began in late 2014 mainly between the Rashad al-Alimi-led Presidential Leadership Council and the Mahdi al-Mashat-led Supreme Political Council, along with their respective supporters and allies. Both sides claim to constitute the official government of Yemen while the Presidential Leadership Council is recognized by the United Nations as the official government.",
+   "start": "2014-09",
+   "map": "https://en.wikipedia.org/wiki/File:Yemeni_Civil_War.svg",
+   "revised": "2026-10-02T10:57:37Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:325": {
+   "title": "Insurgency in Balochistan",
+   "url": "https://en.wikipedia.org/wiki/Insurgency_in_Balochistan",
+   "extract": "An ongoing insurgency in Pakistan's Balochistan province and Iran's Sistan and Baluchestan province is fought between Baloch nationalist separatist groups, Islamist militants, and the governments of Pakistan and Iran. The conflict is rooted in long-standing grievances over political marginalisation, economic underdevelopment, enforced disappearances, and the control of Balochistan's natural resources. The insurgency has involved guerrilla warfare, bombings, assassinations, and attacks on military personnel, infrastructure, and civilians. Sectarian violence, particularly against the Shia Hazara community in Pakistan, has also contributed to instability in the region. Human rights organisations have accused both militant groups and state security forces of abuses during the conflict.",
+   "start": "1948-07",
+   "map": "https://en.wikipedia.org/wiki/File:Map_of_the_Balochistan_region_in_Iran_and_Pakistan.png",
+   "revised": "2026-09-26T17:04:42Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:11347": {
+   "title": "Mali War",
+   "url": "https://en.wikipedia.org/wiki/Mali_War",
+   "extract": "The Mali War is an ongoing conflict that began on 16 January 2012 with a Tuareg rebellion in northern Mali. The rebels included the secular-oriented National Movement for the Liberation of Azawad (MNLA), a group fighting for independence or greater autonomy of a region they called Azawad. The MNLA was initially allied with the jihadist Ansar Dine, which, in turn, was allied to other Salafi jihadist organizations such as al-Qaeda in the Islamic Maghreb (AQIM) and its splinter, Movement for Oneness and Jihad in West Africa (MOJWA).",
+   "start": "2012-01",
+   "map": "https://en.wikipedia.org/wiki/File:MaliWar.svg",
+   "revised": "2026-09-29T08:42:04Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ru"
+     ],
+     "backers": [
+      "tr",
+      "cn",
+      "dz",
+      "us"
+     ]
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {
+    "JNIM": "Jama'at Nasr al-Islam wal-Muslimin"
+   }
+  },
+  "1:16038": {
+   "title": "Mali War",
+   "url": "https://en.wikipedia.org/wiki/Mali_War",
+   "extract": "The Mali War is an ongoing conflict that began on 16 January 2012 with a Tuareg rebellion in northern Mali. The rebels included the secular-oriented National Movement for the Liberation of Azawad (MNLA), a group fighting for independence or greater autonomy of a region they called Azawad. The MNLA was initially allied with the jihadist Ansar Dine, which, in turn, was allied to other Salafi jihadist organizations such as al-Qaeda in the Islamic Maghreb (AQIM) and its splinter, Movement for Oneness and Jihad in West Africa (MOJWA).",
+   "start": "2012-01",
+   "map": "https://en.wikipedia.org/wiki/File:MaliWar.svg",
+   "revised": "2026-09-29T08:42:04Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ru"
+     ],
+     "backers": [
+      "tr",
+      "cn",
+      "dz",
+      "us"
+     ]
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {
+    "FLA": "Azawad Liberation Front"
+   }
+  },
+  "1:222": {
+   "title": "Myanmar civil war (2021–present)",
+   "url": "https://en.wikipedia.org/wiki/Myanmar_civil_war_(2021%E2%80%93present)",
+   "extract": "The Myanmar civil war began following the military coup on 1 February 2021. The seizure of power triggered mass anti-coup demonstrations and a violent crackdown by the Tatmadaw, which significantly escalated the country's longstanding insurgencies.",
+   "start": "2021-03",
+   "map": null,
+   "revised": "2026-09-22T00:35:45Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:223": {
+   "title": "Rakhine offensive (2023–present)",
+   "url": "https://en.wikipedia.org/wiki/Rakhine_offensive_(2023%E2%80%93present)",
+   "extract": "On 13 November 2023, the Arakan Army (AA), an ethnic resistance group active in the civil war in Myanmar, launched a military offensive against Myanmar's military junta in Rakhine and southern Chin State. Fighting began alongside the launch of Operation 1027, in which the Arakan Army participated as a member of the Three Brotherhood Alliance. The offensive broke an informal ceasefire between the Arakan Army and the junta that had been in place for a year. During the offensive, the Arakan Army captured several towns in northern Rakhine, including Mrauk U, the capital of Mrauk-U District and the historical capital of Arakan. These gains gave them total control over most of northern Arakan. The Arakan Army followed these successes by besieging Sittwe, the state capital, and Ann, the headquarters of the junta's western command. They also launched offensives in the southern parts of the state, capturing several towns and throwing junta forces into disarray. Since 2025, the Arakan Army has expanded its offensive to Bago, Magway, and Ayeyarwady, threatening junta ordnance factories along the Irrawaddy River. The International Institute for Strategic Studies reported that the Arakan Army's sweeping gains \"are already enough to enable self-rule over a large portion of the Rakhine homeland and to reshape the wider balance of power in Myanmar.\" According to the Diplomat, the AA's offensive could lead to Rakhine State becoming the \"Myanmar’s first truly autonomous region\".",
+   "start": "2023-11",
+   "map": null,
+   "revised": "2026-09-24T14:45:21Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:221": {
+   "title": "Karen conflict",
+   "url": "https://en.wikipedia.org/wiki/Karen_conflict",
+   "extract": "The Karen conflict is an armed conflict in Kayin State, Myanmar. It is part of the wider internal conflict in Myanmar between the military government and various minority groups. Karen nationalists have been fighting for an independent state, known as Kawthoolei, since 1949. The Karen National Union (KNU) and its Karen National Liberation Army (KNLA) are the most prominent Karen rebel groups. Hundreds of thousands of civilians have been displaced by the conflict, many of whom fled to neighbouring Thailand and survive in refugee camps.",
+   "start": "1949-01",
+   "map": null,
+   "revised": "2026-09-07T14:07:23Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:231": {
+   "title": "Kachin conflict",
+   "url": "https://en.wikipedia.org/wiki/Kachin_conflict",
+   "extract": "The Kachin conflict or the Kachin War is one of the multiple conflicts which are collectively referred to as the internal conflict in Myanmar. Kachin insurgents have been fighting against the Tatmadaw since 1961, with only one major ceasefire being brokered between them, which lasted from 1994 to 2011, a total of 17 years.",
+   "start": "1961-02",
+   "map": null,
+   "revised": "2026-08-22T17:06:32Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:283": {
+   "title": "M23 campaign (2022–present)",
+   "url": "https://en.wikipedia.org/wiki/M23_campaign_(2022%E2%80%93present)",
+   "extract": "The M23 campaign is an ongoing series of military offensives launched by the March 23 Movement (M23), a Rwandan-backed rebel paramilitary group in the Democratic Republic of the Congo, since March 2022. In November 2021, M23 first launched attacks against the Congolese military (FARDC) and MONUSCO, seizing military positions in Ndiza, Cyanzu, and Runyoni in North Kivu Province. This coincided with the deployment of Uganda People's Defence Force (UPDF) to the region to combat the Allied Democratic Forces (ADF), a Ugandan rebel group operating in the Congo's North Kivu and Ituri provinces.",
+   "start": "2022-03",
+   "map": "https://en.wikipedia.org/wiki/File:Zone-de-controle-M23.svg",
+   "revised": "2026-09-26T20:05:31Z",
+   "sides": {
+    "a": {
+     "with": [
+      "pk",
+      "in",
+      "ru",
+      "rs",
+      "tz",
+      "ma",
+      "ug",
+      "bi",
+      "ke"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [
+      "rw"
+     ],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:14692": {
+   "title": "Allied Democratic Forces insurgency",
+   "url": "https://en.wikipedia.org/wiki/Allied_Democratic_Forces_insurgency",
+   "extract": "The Allied Democratic Forces insurgency is an ongoing conflict waged by the Islamic State-aligned Allied Democratic Forces (ADF) in Uganda and the Democratic Republic of the Congo (DRC), against the governments of those two countries and the MONUSCO. The insurgency began in 1996, intensifying in 2013, resulting in hundreds of deaths. The ADF is known to currently control a number of hidden camps which are home to about 2,000 people; in these camps, the ADF operates as a proto-state with \"an internal security service, a prison, health clinics, and an orphanage\" as well as schools for boys and girls.",
+   "start": "1996-11",
+   "map": null,
+   "revised": "2026-09-25T13:25:51Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ug"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:11639": {
+   "title": "2026 Afghanistan–Pakistan war",
+   "url": "https://en.wikipedia.org/wiki/2026_Afghanistan%E2%80%93Pakistan_war",
+   "extract": "Since February 2026, Pakistan and Afghanistan have been engaged in the most sustained cross-border conflict between the two countries since the Taliban's 2021 return to power in Afghanistan. The conflict began with Pakistani airstrikes on alleged Pakistani Taliban (TTP) and Islamic State – Khorasan Province camps in eastern Afghanistan, and escalated within a week into what Pakistan's defence minister, Khawaja Asif, called an \"open war\" fought under the codename Operation Ghazab lil-Haq.",
+   "start": "2026-02",
+   "map": "https://en.wikipedia.org/wiki/File:Pakistan_Afghanistan_locator.svg",
+   "revised": "2026-10-01T21:19:59Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:413": {
+   "title": "OLA insurgency",
+   "url": "https://en.wikipedia.org/wiki/OLA_insurgency",
+   "extract": "The OLA insurgency is an armed insurgency between the Oromo Liberation Army (OLA), which split from the Oromo Liberation Front (OLF) in 2018, and the Ethiopian government, continuing in the context of the long-term Oromo conflict, typically dated to have started with the formation of the Oromo Liberation Front in 1973.",
+   "start": "2018-08",
+   "map": "https://en.wikipedia.org/wiki/File:Oromia_in_Ethiopia_legend.svg",
+   "revised": "2026-08-22T04:52:51Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {
+    "OLA": "Oromo Liberation Army"
+   }
+  },
+  "1:13639": {
+   "title": "Islamist insurgency in Niger",
+   "url": "https://en.wikipedia.org/wiki/Islamist_insurgency_in_Niger",
+   "extract": "Since 2015, the border area between Burkina Faso, Mali, and Niger has been a hotbed for jihadist forces originating from Mali. The insurgency has taken place in two distinct regions of Niger. In the southwest, the Islamic State in the Greater Sahara and the Nusrat al-Islam have carried out attacks in the tri-border area with Burkina Faso and Mali. Meanwhile, in the southeast, the Islamic State in the West African Province has established control in parts of southern Niger.",
+   "start": "2015-02",
+   "map": null,
+   "revised": "2026-10-02T13:59:27Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ml",
+      "bf"
+     ],
+     "backers": [
+      "ru",
+      "dz",
+      "fr",
+      "ca",
+      "be",
+      "de",
+      "cn",
+      "it",
+      "tr"
+     ]
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:430": {
+   "title": "Islamist insurgency in Niger",
+   "url": "https://en.wikipedia.org/wiki/Islamist_insurgency_in_Niger",
+   "extract": "Since 2015, the border area between Burkina Faso, Mali, and Niger has been a hotbed for jihadist forces originating from Mali. The insurgency has taken place in two distinct regions of Niger. In the southwest, the Islamic State in the Greater Sahara and the Nusrat al-Islam have carried out attacks in the tri-border area with Burkina Faso and Mali. Meanwhile, in the southeast, the Islamic State in the West African Province has established control in parts of southern Niger.",
+   "start": "2015-02",
+   "map": null,
+   "revised": "2026-10-02T13:59:27Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ml",
+      "bf"
+     ],
+     "backers": [
+      "ru",
+      "dz",
+      "fr",
+      "ca",
+      "be",
+      "de",
+      "cn",
+      "it",
+      "tr"
+     ]
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {
+    "JNIM": "Jama'at Nasr al-Islam wal Muslimin"
+   }
+  },
+  "1:289": {
+   "title": "Colombian conflict",
+   "url": "https://en.wikipedia.org/wiki/Colombian_conflict",
+   "extract": "The Colombian conflict began on May 27, 1964, and is a low-intensity asymmetric war between the government of Colombia, paramilitary groups, crime syndicates, and far-left guerrilla groups engaged in armed factional hostilities to increase their influence in Colombian territory. Some of the most important international contributors to the Colombian conflict include multinational corporations, the United States, Cuba, and the drug trafficking industry.",
+   "start": "1964-05",
+   "map": null,
+   "revised": "2026-10-01T10:48:23Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": [
+      "pe",
+      "pa",
+      "mx",
+      "br",
+      "ec",
+      "us",
+      "es",
+      "gb"
+     ]
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:11345": {
+   "title": "Jonglei clashes (2025–present)",
+   "url": "https://en.wikipedia.org/wiki/Jonglei_clashes_(2025%E2%80%93present)",
+   "extract": "Beginning in December 2025, and intensifying in 2026, clashes began between the Sudan People's Liberation Movement-in-Opposition (SPLA-IO) and South Sudan People's Defence Forces (SSPDF) within Jonglei State, South Sudan. The SPLA-IO launched an offensive in late December to capture several government strongholds within the majority Nuer Jonglei State in response to the continued imprisonment and treason trial of their leader Riek Machar after the 2025 Nasir clashes. On 25 January 2026, the SSPDF announced the launch of Operation Enduring Peace to retake territory from the SPLA-IO.",
+   "start": "2025-12",
+   "map": "https://en.wikipedia.org/wiki/File:Southern_Sudan_Civil_War.svg",
+   "revised": "2026-08-22T04:05:03Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:14845": {
+   "title": "Insurgency in Cabo Delgado",
+   "url": "https://en.wikipedia.org/wiki/Insurgency_in_Cabo_Delgado",
+   "extract": "The insurgency in Cabo Delgado is an ongoing Islamist insurgency in Cabo Delgado Province, Mozambique, mainly fought between militant Islamists and jihadists attempting to establish an Islamic state in the region, and Mozambican security forces. Civilians have been the main targets of terrorist attacks by Islamist militants. The main insurgent faction is Ansar al-Sunna, a native extremist faction with tenuous international connections. From mid-2018, the Islamic State's Central Africa Province has allegedly become active in northern Mozambique as well, and claimed its first attack against Mozambican security forces in June 2019. In addition, bandits have exploited the rebellion to carry out raids. As of 2020, the insurgency intensified, as in the first half of 2020 there were nearly as many attacks carried out as in the whole of 2019.",
+   "start": "2017-10",
+   "map": "https://en.wikipedia.org/wiki/File:Testmapcabodelgado.png",
+   "revised": "2026-09-26T12:51:12Z",
+   "sides": {
+    "a": {
+     "with": [
+      "rw",
+      "pt",
+      "us",
+      "gb",
+      "za",
+      "bw",
+      "ls",
+      "tz",
+      "ao",
+      "zm",
+      "mw",
+      "na"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:227": {
+   "title": "Naxalite–Maoist insurgency",
+   "url": "https://en.wikipedia.org/wiki/Naxalite%E2%80%93Maoist_insurgency",
+   "extract": "The Naxalite–Maoist insurgency is an ongoing conflict between the Government of India and communist groups. The Naxalites are a group of communist organisations following Maoist political sentiment and ideology, and claim to be fighting for rural poor and wage a people's war against the government.",
+   "start": "1967-05",
+   "map": null,
+   "revised": "2026-10-02T09:27:06Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:14129": {
+   "title": "Anglophone Crisis",
+   "url": "https://en.wikipedia.org/wiki/Anglophone_Crisis",
+   "extract": "The Anglophone Crisis, also known as the Ambazonia War, is an ongoing armed conflict in the English-speaking Northwest and Southwest regions of Cameroon, between the Cameroonian government and Ambazonian separatist groups, part of the long-standing Anglophone problem. Following the suppression of 2016–17 protests by Cameroonian authorities, separatists in the Anglophone regions launched a guerrilla campaign and later proclaimed independence. Within two months, the government sent its army into the Anglophone regions.",
+   "start": "2017-09",
+   "map": null,
+   "revised": "2026-09-12T12:00:34Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:381": {
+   "title": "Haitian conflict",
+   "url": "https://en.wikipedia.org/wiki/Haitian_conflict",
+   "extract": "Since 2020, Haiti's capital Port-au-Prince has been the site of an ongoing armed conflict. The government of Haiti and Haitian security forces have struggled to maintain their control of Port-au-Prince amid this conflict, with gangs speculated to control up to 90% of the city by 2023. In response to the escalating fighting, an armed vigilante movement, known as bwa kale, also emerged, with the purpose of fighting the gangs. On 2 October 2023, United Nations Security Council Resolution 2699 was approved, authorizing a Kenya-led \"multinational security support mission\" to Haiti. Until 2024, the war was between two major groups and their allies: the Revolutionary Forces of the G9 Family and Allies and the G-Pèp. However, in February 2024 the two rival groups united in a coalition known as Viv Ansanm, formed to oppose the government and the UN mission.",
+   "start": "2020-05",
+   "map": "https://en.wikipedia.org/wiki/File:Gang_war_in_Haiti.svg",
+   "revised": "2026-10-01T10:19:06Z",
+   "sides": {
+    "a": {
+     "with": [
+      "ke",
+      "jm",
+      "bz",
+      "bs",
+      "gt",
+      "sv",
+      "td",
+      "lk",
+      "us"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:294": {
+   "title": "2025 Cambodian–Thai border crisis",
+   "url": "https://en.wikipedia.org/wiki/2025_Cambodian%E2%80%93Thai_border_crisis",
+   "extract": "The territorial dispute between Cambodia and Thailand escalated into a direct armed confrontation on 24 July 2025 along the Cambodia–Thailand border. Although both governments subsequently agreed to an unconditional ceasefire on 28 July 2025, hostilities later resumed in December, during which Thai forces seized several towns and strategic hills in contested areas near the frontier.",
+   "start": "2025-10",
+   "map": "https://en.wikipedia.org/wiki/File:Cambodia_Thailand_Locator_(cropped).svg",
+   "revised": "2026-09-28T17:05:53Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:416": {
+   "title": "Central African Republic Civil War",
+   "url": "https://en.wikipedia.org/wiki/Central_African_Republic_Civil_War",
+   "extract": "The Central African Republic Civil War is an ongoing civil war in the Central African Republic (CAR) involving the successive governments, rebels from the former Séléka coalition, the Anti-balaka militias, and various foreign and international forces.",
+   "start": "2012-12",
+   "map": "https://en.wikipedia.org/wiki/File:War_in_Central_African_Republic.svg",
+   "revised": "2026-09-27T20:52:24Z",
+   "sides": {
+    "a": {
+     "with": [
+      "rw",
+      "ru",
+      "sd",
+      "za",
+      "ao",
+      "cm",
+      "td",
+      "ma",
+      "ug",
+      "ga",
+      "bi",
+      "gq",
+      "ee",
+      "fi",
+      "ge",
+      "lv",
+      "lu",
+      "nl",
+      "pt",
+      "pl",
+      "ro",
+      "es",
+      "it"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {
+    "CMSPR": "Military Coalition for the Salvation of the People and Recovery"
+   }
+  },
+  "1:299": {
+   "title": "Syrian civil war",
+   "url": "https://en.wikipedia.org/wiki/Syrian_civil_war",
+   "extract": "The Syrian civil war was an armed conflict that began with the Syrian revolution in March 2011, when popular discontent with the Ba'athist regime ruled by Bashar al-Assad triggered large-scale protests and pro-democracy rallies across Syria, as part of the wider Arab Spring. The Assad regime responded to the protests with lethal force, which led to a series of defections, the emergence of armed opposition groups, and the civilian uprising descending into a civil war. The war lasted almost 14 years and culminated in the fall of the Assad regime in December 2024. Many sources regard this as the end of the civil war even though clashes have continued into 2026.",
+   "start": "2011-03",
+   "map": null,
+   "revised": "2026-09-25T13:50:07Z",
+   "sides": null,
+   "names": {}
+  },
+  "1:164": {
+   "title": "2026 United States intervention in Venezuela",
+   "url": "https://en.wikipedia.org/wiki/2026_United_States_intervention_in_Venezuela",
+   "extract": "On 3 January 2026, the United States launched a military strike in Venezuela and captured incumbent Venezuelan president Nicolás Maduro and his wife, Cilia Flores. The US operation, codenamed Operation Absolute Resolve, began around 2 a.m. local time, when explosions were observed. The US Armed Forces bombed infrastructure across northern Venezuela to suppress air defenses as an apprehension force attacked Maduro's compound in Caracas. Approximately 80 people, including Venezuelan and Cuban military and civilians, died and seven American soldiers were wounded. Maduro and Flores were transported to New York City by US forces and were indicted on drug trafficking charges to which Maduro and Flores pleaded not guilty.",
+   "start": null,
+   "map": null,
+   "revised": "2026-09-29T02:52:36Z",
+   "sides": {
+    "a": {
+     "with": [],
+     "backers": []
+    },
+    "b": {
+     "with": [],
+     "backers": []
+    }
+   },
+   "names": {}
+  },
+  "1:77": {
+   "title": "2026 United States-led conflict with pro-Iranian Iraqi militias",
+   "url": "https://en.wikipedia.org/wiki/2026_United_States-led_conflict_with_pro-Iranian_Iraqi_militias",
+   "extract": "Following the outbreak of the 2026 Iran war on 28 February 2026, the United States and Israel conducted airstrikes targeting several Iranian-backed Iraqi Shia militias under the Islamic Resistance in Iraq (IRI) and Popular Mobilization Forces (PMF) umbrellas in Iraq. At least several dozen Iraqi militiamen have been reported dead so far from attacks on militia headquarters, checkpoints, ammunition dumps, and private residences of senior commanders. PMF and IRI militias retaliated by lobbying rockets and drones at U.S. and Kurdish bases. According to reporting from Reuters and the Wall Street Journal, Saudi Arabia and Kuwait had also conducted airstrikes on Iranian-backed militias in Iraq.",
+   "start": "2026-02",
+   "map": null,
+   "revised": "2026-09-21T23:23:12Z",
+   "sides": {
+    "a": {
+     "with": [
+      "sy"
+     ],
+     "backers": []
+    },
+    "b": {
+     "with": [
+      "sa",
+      "kw"
+     ],
+     "backers": []
+    }
+   },
+   "names": {}
+  }
+ }
+}

@@ -83,6 +83,10 @@ export class FileStore {
       + `"events": [\n${events.map(e => JSON.stringify(e)).join(',\n')}\n]}\n`);
   }
 
+  /** A context source's articles (e.g. Wikipedia's about wars): { fetchedAt, articles }, or null. */
+  context(source) { return this.#readJson('data', 'context', `${source}.json`, { optional: true }); }
+  saveContext(source, data) { this.#writeJson(data, 'data', 'context', `${source}.json`); }
+
   /** Confirmed risk signals per place and category, with pending falls: see lib/risk.mjs. */
   signals() { return this.#readJson('data', 'signals', 'current.json', { optional: true }); }
   saveSignals(signals) { this.#writeJson(signals, 'data', 'signals', 'current.json'); }

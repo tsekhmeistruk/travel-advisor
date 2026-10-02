@@ -492,6 +492,27 @@ describe('conflict data (UCDP) in the risk layer', () => {
     assert.deepEqual(same.newChanges, [], 'the same data again changes nothing');
   });
 
+  test('a context source (articles about the wars) adds risk/wars.json to the conflict figures, never a level', () => {
+    const WIKI = { id: 'wikipedia', kind: 'context', licence: 'CC BY-SA 4.0', links: { home: 'https://en.wikipedia.org/' }, staleAfterHours: 720, minWarDeaths: 1000, articles: { '1:1': 'Somali Civil War (2009–present)', '1:2': 'Gaza war' } };
+    const articles = {
+      'Somali Civil War (2009–present)': { title: 'Somali Civil War (2009–present)', url: 'https://en.wikipedia.org/wiki/Somali_Civil_War_(2009%E2%80%93present)', extract: 'The Somali Civil War…', start: '2009-01', image: null,
+        sides: [{ fighters: ['Somalia', 'Mexico'], backers: ['Japan'] }, { fighters: ['Al-Shabaab'], backers: [] }], names: {} },   // the test registry's countries
+    };
+    const withWiki = (versions, over = {}) => {
+      const i = input(versions, over);
+      return { ...i, schedule: { ...i.schedule, wikipedia: { everyMinutes: 10080 } }, sources: { ...i.sources, wikipedia: { config: WIKI, data: { fetchedAt: '2026-09-30T00:00:00.000Z', articles } } } };
+    };
+    const r = buildRisk(withWiki([july]));
+    const wars = r.files['risk/wars.json'];
+    assert.deepEqual(Object.keys(wars.conflicts), ['1:1'], 'Gaza\'s article is not read yet');
+    assert.deepEqual(wars.conflicts['1:1'].sides, { a: { with: ['mx'], backers: ['jp'] }, b: { with: [], backers: [] } });
+    assert.ok(r.warnings.some(w => w.includes('no copy of "Gaza war"')));
+    assert.equal(r.files['risk/current.json'].categories.context, undefined, 'no category');
+    assert.ok(r.files['risk/current.json'].sources.wikipedia, 'named for attribution');
+    const noConflict = buildRisk({ ...withWiki([july]), sources: { wikipedia: withWiki([july]).sources.wikipedia } });
+    assert.equal(noConflict.files['risk/wars.json'], undefined, 'nothing to add context to');
+  });
+
   test('a source that is down keeps its last state and publishes no levels, but its figures stay', () => {
     const first = buildRisk(input([july]));
     const down = buildRisk(input([july], { state: first.state, sourcesState: { ucdp: { lastAttempt: '2026-09-30T00:00:00.000Z', lastSuccess: '2026-08-01T00:00:00.000Z' } } }));

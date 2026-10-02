@@ -92,6 +92,14 @@ describe('risk sources are wired up everywhere', () => {
         assert.equal(cfg.levels, undefined, 'no levels');
         return;
       }
+      if (cfg.kind === 'context') {
+        // Articles about the wars: never a level; each conflict key to a title, and the names it maps to places.
+        assert.ok(cfg.staleAfterHours > 0 && cfg.minWarDeaths > 0 && cfg.licence, 'staleAfterHours, minWarDeaths, licence');
+        assert.ok(Object.keys(cfg.articles).length && Object.entries(cfg.articles).every(([key, title]) => /^[123]:\d+$/.test(key) && title.trim() === title && title), 'articles: conflict key -> title');
+        assert.deepEqual(Object.values(cfg.places ?? {}).filter(p => !placeIds.has(p)), [], 'places refer to known places');
+        assert.equal(cfg.levels ?? cfg.types ?? cfg.category, undefined, 'no levels, types or category');
+        return;
+      }
       if (cfg.kind === 'conflict') {
         // Monthly figures: one category, deaths bands to levels, and every country name mapped to a place.
         assert.ok(categories.has(cfg.category), `category ${cfg.category} is in config/categories.json`);
@@ -160,7 +168,7 @@ describe('translation keys used by the code exist', () => {
     const sources = store.sourceIds().flatMap(id => {
       const cfg = store.source(id);
       if (cfg.kind === 'counts') return [`risk.sources.${id}`, ...Object.keys(cfg.series).map(s => `risk.activity.series.${s}`)];
-      if (cfg.kind === 'conflict') return [`risk.sources.${id}`];
+      if (cfg.kind === 'conflict' || cfg.kind === 'context') return [`risk.sources.${id}`];
       return [`risk.sources.${id}`, ...Object.values(cfg.types).map(t => `risk.eventTypes.${t.type}`), ...Object.keys(cfg.levels).map(a => `risk.alerts.${a}`)];
     });
     assert.deepEqual([...levels, ...categories, ...sources].filter(k => !has(k)), []);

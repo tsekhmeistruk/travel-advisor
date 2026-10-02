@@ -91,6 +91,10 @@ The fields in `stats` depend on the source:
 
 - **WHO** (risk source, from Sep 27, 2026): `events` (notices of the last 90 days), `received` (notices in this response, the latest 30), `added` (new notice ids), `archived`.
 
+- **UCDP** (conflict source, from Oct 1, 2026): `fetched` (new monthly versions), `refetched` (stored versions downloaded again because the stored format changed, Oct 2, 2026), `skipped` (months that never came out), `through` (the latest version), `events` (events in the versions read), `unmapped` (country names missing from the config). `calls.version` counts the CSV downloads; a 404 means "not out yet".
+
+- **Wikipedia** (context source, from Oct 2, 2026): `articles` (titles in the config), `fetched` (read in this run), `failed` (their last copy was kept), `noInfobox` (articles without a war infobox: their summary is still used). `calls.summary`, `calls.lead` and `calls.infobox` count the REST summaries, the lead sections and the infobox templates.
+
 `calls.search` is GDACS's search endpoint, counted like `calls.list`. HTTP 204 means "no events".
 
 ## `data/sources-state.json`: last success of every fetch

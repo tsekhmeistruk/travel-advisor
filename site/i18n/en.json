@@ -337,7 +337,8 @@
    "gdacs": "GDACS",
    "who": "WHO",
    "gdelt": "GDELT",
-   "ucdp": "UCDP"
+   "ucdp": "UCDP",
+   "wikipedia": "Wikipedia"
   },
   "status": {
    "delayed": "delayed",

@@ -14,6 +14,7 @@
 //   health.json    each provider's and source's last success and status
 //   conflict.json  a conflict source's figures (wars, deaths per place and month), see lib/conflict.mjs
 //   conflict-events.json  its latest month's events with a point on the map (dots)
+//   wars.json      the context of each war from a context source (Wikipedia), see lib/wars.mjs
 //
 // Counts sources (GDELT news reports) never set a level: they give unusual activity, a status
 // per place and series ("far above normal"), published beside the levels as `activity`.
@@ -22,6 +23,7 @@ import { levelChangesOf } from './build.mjs';
 import { nameKey } from './text.mjs';
 import { assessAll, rank } from './anomaly.mjs';
 import { conflictSignals } from './conflict.mjs';
+import { warsContext } from './wars.mjs';
 
 const DAY = 864e5;
 export const CHANGE_WINDOW_DAYS = 90;
@@ -337,7 +339,7 @@ export function tensionSignals(pairs, config, prev, index) {
  *   categories   config/categories.json
  *   schedule     config/schedule.json
  *   advisories   { files: { providerId: published data }, history, flags: { providerId: flag code } }
- *   sources      { id: { config, data: stored events | counts | conflict versions | null, pairs?: pair counts } }
+ *   sources      { id: { config, data: stored events | counts | conflict versions | articles | null, pairs?: pair counts } }
  *   state        data/signals/current.json (or null)
  *   log          stored change log entries (this year and last)
  *   sourcesState data/sources-state.json
@@ -379,7 +381,13 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   const activityByPlace = {};
   let conflict = null;
   let tensionsByPlace = {};
+  const contexts = [];
   for (const [sourceId, { config, data, pairs }] of Object.entries(sources)) {
+    if (config.kind === 'context') {
+      // Articles about the wars: read with the conflict figures below, never a level.
+      contexts.push({ sourceId, config, data });
+      continue;
+    }
     if (config.kind === 'conflict') {
       // Monthly figures (lib/conflict.mjs): published whenever there is data, levels only while the source is up.
       const c = config.category;
@@ -447,6 +455,15 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
   const recent = [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')]
     .filter(c => c.at >= cutoff).sort(byTime).reverse();
 
+  // The context of the wars, once the conflict figures are known.
+  let wars = null;
+  for (const { sourceId, config, data } of contexts) {
+    if (!conflict || !data) continue;
+    const w = warsContext(sourceId, { conflict: conflict.published, context: data, config, index });
+    warnings.push(...w.warnings);
+    wars = w.published;
+  }
+
   const sortedPlaces = Object.fromEntries(Object.keys(places).sort().map(id => [id, places[id]]));
   const categoriesOut = Object.fromEntries(catIds.filter(c => catMeta[c]).map(c => [c, catMeta[c]]));
   // Who the levels come from, for attribution: risk sources first, then the governments.
@@ -460,6 +477,7 @@ export function buildRisk({ index, categories, schedule, advisories, sources, st
     'risk/events.json': { asOf, events: events.sort((a, b) => b.startedAt.localeCompare(a.startedAt) || a.id.localeCompare(b.id)) },
     'risk/health.json': { asOf, sources: health },
     ...(conflict && { 'risk/conflict.json': conflict.published, 'risk/conflict-events.json': conflict.events }),
+    ...(wars && { 'risk/wars.json': wars }),
     ...placeFiles({ placeIds: [...index.byId.keys()].sort(), advisoryFiles: advisories.files, events, changes: [...log, ...newChanges, ...derived.filter(c => c.kind === 'advisory')], asOf, activity: activityByPlace, conflict: conflict?.byPlace, tensions: tensionsByPlace }),
   };
   return { files, state: newState, newChanges, warnings };

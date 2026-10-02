@@ -53,7 +53,7 @@ describe('provider registry', () => {
     assert.equal(getProvider('gdacs'), gdacs, 'sources are found by id too');
   });
   test('rejects an unknown provider with the list of known ones', () => {
-    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, de, gdacs, who, gdelt, ucdp$/);
+    assert.throws(() => getProvider('xx'), /Unknown provider "xx". Known: us, ca, nl, uk, de, gdacs, who, gdelt, ucdp, wikipedia$/);
   });
 });
 
