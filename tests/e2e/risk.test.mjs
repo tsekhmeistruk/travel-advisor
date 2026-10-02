@@ -221,7 +221,7 @@ describe('risk panel', () => {
     await sleep(200);
     assert.match(await text(page, 'recentTitle'), /24 hours/);
     // Real changes of the last day may be listed too: check the injected ones, not a total.
-    const keys = await page.$$eval('#recentList button', els => els.map(b => b.dataset.key));
+    const keys = await page.$$eval('#recentList button[data-key]', els => els.map(b => b.dataset.key));
     assert.ok(keys.includes('test:event'), 'the 2-hour event');
     assert.ok(keys.some(k => k.startsWith('jp:disaster:')), 'the 1-hour level change');
     assert.ok(!keys.some(k => k.startsWith('it:disaster:')), 'not the 10-day-old one');
