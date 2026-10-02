@@ -8,9 +8,9 @@ import { useBrowser, open, openRaw, sleep, OUT, detailsTitle, withRiskChanges, m
 
 useBrowser();
 
-const RISK_MODES = ['highest', 'disaster', 'wildfire', 'changes'];
+const RISK_MODES = ['wars', 'highest', 'disaster', 'wildfire', 'changes'];
 // Pulses each mode must show with withRiskChanges(): its category's level changes, or all of them.
-const MIN_PULSES = { highest: 6, disaster: 4, wildfire: 1, changes: 6 };
+const MIN_PULSES = { wars: 1, highest: 7, disaster: 4, wildfire: 1, changes: 7 };
 const saved = (page) => page.evaluate((key) => JSON.parse(localStorage.getItem(key)), SETTINGS_KEY);
 const classOf = (page, id) => page.evaluate((placeId) => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === placeId)?.getAttribute('class'), id);
 const text = (page, id) => page.$eval(`#${id}`, el => el.textContent);
@@ -114,16 +114,19 @@ describe('mode switch', () => {
     });
   }
 
-  test('a first visit opens on Highest; a saved Travel is kept', async () => {
+  test('a first visit opens on Wars; a saved Travel or Highest is kept', async () => {
     const first = await openRaw({ stored: {} });
     await first.waitForSelector('path.country');
-    assert.equal(await checked(first, '#modeSwitch'), 'highest');
+    assert.equal(await checked(first, '#modeSwitch'), 'wars');
+    assert.equal(await first.$eval('#modeSwitch [role="radio"]', el => el.dataset.mode), 'wars', 'the first tab');
     assert.equal(await first.evaluate(() => document.title), 'Risk Monitor');
     await first.close();
-    const back = await openRaw({ stored: { mode: 'travel' } });
-    await back.waitForSelector('path.country');
-    assert.equal(await checked(back, '#modeSwitch'), 'travel');
-    await back.close();
+    for (const mode of ['travel', 'highest']) {
+      const back = await openRaw({ stored: { mode } });
+      await back.waitForSelector('path.country');
+      assert.equal(await checked(back, '#modeSwitch'), mode);
+      await back.close();
+    }
   });
 
   test('an unknown mode in the URL falls back to the saved one; old settings are migrated to Travel', async () => {
@@ -165,6 +168,25 @@ describe('risk panel', () => {
     const row = await page.$$eval('#details .risk-rows li', els => els.map(li => [li.querySelector('.cat').textContent, li.querySelector('.lvl').textContent, li.querySelector('.basis').textContent, li.querySelector('.basis').title]).find(r => r[0] === 'Conflict'));
     const deaths = figures.deaths12.toLocaleString('en');
     assert.deepEqual(row, ['Conflict', 'Critical', `${deaths} deaths (UCDP)`, `${deaths} deaths in 12 months (UCDP)`], `${name}, the most deaths`);
+    await page.close();
+  });
+
+  test('Wars: the war count from the published figures; an escalating place opens its card with 12 months of deaths', async () => {
+    const page = await openMode('wars');
+    const conflict = await page.evaluate(async () => (await fetch('data/risk/conflict.json')).json());
+    assert.equal(await page.$eval('#details .wars-count b', el => el.textContent), String(conflict.series.wars.at(-1)));
+    assert.match(await text(page, 'asOf'), /^Conflict data to \w+ \d{4}$/);
+    const chip = await page.$('#details .wars-chips button[data-place]');
+    if (chip) {
+      const place = await chip.evaluate(b => b.dataset.place);
+      await chip.click();
+      await sleep(900);
+      await page.hover('#footer');
+      assert.match(await page.evaluate(() => location.hash), new RegExp(`place=${place}`));
+      assert.equal(await page.$$eval('#details .wars-bars rect', els => els.length), 12);
+      assert.equal(await page.$eval('#details .trend .arrow', el => el.classList.contains('up')), true, 'an escalating place says so');
+    }
+    assert.deepEqual(page.errors, []);
     await page.close();
   });
 
@@ -407,7 +429,7 @@ describe('event markers', () => {
       assert.equal(await page.$eval('#modeSwitch', el => !!el.closest('#mapArea')), true);
       const cut = await page.$$eval('#modeSwitch button', els => els.filter(b => b.scrollWidth > b.clientWidth + 1).map(b => b.textContent));
       assert.deepEqual(cut, []);
-      assert.equal(await page.$$eval('#modeSwitch button', els => els.length), 5);
+      assert.equal(await page.$$eval('#modeSwitch button', els => els.length), 6);
       await page.close();
     });
   }
@@ -486,6 +508,7 @@ describe('country view', () => {
     await jp.waitForSelector('#countryView [data-event]');
     await jp.click('#countryView [data-event="gdacs:TC:900"]');
     await sleep(900);
+    await jp.hover('#footer');   // off the feed, which now sits where the alert was
     assert.equal((await view(jp)).open, false);
     assert.match(await detailsTitle(jp), /Test cyclone gdacs:TC:900/);
     await jp.click('#modeSwitch [data-mode="travel"]');

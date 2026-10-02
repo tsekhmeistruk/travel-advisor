@@ -10,7 +10,7 @@ import { launch, openPage } from './browser.mjs';
 
 const { values: o, positionals } = parseArgs({ allowPositionals: true, options: { base: { type: 'string', default: 'https://tsekhmeistruk.github.io/travel-advisor/' } } });
 const base = o.base.replace(/\/?$/, '/');
-const hashes = [...['travel', 'highest', 'disaster', 'wildfire', 'changes'].map(m => `#mode=${m}`), ...positionals];
+const hashes = [...['wars', 'travel', 'highest', 'disaster', 'wildfire', 'changes'].map(m => `#mode=${m}`), ...positionals];
 
 const browser = await launch();
 let errors = 0;

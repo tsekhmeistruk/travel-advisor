@@ -12,6 +12,7 @@ import { esc, safeUrl } from '../../core/dom.js';
 import { levelOf, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, newsRows } from './logic.js';
 import { prepareEntries, rankMatches } from '../../ui/search.js';
 import { titleSize } from '../travel-advisories/logic.js';
+import { barRects, conflictName, conflictUrl, windowMonths } from '../wars/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 export const WINDOWS = [1, 7, 30, 90];
@@ -282,6 +283,42 @@ export function createRiskMode(ctx) {
       </section>`;
   }
 
+  /**
+   * The country view's armed violence (UCDP, from the place file): deaths per month, the conflicts
+   * fought there and those it is a party to (linked to UCDP), and the violence no government is a side of.
+   */
+  function conflictSection(file) {
+    if (!conflict) return '';
+    const tw = (key, params) => i18n.t(`wars.${key}`, params);
+    const num = (n) => i18n.formatNumber(n);
+    const month = (ym) => i18n.formatMonth(ym);
+    const c = file?.conflict;
+    const title = `<h3 class="cv-title">${esc(tw('countryTitle'))}</h3>`;
+    if (!c) return `<section class="cv-section">${title}<p class="cv-empty">${esc(tw('quiet', { month: month(conflict.through) }))}</p></section>`;
+    const months = windowMonths(c.through, c.months.length);
+    const rects = barRects(c.months, 320, 56);
+    const link = (k) => (conflict.links?.conflict ? safeUrl(conflictUrl(conflict.links.conflict, k)) : null);
+    const row = (x, text) => {
+      const url = link(x.key);
+      return `<li><span class="swatch" style="background:${swatch(x.war ? 4 : 3)}"></span><span class="what" title="${esc(text)}">${esc(text)}</span>${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(url)}">↗</a>` : ''}</li>`;
+    };
+    const name = (x) => conflictName(x, tw, placeName);
+    const fought = c.conflicts.map(x => row(x, tw(x.war ? 'foughtWar' : 'foughtConflict', { name: name(x), deaths: num(x.deaths12) })));
+    const elsewhere = c.partyTo.filter(x => !c.conflicts.some(y => y.key === x.key))
+      .map(x => row(x, tw('partyTo', { name: name(x), war: tw(x.war ? 'war' : 'armedConflict'), place: placeName(x.places[0]) })));
+    const other = c.byType.nonState + c.byType.oneSided ? `<p class="cv-empty">${esc(tw('otherViolence', { groups: num(c.byType.nonState), civilians: num(c.byType.oneSided) }))}</p>` : '';
+    return `<section class="cv-section">
+        ${title}
+        <p class="cv-figure">${esc(tw('badge', { level: levelName(levelOf(current, file.placeId, 'conflict')), count: c.deaths12, deaths: num(c.deaths12) }))}</p>
+        <div class="wars-bars"><svg viewBox="0 0 320 56" preserveAspectRatio="none" aria-hidden="true">
+          ${rects.map((r, i) => `<rect x="${r.x}" y="${r.y}" width="${r.w}" height="${r.h}" rx="1.5"><title>${esc(`${month(months[i])}: ${num(c.months[i])}`)}</title></rect>`).join('')}
+        </svg><div class="wars-axis"><span>${esc(month(months[0]))}</span><span>${esc(month(months.at(-1)))}</span></div></div>
+        ${fought.length + elsewhere.length ? `<ul class="cv-list conflicts">${[...fought, ...elsewhere].join('')}</ul>` : `<p class="cv-empty">${esc(tw('noConflicts'))}</p>`}
+        ${other}
+        <p class="cv-note">${esc(tw('countryNote'))}</p>
+      </section>`;
+  }
+
   function countryHtml(placeId, file) {
     const m = cardModel(placeId, { current, changes, events, conflict, now: now(), windowDays: windowDays() });
     const name = placeName(placeId);
@@ -313,7 +350,7 @@ export function createRiskMode(ctx) {
         </div>
         <div class="eyebrow">${esc(tr('country.eyebrow'))}</div>
         <h2 class="cv-name">${esc(name)}</h2>
-        ${badge(highest(current, placeId).level, levelLabel(placeId))}
+        ${badge(viewLevel(placeId), levelLabel(placeId))}
         <div class="trend">${trendHtml(m.trend)}</div>
       </div>
       <section class="cv-section">
@@ -321,6 +358,7 @@ export function createRiskMode(ctx) {
         <ul class="risk-rows">${rowsHtml(m.rows)}</ul>
         ${newsLine(placeId)}
       </section>
+      ${conflictSection(file)}
       <section class="cv-section">
         <h3 class="cv-title">${esc(tr('country.alerts'))} <span class="count">${alerts.length}</span></h3>
         ${alerts.length ? `<ul class="cv-list alerts">${alertRows}</ul>` : `<p class="cv-empty">${esc(tr('country.noAlerts'))}</p>`}
@@ -368,6 +406,8 @@ export function createRiskMode(ctx) {
   return {
     id: mode,
     load,
+    /** The loaded files, for a mode built on this one (Wars): { current, conflict } */
+    data: () => ({ current, conflict }),
 
     providers: () => [],
     provider: () => null,

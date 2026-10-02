@@ -30,6 +30,7 @@
 
 import { createTravelAdvisories } from './travel-advisories/index.js';
 import { createRiskMode } from './risk/index.js';
+import { createWarsMode } from './wars/index.js';
 
 export const DATASETS = {
   'travel-advisories': createTravelAdvisories,
@@ -42,10 +43,11 @@ const risk = (options) => (ctx) => createRiskMode({ ...ctx, ...options });
  * or undefined when its data isn't published (the mode is then not offered).
  */
 export const MODES = [
+  { id: 'wars', create: createWarsMode, entry: (m) => (m.risk?.conflict ? m.risk : undefined) },
   { id: 'travel', create: createTravelAdvisories, entry: (m) => m.datasets.find(d => d.id === 'travel-advisories') },
   { id: 'highest', create: risk({ mode: 'highest', view: 'highest' }), entry: (m) => m.risk },
   { id: 'disaster', create: risk({ mode: 'disaster', view: 'category', category: 'disaster' }), entry: (m) => m.risk },
   { id: 'wildfire', create: risk({ mode: 'wildfire', view: 'category', category: 'wildfire' }), entry: (m) => m.risk },
   { id: 'changes', create: risk({ mode: 'changes', view: 'changes' }), entry: (m) => m.risk },
 ];
-export const DEFAULT_MODE = 'highest';
+export const DEFAULT_MODE = 'wars';

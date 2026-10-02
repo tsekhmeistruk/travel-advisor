@@ -120,7 +120,7 @@ export const isData = (req, path) => new URL(req.url()).pathname.endsWith(`/data
 /**
  * An `intercept` for the risk modes, like withLevelChanges: serves the real risk change log
  * with changes of known ages added. Disaster level changes 1 hour, 3, 10 and 40 days ago (one
- * to each level, and one a fall), a wildfire level change 2 days ago, an advisory level change
+ * to each level, and one a fall), a conflict level change in Yemen 30 hours ago, a wildfire level change 2 days ago, an advisory level change
  * 5 days ago, and a new GDACS event 2 hours ago. Also serves the real events plus three test
  * events with positions: two close together in Japan (one cluster at world zoom), one in
  * Chile, and two at the same point in Iceland (a cluster that never splits). Returns the places that changed, newest first, and the test events' ids.
@@ -136,6 +136,7 @@ export function withRiskChanges() {
   const added = [
     level('jp', 1, 1, 4),
     { id: 'test:event', at: ago(2), kind: 'event', category: 'disaster', source: 'gdacs', eventId: 'gdacs:EQ:0', type: 'earthquake', placeIds: ['cl'], to: 3, native: 'Orange', new: true },
+    { ...level('ye', 30, 3, 4), id: `ye:conflict:${ago(30)}`, category: 'conflict', sources: ['ucdp'] },
     { ...level('au', 48, 1, 2), id: `au:wildfire:${ago(48)}`, category: 'wildfire' },
     level('ph', 72, 1, 3),
     { id: 'test:advisory', at: ago(120).slice(0, 10), kind: 'advisory', category: 'travel', source: 'us', title: 'Peru', placeIds: ['pe'], from: 1, to: 2, up: true },
@@ -174,7 +175,7 @@ export function withRiskChanges() {
     req.respond({ status: 200, contentType: 'application/json', body });
     return true;
   };
-  return Object.assign(intercept, { places: ['jp', 'cl', 'au', 'ph', 'pe', 'it', 'tr'], events: testEvents.map(e => e.id), news });
+  return Object.assign(intercept, { places: ['jp', 'cl', 'ye', 'au', 'ph', 'pe', 'it', 'tr'], events: testEvents.map(e => e.id), news });
 }
 
 /** Hover every country and dot, measuring the details card each time, plus map and feed counts. */

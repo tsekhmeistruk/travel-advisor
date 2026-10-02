@@ -4,6 +4,10 @@
  "version": "26.0.8",
  "through": "2026-08",
  "preliminary": true,
+ "links": {
+  "home": "https://ucdp.uu.se/",
+  "conflict": "https://ucdp.uu.se/conflict/"
+ },
  "windowMonths": 12,
  "bands": [
   1000,

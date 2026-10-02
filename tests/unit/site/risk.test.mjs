@@ -9,7 +9,7 @@ import {
   changeTime, ageHours, changePlaces, direction, levelOf, highest, filterChanges, changesFor, pulseOpacity, countByLevel,
   countDirections, cardModel, isStale, countryRows, sortRows, newsRows, isNews,
 } from '../../../site/js/datasets/risk/logic.js';
-import { MODES } from '../../../site/js/datasets/registry.js';
+import { MODES, DEFAULT_MODE } from '../../../site/js/datasets/registry.js';
 import { clusterMarkers, MARKER_ICONS } from '../../../site/js/map/clusters.js';
 import { createI18n } from '../../../site/js/core/i18n.js';
 import { createSettings } from '../../../site/js/core/settings.js';
@@ -59,7 +59,17 @@ const EVENTS = [
 ];
 const MANIFEST = { asOf: CURRENT.asOf, current: 'risk/current.json', changes: 'risk/changes.json', events: 'risk/events.json', conflict: 'risk/conflict.json', places: 'risk/places/' };
 // The conflict figures (risk/conflict.json), as lib/conflict.mjs publishes them; only what the risk card reads.
-const CONFLICT = { source: 'ucdp', through: '2026-08', places: { so: { deaths12: 3304 }, ke: { deaths12: 1 } } };
+const CONFLICT = { source: 'ucdp', through: '2026-08', links: { home: 'https://ucdp.uu.se/', conflict: 'https://ucdp.uu.se/conflict/' }, places: { so: { deaths12: 3304 }, ke: { deaths12: 1 } } };
+// A place file's conflict section: a conflict fought there, and a war it is a party to elsewhere.
+const KENYA_WAR = { key: '1:9', name: null, sideA: 'XXX501', sideB: 'XXX501', deaths12: 3304, last: 200, war: true, places: ['so'], parties: ['ke'] };
+const KE_FILE = {
+  placeId: 'ke', advisories: {}, events: [], changes: [],
+  conflict: {
+    through: '2026-08', deaths12: 30, months: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30], byType: { state: 20, nonState: 5, oneSided: 5 }, trend: null,
+    conflicts: [{ key: '1:5', name: 'Kenya: Government', sideA: 'Government of Kenya', sideB: 'Al-Shabaab', deaths12: 20, last: 20, war: false, places: ['ke'], parties: ['ke'] }],
+    partyTo: [{ key: '1:5', name: 'Kenya: Government', sideA: 'Government of Kenya', sideB: 'Al-Shabaab', deaths12: 20, last: 20, war: false, places: ['ke'], parties: ['ke'] }, KENYA_WAR],
+  },
+};
 // A place file as the build writes it: advisories, active event ids, a year of changes.
 const MX_FILE = {
   placeId: 'mx',
@@ -77,7 +87,7 @@ async function create({ view = 'highest', category, mode = view === 'category' ?
   storage = new Map(Object.entries({ 'travel-risk-map:settings': JSON.stringify({ risk: saved }) }));
   const settings = createSettings('travel-risk-map:settings', {}, { getItem: k => storage.get(k) ?? null, setItem: (k, v) => storage.set(k, v) });
   requested = [];
-  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS }, 'risk/conflict.json': CONFLICT, 'risk/places/mx.json': MX_FILE };
+  const files = { 'risk/current.json': current, 'risk/changes.json': { changes: CHANGES }, 'risk/events.json': { events: EVENTS }, 'risk/conflict.json': CONFLICT, 'risk/places/mx.json': MX_FILE, 'risk/places/ke.json': KE_FILE };
   const client = { file: async (path, version) => { requested.push([path, version]); if (!files[path]) throw new Error('HTTP 404'); return files[path]; } };
   changes = 0;
   ds = createRiskMode({
@@ -186,7 +196,10 @@ describe('url state', () => {
 describe('modes registry', () => {
   test('offers travel always, and the risk modes only when the manifest has risk data', () => {
     const withRisk = { datasets: [{ id: 'travel-advisories' }], risk: MANIFEST };
-    assert.deepEqual(MODES.filter(m => m.entry(withRisk)).map(m => m.id), ['travel', 'highest', 'disaster', 'wildfire', 'changes']);
+    assert.deepEqual(MODES.filter(m => m.entry(withRisk)).map(m => m.id), ['wars', 'travel', 'highest', 'disaster', 'wildfire', 'changes']);
+    const { conflict, ...noConflict } = MANIFEST;
+    assert.deepEqual(MODES.filter(m => m.entry({ datasets: [], risk: noConflict })).map(m => m.id), ['highest', 'disaster', 'wildfire', 'changes'], 'Wars needs the conflict figures');
+    assert.equal(DEFAULT_MODE, 'wars');
     assert.deepEqual(MODES.filter(m => m.entry({ datasets: [{ id: 'travel-advisories' }] })).map(m => m.id), ['travel']);
     for (const m of MODES) assert.ok(EN.modes[m.id]?.label && EN.modes[m.id]?.title, `${m.id}: label and title`);
   });
@@ -582,6 +595,25 @@ describe('country view', () => {
     assert.match(html, /Disaster: Normal → High/);
     assert.doesNotMatch(html, /Level 1 → 2/, 'the January change is outside 90 days');
     assert.match(html, /not official levels/);
+  });
+
+  test('armed violence: deaths by month, the conflicts with links to UCDP, and the violence no government is a side of', async () => {
+    const el = container();
+    await ds.renderCountryView(el, 'ke', { back() {}, selectEvent() {} });
+    const html = el.innerHTML;
+    const section = html.split('Armed violence (UCDP)')[1].split('</section>')[0];
+    assert.ok(html.indexOf('Armed violence (UCDP)') < html.indexOf('Active alerts'), 'right after the categories');
+    assert.match(section, /Normal · 30 deaths in 12 months/);
+    assert.equal((section.match(/<rect /g) ?? []).length, 12);
+    assert.match(section, /<title>August 2026: 30<\/title>/);
+    assert.match(section, /Kenya: Government · 20 deaths<\/span><a href="https:\/\/ucdp\.uu\.se\/conflict\/5"/);
+    assert.match(section, /Party to Kenya: unnamed armed group · war · mostly in Somalia/, 'a war it is a party to, fought elsewhere; listed once');
+    assert.equal((section.match(/<li>/g) ?? []).length, 2, 'the conflict fought here is not repeated as one it is a party to');
+    assert.match(section, /Also 5 killed between armed groups and 5 in attacks on civilians\./);
+    assert.match(section, /Preliminary figures/);
+    const mx = container();
+    await ds.renderCountryView(mx, 'mx', { back() {}, selectEvent() {} });
+    assert.match(mx.innerHTML, /Armed violence \(UCDP\)<\/h3><p class="cv-empty">UCDP recorded no deaths in organized violence here in the 12 months to August 2026\./);
   });
 
   test('the history window reaches back a year, and is saved', async () => {

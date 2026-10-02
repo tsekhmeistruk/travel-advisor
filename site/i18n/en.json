@@ -33,14 +33,15 @@
   "open": "How levels work",
   "title": "How levels work",
   "close": "Close",
-  "intro": "In the risk modes every place has a level from 1 to 4 in each category: travel, disasters, wildfires and health. Highest shows the highest of them; the other modes show one.",
+  "intro": "In the risk modes every place has a level from 1 to 4 in each category: travel, conflict, disasters (with wildfires) and health. Highest shows the highest of them; the other modes show one.",
   "levels": {
-   "1": "No alert, and the governments advise normal precautions.",
-   "2": "Governments advise increased caution, or a WHO outbreak notice in the last 30 days, or a drought alert.",
-   "3": "Governments advise reconsidering travel to all or part of it, or a GDACS Orange alert.",
-   "4": "Governments advise against all travel, or a GDACS Red alert."
+   "1": "No alert, the governments advise normal precautions, and fewer than 25 deaths in armed violence in 12 months.",
+   "2": "Governments advise increased caution, or 25+ deaths in armed violence in 12 months, or a WHO outbreak notice in the last 30 days, or a drought alert.",
+   "3": "Governments advise reconsidering travel to all or part of it, or 100+ deaths in armed violence in 12 months, or a GDACS Orange alert.",
+   "4": "Governments advise against all travel, or 1,000+ deaths in armed violence in 12 months, or a GDACS Red alert."
   },
   "travel": "Travel is the level that at least two of the governments covering a place give (U.S., Canada, the Netherlands, the UK and Germany), or the only one's, so one government alone doesn't set it. A stricter government is named on the card by its flag. The Travel mode shows one government's own levels instead.",
+  "conflict": "Conflict counts the deaths in organized violence that UCDP (Uppsala Conflict Data Program) records: fighting between a government and armed groups, between armed groups, and attacks on civilians, where they happened. A war is a conflict with a government on one side and 1,000 or more deaths in 12 months, wherever it is fought. UCDP's figures are preliminary and come out monthly, a month or two behind.",
   "confidence": "A level rises as soon as a source reports it. A fall is applied once a later update confirms it, so a level doesn't flicker.",
   "news": "News activity (GDELT) compares protests and violence in the news with a country's normal week. It is shown as unusual or not, and never sets a level.",
   "ours": "The levels are this site's summary of the sources, not official levels. Each card links to its source."
@@ -281,6 +282,10 @@
  },
  "modes": {
   "label": "Map mode",
+  "wars": {
+   "label": "Wars",
+   "title": "Wars and armed conflicts: deaths in organized violence over 12 months (UCDP)"
+  },
   "travel": {
    "label": "Travel",
    "title": "Official travel advisories, one government at a time"
@@ -521,5 +526,56 @@
    "quiet": "News: no unusual activity ({source})"
   }
  },
- "places": {}
+ "places": {},
+ "wars": {
+  "eyebrow": "Wars now · UCDP, to {month}",
+  "wars": {
+   "one": "war",
+   "other": "wars"
+  },
+  "sparkTitle": "The number of wars each month since {from} ({count} then)",
+  "since": "{count} in {month}",
+  "armed": {
+   "one": "And {count} smaller armed conflict. A war: {deaths}+ deaths in 12 months, a government on one side.",
+   "other": "And {count} smaller armed conflicts. A war: {deaths}+ deaths in 12 months, a government on one side."
+  },
+  "deaths": "Deaths in {month}: {deaths}",
+  "deathsBefore": "from {deaths}",
+  "escalatingTitle": "Escalating",
+  "calmingTitle": "Calming",
+  "escalating": "Escalating: more deaths in the last 3 months",
+  "calming": "Calming: fewer deaths in the last 3 months",
+  "none": "none",
+  "note": "UCDP's preliminary figures, a month or two behind.",
+  "perMonth": "Deaths per month",
+  "peak": " · peak {deaths}",
+  "conflicts": "Conflicts",
+  "foughtWar": "{name} · war · {deaths} deaths",
+  "foughtConflict": "{name} · {deaths} deaths",
+  "partyTo": "Party to {name} · {war} · mostly in {place}",
+  "war": "war",
+  "armedConflict": "armed conflict",
+  "noConflicts": "No conflict with a government (25+ deaths)",
+  "unnamed": "{place}: unnamed armed group",
+  "placeEyebrow": "Armed violence · last 12 months",
+  "badge": {
+   "one": "{level} · {deaths} death in 12 months",
+   "other": "{level} · {deaths} deaths in 12 months"
+  },
+  "badgeNone": "{level} · none recorded in 12 months",
+  "trendUp": "Escalating: {last} in 3 months, {before} before",
+  "trendDown": "Calming: {last} in 3 months, {before} before",
+  "quiet": "UCDP recorded no deaths in organized violence here in the 12 months to {month}.",
+  "header": "Conflict data to {month}",
+  "legend": {
+   "title": "Deaths, 12 months:",
+   "over": "{min}+",
+   "range": "{min}–{max}",
+   "fewer": "Under {min}"
+  },
+  "unnamedNoParty": "Armed conflict in {place}",
+  "otherViolence": "Also {groups} killed between armed groups and {civilians} in attacks on civilians.",
+  "countryTitle": "Armed violence (UCDP)",
+  "countryNote": "Deaths in organized violence that UCDP recorded here, by month. Preliminary figures, a month or two behind; UCDP revises them yearly."
+ }
 }

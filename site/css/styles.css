@@ -585,6 +585,42 @@ h1, h2 { margin: 0; }
 .details p.latest-empty { margin: 4px 0 0; font-size: 12.5px; color: var(--text-3); }
 .latest-empty .link-btn, .recent-empty .link-btn { font-size: inherit; font-weight: 500; }
 
+/* Wars: the overview's war count and its sparkline, the month's deaths, escalating and calming;
+   the place card's monthly bars and conflicts. Fixed slots, like the other cards. */
+.details .dim { color: var(--text-3); }
+.wars-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; width: 100%; height: 52px; margin-top: 2px; }
+.wars-count { display: flex; align-items: baseline; gap: 8px; }
+.wars-count b { font-size: 44px; line-height: 1; font-weight: 700; letter-spacing: -.03em; color: var(--l4); font-variant-numeric: tabular-nums; }
+.wars-count span { font-size: 18px; font-weight: 650; }
+.wars-spark { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+.wars-spark svg { display: block; overflow: visible; }
+.wars-spark-label { font-size: 11px; color: var(--text-3); white-space: nowrap; }
+.details p.wars-sub { margin-top: 8px; height: calc(2 * 1.45em); font-size: 12px; line-height: 1.45; color: var(--text-3); overflow: hidden; }
+.details p.wars-deaths { margin-top: 8px; height: 20px; font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+.wars-trend { width: 100%; margin-top: 8px; }
+.wars-chips { display: flex; align-items: center; gap: 4px; height: 26px; margin-top: 3px; white-space: nowrap; overflow: hidden; font-size: 12.5px; }
+.wars-trend button {
+  display: inline-flex; align-items: baseline; gap: 4px; flex: none;
+  padding: 2px 7px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel);
+  font: inherit; font-size: 12px; font-weight: 600; color: var(--text); cursor: pointer;
+}
+.wars-trend button:hover, .wars-trend button:focus-visible { border-color: var(--text-3); }
+.wars-bars { width: 100%; margin-top: 8px; }
+.wars-bars .history-label .dim { text-transform: none; letter-spacing: 0; font-weight: 500; }
+.wars-bars svg { display: block; width: 100%; height: 46px; margin-top: 6px; }
+.wars-bars rect { fill: var(--l4); opacity: .85; }
+.wars-axis { display: flex; justify-content: space-between; margin-top: 3px; font-size: 11px; color: var(--text-3); }
+.wars-conflicts { width: 100%; margin-top: 10px; }
+.wars-conflicts ul { list-style: none; margin: 4px 0 0; padding: 0; height: calc(3 * 1.5em); font-size: 12.5px; line-height: 1.5; overflow: hidden; }
+.wars-conflicts li { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+.wars-conflicts .swatch { border-radius: 50%; width: 8px; height: 8px; }
+.wars-conflicts .what { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.details p.wars-other { margin: 2px 0 0; height: calc(2 * 1.45em); font-size: 12px; line-height: 1.45; color: var(--text-3); overflow: hidden; }
+.details p.wars-quiet { margin-top: 12px; font-size: 13px; }
+.cv-figure { margin: 6px 0 0; font-size: 13px; font-weight: 600; }
+.cv-section .wars-bars svg { height: 56px; }
+.legend-title { color: var(--text-3); }
+
 .card-actions { display: flex; align-items: baseline; gap: 14px; width: 100%; margin-top: auto; }
 .card-actions .link { margin-top: 12px; }
 .link-btn { border: 0; background: none; padding: 0; color: var(--accent); cursor: pointer; flex: none; }
@@ -791,3 +827,4 @@ h1, h2 { margin: 0; }
     box-shadow: var(--shadow);
   }
 }
+.cv-list.conflicts .what { white-space: normal; }

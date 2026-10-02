@@ -154,6 +154,7 @@ export function conflictSignals(sourceId, data, config) {
   const byPlace = Object.fromEntries(Object.entries(places).map(([id, p]) => [id, { through, ...p, conflicts: spell(p.conflicts), partyTo: spell(p.partyTo) }]));
   const published = {
     asOf: data.fetchedAt, source: sourceId, version: latest.version, through, preliminary: true,
+    links: { home: config.links?.home, conflict: config.links?.conflict },
     windowMonths: config.windowMonths, bands: config.bands.map(b => b.minDeaths), warDeaths: config.war.minDeaths,
     series: {
       months: seriesMonths,

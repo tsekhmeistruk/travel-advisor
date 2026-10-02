@@ -159,6 +159,14 @@ describe('translation keys used by the code exist', () => {
     assert.deepEqual([...levels, ...categories, ...sources].filter(k => !has(k)), []);
   });
 
+  test('every literal tw(\'…\') key of the Wars texts (the Wars mode and the country view) exists', () => {
+    for (const file of ['site/js/datasets/wars/index.js', 'site/js/datasets/risk/index.js']) {
+      const keys = [...read(file).matchAll(/\btw\('([^'$]+)'/g)].map(m => `wars.${m[1]}`);
+      assert.ok(keys.length > 5, file);
+      assert.deepEqual(keys.filter(k => !has(k)), [], file);
+    }
+  });
+
   test('every locale file is valid and names itself', () => {
     for (const code of store.locales()) {
       const messages = store.locale(code);

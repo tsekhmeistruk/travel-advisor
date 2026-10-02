@@ -231,6 +231,8 @@ async function main() {
     const btn = e.target.closest('[data-action="country"]');
     if (btn) return openCountry(btn.dataset.place, { toUrl: true });
     if (e.target.closest('[data-action="list"]')) return openList({ toUrl: true });
+    const place = e.target.closest('button[data-place]');
+    if (place) return select({ placeId: place.dataset.place }, { zoom: true, toUrl: true });
     onListClick(e);
   });
   $('listOpen').onclick = () => openList({ toUrl: true });

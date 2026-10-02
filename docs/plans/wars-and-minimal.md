@@ -65,9 +65,9 @@ The research:
 
 ## Status
 
-- **Current step:** 1.1
-- **Done:** part 0
-- **Last commit of this revision:** none
+- **Current step:** 2.6
+- **Done:** parts 0–1
+- **Last commit of this revision:** 940faca (part 1)
 
 ## Every part ends with the same checks (the "ship" boxes)
 
@@ -128,19 +128,19 @@ The research:
   - [x] unit site: the four card rows, the merged Disasters row.
   - [x] data and project tests: `risk/conflict.json` equals a fresh build, every stored country is mapped, ucdp is wired.
   - [x] e2e: the card rows and fixed heights.
-- [ ] 1.9 Ship. Live check: All's card shows Conflict for Ukraine. Then one update run (`-f sources=ucdp`), watched.
+- [x] 1.9 Ship. Live check: All's card shows Conflict for Ukraine. Then one update run (`-f sources=ucdp`), watched.
 
 ## Part 2: The Wars mode
 
-- [ ] 2.1 `site/js/datasets/wars/logic.js` (pure): `overviewModel()`, `placeModel()`, `bandOf()`, the sparkline.
-- [ ] 2.2 `site/js/datasets/wars/index.js`:
+- [x] 2.1 `site/js/datasets/wars/logic.js` (pure): `overviewModel()`, `placeModel()`, `bandOf()`, the sparkline.
+- [x] 2.2 `site/js/datasets/wars/index.js`:
   - wraps the risk mode on the `conflict` category;
   - its own `load`, overview and place cards (the fixed card height), legend and header.
-- [ ] 2.3 `MODES`: Wars first, `DEFAULT_MODE = 'wars'`. The country view gets a Conflict section (monthly bars, conflicts, parties, a link to UCDP).
-- [ ] 2.4 Text: the `modes.wars.*` and wars card strings, the help dialog (bands, war count), the footer's sources.
+- [x] 2.3 `MODES`: Wars first, `DEFAULT_MODE = 'wars'`. The country view gets a Conflict section (monthly bars, conflicts, parties, a link to UCDP).
+- [x] 2.4 Text: the `modes.wars.*` and wars card strings, the help dialog (bands, war count), the footer's sources.
 - [ ] 2.5 Tests:
-  - [ ] unit site: wars logic (counts, sparkline, escalating and calming, a party to a war, non-state wording).
-  - [ ] e2e: a fresh visitor gets Wars; a saved mode stays; the overview and place cards; the fixed height; phone.
+  - [x] unit site: wars logic (counts, sparkline, escalating and calming, a party to a war, non-state wording).
+  - [x] e2e: a fresh visitor gets Wars; a saved mode stays; the overview and place cards; the fixed height; phone.
 - [ ] 2.6 Ship. Live check: Wars opens first and shows the war count.
 
 ## Part 3: The minimal pass
@@ -197,4 +197,4 @@ The research:
 
 ## Log (one line per finished part: commit, deploy, tests)
 
-- (empty)
+- Part 0: fe66b8e, deploy green. Part 1: 940faca, deploy green, live: All's card shows Ukraine Conflict Critical (97,381 deaths, UCDP), 142 places above Normal, no console errors; update run 36974703851 (ucdp) green: no new version, data through 26.0.8. Tests added: ucdp parser, conflict logic, buildRisk conflict branch, UCDP fetcher, FileStore versions, runFetch conflict kind, data (mapping, bands, war count), project (conflict config), e2e conflict row. Edited: card rows (unit, e2e), risk loading, manifest list, basis check. Deleted: none.

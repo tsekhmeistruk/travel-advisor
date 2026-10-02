@@ -24,7 +24,7 @@ const { values: o, positionals } = parseArgs({
   },
 });
 
-const MODES = ['travel', 'highest', 'disaster', 'wildfire', 'changes'];
+const MODES = ['wars', 'travel', 'highest', 'disaster', 'wildfire', 'changes'];
 const views = positionals.length
   ? positionals.map(p => { const i = p.indexOf('='); return { name: i < 0 ? p : p.slice(0, i), hash: i < 0 ? '' : p.slice(i + 1) }; })
   : MODES.flatMap(m => [{ name: `${m}-1440`, hash: `#mode=${m}` }, { name: `${m}-390-dark`, hash: `#mode=${m}`, width: 390, height: 844, dark: true, phone: true, full: true }]);
