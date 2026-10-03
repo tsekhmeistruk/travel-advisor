@@ -39,23 +39,7 @@
  "events": [
   "gdacs:DR:1018431"
  ],
- "changes": [
-  {
-   "id": "advisory:us:Madagascar:2025-12-05",
-   "at": "2025-12-05",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "Madagascar",
-   "placeIds": [
-    "mg"
-   ],
-   "from": 3,
-   "to": 2,
-   "up": false,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

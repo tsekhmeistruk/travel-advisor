@@ -37,23 +37,7 @@
   }
  },
  "events": [],
- "changes": [
-  {
-   "id": "advisory:us:Saint Lucia:2026-07-10",
-   "at": "2026-07-10",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "Saint Lucia",
-   "placeIds": [
-    "lc"
-   ],
-   "from": 1,
-   "to": 2,
-   "up": true,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

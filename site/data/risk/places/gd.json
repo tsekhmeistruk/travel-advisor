@@ -37,23 +37,7 @@
   }
  },
  "events": [],
- "changes": [
-  {
-   "id": "advisory:us:Grenada:2026-01-05",
-   "at": "2026-01-05",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "Grenada",
-   "placeIds": [
-    "gd"
-   ],
-   "from": 1,
-   "to": 2,
-   "up": true,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

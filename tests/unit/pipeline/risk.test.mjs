@@ -334,15 +334,14 @@ describe('eventChanges', () => {
 });
 
 describe('advisoryChanges', () => {
-  test('lists every level change in the history on the record\'s places, marking seeded ones', () => {
+  test('lists every level change in the history on the record\'s places; a first snapshot is none', () => {
     const history = { us: {
-      Chad: [{ date: '2026-04-28', level: 4, from: null, up: true, source: 'note' }, { date: '2026-09-26', level: 4 }],
+      Chad: [{ date: '2026-09-26', level: 4 }],
       Mexico: [{ date: '2026-09-26', level: 2 }, { date: '2026-09-28', level: 3 }],
       Gone: [{ date: '2026-09-26', level: 1 }, { date: '2026-09-27', level: 2 }],
     } };
     const files = { us: { records: [{ title: 'Chad', places: ['td'] }, { title: 'Mexico', places: ['mx'] }] } };
     assert.deepEqual(advisoryChanges(history, files), [
-      { id: 'advisory:us:Chad:2026-04-28', at: '2026-04-28', kind: 'advisory', category: 'travel', source: 'us', title: 'Chad', placeIds: ['td'], from: null, to: 4, up: true, seeded: true },
       { id: 'advisory:us:Mexico:2026-09-28', at: '2026-09-28', kind: 'advisory', category: 'travel', source: 'us', title: 'Mexico', placeIds: ['mx'], from: 2, to: 3, up: true },
     ]);
   });

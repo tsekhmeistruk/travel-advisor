@@ -37,23 +37,7 @@
   }
  },
  "events": [],
- "changes": [
-  {
-   "id": "advisory:us:Cyprus:2026-06-01",
-   "at": "2026-06-01",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "Cyprus",
-   "placeIds": [
-    "cy"
-   ],
-   "from": null,
-   "to": 1,
-   "up": false,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

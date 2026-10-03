@@ -37,23 +37,7 @@
   }
  },
  "events": [],
- "changes": [
-  {
-   "id": "advisory:us:Mauritius:2025-12-08",
-   "at": "2025-12-08",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "Mauritius",
-   "placeIds": [
-    "mu"
-   ],
-   "from": 1,
-   "to": 2,
-   "up": true,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

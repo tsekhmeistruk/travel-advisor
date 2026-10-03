@@ -34,9 +34,9 @@ const US = {
       levelChanges: [{ date: '2026-09-25', from: 3, to: 4, up: true }], trackedSince: SINCE },
     { title: 'Somalia', level: 4, updated: '2026-01-01', places: ['so'], covers: ['somaliland'],
       levelChanges: [{ date: '2026-01-01', from: 3, to: 4, up: true }], trackedSince: SINCE },
-    // The older change came from a source note that gave only the direction (from: null).
+    // Two changes: the history lists both.
     { title: 'Israel and Palestine', level: 3, updated: '2026-09-20', places: ['il', 'gaza'], regional: true, trackedSince: SINCE,
-      levelChanges: [{ date: '2026-09-20', from: 2, to: 3, up: true }, { date: '2026-04-28', from: null, to: 2, up: true }] },
+      levelChanges: [{ date: '2026-09-20', from: 2, to: 3, up: true }, { date: '2026-09-05', from: 1, to: 2, up: true }] },
     // Updated yesterday, but at the same level: not a change.
     { title: 'France', level: 2, updated: '2026-09-26', places: ['fr'], trackedSince: SINCE },
     { title: 'French West Indies', level: 1, updated: '2024-08-22', places: [], noteKey: 'frenchWestIndies' },
@@ -136,7 +136,7 @@ describe('details card', () => {
     const rows = [...html.matchAll(/<li[^>]*>(.*?)<\/li>/g)].map(m => m[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
     assert.deepEqual(rows, [
       '▲ Level 2 → 3 Sep 20, 2026',
-      '▲ Raised to Level 2 Apr 28, 2026',   // the source gave only the direction
+      '▲ Level 1 → 2 Sep 5, 2026',
       'Levels tracked since Sep 1, 2026',
     ]);
     assert.match(html, /class="arrow up" title="Level raised"/);

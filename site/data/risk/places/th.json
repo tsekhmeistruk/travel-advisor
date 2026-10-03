@@ -37,23 +37,7 @@
   }
  },
  "events": [],
- "changes": [
-  {
-   "id": "advisory:us:Thailand:2026-07-07",
-   "at": "2026-07-07",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "Thailand",
-   "placeIds": [
-    "th"
-   ],
-   "from": null,
-   "to": 1,
-   "up": false,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

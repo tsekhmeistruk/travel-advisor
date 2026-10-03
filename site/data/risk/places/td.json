@@ -40,23 +40,7 @@
   "gdacs:FL:1104205",
   "gdacs:DR:1027450"
  ],
- "changes": [
-  {
-   "id": "advisory:us:Chad:2026-04-28",
-   "at": "2026-04-28",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "Chad",
-   "placeIds": [
-    "td"
-   ],
-   "from": null,
-   "to": 4,
-   "up": true,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

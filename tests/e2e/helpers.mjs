@@ -90,8 +90,7 @@ export async function openRaw({ width = 1440, height = 860, scheme = 'dark', sto
  * An `intercept` that serves a provider's real published file with level changes of known
  * ages added: 1, 3, 10 and 40 days ago, one per level (1–4). Real level changes are rare, so
  * tests of pulses and the change feed must not depend on the world having had one lately.
- * The oldest also gets the longest history the details card shows (three changes, one with
- * only a direction, as seeded from source notes).
+ * The oldest also gets the longest history the details card shows (three changes).
  */
 export function withLevelChanges(provider = 'us') {
   const file = `site/data/${DATASET}/${provider}.json`;
@@ -113,7 +112,7 @@ export function withLevelChanges(provider = 'us') {
   });
   data.records.find(x => x.title === changed[3]).levelChanges.push(
     { date: day(200), from: 2, to: 3, up: true },
-    { date: day(400), from: null, to: 2, up: false },
+    { date: day(400), from: 3, to: 2, up: false },
   );
   const body = JSON.stringify(data);
   const intercept = (req) => (isData(req, `${DATASET}/${provider}.json`)

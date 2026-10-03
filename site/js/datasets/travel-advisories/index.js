@@ -90,9 +90,9 @@ export function createTravelAdvisories(ctx) {
       <p class="desc">${esc(text)}</p>`;
   }
 
-  // "Level 2 → 3", or "Raised to Level 4" when the source announced only the direction.
+  // "Level 2 → 3"
   function changeText(c) {
-    return c.from != null ? tx('change.fromTo', { from: c.from, to: c.to }) : tx(c.up ? 'change.up' : 'change.down', { to: c.to });
+    return tx('change.fromTo', { from: c.from, to: c.to });
   }
   function arrow(c) {
     return `<span class="arrow ${c.up ? 'up' : 'down'}" title="${esc(tx(c.up ? 'change.raised' : 'change.lowered'))}">${c.up ? '▲' : '▼'}</span>`;

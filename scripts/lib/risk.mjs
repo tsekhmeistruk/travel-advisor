@@ -300,7 +300,7 @@ export function advisoryChanges(history, files) {
       for (const c of levelChangesOf(log)) {
         changes.push({
           id: `advisory:${provider}:${title}:${c.date}`, at: c.date, kind: 'advisory', category: 'travel', source: provider,
-          title, placeIds: record.places, from: c.from, to: c.to, up: c.up, ...(c.seeded && { seeded: true }),
+          title, placeIds: record.places, from: c.from, to: c.to, up: c.up,
         });
       }
     }

@@ -5,16 +5,15 @@ import {
 } from '../../../scripts/lib/build.mjs';
 
 describe('levelChangesOf', () => {
-  test('lists every change of one log oldest first, seeded ones marked', () => {
+  test('lists every change of one log oldest first: a snapshot with another level than the one before', () => {
     const log = [
-      { date: '2026-04-28', level: 4, from: null, up: true, source: 'note' },
-      { date: '2026-09-26', level: 4 }, { date: '2026-09-27', level: 4 }, { date: '2026-09-28', level: 2 },
+      { date: '2026-09-26', level: 4 }, { date: '2026-09-27', level: 4 }, { date: '2026-09-28', level: 2 }, { date: '2026-10-01', level: 3 },
     ];
     assert.deepEqual(levelChangesOf(log), [
-      { date: '2026-04-28', from: null, to: 4, up: true, seeded: true },
       { date: '2026-09-28', from: 4, to: 2, up: false },
+      { date: '2026-10-01', from: 2, to: 3, up: true },
     ]);
-    assert.deepEqual(levelChangesOf([{ date: '2026-09-26', level: 1 }]), []);
+    assert.deepEqual(levelChangesOf([{ date: '2026-09-26', level: 1 }]), [], 'the first snapshot is no change');
   });
 });
 
@@ -114,25 +113,6 @@ describe('trackHistory', () => {
     const { record } = run(log, '2026-02-01', 1);
     assert.equal(record.levelChanges.length, MAX_LEVEL_CHANGES);
     assert.deepEqual(record.levelChanges.map(c => `${c.from}→${c.to}`), ['2→1', '3→2', '2→3']);
-  });
-
-  describe('changes the source announced before tracking began (seeded from U.S. notes)', () => {
-    const seed = { date: '2026-04-28', level: 4, from: null, up: true, source: 'note' };
-    test('are reported, with only the direction when the note gave no previous level', () => {
-      const { log, record } = run([seed, { date: '2026-09-26', level: 4 }], '2026-09-27', 4);
-      assert.equal(log.length, 2);
-      assert.deepEqual(record.levelChanges, [{ date: '2026-04-28', from: null, to: 4, up: true }]);
-      assert.equal(record.trackedSince, '2026-09-26', 'tracking starts at the first snapshot, not the seed');
-    });
-    test('a later observed change follows on from the seeded level', () => {
-      const { record } = run([seed, { date: '2026-09-26', level: 4 }], '2026-10-02', 3);
-      assert.deepEqual(record.levelChanges, [{ date: '2026-10-02', from: 4, to: 3, up: false }, { date: '2026-04-28', from: null, to: 4, up: true }]);
-    });
-    test('a seed alone still gets its first snapshot recorded', () => {
-      const { log, record } = run([seed], '2026-09-26', 4);
-      assert.deepEqual(log.at(-1), { date: '2026-09-26', level: 4 });
-      assert.equal(record.trackedSince, '2026-09-26');
-    });
   });
 });
 

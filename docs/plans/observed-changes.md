@@ -56,8 +56,8 @@ Only the fact that the record moved between two of our fetches is used, never th
 
 ## Status
 
-- **Current step:** 2.1
-- **Done:** Parts 0-1
+- **Current step:** 2.4
+- **Done:** Parts 0-1; 2.1-2.3
 - **Last commit of this revision:** 7a986e1
 
 ## Every part ends with the same checks
@@ -92,9 +92,9 @@ Only the fact that the record moved between two of our fetches is used, never th
 
 ## Part 2: Remove the seeded U.S. changes
 
-- [ ] 2.1 The 10 `source: "note"` entries leave `data/history/travel-advisories.json`; rebuild.
-- [ ] 2.2 The dead support goes: `seeded` in `lib/build.mjs` and `lib/risk.mjs`, the `from == null` wording on the site and its i18n keys.
-- [ ] 2.3 Tests: deleted the seeded cases (unit, e2e helper); the data test checks that the history holds only observations.
+- [x] 2.1 The 10 `source: "note"` entries leave `data/history/travel-advisories.json`; rebuild.
+- [x] 2.2 The dead support goes: `seeded` in `lib/build.mjs` and `lib/risk.mjs`, the `from == null` wording on the site and its i18n keys.
+- [x] 2.3 Tests: deleted the seeded cases (unit, e2e helper); the data test checks that the history holds only observations.
 - [ ] 2.4 Ship.
 
 ## Part 3: Write the principle down

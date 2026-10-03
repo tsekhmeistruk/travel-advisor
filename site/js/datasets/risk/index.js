@@ -94,11 +94,7 @@ export function createRiskMode(ctx) {
 
   function changeText(c) {
     if (c.kind === 'level') return tr('change.level', { category: catName(c.category), from: levelName(c.from), to: levelName(c.to) });
-    if (c.kind === 'advisory') {
-      const provider = sourceName(c.source);
-      if (c.from != null) return tr('change.advisory', { provider, from: c.from, to: c.to });
-      return tr(c.up ? 'change.advisoryUp' : 'change.advisoryDown', { provider, to: c.to });
-    }
+    if (c.kind === 'advisory') return tr('change.advisory', { provider: sourceName(c.source), from: c.from, to: c.to });
     const params = { source: sourceName(c.source), alert: alertName(c.native), type: typeName(c.type) };
     if (c.new) return tr('change.eventNew', params);
     return tr(c.up ? 'change.eventUp' : 'change.eventDown', params);

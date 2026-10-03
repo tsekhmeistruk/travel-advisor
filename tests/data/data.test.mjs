@@ -16,6 +16,8 @@ const places = store.places();
 const placeIds = new Set(places.map(p => p.id));
 const tomorrow = new Date(Date.now() + 864e5).toISOString().slice(0, 10);
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+// The first snapshot of the level history: nothing we observed is older.
+const HISTORY_BEGAN = '2026-09-26';
 
 describe('published data is up to date', () => {
   const built = buildAll(readBuildInput(store));
@@ -284,29 +286,21 @@ for (const dataset of manifest.datasets) {
   }
 }
 
-test('level history is well formed', () => {
+test('the level history holds only our own observations, in order', () => {
   for (const dataset of manifest.datasets) {
     for (const [provider, book] of Object.entries(store.history(dataset.id))) {
       for (const [title, log] of Object.entries(book)) {
         const where = `${dataset.id}/${provider}/${title}`;
         assert.ok(Array.isArray(log) && log.length > 0, where);
-        const seeds = log.filter(e => e.source);
-        const observed = log.filter(e => !e.source);
-        assert.ok(observed.length > 0, `${where}: at least one snapshot`);
-        assert.deepEqual(log, [...seeds, ...observed], `${where}: announced changes come before the first snapshot`);
         log.forEach((e, i) => {
+          // Only what our own snapshots saw: nothing a source said about its past (a change note).
+          assert.deepEqual(Object.keys(e), ['date', 'level'], `${where}: an observation is { date, level }`);
           assert.match(e.date, ISO_DATE, where);
+          assert.ok(e.date >= HISTORY_BEGAN, `${where}: no snapshot before tracking began`);
           assert.ok(dataset.scale.values.includes(e.level), where);
           if (i > 0) assert.ok(e.date > log[i - 1].date, `${where}: dates must increase`);
+          if (i > 0) assert.notEqual(e.level, log[i - 1].level, `${where}: consecutive snapshots must differ`);
         });
-        observed.forEach((e, i) => {
-          if (i > 0) assert.notEqual(e.level, observed[i - 1].level, `${where}: consecutive snapshots must differ`);
-        });
-        for (const e of seeds) {
-          assert.equal(e.source, 'note', where);
-          assert.equal(typeof e.up, 'boolean', where);
-          if (e.from !== null) assert.equal(e.up, e.level > e.from, `${where}: direction matches from → to`);
-        }
       }
     }
   }

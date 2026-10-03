@@ -100,8 +100,6 @@
    },
    "change": {
     "fromTo": "Level {from} → {to}",
-    "up": "Raised to Level {to}",
-    "down": "Lowered to Level {to}",
     "raised": "Level raised",
     "lowered": "Level lowered"
    },
@@ -459,8 +457,6 @@
   "change": {
    "level": "{category}: {from} → {to}",
    "advisory": "{provider}: Level {from} → {to}",
-   "advisoryUp": "{provider}: raised to Level {to}",
-   "advisoryDown": "{provider}: lowered to Level {to}",
    "eventNew": "New {source} {alert}: {type}",
    "eventUp": "{source} {type}: raised to {alert}",
    "eventDown": "{source} {type}: lowered to {alert}",

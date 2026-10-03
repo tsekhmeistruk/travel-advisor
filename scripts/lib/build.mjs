@@ -68,9 +68,8 @@ export const MAX_LEVEL_CHANGES = 3;
  * different level. A different level on the same date is ignored, so one bad response can't
  * flap the history.
  *
- * A log may start with level changes the source announced before tracking began
- * ({ date, level, from, up, source }, seeded once from U.S. change notes; `from` is null when
- * the note gave only the direction).
+ * Only what our own snapshots saw is in a log: what a source says about its past (a change
+ * note, an "updated" date) never is.
  *
  * Sets record.levelChanges ({ date, from, to, up }, newest first) and record.trackedSince
  * (the first snapshot that had the advisory).
@@ -79,22 +78,21 @@ export function trackHistory(history, providerId, asOf, records) {
   const book = (history[providerId] ??= {});
   for (const r of records) {
     const log = (book[r.title] ??= []);
-    const last = log.filter(e => !e.source).at(-1);
+    const last = log.at(-1);
     if (!last || (last.level !== r.level && asOf > last.date)) log.push({ date: asOf, level: r.level });
 
-    const changes = levelChangesOf(log).map(({ seeded: _, ...c }) => c);
+    const changes = levelChangesOf(log);
     if (changes.length) r.levelChanges = changes.reverse().slice(0, MAX_LEVEL_CHANGES);
-    r.trackedSince = log.find(e => !e.source).date;
+    r.trackedSince = log[0].date;
   }
 }
 
-/** Every level change in one advisory's log, oldest first: { date, from, to, up, seeded? }. */
+/** Every level change in one advisory's log, oldest first: { date, from, to, up }. */
 export function levelChangesOf(log) {
   const changes = [];
   log.forEach((e, i) => {
     const prev = log[i - 1];
-    if (e.source) changes.push({ date: e.date, from: e.from ?? null, to: e.level, up: e.up, seeded: true });
-    else if (prev && prev.level !== e.level) changes.push({ date: e.date, from: prev.level, to: e.level, up: e.level > prev.level });
+    if (prev && prev.level !== e.level) changes.push({ date: e.date, from: prev.level, to: e.level, up: e.level > prev.level });
   });
   return changes;
 }

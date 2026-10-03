@@ -52,23 +52,7 @@
   "usgs:us6000txrq",
   "usgs:us6000txrn"
  ],
- "changes": [
-  {
-   "id": "advisory:us:New Caledonia:2026-05-21",
-   "at": "2026-05-21",
-   "kind": "advisory",
-   "category": "travel",
-   "source": "us",
-   "title": "New Caledonia",
-   "placeIds": [
-    "nc"
-   ],
-   "from": null,
-   "to": 2,
-   "up": false,
-   "seeded": true
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

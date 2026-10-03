@@ -48,7 +48,7 @@ const CHANGES = [
   { id: `gdacs:EQ:9:${hoursAgo(30)}`, at: hoursAgo(30), kind: 'event', category: 'disaster', source: 'gdacs', eventId: 'gdacs:EQ:9', type: 'earthquake', placeIds: [], from: 4, to: 3, up: false, native: 'Orange' },
   { id: 'advisory:us:Somalia:2026-09-20', at: '2026-09-20', kind: 'advisory', category: 'travel', source: 'us', title: 'Somalia', placeIds: ['so'], from: 3, to: 4, up: true },
   { id: 'advisory:us:Kenya:2026-09-01', at: '2026-09-01', kind: 'advisory', category: 'travel', source: 'us', title: 'Kenya', placeIds: ['ke'], from: 3, to: 2, up: false },
-  { id: 'advisory:us:Japan:2026-07-01', at: '2026-07-01', kind: 'advisory', category: 'travel', source: 'us', title: 'Japan', placeIds: ['jp'], from: null, to: 1, up: false, seeded: true },
+  { id: 'advisory:us:Japan:2026-07-01', at: '2026-07-01', kind: 'advisory', category: 'travel', source: 'us', title: 'Japan', placeIds: ['jp'], from: 2, to: 1, up: false },
 ];
 const DATES = { startedAt: '2026-09-21T03:00:00.000Z', toDate: '2026-09-27T09:00:00.000Z', current: true };
 const EVENTS = [
@@ -362,9 +362,9 @@ describe('details card', () => {
     assert.match(html, /<li class="is-focus">[\s\S]*?Disaster/);
     assert.match(html, /GDACS Orange alert: drought/);
   });
-  test('advisory changes read like the travel card; a direction-only one says raised or lowered', () => {
+  test('advisory changes read like the travel card', () => {
     assert.match(ds.details({ placeId: 'so' }), /U\.S\.: Level 3 → 4/);
-    assert.match(ds.details({ placeId: 'jp' }), /U\.S\.: lowered to Level 1/);
+    assert.match(ds.details({ placeId: 'jp' }), /U\.S\.: Level 2 → 1/);
   });
   test('a level awaiting a confirmed fall says so instead of naming the alert', async () => {
     await create({ current: { ...CURRENT, places: { ...CURRENT.places, mx: { ...CURRENT.places.mx, disaster: { ...CURRENT.places.mx.disaster, falling: 1 } } } } });
