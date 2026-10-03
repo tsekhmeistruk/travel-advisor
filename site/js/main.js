@@ -132,10 +132,8 @@ async function main() {
     // A clicked country: the panel opens if it was hidden, and the map zooms in only as far as
     // it takes to show the country's name (not at all if it shows already).
     onSelect: (region) => {
-      const target = region && selected?.placeId !== region.key ? { placeId: region.key } : null;
-      if (target) openPanel();
-      select(target, { toUrl: true });
-      if (target) map.showLabel(region.key);
+      if (region && selected?.placeId !== region.key) return choosePlace(region.key);
+      select(null, { toUrl: true });
       showSheet();
     },
     // A marker previews and selects its event; a cluster of several zooms in to split it (at
@@ -161,7 +159,8 @@ async function main() {
   $('zoomOut').onclick = () => map.zoomBy(1 / 1.6);
   $('zoomReset').onclick = () => map.resetZoom();
   // The capybara in Canada looks east, towards the selection, and now and then at the visitor.
-  const mascot = createMascot(map, { character: settings.get('mascot') });
+  // Put down on a country, it chooses that country, as a click there would.
+  const mascot = createMascot(map, { character: settings.get('mascot'), onPlace: (placeId) => choosePlace(placeId) });
   // The switch under the zoom buttons: who stands there (remembered).
   const renderMascots = () => {
     $('mascotSwitch').innerHTML = CHARACTERS.map(c => {
@@ -208,6 +207,13 @@ async function main() {
   // The footer's "How it works" opens the help, like the legend's button.
   $('footer').addEventListener('click', (e) => { if (e.target.closest('[data-action="help"]')) $('help').showModal(); });
   $('panelToggle').onclick = () => { settings.set('panelOpen', !settings.get('panelOpen')); applyPanel(); };
+  /** A country chosen on the map (a click on it, or the mascot put down on it): selected, in a panel that is open, its name on the map. */
+  function choosePlace(placeId) {
+    openPanel();
+    select({ placeId }, { toUrl: true });
+    map.showLabel(placeId);
+    showSheet();
+  }
   /** Show the panel if it is hidden; the map takes its new size at once, so a zoom started next isn't undone by it. */
   function openPanel() {
     if (settings.get('panelOpen')) return;

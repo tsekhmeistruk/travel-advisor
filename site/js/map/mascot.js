@@ -35,10 +35,10 @@ const WATER = `
 /**
  * Put the mascot on the map. lookAt({ placeIds, markerId }) turns it towards a selection
  * (nothing: back to the east). A click on it plays an act, to the end (antics.js); a drag moves
- * it. setCharacter(id) changes who stands there.
+ * it; put down on a place, onPlace(placeId) is told. setCharacter(id) changes who stands there.
  * `raf` and `now` are injectable for tests.
  */
-export function createMascot(map, { home = HOME, walkTo = WALK_TO, character: first = DEFAULT_CHARACTER, doc = document,
+export function createMascot(map, { home = HOME, walkTo = WALK_TO, character: first = DEFAULT_CHARACTER, onPlace = () => {}, doc = document,
   raf = (fn) => requestAnimationFrame(fn), cancelRaf = (h) => cancelAnimationFrame(h), now = () => performance.now() } = {}) {
   const pin = map.pin(home[0], home[1]);
   // The drawing sits in a group of its own, which the walk moves (the element keeps its scale).
@@ -93,7 +93,8 @@ export function createMascot(map, { home = HOME, walkTo = WALK_TO, character: fi
   // ---- picked up, put down, and the way home from the sea
   const setState = (state) => { if (state) el.dataset.state = state; else delete el.dataset.state; };
   const moveTo = (lonLat) => { at = lonLat; map.movePin(pin, lonLat[0], lonLat[1]); };
-  const onLand = () => map.placeAt(at[0], at[1]) != null;
+  const placeHere = () => map.placeAt(at[0], at[1]);
+  const onLand = () => placeHere() != null;
   let trip = null;        // the way home: { frame } or { timer } (the splash before it)
   function endTrip() {
     if (!trip) return;
@@ -117,9 +118,10 @@ export function createMascot(map, { home = HOME, walkTo = WALK_TO, character: fi
     };
     trip = { frame: raf(step) };
   }
-  /** Put down where it is: on land it stays; in the sea it goes under, then swims home. */
+  /** Put down where it is: on land it stays, and the place is told; in the sea it goes under, then swims home. */
   function drop() {
-    if (onLand()) { setState(null); api.lookAt(lastTarget); return; }
+    const place = placeHere();
+    if (place) { setState(null); api.lookAt(lastTarget); onPlace(place); return; }
     setState('splash');
     trip = { timer: setTimeout(goHome, SPLASH_MS) };
   }

@@ -4,7 +4,7 @@
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { useBrowser, open, openRaw, anchorOf, click, sleep, isSelected } from './helpers.mjs';
+import { useBrowser, open, openRaw, anchorOf, click, sleep, isSelected, detailsTitle } from './helpers.mjs';
 
 useBrowser();
 
@@ -203,27 +203,38 @@ describe('picked up and put down', () => {
   }
   const view = (page) => page.$eval('#map .viewport', el => el.getAttribute('transform'));
 
-  test('dragged onto land it stays there; the map neither pans nor selects; a reload puts it back', async () => {
+  test('dragged onto a country it stays there and chooses it, as a click would; a reload puts it back', async () => {
     const page = await open();
     const home = await feet(page);
     const world = await view(page);
     const brazil = await anchorOf(page, 'br');
-    await drag(page, brazil, { release: false });
+    await page.click('#panelToggle');   // the panel hidden: choosing a country brings it back
+    await sleep(300);
+    const start = await view(page);
+    await drag(page, await anchorOf(page, 'br'), { release: false });
     assert.equal(await state(page), 'held');
+    assert.equal(await view(page), start, 'the map does not pan under a drag');
+    assert.equal(await isSelected(page), false, 'nothing is chosen while it is held');
+    assert.equal((await feet(page)).under, 'br');
     await page.mouse.up();
-    await sleep(200);
-    const there = await feet(page);
-    assert.equal(there.under, 'br');
-    assert.ok(Math.abs(there.x - brazil.x) < 3 && Math.abs(there.y - brazil.y) < 3, JSON.stringify({ there, brazil }));
+    await sleep(1100);   // the zoom to the country's name
     assert.equal(await state(page), null, 'on land it just stands');
-    assert.equal(await view(page), world, 'the map did not pan');
-    assert.equal(await isSelected(page), false, 'and nothing was selected');
     assert.equal(await page.$eval('.mascot', el => el.dataset.antic ?? null), null, 'a drag is not a click');
-    await sleep(1500);
+    // Put down on Brazil: Brazil is chosen, as by a click on it.
+    assert.equal(await detailsTitle(page), 'Brazil');
+    assert.equal(await isSelected(page), true);
+    assert.equal(await page.$eval('#app', el => el.classList.contains('panel-collapsed')), false, 'the panel is back');
+    assert.ok((await page.$$eval('.map-label', els => els.map(e => e.textContent))).includes('Brazil'), 'the map zoomed in to its name');
+    assert.match(await page.evaluate(() => location.hash), /place=br/);
+    assert.ok(brazil && world);
+    const there = await feet(page);
+    assert.equal(there.under, 'br', 'and it stands there');
+    await sleep(1200);
     assert.equal((await feet(page)).under, 'br', 'still there');
     // It still plays when clicked, there.
     await click(page, { x: there.x, y: there.y - 20 });
     assert.ok(await page.$eval('.mascot', el => el.dataset.antic), 'an act in Brazil');
+    assert.equal(await detailsTitle(page), 'Brazil', 'a click on it keeps the choice');
     await page.reload({ waitUntil: 'networkidle0' });
     await page.waitForSelector('.mascot');
     await sleep(300);
@@ -250,16 +261,30 @@ describe('picked up and put down', () => {
     // Picked up while it swims, and put on land in Mexico: it stays.
     const mexico = await anchorOf(page, 'mx');
     await drag(page, mexico);
-    await sleep(200);
+    await sleep(1100);   // Mexico is chosen, and the map zooms to its name
     assert.equal(await state(page), null);
+    assert.equal(await detailsTitle(page), 'Mexico');
     assert.equal((await feet(page)).under, 'mx');
     await sleep(1200);
     assert.equal((await feet(page)).under, 'mx', 'no longer on its way home');
-    // Dropped again, and left alone: it comes home and stands as before.
-    await drag(page, sea);
+    // Dropped in the sea again (the Pacific, west of it), and left alone: it comes home, and Mexico stays chosen.
+    const pacific = await page.evaluate((from) => {
+      const pins = document.querySelector('.pins');
+      pins.style.display = 'none';
+      let found = null;
+      for (let dx = 60; dx < 600 && !found; dx += 15) {
+        const clear = [[0, 0], [-30, 0], [30, 0], [0, -25], [0, 15]].every(([ox, oy]) => document.elementFromPoint(from.x - dx + ox, from.y + oy)?.classList.contains('sphere'));
+        if (clear) found = { x: from.x - dx, y: from.y };
+      }
+      pins.style.display = '';
+      return found;
+    }, await feet(page));
+    assert.ok(pacific, 'found the sea');
+    await drag(page, pacific);
+    assert.equal(await state(page), 'splash');
     await page.waitForFunction(() => !document.querySelector('.mascot').dataset.state, { timeout: 12000 });
-    const back = await feet(page);
-    assert.ok(Math.abs(back.x - home.x) < 2 && Math.abs(back.y - home.y) < 2, JSON.stringify({ back, home }));
+    assert.equal((await feet(page)).under, 'ca', 'home, in Canada');
+    assert.equal(await detailsTitle(page), 'Mexico', 'the sea chooses nothing');
     assert.equal(await page.$eval('.mascot-water', el => getComputedStyle(el).opacity), '0');
     assert.deepEqual(page.errors, []);
     await page.close();
