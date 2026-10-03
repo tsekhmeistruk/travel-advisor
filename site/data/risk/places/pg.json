@@ -39,7 +39,7 @@
  "events": [
   "usgs:us6000tz0x",
   "usgs:us6000tyit",
-  "usgs:us6000txtc",
+  "gdacs:WF:1032548",
   "gdacs:WF:1032454",
   "gdacs:WF:1032479",
   "gdacs:WF:1032522",
@@ -48,6 +48,7 @@
   "gdacs:WF:1032423",
   "gdacs:WF:1032475",
   "gdacs:WF:1032503",
+  "gdacs:WF:1032550",
   "gdacs:WF:1032394",
   "gdacs:WF:1032482",
   "gdacs:WF:1032327",

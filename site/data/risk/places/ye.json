@@ -36,9 +36,7 @@
    "own": true
   }
  },
- "events": [
-  "usgs:us6000txtz"
- ],
+ "events": [],
  "changes": [],
  "activity": {
   "source": "gdelt",
