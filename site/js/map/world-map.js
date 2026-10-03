@@ -26,6 +26,9 @@
 // out of the pointer's way unless the drawing asks for it: decoration, such as the capybara in
 // Canada (mascot.js), which takes its own clicks.
 //
+// Subdivisions (opts.subdivisions: lines of [lon, lat]) are the borders inside countries, between
+// states and provinces: one thin path over the countries, out of the pointer's way.
+//
 // Needs d3 and topojson-client as globals (loaded by index.html).
 
 import { splitFeatures } from './splits.js';
@@ -44,6 +47,7 @@ export class WorldMap {
    * @param opts.svg, opts.container   the <svg> and its sized container
    * @param opts.topo                  world-atlas topology
    * @param opts.places                place registry
+   * @param opts.subdivisions          borders inside countries: [[[lon, lat], …], …] (default: none)
    * @param opts.bottomInset()         px to keep clear at the bottom (e.g. the legend)
    * @param opts.topInset()            px to keep clear at the top (e.g. the mode switch)
    * @param opts.labelFor(placeId)      a place's name, for the labels when zoomed in (none: no labels)
@@ -53,7 +57,7 @@ export class WorldMap {
    *   a cluster is { id, items: [markers], x, y, level }; one marker is a cluster of one
    * @param opts.onPointHover(point|null, event), opts.onPointSelect(point)
    */
-  constructor({ svg, container, topo, places, bottomInset = () => 0, topInset = () => 0, labelFor = () => null, labelInsets = null, onHover = () => {}, onMove = () => {}, onSelect = () => {}, onMarkerHover = () => {}, onMarkerSelect = () => {}, onPointHover = () => {}, onPointSelect = () => {} }) {
+  constructor({ svg, container, topo, places, subdivisions = [], bottomInset = () => 0, topInset = () => 0, labelFor = () => null, labelInsets = null, onHover = () => {}, onMove = () => {}, onSelect = () => {}, onMarkerHover = () => {}, onMarkerSelect = () => {}, onPointHover = () => {}, onPointSelect = () => {} }) {
     const { d3, topojson } = globalThis;
     this.d3 = d3;
     this.container = container;
@@ -91,6 +95,8 @@ export class WorldMap {
     this.spherePath = this.viewport.append('path').attr('class', 'sphere');
     this.graticulePath = this.viewport.append('path').attr('class', 'graticule');
     const countryLayer = this.viewport.append('g').attr('class', 'countries');
+    this.subdivisions = { type: 'MultiLineString', coordinates: subdivisions };
+    this.subdivisionPath = this.viewport.append('path').attr('class', 'subdivisions');
     this.hoverOutline = this.viewport.append('path').attr('class', 'hover-outline');
     this.selectOutline = this.viewport.append('path').attr('class', 'select-outline');
     const overlay = this.svg.append('g').attr('class', 'overlay');
@@ -249,6 +255,7 @@ export class WorldMap {
     this.spherePath.attr('d', this.path({ type: 'Sphere' }));
     this.graticulePath.attr('d', this.path(this.d3.geoGraticule10()));
     this.countryPaths.attr('d', r => this.path(r.feature));
+    this.subdivisionPath.attr('d', this.subdivisions.coordinates.length ? this.path(this.subdivisions) : null);
     for (const r of this.regions) {
       r.areaPx = r.feature ? this.path.area(r.feature) : 0;
       r.anchor = r.feature ? this.projection(this.d3.geoCentroid(r.main)) : this.projection(r.point);

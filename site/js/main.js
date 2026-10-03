@@ -40,11 +40,13 @@ async function main() {
   const locale = chooseLocale(manifest.locales, {
     saved: settings.get('locale'), browser: navigator.languages ?? [navigator.language], fallback: manifest.defaultLocale,
   });
-  const [messages, fallback, placeList, topo] = await Promise.all([
+  const [messages, fallback, placeList, topo, admin1] = await Promise.all([
     client.messages(locale),
     locale === manifest.defaultLocale ? null : client.messages(manifest.defaultLocale),
     client.file(manifest.places),
     client.file(manifest.geo),
+    // The borders between states and provinces (the U.S., Canada): the map does without them.
+    manifest.admin1 ? client.file(manifest.admin1).catch(() => null) : null,
   ]);
   const i18n = createI18n({ locale, messages, fallback });
   document.documentElement.lang = locale;
@@ -113,6 +115,7 @@ async function main() {
     svg: $('map'),
     container: mapArea,
     topo,
+    subdivisions: Object.values(admin1?.countries ?? {}).flat(),
     places: placeList,
     bottomInset: () => $('legend').offsetHeight,
     // The mode switch's row (the provider switch below it may overlap the map's top edge).

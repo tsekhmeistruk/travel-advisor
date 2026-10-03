@@ -5,7 +5,7 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, click, detailsTitle, withLevelChanges, withRiskChanges } from './helpers.mjs';
+import { useBrowser, open, openRaw, anchorOf, isSelected, sleep, click, detailsTitle, withLevelChanges, withRiskChanges, isData } from './helpers.mjs';
 
 useBrowser();
 
@@ -448,6 +448,35 @@ describe('a click on a country', () => {
     assert.equal(await collapsed(), false);
     assert.equal(await detailsTitle(page), 'Argentina');
     assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+});
+
+describe('states and provinces', () => {
+  test('the U.S. and Canada are gridded by their borders, and a click still finds the country', async () => {
+    const page = await open();
+    const grid = await page.$eval('#map .subdivisions', el => {
+      const b = el.getBoundingClientRect(), style = getComputedStyle(el);
+      return { length: el.getAttribute('d')?.length ?? 0, width: b.width, height: b.height, pointer: style.pointerEvents, fill: style.fill, seen: el.checkVisibility() };
+    });
+    assert.ok(grid.length > 10000, `the path: ${grid.length} characters`);
+    assert.ok(grid.width > 100 && grid.height > 40, JSON.stringify(grid));
+    assert.deepEqual([grid.pointer, grid.fill, grid.seen], ['none', 'none', true]);
+    // It lies over North America: between Canada's and the U.S.'s centres.
+    const [ca, us] = [await anchorOf(page, 'ca'), await anchorOf(page, 'us')];
+    const box = await page.$eval('#map .subdivisions', el => { const b = el.getBoundingClientRect(); return { x0: b.left, x1: b.right, y0: b.top, y1: b.bottom }; });
+    for (const p of [ca, us]) assert.ok(p.x > box.x0 && p.x < box.x1 && p.y > box.y0 && p.y < box.y1, JSON.stringify({ p, box }));
+    await click(page, us);
+    assert.equal(await detailsTitle(page), 'United States');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('the map works without the borders file', async () => {
+    const page = await openRaw({ intercept: (req) => (isData(req, 'geo/admin1-lines.json') ? (req.respond({ status: 404, body: 'Not found' }), true) : false) });
+    await page.waitForSelector('path.country');
+    assert.equal(await page.$eval('#map .subdivisions', el => el.getAttribute('d')), null);
+    assert.equal(await page.$('#loadError:not([hidden])'), null);
     await page.close();
   });
 });

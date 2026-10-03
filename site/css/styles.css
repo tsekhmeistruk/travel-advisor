@@ -129,6 +129,12 @@ h1, h2 { margin: 0; }
 
 .graticule { fill: none; stroke: var(--graticule); stroke-width: 1; vector-effect: non-scaling-stroke; }
 
+/* The borders between states and provinces (the U.S., Canada): thinner than a country's, and
+   never in the pointer's way: a click still finds the country. */
+.subdivisions {
+  fill: none; stroke: var(--border); stroke-width: .5; opacity: .6;
+  vector-effect: non-scaling-stroke; stroke-linejoin: round; pointer-events: none;
+}
 .country {
   fill: var(--land-none);
   stroke: var(--border);

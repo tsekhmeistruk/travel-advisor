@@ -17,6 +17,7 @@
     "test:all": "npm test && npm run test:e2e",
     "logs": "node scripts/log-summary.mjs --days 30",
     "places:generate": "node scripts/tools/generate-places.mjs",
+    "admin1:generate": "node scripts/tools/generate-admin1.mjs",
     "shots": "node scripts/tools/screenshots.mjs",
     "live-check": "node scripts/tools/live-check.mjs",
     "merge-bot-data": "node scripts/tools/merge-bot-data.mjs",

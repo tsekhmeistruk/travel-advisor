@@ -5,6 +5,7 @@
  ],
  "places": "places.json",
  "geo": "geo/countries-50m.json",
+ "admin1": "geo/admin1-lines.json",
  "datasets": [
   {
    "id": "travel-advisories",

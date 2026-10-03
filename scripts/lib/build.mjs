@@ -168,7 +168,7 @@ export function buildSite({ places, shapeNames, locales, datasets, history }) {
   const problems = checkPlaces(places, shapeNames);
   const index = placeIndex(places);
   const files = { 'places.json': places };
-  const manifest = { defaultLocale: 'en', locales, places: 'places.json', geo: 'geo/countries-50m.json', datasets: [] };
+  const manifest = { defaultLocale: 'en', locales, places: 'places.json', geo: 'geo/countries-50m.json', admin1: 'geo/admin1-lines.json', datasets: [] };
 
   for (const { config: ds, providers } of datasets) {
     const entry = { id: ds.id, scale: ds.scale, recentWindows: ds.recentWindows, defaultRecentWindow: ds.defaultRecentWindow, providers: [] };
