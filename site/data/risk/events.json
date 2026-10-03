@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-03T07:06:13.104Z",
+ "asOf": "2026-10-03T07:46:33.247Z",
  "events": [
   {
    "id": "usgs:us6000tzal",
@@ -464,6 +464,31 @@
    "current": false,
    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tyny",
    "marker": true
+  },
+  {
+   "id": "gdacs:FL:1104207",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Malaysia",
+   "country": "Malaysia",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "my"
+   ],
+   "point": {
+    "lon": 116.082,
+    "lat": 5.944
+   },
+   "startedAt": "2026-10-01T01:00:00.000Z",
+   "toDate": "2026-10-03T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104207&episodeid=1&eventtype=FL"
   },
   {
    "id": "usgs:us6000tymj",
@@ -1400,18 +1425,18 @@
    },
    "name": "Forest fires in Brazil",
    "country": "Brazil",
-   "severity": "Green impact for forestfire in 11446 ha",
+   "severity": "Green impact for forestfire in 11647 ha",
    "placeIds": [
     "br"
    ],
    "point": {
     "lon": -55.607,
-    "lat": 1.843
+    "lat": 1.842
    },
    "startedAt": "2026-09-28T00:00:00.000Z",
-   "toDate": "2026-10-02T00:00:00.000Z",
+   "toDate": "2026-10-03T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032507&episodeid=8&eventtype=WF"
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032507&episodeid=9&eventtype=WF"
   },
   {
    "id": "gdacs:WF:1032508",
@@ -3567,31 +3592,6 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1032533&episodeid=1&eventtype=WF"
   },
   {
-   "id": "gdacs:TC:1001325",
-   "source": "gdacs",
-   "type": "cyclone",
-   "category": "disaster",
-   "level": 4,
-   "native": {
-    "scheme": "gdacs-alert",
-    "value": "Red"
-   },
-   "name": "Tropical Cyclone POLO-26",
-   "country": "Mexico",
-   "severity": "Tropical Depression (maximum wind speed of 287 km/h)",
-   "placeIds": [
-    "mx"
-   ],
-   "point": {
-    "lon": -108,
-    "lat": 30.5
-   },
-   "startedAt": "2026-09-21T03:00:00.000Z",
-   "toDate": "2026-09-30T03:00:00.000Z",
-   "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=38&eventtype=TC"
-  },
-  {
    "id": "gdacs:WF:1032377",
    "source": "gdacs",
    "type": "wildfire",
@@ -4440,6 +4440,31 @@
    "url": "https://www.gdacs.org/report.aspx?eventid=1032441&episodeid=6&eventtype=WF"
   },
   {
+   "id": "gdacs:FL:1104168",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Indonesia",
+   "country": "Indonesia",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "id"
+   ],
+   "point": {
+    "lon": 99.381,
+    "lat": 2.192
+   },
+   "startedAt": "2026-09-16T01:00:00.000Z",
+   "toDate": "2026-09-30T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104168&episodeid=3&eventtype=FL"
+  },
+  {
    "id": "gdacs:WF:1032264",
    "source": "gdacs",
    "type": "wildfire",
@@ -4783,6 +4808,31 @@
    "toDate": "2026-09-10T08:52:02.000Z",
    "current": false,
    "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617"
+  },
+  {
+   "id": "gdacs:FL:1104011",
+   "source": "gdacs",
+   "type": "flood",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "name": "Flood in Myanmar",
+   "country": "Myanmar",
+   "severity": "Magnitude 0 ",
+   "placeIds": [
+    "mm"
+   ],
+   "point": {
+    "lon": 96.098,
+    "lat": 21.858
+   },
+   "startedAt": "2026-07-04T01:00:00.000Z",
+   "toDate": "2026-10-02T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104011&episodeid=28&eventtype=FL"
   },
   {
    "id": "gdacs:DR:1027450",

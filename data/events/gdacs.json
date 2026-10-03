@@ -1,6 +1,6 @@
 {
  "source": "https://www.gdacs.org/gdacsapi/api/events/geteventlist/search",
- "fetchedAt": "2026-10-03T06:24:26.085Z",
+ "fetchedAt": "2026-10-03T07:46:33.247Z",
  "firstFetchedAt": "2026-09-27T16:25:57.372Z",
  "events": [
   {
@@ -91,7 +91,8 @@
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Orange"
     }
-   ]
+   ],
+   "missingSince": "2026-10-03T07:46:33.247Z"
   },
   {
    "id": "gdacs:DR:1027449",
@@ -239,7 +240,8 @@
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Orange"
     }
-   ]
+   ],
+   "missingSince": "2026-10-03T07:46:33.247Z"
   },
   {
    "id": "gdacs:FL:1103888",
@@ -280,20 +282,21 @@
     "MMR"
    ],
    "point": {
-    "lon": 98.817,
-    "lat": 12.109
+    "lon": 96.098,
+    "lat": 21.858
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 27,
+   "episode": 28,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-07-04T01:00:00.000Z",
-   "toDate": "2026-09-28T01:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104011&episodeid=27&eventtype=FL",
+   "toDate": "2026-10-02T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104011&episodeid=28&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
+   "updatedSeen": "2026-10-03T07:46:33.247Z",
    "revisions": [
     {
      "at": "2026-09-27T17:38:30.045Z",
@@ -310,8 +313,8 @@
     "ITA"
    ],
    "point": {
-    "lon": 14.731,
-    "lat": 36.926
+    "lon": 14.946,
+    "lat": 37.878
    },
    "native": {
     "scheme": "gdacs-alert",
@@ -479,6 +482,38 @@
      "at": "2026-09-27T16:25:57.372Z",
      "value": "Red"
     }
+   ],
+   "missingSince": "2026-10-03T07:46:33.247Z"
+  },
+  {
+   "id": "gdacs:FL:1104132",
+   "code": "FL",
+   "name": "Flood in Cambodia",
+   "country": "Cambodia",
+   "iso3": [
+    "KHM"
+   ],
+   "point": {
+    "lon": 104.888,
+    "lat": 12.669
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 10,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-08-28T01:00:00.000Z",
+   "toDate": "2026-09-29T01:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104132&episodeid=10&eventtype=FL",
+   "firstSeen": "2026-10-03T07:46:33.247Z",
+   "updatedSeen": "2026-10-03T07:46:33.247Z",
+   "revisions": [
+    {
+     "at": "2026-10-03T07:46:33.247Z",
+     "value": "Green"
+    }
    ]
   },
   {
@@ -550,20 +585,21 @@
     "IDN"
    ],
    "point": {
-    "lon": 97.025,
-    "lat": 4.369
+    "lon": 99.381,
+    "lat": 2.192
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 5,
+   "episode": 3,
    "severity": "Magnitude 0 ",
    "startedAt": "2026-09-16T01:00:00.000Z",
-   "toDate": "2026-09-29T01:00:00.000Z",
-   "current": false,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1104168&episodeid=5&eventtype=FL",
+   "toDate": "2026-09-30T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104168&episodeid=3&eventtype=FL",
    "firstSeen": "2026-09-27T17:38:30.045Z",
+   "updatedSeen": "2026-10-03T07:46:33.247Z",
    "revisions": [
     {
      "at": "2026-09-27T17:38:30.045Z",
@@ -957,6 +993,37 @@
    "revisions": [
     {
      "at": "2026-10-02T13:11:33.761Z",
+     "value": "Green"
+    }
+   ]
+  },
+  {
+   "id": "gdacs:FL:1104207",
+   "code": "FL",
+   "name": "Flood in Malaysia",
+   "country": "Malaysia",
+   "iso3": [
+    "MYS"
+   ],
+   "point": {
+    "lon": 116.082,
+    "lat": 5.944
+   },
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Green"
+   },
+   "episode": 1,
+   "severity": "Magnitude 0 ",
+   "startedAt": "2026-10-01T01:00:00.000Z",
+   "toDate": "2026-10-03T01:00:00.000Z",
+   "current": true,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1104207&episodeid=1&eventtype=FL",
+   "firstSeen": "2026-10-03T07:46:33.247Z",
+   "updatedSeen": "2026-10-03T07:46:33.247Z",
+   "revisions": [
+    {
+     "at": "2026-10-03T07:46:33.247Z",
      "value": "Green"
     }
    ]
@@ -6171,19 +6238,20 @@
    ],
    "point": {
     "lon": -55.607,
-    "lat": 1.843
+    "lat": 1.842
    },
    "native": {
     "scheme": "gdacs-alert",
     "value": "Green"
    },
-   "episode": 8,
-   "severity": "Green impact for forestfire in 11446 ha",
+   "episode": 9,
+   "severity": "Green impact for forestfire in 11647 ha",
    "startedAt": "2026-09-28T00:00:00.000Z",
-   "toDate": "2026-10-02T00:00:00.000Z",
+   "toDate": "2026-10-03T00:00:00.000Z",
    "current": true,
-   "url": "https://www.gdacs.org/report.aspx?eventid=1032507&episodeid=8&eventtype=WF",
+   "url": "https://www.gdacs.org/report.aspx?eventid=1032507&episodeid=9&eventtype=WF",
    "firstSeen": "2026-10-02T00:03:51.929Z",
+   "updatedSeen": "2026-10-03T07:46:33.247Z",
    "revisions": [
     {
      "at": "2026-10-02T00:03:51.929Z",

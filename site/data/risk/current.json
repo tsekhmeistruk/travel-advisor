@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-03T07:06:13.104Z",
+ "asOf": "2026-10-03T07:46:33.247Z",
  "scale": {
   "type": "levels",
   "values": [
@@ -34,7 +34,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-03T06:24:26.085Z"
+   "at": "2026-10-03T07:46:33.247Z"
   },
   "wildfire": {
    "sources": [
@@ -42,7 +42,7 @@
    ],
    "default": 1,
    "status": "healthy",
-   "at": "2026-10-03T06:24:26.085Z"
+   "at": "2026-10-03T07:46:33.247Z"
   },
   "health": {
    "sources": [
@@ -2658,7 +2658,8 @@
     "from": 3,
     "basis": [
      "gdacs:TC:1001325"
-    ]
+    ],
+    "falling": 2
    },
    "conflict": {
     "level": 4,

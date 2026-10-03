@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:FL:1104011"
+ ],
  "changes": [
   {
    "id": "mm:violence:2026-09-29",
