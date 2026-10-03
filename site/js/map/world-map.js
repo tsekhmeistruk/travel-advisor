@@ -10,7 +10,8 @@
 //     pulse: null, or 0..1 opacity of an animated "recently changed" marker
 //   }
 //
-// Zoomed in (×2.5 or more), the map names the places that have room, largest first (labels.js).
+// Zoomed in (×2.5 or more), the map names the places that have room, the selected one first,
+// then the largest (labels.js).
 //
 // Point markers (events: an earthquake, a cyclone) come from setMarkers([{ id, lon, lat, kind,
 // level }]). They keep a fixed pixel size while zooming, and markers closer than a grid cell
@@ -22,19 +23,21 @@
 //
 // Pins (pin(lon, lat)) are <g> elements the caller draws in, kept at a point and a fixed pixel
 // size (pinScale: scaled down on a small map, less than the points), under everything else and
-// never in the pointer's way: decoration, such as the capybara in Canada (mascot.js).
+// out of the pointer's way unless the drawing asks for it: decoration, such as the capybara in
+// Canada (mascot.js), which takes its own clicks.
 //
 // Needs d3 and topojson-client as globals (loaded by index.html).
 
 import { splitFeatures } from './splits.js';
 import { clusterMarkers, MARKER_ICONS } from './clusters.js';
-import { placeLabels } from './labels.js';
+import { placeLabels, labelZoom } from './labels.js';
 
 const DOT_AREA = 14;             // px² at zoom 1; smaller shapes also get a hoverable dot
 const POLAR = new Set(['aq']);   // drawn faded: huge on this projection, rarely relevant
 const MAX_ZOOM = 24;
 const LABEL_ZOOM = 2.5;          // names from this zoom on
 const LABEL_AREA = 1600;         // px² on screen a place needs for its name
+const SELECTED_LABEL_AREA = 400; // the selected place: named first, and from a smaller size
 
 export class WorldMap {
   /**
@@ -63,6 +66,7 @@ export class WorldMap {
     this.points = [];
     this.pins = [];
     this.selectedMarker = null;
+    this.shownLabels = new Set();
     this.style = () => ({ cls: 'none' });
     this.hovered = null;
     this.selected = null;
@@ -132,7 +136,7 @@ export class WorldMap {
   region(placeId) { return this.byId.get(placeId) ?? null; }
 
   setHovered(placeId) { this.hovered = placeId ? this.region(placeId) : null; this.#updateOutlines(); }
-  setSelected(placeId) { this.selected = placeId ? this.region(placeId) : null; this.#updateOutlines(); }
+  setSelected(placeId) { this.selected = placeId ? this.region(placeId) : null; this.#updateOutlines(); this.#renderLabels(); }
 
   /** Point markers: [{ id, lon, lat, kind, level }]; [] removes them. */
   setMarkers(markers) {
@@ -175,6 +179,31 @@ export class WorldMap {
   }
 
   zoomTo(placeId) { this.zoomToPlaces([placeId]); }
+  /** Whether the place's name is on the map now. */
+  hasLabel(placeId) { return this.shownLabels.has(placeId); }
+  /**
+   * Make the place's name show: nothing if it does already; else zoom in, as little as it takes
+   * (labelZoom()), with the place in the middle. A place whose name never fits (a small island,
+   * a point) is fitted in the view instead.
+   */
+  showLabel(placeId) {
+    const region = this.region(placeId);
+    if (!region || this.hasLabel(placeId)) return;
+    const fit = labelZoom(this.#labelPlaces(), {
+      key: placeId, from: this.transform.k, max: MAX_ZOOM, minZoom: LABEL_ZOOM, minArea: LABEL_AREA, firstMinArea: SELECTED_LABEL_AREA,
+      width: this.width, height: this.height, ...this.labelInsets(),
+      clamp: (k, x, y) => { const t = this.#clamp(this.d3.zoomIdentity.translate(x, y).scale(k)); return [t.x, t.y]; },
+    });
+    if (!fit) return this.zoomTo(placeId);
+    this.svg.transition().duration(750).ease(this.d3.easeCubicInOut)
+      .call(this.zoom.transform, this.d3.zoomIdentity.translate(fit.x, fit.y).scale(fit.k));
+  }
+  /** zoom.transform doesn't keep to the pan limits: this does. */
+  #clamp(t) { return this.zoom.constrain()(t, [[0, 0], [this.width, this.height]], this.zoom.translateExtent()); }
+  /** Each place that can have a name, at zoom 1: its centre, its area and its name. */
+  #labelPlaces() {
+    return this.regions.filter(r => r.feature && r.anchor).map(r => ({ key: r.key, x: r.anchor[0], y: r.anchor[1], area: r.areaPx, text: (r.label ??= this.labelFor(r.key)) }));
+  }
   /** Fit these places (their main shape, or their point) in the view; unknown ones are skipped. */
   zoomToPlaces(placeIds) {
     const boxes = placeIds.map(id => this.region(id)).filter(Boolean).map(r => (r.main ? this.path.bounds(r.main)
@@ -186,8 +215,7 @@ export class WorldMap {
     const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
     // zoom.transform doesn't keep to the pan limits: clamp, so a place too big to zoom into
     // (Russia, or a war across continents) doesn't push the world off the screen.
-    const t = this.zoom.constrain()(this.d3.zoomIdentity.translate(this.width / 2 - k * cx, this.height / 2 - k * cy).scale(k),
-      [[0, 0], [this.width, this.height]], this.zoom.translateExtent());
+    const t = this.#clamp(this.d3.zoomIdentity.translate(this.width / 2 - k * cx, this.height / 2 - k * cy).scale(k));
     this.svg.transition().duration(750).ease(this.d3.easeCubicInOut).call(this.zoom.transform, t);
   }
   /** Centre a shown marker (an event) at zoom 3 or more. False when no marker has this id. */
@@ -293,11 +321,10 @@ export class WorldMap {
   #renderLabels() {
     const t = this.transform;
     const list = t.k < LABEL_ZOOM ? [] : placeLabels(
-      this.regions.filter(r => r.feature && r.anchor).map(r => ({
-        key: r.key, x: t.applyX(r.anchor[0]), y: t.applyY(r.anchor[1]), area: r.areaPx * t.k * t.k, text: (r.label ??= this.labelFor(r.key)),
-      })),
-      { width: this.width, height: this.height, ...this.labelInsets(), minArea: LABEL_AREA },
+      this.#labelPlaces().map(p => ({ ...p, x: t.applyX(p.x), y: t.applyY(p.y), area: p.area * t.k * t.k })),
+      { width: this.width, height: this.height, ...this.labelInsets(), minArea: LABEL_AREA, first: this.selected?.key ?? null, firstMinArea: SELECTED_LABEL_AREA },
     );
+    this.shownLabels = new Set(list.map(d => d.key));
     this.labelLayer.selectAll('text')
       .data(list, d => d.key)
       .join('text')

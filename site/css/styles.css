@@ -232,10 +232,11 @@ h1, h2 { margin: 0; }
   .pulse .ring { animation: none; opacity: .5; transform: scale(1.6); }
 }
 
-/* The capybara in Canada (map/mascot.js): decoration, never in the pointer's way. Its head turns
-   by layers moving by different amounts, from the gaze in --gx and --gy (-1..1). */
+/* The capybara in Canada (map/mascot.js). Its head turns by layers moving by different amounts,
+   from the gaze in --gx and --gy (-1..1). A click on it plays an act (data-antic, map/antics.js:
+   the durations there match these animations). */
 .pins { pointer-events: none; }
-.mascot { --gx: 1; --gy: 0; }
+.mascot { --gx: 1; --gy: 0; pointer-events: auto; cursor: pointer; }
 .mascot-bob { animation: mascot-bob 3.6s ease-in-out infinite; }
 .mascot-head, .mascot-ears, .mascot-muzzle, .mascot-face, .mascot-pupil {
   transform-box: fill-box;
@@ -251,8 +252,48 @@ h1, h2 { margin: 0; }
 .mascot-eye { transform-box: fill-box; transform-origin: 50% 50%; transition: transform .07s; }
 .mascot.is-blink .mascot-eye { transform: scaleY(.12); }
 @keyframes mascot-bob { 50% { transform: translateY(-.8px); } }
+/* The acts (map/antics.js): any character with these groups can play them. */
+.mascot-arm, .mascot-nose, .mascot-glasses { transform-box: fill-box; transform-origin: 50% 50%; }
+.mascot-arm { transform-origin: 50% 10%; }
+.mascot-mouth, .mascot-grin { transition: opacity .25s; }
+.mascot-grin { opacity: 0; }
+.mascot[data-antic="paw"] .mascot-arm { animation: mascot-paw 2.2s ease-in-out; }
+.mascot[data-antic="nose"] .mascot-nose { animation: mascot-nose 2s ease-in-out; }
+.mascot[data-antic="glasses"] .mascot-glasses { animation: mascot-glasses 2.8s ease-in-out; }
+.mascot[data-antic="smile"] .mascot-mouth { animation: mascot-hide 2.4s ease-in-out; }
+.mascot[data-antic="smile"] .mascot-grin { animation: mascot-show 2.4s ease-in-out; }
+.mascot[data-antic="smile"] .mascot-eye { animation: mascot-squint 2.4s ease-in-out; }
+.mascot[data-antic="hop"] .mascot-bob { animation: mascot-hop 2s ease-in-out; }
+@keyframes mascot-paw {
+  0%, 100% { transform: rotate(0); }
+  12%, 40%, 68% { transform: rotate(62deg); }
+  26%, 54%, 82% { transform: rotate(18deg); }
+}
+@keyframes mascot-nose {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  10%, 34%, 58% { transform: translate(-1px, -.5px) scale(1.14, .88); }
+  22%, 46%, 70% { transform: translate(1px, -.5px) scale(1.14, .88); }
+  85% { transform: translate(0, .3px) scale(.95, 1.1); }
+}
+@keyframes mascot-glasses {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  22%, 62% { transform: translateY(5.5px) rotate(7deg); }
+  30%, 54% { transform: translateY(5px) rotate(5deg); }
+  80% { transform: translateY(-1.2px) rotate(-2deg); }
+  90% { transform: translateY(.4px) rotate(0); }
+}
+@keyframes mascot-hide { 0%, 100% { opacity: 1; } 12%, 88% { opacity: 0; } }
+@keyframes mascot-show { 0%, 100% { opacity: 0; } 12%, 88% { opacity: 1; } }
+@keyframes mascot-squint { 0%, 100% { transform: scaleY(1); } 14%, 86% { transform: scaleY(.55); } }
+@keyframes mascot-hop {
+  0%, 100% { transform: translateY(0) scale(1); }
+  8%, 48% { transform: translateY(1.5px) scale(1.04, .95); }
+  24%, 64% { transform: translateY(-11px) scale(.98, 1.03); }
+  38%, 78% { transform: translateY(0) scale(1.05, .94); }
+  88% { transform: translateY(0) scale(1); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .mascot-bob { animation: none; }
+  .mascot-bob, .mascot[data-antic] .mascot-bob, .mascot[data-antic] .mascot-arm, .mascot[data-antic] .mascot-nose, .mascot[data-antic] .mascot-glasses { animation: none; }
   .mascot-head, .mascot-ears, .mascot-muzzle, .mascot-face, .mascot-pupil { transition: none; }
 }
 

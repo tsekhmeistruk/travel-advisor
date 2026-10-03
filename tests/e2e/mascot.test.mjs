@@ -1,6 +1,6 @@
-// The capybara in Canada (site/js/map/mascot.js): where it stands, that it never catches a click,
-// and where it looks. Its timing (a look at the visitor after 15 s idle) is unit-tested in
-// tests/unit/site/gaze.test.mjs.
+// The capybara in Canada (site/js/map/mascot.js): where it stands, what a click on it does, and
+// where it looks. Its timing (a look at the visitor after 15 s idle) is unit-tested in
+// tests/unit/site/gaze.test.mjs, its acts in antics.test.mjs.
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
@@ -39,13 +39,39 @@ for (const [width, height] of [[1440, 860], [390, 844]]) {
       assert.ok(m.box.left >= m.map.left && m.box.right <= m.map.right && m.box.top >= m.map.top && m.box.bottom <= m.map.bottom, JSON.stringify(m));
     });
 
-    test('stands in Canada, and the pointer goes through it to the map', async () => {
-      const under = (x, y) => page.evaluate((x, y) => { const e = document.elementFromPoint(x, y); return e?.__data__?.key ?? `${e?.tagName}.${e?.getAttribute('class')}`; }, x, y);
+    test('stands in Canada, and takes the pointer itself', async () => {
+      // Canada is under its feet: hidden, the pointer finds the country there.
+      const under = (x, y) => page.evaluate((x, y) => {
+        const pins = document.querySelector('.pins');
+        pins.style.display = 'none';
+        const e = document.elementFromPoint(x, y);
+        pins.style.display = '';
+        return e?.__data__?.key ?? `${e?.tagName}.${e?.getAttribute('class')}`;
+      }, x, y);
       assert.equal(await under(m.feet.x, m.feet.y - 2), 'ca');
-      // Its middle (over Ontario or Hudson Bay): the pointer finds the map, not the drawing.
-      const middle = await page.evaluate((x, y) => !!document.elementFromPoint(x, y)?.closest('#map') && !document.elementFromPoint(x, y).closest('.mascot'),
-        (m.box.left + m.box.right) / 2, (m.box.top + m.box.bottom) / 2);
-      assert.equal(middle, true);
+      const middle = await page.evaluate((x, y) => !!document.elementFromPoint(x, y)?.closest('.mascot'), (m.box.left + m.box.right) / 2, (m.box.top + m.box.bottom) / 2);
+      assert.equal(middle, true, 'its body is what the pointer finds');
+    });
+
+    test('a click on it plays one act to the end: Canada is not selected, and clicks meanwhile change nothing', async () => {
+      const antic = () => page.$eval('.mascot', el => el.dataset.antic ?? null);
+      const middle = { x: (m.box.left + m.box.right) / 2, y: (m.box.top + m.box.bottom) / 2 };
+      assert.equal(await antic(), null);
+      await click(page, middle);
+      const first = await antic();
+      assert.ok(['paw', 'nose', 'glasses', 'smile', 'hop'].includes(first), `act: ${first}`);
+      assert.equal(await page.$('.select-outline:not([display="none"])'), null, 'the map got no click');
+      assert.equal(await page.$eval('#details', el => !!el.querySelector('.block.selected')), false, 'nothing selected');
+      await sleep(500);
+      await click(page, middle);
+      await click(page, middle);
+      assert.equal(await antic(), first, 'the same act goes on');
+      await page.waitForFunction(() => !document.querySelector('.mascot').dataset.antic, { timeout: 4000 });
+      await sleep(300);
+      assert.equal(await antic(), null, 'no act was waiting its turn');
+      await click(page, middle);
+      const second = await antic();
+      assert.ok(second && second !== first, `another act: ${second}`);
     });
 
     test('looks east at first', () => {

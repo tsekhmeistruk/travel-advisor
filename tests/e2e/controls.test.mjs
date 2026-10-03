@@ -365,6 +365,7 @@ describe('phone sheet', () => {
     await sleep(400);   // scrolled back, and not a double-click
     await click(page, await anchorOf(page, 'au'));
     assert.match((await sheet(page)).text, /Australia/);
+    await sleep(900);   // the map zooms in to Australia's name: the ocean is looked for once it is still
     const ocean = await mapOcean(page);
     assert.ok(ocean, 'found an ocean point');
     await click(page, ocean);
@@ -401,6 +402,52 @@ describe('phone sheet', () => {
     const page = await open();
     await click(page, await anchorOf(page, 'br'));
     assert.equal((await sheet(page)).shown, false);
+    await page.close();
+  });
+});
+
+describe('a click on a country', () => {
+  const view = (page) => page.$eval('#map .viewport', el => el.getAttribute('transform'));
+  const names = (page) => page.$$eval('.map-label', els => els.map(e => e.textContent));
+
+  test('zooms in just until its name shows, and not at all when it shows already', async () => {
+    const page = await open();
+    assert.deepEqual(await names(page), [], 'no names at world zoom');
+    const world = await view(page);
+    await click(page, await anchorOf(page, 'de'));
+    await sleep(1000);   // the zoom's transition
+    assert.equal(await detailsTitle(page), 'Germany');
+    assert.ok((await names(page)).includes('Germany'), (await names(page)).join(', '));
+    const zoomed = await view(page);
+    assert.notEqual(zoomed, world);
+    assert.ok(Number(zoomed.match(/scale\(([\d.]+)/)[1]) < 10, `no further than its name needs: ${zoomed}`);
+    // A neighbour whose name is on the map already: it is selected, and the map stays as it is.
+    const shown = await names(page);
+    const [name, id] = [['France', 'fr'], ['Poland', 'pl'], ['Italy', 'it']].find(([n]) => shown.includes(n));
+    await click(page, await anchorOf(page, id));
+    await sleep(1000);
+    assert.equal(await detailsTitle(page), name);
+    assert.equal(await view(page), zoomed, 'no zoom, no pan');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('opens the panel when it was hidden; an open panel just shows the country', async () => {
+    const page = await open();
+    const collapsed = () => page.$eval('#app', el => el.classList.contains('panel-collapsed'));
+    await page.click('#panelToggle');
+    assert.equal(await collapsed(), true);
+    await sleep(300);   // the map takes the panel's room
+    await click(page, await anchorOf(page, 'br'));
+    assert.equal(await collapsed(), false, 'the panel is back');
+    assert.equal(await page.$eval('#panelToggle', el => el.getAttribute('aria-expanded')), 'true');
+    assert.equal(await detailsTitle(page), 'Brazil');
+    await sleep(1000);
+    assert.ok((await names(page)).includes('Brazil'), 'and the zoom to its name was not undone by the map resizing');
+    await click(page, await anchorOf(page, 'ar'));
+    assert.equal(await collapsed(), false);
+    assert.equal(await detailsTitle(page), 'Argentina');
+    assert.deepEqual(page.errors, []);
     await page.close();
   });
 });

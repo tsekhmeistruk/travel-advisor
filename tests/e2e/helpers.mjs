@@ -226,7 +226,10 @@ export const url = () => env.url;
 export const anchorOf = (page, placeId) => page.evaluate((id) => {
   const el = [...document.querySelectorAll('path.country, .dot')].find(e => e.__data__.key === id);
   const r = document.getElementById('map').getBoundingClientRect();
-  return { x: r.left + el.__data__.anchor[0], y: r.top + el.__data__.anchor[1] };
+  // Where the map shows it now: a click on a country may have zoomed the map in.
+  const t = (document.querySelector('#map .viewport').getAttribute('transform') ?? '').match(/translate\(([-\d.e]+),\s*([-\d.e]+)\)\s*scale\(([-\d.e]+)/);
+  const [tx, ty, k] = t ? t.slice(1).map(Number) : [0, 0, 1];
+  return { x: r.left + el.__data__.anchor[0] * k + tx, y: r.top + el.__data__.anchor[1] * k + ty };
 }, placeId);
 
 export const isSelected = (page) => page.evaluate(() => {

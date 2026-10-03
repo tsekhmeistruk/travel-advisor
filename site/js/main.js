@@ -125,7 +125,15 @@ async function main() {
       else tooltip.hide();
     },
     onMove: (event) => { if (event.pointerType === 'mouse') tooltip.move(event); },
-    onSelect: (region) => { select(region && selected?.placeId !== region.key ? { placeId: region.key } : null, { toUrl: true }); showSheet(); },
+    // A clicked country: the panel opens if it was hidden, and the map zooms in only as far as
+    // it takes to show the country's name (not at all if it shows already).
+    onSelect: (region) => {
+      const target = region && selected?.placeId !== region.key ? { placeId: region.key } : null;
+      if (target) openPanel();
+      select(target, { toUrl: true });
+      if (target) map.showLabel(region.key);
+      showSheet();
+    },
     // A marker previews and selects its event; a cluster of several zooms in to split it (at
     // the closest zoom, where it can't split any more, it selects its first event).
     onMarkerHover: (cluster, event) => {
@@ -181,6 +189,13 @@ async function main() {
   // The footer's "How it works" opens the help, like the legend's button.
   $('footer').addEventListener('click', (e) => { if (e.target.closest('[data-action="help"]')) $('help').showModal(); });
   $('panelToggle').onclick = () => { settings.set('panelOpen', !settings.get('panelOpen')); applyPanel(); };
+  /** Show the panel if it is hidden; the map takes its new size at once, so a zoom started next isn't undone by it. */
+  function openPanel() {
+    if (settings.get('panelOpen')) return;
+    settings.set('panelOpen', true);
+    applyPanel();
+    map.layout();
+  }
   applyPanel();
 
 
