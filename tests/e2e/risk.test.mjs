@@ -534,6 +534,26 @@ describe('a selected country\'s blocks', () => {
     await page.close();
   });
 
+  test('a refresh starts at home: nothing selected, no list, the mode kept; a link opens its country again', async () => {
+    const page = await openRaw({ hash: '#mode=disaster&place=jp', intercept: withRiskChanges() });
+    await placeBlocksShown(page);
+    assert.equal((await blocks(page)).title, 'Japan', 'a link opens its country');
+    await page.reload({ waitUntil: 'networkidle0' });
+    let b = await blocks(page);
+    assert.equal(b.title, null, 'no selection after a refresh');
+    assert.equal(b.hash, '#mode=disaster', 'and the address says so');
+    assert.equal(await page.$eval('#modeSwitch [aria-checked="true"]', el => el.dataset.mode), 'disaster');
+    assert.equal(await page.$('path.country.is-selected'), null);
+    await page.click('#listOpen');
+    await page.waitForSelector('#listRows button');
+    await page.reload({ waitUntil: 'networkidle0' });
+    assert.equal(await page.$eval('#listView', el => el.checkVisibility()), false, 'the list is closed after a refresh');
+    await page.goto(page.url().replace(/#.*/, '') + '#mode=highest&place=mx');
+    await page.waitForFunction(() => document.querySelector('#details .selected h3')?.textContent === 'Mexico');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
   test('an alert in its block opens the alert\'s card; Travel shows the same blocks below its own', async () => {
     const page = await openRaw({ hash: '#mode=disaster&place=jp', intercept: withRiskChanges() });
     await page.waitForSelector('#details [data-event="gdacs:TC:900"]');

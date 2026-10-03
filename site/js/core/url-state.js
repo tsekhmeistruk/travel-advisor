@@ -10,6 +10,16 @@ export function parseHash(hash) {
   return { mode: params.get('mode') || null, place: params.get('place') || null, view: params.get('view') || null, war: /^\d+[-:]\d+$/.test(war ?? '') ? war.replace('-', ':') : null };
 }
 
+/**
+ * What the page starts with. A link (a fresh navigation) opens its place, war or list; a refresh
+ * starts at home: the mode only, nothing selected and no list.
+ * @param parsed      parseHash(location.hash)
+ * @param navigation  the navigation type: 'navigate', 'reload', 'back_forward', …
+ */
+export function startState(parsed, navigation) {
+  return navigation === 'reload' ? { mode: parsed.mode, place: null, view: null, war: null } : parsed;
+}
+
 /** The hash for a state: "#mode=travel", "#mode=disaster&place=mx", "…&view=country" (which needs a place), "…&view=list", "#mode=wars&war=1-309". */
 export function formatHash({ mode, place, view, war }) {
   const params = new URLSearchParams();

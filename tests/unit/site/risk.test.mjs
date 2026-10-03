@@ -13,7 +13,7 @@ import { MODES, DEFAULT_MODE, RENAMED } from '../../../site/js/datasets/registry
 import { clusterMarkers, MARKER_ICONS } from '../../../site/js/map/clusters.js';
 import { createI18n } from '../../../site/js/core/i18n.js';
 import { createSettings } from '../../../site/js/core/settings.js';
-import { parseHash, formatHash } from '../../../site/js/core/url-state.js';
+import { parseHash, formatHash, startState } from '../../../site/js/core/url-state.js';
 
 const EN = JSON.parse(readFileSync(new URL('../../../site/i18n/en.json', import.meta.url), 'utf8'));
 const NOW = Date.parse('2026-09-27T12:00:00Z');
@@ -188,6 +188,13 @@ describe('url state', () => {
     assert.equal(formatHash({ mode: 'travel' }), '#mode=travel');
     assert.equal(formatHash({ mode: 'disaster', place: 'mx' }), '#mode=disaster&place=mx');
     assert.equal(formatHash({}), '');
+    // A refresh starts at home: the mode stays, the selection and the list don't. A link opens as written.
+    const link = parseHash('#mode=wars&war=1-309&view=list');
+    assert.deepEqual(startState(link, 'navigate'), link);
+    assert.deepEqual(startState(link, undefined), link);
+    assert.deepEqual(startState(link, 'back_forward'), link);
+    assert.deepEqual(startState(link, 'reload'), { mode: 'wars', place: null, view: null, war: null });
+    assert.deepEqual(startState(parseHash('#mode=travel&place=mx'), 'reload'), { mode: 'travel', place: null, view: null, war: null });
     assert.deepEqual(parseHash('#mode=highest&place=mx&view=country'), { mode: 'highest', place: 'mx', view: 'country', war: null });
     assert.equal(formatHash({ mode: 'highest', place: 'mx', view: 'country' }), '#mode=highest&place=mx&view=country');
     assert.equal(formatHash({ mode: 'highest', view: 'country' }), '#mode=highest', 'a country view needs a place');

@@ -71,9 +71,18 @@ export async function openRaw({ width = 1440, height = 860, scheme = 'dark', sto
   }
   await page.setViewport({ width, height });
   await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
-  await page.goto(env.url + hash);
-  await page.evaluate((key, s) => { localStorage.clear(); localStorage.setItem(key, JSON.stringify(s)); }, SETTINGS_KEY, stored);
-  await page.reload({ waitUntil: 'networkidle0' });
+  // The saved settings are seeded before the page's scripts run, once per tab (so a test's own
+  // reload keeps what the app saved), and the page is opened once: a refresh starts at home and
+  // would drop a link's selection.
+  await page.evaluateOnNewDocument((key, s) => {
+    try {
+      if (sessionStorage.getItem('e2e-seeded')) return;
+      localStorage.clear();
+      localStorage.setItem(key, JSON.stringify(s));
+      sessionStorage.setItem('e2e-seeded', '1');
+    } catch { /* about:blank has no storage */ }
+  }, SETTINGS_KEY, stored);
+  await page.goto(env.url + hash, { waitUntil: 'networkidle0' });
   return page;
 }
 

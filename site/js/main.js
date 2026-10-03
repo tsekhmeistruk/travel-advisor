@@ -14,7 +14,7 @@ import { $ } from './core/dom.js';
 import { createI18n, chooseLocale } from './core/i18n.js';
 import { createSettings } from './core/settings.js';
 import { createDataClient } from './core/data-client.js';
-import { parseHash, formatHash } from './core/url-state.js';
+import { parseHash, formatHash, startState } from './core/url-state.js';
 import { WorldMap } from './map/world-map.js';
 import { createMascot } from './map/mascot.js';
 import { MODES, DEFAULT_MODE, RENAMED } from './datasets/registry.js';
@@ -72,7 +72,9 @@ async function main() {
     await ds.load();
     return ds;
   };
-  const fromUrl = parseHash(location.hash);
+  // A refresh starts at home (no selection); the address then says so too. A link still opens its place.
+  const fromUrl = startState(parseHash(location.hash), performance.getEntriesByType('navigation')[0]?.type);
+  if (formatHash(fromUrl) !== formatHash(parseHash(location.hash))) history.replaceState(null, '', `${location.pathname}${location.search}${formatHash(fromUrl)}`);
   let mode = pickMode(fromUrl.mode);
   let dataset = await createDataset(mode);
 

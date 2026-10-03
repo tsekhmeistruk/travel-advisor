@@ -252,7 +252,8 @@ The manifest also has `risk: { asOf, current, changes, events, health, conflict,
     - **No Filters** (removed Oct 2026): the levels are shown or hidden from the legend (its items are buttons, `toggleLevel(level)`, `aria-pressed`), and the feed block has one 7 / 30 / 90-day switch in its heading. Every direction is listed and nothing is faded, whatever an older version saved.
   - The legend ends with an ⓘ button that opens **How levels work** (`<dialog id="help">` in `index.html`, text in `help.*`): the scale, what sets each level, confirmation, and that news activity never sets a level. Escape or the backdrop closes it.
   - Switching modes loads the new dataset first, then swaps it in place: no reload, and the map, zoom and selected place stay.
-  - On user actions it writes the mode and the selected place or war to the URL (`#mode=disaster&place=mx`, `#mode=wars&war=1-309`, `core/url-state.js`), so a view can be linked. A new hash (a link, back and forward) switches to it.
+  - On user actions it writes the mode and the selected place or war to the URL (`#mode=disaster&place=mx`, `#mode=wars&war=1-309`, `core/url-state.js`), so a view can be linked. A new hash (a link, back and forward) switches to it. **A refresh starts at home** (`startState()`: the navigation type `reload` keeps the mode and drops the place, war and list, and the address is rewritten); a link opened fresh still shows its place.
+  - **The panel's one show/hide button** (`#panelToggle`) sits on the map's top right edge in both states; its arrow turns (">" hides, "<" shows; `aria-expanded`). Phones have none.
 - **Modes** (`MODES` in `datasets/registry.js`), each a dataset, offered only when the manifest has their data:
 
   | Mode | Colours places by | Module |
