@@ -1,5 +1,5 @@
 {
- "fetchedAt": "2026-10-02T06:13:34.782Z",
+ "fetchedAt": "2026-10-03T07:06:10.393Z",
  "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "entries": [
   {
@@ -276,8 +276,8 @@
    "name": "Brazil",
    "level": 2,
    "regional": true,
-   "updated": "2026-09-29",
-   "stamp": "2026-09-29 11:25:16",
+   "updated": "2026-10-02",
+   "stamp": "2026-10-02 13:00:51",
    "url": "https://travel.gc.ca/destinations/brazil",
    "iso": "BR"
   },
@@ -645,8 +645,8 @@
    "name": "France",
    "level": 2,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:33",
+   "updated": "2026-10-02",
+   "stamp": "2026-10-02 09:22:33",
    "url": "https://travel.gc.ca/destinations/france",
    "iso": "FR"
   },
@@ -1347,8 +1347,8 @@
    "name": "Nigeria",
    "level": 3,
    "regional": true,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:34",
+   "updated": "2026-10-02",
+   "stamp": "2026-10-02 12:28:47",
    "url": "https://travel.gc.ca/destinations/nigeria",
    "iso": "NG"
   },
@@ -1491,8 +1491,8 @@
    "name": "Puerto Rico",
    "level": 1,
    "regional": false,
-   "updated": "2026-09-24",
-   "stamp": "2026-09-24 08:53:35",
+   "updated": "2026-10-02",
+   "stamp": "2026-10-02 14:02:37",
    "url": "https://travel.gc.ca/destinations/puerto-rico",
    "iso": "PR"
   },
@@ -1752,8 +1752,8 @@
    "name": "South Sudan",
    "level": 4,
    "regional": false,
-   "updated": "2026-09-28",
-   "stamp": "2026-09-28 13:14:00",
+   "updated": "2026-10-02",
+   "stamp": "2026-10-02 14:02:37",
    "url": "https://travel.gc.ca/destinations/south-sudan",
    "iso": "SS"
   },
@@ -1914,8 +1914,8 @@
    "name": "Türkiye",
    "level": 2,
    "regional": true,
-   "updated": "2026-10-01",
-   "stamp": "2026-10-01 16:05:59",
+   "updated": "2026-10-02",
+   "stamp": "2026-10-02 14:26:31",
    "url": "https://travel.gc.ca/destinations/turkiye",
    "iso": "TR"
   },
