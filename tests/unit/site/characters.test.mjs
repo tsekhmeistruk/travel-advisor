@@ -19,6 +19,7 @@ describe('characters', () => {
     test(`${c.id}: has every group the gaze and the acts move, two eyes, an icon and a name`, () => {
       for (const g of GROUPS) assert.equal(c.drawing.split(`class="${g}"`).length - 1, 1, `one ${g}`);
       assert.equal(c.drawing.split('class="mascot-eye"').length - 1, 2);
+      assert.equal(c.drawing.split('class="mascot-leg"').length - 1, 2, 'two legs, each a group: they dangle and step');
       assert.equal(c.drawing.split('class="mascot-pupil"').length - 1, 2);
       assert.ok(!/\$\{|undefined|NaN/.test(c.drawing + c.icon), 'every colour and number filled in');
       assert.ok(c.eyes > 60 && c.eyes < 120, `eyes ${c.eyes} units above its feet`);

@@ -182,9 +182,19 @@ export class WorldMap {
     const back = this.projection(at);
     return Math.hypot(back[0] - p[0], back[1] - p[1]) < 0.5 ? at : null;
   }
+  /** The middle of a place: [lon, lat] of its main shape's centre, or its point; null if unknown. */
+  centreOf(placeId) {
+    const r = this.region(placeId);
+    return r ? (r.main ? this.d3.geoCentroid(r.main) : r.point) : null;
+  }
   /** The place whose shape has this point of the globe, or null: the sea. */
   placeAt(lon, lat) {
-    return this.regions.find(r => r.feature && this.d3.geoContains(r.feature, [lon, lat]))?.key ?? null;
+    // Only the shapes whose box has the point are asked: this is called many times for a way.
+    const inBox = (r) => {
+      const [[w, s], [e, n]] = (r.bounds ??= this.d3.geoBounds(r.feature));
+      return lat >= s && lat <= n && (w <= e ? lon >= w && lon <= e : lon >= w || lon <= e);
+    };
+    return this.regions.find(r => r.feature && inBox(r) && this.d3.geoContains(r.feature, [lon, lat]))?.key ?? null;
   }
   /** Where a selection is on the map (projected, before the zoom): its marker, else the middle of its places; null if neither is shown. */
   focusPoint({ placeIds = [], markerId = null } = {}) {

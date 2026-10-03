@@ -389,6 +389,20 @@ h1, h2 { margin: 0; }
 .mascot[data-state="held"] .mascot-walk { transform: translateY(-9px) scale(1.25); }
 .mascot[data-state="held"] .mascot-bob { transform-origin: 0 -104px; animation: mascot-dangle .7s ease-in-out infinite; }
 .mascot[data-state="held"] .mascot-arm { animation: mascot-swing .7s ease-in-out infinite; }
+/* Its legs: dangling while it is held, stepping while it walks. */
+.mascot-leg { transform-box: fill-box; transform-origin: 50% 0; }
+.mascot[data-state="held"] .mascot-leg { animation: mascot-kick .42s ease-in-out infinite; }
+.mascot[data-state="walk"] .mascot-leg, .mascot[data-antic="walk"] .mascot-leg { animation: mascot-step .44s ease-in-out infinite; }
+.mascot .mascot-leg + .mascot-leg { animation-delay: -.21s; }
+.mascot[data-state="walk"] .mascot-leg + .mascot-leg, .mascot[data-antic="walk"] .mascot-leg + .mascot-leg { animation-delay: -.22s; }
+@keyframes mascot-kick { 0%, 100% { transform: rotate(-26deg); } 50% { transform: rotate(26deg); } }
+@keyframes mascot-step { 0%, 100% { transform: rotate(-13deg); } 50% { transform: rotate(13deg); } }
+/* The boat it crosses the sea in (data-state="boat"): it comes and goes softly, and rocks with
+   its passenger. */
+.mascot-boat { opacity: 0; transform: translateY(7px) scale(.7); transition: opacity .4s ease, transform .4s ease; pointer-events: none; }
+.mascot[data-state="boat"] .mascot-boat { opacity: 1; transform: none; }
+.mascot[data-state="boat"] .mascot-bob, .mascot[data-state="boat"] .mascot-hull { animation: mascot-rock 1.3s ease-in-out infinite; }
+@keyframes mascot-rock { 0%, 100% { transform: rotate(-3.5deg) translateY(0); } 50% { transform: rotate(3.5deg) translateY(-1.5px); } }
 .mascot-water { opacity: 0; pointer-events: none; }
 .mascot-ring { transform-box: fill-box; transform-origin: 50% 50%; }
 .mascot[data-state="splash"] .mascot-water, .mascot[data-state="swim"] .mascot-water { opacity: 1; }
@@ -415,7 +429,9 @@ h1, h2 { margin: 0; }
   100% { transform: scale(1.5); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mascot[data-state] .mascot-bob, .mascot[data-state] .mascot-arm, .mascot[data-state] .mascot-ring { animation: none; }
+  .mascot[data-state] .mascot-bob, .mascot[data-state] .mascot-arm, .mascot[data-state] .mascot-ring,
+  .mascot[data-state] .mascot-leg, .mascot[data-antic] .mascot-leg, .mascot[data-state] .mascot-hull { animation: none; }
+  .mascot-boat { transition: none; }
   .mascot[data-state="splash"] .mascot-bob, .mascot[data-state="swim"] .mascot-bob { transform: translateY(15px); }
   .mascot-bob, .mascot[data-antic] .mascot-walk, .mascot[data-antic] .mascot-bob, .mascot[data-antic] .mascot-head,
   .mascot[data-antic] .mascot-arm, .mascot[data-antic] .mascot-nose, .mascot[data-antic] .mascot-glasses { animation: none; }

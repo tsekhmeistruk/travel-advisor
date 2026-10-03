@@ -87,26 +87,37 @@ for (const [width, height] of [[1440, 860], [390, 844]]) {
 }
 
 describe('where the mascot looks', () => {
-  let page;
-  before(async () => { page = await open(); });   // Travel: a click on a country selects it without zooming
-  after(async () => { await page?.close(); });
-
-  test('down towards the U.S. or Brazil once chosen, and east again when cleared', async () => {
-    await click(page, await anchorOf(page, 'us'));
-    const us = await mascot(page);
-    assert.equal(us.look, 'place');
-    assert.ok(us.gy > 0.6, `gy ${us.gy}`);
-    await click(page, await anchorOf(page, 'br'));
-    const br = await mascot(page);
-    assert.ok(br.gy > 0.9, `gy ${br.gy}`);
-    await page.evaluate(() => document.getElementById('map').dispatchEvent(new MouseEvent('click', { bubbles: true })));
-    assert.equal((await mascot(page)).look, 'east');
+  // A place chosen by a link: the mascot stays where it is (it sets off only for a click), and looks there.
+  test('down towards the U.S. or Brazil chosen by a link, and east again when cleared', async () => {
+    for (const [place, least] of [['us', 0.6], ['br', 0.9]]) {
+      const page = await open({ hash: `#mode=travel&place=${place}` });
+      await sleep(300);
+      const m = await mascot(page);
+      assert.equal(m.look, 'place', place);
+      assert.ok(m.gy > least, `${place}: gy ${m.gy}`);
+      if (place === 'br') {
+        await page.evaluate(() => document.getElementById('map').dispatchEvent(new MouseEvent('click', { bubbles: true })));
+        assert.equal((await mascot(page)).look, 'east');
+      }
+      await page.close();
+    }
   });
 
   test('towards the east for a place there (Germany)', async () => {
-    await click(page, await anchorOf(page, 'de'));
+    const page = await open({ hash: '#mode=travel&place=de' });
+    await sleep(300);
     const de = await mascot(page);
     assert.ok(de.gx > 0.9 && Math.abs(de.gy) < 0.3, `${de.gx}, ${de.gy}`);
+    await page.close();
+  });
+
+  test('at the visitor once it has walked to the country that was clicked', async () => {
+    const page = await open();
+    await click(page, await anchorOf(page, 'us'));
+    await page.waitForFunction(() => document.querySelector('.mascot').dataset.state, { timeout: 2000 });
+    await page.waitForFunction(() => !document.querySelector('.mascot').dataset.state, { timeout: 6000 });
+    assert.equal((await mascot(page)).look, 'user', 'it stands on what is chosen: nothing to turn to');
+    await page.close();
   });
 });
 
@@ -193,11 +204,11 @@ describe('picked up and put down', () => {
     return { x, y, under: e?.__data__?.key ?? e?.getAttribute('class') ?? null };
   });
   /** Press on its body, move there in steps, release. */
-  async function drag(page, to, { release = true } = {}) {
+  async function drag(page, to, { release = true, grab = 20 } = {}) {
     const from = await feet(page);
-    await page.mouse.move(from.x, from.y - 20);
+    await page.mouse.move(from.x, from.y - grab);
     await page.mouse.down();
-    await page.mouse.move(to.x, to.y - 20, { steps: 8 });
+    await page.mouse.move(to.x, to.y - grab, { steps: 8 });
     if (release) await page.mouse.up();
     await sleep(100);
   }
@@ -235,11 +246,18 @@ describe('picked up and put down', () => {
     await click(page, { x: there.x, y: there.y - 20 });
     assert.ok(await page.$eval('.mascot', el => el.dataset.antic), 'an act in Brazil');
     assert.equal(await detailsTitle(page), 'Brazil', 'a click on it keeps the choice');
+    // Where it was put is kept for the session: a reload finds it there; a new session, at home.
+    assert.match(await page.evaluate(() => sessionStorage.getItem('travel-risk-map:mascot')), /^\[-?\d+(\.\d+)?,-?\d+(\.\d+)?\]$/);
+    await page.reload({ waitUntil: 'networkidle0' });
+    await page.waitForSelector('.mascot');
+    await sleep(300);
+    assert.equal((await feet(page)).under, 'br', 'still in Brazil after a reload');
+    await page.evaluate(() => sessionStorage.removeItem('travel-risk-map:mascot'));
     await page.reload({ waitUntil: 'networkidle0' });
     await page.waitForSelector('.mascot');
     await sleep(300);
     const back = await feet(page);
-    assert.ok(Math.abs(back.x - home.x) < 2 && Math.abs(back.y - home.y) < 2, 'home again after a reload');
+    assert.ok(Math.abs(back.x - home.x) < 2 && Math.abs(back.y - home.y) < 2, 'a new session: at home');
     assert.deepEqual(page.errors, []);
     await page.close();
   });
@@ -260,7 +278,7 @@ describe('picked up and put down', () => {
     assert.ok(Math.hypot(b.x - home.x, b.y - home.y) < Math.hypot(a.x - home.x, a.y - home.y), 'it gets closer to home');
     // Picked up while it swims, and put on land in Mexico: it stays.
     const mexico = await anchorOf(page, 'mx');
-    await drag(page, mexico);
+    await drag(page, mexico, { grab: 34 });   // by its head: the rest is under water
     await sleep(1100);   // Mexico is chosen, and the map zooms to its name
     assert.equal(await state(page), null);
     assert.equal(await detailsTitle(page), 'Mexico');
@@ -286,6 +304,82 @@ describe('picked up and put down', () => {
     assert.equal((await feet(page)).under, 'ca', 'home, in Canada');
     assert.equal(await detailsTitle(page), 'Mexico', 'the sea chooses nothing');
     assert.equal(await page.$eval('.mascot-water', el => getComputedStyle(el).opacity), '0');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('a press held a moment lifts it, its legs dangling; a quick click does not', async () => {
+    const page = await open();
+    const at = await feet(page);
+    await page.mouse.move(at.x, at.y - 20);
+    await page.mouse.down();
+    await sleep(80);
+    assert.equal(await state(page), null, 'not yet');
+    await sleep(350);
+    assert.equal(await state(page), 'held');
+    const legs = await page.$$eval('.mascot .mascot-leg', els => els.map(e => getComputedStyle(e).animationName));
+    assert.deepEqual(legs, ['mascot-kick', 'mascot-kick'], 'both legs kick');
+    await page.mouse.up();
+    await sleep(200);
+    assert.equal(await state(page), null);
+    assert.equal(await detailsTitle(page), 'Canada', 'put down where it stood: that country is chosen');
+    await page.close();
+  });
+
+  test('a clicked country sends it there: on foot over land, in a boat across the sea', async () => {
+    const page = await open();
+    // The U.S. from Canada: land all the way.
+    await click(page, await anchorOf(page, 'us'));
+    const seen = new Set();
+    for (let i = 0; i < 30 && (i < 3 || await state(page)); i++) { seen.add(await state(page)); await sleep(80); }
+    assert.ok(seen.has('walk') && !seen.has('boat') && !seen.has('swim'), `on foot: ${[...seen]}`);
+    await sleep(1000);   // the zoom to its name
+    const us = await anchorOf(page, 'us');
+    const there = await feet(page);
+    assert.ok(Math.hypot(there.x - us.x, there.y - us.y) < 3, 'it stands in the middle of the U.S.');
+    assert.equal(await page.$eval('.mascot-boat', el => getComputedStyle(el).opacity), '0', 'no boat on land');
+    // Brazil from there: the Caribbean is in the way.
+    await page.click('#zoomReset');
+    await sleep(700);
+    const br = await anchorOf(page, 'br');
+    await click(page, { x: br.x, y: br.y + 10 });
+    const states = [];
+    let boatShown = 0;
+    for (let i = 0; i < 80; i++) {
+      const st = await state(page);
+      if (st !== states.at(-1)) states.push(st);
+      if (st === 'boat') boatShown = Math.max(boatShown, Number(await page.$eval('.mascot-boat', el => getComputedStyle(el).opacity)));
+      if (i > 3 && st == null) break;
+      await sleep(70);
+    }
+    assert.ok(states.includes('boat') && states.includes('walk'), `by boat and on foot: ${states}`);
+    assert.ok(boatShown > 0.9, `the boat is there at sea (${boatShown})`);
+    assert.equal(states.at(-1), null, 'it arrives and stands');
+    await sleep(1200);
+    assert.equal(await page.$eval('.mascot-boat', el => getComputedStyle(el).opacity), '0', 'the boat is gone on the other shore');
+    assert.equal((await feet(page)).under, 'br');
+    const kept = JSON.parse(await page.evaluate(() => sessionStorage.getItem('travel-risk-map:mascot')));
+    assert.ok(kept[0] < -40 && kept[0] > -70 && kept[1] < 0, `where it went is kept for the session: ${kept}`);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('its home is the visitor’s country, guessed from the time zone and remembered', async () => {
+    const page = await openRaw({ stored: { mode: 'travel', mascotHome: null } });
+    await page.emulateTimezone('Europe/Kyiv');
+    await page.reload({ waitUntil: 'networkidle0' });
+    await page.evaluate(() => { const s = JSON.parse(localStorage.getItem('travel-risk-map:settings')); delete s.mascotHome; localStorage.setItem('travel-risk-map:settings', JSON.stringify(s)); });
+    await page.reload({ waitUntil: 'networkidle0' });
+    await page.waitForSelector('.mascot');
+    await sleep(300);
+    assert.equal((await feet(page)).under, 'ua', 'in Ukraine');
+    assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('travel-risk-map:settings')).mascotHome), 'ua', 'remembered');
+    // Remembered: another time zone later does not move its home.
+    await page.emulateTimezone('Asia/Tokyo');
+    await page.reload({ waitUntil: 'networkidle0' });
+    await page.waitForSelector('.mascot');
+    await sleep(300);
+    assert.equal((await feet(page)).under, 'ua');
     assert.deepEqual(page.errors, []);
     await page.close();
   });

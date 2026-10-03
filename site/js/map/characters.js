@@ -3,7 +3,7 @@
 // puts the chosen one on the map; the visitor picks it with the switch under the zoom buttons.
 //
 // Every drawing has the same groups, so the gaze (gaze.js) and the acts (antics.js) work for
-// all of them: mascot-bob (the whole body), mascot-arm, mascot-head with mascot-ears,
+// all of them: mascot-bob (the whole body), two mascot-leg, mascot-arm, mascot-head with mascot-ears,
 // mascot-muzzle (holding mascot-nose, mascot-mouth and mascot-grin) and mascot-face (two
 // mascot-eye, each with a mascot-pupil, and mascot-glasses).
 
@@ -15,12 +15,16 @@ const CAPYBARA = `
   <ellipse cx="0" cy="-1" rx="21" ry="3.2" fill="#000" opacity=".22"/>
   <rect x="-30" y="-71" width="21" height="9" rx="4.5" fill="#c9a46a" stroke="${LINE}" stroke-width=".8"/>
   <rect x="-29" y="-63" width="16" height="31" rx="4" fill="#8b5a2b" stroke="${LINE}" stroke-width=".8"/>
-  <rect x="-12" y="-19" width="8" height="10" fill="${FUR_DARK}"/>
-  <rect x="4" y="-19" width="8" height="10" fill="${FUR_DARK}"/>
-  <rect x="-13.5" y="-12" width="10" height="3" rx="1" fill="#eee6d6"/>
-  <rect x="3.5" y="-12" width="10" height="3" rx="1" fill="#eee6d6"/>
-  <rect x="-16" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
-  <rect x="3" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
+  <g class="mascot-leg">
+    <rect x="-12" y="-19" width="8" height="10" fill="${FUR_DARK}"/>
+    <rect x="-13.5" y="-12" width="10" height="3" rx="1" fill="#eee6d6"/>
+    <rect x="-16" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
+  </g>
+  <g class="mascot-leg">
+    <rect x="4" y="-19" width="8" height="10" fill="${FUR_DARK}"/>
+    <rect x="3.5" y="-12" width="10" height="3" rx="1" fill="#eee6d6"/>
+    <rect x="3" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
+  </g>
   <path d="M-19-40H19L20-17Q20-14 17-14H4L1-25H-1L-4-14H-17Q-20-14-20-17Z" fill="#6f7744" stroke="#40461f" stroke-width=".8"/>
   <rect x="-17" y="-61" width="34" height="25" rx="9" fill="#efe4cb" stroke="#9b8a66" stroke-width=".8"/>
   <path d="M-12-60L-10-40M12-60L10-40" stroke="#7a4b25" stroke-width="3"/>
@@ -76,10 +80,14 @@ const GOOSE = `
   <circle cx="-28.5" cy="-71.5" r="2" fill="none" stroke="#4a4436" stroke-width=".8"/>
   <rect x="-30" y="-67" width="17" height="34" rx="4" fill="#8b5a2b" stroke="${LINE}" stroke-width=".8"/>
   <rect x="-28" y="-47" width="8" height="9" rx="2" fill="#7a4b25" stroke="${LINE}" stroke-width=".7"/>
-  <rect x="-9.6" y="-20" width="4.2" height="11" fill="#e8962e"/>
-  <rect x="5.4" y="-20" width="4.2" height="11" fill="#e8962e"/>
-  <rect x="-16" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
-  <rect x="3" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
+  <g class="mascot-leg">
+    <rect x="-9.6" y="-20" width="4.2" height="11" fill="#e8962e"/>
+    <rect x="-16" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
+  </g>
+  <g class="mascot-leg">
+    <rect x="5.4" y="-20" width="4.2" height="11" fill="#e8962e"/>
+    <rect x="3" y="-10" width="13" height="9" rx="3.5" fill="#6e4524" stroke="#3e2512" stroke-width=".8"/>
+  </g>
   <path d="M-19-40H19L20-19Q20-16 17-16H4L1-27H-1L-4-16H-17Q-20-16-20-19Z" fill="#6f7744" stroke="#40461f" stroke-width=".8"/>
   <rect x="-17" y="-61" width="34" height="25" rx="9" fill="#f6f1e4" stroke="#b9ad92" stroke-width=".8"/>
   <path d="M-12-60L-10-40M12-60L10-40" stroke="#7a4b25" stroke-width="3"/>

@@ -371,7 +371,9 @@ describe('phone sheet', () => {
     await click(page, ocean);
     assert.equal((await sheet(page)).shown, false, 'the ocean closes it');
     await sleep(400);
-    await click(page, await anchorOf(page, 'au'));
+    // The mascot walked to Australia's middle when it was chosen: the tap goes just below its feet.
+    const au = await anchorOf(page, 'au');
+    await click(page, { x: au.x, y: au.y + 14 });
     await page.click('#sheetClose');
     assert.equal((await sheet(page)).shown, false, '× closes it');
     assert.equal(await isSelected(page), true, 'and keeps the selection');

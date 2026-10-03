@@ -73,12 +73,13 @@ export async function openRaw({ width = 1440, height = 860, scheme = 'dark', sto
   await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: scheme }]);
   // The saved settings are seeded before the page's scripts run, once per tab (so a test's own
   // reload keeps what the app saved), and the page is opened once: a refresh starts at home and
-  // would drop a link's selection.
+  // would drop a link's selection. The mascot lives in Canada unless a test says otherwise
+  // (mascotHome: null makes the app guess from the browser's time zone, which differs by machine).
   await page.evaluateOnNewDocument((key, s) => {
     try {
       if (sessionStorage.getItem('e2e-seeded')) return;
       localStorage.clear();
-      localStorage.setItem(key, JSON.stringify(s));
+      localStorage.setItem(key, JSON.stringify({ mascotHome: 'ca', ...s }));
       sessionStorage.setItem('e2e-seeded', '1');
     } catch { /* about:blank has no storage */ }
   }, SETTINGS_KEY, stored);

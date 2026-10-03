@@ -16,7 +16,8 @@ import { createSettings } from './core/settings.js';
 import { createDataClient } from './core/data-client.js';
 import { parseHash, formatHash, startState } from './core/url-state.js';
 import { WorldMap } from './map/world-map.js';
-import { createMascot } from './map/mascot.js';
+import { createMascot, HOME } from './map/mascot.js';
+import { guessPlace, browserZones } from './core/locate.js';
 import { CHARACTERS, DEFAULT_CHARACTER } from './map/characters.js';
 import { MODES, DEFAULT_MODE, RENAMED } from './datasets/registry.js';
 import { createSearch } from './ui/search.js';
@@ -32,7 +33,7 @@ main().catch((err) => {
 
 async function main() {
   const client = createDataClient();
-  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, mode: null, locale: null, mascot: DEFAULT_CHARACTER });
+  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, mode: null, locale: null, mascot: DEFAULT_CHARACTER, mascotHome: null });
   migrateSettings(settings);
 
   // ---- language
@@ -159,8 +160,30 @@ async function main() {
   $('zoomOut').onclick = () => map.zoomBy(1 / 1.6);
   $('zoomReset').onclick = () => map.resetZoom();
   // The capybara in Canada looks east, towards the selection, and now and then at the visitor.
+  // The mascot lives in the visitor's country: guessed once from the browser's time zone and
+  // languages (no request, no address), then remembered. Canada when nothing tells.
+  if (!places.has(settings.get('mascotHome'))) {
+    settings.set('mascotHome', guessPlace({
+      timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, languages: navigator.languages ?? [navigator.language], places: placeList, zonesOf: browserZones,
+    }) ?? 'ca');
+  }
+  const mascotHome = settings.get('mascotHome') === 'ca' ? HOME : map.centreOf(settings.get('mascotHome')) ?? HOME;
+  // Where the visitor moved it stays for the session (a new one starts at its home).
+  const SPOT_KEY = 'travel-risk-map:mascot';
+  const savedSpot = () => {
+    try {
+      const at = JSON.parse(sessionStorage.getItem(SPOT_KEY));
+      return Array.isArray(at) && at.length === 2 && at.every(Number.isFinite) && Math.abs(at[0]) <= 180 && Math.abs(at[1]) <= 90 ? at : null;
+    } catch { return null; }
+  };
+  const saveSpot = (at) => {
+    try { if (at) sessionStorage.setItem(SPOT_KEY, JSON.stringify(at.map(v => Math.round(v * 1000) / 1000))); else sessionStorage.removeItem(SPOT_KEY); } catch { /* storage unavailable */ }
+  };
   // Put down on a country, it chooses that country, as a click there would.
-  const mascot = createMascot(map, { character: settings.get('mascot'), onPlace: (placeId) => choosePlace(placeId) });
+  const mascot = createMascot(map, {
+    character: settings.get('mascot'), home: mascotHome, start: savedSpot() ?? mascotHome,
+    onPlace: (placeId) => choosePlace(placeId, { byMascot: true }), onRest: saveSpot,
+  });
   // The switch under the zoom buttons: who stands there (remembered).
   const renderMascots = () => {
     $('mascotSwitch').innerHTML = CHARACTERS.map(c => {
@@ -208,9 +231,9 @@ async function main() {
   $('footer').addEventListener('click', (e) => { if (e.target.closest('[data-action="help"]')) $('help').showModal(); });
   $('panelToggle').onclick = () => { settings.set('panelOpen', !settings.get('panelOpen')); applyPanel(); };
   /** A country chosen on the map (a click on it, or the mascot put down on it): selected, in a panel that is open, its name on the map. */
-  function choosePlace(placeId) {
+  function choosePlace(placeId, { byMascot = false } = {}) {
     openPanel();
-    select({ placeId }, { toUrl: true });
+    select({ placeId }, { toUrl: true, mascotGoes: !byMascot });
     map.showLabel(placeId);
     showSheet();
   }
@@ -266,7 +289,8 @@ async function main() {
   };
 
   /** follow: an open countries list closes for the selection (off when the list selects the place itself). */
-  function select(target, { zoom = false, toUrl = false, follow = true } = {}) {
+  /** mascotGoes: the mascot sets off for a place the visitor chose (not on load, and not when it was put there itself). */
+  function select(target, { zoom = false, toUrl = false, follow = true, mascotGoes = toUrl } = {}) {
     hideSheet();   // a tap on the map shows it again (see showSheet)
     selected = target;
     map.setSelected(target?.placeId ?? null);
@@ -280,6 +304,7 @@ async function main() {
     // A selection shows its blocks: the countries list makes way.
     if (follow && panelView === 'list' && target) closeView();
     if (toUrl) writeUrl();
+    if (mascotGoes && target?.placeId && !target.eventId) mascot.goTo(map.centreOf(target.placeId));
   }
 
   // ---- the panel's blocks and the countries list (from a risk mode, borrowed in Travel)
