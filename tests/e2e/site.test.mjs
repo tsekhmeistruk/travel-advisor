@@ -81,7 +81,7 @@ describe('map interaction', () => {
 });
 
 describe('panel', () => {
-  test('the provider switch changes the overview, footer and level names, and persists', async () => {
+  test('the provider switch changes the overview and footer, keeps the legend\'s level names, and persists', async () => {
     const page = await open({ settings: { provider: 'us' } });
     const text = (id) => page.evaluate((i) => document.getElementById(i).textContent, id);
     assert.match(await text('asOf'), /^Data as of /, 'the header is the data date, on one line');
@@ -90,7 +90,8 @@ describe('panel', () => {
     assert.match(await text('details'), /World overview · Canada/);
     assert.match(await text('footer'), /Government of Canada/);
     assert.doesNotMatch(await text('asOf'), /Canada/, 'the agency is no longer in the header');
-    assert.match(await page.evaluate(() => document.getElementById('legend').innerText), /Avoid all/, 'the legend names Canada\'s levels');
+    assert.match(await page.evaluate(() => document.getElementById('legend').innerText), /Normal\s*Elevated\s*High\s*Critical/, 'the legend keeps the names every tab uses');
+    assert.match(await page.$eval('#legend [data-level="4"]', el => el.title), /Avoid all travel/, 'Canada\'s own name for the level is in its title');
     await page.reload();
     await sleep(300);
     await page.waitForSelector('#providerSwitch [aria-checked="true"]');

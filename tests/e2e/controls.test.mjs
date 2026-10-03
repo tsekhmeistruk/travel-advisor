@@ -472,11 +472,42 @@ describe('states and provinces', () => {
     await page.close();
   });
 
+  test('the grid stays when its country is hovered', async () => {
+    const page = await open();
+    const us = await anchorOf(page, 'us');
+    await page.mouse.move(us.x, us.y);
+    await sleep(200);
+    const hovered = await page.evaluate(() => {
+      const hover = document.querySelector('#map .hover-outline'), grid = document.querySelector('#map .subdivisions');
+      return {
+        shown: hover.getAttribute('display') !== 'none' && !!hover.getAttribute('d'),
+        gridOnTop: !!(hover.compareDocumentPosition(grid) & Node.DOCUMENT_POSITION_FOLLOWING),
+        gridSeen: grid.checkVisibility() && getComputedStyle(grid).opacity > 0,
+      };
+    });
+    assert.deepEqual(hovered, { shown: true, gridOnTop: true, gridSeen: true }, 'the hovered country is drawn again, filled: the borders are drawn over it');
+    await page.close();
+  });
+
   test('the map works without the borders file', async () => {
     const page = await openRaw({ intercept: (req) => (isData(req, 'geo/admin1-lines.json') ? (req.respond({ status: 404, body: 'Not found' }), true) : false) });
     await page.waitForSelector('path.country');
     assert.equal(await page.$eval('#map .subdivisions', el => el.getAttribute('d')), null);
     assert.equal(await page.$('#loadError:not([hidden])'), null);
+    await page.close();
+  });
+});
+
+describe('level names', () => {
+  test('the legend of every tab says Normal, Elevated, High, Critical, in this order', async () => {
+    const page = await open();
+    for (const mode of ['wars', 'disaster', 'travel', 'highest']) {
+      await page.evaluate((m) => document.querySelector(`#modeSwitch [data-mode="${m}"]`).click(), mode);
+      await page.waitForFunction((m) => location.hash.includes(`mode=${m}`), {}, mode);
+      await sleep(500);
+      const names = await page.$$eval('#legend [data-level]', els => els.map(e => [e.dataset.level, e.textContent.trim()]));
+      assert.deepEqual(names, [['1', 'Normal'], ['2', 'Elevated'], ['3', 'High'], ['4', 'Critical']], mode);
+    }
     await page.close();
   });
 });

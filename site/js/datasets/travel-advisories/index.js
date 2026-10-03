@@ -73,7 +73,7 @@ export function createTravelAdvisories(ctx) {
         ${desc.map(l => `<span style="--c:var(--l${l});flex:${counts[l - 1]}"></span>`).join('')}
       </div>
       <div class="overview-grid">
-        ${desc.map(l => `<div><span class="swatch" style="background:var(--l${l})"></span>${esc(levelInfo(l).short)}<b>${counts[l - 1]}</b></div>`).join('')}
+        ${desc.map(l => `<div><span class="swatch" style="background:var(--l${l})"></span>${esc(i18n.t(`risk.levels.${l}`))}<b>${counts[l - 1]}</b></div>`).join('')}
       </div>
     </section>`;
   }
@@ -218,7 +218,7 @@ export function createTravelAdvisories(ctx) {
 
     // Each level in the legend shows or hides its places (main.js calls toggleLevel).
     legend() {
-      return levelsAll.map(l => `<button class="legend-item legend-toggle" data-level="${l}" aria-pressed="${levels().includes(l)}" title="${esc(i18n.t('panel.levelToggle'))}"><span class="swatch" style="background:var(--l${l})"></span>${esc(levelInfo(l).short)}</button>`).join('')
+      return levelsAll.map(l => `<button class="legend-item legend-toggle" data-level="${l}" aria-pressed="${levels().includes(l)}" title="${esc(`${levelInfo(l).name} · ${i18n.t('panel.levelToggle')}`)}"><span class="swatch" style="background:var(--l${l})"></span>${esc(i18n.t(`risk.levels.${l}`))}</button>`).join('')
         + `<span class="legend-item"><span class="swatch none"></span>${esc(tx('legend.none'))}</span>`
         + (windowDays() > 0 ? `<span class="legend-item"><span class="legend-pulse"></span>${esc(tx('legend.recent', { days: windowDays() }))}</span>` : '');
     },

@@ -95,9 +95,10 @@ export class WorldMap {
     this.spherePath = this.viewport.append('path').attr('class', 'sphere');
     this.graticulePath = this.viewport.append('path').attr('class', 'graticule');
     const countryLayer = this.viewport.append('g').attr('class', 'countries');
+    this.hoverOutline = this.viewport.append('path').attr('class', 'hover-outline');
+    // Over the hovered country, which is drawn again, filled and lifted: its grid stays.
     this.subdivisions = { type: 'MultiLineString', coordinates: subdivisions };
     this.subdivisionPath = this.viewport.append('path').attr('class', 'subdivisions');
-    this.hoverOutline = this.viewport.append('path').attr('class', 'hover-outline');
     this.selectOutline = this.viewport.append('path').attr('class', 'select-outline');
     const overlay = this.svg.append('g').attr('class', 'overlay');
     this.pinLayer = overlay.append('g').attr('class', 'pins');

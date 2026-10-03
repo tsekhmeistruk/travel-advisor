@@ -354,11 +354,12 @@ export function createWarsMode(ctx) {
     legend() {
       // Each band in the legend shows or hides its places (its level: main.js calls toggleLevel).
       const shown = ctx.settings.scope('risk', { levels: [1, 2, 3, 4] }).get('levels');
-      const bands = bandRows(conflict().bands).map(b => `<button class="legend-item legend-toggle" data-level="${b.level}" aria-pressed="${shown.includes(b.level)}" title="${esc(i18n.t('panel.levelToggle'))}"><span class="swatch" style="background:${swatch(b.level)}"></span>${esc(
-        b.level === 1 ? tw('legend.fewer', { min: num(b.max + 1) }) : b.max == null ? tw('legend.over', { min: num(b.min) }) : tw('legend.range', { min: num(b.min), max: num(b.max) }))}</button>`).join('');
+      // The same level names as every tab, from Normal up; each band's deaths are in its title.
+      const range = (b) => (b.level === 1 ? tw('legend.fewer', { min: num(b.max + 1) }) : b.max == null ? tw('legend.over', { min: num(b.min) }) : tw('legend.range', { min: num(b.min), max: num(b.max) }));
+      const bands = bandRows(conflict().bands).reverse().map(b => `<button class="legend-item legend-toggle" data-level="${b.level}" aria-pressed="${shown.includes(b.level)}" title="${esc(`${tw('legend.title')} ${range(b)} · ${i18n.t('panel.levelToggle')}`)}"><span class="swatch" style="background:${swatch(b.level)}"></span>${esc(tr(`levels.${b.level}`))}</button>`).join('');
       const days = ctx.settings.scope('risk', { recentDays: 30 }).get('recentDays');
       const window = days === 1 ? tr('window.day') : tr('window.days', { days });
-      return `<span class="legend-item legend-title">${esc(tw('legend.title'))}</span>${bands}`
+      return bands
         + `<span class="legend-item"><span class="swatch none"></span>${esc(tr('legend.none'))}</span>`
         + (dots?.events.length ? `<span class="legend-item"><span class="legend-dot"></span>${esc(tw('legend.dots', { month: month(dots.through) }))}</span>` : '')
         + `<span class="legend-item"><span class="legend-pulse"></span>${esc(tr('legend.recent', { window }))}</span>`;

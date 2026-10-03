@@ -779,7 +779,6 @@ h1, h2 { margin: 0; }
 .details p.war-credit { margin: 2px 0 0; height: 16px; font-size: 11px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cv-figure { margin: 6px 0 0; font-size: 13px; font-weight: 600; }
 .cv-section .wars-bars svg { height: 56px; }
-.legend-title { color: var(--text-3); }
 
 .card-actions { display: flex; align-items: baseline; gap: 14px; width: 100%; margin-top: auto; }
 .card-actions .link { margin-top: 12px; }

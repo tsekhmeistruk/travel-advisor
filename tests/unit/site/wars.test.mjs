@@ -297,12 +297,13 @@ describe('the mode', () => {
     assert.match(fr, /UCDP recorded no deaths in organized violence here in the 12 months to August 2026\./);
     assert.match(fr, /href="https:\/\/ucdp\.uu\.se\/"/, 'the source\'s home');
   });
-  test('the tooltip, the legend by deaths, and the header with the data month', async () => {
+  test('the tooltip, the legend with the level names of every tab, and the header with the data month', async () => {
     assert.match(ds.tooltip('ye'), /<strong>Yemen<\/strong>.*Critical · 1,871 deaths in 12 months.*Escalating: more deaths/);
     assert.match(ds.tooltip('fr'), /Normal · none recorded/);
     assert.match(ds.tooltip('ye'), /<div class="tt-row">Yemen vs AQAP · war · 1,871 deaths<\/div>/, 'its deadliest war, who fights whom');
     assert.match(ds.tooltip('ru'), /Russia vs Ukraine · war · 97,739 deaths/);
-    assert.match(ds.legend(), /Deaths, 12 months:.*1,000\+.*100–999.*25–99.*Under 25.*No data.*Level changed ≤ 30 days/);
+    assert.match(ds.legend(), />Normal<.*>Elevated<.*>High<.*>Critical<.*No data.*Level changed ≤ 30 days/, 'the same names as every tab, from Normal up');
+    assert.match(ds.legend(), /title="Deaths, 12 months: Under 25 · [^"]+".*title="Deaths, 12 months: 25–99 · .*title="Deaths, 12 months: 100–999 · .*title="Deaths, 12 months: 1,000\+ · /, 'the deaths of each band are in its title');
     assert.equal(ds.header(), 'Conflict data to August 2026');
     assert.equal(ds.stale(), false, 'monthly data: the month says how old it is');
     assert.equal(ds.id, 'wars');
