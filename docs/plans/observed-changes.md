@@ -56,9 +56,9 @@ Only the fact that the record moved between two of our fetches is used, never th
 
 ## Status
 
-- **Current step:** 1.6
-- **Done:** Part 0; 1.1-1.5
-- **Last commit of this revision:** none
+- **Current step:** 2.1
+- **Done:** Parts 0-1
+- **Last commit of this revision:** 7a986e1
 
 ## Every part ends with the same checks
 
@@ -88,7 +88,7 @@ Only the fact that the record moved between two of our fetches is used, never th
   - [x] unit: a missing alert stays 24 hours, then falls; one that returns changes nothing
   - [x] unit: earthquakes and volcanoes follow their event time; a Green marker keeps the old rule
   - [x] data: every GDACS type has a known `active`
-- [ ] 1.6 Ship, with one GDACS update run.
+- [x] 1.6 Ship, with one GDACS update run.
 
 ## Part 2: Remove the seeded U.S. changes
 
@@ -107,4 +107,4 @@ Only the fact that the record moved between two of our fetches is used, never th
 ---
 
 ## Log (one line per finished part: commit, deploy, tests)
-- (empty)
+- Part 1 (7a986e1): a GDACS alert counts while it is listed and we saw GDACS extend it (updatedSeen, missingSince; quietDays 7, cyclones 3; earthquakes and volcanoes by their event time); deploy green; the GDACS update run after it recorded no change, marked Madagascar's drought missing and started Mexico's fall to Elevated; live-check OK (every mode, Germany, Mexico). Before it, 1c78d4d placed the U.S.'s new "Republic of Congo" (the 07:06 run had failed at the build). Tests added: the merge's updatedSeen and missingSince (2), the real drought, flood and cyclone sequences, a missing alert, moments, Green markers, the published flag (7). Edited: "missing is not ended" (events, GDACS fetcher), first sighting, closing, the isActive title, the project test. Deleted: none.
