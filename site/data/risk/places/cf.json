@@ -55,6 +55,22 @@
    "expected": 14.3
   },
   {
+   "id": "cf:disaster:2026-09-30T18:26:24.737Z",
+   "at": "2026-09-30T18:26:24.737Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "cf",
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "basis": [
+    "gdacs:DR:1027450"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
    "id": "cf:violence:2026-09-30",
    "at": "2026-09-30",
    "kind": "anomaly",

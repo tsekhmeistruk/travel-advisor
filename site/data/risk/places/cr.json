@@ -41,7 +41,24 @@
   "eonet:EONET_20103",
   "gdacs:DR:1027449"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "cr:disaster:2026-10-02T13:11:33.761Z",
+   "at": "2026-10-02T13:11:33.761Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "cr",
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "basis": [
+    "gdacs:DR:1027449"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {

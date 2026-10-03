@@ -39,7 +39,24 @@
  "events": [
   "gdacs:DR:1018332"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "me:disaster:2026-09-30T18:26:24.737Z",
+   "at": "2026-09-30T18:26:24.737Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "me",
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "basis": [
+    "gdacs:DR:1018332"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {

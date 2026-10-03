@@ -41,6 +41,22 @@
  ],
  "changes": [
   {
+   "id": "ne:disaster:2026-09-30T18:26:24.737Z",
+   "at": "2026-09-30T18:26:24.737Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "ne",
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "basis": [
+    "gdacs:DR:1027450"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
    "id": "ne:protest:2026-09-28",
    "at": "2026-09-28",
    "kind": "anomaly",

@@ -40,7 +40,24 @@
   "gdacs:FL:1104205",
   "gdacs:DR:1027450"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "td:disaster:2026-09-30T18:26:24.737Z",
+   "at": "2026-09-30T18:26:24.737Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "td",
+   "from": 1,
+   "to": 2,
+   "up": true,
+   "basis": [
+    "gdacs:DR:1027450"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {

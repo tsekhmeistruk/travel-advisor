@@ -53,3 +53,13 @@
 {"id":"re:protest:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"unrest","placeId":"re","series":"protest","source":"gdelt","from":"normal","to":"above","up":true,"count":9,"expected":0}
 {"id":"re:violence:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"security","placeId":"re","series":"violence","source":"gdelt","from":"normal","to":"far","up":true,"count":13,"expected":2.1}
 {"id":"so:violence:2026-10-01","at":"2026-10-01","kind":"anomaly","category":"security","placeId":"so","series":"violence","source":"gdelt","from":"normal","to":"above","up":true,"count":233,"expected":101.8}
+{"id":"cf:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"cf","from":1,"to":2,"up":true,"basis":["gdacs:DR:1027450"],"sources":["gdacs"]}
+{"id":"cm:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"cm","from":1,"to":2,"up":true,"basis":["gdacs:DR:1027450"],"sources":["gdacs"]}
+{"id":"md:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"md","from":1,"to":2,"up":true,"basis":["gdacs:DR:1018332"],"sources":["gdacs"]}
+{"id":"me:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"me","from":1,"to":2,"up":true,"basis":["gdacs:DR:1018332"],"sources":["gdacs"]}
+{"id":"ne:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"ne","from":1,"to":2,"up":true,"basis":["gdacs:DR:1027450"],"sources":["gdacs"]}
+{"id":"ng:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"ng","from":1,"to":2,"up":true,"basis":["gdacs:DR:1027450"],"sources":["gdacs"]}
+{"id":"no:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"no","from":1,"to":2,"up":true,"basis":["gdacs:DR:1018332"],"sources":["gdacs"]}
+{"id":"td:disaster:2026-09-30T18:26:24.737Z","at":"2026-09-30T18:26:24.737Z","kind":"level","category":"disaster","placeId":"td","from":1,"to":2,"up":true,"basis":["gdacs:DR:1027450"],"sources":["gdacs"]}
+{"id":"cr:disaster:2026-10-02T13:11:33.761Z","at":"2026-10-02T13:11:33.761Z","kind":"level","category":"disaster","placeId":"cr","from":1,"to":2,"up":true,"basis":["gdacs:DR:1027449"],"sources":["gdacs"]}
+{"id":"ru:disaster:2026-10-02T13:11:33.761Z","at":"2026-10-02T13:11:33.761Z","kind":"level","category":"disaster","placeId":"ru","from":1,"to":2,"up":true,"basis":["gdacs:DR:1018332"],"sources":["gdacs"]}
