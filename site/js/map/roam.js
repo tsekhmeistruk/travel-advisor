@@ -5,13 +5,22 @@
 export const HOMEWARD = Object.freeze({ landSpeed: 130, seaSpeed: 130, min: 1200, max: 9000 });
 // Sent to a country the visitor clicked: quickly on foot, slower in the boat (so the boat is seen).
 export const QUICK = Object.freeze({ landSpeed: 340, seaSpeed: 150, min: 500, max: 7000 });
-/** A stretch of sea shorter than this (px on screen) is stepped over: no boat for a strait. */
+/**
+ * The speeds are in px of a reference map: the whole world about 1040px wide, as on a desktop at
+ * the widest view. A way's length is taken on that map, whatever the zoom and the screen, so
+ * the same two points are always the same time apart.
+ */
+export const REF_SCALE = 190;
+/** The length of a way on the reference map, from its length on the map's own projection and that projection's scale. */
+export const wayLength = (projected, scale, ref = REF_SCALE) => (scale > 0 ? (projected / scale) * ref : 0);
+
+/** A stretch of sea shorter than this (px of the reference map) is stepped over: no boat for a strait. */
 export const MIN_SEA_PX = 28;
 
 /**
  * Plan a way along a straight line.
  * @param land  samples along the line, in order: true where it is over land
- * @param px    the length of the line on screen
+ * @param px    the length of the line (wayLength(): on the reference map, not on screen)
  * @param pace  { landSpeed, seaSpeed } px a second, { min, max } ms for the whole way, minSea px
  * @returns { ms, legs: [{ land, from, to, ms }] }: the stretches in order, `from` and `to` shares
  *   of the line (0..1), their times scaled so the whole way is within min and max

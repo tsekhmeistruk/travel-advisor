@@ -22,7 +22,7 @@
 import { createGaze, gazeToward } from './gaze.js';
 import { createAntics } from './antics.js';
 import { character, DEFAULT_CHARACTER } from './characters.js';
-import { planTrip, tripAt, along, isDrag, HOLD_MS, QUICK, HOMEWARD } from './roam.js';
+import { planTrip, tripAt, along, isDrag, wayLength, HOLD_MS, QUICK, HOMEWARD } from './roam.js';
 
 export const HOME = [-79.4, 45.4];     // lon, lat: north of Toronto, inside Canada at any size
 const WALK_FROM = HOME, WALK_TO = [-80.5, 38.5];   // the walk act is as long as from there to West Virginia
@@ -30,7 +30,7 @@ const SIZE = 0.62;                      // the drawings are about 100 units tall
 const WALK_MAX = 240;                   // px on screen: zoomed in, it doesn't walk off the view
 const STANDING_ON = 24;                 // px on screen from its feet: the chosen place is under it
 const SPLASH_MS = 700;                  // as long as the plunge in styles.css
-const SAMPLE_PX = 6;                    // a way is planned from a look at the map this often along it
+const SAMPLE_PX = 6;                    // a way is planned from a look at the map this often along it (px on screen)
 
 // The sea around it while it swims: a waterline and a ripple. What is under water is cut off
 // (the clip, used by the CSS on the body), so nothing of the map is covered.
@@ -135,13 +135,14 @@ export function createMascot(map, { home = HOME, start = home, character: first 
   function travel(to, { sea, pace }) {
     endTrip();
     const from = map.projection(at), end = map.projection(to);
-    const px = Math.hypot(end[0] - from[0], end[1] - from[1]) * map.transform.k;
-    const n = Math.max(1, Math.min(400, Math.ceil(px / SAMPLE_PX)));
+    const projected = Math.hypot(end[0] - from[0], end[1] - from[1]);
+    // The look at the map is as fine as the screen shows it; the time is the same at any zoom.
+    const n = Math.max(1, Math.min(400, Math.ceil((projected * map.transform.k) / SAMPLE_PX)));
     const land = Array.from({ length: n }, (_, i) => {
       const [lon, lat] = map.projection.invert(along(from, end, (i + 0.5) / n));
       return map.placeAt(lon, lat) != null;
     });
-    const plan = planTrip(land, px, pace);
+    const plan = planTrip(land, wayLength(projected, map.projection.scale()), pace);
     const t0 = now();
     const step = () => {
       const here = tripAt(plan, now() - t0);

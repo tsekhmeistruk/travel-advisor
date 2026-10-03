@@ -2,7 +2,7 @@
 
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { planTrip, tripAt, along, isDrag, QUICK, HOMEWARD, MIN_SEA_PX, DRAG_PX, HOLD_MS } from '../../../site/js/map/roam.js';
+import { planTrip, tripAt, along, isDrag, wayLength, REF_SCALE, QUICK, HOMEWARD, MIN_SEA_PX, DRAG_PX, HOLD_MS } from '../../../site/js/map/roam.js';
 
 const L = true, S = false;
 const PACE = { landSpeed: 100, seaSpeed: 50, minSea: 20 };
@@ -34,6 +34,18 @@ describe('planTrip', () => {
     assert.ok(QUICK.landSpeed > QUICK.seaSpeed && QUICK.landSpeed > HOMEWARD.landSpeed * 2);
     assert.ok(QUICK.max <= 7000 && HOMEWARD.max <= 9000);
     assert.ok(MIN_SEA_PX / QUICK.seaSpeed >= 0.15, 'a boat is on the water long enough to be seen');
+  });
+});
+
+describe('wayLength', () => {
+  test('a way is as long as on the reference map, whatever the screen: the zoom plays no part', () => {
+    assert.equal(wayLength(100, REF_SCALE), 100);
+    assert.equal(wayLength(50, REF_SCALE / 2), 100, 'a phone: the same two points, half as far apart on its map');
+    assert.equal(wayLength(100, 0), 0);
+    // So the time between two points is the same on both.
+    const desktop = planTrip([true], wayLength(680, REF_SCALE), QUICK).ms, phone = planTrip([true], wayLength(340, REF_SCALE / 2), QUICK).ms;
+    assert.equal(desktop, phone);
+    assert.equal(desktop, 2000);
   });
 });
 

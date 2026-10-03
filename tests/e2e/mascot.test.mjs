@@ -395,3 +395,22 @@ describe('picked up and put down', () => {
     await page.close();
   });
 });
+
+test('a way takes the same time at any zoom', async () => {
+  // Canada to Brazil, chosen in the search, at the widest view and zoomed in.
+  const time = async (zoomIns) => {
+    const page = await open();
+    for (let i = 0; i < zoomIns; i++) { await page.click('#zoomIn'); await sleep(400); }
+    await page.type('#search', 'brazil');
+    await page.keyboard.press('Enter');
+    await page.waitForFunction(() => document.querySelector('.mascot').dataset.state, { timeout: 3000 });
+    const t0 = Date.now();
+    await page.waitForFunction(() => !document.querySelector('.mascot').dataset.state, { timeout: 12000, polling: 50 });
+    const ms = Date.now() - t0;
+    await page.close();
+    return ms;
+  };
+  const wide = await time(0), close = await time(3);   // ×1 and ×4.1
+  assert.ok(wide > 700, `longer than the least time, so the length counts: ${wide} ms`);
+  assert.ok(Math.abs(close - wide) < Math.max(200, wide * 0.2), `zoomed in ${close} ms, wide ${wide} ms (by the screen it would be four times as long)`);
+});
