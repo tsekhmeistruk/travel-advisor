@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "nl",
- "asOf": "2026-10-02",
+ "asOf": "2026-10-03",
  "source": "https://opendata.nederlandwereldwijd.nl/v2/sources/nederlandwereldwijd/infotypes/traveladvice",
  "links": {
   "list": "https://www.nederlandwereldwijd.nl/reisadvies"
@@ -22,7 +22,7 @@
   {
    "title": "Albanië",
    "level": 1,
-   "updated": "2026-09-18",
+   "updated": "2026-10-02",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/albanie",
    "places": [
     "al"
@@ -918,7 +918,7 @@
   {
    "title": "Indonesië",
    "level": 2,
-   "updated": "2026-09-23",
+   "updated": "2026-10-02",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/indonesie",
    "regional": true,
    "places": [
@@ -1290,7 +1290,7 @@
   {
    "title": "Marokko",
    "level": 2,
-   "updated": "2026-07-30",
+   "updated": "2026-10-02",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/marokko",
    "regional": true,
    "places": [
@@ -1342,7 +1342,7 @@
   {
    "title": "Mexico",
    "level": 2,
-   "updated": "2026-09-28",
+   "updated": "2026-10-02",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/mexico",
    "regional": true,
    "places": [
@@ -2341,7 +2341,7 @@
   {
    "title": "Zweden",
    "level": 1,
-   "updated": "2026-04-16",
+   "updated": "2026-10-02",
    "url": "https://www.nederlandwereldwijd.nl/reisadvies/zweden",
    "places": [
     "se"

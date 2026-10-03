@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "de",
- "asOf": "2026-10-02",
+ "asOf": "2026-10-03",
  "source": "https://www.auswaertiges-amt.de/opendata/travelwarning",
  "links": {
   "list": "https://www.auswaertiges-amt.de/de/ReiseUndSicherheit/reise-und-sicherheitshinweise"
@@ -545,7 +545,7 @@
   {
    "title": "Griechenland",
    "level": 1,
-   "updated": "2026-08-19",
+   "updated": "2026-10-02",
    "places": [
     "gr"
    ],
@@ -572,7 +572,7 @@
   {
    "title": "Guinea-Bissau",
    "level": 1,
-   "updated": "2026-07-01",
+   "updated": "2026-10-02",
    "places": [
     "gw"
    ],
@@ -984,7 +984,7 @@
   {
    "title": "Malediven",
    "level": 1,
-   "updated": "2026-07-07",
+   "updated": "2026-10-02",
    "places": [
     "mv"
    ],
@@ -1547,7 +1547,7 @@
   {
    "title": "Spanien",
    "level": 1,
-   "updated": "2026-08-19",
+   "updated": "2026-10-02",
    "places": [
     "es"
    ],

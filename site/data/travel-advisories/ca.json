@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "ca",
- "asOf": "2026-10-02",
+ "asOf": "2026-10-03",
  "source": "https://data.international.gc.ca/travel-voyage/index-updated.json",
  "links": {
   "list": "https://travel.gc.ca/travelling/advisories"
@@ -321,7 +321,7 @@
   {
    "title": "Brazil",
    "level": 2,
-   "updated": "2026-09-29",
+   "updated": "2026-10-02",
    "url": "https://travel.gc.ca/destinations/brazil",
    "regional": true,
    "places": [
@@ -754,7 +754,7 @@
   {
    "title": "France",
    "level": 2,
-   "updated": "2026-09-24",
+   "updated": "2026-10-02",
    "url": "https://travel.gc.ca/destinations/france",
    "places": [
     "fr"
@@ -1556,7 +1556,7 @@
   {
    "title": "Nigeria",
    "level": 3,
-   "updated": "2026-09-24",
+   "updated": "2026-10-02",
    "url": "https://travel.gc.ca/destinations/nigeria",
    "regional": true,
    "places": [
@@ -1721,7 +1721,7 @@
   {
    "title": "Puerto Rico",
    "level": 1,
-   "updated": "2026-09-24",
+   "updated": "2026-10-02",
    "url": "https://travel.gc.ca/destinations/puerto-rico",
    "places": [
     "pr"
@@ -2018,7 +2018,7 @@
   {
    "title": "South Sudan",
    "level": 4,
-   "updated": "2026-09-28",
+   "updated": "2026-10-02",
    "url": "https://travel.gc.ca/destinations/south-sudan",
    "places": [
     "ss"
@@ -2204,7 +2204,7 @@
   {
    "title": "Türkiye",
    "level": 2,
-   "updated": "2026-10-01",
+   "updated": "2026-10-02",
    "url": "https://travel.gc.ca/destinations/turkiye",
    "regional": true,
    "places": [

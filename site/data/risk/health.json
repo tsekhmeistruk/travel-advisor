@@ -1,24 +1,24 @@
 {
- "asOf": "2026-10-03T06:24:26.085Z",
+ "asOf": "2026-10-03T07:06:13.104Z",
  "sources": {
   "ca": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T06:13:32.823Z",
-   "lastAttempt": "2026-10-02T06:13:32.823Z",
+   "lastSuccess": "2026-10-03T07:06:08.939Z",
+   "lastAttempt": "2026-10-03T07:06:08.939Z",
    "consecutiveFailures": 0,
    "records": 230
   },
   "de": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T06:13:37.487Z",
-   "lastAttempt": "2026-10-02T06:13:37.487Z",
+   "lastSuccess": "2026-10-03T07:06:13.104Z",
+   "lastAttempt": "2026-10-03T07:06:13.104Z",
    "consecutiveFailures": 0,
    "records": 200
   },
   "eonet": {
-   "status": "delayed",
-   "lastSuccess": "2026-10-02T20:12:57.676Z",
-   "lastAttempt": "2026-10-02T20:12:57.676Z",
+   "status": "healthy",
+   "lastSuccess": "2026-10-03T07:06:06.257Z",
+   "lastAttempt": "2026-10-03T07:06:06.257Z",
    "consecutiveFailures": 0,
    "records": 32
   },
@@ -38,8 +38,8 @@
   },
   "nl": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T06:13:34.887Z",
-   "lastAttempt": "2026-10-02T06:13:34.887Z",
+   "lastSuccess": "2026-10-03T07:06:10.499Z",
+   "lastAttempt": "2026-10-03T07:06:10.499Z",
    "consecutiveFailures": 0,
    "records": 226
   },
@@ -52,29 +52,29 @@
   },
   "uk": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T06:13:36.804Z",
-   "lastAttempt": "2026-10-02T06:13:36.804Z",
+   "lastSuccess": "2026-10-03T07:06:12.015Z",
+   "lastAttempt": "2026-10-03T07:06:12.015Z",
    "consecutiveFailures": 0,
    "records": 226
   },
   "us": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T06:13:31.713Z",
-   "lastAttempt": "2026-10-02T06:13:31.713Z",
+   "lastSuccess": "2026-10-03T07:06:08.076Z",
+   "lastAttempt": "2026-10-03T07:06:08.076Z",
    "consecutiveFailures": 0,
-   "records": 219
+   "records": 220
   },
   "usgs": {
-   "status": "delayed",
-   "lastSuccess": "2026-10-03T01:26:51.468Z",
-   "lastAttempt": "2026-10-03T01:26:51.468Z",
+   "status": "healthy",
+   "lastSuccess": "2026-10-03T07:06:06.033Z",
+   "lastAttempt": "2026-10-03T07:06:06.033Z",
    "consecutiveFailures": 0,
    "records": 50
   },
   "who": {
    "status": "healthy",
-   "lastSuccess": "2026-10-02T22:33:41.750Z",
-   "lastAttempt": "2026-10-02T22:33:41.750Z",
+   "lastSuccess": "2026-10-03T07:06:04.810Z",
+   "lastAttempt": "2026-10-03T07:06:04.810Z",
    "consecutiveFailures": 0,
    "records": 6
   },

@@ -1,7 +1,7 @@
 {
  "dataset": "travel-advisories",
  "provider": "uk",
- "asOf": "2026-10-02",
+ "asOf": "2026-10-03",
  "source": "https://www.gov.uk/api/content/foreign-travel-advice",
  "links": {
   "list": "https://www.gov.uk/foreign-travel-advice"
@@ -644,7 +644,7 @@
   {
    "title": "Ecuador",
    "level": 2,
-   "updated": "2026-09-16",
+   "updated": "2026-10-02",
    "url": "https://www.gov.uk/foreign-travel-advice/ecuador",
    "regional": true,
    "places": [
@@ -1037,7 +1037,7 @@
   {
    "title": "Italy",
    "level": 1,
-   "updated": "2026-09-28",
+   "updated": "2026-10-02",
    "url": "https://www.gov.uk/foreign-travel-advice/italy",
    "places": [
     "it"
@@ -1643,7 +1643,7 @@
   {
    "title": "Peru",
    "level": 2,
-   "updated": "2026-06-22",
+   "updated": "2026-10-02",
    "url": "https://www.gov.uk/foreign-travel-advice/peru",
    "regional": true,
    "places": [
@@ -2224,7 +2224,7 @@
   {
    "title": "Ukraine",
    "level": 3,
-   "updated": "2026-09-15",
+   "updated": "2026-10-02",
    "url": "https://www.gov.uk/foreign-travel-advice/ukraine",
    "regional": true,
    "places": [

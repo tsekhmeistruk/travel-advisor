@@ -1,6 +1,32 @@
 {
- "asOf": "2026-10-03T06:24:26.085Z",
+ "asOf": "2026-10-03T07:06:13.104Z",
  "events": [
+  {
+   "id": "usgs:us6000tzal",
+   "source": "usgs",
+   "type": "earthquake",
+   "category": "disaster",
+   "level": 1,
+   "native": {
+    "scheme": "usgs-magnitude",
+    "value": "M5"
+   },
+   "name": "M 5.0 - 163 km SE of Petropavlovsk-Kamchatsky, Russia",
+   "country": "Russia",
+   "severity": "Magnitude 5 mb, depth 10 km",
+   "placeIds": [
+    "ru"
+   ],
+   "point": {
+    "lon": 160.422,
+    "lat": 52.084
+   },
+   "startedAt": "2026-10-03T02:59:06.296Z",
+   "toDate": "2026-10-03T02:59:06.296Z",
+   "current": false,
+   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000tzal",
+   "marker": true
+  },
   {
    "id": "usgs:us6000tz8l",
    "source": "usgs",
@@ -2042,32 +2068,6 @@
    "toDate": "2026-09-26T07:08:02.558Z",
    "current": false,
    "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txrn",
-   "marker": true
-  },
-  {
-   "id": "usgs:us6000txrf",
-   "source": "usgs",
-   "type": "earthquake",
-   "category": "disaster",
-   "level": 1,
-   "native": {
-    "scheme": "usgs-magnitude",
-    "value": "M5"
-   },
-   "name": "M 5.1 - 64 km ENE of Tadine, New Caledonia",
-   "country": "New Caledonia",
-   "severity": "Magnitude 5.1 mb, depth 10 km",
-   "placeIds": [
-    "nc"
-   ],
-   "point": {
-    "lon": 168.403,
-    "lat": -21.227
-   },
-   "startedAt": "2026-09-26T05:50:48.716Z",
-   "toDate": "2026-09-26T05:50:48.716Z",
-   "current": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txrf",
    "marker": true
   },
   {
