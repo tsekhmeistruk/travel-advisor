@@ -39,19 +39,34 @@
  "events": [
   "gdacs:DR:1018332"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "ie:protest:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "ie",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 75,
+   "expected": 35.1
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "normal",
-    "count": 64,
-    "expected": 35.2
+    "status": "above",
+    "count": 75,
+    "expected": 35.1
    },
    "violence": {
     "status": "normal",
-    "count": 253,
-    "expected": 327.5
+    "count": 287,
+    "expected": 323.8
    }
   }
  }

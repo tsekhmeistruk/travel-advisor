@@ -41,6 +41,20 @@
  ],
  "changes": [
   {
+   "id": "lu:violence:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "lu",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 10,
+   "expected": 5.5
+  },
+  {
    "id": "lu:violence:2026-09-30",
    "at": "2026-09-30",
    "kind": "anomaly",
@@ -64,9 +78,9 @@
     "expected": 0.8
    },
    "violence": {
-    "status": "above",
-    "count": 11,
-    "expected": 5.3
+    "status": "normal",
+    "count": 10,
+    "expected": 5.5
    }
   }
  }

@@ -40,7 +40,22 @@
   "gdacs:WF:1032229",
   "eonet:EONET_16203"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "vu:violence:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "vu",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 6,
+   "expected": 1.8
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
@@ -50,8 +65,8 @@
     "expected": 0.4
    },
    "violence": {
-    "status": "normal",
-    "count": 5,
+    "status": "above",
+    "count": 6,
     "expected": 1.8
    }
   }

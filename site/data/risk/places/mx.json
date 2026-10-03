@@ -42,6 +42,22 @@
  ],
  "changes": [
   {
+   "id": "mx:disaster:2026-10-03T12:32:38.389Z",
+   "at": "2026-10-03T12:32:38.389Z",
+   "kind": "level",
+   "category": "disaster",
+   "placeId": "mx",
+   "from": 4,
+   "to": 2,
+   "up": false,
+   "basis": [
+    "gdacs:DR:1027449"
+   ],
+   "sources": [
+    "gdacs"
+   ]
+  },
+  {
    "id": "mx:disaster:2026-09-29T05:42:11.152Z",
    "at": "2026-09-29T05:42:11.152Z",
    "kind": "level",
@@ -193,12 +209,12 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 10,
-    "expected": 18.8
+    "count": 11,
+    "expected": 19
    },
    "violence": {
     "status": "normal",
-    "count": 255,
+    "count": 285,
     "expected": 348
    }
   }

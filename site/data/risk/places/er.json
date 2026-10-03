@@ -50,16 +50,16 @@
    },
    "violence": {
     "status": "far",
-    "count": 84,
-    "expected": 8.9
+    "count": 105,
+    "expected": 9.1
    }
   }
  },
  "tensions": [
   {
    "key": "EGY|ERI",
-   "status": "above",
-   "count": 24,
+   "status": "far",
+   "count": 34,
    "expected": 0,
    "sides": [
     [
@@ -71,9 +71,23 @@
    ]
   },
   {
+   "key": "ERI|ETH",
+   "status": "far",
+   "count": 30,
+   "expected": 4.4,
+   "sides": [
+    [
+     "er"
+    ],
+    [
+     "et"
+    ]
+   ]
+  },
+  {
    "key": "ERI|SDN",
-   "status": "above",
-   "count": 28,
+   "status": "far",
+   "count": 36,
    "expected": 0.8,
    "sides": [
     [

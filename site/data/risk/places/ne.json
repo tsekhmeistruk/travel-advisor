@@ -41,6 +41,20 @@
  ],
  "changes": [
   {
+   "id": "ne:protest:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "ne",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "above",
+   "to": "far",
+   "up": true,
+   "count": 10,
+   "expected": 2
+  },
+  {
    "id": "ne:disaster:2026-09-30T18:26:24.737Z",
    "at": "2026-09-30T18:26:24.737Z",
    "kind": "level",
@@ -75,14 +89,14 @@
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "above",
-    "count": 9,
+    "status": "far",
+    "count": 10,
     "expected": 2
    },
    "violence": {
     "status": "normal",
-    "count": 71,
-    "expected": 93.5
+    "count": 51,
+    "expected": 94.9
    }
   }
  },

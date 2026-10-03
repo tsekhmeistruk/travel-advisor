@@ -40,6 +40,7 @@
   "usgs:us6000tyua",
   "usgs:us6000tyjb",
   "gdacs:WF:1032536",
+  "gdacs:WF:1032545",
   "usgs:us6000txur",
   "gdacs:WF:1032480",
   "gdacs:WF:1032502",
@@ -79,13 +80,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 26,
-    "expected": 26.4
+    "count": 21,
+    "expected": 26.1
    },
    "violence": {
     "status": "normal",
-    "count": 153,
-    "expected": 196.5
+    "count": 154,
+    "expected": 191.7
    }
   }
  },

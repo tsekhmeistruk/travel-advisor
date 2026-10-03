@@ -43,13 +43,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 8,
-    "expected": 15.7
+    "count": 14,
+    "expected": 15.8
    },
    "violence": {
     "status": "normal",
-    "count": 680,
-    "expected": 634.6
+    "count": 705,
+    "expected": 645.6
    }
   }
  },
@@ -143,5 +143,21 @@
    }
   ],
   "partyTo": []
- }
+ },
+ "tensions": [
+  {
+   "key": "ARE|SAU",
+   "status": "above",
+   "count": 20,
+   "expected": 4.2,
+   "sides": [
+    [
+     "ae"
+    ],
+    [
+     "sa"
+    ]
+   ]
+  }
+ ]
 }

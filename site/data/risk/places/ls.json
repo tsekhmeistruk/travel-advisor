@@ -37,7 +37,22 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "ls:violence:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "ls",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "above",
+   "to": "normal",
+   "up": false,
+   "count": 12,
+   "expected": 14.1
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
@@ -47,9 +62,9 @@
     "expected": 1.5
    },
    "violence": {
-    "status": "above",
-    "count": 27,
-    "expected": 12.8
+    "status": "normal",
+    "count": 12,
+    "expected": 14.1
    }
   }
  }

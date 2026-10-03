@@ -50,8 +50,8 @@
    },
    "violence": {
     "status": "normal",
-    "count": 194,
-    "expected": 218.3
+    "count": 200,
+    "expected": 217
    }
   }
  },
@@ -292,9 +292,23 @@
  },
  "tensions": [
   {
-   "key": "ERI|SDN",
+   "key": "EGY|SDN",
    "status": "above",
-   "count": 28,
+   "count": 41,
+   "expected": 10,
+   "sides": [
+    [
+     "eg"
+    ],
+    [
+     "sd"
+    ]
+   ]
+  },
+  {
+   "key": "ERI|SDN",
+   "status": "far",
+   "count": 36,
    "expected": 0.8,
    "sides": [
     [

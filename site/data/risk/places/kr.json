@@ -43,14 +43,30 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 19,
+    "count": 24,
     "expected": 23.8
    },
    "violence": {
     "status": "normal",
-    "count": 149,
-    "expected": 152.5
+    "count": 168,
+    "expected": 153.3
    }
   }
- }
+ },
+ "tensions": [
+  {
+   "key": "KOR|UKR",
+   "status": "above",
+   "count": 29,
+   "expected": 1.1,
+   "sides": [
+    [
+     "kr"
+    ],
+    [
+     "ua"
+    ]
+   ]
+  }
+ ]
 }

@@ -39,7 +39,22 @@
  "events": [
   "gdacs:WF:1032473"
  ],
- "changes": [],
+ "changes": [
+  {
+   "id": "bo:violence:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "bo",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 33,
+   "expected": 13.8
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
@@ -49,8 +64,8 @@
     "expected": 2
    },
    "violence": {
-    "status": "normal",
-    "count": 24,
+    "status": "above",
+    "count": 33,
     "expected": 13.8
    }
   }

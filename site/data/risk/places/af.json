@@ -60,13 +60,13 @@
   "series": {
    "protest": {
     "status": "above",
-    "count": 20,
+    "count": 23,
     "expected": 8.9
    },
    "violence": {
     "status": "above",
-    "count": 562,
-    "expected": 298.5
+    "count": 496,
+    "expected": 305.3
    }
   }
  },
@@ -476,8 +476,8 @@
   {
    "key": "AFG|PAK",
    "status": "above",
-   "count": 209,
-   "expected": 56.9,
+   "count": 170,
+   "expected": 60.7,
    "sides": [
     [
      "af"

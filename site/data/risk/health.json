@@ -1,5 +1,5 @@
 {
- "asOf": "2026-10-03T07:46:33.247Z",
+ "asOf": "2026-10-03T12:32:45.551Z",
  "sources": {
   "ca": {
    "status": "healthy",
@@ -24,17 +24,17 @@
   },
   "gdacs": {
    "status": "healthy",
-   "lastSuccess": "2026-10-03T07:46:33.245Z",
-   "lastAttempt": "2026-10-03T07:46:33.245Z",
+   "lastSuccess": "2026-10-03T12:32:38.388Z",
+   "lastAttempt": "2026-10-03T12:32:38.388Z",
    "consecutiveFailures": 0,
-   "records": 242
+   "records": 244
   },
   "gdelt": {
    "status": "healthy",
-   "lastSuccess": "2026-10-03T01:26:51.119Z",
-   "lastAttempt": "2026-10-03T01:26:51.119Z",
+   "lastSuccess": "2026-10-03T12:32:44.555Z",
+   "lastAttempt": "2026-10-03T12:32:44.555Z",
    "consecutiveFailures": 0,
-   "records": 0
+   "records": 1
   },
   "nl": {
    "status": "healthy",
@@ -66,10 +66,10 @@
   },
   "usgs": {
    "status": "healthy",
-   "lastSuccess": "2026-10-03T07:06:06.033Z",
-   "lastAttempt": "2026-10-03T07:06:06.033Z",
+   "lastSuccess": "2026-10-03T12:32:45.550Z",
+   "lastAttempt": "2026-10-03T12:32:45.550Z",
    "consecutiveFailures": 0,
-   "records": 50
+   "records": 45
   },
   "who": {
    "status": "healthy",

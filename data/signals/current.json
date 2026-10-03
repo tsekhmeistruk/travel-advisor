@@ -2,7 +2,7 @@
  "categories": {
   "disaster": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-10-03T07:46:33.247Z",
+   "at": "2026-10-03T12:32:38.389Z",
    "places": {
     "at": {
      "level": 2,
@@ -221,16 +221,12 @@
      ]
     },
     "mx": {
-     "level": 4,
-     "since": "2026-09-29T05:42:11.152Z",
-     "from": 3,
+     "level": 2,
+     "since": "2026-10-03T12:32:38.389Z",
+     "from": 4,
      "basis": [
-      "gdacs:TC:1001325"
-     ],
-     "pending": {
-      "level": 2,
-      "firstSeen": "2026-10-03T07:46:33.247Z"
-     }
+      "gdacs:DR:1027449"
+     ]
     },
     "ne": {
      "level": 2,
@@ -372,7 +368,7 @@
   },
   "wildfire": {
    "trackedSince": "2026-09-27T16:25:57.372Z",
-   "at": "2026-10-03T07:46:33.247Z",
+   "at": "2026-10-03T12:32:38.389Z",
    "places": {}
   },
   "health": {
@@ -697,11 +693,14 @@
  },
  "activity": {
   "gdelt": {
-   "through": "2026-10-01",
+   "through": "2026-10-02",
    "learning": false,
    "windowDays": 7,
    "baselineDays": 84,
    "places": {
+    "ae": {
+     "violence": "above"
+    },
     "af": {
      "protest": "above",
      "violence": "above"
@@ -715,7 +714,16 @@
     "ar": {
      "violence": "above"
     },
+    "as": {
+     "violence": "above"
+    },
     "az": {
+     "violence": "above"
+    },
+    "be": {
+     "protest": "above"
+    },
+    "bo": {
      "violence": "above"
     },
     "cd": {
@@ -740,10 +748,13 @@
      "violence": "far"
     },
     "fr": {
-     "protest": "above"
+     "protest": "far"
     },
     "gg": {
      "violence": "far"
+    },
+    "ie": {
+     "protest": "above"
     },
     "il": {
      "protest": "above"
@@ -754,27 +765,23 @@
     "jm": {
      "protest": "far"
     },
-    "ls": {
-     "violence": "above"
-    },
-    "lu": {
+    "lc": {
      "violence": "above"
     },
     "mm": {
-     "protest": "above",
      "violence": "far"
     },
     "na": {
      "violence": "above"
     },
     "ne": {
-     "protest": "above"
+     "protest": "far"
     },
     "pl": {
      "protest": "above"
     },
     "re": {
-     "protest": "above",
+     "protest": "far",
      "violence": "far"
     },
     "rs": {
@@ -783,20 +790,23 @@
     "sk": {
      "violence": "far"
     },
-    "sn": {
-     "violence": "above"
-    },
     "so": {
      "violence": "above"
-    },
-    "tt": {
-     "protest": "above"
     },
     "vc": {
      "violence": "above"
     },
     "ve": {
      "protest": "far"
+    },
+    "vu": {
+     "violence": "above"
+    },
+    "ws": {
+     "protest": "above"
+    },
+    "xk": {
+     "protest": "above"
     }
    },
    "pairs": {
@@ -806,28 +816,37 @@
     "ARE|ISR": {
      "military": "far"
     },
-    "ARM|AZE": {
+    "ARE|SAU": {
      "military": "above"
+    },
+    "ARM|AZE": {
+     "military": "far"
     },
     "AZE|UKR": {
-     "military": "above"
+     "military": "far"
     },
     "EGY|ERI": {
-     "military": "above"
+     "military": "far"
     },
     "EGY|ISR": {
      "military": "above"
     },
-    "ERI|SDN": {
+    "EGY|SDN": {
      "military": "above"
+    },
+    "ERI|ETH": {
+     "military": "far"
+    },
+    "ERI|SDN": {
+     "military": "far"
     },
     "GBR|IRN": {
      "military": "above"
     },
     "ISR|OMN": {
-     "military": "above"
+     "military": "far"
     },
-    "ISR|UKR": {
+    "KOR|UKR": {
      "military": "above"
     }
    }

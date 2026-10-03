@@ -43,12 +43,12 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 8,
-    "expected": 7.2
+    "count": 7,
+    "expected": 7.3
    },
    "violence": {
     "status": "above",
-    "count": 92,
+    "count": 142,
     "expected": 38.3
    }
   }
@@ -56,9 +56,9 @@
  "tensions": [
   {
    "key": "ARM|AZE",
-   "status": "above",
-   "count": 66,
-   "expected": 13.4,
+   "status": "far",
+   "count": 89,
+   "expected": 13.9,
    "sides": [
     [
      "am"

@@ -39,6 +39,20 @@
  "events": [],
  "changes": [
   {
+   "id": "xk:protest:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "xk",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 6,
+   "expected": 1.6
+  },
+  {
    "id": "xk:protest:2026-09-30",
    "at": "2026-09-30",
    "kind": "anomaly",
@@ -71,14 +85,14 @@
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "normal",
-    "count": 5,
-    "expected": 1.4
+    "status": "above",
+    "count": 6,
+    "expected": 1.6
    },
    "violence": {
     "status": "normal",
-    "count": 17,
-    "expected": 14.6
+    "count": 23,
+    "expected": 14.3
    }
   }
  }

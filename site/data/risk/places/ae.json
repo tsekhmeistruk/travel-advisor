@@ -37,19 +37,34 @@
   }
  },
  "events": [],
- "changes": [],
+ "changes": [
+  {
+   "id": "ae:violence:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "security",
+   "placeId": "ae",
+   "series": "violence",
+   "source": "gdelt",
+   "from": "normal",
+   "to": "above",
+   "up": true,
+   "count": 180,
+   "expected": 85.3
+  }
+ ],
  "activity": {
   "source": "gdelt",
   "series": {
    "protest": {
     "status": "normal",
     "count": 7,
-    "expected": 6
+    "expected": 5.8
    },
    "violence": {
-    "status": "normal",
-    "count": 127,
-    "expected": 85.2
+    "status": "above",
+    "count": 180,
+    "expected": 85.3
    }
   }
  },
@@ -148,14 +163,28 @@
   {
    "key": "ARE|ISR",
    "status": "far",
-   "count": 58,
-   "expected": 4.1,
+   "count": 98,
+   "expected": 3.8,
    "sides": [
     [
      "ae"
     ],
     [
      "il"
+    ]
+   ]
+  },
+  {
+   "key": "ARE|SAU",
+   "status": "above",
+   "count": 20,
+   "expected": 4.2,
+   "sides": [
+    [
+     "ae"
+    ],
+    [
+     "sa"
     ]
    ]
   }

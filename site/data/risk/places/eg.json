@@ -58,21 +58,21 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 9,
-    "expected": 10.2
+    "count": 10,
+    "expected": 10.3
    },
    "violence": {
     "status": "above",
-    "count": 270,
-    "expected": 132.7
+    "count": 282,
+    "expected": 132.3
    }
   }
  },
  "tensions": [
   {
    "key": "EGY|ERI",
-   "status": "above",
-   "count": 24,
+   "status": "far",
+   "count": 34,
    "expected": 0,
    "sides": [
     [
@@ -87,13 +87,27 @@
    "key": "EGY|ISR",
    "status": "above",
    "count": 83,
-   "expected": 17.8,
+   "expected": 17.9,
    "sides": [
     [
      "eg"
     ],
     [
      "il"
+    ]
+   ]
+  },
+  {
+   "key": "EGY|SDN",
+   "status": "above",
+   "count": 41,
+   "expected": 10,
+   "sides": [
+    [
+     "eg"
+    ],
+    [
+     "sd"
     ]
    ]
   }

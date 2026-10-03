@@ -39,6 +39,20 @@
  "events": [],
  "changes": [
   {
+   "id": "re:protest:2026-10-02",
+   "at": "2026-10-02",
+   "kind": "anomaly",
+   "category": "unrest",
+   "placeId": "re",
+   "series": "protest",
+   "source": "gdelt",
+   "from": "above",
+   "to": "far",
+   "up": true,
+   "count": 12,
+   "expected": 0
+  },
+  {
    "id": "re:violence:2026-10-01",
    "at": "2026-10-01",
    "kind": "anomaly",
@@ -71,8 +85,8 @@
   "source": "gdelt",
   "series": {
    "protest": {
-    "status": "above",
-    "count": 9,
+    "status": "far",
+    "count": 12,
     "expected": 0
    },
    "violence": {

@@ -39,6 +39,7 @@
  "events": [
   "gdacs:WF:1032496",
   "gdacs:WF:1032538",
+  "gdacs:WF:1032544",
   "gdacs:WF:1032478",
   "gdacs:WF:1032485",
   "gdacs:WF:1032497",
@@ -74,13 +75,13 @@
   "series": {
    "protest": {
     "status": "normal",
-    "count": 98,
-    "expected": 79.3
+    "count": 97,
+    "expected": 78.8
    },
    "violence": {
     "status": "normal",
-    "count": 872,
-    "expected": 946
+    "count": 891,
+    "expected": 941.6
    }
   }
  }
