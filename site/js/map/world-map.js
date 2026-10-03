@@ -20,6 +20,10 @@
 // instead of lon and lat: plain circles of a fixed pixel size, never clustered, under the labels
 // and markers.
 //
+// Pins (pin(lon, lat)) are <g> elements the caller draws in, kept at a point and a fixed pixel
+// size (pinScale: scaled down on a small map, less than the points), under everything else and
+// never in the pointer's way: decoration, such as the capybara in Canada (mascot.js).
+//
 // Needs d3 and topojson-client as globals (loaded by index.html).
 
 import { splitFeatures } from './splits.js';
@@ -57,6 +61,7 @@ export class WorldMap {
     this.handlers = { onHover, onMove, onSelect, onMarkerHover, onMarkerSelect, onPointHover, onPointSelect };
     this.markers = [];
     this.points = [];
+    this.pins = [];
     this.selectedMarker = null;
     this.style = () => ({ cls: 'none' });
     this.hovered = null;
@@ -85,6 +90,7 @@ export class WorldMap {
     this.hoverOutline = this.viewport.append('path').attr('class', 'hover-outline');
     this.selectOutline = this.viewport.append('path').attr('class', 'select-outline');
     const overlay = this.svg.append('g').attr('class', 'overlay');
+    this.pinLayer = overlay.append('g').attr('class', 'pins');
     this.dotLayer = overlay.append('g').attr('class', 'dots');
     this.pointLayer = overlay.append('g').attr('class', 'points');
     this.labelLayer = overlay.append('g').attr('class', 'labels');   // under the markers
@@ -139,6 +145,20 @@ export class WorldMap {
     this.#renderPoints();
   }
   #pointXY(p) { return p.placeId ? this.region(p.placeId)?.anchor ?? null : this.projection([p.lon, p.lat]); }
+  /** A <g> kept at this point (see the header comment), for the caller to draw in. */
+  pin(lon, lat) {
+    const pin = { lon, lat, xy: this.projection([lon, lat]), g: this.pinLayer.append('g') };
+    this.pins.push(pin);
+    this.#placePins();
+    return pin.g.node();
+  }
+  /** Where a selection is on the map (projected, before the zoom): its marker, else the middle of its places; null if neither is shown. */
+  focusPoint({ placeIds = [], markerId = null } = {}) {
+    const marker = markerId ? this.markers.find(m => m.id === markerId) : null;
+    if (marker?.xy) return marker.xy;
+    const at = placeIds.map(id => this.region(id)?.anchor).filter(Boolean);
+    return at.length ? [at.reduce((s, p) => s + p[0], 0) / at.length, at.reduce((s, p) => s + p[1], 0) / at.length] : null;
+  }
   /** Highlight the marker (or the cluster holding it) with this id. */
   setSelectedMarker(id) { this.selectedMarker = id ?? null; this.#renderMarkers(); }
 
@@ -207,8 +227,10 @@ export class WorldMap {
     }
     for (const m of this.markers) m.xy = this.projection([m.lon, m.lat]);
     for (const p of this.points) p.xy = this.#pointXY(p) ?? p.xy;
+    for (const p of this.pins) p.xy = this.projection([p.lon, p.lat]);
     // Points shrink with a small map (a phone): half their size at 450px wide.
     this.pointScale = Math.max(0.5, Math.min(1, this.width / 900));
+    this.pinScale = Math.max(0.7, this.pointScale);
 
     const [[sx0, sy0], [sx1, sy1]] = this.path.bounds({ type: 'Sphere' });
     this.zoom.extent([[0, 0], [this.width, this.height]])
@@ -303,6 +325,11 @@ export class WorldMap {
     this.pointLayer.selectAll('.point').attr('cx', p => t.applyX(p.xy[0])).attr('cy', p => t.applyY(p.xy[1]));
   }
 
+  #placePins() {
+    const t = this.transform;
+    for (const p of this.pins) p.g.attr('transform', `translate(${t.applyX(p.xy[0])},${t.applyY(p.xy[1])}) scale(${this.pinScale ?? 1})`);
+  }
+
   #renderMarkers() {
     const t = this.transform;
     const clusters = clusterMarkers(this.markers.map(m => ({ ...m, x: t.applyX(m.xy[0]), y: t.applyY(m.xy[1]) })));
@@ -350,6 +377,7 @@ export class WorldMap {
     place(this.dotLayer.selectAll('.dot'));
     place(this.pulseLayer.selectAll('.pulse'));
     this.#placePoints();
+    this.#placePins();
     this.#renderLabels();
     this.#renderMarkers();
     // Once a tiny shape is big enough to hover directly, retire its dot.

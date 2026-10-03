@@ -232,6 +232,30 @@ h1, h2 { margin: 0; }
   .pulse .ring { animation: none; opacity: .5; transform: scale(1.6); }
 }
 
+/* The capybara in Canada (map/mascot.js): decoration, never in the pointer's way. Its head turns
+   by layers moving by different amounts, from the gaze in --gx and --gy (-1..1). */
+.pins { pointer-events: none; }
+.mascot { --gx: 1; --gy: 0; }
+.mascot-bob { animation: mascot-bob 3.6s ease-in-out infinite; }
+.mascot-head, .mascot-ears, .mascot-muzzle, .mascot-face, .mascot-pupil {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform .7s cubic-bezier(.4, 0, .2, 1), rotate .7s cubic-bezier(.4, 0, .2, 1);
+}
+.mascot-head { transform: translate(calc(var(--gx) * 2.4px), calc(var(--gy) * 2px)); }
+.mascot[data-look="user"] .mascot-head { rotate: -7deg; }
+.mascot-ears { transform: translate(calc(var(--gx) * -1.6px), calc(var(--gy) * -.8px)); }
+.mascot-muzzle { transform: translate(calc(var(--gx) * 3.8px), calc(var(--gy) * 2.4px)); }
+.mascot-face { transform: translate(calc(var(--gx) * 2.4px), calc(var(--gy) * 1.6px)); }
+.mascot-pupil { transform: translate(calc(var(--gx) * 1.05px), calc(var(--gy) * 1px)); }
+.mascot-eye { transform-box: fill-box; transform-origin: 50% 50%; transition: transform .07s; }
+.mascot.is-blink .mascot-eye { transform: scaleY(.12); }
+@keyframes mascot-bob { 50% { transform: translateY(-.8px); } }
+@media (prefers-reduced-motion: reduce) {
+  .mascot-bob { animation: none; }
+  .mascot-head, .mascot-ears, .mascot-muzzle, .mascot-face, .mascot-pupil { transition: none; }
+}
+
 /* Tooltip */
 .tooltip {
   position: absolute;
