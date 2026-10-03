@@ -1,5 +1,5 @@
-// The capybara in Canada (site/js/map/mascot.js): where it stands, what a click on it does, and
-// where it looks. Its timing (a look at the visitor after 15 s idle) is unit-tested in
+// The mascot in Canada (site/js/map/mascot.js; the capybara, or the goose): where it stands, what
+// a click on it does, who it is, and where it looks. Its timing (a look at the visitor after 15 s idle) is unit-tested in
 // tests/unit/site/gaze.test.mjs, its acts in antics.test.mjs.
 
 import { test, describe, before, after } from 'node:test';
@@ -59,14 +59,14 @@ for (const [width, height] of [[1440, 860], [390, 844]]) {
       assert.equal(await antic(), null);
       await click(page, middle);
       const first = await antic();
-      assert.ok(['paw', 'nose', 'glasses', 'smile', 'hop'].includes(first), `act: ${first}`);
+      assert.ok(['paw', 'nose', 'glasses', 'smile', 'hop', 'walk'].includes(first), `act: ${first}`);
       assert.equal(await page.$('.select-outline:not([display="none"])'), null, 'the map got no click');
       assert.equal(await page.$eval('#details', el => !!el.querySelector('.block.selected')), false, 'nothing selected');
       await sleep(500);
       await click(page, middle);
       await click(page, middle);
       assert.equal(await antic(), first, 'the same act goes on');
-      await page.waitForFunction(() => !document.querySelector('.mascot').dataset.antic, { timeout: 4000 });
+      await page.waitForFunction(() => !document.querySelector('.mascot').dataset.antic, { timeout: 7000 });   // the walk is the longest
       await sleep(300);
       assert.equal(await antic(), null, 'no act was waiting its turn');
       await click(page, middle);
@@ -113,4 +113,64 @@ test('the mascot leaves the screen with Canada when the map zooms to another cou
   const overlaps = box.right > map.left && box.left < map.right && box.bottom > map.top && box.top < map.bottom;
   assert.equal(overlaps, false, JSON.stringify({ box, map }));
   await page.close();
+});
+
+describe('the characters', () => {
+  const who = (page) => page.$eval('.mascot', el => el.dataset.character);
+  const buttons = (page) => page.$$eval('#mascotSwitch button', els => els.map(b => [b.dataset.mascot, b.getAttribute('aria-pressed'), b.getAttribute('aria-label'), b.checkVisibility()]));
+
+  for (const [width, height] of [[1440, 860], [390, 844]]) {
+    test(`at ${width}px the switch by the zoom buttons changes who stands there, and it is remembered`, async () => {
+      const page = await open({ width, height });
+      assert.deepEqual(await buttons(page), [['capybara', 'true', 'Capybara', true], ['goose', 'false', 'Goose', true]]);
+      assert.equal(await who(page), 'capybara');
+      await page.click('[data-mascot="goose"]');
+      assert.equal(await who(page), 'goose');
+      assert.deepEqual((await buttons(page)).map(b => b[1]), ['false', 'true']);
+      const m = await mascot(page);
+      assert.ok(m.box.left >= m.map.left && m.box.right <= m.map.right && m.box.top >= m.map.top && m.box.bottom <= m.map.bottom, `the goose is whole on the map: ${JSON.stringify(m)}`);
+      // The switch is clear of the zoom buttons and inside the map.
+      const boxes = await page.evaluate(() => [...document.querySelectorAll('.map-controls button')].map(b => { const r = b.getBoundingClientRect(); return { x0: r.left, x1: r.right, y0: r.top, y1: r.bottom }; }));
+      for (let i = 0; i < boxes.length; i++) for (let j = i + 1; j < boxes.length; j++) {
+        const a = boxes[i], b = boxes[j];
+        assert.equal(a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0, false, `buttons ${i} and ${j} overlap`);
+      }
+      await page.reload({ waitUntil: 'networkidle0' });
+      await page.waitForSelector('.mascot');
+      assert.equal(await who(page), 'goose', 'remembered');
+      await page.click('[data-mascot="capybara"]');
+      assert.equal(await who(page), 'capybara');
+      assert.deepEqual(page.errors, []);
+      await page.close();
+    });
+  }
+
+  test('the goose walks to the U.S. and back, to where it stood', async () => {
+    const page = await open();
+    await page.click('[data-mascot="goose"]');
+    await page.evaluate(() => { Math.random = () => 0.99; });   // the last act of the list: the walk
+    const feet = () => page.evaluate(() => {
+      const r = document.querySelector('.mascot').getBoundingClientRect();
+      const x = (r.left + r.right) / 2, y = r.bottom - 4;
+      const pins = document.querySelector('.pins');
+      pins.style.display = 'none';
+      const under = document.elementFromPoint(x, y)?.__data__?.key ?? null;
+      pins.style.display = '';
+      return { x, y, under };
+    });
+    const home = await feet();
+    assert.equal(home.under, 'ca');
+    await click(page, { x: home.x, y: home.y - 25 });
+    assert.equal(await page.$eval('.mascot', el => el.dataset.antic), 'walk');
+    await sleep(2600);   // its far end: from 2.35 to 3.25 s
+    const there = await feet();
+    assert.equal(there.under, 'us', `in the U.S.: ${JSON.stringify(there)}`);
+    assert.ok(there.y - home.y > 15, `${there.y - home.y}px down`);
+    await page.waitForFunction(() => !document.querySelector('.mascot').dataset.antic, { timeout: 5000 });
+    await sleep(200);
+    const back = await feet();
+    assert.ok(Math.abs(back.x - home.x) < 2 && Math.abs(back.y - home.y) < 3, `back home: ${JSON.stringify([home, back])}`);
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
 });

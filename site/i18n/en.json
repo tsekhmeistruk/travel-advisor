@@ -15,6 +15,11 @@
   "reset": "Reset view",
   "legend": "Legend"
  },
+ "mascot": {
+  "label": "Map guide",
+  "capybara": "Capybara",
+  "goose": "Goose"
+ },
  "panel": {
   "label": "Details and settings",
   "show": "Show panel",

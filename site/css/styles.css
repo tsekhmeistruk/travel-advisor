@@ -264,6 +264,9 @@ h1, h2 { margin: 0; }
 .mascot[data-antic="smile"] .mascot-grin { animation: mascot-show 2.4s ease-in-out; }
 .mascot[data-antic="smile"] .mascot-eye { animation: mascot-squint 2.4s ease-in-out; }
 .mascot[data-antic="hop"] .mascot-bob { animation: mascot-hop 2s ease-in-out; }
+/* The walk: to the U.S. (--wx, --wy from mascot.js, in the drawing's units), a look around, and back. */
+.mascot[data-antic="walk"] .mascot-walk { animation: mascot-walk 5.6s ease-in-out; }
+.mascot[data-antic="walk"] .mascot-bob { animation: mascot-waddle .44s ease-in-out infinite; }
 @keyframes mascot-paw {
   0%, 100% { transform: rotate(0); }
   12%, 40%, 68% { transform: rotate(62deg); }
@@ -285,6 +288,15 @@ h1, h2 { margin: 0; }
 @keyframes mascot-hide { 0%, 100% { opacity: 1; } 12%, 88% { opacity: 0; } }
 @keyframes mascot-show { 0%, 100% { opacity: 0; } 12%, 88% { opacity: 1; } }
 @keyframes mascot-squint { 0%, 100% { transform: scaleY(1); } 14%, 86% { transform: scaleY(.55); } }
+@keyframes mascot-walk {
+  0%, 100% { transform: translate(0, 0); }
+  42%, 58% { transform: translate(calc(var(--wx, 0) * 1px), calc(var(--wy, 0) * 1px)); }
+}
+@keyframes mascot-waddle {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  25%, 75% { transform: rotate(0) translateY(-1.6px); }
+  50% { transform: rotate(4deg) translateY(0); }
+}
 @keyframes mascot-hop {
   0%, 100% { transform: translateY(0) scale(1); }
   8%, 48% { transform: translateY(1.5px) scale(1.04, .95); }
@@ -293,7 +305,7 @@ h1, h2 { margin: 0; }
   88% { transform: translateY(0) scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mascot-bob, .mascot[data-antic] .mascot-bob, .mascot[data-antic] .mascot-arm, .mascot[data-antic] .mascot-nose, .mascot[data-antic] .mascot-glasses { animation: none; }
+  .mascot-bob, .mascot[data-antic] .mascot-walk, .mascot[data-antic] .mascot-bob, .mascot[data-antic] .mascot-arm, .mascot[data-antic] .mascot-nose, .mascot[data-antic] .mascot-glasses { animation: none; }
   .mascot-head, .mascot-ears, .mascot-muzzle, .mascot-face, .mascot-pupil { transition: none; }
 }
 
@@ -347,6 +359,11 @@ h1, h2 { margin: 0; }
   transition: background .15s, border-color .15s;
 }
 .icon-btn:hover { border-color: var(--text-3); }
+/* Who stands on the map (map/characters.js): one small button each, under the zoom buttons. */
+.mascot-switch { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.mascot-switch .icon-btn { padding: 0; opacity: .6; }
+.mascot-switch .icon-btn:hover { opacity: 1; }
+.mascot-switch .icon-btn[aria-pressed="true"] { opacity: 1; border-color: var(--text-2); }
 .icon-btn:focus-visible, .chip:focus-visible, .segmented button:focus-visible,
 .recent-list button:focus-visible, .search input:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 2px;
@@ -953,6 +970,8 @@ h1, h2 { margin: 0; }
   .mode-switch button { padding: 7px 10px; font-size: 12.5px; }
   .map-top .source-toggle { align-self: flex-end; }
   .map-controls { top: 62px; left: 12px; }
+  /* The mascot switch: a second column beside the zoom buttons, so the short map keeps its legend clear. */
+  .mascot-switch { position: absolute; top: 0; left: 40px; margin-top: 0; }
   .source-toggle button { min-width: 0; padding: 7px 12px; font-size: 12.5px; }
   /* Flags only, so several providers fit beside the zoom controls; names stay in title/aria-label. */
   .source-toggle button span { display: none; }

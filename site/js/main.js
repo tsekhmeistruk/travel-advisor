@@ -10,13 +10,14 @@
 // the map (dataset.focus), hovered or selected.
 // The mode and the selected place or war are also kept in the URL (#mode=…&place=…), for links.
 
-import { $ } from './core/dom.js';
+import { $, esc } from './core/dom.js';
 import { createI18n, chooseLocale } from './core/i18n.js';
 import { createSettings } from './core/settings.js';
 import { createDataClient } from './core/data-client.js';
 import { parseHash, formatHash, startState } from './core/url-state.js';
 import { WorldMap } from './map/world-map.js';
 import { createMascot } from './map/mascot.js';
+import { CHARACTERS, DEFAULT_CHARACTER } from './map/characters.js';
 import { MODES, DEFAULT_MODE, RENAMED } from './datasets/registry.js';
 import { createSearch } from './ui/search.js';
 import { createProviderSwitch, createModeSwitch, createThemeToggle, createLanguagePicker, createTooltip } from './ui/controls.js';
@@ -31,7 +32,7 @@ main().catch((err) => {
 
 async function main() {
   const client = createDataClient();
-  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, mode: null, locale: null });
+  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, mode: null, locale: null, mascot: DEFAULT_CHARACTER });
   migrateSettings(settings);
 
   // ---- language
@@ -157,7 +158,22 @@ async function main() {
   $('zoomOut').onclick = () => map.zoomBy(1 / 1.6);
   $('zoomReset').onclick = () => map.resetZoom();
   // The capybara in Canada looks east, towards the selection, and now and then at the visitor.
-  const mascot = createMascot(map);
+  const mascot = createMascot(map, { character: settings.get('mascot') });
+  // The switch under the zoom buttons: who stands there (remembered).
+  const renderMascots = () => {
+    $('mascotSwitch').innerHTML = CHARACTERS.map(c => {
+      const name = esc(i18n.t(`mascot.${c.id}`));
+      return `<button class="icon-btn" data-mascot="${c.id}" aria-pressed="${c.id === mascot.character}" title="${name}" aria-label="${name}"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">${c.icon}</svg></button>`;
+    }).join('');
+  };
+  renderMascots();
+  $('mascotSwitch').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-mascot]');
+    if (!btn) return;
+    mascot.setCharacter(btn.dataset.mascot);
+    settings.set('mascot', mascot.character);
+    renderMascots();
+  });
   const look = () => mascot.lookAt({
     placeIds: selected?.warKey ? dataset.warPlaces?.(selected.warKey) ?? [] : selected?.placeId ? [selected.placeId] : [],
     markerId: selected?.eventId ?? null,

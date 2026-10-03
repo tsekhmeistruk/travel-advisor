@@ -69,8 +69,10 @@ describe('createAntics', () => {
     assert.deepEqual([antics.playing, t.pending.length], [null, 0]);
   });
 
-  test('the real acts: five of them, 2 to 3 seconds each', () => {
-    assert.deepEqual(ANTICS.map(a => a.name), ['paw', 'nose', 'glasses', 'smile', 'hop']);
-    assert.ok(ANTICS.every(a => a.ms >= 2000 && a.ms <= 3000));
+  test('the real acts: five of 2 to 3 seconds, and the walk to the U.S. and back, under 6', () => {
+    assert.deepEqual(ANTICS.map(a => a.name), ['paw', 'nose', 'glasses', 'smile', 'hop', 'walk']);
+    assert.ok(ANTICS.filter(a => a.name !== 'walk').every(a => a.ms >= 2000 && a.ms <= 3000));
+    const walk = ANTICS.find(a => a.name === 'walk');
+    assert.ok(walk.ms > 3000 && walk.ms <= 6000, `${walk.ms} ms`);
   });
 });
