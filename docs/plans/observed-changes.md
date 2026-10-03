@@ -56,9 +56,9 @@ Only the fact that the record moved between two of our fetches is used, never th
 
 ## Status
 
-- **Current step:** 3.4
-- **Done:** Parts 0-2; 3.1-3.3
-- **Last commit of this revision:** 8d526c5
+- **Current step:** done
+- **Done:** Parts 0-3
+- **Last commit of this revision:** 7870b2f
 
 ## Every part ends with the same checks
 
@@ -102,10 +102,11 @@ Only the fact that the record moved between two of our fetches is used, never th
 - [x] 3.1 `docs/architecture.md`: "Only observed changes", the active rule, the two stored fields.
 - [x] 3.2 `.claude/CLAUDE.md`: the principle, the GDACS quirks, the seeded-U.S. lines removed.
 - [x] 3.3 The published data report: the level rule, the worked example, the limits.
-- [ ] 3.4 Ship and report.
+- [x] 3.4 Ship and report.
 
 ---
 
 ## Log (one line per finished part: commit, deploy, tests)
 - Part 1 (7a986e1): a GDACS alert counts while it is listed and we saw GDACS extend it (updatedSeen, missingSince; quietDays 7, cyclones 3; earthquakes and volcanoes by their event time); deploy green; the GDACS update run after it recorded no change, marked Madagascar's drought missing and started Mexico's fall to Elevated; live-check OK (every mode, Germany, Mexico). Before it, 1c78d4d placed the U.S.'s new "Republic of Congo" (the 07:06 run had failed at the build). Tests added: the merge's updatedSeen and missingSince (2), the real drought, flood and cyclone sequences, a missing alert, moments, Green markers, the published flag (7). Edited: "missing is not ended" (events, GDACS fetcher), first sighting, closing, the isActive title, the project test. Deleted: none.
 - Part 2 (8d526c5): the 10 U.S. changes seeded from change notes left the level history, with the code and wording for a change without a previous level; deploy green; live-check OK (every mode, Thailand in Travel: "No level change since tracking began", Mexico). Tests deleted: the three seeded cases of trackHistory. Edited: levelChangesOf, advisoryChanges, the card fixtures with from: null (site unit, e2e helper), the data test (every history entry is { date, level }, none older than the first snapshot). Added: none.
+- Part 3 (7870b2f): the principle and the rule in docs/architecture.md, .claude/CLAUDE.md, README and the verify-site skill; the published data report updated (the level rule, the replay, the limits); deploy green, live-check OK (every mode). Tests: none added, edited or deleted. Still to come on its own: Mexico's fall to Elevated is confirmed by the first GDACS fetch after 09:46 UTC on Oct 3, Madagascar's fall to Normal about a day after 07:46 UTC.
