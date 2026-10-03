@@ -37,9 +37,9 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 
 ## Status
 
-- **Current step:** 4.4
-- **Done:** Parts 0-3; 4.1
-- **Last commit of this revision:** 100dfaa
+- **Current step:** done
+- **Done:** Parts 0-4
+- **Last commit of this revision:** 0b45351
 
 ## Every part ends with the same checks
 
@@ -83,7 +83,7 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 - [x] 4.1 The phone sheet: the short info and "Details" jumping to the panel's blocks.
 - [x] 4.2 `docs/architecture.md`, README, `.claude/CLAUDE.md`.
 - [x] 4.3 Review screenshots: desktop, phone, tablet, both themes, selected and not.
-- [ ] 4.4 Ship and report.
+- [x] 4.4 Ship and report.
 
 ---
 
@@ -91,3 +91,4 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 - Part 1: 84448b9, deploy green, live: every mode ok. Tests added: Escape and × clear the selection, the Wars tooltip's war. Edited: hover tests (the panel stays; a click shows), measureCards selects. Deleted: none.
 - Part 2: the overview as blocks and levels in the legend, deploy green after a test flake fix (the × clicked through the DOM); merged the owner's capybara commit; live: every mode ok. Tests added: legend level switches, the window switch, no Filters in any mode, overview blocks. Edited: overview, feed, legend, countries list, Travel provider and window, Wars list (5), phone sheet. Deleted: the Filters' tests, the fixed-height card checks, the overview's latest list and raised/lowered line.
 - Part 3 (100dfaa): a selection's blocks, the country view gone; deploy green, live-check OK. Tests added: placeBlocks, otherViolence, e2e blocks/Share/old links/alert/Travel; edited: card tests, countries list, Escape; deleted: country-view history, back/share, saved history days. 4.1: the sheet already shows the short info and Details scrolls to the blocks (e2e now checks them); a Wars dot now selects its country, not its deadliest war (unit + e2e edited).
+- Part 4 (0b45351): a Wars dot selects its country, chips wrap, docs (architecture, README, CLAUDE.md), filtersOpen removed; deploy green, live-check OK (old view=country link selects Japan). Tests added: e2e every Wars chip whole; edited: pointTarget unit, dot-click e2e, phone sheet waits for place blocks, openRaw seeds no filtersOpen; deleted: none.
