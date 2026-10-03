@@ -37,9 +37,7 @@
   }
  },
  "events": [
-  "usgs:us6000txzj",
-  "usgs:us6000txql",
-  "usgs:us6000txpf"
+  "usgs:us6000txzj"
  ],
  "changes": [
   {

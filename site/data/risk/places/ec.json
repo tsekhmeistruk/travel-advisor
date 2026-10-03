@@ -37,7 +37,6 @@
   }
  },
  "events": [
-  "gdacs:FL:1104201",
   "gdacs:FL:1104167",
   "eonet:EONET_4269",
   "eonet:EONET_4156"

@@ -37,6 +37,8 @@
   }
  },
  "events": [
+  "usgs:us6000tz8l",
+  "usgs:us6000tz8c",
   "usgs:us6000tz7b",
   "usgs:us6000tz62",
   "usgs:us6000tyku",
