@@ -350,6 +350,7 @@ describe('phone sheet', () => {
     await sleep(800);
     assert.equal((await sheet(page)).shown, false);
     assert.equal(await detailsTitle(page), 'Brazil');
+    await page.waitForSelector('#details > .block.cv-section');   // and its other blocks below
     const top = await page.$eval('#details', el => el.getBoundingClientRect().top);
     assert.ok(top >= -1 && top < 844 / 2, `the card scrolled into view (top ${top})`);
     await page.evaluate(() => scrollTo(0, 0));

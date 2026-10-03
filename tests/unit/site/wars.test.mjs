@@ -418,7 +418,7 @@ describe('wars: the list, the war card, the map', () => {
     assert.match(tip, /Sudan vs SFA \+1 · 27/, 'its deadliest conflict, who fights whom');
     assert.match(ds.pointTooltip('mx'), /unidentified armed group - unidentified armed group · 3/, 'a non-state conflict by UCDP\'s name');
     assert.equal(ds.pointTooltip('fr'), '');
-    assert.deepEqual([ds.pointTarget('ua'), ds.pointTarget('mx'), ds.pointTarget('fr')], [{ warKey: '1:13243' }, { placeId: 'mx' }, null], 'no listed war: its country');
+    assert.deepEqual([ds.pointTarget('ua'), ds.pointTarget('mx'), ds.pointTarget('fr')], [{ placeId: 'ua' }, { placeId: 'mx' }, null], 'a dot is its country, war or not');
     assert.match(ds.legend(), /<span class="legend-dot"><\/span>Deaths in August 2026/);
   });
 

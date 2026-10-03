@@ -328,11 +328,9 @@ export function createWarsMode(ctx) {
         <div class="tt-row">${esc(tw('dots.country', { month: month(dots.through), count: d.deaths, deaths: num(d.deaths) }))}</div>${rows}`;
     },
     /** A country's dot selects its deadliest war of the month (a listed conflict), else the country. */
+    /** A dot is its country (it sits on the country's centre): the country's block lists its wars. */
     pointTarget(id) {
-      const d = countryDots(dots?.events).find(x => x.place === id);
-      if (!d) return null;
-      const war = d.keys.find(([k]) => conflict().conflicts[k]);
-      return war ? { warKey: war[0] } : { placeId: id };
+      return countryDots(dots?.events).some(x => x.place === id) ? { placeId: id } : null;
     },
 
     tooltip(placeId) {

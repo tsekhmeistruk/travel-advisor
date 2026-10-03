@@ -667,7 +667,8 @@ h1, h2 { margin: 0; }
 .details p.wars-sub { margin-top: 8px; height: calc(2 * 1.45em); font-size: 12px; line-height: 1.45; color: var(--text-3); overflow: hidden; }
 .details p.wars-deaths { margin-top: 8px; height: 20px; font-size: 13px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
 .wars-trend { width: 100%; margin-top: 5px; }
-.wars-chips { display: flex; align-items: center; gap: 4px; height: 24px; margin-top: 2px; white-space: nowrap; overflow: hidden; font-size: 12.5px; }
+/* Chips wrap: the overview's blocks don't change on hover, so a second row can't make them jump. */
+.wars-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; min-height: 24px; margin-top: 2px; white-space: nowrap; font-size: 12.5px; }
 .wars-trend button {
   display: inline-flex; align-items: baseline; gap: 4px; flex: none;
   padding: 2px 7px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel);

@@ -216,6 +216,11 @@ describe('risk panel', () => {
     const tensions = await page.$$eval('#details .wars-tensions button[data-place]', els => els.map(b => b.querySelector('.name').textContent));
     const published = Object.keys((await page.evaluate(async () => (await fetch('data/risk/current.json')).json())).activity?.gdelt?.tensions?.pairs ?? {});
     assert.equal(tensions.length, Math.min(3, published.length), 'up to three tensions, as published');
+    const clipped = await page.$$eval('#details .wars-chips button', els => els.filter(b => {
+      const r = b.getBoundingClientRect(), row = b.parentElement.getBoundingClientRect();
+      return r.right > row.right + 0.5 || r.bottom > row.bottom + 0.5;
+    }).map(b => b.textContent));
+    assert.deepEqual(clipped, [], 'every chip whole: the rows wrap');
     const chip = await page.$('#details .wars-chips button[data-place]');
     if (chip) {
       const place = await chip.evaluate(b => b.dataset.place);
@@ -694,7 +699,7 @@ describe('Wars: who fights whom', () => {
     await page.close();
   });
 
-  test('the month\'s deaths are one dot per country: explained on hover, a click picks its deadliest war; the footer\'s "How it works" opens the help', async () => {
+  test('the month\'s deaths are one dot per country: explained on hover, a click selects the country; the footer\'s "How it works" opens the help', async () => {
     const page = await openMode('wars');
     const events = published('conflict-events').events;
     const places = [...new Set(events.map(e => e[7]).filter(Boolean))];
@@ -706,8 +711,8 @@ describe('Wars: who fights whom', () => {
     assert.match(await page.$eval('#tooltip', el => el.textContent), /Russia vs Ukraine/);
     await dot.click();
     await sleep(300);
-    assert.equal(await page.evaluate(() => location.hash), '#mode=wars&war=1-13243');
-    assert.ok(await page.$$eval('.points .point.is-dim', els => els.length) > 0, 'the other countries\' dots fade');
+    assert.equal(await page.evaluate(() => location.hash), '#mode=wars&place=ua');
+    assert.equal(await detailsTitle(page), 'Ukraine', 'the country, like a click beside its dot (its block lists its wars)');
     assert.match(await page.$eval('#legend', el => el.textContent), /Deaths in \w+ \d{4}/);
     await page.click('#footer [data-action="help"]');
     assert.equal(await page.$eval('#help', el => el.open), true);

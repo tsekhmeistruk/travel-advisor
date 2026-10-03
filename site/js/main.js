@@ -31,7 +31,7 @@ main().catch((err) => {
 
 async function main() {
   const client = createDataClient();
-  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, filtersOpen: false, mode: null, locale: null });
+  const settings = createSettings(STORAGE_KEY, { theme: 'auto', panelOpen: true, mode: null, locale: null });
   migrateSettings(settings);
 
   // ---- language
@@ -153,8 +153,7 @@ async function main() {
     markerId: selected?.eventId ?? null,
   });
 
-  // Feed items (in the feed, and the latest ones on the overview card) select their place;
-  // "Show 90 days" in an empty list widens the window.
+  // Feed items (in the feed, and the latest ones on the overview card) select their place.
   const onListClick = (e) => {
     const btn = e.target.closest('button[data-key]');
     if (btn) select(dataset.feedTarget(btn.dataset.key), { zoom: true, toUrl: true });

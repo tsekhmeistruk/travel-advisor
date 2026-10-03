@@ -11,14 +11,15 @@
 //   stale()                                     whether the data is older than it should be (the header warns)
 //   style(placeId)                              how the map draws a place (see map/world-map.js)
 //   hasPlace(placeId)                           whether it has data for a place
-//   details(target), tooltip(placeId), legend() HTML for the panel card, tooltip and legend
-//   renderSettings(el), renderFeed(el)          its settings and its list of notable items
-//   showWindow(days)                            widen the feed's window ("Show 90 days" in an empty list)
+//   details(target), tooltip(placeId), legend() HTML for the panel's blocks (the overview, or the
+//                                               selection's block), the tooltip and the legend
+//   toggleLevel(level)                          show or hide a level (the legend's level buttons)
+//   renderFeed(el)                              its list of notable items, and its window switch
 //   feedTarget(key), feedKeyFor(target)         map feed items to selection targets and back
 //   searchEntries()                             what the search box can find
 //   searchPlaceholder()                         optional: its prompt ("Find a country or alert")
-// and optionally, for the full panel views (one risk mode's viewer serves a mode without them):
-//   renderCountryView(el, placeId, { back, selectEvent })   a country's every category, alerts and history
+// and optionally (one risk mode's viewer serves a mode without them):
+//   placeBlocks(placeId, { mode })                          a selected place's other blocks (HTML)
 //   renderCountryList(el, { open, back, hover })             every place with its level, sortable and filterable
 // and optionally, for point markers (events):
 //   markers()                                   [{ id, lon, lat, kind, level }] for the map

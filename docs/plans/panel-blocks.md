@@ -37,9 +37,9 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 
 ## Status
 
-- **Current step:** 3.5
-- **Done:** parts 0–2
-- **Last commit of this revision:** b5bb22c
+- **Current step:** 4.4
+- **Done:** Parts 0-3; 4.1
+- **Last commit of this revision:** 100dfaa
 
 ## Every part ends with the same checks
 
@@ -76,13 +76,13 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 - [x] 3.2 The other blocks from the place file: armed violence, travel advice, alerts, news and tensions, recent changes. The separate country view and its links go; `view=country` links select the country.
 - [x] 3.3 A war's and an alert's blocks.
 - [x] 3.4 Tests: the blocks for a country in each mode, a war, an alert, old links (unit, e2e); deleted: country-view tests.
-- [ ] 3.5 Ship.
+- [x] 3.5 Ship.
 
 ## Part 4: Phones, docs and wrap-up
 
-- [ ] 4.1 The phone sheet: the short info and "Details" jumping to the panel's blocks.
-- [ ] 4.2 `docs/architecture.md`, README, `.claude/CLAUDE.md`.
-- [ ] 4.3 Review screenshots: desktop, phone, tablet, both themes, selected and not.
+- [x] 4.1 The phone sheet: the short info and "Details" jumping to the panel's blocks.
+- [x] 4.2 `docs/architecture.md`, README, `.claude/CLAUDE.md`.
+- [x] 4.3 Review screenshots: desktop, phone, tablet, both themes, selected and not.
 - [ ] 4.4 Ship and report.
 
 ---
@@ -90,3 +90,4 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 ## Log (one line per finished part: commit, deploy, tests)
 - Part 1: 84448b9, deploy green, live: every mode ok. Tests added: Escape and × clear the selection, the Wars tooltip's war. Edited: hover tests (the panel stays; a click shows), measureCards selects. Deleted: none.
 - Part 2: the overview as blocks and levels in the legend, deploy green after a test flake fix (the × clicked through the DOM); merged the owner's capybara commit; live: every mode ok. Tests added: legend level switches, the window switch, no Filters in any mode, overview blocks. Edited: overview, feed, legend, countries list, Travel provider and window, Wars list (5), phone sheet. Deleted: the Filters' tests, the fixed-height card checks, the overview's latest list and raised/lowered line.
+- Part 3 (100dfaa): a selection's blocks, the country view gone; deploy green, live-check OK. Tests added: placeBlocks, otherViolence, e2e blocks/Share/old links/alert/Travel; edited: card tests, countries list, Escape; deleted: country-view history, back/share, saved history days. 4.1: the sheet already shows the short info and Details scrolls to the blocks (e2e now checks them); a Wars dot now selects its country, not its deadliest war (unit + e2e edited).
