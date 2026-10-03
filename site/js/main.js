@@ -16,6 +16,7 @@ import { createSettings } from './core/settings.js';
 import { createDataClient } from './core/data-client.js';
 import { parseHash, formatHash } from './core/url-state.js';
 import { WorldMap } from './map/world-map.js';
+import { createMascot } from './map/mascot.js';
 import { MODES, DEFAULT_MODE, RENAMED } from './datasets/registry.js';
 import { createSearch } from './ui/search.js';
 import { createProviderSwitch, createModeSwitch, createThemeToggle, createLanguagePicker, createTooltip } from './ui/controls.js';
@@ -145,6 +146,12 @@ async function main() {
   $('zoomIn').onclick = () => map.zoomBy(1.6);
   $('zoomOut').onclick = () => map.zoomBy(1 / 1.6);
   $('zoomReset').onclick = () => map.resetZoom();
+  // The capybara in Canada looks east, towards the selection, and now and then at the visitor.
+  const mascot = createMascot(map);
+  const look = () => mascot.lookAt({
+    placeIds: selected?.warKey ? dataset.warPlaces?.(selected.warKey) ?? [] : selected?.placeId ? [selected.placeId] : [],
+    markerId: selected?.eventId ?? null,
+  });
 
   // Feed items (in the feed, and the latest ones on the overview card) select their place;
   // "Show 90 days" in an empty list widens the window.
@@ -219,6 +226,7 @@ async function main() {
     map.setSelected(target?.placeId ?? null);
     map.setSelectedMarker(target?.eventId ?? null);
     applyFocus();
+    look();
     renderDetails();
     // An event zooms to its marker when the mode shows one, otherwise to its place; a war to where it is fought.
     if (zoom && target?.warKey) map.zoomToPlaces(dataset.warPlaces?.(target.warKey) ?? []);
@@ -412,6 +420,7 @@ async function main() {
     map.setStyle((id) => dataset.style(id));
     map.setMarkers(dataset.markers?.() ?? []);
     map.setPoints(dataset.points?.() ?? []);
+    look();
     renderDetails();
     if (!sheet.hidden) showSheet();   // this mode's view of the selection
   }
