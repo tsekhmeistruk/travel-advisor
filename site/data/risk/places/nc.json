@@ -51,10 +51,7 @@
   "usgs:us6000txrs",
   "usgs:us6000txrq",
   "usgs:us6000txrn",
-  "usgs:us6000txrf",
-  "usgs:us6000txqu",
-  "usgs:us6000txqk",
-  "usgs:us6000txqi"
+  "usgs:us6000txrf"
  ],
  "changes": [
   {

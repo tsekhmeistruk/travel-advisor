@@ -36,10 +36,7 @@
    "own": true
   }
  },
- "events": [
-  "gdacs:WF:1032447",
-  "gdacs:WF:1032477"
- ],
+ "events": [],
  "changes": [
   {
    "id": "ar:violence:2026-09-29",
