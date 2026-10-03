@@ -38,7 +38,8 @@
  },
  "events": [
   "eonet:EONET_20409",
-  "eonet:EONET_20102"
+  "eonet:EONET_20102",
+  "gdacs:DR:1027449"
  ],
  "changes": [
   {

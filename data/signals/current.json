@@ -6,146 +6,208 @@
    "places": {
     "at": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "ba": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "be": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "bs": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
      ]
     },
     "by": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "bz": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
+    "cd": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450",
+      "gdacs:DR:1027465"
+     ]
+    },
+    "cf": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
      ]
     },
     "ch": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
+    "cm": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
+     ]
+    },
+    "cr": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
+    "cu": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
     "cz": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "de": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "dj": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
      ]
     },
     "dk": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "do": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
+    "er": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
      ]
     },
     "es": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "et": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
      ]
     },
     "fr": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "gt": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
+    "hn": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
      ]
     },
     "hr": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
+    "ht": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
     "hu": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "ie": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "it": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
+    "ke": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450",
+      "gdacs:DR:1027465"
+     ]
+    },
     "li": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "lu": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "md": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "me": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "mg": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1018431"
      ]
     },
     "mx": {
@@ -156,92 +218,130 @@
       "gdacs:TC:1001325"
      ]
     },
+    "ne": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
+     ]
+    },
+    "ng": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
+     ]
+    },
+    "ni": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
     "nl": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "no": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "pl": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "ro": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "rs": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "ru": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
+    "sd": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
+     ]
+    },
     "se": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "si": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "sk": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
     "sm": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
      ]
     },
+    "so": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
+     ]
+    },
+    "ss": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
+     ]
+    },
+    "sv": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027449"
+     ]
+    },
+    "td": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027450"
+     ]
+    },
+    "tz": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027465"
+     ]
+    },
     "ua": {
      "level": 2,
-     "since": "2026-10-02T13:11:33.761Z",
-     "from": 1,
      "basis": [
       "gdacs:DR:1018332"
+     ]
+    },
+    "ug": {
+     "level": 2,
+     "basis": [
+      "gdacs:DR:1027465"
      ]
     }
    }

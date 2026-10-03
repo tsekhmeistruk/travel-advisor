@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:DR:1027450"
+ ],
  "changes": [
   {
    "id": "so:violence:2026-10-01",

@@ -38,7 +38,8 @@
  },
  "events": [
   "gdacs:TC:1001329",
-  "gdacs:TC:1001325"
+  "gdacs:TC:1001325",
+  "gdacs:DR:1027449"
  ],
  "changes": [
   {

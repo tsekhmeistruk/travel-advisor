@@ -38,7 +38,8 @@
  },
  "events": [
   "usgs:us6000tymj",
-  "eonet:EONET_20103"
+  "eonet:EONET_20103",
+  "gdacs:DR:1027449"
  ],
  "changes": [],
  "activity": {

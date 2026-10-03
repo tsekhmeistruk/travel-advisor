@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:DR:1027449"
+ ],
  "changes": [
   {
    "id": "do:protest:2026-09-30",

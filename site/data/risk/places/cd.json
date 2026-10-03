@@ -38,7 +38,9 @@
  },
  "events": [
   "who:DON:2026-DON618",
-  "who:DON:2026-DON617"
+  "who:DON:2026-DON617",
+  "gdacs:DR:1027450",
+  "gdacs:DR:1027465"
  ],
  "changes": [
   {

@@ -51,7 +51,7 @@
   "DR": {
    "type": "drought",
    "category": "disaster",
-   "tailDays": 0,
+   "tailDays": 7,
    "maxLevel": 2
   },
   "WF": {

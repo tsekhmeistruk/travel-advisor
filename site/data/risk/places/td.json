@@ -37,7 +37,8 @@
   }
  },
  "events": [
-  "gdacs:FL:1104205"
+  "gdacs:FL:1104205",
+  "gdacs:DR:1027450"
  ],
  "changes": [
   {

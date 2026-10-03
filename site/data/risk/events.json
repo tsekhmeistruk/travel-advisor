@@ -4785,6 +4785,43 @@
    "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617"
   },
   {
+   "id": "gdacs:DR:1027450",
+   "source": "gdacs",
+   "type": "drought",
+   "category": "disaster",
+   "level": 2,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Drought in Democratic Republic of Congo, Central African Republic, Cameroon, Djibouti, Eritrea, Ethiopia, Kenya, Niger, Nigeria, Sudan, Somalia, South Sudan, Chad",
+   "country": "Democratic Republic of Congo, Central African Republic, Cameroon, Djibouti, Eritrea, Ethiopia, Kenya, Niger, Nigeria, Sudan, Somalia, South Sudan, Chad",
+   "severity": "Medium impact for agricultural drought in 2649772 km2",
+   "placeIds": [
+    "cd",
+    "cf",
+    "cm",
+    "dj",
+    "er",
+    "et",
+    "ke",
+    "ne",
+    "ng",
+    "sd",
+    "so",
+    "ss",
+    "td"
+   ],
+   "point": {
+    "lon": 26.125,
+    "lat": 9.246
+   },
+   "startedAt": "2026-06-21T00:00:00.000Z",
+   "toDate": "2026-10-02T07:07:44.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1027450&episodeid=11&eventtype=DR"
+  },
+  {
    "id": "eonet:EONET_20710",
    "source": "eonet",
    "type": "volcano",
@@ -4883,6 +4920,34 @@
    "current": true,
    "url": "https://science.nasa.gov/earth/earth-observatory/new-eruption-in-the-bismarck-sea/",
    "marker": true
+  },
+  {
+   "id": "gdacs:DR:1027465",
+   "source": "gdacs",
+   "type": "drought",
+   "category": "disaster",
+   "level": 2,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Drought in Democratic Republic of Congo, Kenya, Tanzania, Uganda",
+   "country": "Democratic Republic of Congo, Kenya, Tanzania, Uganda",
+   "severity": "Medium impact for agricultural drought in 270713 km2",
+   "placeIds": [
+    "cd",
+    "ke",
+    "tz",
+    "ug"
+   ],
+   "point": {
+    "lon": 33.546,
+    "lat": 0.772
+   },
+   "startedAt": "2026-05-21T00:00:00.000Z",
+   "toDate": "2026-10-02T07:07:46.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1027465&episodeid=8&eventtype=DR"
   },
   {
    "id": "gdacs:FL:1103888",
@@ -5033,6 +5098,41 @@
    "current": true,
    "url": "https://volcano.si.edu/volcano.cfm?vn=344100",
    "marker": true
+  },
+  {
+   "id": "gdacs:DR:1027449",
+   "source": "gdacs",
+   "type": "drought",
+   "category": "disaster",
+   "level": 2,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Drought in The Bahamas, Belize, Costa Rica, Cuba, Dominican Republic, Guatemala, Honduras, Haiti, Mexico, Nicaragua, El Salvador",
+   "country": "The Bahamas, Belize, Costa Rica, Cuba, Dominican Republic, Guatemala, Honduras, Haiti, Mexico, Nicaragua, El Salvador",
+   "severity": "Medium impact for agricultural drought in 884209 km2",
+   "placeIds": [
+    "bs",
+    "bz",
+    "cr",
+    "cu",
+    "do",
+    "gt",
+    "hn",
+    "ht",
+    "mx",
+    "ni",
+    "sv"
+   ],
+   "point": {
+    "lon": -93.638,
+    "lat": 16.86
+   },
+   "startedAt": "2026-04-21T00:00:00.000Z",
+   "toDate": "2026-10-02T07:07:51.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1027449&episodeid=11&eventtype=DR"
   },
   {
    "id": "eonet:EONET_17165",
@@ -5186,6 +5286,31 @@
    "current": true,
    "url": "https://volcano.si.edu/volcano.cfm?vn=351060",
    "marker": true
+  },
+  {
+   "id": "gdacs:DR:1018431",
+   "source": "gdacs",
+   "type": "drought",
+   "category": "disaster",
+   "level": 2,
+   "native": {
+    "scheme": "gdacs-alert",
+    "value": "Orange"
+   },
+   "name": "Drought in Madagascar",
+   "country": "Madagascar",
+   "severity": "Medium impact for agricultural drought in 97655 km2",
+   "placeIds": [
+    "mg"
+   ],
+   "point": {
+    "lon": 48.741,
+    "lat": -16.837
+   },
+   "startedAt": "2025-11-21T00:00:00.000Z",
+   "toDate": "2026-09-28T00:00:00.000Z",
+   "current": false,
+   "url": "https://www.gdacs.org/report.aspx?eventid=1018431&episodeid=15&eventtype=DR"
   },
   {
    "id": "eonet:EONET_15811",

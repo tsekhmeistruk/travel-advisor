@@ -48,24 +48,7 @@
   "eonet:EONET_15330",
   "eonet:EONET_10631"
  ],
- "changes": [
-  {
-   "id": "ru:disaster:2026-10-02T13:11:33.761Z",
-   "at": "2026-10-02T13:11:33.761Z",
-   "kind": "level",
-   "category": "disaster",
-   "placeId": "ru",
-   "from": 1,
-   "to": 2,
-   "up": true,
-   "basis": [
-    "gdacs:DR:1018332"
-   ],
-   "sources": [
-    "gdacs"
-   ]
-  }
- ],
+ "changes": [],
  "activity": {
   "source": "gdelt",
   "series": {

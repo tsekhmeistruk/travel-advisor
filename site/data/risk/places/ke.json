@@ -36,7 +36,10 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:DR:1027450",
+  "gdacs:DR:1027465"
+ ],
  "changes": [],
  "activity": {
   "source": "gdelt",

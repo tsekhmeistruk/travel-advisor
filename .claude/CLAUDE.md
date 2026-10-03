@@ -218,6 +218,7 @@ For **every** change, however small, decide explicitly whether tests must be **a
 - **`eventlist` accepts `EQ;TC;FL;VO;DR;WF` only.** Adding `TS` makes the API answer HTTP 204 (no content) to the whole query; tsunamis come as earthquake alerts. **204 means "no events"**, not an error.
 - **Offshore earthquakes have no country code** (`affectedcountries: []`, `country: "Off Coast Of …"`), and some on land don't either ("Solomon Islands"), so places come from alpha-3 codes, then country names; the rest stay unplaced (a warning, never a failure).
 - **Droughts are long and span dozens of countries** (one Orange drought covered 25 European countries). They cap at Elevated in `config/sources/gdacs.json`, so they can't paint a continent High.
+- **`iscurrent` means nothing for droughts:** an ongoing Orange drought is "not current" for days, with a `todate` 2–3 days back, and the search and event endpoints disagree at the same moment. With no tail, Europe's 29 countries sat at Normal and all rose "Normal → Elevated" on Oct 2, 2026 when episode 24 arrived. Droughts now have `tailDays` 7; the 29 changes were removed and the other droughts baselined without changes (Oct 3, 2026).
 - **Times have no zone** (UTC). `datemodified` changes on every request and is left out, so `data/events/gdacs.json` only changes when an event does.
 - **The terms of use are disclaimers only** (alerts are automatic, "purely indicative", not a substitute for national authorities) and grant no explicit reuse licence. Asking GDACS to confirm reuse is on the owner's list.
 

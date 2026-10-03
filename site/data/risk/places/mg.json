@@ -36,7 +36,9 @@
    "own": true
   }
  },
- "events": [],
+ "events": [
+  "gdacs:DR:1018431"
+ ],
  "changes": [
   {
    "id": "advisory:us:Madagascar:2025-12-05",

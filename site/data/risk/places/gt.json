@@ -37,6 +37,7 @@
   }
  },
  "events": [
+  "gdacs:DR:1027449",
   "eonet:EONET_4624",
   "eonet:EONET_980"
  ],

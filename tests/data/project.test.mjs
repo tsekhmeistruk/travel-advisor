@@ -10,6 +10,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { FileStore } from '../../scripts/lib/store.mjs';
 import { PROVIDERS, SOURCES } from '../../scripts/providers/index.mjs';
+import { isActive } from '../../scripts/lib/risk.mjs';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 const read = (rel) => readFileSync(join(ROOT, rel), 'utf8');
@@ -124,6 +125,17 @@ describe('risk sources are wired up everywhere', () => {
       assert.deepEqual([...Object.values(cfg.codes ?? {}), ...Object.values(cfg.aliases ?? {})].flat().filter(p => !placeIds.has(p)), [], 'codes and aliases refer to known places');
     });
   }
+
+  test('an ongoing GDACS drought stays active while its end date lags', () => {
+    // GDACS calls a months-long drought "not current" for days on end, with an end date up to
+    // 3 days back; with no tail, Europe's 29 countries rose "Normal → Elevated" on Oct 2, 2026
+    // when a new episode came.
+    const cfg = store.source('gdacs');
+    const at = '2026-09-27T16:25:57.372Z';
+    const drought = (toDate) => ({ code: 'DR', current: false, toDate });
+    assert.equal(isActive(drought('2026-09-25T00:00:00.000Z'), cfg, at), true, 'as fetched on Sep 27: still active');
+    assert.equal(isActive(drought('2026-09-10T00:00:00.000Z'), cfg, at), false, 'one that really ended is not');
+  });
 
   test('every registered source module has a config', () => {
     assert.deepEqual(Object.keys(SOURCES).filter(id => !store.sourceIds().includes(id)), []);
