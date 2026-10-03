@@ -163,6 +163,29 @@ export class WorldMap {
     this.#placePins();
     return pin.g.node();
   }
+  /** Move a pin (the <g> pin() gave) to another point. */
+  movePin(node, lon, lat) {
+    const pin = this.pins.find(p => p.g.node() === node);
+    if (!pin) return;
+    Object.assign(pin, { lon, lat, xy: this.projection([lon, lat]) });
+    this.#placePins();
+  }
+  /** The map's box on the page (for a pointer's place on it). */
+  box() { return this.svg.node().getBoundingClientRect(); }
+  /** Where a point of the globe is on the map now: [x, y] px from the map's corner. */
+  screenOf(lon, lat) { return this.transform.apply(this.projection([lon, lat])); }
+  /** The [lon, lat] under a point of the map (px from its corner), or null when that is off the globe. */
+  lonLatAt(x, y) {
+    const p = this.transform.invert([x, y]);
+    const at = this.projection.invert(p);
+    if (!at?.every(Number.isFinite) || Math.abs(at[0]) > 180 || Math.abs(at[1]) > 90) return null;
+    const back = this.projection(at);
+    return Math.hypot(back[0] - p[0], back[1] - p[1]) < 0.5 ? at : null;
+  }
+  /** The place whose shape has this point of the globe, or null: the sea. */
+  placeAt(lon, lat) {
+    return this.regions.find(r => r.feature && this.d3.geoContains(r.feature, [lon, lat]))?.key ?? null;
+  }
   /** Where a selection is on the map (projected, before the zoom): its marker, else the middle of its places; null if neither is shown. */
   focusPoint({ placeIds = [], markerId = null } = {}) {
     const marker = markerId ? this.markers.find(m => m.id === markerId) : null;

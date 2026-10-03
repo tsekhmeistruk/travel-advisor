@@ -4,7 +4,7 @@
 
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { useBrowser, open, openRaw, anchorOf, click, sleep } from './helpers.mjs';
+import { useBrowser, open, openRaw, anchorOf, click, sleep, isSelected } from './helpers.mjs';
 
 useBrowser();
 
@@ -67,8 +67,8 @@ for (const [width, height] of [[1440, 860], [390, 844]]) {
       const height = await page.$eval('.mascot', el => el.getBoundingClientRect().height);
       if (first !== 'walk') assert.ok(height > (m.box.bottom - m.box.top) * 1.6, `closer: ${height}px against ${m.box.bottom - m.box.top}px`);
       assert.equal(await page.$eval('.mascot', el => Number(el.style.getPropertyValue('--ms'))) >= 2000, true, 'the act\'s time is given to the CSS');
-      await click(page, middle);
-      await click(page, middle);
+      // Clicks on it while it plays (wherever the act has moved it to).
+      for (let i = 0; i < 2; i++) await page.$eval('.mascot', el => el.dispatchEvent(new MouseEvent('click', { bubbles: true })));
       assert.equal(await antic(), first, 'the same act goes on');
       await page.waitForFunction(() => !document.querySelector('.mascot').dataset.antic, { timeout: 7000 });   // the walk is the longest
       await sleep(300);
@@ -175,6 +175,104 @@ describe('the characters', () => {
     const back = await feet();
     assert.ok(Math.abs(back.x - home.x) < 2 && Math.abs(back.y - home.y) < 3, `back home: ${JSON.stringify([home, back])}`);
     assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+});
+
+describe('picked up and put down', () => {
+  const state = (page) => page.$eval('.mascot', el => el.dataset.state ?? null);
+  /** Its feet on the page, and what the map has under them (the mascot aside). */
+  const feet = (page) => page.evaluate(() => {
+    const m = document.querySelector('.pins > g').transform.baseVal.consolidate().matrix;
+    const map = document.getElementById('map').getBoundingClientRect();
+    const x = map.left + m.e, y = map.top + m.f;
+    const pins = document.querySelector('.pins');
+    pins.style.display = 'none';
+    const e = document.elementFromPoint(x, y - 1);
+    pins.style.display = '';
+    return { x, y, under: e?.__data__?.key ?? e?.getAttribute('class') ?? null };
+  });
+  /** Press on its body, move there in steps, release. */
+  async function drag(page, to, { release = true } = {}) {
+    const from = await feet(page);
+    await page.mouse.move(from.x, from.y - 20);
+    await page.mouse.down();
+    await page.mouse.move(to.x, to.y - 20, { steps: 8 });
+    if (release) await page.mouse.up();
+    await sleep(100);
+  }
+  const view = (page) => page.$eval('#map .viewport', el => el.getAttribute('transform'));
+
+  test('dragged onto land it stays there; the map neither pans nor selects; a reload puts it back', async () => {
+    const page = await open();
+    const home = await feet(page);
+    const world = await view(page);
+    const brazil = await anchorOf(page, 'br');
+    await drag(page, brazil, { release: false });
+    assert.equal(await state(page), 'held');
+    await page.mouse.up();
+    await sleep(200);
+    const there = await feet(page);
+    assert.equal(there.under, 'br');
+    assert.ok(Math.abs(there.x - brazil.x) < 3 && Math.abs(there.y - brazil.y) < 3, JSON.stringify({ there, brazil }));
+    assert.equal(await state(page), null, 'on land it just stands');
+    assert.equal(await view(page), world, 'the map did not pan');
+    assert.equal(await isSelected(page), false, 'and nothing was selected');
+    assert.equal(await page.$eval('.mascot', el => el.dataset.antic ?? null), null, 'a drag is not a click');
+    await sleep(1500);
+    assert.equal((await feet(page)).under, 'br', 'still there');
+    // It still plays when clicked, there.
+    await click(page, { x: there.x, y: there.y - 20 });
+    assert.ok(await page.$eval('.mascot', el => el.dataset.antic), 'an act in Brazil');
+    await page.reload({ waitUntil: 'networkidle0' });
+    await page.waitForSelector('.mascot');
+    await sleep(300);
+    const back = await feet(page);
+    assert.ok(Math.abs(back.x - home.x) < 2 && Math.abs(back.y - home.y) < 2, 'home again after a reload');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('dropped in the sea it goes under, swims home, and can be picked up on the way', async () => {
+    const page = await open();
+    const home = await feet(page);
+    const sea = { x: home.x + 150, y: home.y + 90 };   // the Atlantic, off the U.S. coast
+    await drag(page, sea);
+    assert.equal((await feet(page)).under, 'sphere', 'in the sea');
+    assert.equal(await state(page), 'splash');
+    assert.equal(await page.$eval('.mascot-water', el => getComputedStyle(el).opacity), '1', 'the water around it');
+    await sleep(900);
+    assert.equal(await state(page), 'swim');
+    const a = await feet(page);
+    await sleep(300);
+    const b = await feet(page);
+    assert.ok(Math.hypot(b.x - home.x, b.y - home.y) < Math.hypot(a.x - home.x, a.y - home.y), 'it gets closer to home');
+    // Picked up while it swims, and put on land in Mexico: it stays.
+    const mexico = await anchorOf(page, 'mx');
+    await drag(page, mexico);
+    await sleep(200);
+    assert.equal(await state(page), null);
+    assert.equal((await feet(page)).under, 'mx');
+    await sleep(1200);
+    assert.equal((await feet(page)).under, 'mx', 'no longer on its way home');
+    // Dropped again, and left alone: it comes home and stands as before.
+    await drag(page, sea);
+    await page.waitForFunction(() => !document.querySelector('.mascot').dataset.state, { timeout: 12000 });
+    const back = await feet(page);
+    assert.ok(Math.abs(back.x - home.x) < 2 && Math.abs(back.y - home.y) < 2, JSON.stringify({ back, home }));
+    assert.equal(await page.$eval('.mascot-water', el => getComputedStyle(el).opacity), '0');
+    assert.deepEqual(page.errors, []);
+    await page.close();
+  });
+
+  test('it cannot be taken off the globe', async () => {
+    const page = await open();
+    const map = await page.$eval('#map', el => { const r = el.getBoundingClientRect(); return { left: r.left, top: r.top, right: r.right, bottom: r.bottom }; });
+    await drag(page, { x: map.left + 30, y: map.bottom - 60 }, { release: false });   // a corner: outside the globe's outline
+    const held = await feet(page);
+    assert.ok(['sphere', 'graticule'].includes(held.under) || /^[a-z-]+$/.test(held.under ?? ''), `on the globe: ${held.under}`);
+    assert.ok(Math.hypot(held.x - (map.left + 30), held.y - (map.bottom - 60)) > 40, 'it stopped at the edge, short of the pointer');
+    await page.mouse.up();
     await page.close();
   });
 });
