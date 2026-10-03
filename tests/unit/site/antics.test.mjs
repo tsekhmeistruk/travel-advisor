@@ -56,6 +56,15 @@ describe('createAntics', () => {
     assert.equal(dice.play(), true, 'Math.random by default');
   });
 
+  test('the act is shown with its time, so the animation lasts as long as the act', () => {
+    const calls = [];
+    const t = fakeTimer();
+    const antics = createAntics({ apply: (...args) => calls.push(args), antics: [{ name: 'a', ms: 2300 }], timer: t.timer, clear: t.clear });
+    antics.play();
+    t.fire();
+    assert.deepEqual(calls, [['a', 2300], [null]]);
+  });
+
   test('a character with one act plays it every time', () => {
     const { antics, shown, t } = setup([0.7], [{ name: 'only', ms: 10 }]);
     for (let i = 0; i < 3; i++) { antics.play(); t.fire(); }

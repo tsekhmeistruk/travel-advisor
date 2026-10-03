@@ -58,8 +58,9 @@ export function createMascot(map, { home = HOME, walkTo = WALK_TO, character: fi
   }
   // A click is the mascot's own: the map below (Canada) is not selected.
   const antics = createAntics({
-    apply: (name) => {
+    apply: (name, ms) => {
       if (!name) { delete el.dataset.antic; return; }
+      el.style.setProperty('--ms', ms);
       if (name === 'walk') {
         const [x, y] = walkBy();
         el.style.setProperty('--wx', x.toFixed(1));

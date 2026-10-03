@@ -258,42 +258,118 @@ h1, h2 { margin: 0; }
 .mascot-eye { transform-box: fill-box; transform-origin: 50% 50%; transition: transform .07s; }
 .mascot.is-blink .mascot-eye { transform: scaleY(.12); }
 @keyframes mascot-bob { 50% { transform: translateY(-.8px); } }
-/* The acts (map/antics.js): any character with these groups can play them. */
+/* The acts (map/antics.js): any character with these groups can play them. An act lasts --ms
+   (set by mascot.js from antics.js, so the two can't drift apart). The mascot is small, so for
+   an act it steps closer (mascot-near: almost twice its size, from its feet), and every act
+   moves the whole body, not only the face: a wave leans, a sniff stretches the neck. */
+.mascot { --ms: 2400; }
 .mascot-arm, .mascot-nose, .mascot-glasses { transform-box: fill-box; transform-origin: 50% 50%; }
 .mascot-arm { transform-origin: 50% 10%; }
-.mascot-mouth, .mascot-grin { transition: opacity .25s; }
 .mascot-grin { opacity: 0; }
-.mascot[data-antic="paw"] .mascot-arm { animation: mascot-paw 2.2s ease-in-out; }
-.mascot[data-antic="nose"] .mascot-nose { animation: mascot-nose 2s ease-in-out; }
-.mascot[data-antic="glasses"] .mascot-glasses { animation: mascot-glasses 2.8s ease-in-out; }
-.mascot[data-antic="smile"] .mascot-mouth { animation: mascot-hide 2.4s ease-in-out; }
-.mascot[data-antic="smile"] .mascot-grin { animation: mascot-show 2.4s ease-in-out; }
-.mascot[data-antic="smile"] .mascot-eye { animation: mascot-squint 2.4s ease-in-out; }
-.mascot[data-antic="hop"] .mascot-bob { animation: mascot-hop 2s ease-in-out; }
-/* The walk: to the U.S. (--wx, --wy from mascot.js, in the drawing's units), a look around, and back. */
-.mascot[data-antic="walk"] .mascot-walk { animation: mascot-walk 5.6s ease-in-out; }
+.mascot[data-antic] .mascot-walk, .mascot[data-antic] .mascot-bob, .mascot[data-antic] .mascot-head, .mascot[data-antic] .mascot-arm,
+.mascot[data-antic] .mascot-nose, .mascot[data-antic] .mascot-glasses, .mascot[data-antic] .mascot-eye,
+.mascot[data-antic] .mascot-mouth, .mascot[data-antic] .mascot-grin {
+  animation-duration: calc(var(--ms) * 1ms); animation-timing-function: ease-in-out; animation-fill-mode: both;
+}
+.mascot[data-antic]:not([data-antic="walk"]) .mascot-walk { animation-name: mascot-near; }
+@keyframes mascot-near {
+  0%, 100% { transform: scale(1); }
+  9% { transform: scale(1.98); }
+  13%, 88% { transform: scale(1.9); }
+}
+
+/* A wave: the paw goes up beside the head and waves three times, the body leans into it. */
+.mascot[data-antic="paw"] .mascot-arm { animation-name: mascot-wave; }
+.mascot[data-antic="paw"] .mascot-head { animation-name: mascot-tilt; }
+.mascot[data-antic="paw"] .mascot-bob { animation-name: mascot-lean; }
+@keyframes mascot-wave {
+  0%, 12%, 90%, 100% { transform: rotate(0); }
+  24%, 46%, 68% { transform: rotate(138deg); }
+  35%, 57% { transform: rotate(104deg); }
+  78% { transform: rotate(118deg); }
+}
+@keyframes mascot-tilt { 0%, 12%, 88%, 100% { rotate: 0deg; } 24%, 76% { rotate: 7deg; } }
+@keyframes mascot-lean { 0%, 12%, 88%, 100% { transform: rotate(0); } 24%, 76% { transform: rotate(2.5deg); } }
+
+/* A sniff: the neck stretches, the head turns one way, then the other, the nose working. */
+.mascot[data-antic="nose"] .mascot-head { animation-name: mascot-sniff-head; }
+.mascot[data-antic="nose"] .mascot-nose { animation-name: mascot-sniff; }
+@keyframes mascot-sniff-head {
+  0%, 12%, 90%, 100% { translate: 0 0; rotate: 0deg; }
+  22%, 30%, 38% { translate: -1.5px -3px; rotate: -7deg; }
+  26%, 34% { translate: -1.5px -1.8px; rotate: -7deg; }
+  50% { translate: 0 -1px; rotate: 0deg; }
+  60%, 68%, 76% { translate: 1.5px -3px; rotate: 7deg; }
+  64%, 72% { translate: 1.5px -1.8px; rotate: 7deg; }
+}
+@keyframes mascot-sniff {
+  0%, 12%, 44%, 54%, 84%, 100% { transform: scale(1); }
+  22%, 30%, 38%, 60%, 68%, 76% { transform: scale(1.28, .8); }
+  26%, 34%, 64%, 72% { transform: scale(.9, 1.15); }
+}
+
+/* The glasses slip as it looks down; a blink, a quick nod, and they are back. */
+.mascot[data-antic="glasses"] .mascot-glasses { animation-name: mascot-slip; }
+.mascot[data-antic="glasses"] .mascot-head { animation-name: mascot-nod; }
+.mascot[data-antic="glasses"] .mascot-eye { animation-name: mascot-peer; }
+@keyframes mascot-slip {
+  0%, 12%, 80%, 100% { transform: translateY(0) rotate(0); }
+  26% { transform: translateY(6.4px) rotate(9deg); }
+  31%, 56% { transform: translateY(5.6px) rotate(7deg); }
+  64% { transform: translateY(-1.6px) rotate(-2deg); }
+  72% { transform: translateY(.5px) rotate(0); }
+}
+@keyframes mascot-nod {
+  0%, 12%, 80%, 100% { translate: 0 0; rotate: 0deg; }
+  26%, 56% { translate: 0 2px; rotate: 4deg; }
+  63% { translate: 0 -3px; rotate: -3deg; }
+  71% { translate: 0 .6px; rotate: 0deg; }
+}
+@keyframes mascot-peer {
+  0%, 36%, 44%, 74%, 82%, 100% { transform: scaleY(1); }
+  40%, 78% { transform: scaleY(.12); }
+}
+
+/* A smile: a wide grin, happy eyes, and the head swaying from side to side. */
+.mascot[data-antic="smile"] .mascot-mouth { animation-name: mascot-hide; }
+.mascot[data-antic="smile"] .mascot-grin { animation-name: mascot-show; }
+.mascot[data-antic="smile"] .mascot-eye { animation-name: mascot-squint; }
+.mascot[data-antic="smile"] .mascot-head { animation-name: mascot-sway; }
+.mascot[data-antic="smile"] .mascot-bob { animation-name: mascot-bounce; }
+@keyframes mascot-hide { 0%, 12%, 88%, 100% { opacity: 1; } 18%, 82% { opacity: 0; } }
+@keyframes mascot-show { 0%, 12%, 88%, 100% { opacity: 0; } 18%, 82% { opacity: 1; } }
+@keyframes mascot-squint { 0%, 12%, 88%, 100% { transform: scaleY(1); } 20%, 80% { transform: scaleY(.38); } }
+@keyframes mascot-sway {
+  0%, 12%, 88%, 100% { rotate: 0deg; }
+  26%, 62% { rotate: 9deg; }
+  44%, 78% { rotate: -8deg; }
+}
+@keyframes mascot-bounce {
+  0%, 12%, 35%, 53%, 71%, 88%, 100% { transform: translateY(0); }
+  26%, 44%, 62%, 78% { transform: translateY(-2.4px); }
+}
+
+/* Two hops: it crouches, jumps with its paw up, lands with a squash. */
+.mascot[data-antic="hop"] .mascot-bob { animation-name: mascot-hop; }
+.mascot[data-antic="hop"] .mascot-arm { animation-name: mascot-flap; }
+@keyframes mascot-hop {
+  0%, 12%, 88%, 100% { transform: translateY(0) scale(1); }
+  20%, 54% { transform: translateY(2px) scale(1.07, .92); }
+  33% { transform: translateY(-15px) scale(.96, 1.05); }
+  44%, 78% { transform: translateY(1.5px) scale(1.08, .92); }
+  66% { transform: translateY(-11px) scale(.97, 1.04); }
+}
+@keyframes mascot-flap {
+  0%, 20%, 46%, 54%, 80%, 100% { transform: rotate(0); }
+  33% { transform: rotate(82deg); }
+  66% { transform: rotate(64deg); }
+}
+
+/* The walk: to the U.S. (--wx, --wy from mascot.js, in the drawing's units), a look around, and
+   back, waddling, its paw swinging. */
+.mascot[data-antic="walk"] .mascot-walk { animation-name: mascot-walk; }
 .mascot[data-antic="walk"] .mascot-bob { animation: mascot-waddle .44s ease-in-out infinite; }
-@keyframes mascot-paw {
-  0%, 100% { transform: rotate(0); }
-  12%, 40%, 68% { transform: rotate(62deg); }
-  26%, 54%, 82% { transform: rotate(18deg); }
-}
-@keyframes mascot-nose {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  10%, 34%, 58% { transform: translate(-1px, -.5px) scale(1.14, .88); }
-  22%, 46%, 70% { transform: translate(1px, -.5px) scale(1.14, .88); }
-  85% { transform: translate(0, .3px) scale(.95, 1.1); }
-}
-@keyframes mascot-glasses {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  22%, 62% { transform: translateY(5.5px) rotate(7deg); }
-  30%, 54% { transform: translateY(5px) rotate(5deg); }
-  80% { transform: translateY(-1.2px) rotate(-2deg); }
-  90% { transform: translateY(.4px) rotate(0); }
-}
-@keyframes mascot-hide { 0%, 100% { opacity: 1; } 12%, 88% { opacity: 0; } }
-@keyframes mascot-show { 0%, 100% { opacity: 0; } 12%, 88% { opacity: 1; } }
-@keyframes mascot-squint { 0%, 100% { transform: scaleY(1); } 14%, 86% { transform: scaleY(.55); } }
+.mascot[data-antic="walk"] .mascot-arm { animation: mascot-swing .88s ease-in-out infinite; }
 @keyframes mascot-walk {
   0%, 100% { transform: translate(0, 0); }
   42%, 58% { transform: translate(calc(var(--wx, 0) * 1px), calc(var(--wy, 0) * 1px)); }
@@ -303,15 +379,10 @@ h1, h2 { margin: 0; }
   25%, 75% { transform: rotate(0) translateY(-1.6px); }
   50% { transform: rotate(4deg) translateY(0); }
 }
-@keyframes mascot-hop {
-  0%, 100% { transform: translateY(0) scale(1); }
-  8%, 48% { transform: translateY(1.5px) scale(1.04, .95); }
-  24%, 64% { transform: translateY(-11px) scale(.98, 1.03); }
-  38%, 78% { transform: translateY(0) scale(1.05, .94); }
-  88% { transform: translateY(0) scale(1); }
-}
+@keyframes mascot-swing { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(22deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .mascot-bob, .mascot[data-antic] .mascot-walk, .mascot[data-antic] .mascot-bob, .mascot[data-antic] .mascot-arm, .mascot[data-antic] .mascot-nose, .mascot[data-antic] .mascot-glasses { animation: none; }
+  .mascot-bob, .mascot[data-antic] .mascot-walk, .mascot[data-antic] .mascot-bob, .mascot[data-antic] .mascot-head,
+  .mascot[data-antic] .mascot-arm, .mascot[data-antic] .mascot-nose, .mascot[data-antic] .mascot-glasses { animation: none; }
   .mascot-head, .mascot-ears, .mascot-muzzle, .mascot-face, .mascot-pupil { transition: none; }
 }
 

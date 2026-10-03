@@ -10,8 +10,8 @@
 // mascot-eye; the walk moves mascot-walk, the group mascot.js puts around every drawing.
 // A character without one of them (no glasses) leaves that act out of its list.
 
-// Each act and how long it plays (ms): as long as its animation in styles.css, 2 to 3 seconds;
-// the walk is the long one, under 6.
+// Each act and how long it plays (ms), 2 to 3 seconds; the walk is the long one, under 6.
+// The CSS takes the time from here (--ms, set by mascot.js).
 export const ANTICS = [
   { name: 'paw', ms: 2200 },
   { name: 'nose', ms: 2000 },
@@ -22,7 +22,7 @@ export const ANTICS = [
 ];
 
 /**
- * @param opts.apply(name|null)  show this act; null when it is over
+ * @param opts.apply(name|null, ms)  show this act, which plays for ms; null when it is over
  * @param opts.antics            the acts to pick from
  * @param opts.random            0..1 (injectable for tests); the same act never plays twice in a row
  * @param opts.timer, opts.clear setTimeout and clearTimeout (injectable for tests)
@@ -38,7 +38,7 @@ export function createAntics({ apply, antics = ANTICS, random = () => Math.rando
       const choices = antics.length > 1 ? antics.filter(a => a.name !== last) : antics;
       const act = choices[Math.min(choices.length - 1, Math.floor(random() * choices.length))];
       last = playing = act.name;
-      apply(act.name);
+      apply(act.name, act.ms);
       handle = timer(() => { playing = null; handle = null; apply(null); }, act.ms);
       return true;
     },

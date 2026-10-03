@@ -63,6 +63,10 @@ for (const [width, height] of [[1440, 860], [390, 844]]) {
       assert.equal(await page.$('.select-outline:not([display="none"])'), null, 'the map got no click');
       assert.equal(await page.$eval('#details', el => !!el.querySelector('.block.selected')), false, 'nothing selected');
       await sleep(500);
+      // It is small on the map: for an act it steps closer, almost twice its size (the walk aside).
+      const height = await page.$eval('.mascot', el => el.getBoundingClientRect().height);
+      if (first !== 'walk') assert.ok(height > (m.box.bottom - m.box.top) * 1.6, `closer: ${height}px against ${m.box.bottom - m.box.top}px`);
+      assert.equal(await page.$eval('.mascot', el => Number(el.style.getPropertyValue('--ms'))) >= 2000, true, 'the act\'s time is given to the CSS');
       await click(page, middle);
       await click(page, middle);
       assert.equal(await antic(), first, 'the same act goes on');
