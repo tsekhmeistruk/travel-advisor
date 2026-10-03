@@ -45,7 +45,7 @@
   "confidence": "A level rises as soon as a source reports it. A fall is applied once a later update confirms it, so a level doesn't flicker.",
   "news": "News activity (GDELT) compares protests and violence in the news with a country's normal week. It is shown as unusual or not, and never sets a level.",
   "ours": "The levels are this site's summary of the sources, not official levels. Each card links to its source: always check the official advisories and alerts before you travel.",
-  "wars": "In Wars, a war's card shows who fights whom: the sides UCDP records (governments and armed groups, with the deaths in their fighting), and, from Wikipedia, the other countries fighting beside them and the countries backing them. Hover or pick a war to colour its two sides on the map. The dots are the deadly events of the latest month, sized by deaths.",
+  "wars": "In Wars, a war's card shows who fights whom: the sides UCDP records (governments and armed groups, with the deaths in their fighting), and, from Wikipedia, the other countries fighting beside them and the countries backing them. Hover or pick a war to colour its two sides on the map. A dot on a country is its deaths in the latest month, sized by the count.",
   "short": "How it works",
   "markers": "Disasters also shows earthquakes of magnitude 5 and above (USGS) and active volcanoes (NASA EONET) as markers. They never set a level: GDACS's Orange and Red alerts do."
  },
@@ -579,7 +579,7 @@
    "over": "{min}+",
    "range": "{min}–{max}",
    "fewer": "Under {min}",
-   "dots": "Deadly events in {month}"
+   "dots": "Deaths in {month}"
   },
   "unnamedNoParty": "Armed conflict in {place}",
   "otherViolence": "Also {groups} killed between armed groups and {civilians} in attacks on civilians.",
@@ -642,11 +642,14 @@
   },
   "footer": "Data: {sources}; Wikipedia text CC BY-SA 4.0",
   "dots": {
-   "event": {
-    "one": "{date} · {deaths} death",
-    "other": "{date} · {deaths} deaths"
+   "country": {
+    "one": "{month}: {deaths} death",
+    "other": "{month}: {deaths} deaths"
    },
-   "unknownPlace": "Place not given"
+   "conflict": {
+    "one": "{name} · {deaths}",
+    "other": "{name} · {deaths}"
+   }
   }
  }
 }

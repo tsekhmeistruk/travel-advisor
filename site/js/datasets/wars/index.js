@@ -6,8 +6,8 @@
 //
 // A war (a target { warKey }) shows who fights whom: UCDP's sides, with the countries Wikipedia
 // puts beside them and their backers (risk/wars.json). Hovered or selected, it colours its two
-// sides on the map and fades the rest. The latest month's deadly events are dots
-// (risk/conflict-events.json). Pure rules are in ./logic.js.
+// sides on the map and fades the rest. The latest month's deaths are one dot per country, at its
+// centre (risk/conflict-events.json, grouped by countryDots()). Pure rules are in ./logic.js.
 //
 // UCDP's figures are preliminary and a month or two behind: the header names the month.
 
@@ -17,7 +17,7 @@ import { levelOf } from '../risk/logic.js';
 import { titleSize } from '../travel-advisories/logic.js';
 import {
   overviewModel, placeModel, bandRows, sparkPoints, barRects, conflictUrl, tensionRows,
-  sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius, warTitle,
+  sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius, warTitle, countryDots,
 } from './logic.js';
 
 const SPARK = { w: 120, h: 34 };
@@ -308,30 +308,28 @@ export function createWarsMode(ctx) {
       return { ...s, muted: true, dim: false, dot: false, pulse: null };
     },
 
-    /** The latest month's deadly events, as dots; another war's fade while one is shown. */
+    /**
+     * The latest month's deaths, one dot per country at its centre, sized by its deaths; a country
+     * outside the war shown fades.
+     */
     points() {
-      return (dots?.events ?? []).map((e, i) => ({ id: i, lat: e[0], lon: e[1], r: dotRadius(e[2]), dim: !!focus && e[4] !== focus.key }));
+      return countryDots(dots?.events).map(d => ({ id: d.place, placeId: d.place, r: dotRadius(d.deaths), dim: !!focus && !d.keys.some(([k]) => k === focus.key) }));
     },
+    /** A country's dot: its deaths in the month, and its two deadliest conflicts (who fights whom). */
     pointTooltip(id) {
-      const e = dots?.events[id];
-      if (!e) return '';
-      const [, , deaths, date, key, a, b, place, region] = e;
-      const name = (actor) => {
-        const n = dots.actors[actor];
-        return !n || /^XXX\d+$/.test(n) ? tw('unidentified') : n.replace(/^Government of (.+)$/, (_, c) => c.replace(/\s*\([^)]*\)/g, ''));
-      };
-      const where = [region, place ? placeName(place) : null].filter(Boolean).join(', ');
-      const what = dots.conflicts[key] ?? null;
-      return `<strong>${esc(where || tw('dots.unknownPlace'))}</strong>
-        <div class="tt-row">${esc(tw('dots.event', { date: i18n.formatDate(date), count: deaths, deaths: num(deaths) }))}</div>
-        <div class="tt-row">${esc(tw('vs', { a: name(a), b: name(b) }))}</div>
-        ${what ? `<div class="tt-row dim">${esc(what.replace(/\s*\([^)]*\)/g, ''))}</div>` : ''}`;
+      const d = countryDots(dots?.events).find(x => x.place === id);
+      if (!d) return '';
+      const name = (key) => (conflict().conflicts[key] ? conflictVs(key) : (dots.conflicts[key] ?? '').replace(/\s*\([^)]*\)/g, '').replace(/XXX\d+/g, tw('unidentified')));
+      const rows = d.keys.slice(0, 2).map(([key, deaths]) => `<div class="tt-row">${esc(tw('dots.conflict', { name: name(key), count: deaths, deaths: num(deaths) }))}</div>`).join('');
+      return `<strong>${esc(placeName(id))}</strong>
+        <div class="tt-row">${esc(tw('dots.country', { month: month(dots.through), count: d.deaths, deaths: num(d.deaths) }))}</div>${rows}`;
     },
-    /** A dot selects its war (when it is one of the listed conflicts), else its place. */
+    /** A country's dot selects its deadliest war of the month (a listed conflict), else the country. */
     pointTarget(id) {
-      const e = dots?.events[id];
-      if (!e) return null;
-      return conflict().conflicts[e[4]] ? { warKey: e[4] } : e[7] ? { placeId: e[7] } : null;
+      const d = countryDots(dots?.events).find(x => x.place === id);
+      if (!d) return null;
+      const war = d.keys.find(([k]) => conflict().conflicts[k]);
+      return war ? { warKey: war[0] } : { placeId: id };
     },
 
     tooltip(placeId) {

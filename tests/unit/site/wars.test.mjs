@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { createWarsMode } from '../../../site/js/datasets/wars/index.js';
 import {
   windowMonths, bandRows, conflictTitle, conflictName, overviewModel, placeModel, sparkPoints, barRects, conflictUrl, tensionRows,
-  warTitle, sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius,
+  warTitle, sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius, countryDots,
 } from '../../../site/js/datasets/wars/logic.js';
 import { createI18n } from '../../../site/js/core/i18n.js';
 import { createSettings } from '../../../site/js/core/settings.js';
@@ -218,8 +218,16 @@ describe('logic: who fights whom', () => {
     assert.deepEqual([[...syria.a], [...syria.fought]], [[], ['sy']]);
     assert.equal(syria.key, '1:299');
   });
-  test('dots grow with the square root of the deaths, up to 9px', () => {
-    assert.deepEqual([1, 4, 100, 5017].map(dotRadius), [2.1, 2.5, 6.1, 9]);
+  test('dots grow with the square root of the deaths, up to 11px', () => {
+    assert.deepEqual([1, 4, 100, 5017].map(dotRadius), [2.1, 2.5, 6.1, 11]);
+  });
+  test('the month\'s events, one dot per country: its deaths and events, its conflicts by deaths; none at sea', () => {
+    const ev = (deaths, key, place) => [0, 0, deaths, '2026-08-01', key, 1, 2, place, ''];
+    assert.deepEqual(countryDots([ev(5, '1:1', 'ua'), ev(30, '1:2', 'sd'), ev(7, '1:1', 'ua'), ev(9, '3:4', 'ua'), ev(50, '1:1', null)]), [
+      { place: 'sd', deaths: 30, events: 1, keys: [['1:2', 30]] },
+      { place: 'ua', deaths: 21, events: 3, keys: [['1:1', 12], ['3:4', 9]] },
+    ]);
+    assert.deepEqual(countryDots(undefined), []);
   });
 });
 
@@ -389,19 +397,20 @@ describe('wars: the list, the war card, the map', () => {
     assert.deepEqual([ds.warPlaces('1:13243'), ds.warPlaces('1:299')], [['ua', 'ru'], ['sy']]);
   });
 
-  test('the month\'s dots: sized by deaths, another war\'s faded, each explained, a click picks its war', () => {
+  test('the month\'s deaths: one dot per country at its centre, sized by its deaths; another war\'s country faded; explained; a click picks its war', () => {
     const pts = ds.points();
-    assert.deepEqual(pts[0], { id: 0, lat: 48, lon: 37.8, r: 6.5, dim: false });
+    assert.deepEqual(pts.map(p => p.id), ['ua', 'sd', 'mx'], 'most deaths first');
+    assert.deepEqual(pts[0], { id: 'ua', placeId: 'ua', r: 6.5, dim: false });
     ds.focus({ warKey: '1:309' });
     assert.deepEqual(ds.points().map(p => p.dim), [true, false, true]);
-    const tip = ds.pointTooltip(1);
-    assert.match(tip, /<strong>North Darfur state, Sudan<\/strong>/);
-    assert.match(tip, /1 Aug 2026 · 27 deaths|Aug 1, 2026 · 27 deaths/);
-    assert.match(tip, /Sudan vs RSF/);
-    assert.match(ds.pointTooltip(2), /Sinaloa Cartel vs unidentified armed group/);
-    assert.equal(ds.pointTooltip(9), '');
-    assert.deepEqual([ds.pointTarget(0), ds.pointTarget(2), ds.pointTarget(9)], [{ warKey: '1:13243' }, { placeId: 'mx' }, null], 'a non-state event: its place');
-    assert.match(ds.legend(), /<span class="legend-dot"><\/span>Deadly events in August 2026/);
+    const tip = ds.pointTooltip('sd');
+    assert.match(tip, /<strong>Sudan<\/strong>/);
+    assert.match(tip, /August 2026: 27 deaths/);
+    assert.match(tip, /Sudan vs SFA \+1 · 27/, 'its deadliest conflict, who fights whom');
+    assert.match(ds.pointTooltip('mx'), /unidentified armed group - unidentified armed group · 3/, 'a non-state conflict by UCDP\'s name');
+    assert.equal(ds.pointTooltip('fr'), '');
+    assert.deepEqual([ds.pointTarget('ua'), ds.pointTarget('mx'), ds.pointTarget('fr')], [{ warKey: '1:13243' }, { placeId: 'mx' }, null], 'no listed war: its country');
+    assert.match(ds.legend(), /<span class="legend-dot"><\/span>Deaths in August 2026/);
   });
 
   test('the footer is one line with the sources and "How it works"; the wars are in the search; a war in the phone\'s sheet', () => {

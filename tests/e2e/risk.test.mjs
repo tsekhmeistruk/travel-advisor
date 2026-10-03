@@ -111,6 +111,23 @@ describe('mode switch', () => {
     await fires.close();
   });
 
+  test('the map\'s tooltip keeps its text inside the box, whatever the country', async () => {
+    const page = await openMode('disaster', { intercept: withRiskChanges() });
+    const out = await page.evaluate(() => {
+      const tip = document.getElementById('tooltip');
+      const bad = [];
+      for (const el of document.querySelectorAll('path.country')) {
+        const r = el.getBoundingClientRect();
+        el.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse', clientX: r.x + r.width / 2, clientY: r.y + r.height / 2 }));
+        if (!tip.hidden && (tip.scrollWidth > tip.clientWidth + 1 || [...tip.querySelectorAll('*')].some(c => c.getBoundingClientRect().right > tip.getBoundingClientRect().right + 1))) bad.push(el.__data__.key);
+        el.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }));
+      }
+      return bad;
+    });
+    assert.deepEqual(out, []);
+    await page.close();
+  });
+
   test('the overview\'s raised and lowered line stays one line, however big the numbers', async () => {
     const data = JSON.parse(readFileSync(new URL('../../site/data/risk/changes.json', import.meta.url), 'utf8'));
     const places = ['ua', 'sm', 'sk', 'si', 'se', 'pl', 'no', 'lt', 'lv', 'ee'];
@@ -753,20 +770,21 @@ describe('Wars: who fights whom', () => {
     await page.close();
   });
 
-  test('the month\'s deadly events are dots: each explained on hover, a click picks its war; the footer\'s "How it works" opens the help', async () => {
+  test('the month\'s deaths are one dot per country: explained on hover, a click picks its deadliest war; the footer\'s "How it works" opens the help', async () => {
     const page = await openMode('wars');
     const events = published('conflict-events').events;
-    assert.equal(await page.$$eval('.points .point', els => els.length), events.length);
-    const i = events.findIndex(e => conflict.conflicts[e[4]]);
-    const dot = (await page.$$('.points .point'))[i];
+    const places = [...new Set(events.map(e => e[7]).filter(Boolean))];
+    assert.equal(await page.$$eval('.points .point', els => els.length), places.length, 'one per country, not one per event');
+    // Ukraine: its deadliest conflict of the month is Russia – Ukraine.
+    const dot = await page.evaluateHandle(() => [...document.querySelectorAll('.points .point')].find(el => el.__data__.id === 'ua'));
     await dot.hover();
-    assert.match(await page.$eval('#tooltip', el => el.textContent), /\d+ deaths?/);
-    assert.match(await page.$eval('#tooltip', el => el.textContent), / vs /);
+    assert.match(await page.$eval('#tooltip', el => el.textContent), /Ukraine.*\d+ deaths/s);
+    assert.match(await page.$eval('#tooltip', el => el.textContent), /Russia vs Ukraine/);
     await dot.click();
     await sleep(300);
-    assert.equal(await page.evaluate(() => location.hash), `#mode=wars&war=${events[i][4].replace(':', '-')}`);
-    assert.ok(await page.$$eval('.points .point.is-dim', els => els.length) > 0, 'the other wars\' dots fade');
-    assert.match(await page.$eval('#legend', el => el.textContent), /Deadly events in \w+ \d{4}/);
+    assert.equal(await page.evaluate(() => location.hash), '#mode=wars&war=1-13243');
+    assert.ok(await page.$$eval('.points .point.is-dim', els => els.length) > 0, 'the other countries\' dots fade');
+    assert.match(await page.$eval('#legend', el => el.textContent), /Deaths in \w+ \d{4}/);
     await page.click('#footer [data-action="help"]');
     assert.equal(await page.$eval('#help', el => el.open), true);
     assert.match(await page.$eval('#help', el => el.textContent), /who fights whom/);

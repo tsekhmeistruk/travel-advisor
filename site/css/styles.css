@@ -245,10 +245,13 @@ h1, h2 { margin: 0; }
   box-shadow: var(--shadow);
   padding: 8px 10px;
   font-size: 12.5px;
-  max-width: 240px;
-  white-space: nowrap;
+  max-width: 300px;
+  /* Long lines wrap inside the box (a change line with its age is wider than a name). */
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .tooltip strong, .sheet strong { display: block; font-size: 13px; font-weight: 600; }
+.tooltip .tt-row > .swatch, .tooltip .tt-row > .arrow { flex: none; }
 .tooltip .tt-row, .sheet .tt-row { display: flex; align-items: center; gap: 6px; color: var(--text-2); }
 
 /* The phone sheet (shown only on small screens, see the media query) */

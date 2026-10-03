@@ -16,8 +16,9 @@
 // level }]). They keep a fixed pixel size while zooming, and markers closer than a grid cell
 // on screen are drawn as one cluster with a count (see clusters.js).
 //
-// Points (many small events: a month of deadly incidents) come from setPoints([{ id, lon, lat,
-// r, dim }]): plain circles of a fixed pixel size, never clustered, under the labels and markers.
+// Points come from setPoints([{ id, lon, lat, r, dim }]) or, at a place's centre, with placeId
+// instead of lon and lat: plain circles of a fixed pixel size, never clustered, under the labels
+// and markers.
 //
 // Needs d3 and topojson-client as globals (loaded by index.html).
 
@@ -132,11 +133,12 @@ export class WorldMap {
     this.markers = markers.map(m => ({ ...m, xy: this.projection([m.lon, m.lat]) }));
     this.#renderMarkers();
   }
-  /** Points: [{ id, lon, lat, r, dim }]; [] removes them. */
+  /** Points: [{ id, lon, lat, r, dim }] or [{ id, placeId, r, dim }] (at the place's centre); [] removes them. */
   setPoints(points) {
-    this.points = points.map(p => ({ ...p, xy: this.projection([p.lon, p.lat]) }));
+    this.points = points.map(p => ({ ...p, xy: this.#pointXY(p) })).filter(p => p.xy);
     this.#renderPoints();
   }
+  #pointXY(p) { return p.placeId ? this.region(p.placeId)?.anchor ?? null : this.projection([p.lon, p.lat]); }
   /** Highlight the marker (or the cluster holding it) with this id. */
   setSelectedMarker(id) { this.selectedMarker = id ?? null; this.#renderMarkers(); }
 
@@ -204,7 +206,7 @@ export class WorldMap {
       r.anchor = r.feature ? this.projection(this.d3.geoCentroid(r.main)) : this.projection(r.point);
     }
     for (const m of this.markers) m.xy = this.projection([m.lon, m.lat]);
-    for (const p of this.points) p.xy = this.projection([p.lon, p.lat]);
+    for (const p of this.points) p.xy = this.#pointXY(p) ?? p.xy;
     // Points shrink with a small map (a phone): half their size at 450px wide.
     this.pointScale = Math.max(0.5, Math.min(1, this.width / 900));
 

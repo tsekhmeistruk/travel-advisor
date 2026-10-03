@@ -211,9 +211,29 @@ export function warFocus(m) {
   return { key: m.key, a, b, allyA, allyB, fought };
 }
 
-/** A dot's radius for an event's deaths: 2px for one, growing with the square root, 9px at most. */
+/** A dot's radius for a number of deaths: 2px for one, growing with the square root, 11px at most. */
 export function dotRadius(deaths) {
-  return Math.min(9, round(1.6 + Math.sqrt(deaths) * 0.45));
+  return Math.min(11, round(1.6 + Math.sqrt(deaths) * 0.45));
+}
+
+/**
+ * The month's events, one dot per country: its deaths, its number of events and its conflicts
+ * by deaths (most first). Events on no place (at sea) are left out. Most deaths first.
+ * @param events  risk/conflict-events.json's rows: [lat, lon, deaths, date, key, a, b, place, region]
+ * @returns [{ place, deaths, events, keys: [[key, deaths]] }]
+ */
+export function countryDots(events) {
+  const byPlace = new Map();
+  for (const [, , deaths, , key, , , place] of events ?? []) {
+    if (!place) continue;
+    const d = byPlace.get(place) ?? byPlace.set(place, { place, deaths: 0, events: 0, keys: new Map() }).get(place);
+    d.deaths += deaths;
+    d.events += 1;
+    d.keys.set(key, (d.keys.get(key) ?? 0) + deaths);
+  }
+  return [...byPlace.values()]
+    .map(d => ({ ...d, keys: [...d.keys].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])) }))
+    .sort((a, b) => b.deaths - a.deaths || a.place.localeCompare(b.place));
 }
 
 const round = (n) => Math.round(n * 10) / 10;
