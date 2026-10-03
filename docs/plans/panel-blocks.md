@@ -37,7 +37,7 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 
 ## Status
 
-- **Current step:** 3.1
+- **Current step:** 3.5
 - **Done:** parts 0–2
 - **Last commit of this revision:** b5bb22c
 
@@ -72,10 +72,10 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 
 ## Part 3: A selected country, war or alert as blocks
 
-- [ ] 3.1 The head block (name, the mode's level, ×) and the mode's own block first.
-- [ ] 3.2 The other blocks from the place file: armed violence, travel advice, alerts, news and tensions, recent changes. The separate country view and its links go; `view=country` links select the country.
-- [ ] 3.3 A war's and an alert's blocks.
-- [ ] 3.4 Tests: the blocks for a country in each mode, a war, an alert, old links (unit, e2e); deleted: country-view tests.
+- [x] 3.1 The head block (name, the mode's level, ×) and the mode's own block first.
+- [x] 3.2 The other blocks from the place file: armed violence, travel advice, alerts, news and tensions, recent changes. The separate country view and its links go; `view=country` links select the country.
+- [x] 3.3 A war's and an alert's blocks.
+- [x] 3.4 Tests: the blocks for a country in each mode, a war, an alert, old links (unit, e2e); deleted: country-view tests.
 - [ ] 3.5 Ship.
 
 ## Part 4: Phones, docs and wrap-up

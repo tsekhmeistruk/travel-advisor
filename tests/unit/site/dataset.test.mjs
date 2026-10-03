@@ -114,11 +114,8 @@ describe('details card', () => {
     assert.match(html, /Level 4 · Do not travel/);
     assert.match(html, /href="https:\/\/travel\.state\.gov\/mm"/);
   });
-  test('offers the country view for a place, when the site has one', async () => {
-    assert.match(ds.details({ placeId: 'mm' }), /<button class="link-btn cv-open" data-action="country" data-place="mm">Country details →<\/button>/);
-    assert.doesNotMatch(ds.details({ recordKey: 'French West Indies' }), /data-action="country"/, 'a record without a place: no country');
-    await create({}, { countryView: false });
-    assert.doesNotMatch(ds.details({ placeId: 'mm' }), /data-action="country"/, 'no risk data: no country view');
+  test('a place\'s card has no Country details link (the panel shows the other blocks below it)', () => {
+    assert.doesNotMatch(ds.details({ placeId: 'mm' }), /data-action="country"|cv-open/);
   });
   test('escapes text from the source', () => {
     const html = ds.details({ recordKey: US.records[5].title });

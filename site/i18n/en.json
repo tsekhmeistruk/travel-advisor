@@ -592,6 +592,8 @@
   },
   "unnamedNoParty": "Armed conflict in {place}",
   "otherViolence": "Also {groups} killed between armed groups and {civilians} in attacks on civilians.",
+  "otherGroups": "Also {groups} killed between armed groups.",
+  "otherCivilians": "Also {civilians} killed in attacks on civilians.",
   "countryTitle": "Armed violence (UCDP)",
   "countryNote": "Deaths in organized violence that UCDP recorded here, by month. Preliminary figures, a month or two behind; UCDP revises them yearly.",
   "tensionsTitle": "Tensions · news, {days} days",

@@ -502,8 +502,16 @@ h1, h2 { margin: 0; }
 .details { display: flex; flex-direction: column; gap: 12px; }
 .block { position: relative; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
 .block > .eyebrow:first-child { margin-bottom: 4px; }
-/* × clears the selection (Escape and the ocean too). */
-.block .card-close { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; font-size: 20px; line-height: 1; z-index: 1; }
+/* Share (a country) and × (Escape and the ocean too) in the selected block's corner. */
+.block .card-tools { position: absolute; top: 8px; right: 8px; display: flex; gap: 2px; z-index: 1; }
+.block .card-tools .icon-btn { width: 28px; height: 28px; }
+.block .card-close { font-size: 20px; line-height: 1; }
+/* A selected place's other blocks: the country view's sections, each a card. */
+.block.cv-section { border-top: 0; padding: 14px; width: 100%; }
+.block.cv-section > * { width: 100%; }
+.block .cv-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text-3); margin: 0 0 6px; }
+/* Minimal: the data notes are in the help (How it works). */
+.block .cv-note { display: none; }
 .details .history { width: 100%; margin-top: 10px; }
 .history-label {
   font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em;

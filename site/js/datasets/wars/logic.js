@@ -212,6 +212,19 @@ export function warFocus(m) {
 }
 
 /** A dot's radius for a number of deaths: 2px for one, growing with the square root, 11px at most. */
+/**
+ * The note on deaths no conflict names (between armed groups, in attacks on civilians): the
+ * i18n key under wars.* and its counts, leaving out a part that is zero; null if both are.
+ * @param {{ nonState: number, oneSided: number }} byType
+ */
+export function otherViolence(byType) {
+  const { nonState: groups, oneSided: civilians } = byType;
+  if (groups && civilians) return { key: 'otherViolence', params: { groups, civilians } };
+  if (groups) return { key: 'otherGroups', params: { groups } };
+  if (civilians) return { key: 'otherCivilians', params: { civilians } };
+  return null;
+}
+
 export function dotRadius(deaths) {
   return Math.min(11, round(1.6 + Math.sqrt(deaths) * 0.45));
 }

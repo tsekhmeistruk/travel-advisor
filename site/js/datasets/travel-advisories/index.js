@@ -120,8 +120,6 @@ export function createTravelAdvisories(ctx) {
     const status = [
       r.regional ? `<span class="tag" title="${esc(tx('details.regionalTitle'))}">${esc(tx('details.regional'))}</span>` : '',
       note ? `<span class="note" title="${esc(note)}">${esc(note)}</span>` : '',
-      // The country view (every government, other risks), when the site has one.
-      ctx.countryView && placeId ? `<button class="link-btn cv-open" data-action="country" data-place="${esc(placeId)}">${esc(tx('details.country'))}</button>` : '',
     ].join('');
     const url = safeUrl(r.url) ?? safeUrl(data.links?.list);
     const updated = tx('details.updatedValue', { date: i18n.formatDate(r.updated), age: i18n.relativeAge(days) });

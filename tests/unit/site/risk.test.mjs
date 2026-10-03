@@ -304,7 +304,7 @@ describe('details card', () => {
     assert.match(html, /href="https:\/\/www\.gdacs\.org\/report\.aspx\?eventid=1"/);
     assert.match(html, /<p class="later"><\/p>/, 'no news source published: the slot stays, empty');
     assert.doesNotMatch(html, /coming later/);
-    assert.match(html, /<button class="link link-btn" data-action="country" data-place="mx">Country details →<\/button>/);
+    assert.doesNotMatch(html, /data-action="country"/, 'no Country details link: the panel shows the other blocks below');
   });
   test('a government stricter than the travel level is named on the row by its flag, in full in the title', () => {
     const html = ds.details({ placeId: 'ke' });
@@ -613,7 +613,7 @@ describe('markers', () => {
   });
 });
 
-describe('country view', () => {
+describe('a selected place\'s blocks', () => {
   const container = () => ({ innerHTML: '' });
   const click = (el, attrs) => el.onclick({ target: { closest: (sel) => {
     const m = sel.match(/^\[data-(\w+)(?:="(\w+)")?\]$/);
@@ -623,14 +623,13 @@ describe('country view', () => {
     return { dataset: { [name]: String(attrs[name]) } };
   } } });
 
-  test('shows every category, the active alerts, each government in its own words, and the history', async () => {
+  test('blocks from the place file: armed violence, each government in its own words, the active alerts', async () => {
     const el = container();
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    el.innerHTML = await ds.placeBlocks('mx');
     assert.deepEqual(requested.at(-1), ['risk/places/mx.json', CURRENT.asOf], 'the place file, versioned');
     const html = el.innerHTML;
-    assert.match(html, /<h2 class="cv-name">Mexico<\/h2>/);
-    assert.match(html, /High · Disaster/);
-    assert.equal((html.match(/<li class="">/g) ?? []).length + (html.match(/<li class="is-focus">/g) ?? []).length, 3, 'three category rows');
+    assert.ok((html.match(/<section class="card block cv-section">/g) ?? []).length >= 3, 'each one a block');
+    assert.doesNotMatch(html, /cv-name|data-action="back"|data-history/, 'no head, Back or history window: the selected block above has them');
     assert.match(html, /Active alerts <span class="count">2<\/span>/);
     assert.match(html, /Orange alert: Tropical Cyclone &lt;b&gt;X&lt;\/b&gt;/);
     assert.match(html, /U\.S\.<\/span>[\s\S]*Level 2 · Exercise increased caution/);
@@ -638,18 +637,16 @@ describe('country view', () => {
     assert.match(html, /href="https:\/\/travel\.state\.gov\/mx"/);
     assert.match(html, /src="assets\/flags\/gb\.svg"/, 'a flag code that differs from the provider id');
     assert.doesNotMatch(html, /javascript:/);
-    assert.match(html, /data-history="90" aria-checked="true"/);
-    assert.match(html, /Disaster: Normal → High/);
-    assert.doesNotMatch(html, /Level 1 → 2/, 'the January change is outside 90 days');
-    assert.match(html, /not official levels/);
+    assert.match(html, /<button data-event="gdacs:TC:1"/, 'an alert is a button to its card (main.js selects it)');
+    assert.doesNotMatch(await ds.placeBlocks('mx', { mode: 'wars' }), /Armed violence \(UCDP\)/, 'Wars: its own block above has it');
   });
 
   test('armed violence: deaths by month, the conflicts with links to UCDP, and the violence no government is a side of', async () => {
     const el = container();
-    await ds.renderCountryView(el, 'ke', { back() {}, selectEvent() {} });
+    el.innerHTML = await ds.placeBlocks('ke');
     const html = el.innerHTML;
     const section = html.split('Armed violence (UCDP)')[1].split('</section>')[0];
-    assert.ok(html.indexOf('Armed violence (UCDP)') < html.indexOf('Active alerts'), 'right after the categories');
+    assert.ok(html.indexOf('Armed violence (UCDP)') < html.indexOf('Travel advisories'), 'first');
     assert.match(section, /Normal · 30 deaths in 12 months/);
     assert.equal((section.match(/<rect /g) ?? []).length, 12);
     assert.match(section, /<title>August 2026: 30<\/title>/);
@@ -659,19 +656,8 @@ describe('country view', () => {
     assert.match(section, /Also 5 killed between armed groups and 5 in attacks on civilians\./);
     assert.match(section, /Preliminary figures/);
     const mx = container();
-    await ds.renderCountryView(mx, 'mx', { back() {}, selectEvent() {} });
+    mx.innerHTML = await ds.placeBlocks('mx');
     assert.match(mx.innerHTML, /Armed violence \(UCDP\)<\/h3><p class="cv-empty">UCDP recorded no deaths in organized violence here in the 12 months to August 2026\./);
-  });
-
-  test('the history window reaches back a year, and is saved', async () => {
-    const el = container();
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
-    click(el, { history: 365 });
-    assert.match(el.innerHTML, /U\.S\.: Level 1 → 2/);
-    assert.match(el.innerHTML, /data-history="365" aria-checked="true"/);
-    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.historyDays, 365);
-    click(el, { history: 7 });
-    assert.doesNotMatch(el.innerHTML, /U\.S\.: Level 1 → 2/);
   });
 
   const ids = (rows) => rows.map(r => r.placeId);
@@ -738,33 +724,15 @@ describe('country view', () => {
     assert.deepEqual(calls, [['open', 'jp'], ['back'], ['hover', 'mx'], ['hover', null], ['hover', null]]);
   });
 
-  test('back, share and an alert call their handlers', async () => {
+  test('without a place file: the loaded alerts; no alerts, no alerts block', async () => {
     const el = container();
-    const calls = [];
-    await ds.renderCountryView(el, 'mx', { back: () => calls.push('back'), share: () => calls.push('share'), selectEvent: (id) => calls.push(id) });
-    assert.match(el.innerHTML, /<button class="link-btn share" data-action="share"><svg[\s\S]*?<\/svg>Share<\/button>/);
-    click(el, { action: 'back' });
-    click(el, { action: 'share' });
-    click(el, { event: 'gdacs:TC:1' });
-    click(el, {});
-    assert.deepEqual(calls, ['back', 'share', 'gdacs:TC:1']);
-  });
-
-  test('without a place file it falls back to the loaded changes and events', async () => {
-    const el = container();
-    await ds.renderCountryView(el, 'so', { back() {}, selectEvent() {} });
-    assert.match(el.innerHTML, /U\.S\.: Level 3 → 4/);
+    el.innerHTML = await ds.placeBlocks('so');
     assert.match(el.innerHTML, /Active alerts <span class="count">1<\/span>/, 'the drought');
     assert.match(el.innerHTML, /No advisory/, 'no advisories without the file');
-    await ds.renderCountryView(el, 'aq', { back() {}, selectEvent() {} });
-    assert.match(el.innerHTML, /No active alerts\./);
-    assert.match(el.innerHTML, /No changes in this period\./);
+    el.innerHTML = await ds.placeBlocks('aq');
+    assert.doesNotMatch(el.innerHTML, /Active alerts/);
   });
 
-  test('an invalid saved history window falls back to 90 days', async () => {
-    await create({ saved: { historyDays: 12 } });
-    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.historyDays, 90);
-  });
 });
 
 describe('WHO notices on the site', () => {
@@ -822,10 +790,10 @@ describe('news activity on the site', () => {
     assert.match(ds.details({ placeId: 'jp' }), /<p class="later">News: no unusual activity \(GDELT\)<\/p>/, 'nothing unusual: says so');
   });
 
-  test('the country view shows each series\' week against its normal, a percentage only from 2 expected', async () => {
+  test('the news block shows each series\' week against its normal, a percentage only from 2 expected', async () => {
     await withActivity();
     const el = { innerHTML: '' };
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    el.innerHTML = await ds.placeBlocks('mx');
     assert.match(el.innerHTML, /News activity/);
     assert.match(el.innerHTML, /18 in the last 7 days, usually about 4 \(\+350%\)/);
     assert.match(el.innerHTML, /12 in the last 7 days, usually about 1\.2</, 'no percentage from an expected 1.2');
@@ -833,29 +801,29 @@ describe('news activity on the site', () => {
     assert.match(el.innerHTML, /not verified incidents, compared with this country&#39;s own last 12 weeks\. They never set a risk level\./);
   });
 
-  test('the country view lists the place\'s tensions with other countries (military news above the pair\'s normal)', async () => {
+  test('the news block lists the place\'s tensions with other countries (military news above the pair\'s normal)', async () => {
     const tension = { key: 'KEN|SOM', status: 'above', count: 40, expected: 9.6, sides: [['ke'], ['so']] };
     await withActivity({ file: { ...MX_FILE, activity: { source: 'gdelt', series: ACTIVITY.gdelt.places.mx }, tensions: [tension] } });
     const el = { innerHTML: '' };
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    el.innerHTML = await ds.placeBlocks('mx');
     assert.match(el.innerHTML, /Tensions with other countries<\/h4><ul class="cv-list tensions"><li class="activity above"><span class="who">Kenya – Somalia<\/span>/);
     assert.match(el.innerHTML, /40 military reports between them in 7 days, usually about 10/);
     await withActivity({ file: MX_FILE });
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    el.innerHTML = await ds.placeBlocks('mx');
     assert.doesNotMatch(el.innerHTML, /Tensions with other countries/);
   });
 
-  test('while the baseline is being collected, or with no counts, the country view says so', async () => {
+  test('while the baseline is being collected, or with no counts, the news block says so', async () => {
     await withActivity({ activity: { gdelt: { ...ACTIVITY.gdelt, learning: true, places: {} } } });
     const el = { innerHTML: '' };
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    el.innerHTML = await ds.placeBlocks('mx');
     assert.match(el.innerHTML, /Collecting a baseline first/);
     await withActivity({ file: MX_FILE });
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
+    el.innerHTML = await ds.placeBlocks('mx');
     assert.match(el.innerHTML, /No news reports of protests or violence counted here\./);
   });
 
-  test('news activity is not listed as a change: not in the feed, Latest changes, tooltip or either history', async () => {
+  test('news activity is not listed as a change: not in the feed, tooltip or the card\'s history; the news block shows it as it is', async () => {
     await withActivity({ file: { ...MX_FILE, changes: [ANOMALY, ...MX_FILE.changes], activity: { source: 'gdelt', series: ACTIVITY.gdelt.places.mx } } });
     const f = fakeFeed();
     ds.renderFeed(f.el);
@@ -866,9 +834,7 @@ describe('news activity on the site', () => {
     assert.doesNotMatch(ds.tooltip('mx'), /Protest reports/);
     assert.doesNotMatch(ds.details({ placeId: 'mx' }).split('Recent changes')[1], /Protest reports/, 'not in the card history');
     const el = { innerHTML: '' };
-    await ds.renderCountryView(el, 'mx', { back() {}, selectEvent() {} });
-    assert.match(el.innerHTML, /cv-history/);
-    assert.doesNotMatch(el.innerHTML.split('cv-history')[1], /Protest reports/, 'not in the country history');
-    assert.match(el.innerHTML, /far above normal/, 'shown as it is now, in the country view\'s news section');
+    el.innerHTML = await ds.placeBlocks('mx');
+    assert.match(el.innerHTML, /far above normal/, 'shown as it is now, in the news block');
   });
 });

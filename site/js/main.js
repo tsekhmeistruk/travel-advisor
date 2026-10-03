@@ -62,10 +62,11 @@ async function main() {
   // The asked-for mode, else the saved one (an unknown mode in a link keeps the visitor's), else the default.
   const findMode = (id) => modes.find(m => m.id === (RENAMED[id] ?? id));
   const pickMode = (id) => findMode(id) ?? findMode(settings.get('mode')) ?? findMode(DEFAULT_MODE) ?? modes[0];
-  // The country view comes from a risk mode; a mode without one (Travel) borrows one.
+  // A selected place's blocks and the countries list come from a risk mode; a mode without one
+  // (Travel) borrows one.
   const viewerMode = modes.find(m => m.id === 'highest');
   let borrowedViewer = null;
-  const countryViewer = async () => (dataset.renderCountryView ? dataset : viewerMode ? (borrowedViewer ??= await createDataset(viewerMode)) : null);
+  const countryViewer = async () => (dataset.placeBlocks ? dataset : viewerMode ? (borrowedViewer ??= await createDataset(viewerMode)) : null);
   const createDataset = async (m) => {
     const ds = m.create({ i18n, settings, client, manifest: m.entry(manifest), places, changed: () => refresh(), countryView: !!viewerMode });
     await ds.load();
@@ -78,8 +79,7 @@ async function main() {
   // ---- panel and map
   let hovered = null;
   let selected = null;
-  let panelView = null;   // 'country' or 'list': a full panel view in place of the blocks
-  let fromList = false;   // the country view was opened from the list: Back returns to it
+  let panelView = null;   // 'list': the countries list in place of the blocks
   const modeSwitch = createModeSwitch($('modeSwitch'), { onChange: (id) => switchMode(id, { toUrl: true }) });
   const mapArea = $('mapArea');
   const tooltip = createTooltip($('tooltip'), mapArea);
@@ -192,7 +192,7 @@ async function main() {
     hovered = target;
     map.setHovered(target?.placeId ?? null);
     applyFocus();
-    renderDetails();
+    markFeed();
   }
   // The war the map shows: the hovered one, else the selected one. A change repaints the map.
   const focusTarget = () => (hovered?.warKey ? hovered : selected?.warKey ? selected : null);
@@ -216,10 +216,10 @@ async function main() {
   $('sheetClose').onclick = hideSheet;
   $('sheetDetails').onclick = () => {
     hideSheet();
-    $(panelView === 'list' ? 'listView' : panelView === 'country' ? 'countryView' : 'details').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $(panelView === 'list' ? 'listView' : 'details').scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  /** follow: an open panel view follows the selection (off when a view selects the place itself). */
+  /** follow: an open countries list closes for the selection (off when the list selects the place itself). */
   function select(target, { zoom = false, toUrl = false, follow = true } = {}) {
     hideSheet();   // a tap on the map shows it again (see showSheet)
     selected = target;
@@ -231,25 +231,20 @@ async function main() {
     // An event zooms to its marker when the mode shows one, otherwise to its place; a war to where it is fought.
     if (zoom && target?.warKey) map.zoomToPlaces(dataset.warPlaces?.(target.warKey) ?? []);
     else if (zoom && !(target?.eventId && map.zoomToMarker(target.eventId)) && target?.placeId) map.zoomTo(target.placeId);
-    const place = target?.placeId && !target.eventId ? target.placeId : null;
-    if (follow && panelView === 'country') {
-      // The country view follows the selected place, and closes with the selection.
-      if (place) renderCountry(place);
-      else closeView({ all: !!(target?.eventId || target?.warKey) });
-    } else if (follow && panelView === 'list') {
-      // From the list, a place on the map opens its country view (Back returns to the list).
-      if (place) return openCountry(place, { fromList: true, toUrl });
-      if (target?.eventId || target?.warKey) closeView({ all: true });
-    }
+    // A selection shows its blocks: the countries list makes way.
+    if (follow && panelView === 'list' && target) closeView();
     if (toUrl) writeUrl();
   }
 
-  // ---- the full panel views (from a risk mode, borrowed in Travel): a country, and the countries list
-  $('details').addEventListener('click', (e) => {
+  // ---- the panel's blocks and the countries list (from a risk mode, borrowed in Travel)
+  $('details').addEventListener('click', async (e) => {
     if (e.target.closest('[data-action="close"]')) return select(null, { toUrl: true });
-    const btn = e.target.closest('[data-action="country"]');
-    if (btn) return openCountry(btn.dataset.place, { toUrl: true });
-    if (e.target.closest('[data-action="list"]')) return openList({ toUrl: true });
+    if (e.target.closest('[data-action="share"]') && selected?.placeId) return shareCountry(selected.placeId);
+    const ev = e.target.closest('[data-event]');
+    if (ev) {
+      const target = dataset.eventTarget?.(ev.dataset.event) ?? (await countryViewer())?.eventTarget?.(ev.dataset.event);
+      return target && select(target, { zoom: true, toUrl: true });
+    }
     const war = e.target.closest('[data-war]');
     if (war) return select({ warKey: war.dataset.war }, { zoom: true, toUrl: true });
     const place = e.target.closest('button[data-place]');
@@ -257,7 +252,7 @@ async function main() {
     onListClick(e);
   });
   $('listOpen').onclick = () => openList({ toUrl: true });
-  // Escape closes a panel view, else clears the selection.
+  // Escape closes the countries list, else clears the selection.
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' || help.open) return;
     if (panelView) closeView({ toUrl: true });
@@ -271,50 +266,37 @@ async function main() {
     $('search').focus();
   });
 
-  /** Show one panel view (or none). The list is kept while its country view is open, for Back. */
+  /** Show the countries list in place of the blocks, or nothing. */
   function showView(kind) {
     panelView = kind;
     $('panel').classList.toggle('is-country', !!kind);
-    $('countryView').hidden = kind !== 'country';
     $('listView').hidden = kind !== 'list';
-    if (kind !== 'country') $('countryView').innerHTML = '';
-    if (!kind || (kind === 'country' && !fromList)) $('listView').innerHTML = '';
+    if (!kind) $('listView').innerHTML = '';
   }
-  async function openCountry(placeId, { toUrl = false, fromList: back = false, zoom = false } = {}) {
-    if (!places.has(placeId) || !(await countryViewer())) return;
-    if (selected?.placeId !== placeId || selected?.eventId) select({ placeId }, { zoom, follow: false });
-    fromList = back;
-    showView('country');
-    await renderCountry(placeId);
-    if (toUrl) writeUrl();
-  }
-  async function renderCountry(placeId) {
-    const viewer = await countryViewer();
-    return viewer.renderCountryView($('countryView'), placeId, {
-      back: () => closeView({ toUrl: true }),
-      share: () => shareCountry(placeId),
-      selectEvent: (id) => { closeView({ all: true }); select(viewer.eventTarget(id), { zoom: true, toUrl: true }); },
-    });
+  /** A country chosen in the list: the list closes, the country is selected and the panel shows its blocks. */
+  function openCountry(placeId, { toUrl = false, zoom = false } = {}) {
+    if (!places.has(placeId)) return;
+    if (panelView) showView(null);
+    select({ placeId }, { zoom, toUrl, follow: false });
   }
   async function openList({ toUrl = false } = {}) {
     const viewer = await countryViewer();
     if (!viewer) return;
     const fresh = !$('listView').childElementCount;
-    fromList = false;
     showView('list');
     if (fresh) {
       viewer.renderCountryList($('listView'), {
-        open: (id) => openCountry(id, { toUrl: true, fromList: true, zoom: true }),
+        open: (id) => openCountry(id, { toUrl: true, zoom: true }),
         back: () => closeView({ toUrl: true }),
         hover: (id) => hover(id ? { placeId: id } : null),
       });
     }
     if (toUrl) writeUrl();
   }
-  // Share a country's view: the share sheet on a touch screen, else the link is copied.
+  // Share a selected country: the share sheet on a touch screen, else the link is copied.
   const touch = matchMedia('(pointer: coarse)');
   async function shareCountry(placeId) {
-    const url = `${location.origin}${location.pathname}${formatHash({ mode: mode.id, place: placeId, view: 'country' })}`;
+    const url = `${location.origin}${location.pathname}${formatHash({ mode: mode.id, place: placeId })}`;
     if (touch.matches && navigator.share) {
       try { await navigator.share({ title: `${i18n.placeName(places.get(placeId))} · ${i18n.t('app.title')}`, url }); } catch { /* cancelled */ }
       return;
@@ -335,11 +317,9 @@ async function main() {
     toastTimer = setTimeout(() => { toast.hidden = true; }, 2500);
   }
 
-  /** Back: from a country opened in the list, to the list; otherwise (or with all) to the card. */
-  function closeView({ toUrl = false, all = false } = {}) {
+  /** Close the countries list: the blocks show again. */
+  function closeView({ toUrl = false } = {}) {
     hovered = null;
-    if (panelView === 'country' && fromList && !all) return openList({ toUrl });
-    fromList = false;
     showView(null);
     renderDetails();
     if (toUrl) writeUrl();
@@ -359,20 +339,15 @@ async function main() {
     if (selected?.warKey) selected = null;
     map.setSelectedMarker(null);
     refresh();
-    // The views show this mode's levels: redraw them (a kept list, when Back comes to it).
+    // The list shows this mode's levels: redraw it.
     $('listView').innerHTML = '';
-    if (panelView === 'country') {
-      if (selected?.placeId) await renderCountry(selected.placeId);
-      else closeView({ all: true });
-    } else if (panelView === 'list') {
-      await openList();
-    }
+    if (panelView === 'list') await openList();
     if (toUrl) writeUrl();
   }
 
   // Written on user actions only, so a plain visit keeps a plain URL.
   function writeUrl() {
-    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId, war: selected?.warKey, view: panelView })}`);
+    history.replaceState(null, '', `${location.pathname}${location.search}${formatHash({ mode: mode.id, place: selected?.placeId, war: selected?.warKey, view: panelView === 'list' ? 'list' : null })}`);
   }
   window.addEventListener('hashchange', async () => {
     const want = parseHash(location.hash);
@@ -382,22 +357,33 @@ async function main() {
     if (war) {
       if (war !== selected?.warKey) select({ warKey: war }, { zoom: true, follow: false });
     } else if (place !== (selected?.placeId ?? null)) select(place ? { placeId: place } : null, { zoom: !!place, follow: false });
-    if (want.view === 'country' && place) {
-      if (panelView === 'country') await renderCountry(place);
-      else await openCountry(place);
-    } else if (want.view === 'list') {
+    // An old link to a country view (view=country) just selects the country.
+    if (want.view === 'list') {
       if (panelView !== 'list') await openList();
     } else if (panelView) {
-      closeView({ all: true });
+      closeView();
     }
   });
-  // The panel shows the selection only (hovering informs through the tooltip and the map).
+  // The panel shows the selection only (hovering informs through the tooltip and the map): the
+  // overview's blocks, or the selection's block (with Share for a country, and × to clear it) and,
+  // for a country, its other blocks from its place file (placeBlocks, loaded after).
+  let blocksAsked = 0;
   function renderDetails() {
     const target = selected;
-    const close = target ? `<button class="card-close icon-btn ghost" data-action="close" title="${i18n.t('panel.clear')}" aria-label="${i18n.t('panel.clear')}">×</button>` : '';
-    // The overview is the mode's blocks; a selection is one block, with × to clear it.
-    $('details').innerHTML = target ? `<section class="card block selected">${close}${dataset.details(target)}</section>` : dataset.details(null);
-    const key = dataset.feedKeyFor(hovered ?? target);
+    const place = target?.placeId && !target.eventId ? target.placeId : null;
+    const tools = target ? `<div class="card-tools">${place ? `<button class="icon-btn ghost" data-action="share" title="${i18n.t('risk.country.share')}" aria-label="${i18n.t('risk.country.share')}"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 15V4M8 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ''}<button class="card-close icon-btn ghost" data-action="close" title="${i18n.t('panel.clear')}" aria-label="${i18n.t('panel.clear')}">×</button></div>` : '';
+    $('details').innerHTML = target ? `<section class="card block selected">${tools}${dataset.details(target)}</section>` : dataset.details(null);
+    markFeed();
+    const asked = ++blocksAsked;
+    if (place) {
+      countryViewer().then(viewer => viewer?.placeBlocks(place, { mode: mode.id })).then(html => {
+        if (asked === blocksAsked && html) $('details').insertAdjacentHTML('beforeend', html);
+      });
+    }
+  }
+  /** The feed's row of the hovered or selected target. */
+  function markFeed() {
+    const key = dataset.feedKeyFor(hovered ?? selected);
     feed.querySelectorAll('button[data-key]').forEach(b => b.classList.toggle('is-active', b.dataset.key === key));
   }
 
@@ -426,8 +412,7 @@ async function main() {
   refresh();
   if (fromUrl.place && places.has(fromUrl.place)) select({ placeId: fromUrl.place }, { zoom: true });
   else if (fromUrl.war && dataset.hasWar?.(fromUrl.war)) select({ warKey: fromUrl.war }, { zoom: true });
-  if (fromUrl.view === 'country' && selected?.placeId) await openCountry(selected.placeId);
-  else if (fromUrl.view === 'list') await openList();
+  if (fromUrl.view === 'list') await openList();
 }
 
 /** Fill elements marked with data-i18n (text) and data-i18n-<attr> (attributes). */

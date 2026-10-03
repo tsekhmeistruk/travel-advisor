@@ -11,11 +11,10 @@ import { esc, safeUrl } from '../../core/dom.js';
 import { levelOf, levelIn, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, groupFeed } from './logic.js';
 import { prepareEntries, rankMatches } from '../../ui/search.js';
 import { titleSize } from '../travel-advisories/logic.js';
-import { barRects, conflictName, conflictUrl, windowMonths, sideActors, firstNames } from '../wars/logic.js';
+import { barRects, conflictName, conflictUrl, windowMonths, sideActors, firstNames, otherViolence } from '../wars/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 export const WINDOWS = [7, 30, 90];
-export const HISTORY_WINDOWS = [7, 30, 90, 365];
 const FEED_SHORT = 8;      // the feed shows this many until "Show all"
 const FEED_LIMIT = 50;
 const STALE_HOURS = 12;    // updates are hourly: older data means runs were dropped
@@ -28,7 +27,7 @@ const LEVELS = [1, 2, 3, 4];
 export function createRiskMode(ctx) {
   const { i18n, manifest, places, client, mode, view, category } = ctx;
   const now = () => ctx.now?.() ?? Date.now();
-  const settings = ctx.settings.scope('risk', { levels: LEVELS.slice(), recentDays: 30, direction: 'all', dimOthers: false, historyDays: 90, listSort: 'level' });
+  const settings = ctx.settings.scope('risk', { levels: LEVELS.slice(), recentDays: 30, direction: 'all', dimOthers: false, listSort: 'level' });
   let current = null;
   let changes = [];
   let events = [];
@@ -58,7 +57,6 @@ export function createRiskMode(ctx) {
   // The Filters are gone (Oct 2026): every direction, and no fading, whatever was saved.
   settings.set('direction', 'all');
   settings.set('dimOthers', false);
-  if (!HISTORY_WINDOWS.includes(settings.get('historyDays'))) settings.set('historyDays', 90);
   if (!LIST_SORTS.includes(settings.get('listSort'))) settings.set('listSort', 'level');
 
   const categories = view === 'category' ? new Set(ctx.categories ?? [category]) : null;
@@ -231,17 +229,11 @@ export function createRiskMode(ctx) {
       ${newsLine(placeId)}
       <div class="history"><div class="history-label">${esc(tr('card.history'))}</div><ul class="history-list short">${history}</ul></div>
       <div class="card-actions">
-        <button class="link link-btn" data-action="country" data-place="${esc(placeId)}">${esc(tr('card.details'))}</button>
         ${link ? `<a class="link" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(link)}">${esc(tr('card.report', { source: sourceName(m.linkSource) }))}</a>` : ''}
       </div>`;
   }
 
-  /**
-   * The full country view: every category, the active alerts, each government's advisory in its
-   * own words, and the place's change history (up to a year, from its place file).
-   * @param file  risk/places/<id>.json, or null if it couldn't be loaded (then: 90 days of changes)
-   */
-  /** The country view's news activity: each series' week against its normal, or why there is none. */
+  /** A place's news activity: each series' week against its normal, or why there is none. */
   function activitySection(file) {
     const meta = Object.values(current.activity ?? {})[0];
     if (!meta) return '';
@@ -300,7 +292,8 @@ export function createRiskMode(ctx) {
     const fought = c.conflicts.map(x => row(x, tw(x.war ? 'foughtWar' : 'foughtConflict', { name: name(x), deaths: num(x.deaths12) })));
     const elsewhere = c.partyTo.filter(x => !c.conflicts.some(y => y.key === x.key))
       .map(x => row(x, tw('partyTo', { name: name(x), war: tw(x.war ? 'war' : 'armedConflict'), place: placeName(x.places[0]) })));
-    const other = c.byType.nonState + c.byType.oneSided ? `<p class="cv-empty">${esc(tw('otherViolence', { groups: num(c.byType.nonState), civilians: num(c.byType.oneSided) }))}</p>` : '';
+    const o = otherViolence(c.byType);
+    const other = o ? `<p class="cv-empty">${esc(tw(o.key, Object.fromEntries(Object.entries(o.params).map(([k, v]) => [k, num(v)]))))}</p>` : '';
     return `<section class="cv-section">
         ${title}
         <p class="cv-figure">${esc(tw('badge', { level: levelName(levelOf(current, file.placeId, 'conflict')), count: c.deaths12, deaths: num(c.deaths12) }))}</p>
@@ -313,10 +306,14 @@ export function createRiskMode(ctx) {
       </section>`;
   }
 
-  function countryHtml(placeId, file) {
-    const m = cardModel(placeId, { current, changes, events, conflict, now: now(), windowDays: windowDays() });
-    const name = placeName(placeId);
-    const days = settings.get('historyDays');
+  /**
+   * A selected place's other blocks, from its place file (after the mode's own block): armed
+   * violence (not in Wars, whose block it is), each government's travel advice, the active alerts,
+   * and news activity and tensions. Short, each one a card.
+   * @param file  risk/places/<id>.json, or null if it couldn't be loaded
+   */
+  function placeBlocksHtml(placeId, file, shownMode) {
+    const asBlock = (html) => html.replace('<section class="cv-section">', '<section class="card block cv-section">');
     const alerts = events.filter(e => (file ? file.events.includes(e.id) : e.placeIds.includes(placeId)));
     const alertRows = alerts.map(e => `<li><button data-event="${esc(e.id)}" title="${esc(e.name)}">
         <span class="swatch" style="background:${swatch(e.level)}"></span>
@@ -324,52 +321,28 @@ export function createRiskMode(ctx) {
         <span class="date">${esc(i18n.formatDate(e.startedAt.slice(0, 10)))}</span>
       </button></li>`).join('');
     const provider = (id, key, params) => i18n.t(`datasets.travel-advisories.providers.${id}.${key}`, params);
-    const advisories = Object.entries(file?.advisories ?? {}).map(([id, a]) => {
-      const url = safeUrl(a.url);
+    const advisories = Object.entries(file?.advisories ?? {}).map(([id, adv]) => {
+      const url = safeUrl(adv.url);
       return `<li>
         <img class="flag" src="assets/flags/${esc(current.sources?.[id]?.flag ?? id)}.svg" alt="" width="21" height="14">
         <span class="who">${esc(provider(id, 'short'))}</span>
-        <span class="swatch" style="background:var(--l${a.level})"></span>
-        <span class="what" title="${esc(provider(id, `levels.${a.level}.name`))}">${esc(tr('country.advisoryLevel', { level: a.level, name: provider(id, `levels.${a.level}.name`) }))}${a.own ? '' : ` · ${esc(tr('country.coveredBy', { title: a.title }))}`}</span>
-        ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(tr('country.official', { date: i18n.formatDate(a.updated) }))}">↗</a>` : ''}
+        <span class="swatch" style="background:var(--l${adv.level})"></span>
+        <span class="what" title="${esc(provider(id, `levels.${adv.level}.name`))}">${esc(tr('country.advisoryLevel', { level: adv.level, name: provider(id, `levels.${adv.level}.name`) }))}${adv.own ? '' : ` · ${esc(tr('country.coveredBy', { title: adv.title }))}`}</span>
+        ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener" title="${esc(tr('country.official', { date: i18n.formatDate(adv.updated) }))}">↗</a>` : ''}
       </li>`;
     }).join('');
-    const all = (file ? file.changes : changesFor(placeId, changes)).filter(c => !isNews(c));
-    const history = all.filter(c => ageHours(c.at, now()) <= days * 24);
-    return `
-      <div class="cv-head">
-        <div class="cv-actions">
-          <button class="back" data-action="back">← ${esc(tr('country.back'))}</button>
-          <button class="link-btn share" data-action="share"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 15V4M8 8l4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${esc(tr('country.share'))}</button>
-        </div>
-        <div class="eyebrow">${esc(tr('country.eyebrow'))}</div>
-        <h2 class="cv-name">${esc(name)}</h2>
-        ${badge(viewLevel(placeId), levelLabel(placeId))}
-        <div class="trend">${trendHtml(m.trend)}</div>
-      </div>
-      <section class="cv-section">
-        <h3 class="cv-title">${esc(tr('card.eyebrow'))}</h3>
-        <ul class="risk-rows">${rowsHtml(m.rows)}</ul>
-        ${newsLine(placeId)}
-      </section>
-      ${conflictSection(file)}
-      <section class="cv-section">
-        <h3 class="cv-title">${esc(tr('country.alerts'))} <span class="count">${alerts.length}</span></h3>
-        ${alerts.length ? `<ul class="cv-list alerts">${alertRows}</ul>` : `<p class="cv-empty">${esc(tr('country.noAlerts'))}</p>`}
-      </section>
-      <section class="cv-section">
+    return [
+      shownMode === 'wars' ? '' : asBlock(conflictSection(file)),
+      `<section class="card block cv-section">
         <h3 class="cv-title">${esc(tr('country.advisories'))}</h3>
         ${advisories ? `<ul class="cv-list advisories">${advisories}</ul>` : `<p class="cv-empty">${esc(tr('card.notCovered'))}</p>`}
-      </section>
-      ${activitySection(file)}
-      <section class="cv-section">
-        <h3 class="cv-title">${esc(tr('card.history'))}</h3>
-        <div class="segmented" id="historySeg" role="radiogroup" aria-label="${esc(tr('country.historyWindow'))}">
-          ${HISTORY_WINDOWS.map(d => `<button role="radio" data-history="${d}" aria-checked="${d === days}">${esc(d === 365 ? tr('country.year') : tr('settings.days', { days: d }))}</button>`).join('')}
-        </div>
-        ${history.length ? `<ul class="history-list cv-history">${history.map(historyRow).join('')}</ul>` : `<p class="cv-empty">${esc(tr('feed.empty'))}</p>`}
-      </section>
-      <p class="cv-note">${esc(tr('country.note'))}</p>`;
+      </section>`,
+      alerts.length ? `<section class="card block cv-section">
+        <h3 class="cv-title">${esc(tr('country.alerts'))} <span class="count">${alerts.length}</span></h3>
+        <ul class="cv-list alerts">${alertRows}</ul>
+      </section>` : '',
+      asBlock(activitySection(file)),
+    ].join('');
   }
 
   /** The card of one event (a marker or a feed item): the source's facts, with our level beside them. */
@@ -470,23 +443,10 @@ export function createRiskMode(ctx) {
       return cardHtml(target.placeId);
     },
 
-    /**
-     * Render the country view of a place into `container` and handle its clicks:
-     * back() closes it, share() shares a link to it, selectEvent(id) shows an alert. Loads the
-     * place's file first.
-     */
-    async renderCountryView(container, placeId, { back, share, selectEvent }) {
+    /** A selected place's other blocks (HTML), from its place file: see placeBlocksHtml. */
+    async placeBlocks(placeId, { mode: shownMode } = {}) {
       const file = await client.file(`${manifest.places}${placeId}.json`, manifest.asOf).catch(() => null);
-      const draw = () => { container.innerHTML = countryHtml(placeId, file); };
-      draw();
-      container.onclick = (e) => {
-        if (e.target.closest('[data-action="back"]')) return back();
-        if (e.target.closest('[data-action="share"]')) return share?.();
-        const ev = e.target.closest('[data-event]');
-        if (ev) return selectEvent(ev.dataset.event);
-        const h = e.target.closest('[data-history]');
-        if (h) { settings.set('historyDays', Number(h.dataset.history)); draw(); }
-      };
+      return placeBlocksHtml(placeId, file, shownMode);
     },
 
     /**

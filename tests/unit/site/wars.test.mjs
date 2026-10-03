@@ -8,7 +8,7 @@ import { readFileSync } from 'node:fs';
 import { createWarsMode } from '../../../site/js/datasets/wars/index.js';
 import {
   windowMonths, bandRows, conflictTitle, conflictName, overviewModel, placeModel, sparkPoints, barRects, conflictUrl, tensionRows,
-  warTitle, sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius, countryDots,
+  warTitle, sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius, countryDots, otherViolence,
 } from '../../../site/js/datasets/wars/logic.js';
 import { createI18n } from '../../../site/js/core/i18n.js';
 import { createSettings } from '../../../site/js/core/settings.js';
@@ -221,6 +221,12 @@ describe('logic: who fights whom', () => {
   test('dots grow with the square root of the deaths, up to 11px', () => {
     assert.deepEqual([1, 4, 100, 5017].map(dotRadius), [2.1, 2.5, 6.1, 11]);
   });
+  test('the note on other deaths leaves out a part that is zero (Ukraine: "Also 0 killed between armed groups")', () => {
+    assert.deepEqual(otherViolence({ nonState: 3, oneSided: 4 }), { key: 'otherViolence', params: { groups: 3, civilians: 4 } });
+    assert.deepEqual(otherViolence({ nonState: 0, oneSided: 45 }), { key: 'otherCivilians', params: { civilians: 45 } });
+    assert.deepEqual(otherViolence({ nonState: 7, oneSided: 0 }), { key: 'otherGroups', params: { groups: 7 } });
+    assert.equal(otherViolence({ nonState: 0, oneSided: 0 }), null);
+  });
   test('the month\'s events, one dot per country: its deaths and events, its conflicts by deaths; none at sea', () => {
     const ev = (deaths, key, place) => [0, 0, deaths, '2026-08-01', key, 1, 2, place, ''];
     assert.deepEqual(countryDots([ev(5, '1:1', 'ua'), ev(30, '1:2', 'sd'), ev(7, '1:1', 'ua'), ev(9, '3:4', 'ua'), ev(50, '1:1', null)]), [
@@ -276,7 +282,7 @@ describe('the mode', () => {
     assert.match(html, /September 2025<\/span><span>August 2026/);
     assert.match(html, /<button data-war="1:777" title="Yemen vs AQAP · war · 1,871 deaths">/, 'a button to its war card');
     assert.match(html, /href="https:\/\/ucdp\.uu\.se\/conflict\/777"/);
-    assert.match(html, /data-action="country" data-place="ye"/);
+    assert.doesNotMatch(html, /data-action="country"/, 'no Country details link');
   });
   test('a party to a war fought elsewhere; violence with no government as a side; nothing recorded', () => {
     assert.match(ds.details({ placeId: 'ru' }), /Russia vs Ukraine · war · 97,739 deaths/);

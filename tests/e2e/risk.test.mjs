@@ -468,89 +468,81 @@ describe('event markers', () => {
   }
 });
 
-describe('country view', () => {
-  const view = (page) => page.evaluate(() => ({
-    open: !document.getElementById('countryView').hidden,
-    card: getComputedStyle(document.getElementById('details')).display !== 'none',
-    settings: [...document.querySelectorAll('.panel .section')].some(s => getComputedStyle(s).display !== 'none'),
-    name: document.querySelector('#countryView .cv-name')?.textContent ?? null,
+describe('a selected country\'s blocks', () => {
+  const blocks = (page) => page.evaluate(() => ({
+    title: document.querySelector('#details .selected h3')?.textContent ?? null,
+    blocks: document.querySelectorAll('#details > .block').length,
+    text: document.getElementById('details').innerText,
     hash: location.hash,
   }));
+  const placeBlocksShown = (page) => page.waitForSelector('#details > .block.cv-section');
 
   for (const [width, height] of [[1440, 860], [390, 844]]) {
-    test(`at ${width}px opens from the card, replaces card, settings and feed, and goes back`, async () => {
+    test(`at ${width}px a selection shows its block, then short blocks from the place file; × clears it`, async () => {
       const page = await openMode('highest', { width, height, intercept: withRiskChanges() });
       await page.type('#search', 'japan');
       await page.keyboard.press('Enter');
-      await sleep(900);
-      await page.click('#details [data-action="country"]');
-      await page.waitForSelector('#countryView .cv-name');
-      assert.deepEqual(await view(page), { open: true, card: false, settings: false, name: 'Japan', hash: '#mode=highest&place=jp&view=country' });
-      const text = await page.$eval('#countryView', el => el.innerText);
-      assert.match(text, /Disaster: Normal → Critical/, 'its injected level change');
-      assert.match(text, /Test cyclone gdacs:TC:900/, 'its injected alert');
-      assert.match(text, /U\.S\.[\s\S]*Level \d · /, 'each government in its own words');
+      await placeBlocksShown(page);
+      const b = await blocks(page);
+      assert.equal(b.title, 'Japan');
+      assert.ok(b.blocks >= 3, `${b.blocks} blocks`);
+      assert.match(b.text, /Disaster: Normal → Critical/, 'its injected level change, in its block');
+      assert.match(b.text, /Test cyclone gdacs:TC:900/, 'its injected alert, in the alerts block');
+      assert.match(b.text, /U\.S\.[\s\S]*Level \d · /, 'each government in its own words');
+      assert.equal(b.hash, '#mode=highest&place=jp');
+      assert.equal(await page.$$eval('#details [data-action="country"], #countryView', els => els.length), 0, 'no Country details link or country view');
       const scroll = await page.evaluate(() => document.documentElement.scrollWidth);
       assert.ok(scroll <= width, `scrollWidth ${scroll}`);
-      await page.screenshot({ path: `${OUT}country-view-${width}.png`, fullPage: width < 600 });
-      await page.click('#countryView [data-action="back"]');
-      assert.deepEqual(await view(page), { open: false, card: true, settings: true, name: null, hash: '#mode=highest&place=jp' });
+      await page.screenshot({ path: `${OUT}selected-${width}.png`, fullPage: width < 600 });
+      await page.$eval('#details [data-action="close"]', el => el.click());
+      assert.equal((await blocks(page)).title, null, 'the overview again');
       assert.deepEqual(page.errors, []);
       await page.close();
     });
   }
 
-  test('Share copies the link to the country view, and says so', async () => {
-    const page = await openRaw({ hash: '#mode=highest&place=jp&view=country' });
-    await page.waitForSelector('#countryView .cv-name');
+  test('Share copies the link to the selected country, and says so', async () => {
+    const page = await openRaw({ hash: '#mode=highest&place=jp' });
+    await page.waitForSelector('#details [data-action="share"]');
     const at = new URL(page.url());
     await page.browserContext().overridePermissions(at.origin, ['clipboard-read', 'clipboard-write', 'clipboard-sanitized-write']);
-    await page.click('#countryView [data-action="share"]');
+    await page.click('#details [data-action="share"]');
     await page.waitForSelector('#toast:not([hidden])');
     assert.equal(await page.$eval('#toast', el => el.textContent), 'Link copied');
-    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), `${at.origin}${at.pathname}#mode=highest&place=jp&view=country`);
+    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), `${at.origin}${at.pathname}#mode=highest&place=jp`);
     await page.waitForSelector('#toast[hidden]', { timeout: 4000 });   // and goes away
     assert.deepEqual(page.errors, []);
     await page.close();
   });
 
-  test('opens from a link, follows another selected country, closes with Escape', async () => {
+  test('an old link to a country view selects the country; another choice follows; Escape clears it', async () => {
     const page = await openRaw({ hash: '#mode=disaster&place=mx&view=country', intercept: withRiskChanges() });
-    await page.waitForSelector('#countryView .cv-name');
-    assert.equal((await view(page)).name, 'Mexico');
+    await placeBlocksShown(page);
+    assert.equal((await blocks(page)).title, 'Mexico');
     await page.type('#search', 'japan');
     await page.keyboard.press('Enter');
-    await page.waitForFunction(() => document.querySelector('#countryView .cv-name')?.textContent === 'Japan');
+    await page.waitForFunction(() => document.querySelector('#details .selected h3')?.textContent === 'Japan');
     await page.keyboard.press('Escape');
-    assert.equal((await view(page)).open, false);
-    assert.equal((await view(page)).hash, '#mode=disaster&place=jp');
+    const b = await blocks(page);
+    assert.equal(b.title, null);
+    assert.equal(b.hash, '#mode=disaster');
     await page.close();
   });
 
-  test('the history window filters the changes; an alert opens its event card; Travel opens it too', async () => {
-    const page = await openRaw({ hash: '#mode=highest&place=it&view=country', intercept: withRiskChanges() });
-    await page.waitForSelector('#countryView .cv-name');
-    // The injected 10-day-old fall (High → Elevated); real changes may be listed too.
-    const injected = () => page.$$eval('#countryView .cv-history li', els => els.filter(li => /Disaster: High → Elevated/.test(li.textContent)).length);
-    assert.equal(await injected(), 1, 'in the 90-day default');
-    await page.click('#historySeg [data-history="7"]');
-    assert.equal(await injected(), 0, 'outside 7 days');
-    await page.close();
-
-    const jp = await openRaw({ hash: '#mode=disaster&place=jp&view=country', intercept: withRiskChanges() });
-    await jp.waitForSelector('#countryView [data-event]');
-    await jp.click('#countryView [data-event="gdacs:TC:900"]');
-    await sleep(900);
-    await jp.hover('#footer');   // off the feed, which now sits where the alert was
-    assert.equal((await view(jp)).open, false);
-    assert.match(await detailsTitle(jp), /Test cyclone gdacs:TC:900/);
-    await jp.click('#modeSwitch [data-mode="travel"]');
+  test('an alert in its block opens the alert\'s card; Travel shows the same blocks below its own', async () => {
+    const page = await openRaw({ hash: '#mode=disaster&place=jp', intercept: withRiskChanges() });
+    await page.waitForSelector('#details [data-event="gdacs:TC:900"]');
+    await page.click('#details [data-event="gdacs:TC:900"]');
     await sleep(300);
-    await jp.click('#details [data-action="country"]');
-    await jp.waitForSelector('#countryView .cv-name');
-    assert.equal((await view(jp)).name, 'Japan', 'the travel card opens the country view too');
-    assert.match(await jp.evaluate(() => location.hash), /^#mode=travel&place=jp&view=country$/);
-    await jp.close();
+    assert.match(await detailsTitle(page), /Test cyclone gdacs:TC:900/);
+    await page.close();
+    const travel = await openRaw({ hash: '#mode=travel&place=jp', intercept: withRiskChanges() });
+    await placeBlocksShown(travel);
+    const b = await blocks(travel);
+    assert.equal(b.title, 'Japan');
+    assert.match(b.text, /Armed violence \(UCDP\)/i, 'Travel borrows the risk blocks');
+    assert.deepEqual(travel.errors, []);
+    await travel.close();
   });
 });
 
@@ -563,7 +555,7 @@ describe('countries list', () => {
   }));
 
   for (const [width, height] of [[1440, 860], [390, 844]]) {
-    test(`at ${width}px opens from the header, sorts, filters, opens a country and comes back`, async () => {
+    test(`at ${width}px opens from the header, sorts, filters, and choosing a country closes it and selects it`, async () => {
       const page = await openMode('highest', { width, height, stored: { mode: 'highest', risk: { recentDays: 90, listSort: 'level' } } });
       await page.click('#listOpen');
       await page.waitForSelector('#listRows button');
@@ -581,14 +573,13 @@ describe('countries list', () => {
       s = await list(page);
       assert.deepEqual(s.rows, ['jp']);
       await page.click('#listRows button');
-      await page.waitForSelector('#countryView .cv-name');
-      assert.equal(await page.$eval('#countryView .cv-name', el => el.textContent), 'Japan');
-      assert.equal(await page.evaluate(() => location.hash), '#mode=highest&place=jp&view=country');
-      await page.click('#countryView [data-action="back"]');
+      await page.waitForSelector('#details > .block.cv-section');
       s = await list(page);
-      assert.equal(s.open, true, 'Back returns to the list');
-      assert.deepEqual(s.rows, ['jp'], 'with its filter');
-      assert.equal(await page.$eval('#listFilter', el => el.value), 'japan');
+      assert.equal(s.open, false, 'the list makes way for the selection');
+      assert.equal(await detailsTitle(page), 'Japan');
+      assert.equal(s.hash, '#mode=highest&place=jp');
+      await page.click('#listOpen');
+      await page.waitForSelector('#listRows button');
       await page.click('#listView [data-action="back"]');
       s = await list(page);
       assert.equal(s.open, false);
@@ -600,7 +591,7 @@ describe('countries list', () => {
     });
   }
 
-  test('a link opens it; Travel opens it from the header; a country on the map opens from it; Escape closes', async () => {
+  test('a link opens it; it stays across modes; a country on the map closes it and is selected', async () => {
     const page = await openRaw({ hash: '#mode=disaster&view=list' });
     await page.waitForSelector('#listRows button');
     assert.match(await page.$eval('#listView .eyebrow', el => el.textContent), /Disasters/);
@@ -610,16 +601,14 @@ describe('countries list', () => {
     assert.equal(s.open, true, 'kept across modes');
     assert.match(await page.$eval('#listView .eyebrow', el => el.textContent), /All/, 'Travel borrows the highest levels (All)');
     assert.equal(s.hash, '#mode=travel&view=list');
-    // A country clicked on the map opens its view; Back returns to the list.
+    // A country clicked on the map: the list makes way for its blocks.
     await page.evaluate(() => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === 'br').dispatchEvent(new MouseEvent('click', { bubbles: true })));
-    await page.waitForSelector('#countryView .cv-name');
-    assert.equal(await page.$eval('#countryView .cv-name', el => el.textContent), 'Brazil');
-    await page.keyboard.press('Escape');
-    assert.equal((await list(page)).open, true, 'Escape: back to the list');
-    await page.keyboard.press('Escape');
     s = await list(page);
     assert.equal(s.open, false);
+    assert.equal(await detailsTitle(page), 'Brazil');
     assert.equal(s.hash, '#mode=travel&place=br');
+    await page.keyboard.press('Escape');
+    assert.equal(await page.$('#details .selected'), null, 'Escape clears the selection');
     await page.click('#listOpen');
     await page.waitForSelector('#listRows button');
     assert.equal((await list(page)).open, true, 'the header button opens it');

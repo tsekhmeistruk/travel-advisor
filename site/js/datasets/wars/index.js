@@ -17,7 +17,7 @@ import { levelOf } from '../risk/logic.js';
 import { titleSize } from '../travel-advisories/logic.js';
 import {
   overviewModel, placeModel, bandRows, sparkPoints, barRects, conflictUrl, tensionRows,
-  sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius, warTitle, countryDots,
+  sideActors, firstNames, warRows, newRows, quietRows, warModel, warFocus, dotRadius, warTitle, countryDots, otherViolence,
 } from './logic.js';
 
 const SPARK = { w: 120, h: 34 };
@@ -148,7 +148,8 @@ export function createWarsMode(ctx) {
     ];
     if (!rows.length) rows.push(`<li class="dim"><span class="what">${esc(tw('noConflicts'))}</span></li>`);
     // Deaths between armed groups and attacks on civilians: no government is a side, so no conflict above names them.
-    const other = p.byType.nonState + p.byType.oneSided ? tw('otherViolence', { groups: num(p.byType.nonState), civilians: num(p.byType.oneSided) }) : null;
+    const o = otherViolence(p.byType);
+    const other = o ? tw(o.key, Object.fromEntries(Object.entries(o.params).map(([k, v]) => [k, num(v)]))) : null;
     return `<div class="wars-conflicts"><div class="history-label">${esc(tw('conflicts'))}</div><ul>${rows.slice(0, 3).join('')}</ul>
         <p class="wars-other">${other ? esc(other) : ''}</p></div>`;
   }
@@ -169,7 +170,6 @@ export function createWarsMode(ctx) {
       <div class="trend">${trend}</div>
       ${p ? barsHtml(p.months) + conflictsHtml(p) : `<p class="wars-quiet">${esc(tw('quiet', { month: month(c.through) }))}</p>`}
       <div class="card-actions">
-        <button class="link link-btn" data-action="country" data-place="${esc(placeId)}">${esc(tr('card.details'))}</button>
         ${link ? `<a class="link" href="${esc(link)}" target="_blank" rel="noopener" title="${esc(link)}">${esc(tr('card.report', { source: tr('sources.ucdp') }))}</a>` : ''}
       </div>`;
   }
