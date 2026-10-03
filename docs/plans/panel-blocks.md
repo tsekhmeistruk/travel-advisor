@@ -37,9 +37,9 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 
 ## Status
 
-- **Current step:** 2.5
-- **Done:** parts 0–1
-- **Last commit of this revision:** (none yet)
+- **Current step:** 3.1
+- **Done:** parts 0–2
+- **Last commit of this revision:** b5bb22c
 
 ## Every part ends with the same checks
 
@@ -68,7 +68,7 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 - [x] 2.3 Disasters and All: Now, Latest changes (7 / 30 / 90 days). Travel: Now, Latest changes.
 - [x] 2.3b The levels are switched on and off in the map's legend at the bottom (the owner, Oct 3, 2026), not in the panel.
 - [x] 2.4 Tests: the blocks of each mode (unit, e2e), the window switch; deleted: Filters, fixed-height and feed tests.
-- [ ] 2.5 Ship.
+- [x] 2.5 Ship.
 
 ## Part 3: A selected country, war or alert as blocks
 
@@ -89,3 +89,4 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 
 ## Log (one line per finished part: commit, deploy, tests)
 - Part 1: 84448b9, deploy green, live: every mode ok. Tests added: Escape and × clear the selection, the Wars tooltip's war. Edited: hover tests (the panel stays; a click shows), measureCards selects. Deleted: none.
+- Part 2: the overview as blocks and levels in the legend, deploy green after a test flake fix (the × clicked through the DOM); merged the owner's capybara commit; live: every mode ok. Tests added: legend level switches, the window switch, no Filters in any mode, overview blocks. Edited: overview, feed, legend, countries list, Travel provider and window, Wars list (5), phone sheet. Deleted: the Filters' tests, the fixed-height card checks, the overview's latest list and raised/lowered line.
