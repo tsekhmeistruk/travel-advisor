@@ -1,6 +1,6 @@
 # Changes come only from what we observed: plan and progress
 
-> **In progress.** The live checklist of the "observed changes" revision, approved by the owner on Oct 3, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part.
+> **Done (Oct 3, 2026).** The checklist of the "observed changes" revision, approved by the owner on Oct 3, 2026. Every box is ticked as soon as its item is done, and the doc is committed with each part.
 >
 > **How to resume after an interruption:**
 > 1. Read the repo copy.
@@ -56,9 +56,9 @@ Only the fact that the record moved between two of our fetches is used, never th
 
 ## Status
 
-- **Current step:** 2.4
-- **Done:** Parts 0-1; 2.1-2.3
-- **Last commit of this revision:** 7a986e1
+- **Current step:** 3.4
+- **Done:** Parts 0-2; 3.1-3.3
+- **Last commit of this revision:** 8d526c5
 
 ## Every part ends with the same checks
 
@@ -95,16 +95,17 @@ Only the fact that the record moved between two of our fetches is used, never th
 - [x] 2.1 The 10 `source: "note"` entries leave `data/history/travel-advisories.json`; rebuild.
 - [x] 2.2 The dead support goes: `seeded` in `lib/build.mjs` and `lib/risk.mjs`, the `from == null` wording on the site and its i18n keys.
 - [x] 2.3 Tests: deleted the seeded cases (unit, e2e helper); the data test checks that the history holds only observations.
-- [ ] 2.4 Ship.
+- [x] 2.4 Ship.
 
 ## Part 3: Write the principle down
 
-- [ ] 3.1 `docs/architecture.md`: "Only observed changes", the active rule, the two stored fields.
-- [ ] 3.2 `.claude/CLAUDE.md`: the principle, the GDACS quirks, the seeded-U.S. lines removed.
-- [ ] 3.3 The published data report: the level rule, the worked example, the limits.
+- [x] 3.1 `docs/architecture.md`: "Only observed changes", the active rule, the two stored fields.
+- [x] 3.2 `.claude/CLAUDE.md`: the principle, the GDACS quirks, the seeded-U.S. lines removed.
+- [x] 3.3 The published data report: the level rule, the worked example, the limits.
 - [ ] 3.4 Ship and report.
 
 ---
 
 ## Log (one line per finished part: commit, deploy, tests)
 - Part 1 (7a986e1): a GDACS alert counts while it is listed and we saw GDACS extend it (updatedSeen, missingSince; quietDays 7, cyclones 3; earthquakes and volcanoes by their event time); deploy green; the GDACS update run after it recorded no change, marked Madagascar's drought missing and started Mexico's fall to Elevated; live-check OK (every mode, Germany, Mexico). Before it, 1c78d4d placed the U.S.'s new "Republic of Congo" (the 07:06 run had failed at the build). Tests added: the merge's updatedSeen and missingSince (2), the real drought, flood and cyclone sequences, a missing alert, moments, Green markers, the published flag (7). Edited: "missing is not ended" (events, GDACS fetcher), first sighting, closing, the isActive title, the project test. Deleted: none.
+- Part 2 (8d526c5): the 10 U.S. changes seeded from change notes left the level history, with the code and wording for a change without a previous level; deploy green; live-check OK (every mode, Thailand in Travel: "No level change since tracking began", Mexico). Tests deleted: the three seeded cases of trackHistory. Edited: levelChangesOf, advisoryChanges, the card fixtures with from: null (site unit, e2e helper), the data test (every history entry is { date, level }, none older than the first snapshot). Added: none.

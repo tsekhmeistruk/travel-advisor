@@ -45,7 +45,7 @@ Advisory levels are simplified to 1–4 for every source. Always read the full o
 | 🌐 USGS | [Earthquake feeds](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) (public domain), hourly | Earthquakes of magnitude 5 and above in the last 7 days, as markers in Disasters. Never a level. |
 | 🌐 NASA EONET | [EONET API](https://eonet.gsfc.nasa.gov/docs/v3), every 6 hours | Volcanoes with ongoing activity (from the Smithsonian's Global Volcanism Program), as markers in Disasters. Never a level. |
 
-**Level history:** the site records each source's levels once a day and compares them with the day before, so it knows about level changes from **Sep 26, 2026**, when tracking began. For the U.S., ten earlier changes were added once from the State Department's own change notes, e.g. "The advisory level was increased to 4" (Chad, Apr 28, 2026). Where a note gave only the direction, the card says "Raised to Level 4" rather than "Level 3 → 4".
+**Level history:** the site records each source's levels once a day and compares them with the day before, so it knows about level changes from **Sep 26, 2026**, when tracking began. **Only what the site itself observed is a change:** a difference between two of its own fetches. What a source says about its own past (a change note, an "updated" date, a "current" flag) never is, so the site has no changes from before it started watching.
 
 ## How it works
 
