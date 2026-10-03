@@ -166,14 +166,19 @@ async function main() {
   });
   feed.addEventListener('pointerleave', () => hover(null));
 
+  // One button on the map's edge shows and hides the panel; its arrow points where the panel will go.
   function applyPanel() {
-    $('app').classList.toggle('panel-collapsed', !settings.get('panelOpen'));
-    $('panelOpen').hidden = settings.get('panelOpen');
+    const open = settings.get('panelOpen');
+    $('app').classList.toggle('panel-collapsed', !open);
+    const label = i18n.t(open ? 'panel.hide' : 'panel.show');
+    const btn = $('panelToggle');
+    btn.title = label;
+    btn.setAttribute('aria-label', label);
+    btn.setAttribute('aria-expanded', String(open));
   }
   // The footer's "How it works" opens the help, like the legend's button.
   $('footer').addEventListener('click', (e) => { if (e.target.closest('[data-action="help"]')) $('help').showModal(); });
-  $('panelClose').onclick = () => { settings.set('panelOpen', false); applyPanel(); };
-  $('panelOpen').onclick = () => { settings.set('panelOpen', true); applyPanel(); };
+  $('panelToggle').onclick = () => { settings.set('panelOpen', !settings.get('panelOpen')); applyPanel(); };
   applyPanel();
 
 

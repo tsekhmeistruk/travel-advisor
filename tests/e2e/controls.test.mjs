@@ -70,15 +70,23 @@ describe('panel controls', () => {
     await page.close();
   });
 
-  test('the panel collapses and reopens, and is remembered', async () => {
+  test('one arrow on the map hides and shows the panel, turning with its state; it is remembered', async () => {
     const page = await open();
-    await page.click('#panelClose');
+    const toggle = () => page.$eval('#panelToggle', el => ({
+      label: el.getAttribute('aria-label'), title: el.title, expanded: el.getAttribute('aria-expanded'),
+      turned: getComputedStyle(el.querySelector('svg')).transform !== 'none', seen: el.checkVisibility(),
+    }));
+    assert.equal(await page.$('#panelClose, #panelOpen'), null, 'no second arrow in the panel header');
+    assert.deepEqual(await toggle(), { label: 'Hide panel', title: 'Hide panel', expanded: 'true', turned: true, seen: true }, 'open: ">"');
+    await page.click('#panelToggle');
     assert.equal(await page.$eval('#app', el => el.classList.contains('panel-collapsed')), true);
-    assert.equal(await page.$eval('#panelOpen', el => el.hidden), false);
+    assert.deepEqual(await toggle(), { label: 'Show panel', title: 'Show panel', expanded: 'false', turned: false, seen: true }, 'hidden: "<"');
     await page.reload({ waitUntil: 'networkidle0' });
     assert.equal(await page.$eval('#app', el => el.classList.contains('panel-collapsed')), true);
-    await page.click('#panelOpen');
+    assert.equal((await toggle()).expanded, 'false');
+    await page.click('#panelToggle');
     assert.equal(await page.$eval('#app', el => el.classList.contains('panel-collapsed')), false);
+    assert.equal((await toggle()).turned, true);
     await page.close();
   });
 
@@ -141,7 +149,7 @@ describe('map interaction', () => {
       return x > m.left && x < m.right && y > m.top && y < m.bottom;
     });
     assert.equal(await inView(), true);
-    await page.click('#panelClose');
+    await page.click('#panelToggle');
     await sleep(500);
     assert.equal(await scaleOf(page), zoomed, 'collapsing the panel keeps the zoom');
     assert.equal(await inView(), true, 'and the place in view');

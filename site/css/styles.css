@@ -312,7 +312,9 @@ h1, h2 { margin: 0; }
 }
 .icon-btn.ghost { background: transparent; box-shadow: none; border-color: transparent; }
 .icon-btn.ghost:hover { background: var(--panel-2); }
-.panel-open { position: absolute; top: 16px; right: 16px; }
+/* The panel's one show/hide button: "<" opens a hidden panel, ">" (the same arrow, turned) hides it. */
+.panel-toggle { position: absolute; top: 16px; right: 16px; }
+.panel-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 
 /* Top of the map: the mode switch, then the provider switch. The column lets the map be dragged
    around them; only the pills take clicks. */
@@ -901,7 +903,7 @@ h1, h2 { margin: 0; }
   .map-area { height: calc(52vw + 154px); max-height: 68vh; flex: none; }   /* +44px: the mode row */
   .app.panel-collapsed .panel { visibility: visible; }
   .panel { border-left: 0; border-top: 1px solid var(--line); overflow: visible; padding: 16px; }
-  #panelClose, .panel-open { display: none !important; }
+  .panel-toggle { display: none !important; }
   .legend { left: 16px; right: 16px; bottom: 12px; gap: 4px 10px; font-size: 11px; }
   /* The mode switch is a full-width row at the top (it scrolls if it must); the zoom controls and
      the provider switch sit below it. */
