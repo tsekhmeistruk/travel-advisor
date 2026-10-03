@@ -22,7 +22,7 @@ import {
 
 const SPARK = { w: 120, h: 34 };
 const BARS = { w: 320, h: 46 };
-const LIST_SHORT = 8;    // the Wars list shows this many until "Show all"
+const LIST_SHORT = 5;    // the Wars list shows this many until "Show all"
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 
 export function createWarsMode(ctx) {
@@ -106,18 +106,23 @@ export function createWarsMode(ctx) {
     const row = (key, chips) => `<div class="wars-trend"><div class="history-label">${esc(tw(key))}</div><div class="wars-chips">${chips || `<span class="dim">${esc(tw('none'))}</span>`}</div></div>`;
     // New conflicts: buttons to their war card.
     const fresh = newRows(c).map(k => `<button data-war="${esc(k)}" title="${esc(warTitle(c.conflicts[k], wars?.conflicts?.[k]) ?? conflictVs(k))}">${esc(conflictVs(k))}</button>`).join('');
-    return `
+    // Blocks: the wars now; what is changing; tensions in the news (the list of wars is the block below).
+    const tensions = tensionsHtml();
+    return `<section class="card block">
       <div class="eyebrow">${esc(tw('eyebrow', { month: month(c.through) }))}</div>
       <div class="wars-head">
         <div class="wars-count" title="${esc(tw('armed', { count: m.armed - m.wars, deaths: num(c.warDeaths) }))}"><b>${esc(num(m.wars))}</b><span>${esc(tw('wars', { count: m.wars }))}</span></div>
         ${m.spark.length > 1 ? sparkHtml(m) : ''}
       </div>
       <p class="wars-deaths">${deathsText}</p>
+    </section>
+    <section class="card block">
+      <div class="eyebrow">${esc(tw('changingTitle'))}</div>
       ${row('escalatingTitle', placeButtons(m.escalating, 'up'))}
       ${row('calmingTitle', placeButtons(m.calming, 'down'))}
       ${row('newTitle', fresh)}
-      ${tensionsHtml()}
-      <div class="card-actions"><button class="link link-btn" data-action="list">${esc(tr('list.open'))}</button></div>`;
+    </section>
+    ${tensions ? `<section class="card block">${tensions}</section>` : ''}`;
   }
 
   /** Deaths per month as bars; the war card leaves out the label (its peak is in the title). */
@@ -276,8 +281,6 @@ export function createWarsMode(ctx) {
       return `${esc(tw('footer', { sources: MARK })).replace(MARK, links.join(', '))} · <button class="link-btn" data-action="help">${esc(i18n.t('help.short'))}</button>`;
     },
     // The Filters only filtered the change feed, which the Wars list replaces.
-    settingsHidden: true,
-    renderSettings(container) { container.innerHTML = ''; },
 
     // No alerts here (UCDP has no events to mark): an event target shows its place.
     details(target) {
@@ -351,8 +354,10 @@ export function createWarsMode(ctx) {
     },
 
     legend() {
-      const bands = bandRows(conflict().bands).map(b => `<span class="legend-item"><span class="swatch" style="background:${swatch(b.level)}"></span>${esc(
-        b.level === 1 ? tw('legend.fewer', { min: num(b.max + 1) }) : b.max == null ? tw('legend.over', { min: num(b.min) }) : tw('legend.range', { min: num(b.min), max: num(b.max) }))}</span>`).join('');
+      // Each band in the legend shows or hides its places (its level: main.js calls toggleLevel).
+      const shown = ctx.settings.scope('risk', { levels: [1, 2, 3, 4] }).get('levels');
+      const bands = bandRows(conflict().bands).map(b => `<button class="legend-item legend-toggle" data-level="${b.level}" aria-pressed="${shown.includes(b.level)}" title="${esc(i18n.t('panel.levelToggle'))}"><span class="swatch" style="background:${swatch(b.level)}"></span>${esc(
+        b.level === 1 ? tw('legend.fewer', { min: num(b.max + 1) }) : b.max == null ? tw('legend.over', { min: num(b.min) }) : tw('legend.range', { min: num(b.min), max: num(b.max) }))}</button>`).join('');
       const days = ctx.settings.scope('risk', { recentDays: 30 }).get('recentDays');
       const window = days === 1 ? tr('window.day') : tr('window.days', { days });
       return `<span class="legend-item legend-title">${esc(tw('legend.title'))}</span>${bands}`
@@ -369,6 +374,8 @@ export function createWarsMode(ctx) {
       const quiet = quietRows(conflict(), wars);
       section.querySelector('#recentTitle').textContent = tw('listTitle');
       section.querySelector('#recentCount').textContent = rows.length;
+      const tools = section.querySelector('#recentTools');
+      if (tools) tools.innerHTML = '';
       const shown = listAll ? rows : rows.slice(0, LIST_SHORT);
       const tail = listAll
         ? (quiet.length ? `<li class="recent-sub" title="${esc(tw('quietAbout'))}">${esc(tw('quietTitle'))}</li>${quiet.map(quietHtml).join('')}` : '')

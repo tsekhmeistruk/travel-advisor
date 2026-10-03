@@ -243,7 +243,9 @@ describe('the mode', () => {
     assert.match(html, /Deaths in August 2026: 11,118 <span class="arrow up"[^>]*>▲<\/span> <span class="dim">from 9,467<\/span>/);
     assert.match(html, /Escalating<\/div><div class="wars-chips"><button data-place="ye">Yemen<span class="arrow up"/);
     assert.match(html, /Calming<\/div><div class="wars-chips"><button data-place="sd">Sudan<span class="arrow down"/);
-    assert.match(html, /data-action="list"/);
+    assert.equal((html.match(/<section class="card block">/g) ?? []).length, 2, 'blocks: Wars now, Changing (Tensions only with news data)');
+    assert.match(html, /<div class="eyebrow">Changing<\/div>/);
+    assert.doesNotMatch(html, /data-action="list"/, 'no All countries link (the header has the list)');
   });
   test('the overview\'s tensions: three pairs, biggest surge first, each selecting its first country; none says so', async () => {
     await create({ current: { ...CURRENT, activity: { gdelt: { tensions: TENSIONS } } } });
@@ -321,7 +323,7 @@ describe('wars: the list, the war card, the map', () => {
     return { el: { innerHTML: '', closest: () => section }, section, title, count };
   }
 
-  test('the Wars list replaces the feed: who fights whom, the deaths, the title and trend; the first 8, then all and those gone quiet', async () => {
+  test('the Wars list replaces the feed: who fights whom, the deaths, the title and trend; the first 5, then all and those gone quiet', async () => {
     const f = fakeFeed();
     ds.renderFeed(f.el);
     assert.equal(f.section.hidden, false);
@@ -339,7 +341,6 @@ describe('wars: the list, the war card, the map', () => {
     assert.match(f.el.innerHTML, /No deaths since July 2025/);
     f.el.onclick({ target: { closest: () => null } });
     assert.deepEqual([ds.feedTarget('war:1:309'), ds.feedKeyFor({ warKey: '1:309' }), ds.feedKeyFor({ placeId: 'sd' })], [{ warKey: '1:309' }, 'war:1:309', null]);
-    assert.equal(ds.settingsHidden, true, 'no Filters: they only filtered the feed');
   });
 
   test('a war\'s card: who fights whom in two columns, with Wikipedia\'s countries and backers; the deaths, months and summary', () => {

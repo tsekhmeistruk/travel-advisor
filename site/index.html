@@ -77,21 +77,15 @@
         <ul class="search-results" id="searchResults" role="listbox" hidden></ul>
       </div>
 
-      <section class="card details" id="details" aria-live="polite"></section>
+      <div class="details" id="details" aria-live="polite"></div>
 
       <section class="country-view" id="countryView" aria-live="polite" hidden></section>
       <section class="country-view list-view" id="listView" hidden></section>
 
-      <section class="section recent">
-        <h2><span id="recentTitle"></span> <span class="count" id="recentCount"></span></h2>
+      <section class="card block section recent">
+        <div class="recent-head"><h2><span id="recentTitle"></span> <span class="count" id="recentCount"></span></h2><div class="recent-tools" id="recentTools"></div></div>
         <ul class="recent-list" id="recentList"></ul>
       </section>
-
-
-      <details class="section filters" id="filters">
-        <summary><h2 data-i18n="panel.filters">Filters</h2></summary>
-        <div id="datasetSettings"></div>
-      </details>
 
       <footer class="panel-footer subtle" id="footer"></footer>
     </aside>

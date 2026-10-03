@@ -77,7 +77,7 @@ async function main() {
   // ---- panel and map
   let hovered = null;
   let selected = null;
-  let panelView = null;   // 'country' or 'list': a full panel view in place of the card, feed and filters
+  let panelView = null;   // 'country' or 'list': a full panel view in place of the blocks
   let fromList = false;   // the country view was opened from the list: Back returns to it
   const modeSwitch = createModeSwitch($('modeSwitch'), { onChange: (id) => switchMode(id, { toUrl: true }) });
   const mapArea = $('mapArea');
@@ -149,8 +149,6 @@ async function main() {
   // Feed items (in the feed, and the latest ones on the overview card) select their place;
   // "Show 90 days" in an empty list widens the window.
   const onListClick = (e) => {
-    const widen = e.target.closest('[data-show-days]');
-    if (widen) return dataset.showWindow(Number(widen.dataset.showDays));
     const btn = e.target.closest('button[data-key]');
     if (btn) select(dataset.feedTarget(btn.dataset.key), { zoom: true, toUrl: true });
   };
@@ -172,13 +170,15 @@ async function main() {
   $('panelOpen').onclick = () => { settings.set('panelOpen', true); applyPanel(); };
   applyPanel();
 
-  const filters = $('filters');
-  filters.open = settings.get('filtersOpen');
-  filters.addEventListener('toggle', () => settings.set('filtersOpen', filters.open));
 
   // "How levels work": Escape (the dialog's own) and a click on the backdrop close it.
   const help = $('help');
-  $('legend').addEventListener('click', (e) => { if (e.target.closest('[data-action="help"]')) help.showModal(); });
+  // The legend: its levels show or hide their places; ⓘ opens the help.
+  $('legend').addEventListener('click', (e) => {
+    if (e.target.closest('[data-action="help"]')) return help.showModal();
+    const level = e.target.closest('[data-level]');
+    if (level) dataset.toggleLevel?.(Number(level.dataset.level));
+  });
   help.addEventListener('click', (e) => { if (e.target === help) help.close(); });
 
   function hover(target) {
@@ -387,7 +387,8 @@ async function main() {
   function renderDetails() {
     const target = selected;
     const close = target ? `<button class="card-close icon-btn ghost" data-action="close" title="${i18n.t('panel.clear')}" aria-label="${i18n.t('panel.clear')}">×</button>` : '';
-    $('details').innerHTML = close + dataset.details(target);
+    // The overview is the mode's blocks; a selection is one block, with × to clear it.
+    $('details').innerHTML = target ? `<section class="card block selected">${close}${dataset.details(target)}</section>` : dataset.details(null);
     const key = dataset.feedKeyFor(hovered ?? target);
     feed.querySelectorAll('button[data-key]').forEach(b => b.classList.toggle('is-active', b.dataset.key === key));
   }
@@ -401,8 +402,6 @@ async function main() {
     $('asOf').classList.toggle('is-stale', dataset.stale());
     $('footer').innerHTML = dataset.footer();
     renderLegend();
-    $('filters').hidden = !!dataset.settingsHidden;
-    dataset.renderSettings($('datasetSettings'));
     dataset.renderFeed(feed);
     search.setEntries(dataset.searchEntries());
     const placeholder = dataset.searchPlaceholder?.() ?? i18n.t('search.placeholder');

@@ -36,12 +36,6 @@ for (const mode of RISK_MODES) {
         assert.ok(stats.pulses >= MIN_PULSES[mode], `${stats.pulses} pulses`);
         if (mode !== 'wars') assert.ok(stats.recent >= stats.pulses, `${stats.recent} listed, ${stats.pulses} pulses`);
       });
-      test('keeps the details card one fixed height for every country', () => {
-        assert.equal(stats.heights.length, 1, `heights: ${stats.heights.join(', ')}`);
-      });
-      test('fits the details card content without overflow or cut-off', () => {
-        assert.deepEqual([...stats.overflow, ...stats.cut], []);
-      });
       test('has no horizontal page scroll', () => {
         assert.ok(stats.scrollWidth <= width, `scrollWidth ${stats.scrollWidth}`);
       });
@@ -128,23 +122,6 @@ describe('mode switch', () => {
     await page.close();
   });
 
-  test('the overview\'s raised and lowered line stays one line, however big the numbers', async () => {
-    const data = JSON.parse(readFileSync(new URL('../../site/data/risk/changes.json', import.meta.url), 'utf8'));
-    const places = ['ua', 'sm', 'sk', 'si', 'se', 'pl', 'no', 'lt', 'lv', 'ee'];
-    const change = (i, up) => {
-      const at = new Date(Date.now() - (2 + i) * 36e5).toISOString();
-      return { id: `${places[i % 10]}:disaster:${at}`, at, kind: 'level', category: 'disaster', placeId: places[i % 10], from: up ? 1 : 2, to: up ? 2 : 1, up, basis: [], sources: ['gdacs'] };
-    };
-    const many = [...Array.from({ length: 1234 }, (_, i) => change(i, true)), ...Array.from({ length: 567 }, (_, i) => change(i, false))];
-    const body = JSON.stringify({ ...data, changes: [...many, ...data.changes] });
-    const page = await openMode('disaster', { intercept: (req) => isData(req, 'risk/changes.json') && (req.respond({ status: 200, contentType: 'application/json', body }), true) });
-    await page.waitForSelector('#details .moves');
-    const m = await page.$eval('#details .moves', el => ({ text: el.textContent, h: el.getBoundingClientRect().height, line: parseFloat(getComputedStyle(el).lineHeight) }));
-    assert.match(m.text, /▲ \d{4} raised · ▼ \d{3} lowered/, 'the injected 1,234 and 567, plus the real ones');
-    assert.ok(m.h < m.line * 1.5, `one line: ${m.h}px for a ${m.line}px line`);
-    assert.ok(await page.$eval('#details', el => el.scrollHeight <= el.clientHeight + 1), 'the card holds');
-    await page.close();
-  });
 
   // Fresh and healthy, or stale with every source delayed: the header stays one line either way.
   const currentAs = (state) => {
@@ -253,71 +230,45 @@ describe('risk panel', () => {
     await page.close();
   });
 
-  test('the window and direction filters change the feed and are saved', async () => {
+  test('the 7 / 30 / 90 days switch in the Latest changes block filters it and is saved', async () => {
     const page = await openMode('highest', { intercept: withRiskChanges() });
-    const count = () => page.$eval('#recentCount', el => Number(el.textContent));
-    const all = await count();
-    await page.click('#riskDirectionSeg [data-dir="down"]');
+    assert.equal(await text(page, 'recentTitle'), 'Latest changes');
+    await page.click('#riskWindowSeg [data-days="7"]');
     await sleep(200);
-    const down = await count();
-    assert.ok(down >= 1 && down < all, `${down} of ${all}`);
-    assert.ok(await page.$$eval('#recentList .what .arrow', els => els.every(e => e.classList.contains('down'))));
-    await page.click('#riskDirectionSeg [data-dir="all"]');
-    await page.click('#riskWindowSeg [data-days="1"]');
-    await sleep(200);
-    assert.match(await text(page, 'recentTitle'), /24 hours/);
-    // Real changes of the last day may be listed too: check the injected ones, not a total.
+    assert.equal(await checked(page, '#riskWindowSeg'), '7');
+    // Real changes may be listed too: check the injected ones, not a total.
     const keys = await page.$$eval('#recentList button[data-key]', els => els.map(b => b.dataset.key));
     assert.ok(keys.includes('test:event'), 'the 2-hour event');
     assert.ok(keys.some(k => k.startsWith('jp:disaster:')), 'the 1-hour level change');
     assert.ok(!keys.some(k => k.startsWith('it:disaster:')), 'not the 10-day-old one');
-    assert.equal((await saved(page)).risk.recentDays, 1);
+    assert.equal((await saved(page)).risk.recentDays, 7);
     await page.close();
   });
 
-  test('the overview lists the latest changes; clicking one selects its place', async () => {
-    const page = await openMode('highest', { intercept: withRiskChanges() });
-    const names = await page.$$eval('#details .latest-list .name', els => els.map(e => e.textContent));
-    assert.equal(names.length, 3);
-    assert.equal(names[0], 'Japan', 'the injected 1-hour change is the newest');
-    await page.click('#details .latest-list button');
-    await sleep(900);
-    await page.hover('#footer');
-    assert.equal(await detailsTitle(page), 'Japan');
-    assert.match(await page.evaluate(() => location.hash), /place=jp/);
-    await page.close();
-  });
 
-  test('an empty window: the feed is its heading and 0, the card says so once and offers 90 days', async () => {
+  test('an empty window: the Latest changes block is its heading, 0 and the switch', async () => {
     const none = (req) => isData(req, 'risk/changes.json') && (req.respond({ status: 200, contentType: 'application/json', body: '{"changes":[]}' }), true);
     const page = await openMode('highest', { stored: { mode: 'highest', risk: { recentDays: 7 } }, intercept: none });
     assert.equal(await page.$$eval('#recentList li', els => els.length), 0);
     assert.equal(await text(page, 'recentCount'), '0');
-    assert.match(await text(page, 'details'), /Latest changes\s*No changes in this period\.\s*Show 90 days/);
-    await page.click('#details [data-show-days="90"]');
+    await page.click('#riskWindowSeg [data-days="90"]');
     await sleep(200);
-    assert.equal(await checked(page, '#riskWindowSeg'), '90');
     assert.equal((await saved(page)).risk.recentDays, 90);
-    assert.equal(await page.$$eval('[data-show-days]', els => els.length), 0, 'nothing longer to offer');
     await page.close();
   });
 
-  test('the filters are collapsed on a first visit, and stay as the visitor leaves them; Wars has none', async () => {
-    const page = await openRaw({ stored: { filtersOpen: undefined } });
+  test('no Filters in any mode: the levels are switched in the legend, the overview is blocks', async () => {
+    const page = await openRaw({ stored: {} });
     await page.waitForSelector('path.country');
-    assert.equal(await page.$eval('#filters', el => el.checkVisibility()), false, 'Wars (a first visit): no Filters, they only filtered the feed');
-    await page.click('#modeSwitch [data-mode="highest"]');
-    await page.waitForSelector('#riskLevelChips');
-    assert.equal(await page.$eval('#filters', el => el.checkVisibility()), true);
-    const isOpen = () => page.$eval('#filters', el => el.open);
-    assert.equal(await isOpen(), false);
-    assert.equal(await page.$eval('#riskLevelChips', el => el.checkVisibility()), false, 'hidden while collapsed');
-    await page.click('#filters summary');
-    assert.equal(await isOpen(), true);
-    await sleep(100);   // the toggle event comes after the click
-    assert.equal((await saved(page)).filtersOpen, true);
-    await page.reload({ waitUntil: 'networkidle0' });
-    assert.equal(await isOpen(), true, 'remembered');
+    for (const mode of ['wars', 'disaster', 'travel', 'highest']) {
+      await page.click(`#modeSwitch [data-mode="${mode}"]`);
+      await sleep(400);
+      assert.equal(await page.$$eval('#filters, #riskLevelChips, #levelChips', els => els.length), 0, mode);
+      assert.ok(await page.$$eval('#legend .legend-toggle', els => els.length) >= 4, `${mode}: the levels in the legend`);
+      assert.ok(await page.$$eval('#details > .block', els => els.length) >= 1, `${mode}: the overview in blocks`);
+      assert.equal(await page.$$eval('#details [data-action="list"]', els => els.length), 0, `${mode}: no All countries link (the header has it)`);
+    }
+    assert.deepEqual(page.errors, []);
     await page.close();
   });
 
@@ -491,9 +442,9 @@ describe('event markers', () => {
     const ids = async () => (await markers(page)).flatMap(m => m.id.replace(/^cluster:/, '').split('|'));
     assert.ok((await ids()).includes('gdacs:TC:900'));
     assert.ok(!(await ids()).includes('gdacs:FL:901'), 'a Green alert is not major');
-    await page.click('#riskLevelChips [data-level="4"]');
+    await page.click('#legend [data-level="4"]');
     await sleep(200);
-    assert.ok(!(await ids()).includes('gdacs:TC:900'), 'Critical hidden');
+    assert.ok(!(await ids()).includes('gdacs:TC:900'), 'Critical hidden, from the legend');
     await page.click('#modeSwitch [data-mode="wars"]');
     await sleep(300);
     assert.equal((await markers(page)).length, 0);
@@ -610,9 +561,9 @@ describe('countries list', () => {
   }));
 
   for (const [width, height] of [[1440, 860], [390, 844]]) {
-    test(`at ${width}px opens from the overview, sorts, filters, opens a country and comes back`, async () => {
+    test(`at ${width}px opens from the header, sorts, filters, opens a country and comes back`, async () => {
       const page = await openMode('highest', { width, height, stored: { mode: 'highest', risk: { recentDays: 90, listSort: 'level' } } });
-      await page.click('#details [data-action="list"]');
+      await page.click('#listOpen');
       await page.waitForSelector('#listRows button');
       let s = await list(page);
       assert.equal(s.open, true);
@@ -692,12 +643,11 @@ describe('Wars: who fights whom', () => {
     assert.equal(await text(page, 'recentTitle'), 'Wars and armed conflicts');
     assert.equal(await text(page, 'recentCount'), String(keys.length));
     const rows = () => page.$$eval('#recentList button[data-key^="war:"]', els => els.map(b => b.dataset.key.slice(4)));
-    assert.deepEqual(await rows(), keys.slice(0, 8), 'the first 8, most deaths first');
+    assert.deepEqual(await rows(), keys.slice(0, 5), 'the first 5, most deaths first');
     assert.match(await page.$eval('#recentList button[data-key]', b => b.querySelector('.name').textContent), / vs /, 'who fights whom');
     await page.click('#recentList [data-feed-all]');
     assert.deepEqual((await rows()).slice(0, keys.length), keys);
     if (conflict.quiet.length) assert.equal(await page.$eval('#recentList .recent-sub', el => el.textContent), 'Gone quiet');
-    assert.equal(await page.$eval('#filters', el => el.checkVisibility()), false);
     assert.deepEqual(page.errors, []);
     await page.close();
   });
@@ -727,31 +677,6 @@ describe('Wars: who fights whom', () => {
     assert.deepEqual(page.errors, []);
     await page.close();
   });
-
-  for (const [width, height] of [[1440, 860], [390, 844]]) {
-    test(`at ${width}px every war's card keeps the fixed height, and fits`, async () => {
-      const page = await openMode('wars', { width, height });
-      await page.click('#recentList [data-feed-all]');
-      const stats = await page.evaluate(() => {
-        const card = document.getElementById('details');
-        const heights = new Set(), overflow = [], cut = [];
-        const buttons = [...document.querySelectorAll('#recentList button[data-key^="war:"]')];
-        for (const b of buttons) {
-          b.dispatchEvent(new PointerEvent('pointerover', { bubbles: true }));
-          heights.add(card.offsetHeight);
-          const last = [...card.children].at(-1);
-          if (card.scrollHeight > card.clientHeight + 1 || last.getBoundingClientRect().bottom > card.getBoundingClientRect().bottom - 8) overflow.push(b.dataset.key);
-          for (const el of card.querySelectorAll('.badge, .link, .trend')) if (el.scrollWidth > el.clientWidth + 1) cut.push(b.dataset.key);
-        }
-        return { heights: [...heights], overflow, cut: [...new Set(cut)], cards: buttons.length };
-      });
-      assert.ok(stats.cards >= keys.length, `${stats.cards} cards`);
-      assert.equal(stats.heights.length, 1, `heights: ${stats.heights.join(', ')}`);
-      assert.deepEqual([...stats.overflow, ...stats.cut], []);
-      assert.deepEqual(page.errors, []);
-      await page.close();
-    });
-  }
 
   test('a link opens a war; a side\'s country and the place card\'s conflicts lead on; the search finds a war', async () => {
     const page = await openRaw({ hash: `#mode=wars&war=${sudanLike.replace(':', '-')}` });
@@ -820,7 +745,7 @@ describe('Disasters markers and the one-line footers', () => {
   test('USGS quakes and EONET volcanoes are markers in Disasters, counted on the overview; a quake\'s card has its magnitude and no level of ours', async () => {
     const page = await openMode('disaster');
     const shown = events.filter(e => e.point && ['disaster', 'wildfire'].includes(e.category)).length;
-    assert.match(await text(page, 'details'), new RegExp(`${shown} alerts? on the map\\. Only GDACS Orange and Red alerts raise a level`));
+    assert.match(await text(page, 'details'), new RegExp(`${shown} alerts? on the map`));
     const quake = events.find(e => e.source === 'usgs');
     assert.ok(quake, 'the published events have USGS quakes');
     assert.ok(events.some(e => e.source === 'eonet'), 'and EONET volcanoes');

@@ -102,11 +102,11 @@ async function create({ view = 'highest', category, mode = view === 'category' ?
 }
 beforeEach(() => create());
 
-// A stand-in for a DOM element: enough for renderSettings/renderFeed and their click handlers.
+// A stand-in for the Latest changes block: its list, title, count and window switch.
 function fakeFeed() {
-  const title = { textContent: '' }, count = { textContent: '' };
-  const section = { hidden: true, querySelector: (sel) => (sel === '#recentTitle' ? title : count) };
-  return { el: { innerHTML: '', closest: () => section }, section, title, count };
+  const title = { textContent: '' }, count = { textContent: '' }, tools = { innerHTML: '' };
+  const section = { hidden: true, querySelector: (sel) => ({ '#recentTitle': title, '#recentCount': count, '#recentTools': tools })[sel] };
+  return { el: { innerHTML: '', closest: () => section }, section, title, count, tools };
 }
 const clickOn = (container, attrs) => container.onclick({ target: { closest: (sel) => {
   const key = { '.chip': 'level', '[data-days]': 'days', '[data-dir]': 'dir' }[sel];
@@ -259,13 +259,18 @@ describe('map style', () => {
     assert.deepEqual(ds.style('mx'), { cls: 'none', muted: false, dim: false, dot: false, pulse: null });
     assert.equal(ds.hasPlace('mx'), false);
   });
-  test('hidden levels are muted and do not pulse; fading and the direction filter apply', async () => {
+  test('hidden levels (switched in the legend) are muted and do not pulse; a saved fading or direction is ignored', async () => {
     await create({ saved: { levels: [1, 2, 4] } });
     assert.equal(ds.style('mx').muted, true);
     assert.equal(ds.style('mx').pulse, null);
+    assert.match(ds.legend(), /<button class="legend-item legend-toggle" data-level="3" aria-pressed="false"/);
+    ds.toggleLevel(3);
+    assert.equal(changes, 1);
+    assert.equal(ds.style('mx').muted, false);
+    assert.match(ds.legend(), /data-level="3" aria-pressed="true"/);
     await create({ saved: { dimOthers: true, direction: 'down' } });
-    assert.equal(ds.style('mx').dim, true, 'its rise is filtered out');
-    assert.equal(ds.style('ke').dim, false);
+    assert.equal(ds.style('mx').dim, false, 'the Filters are gone: no fading');
+    assert.notEqual(ds.style('mx').pulse, null, 'and its rise counts (no direction filter)');
   });
   test('falls back to defaults for invalid saved settings', async () => {
     await create({ saved: { recentDays: 5, levels: 'x', direction: 'sideways' } });
@@ -275,11 +280,12 @@ describe('map style', () => {
 });
 
 describe('details card', () => {
-  test('the overview counts places per level and the rises and falls in the window', () => {
+  test('the overview counts places per level, in one block', () => {
     const html = ds.details(null);
     assert.match(html, /World overview · All/);
     assert.match(html, /3 places above Normal/);
-    assert.match(html, /Last 30 days: .*<strong>2<\/strong> raised · .*<strong>1<\/strong> lowered/);
+    assert.match(html, /^<section class="card block">/, 'one "Now" block');
+    assert.doesNotMatch(html, /raised|Latest changes|data-action="list"|Hover or tap/, 'the changes are the block below; no link or hint');
   });
   test('a place shows every category, what set its level, and its recent changes', () => {
     const html = ds.details({ placeId: 'mx' });
@@ -299,7 +305,6 @@ describe('details card', () => {
     assert.match(html, /<p class="later"><\/p>/, 'no news source published: the slot stays, empty');
     assert.doesNotMatch(html, /coming later/);
     assert.match(html, /<button class="link link-btn" data-action="country" data-place="mx">Country details →<\/button>/);
-    assert.match(ds.details(null), /<button class="link link-btn" data-action="list">All countries →<\/button>/, 'the overview opens the list');
   });
   test('a government stricter than the travel level is named on the row by its flag, in full in the title', () => {
     const html = ds.details({ placeId: 'ke' });
@@ -312,26 +317,13 @@ describe('details card', () => {
     assert.match(html, /No changes in the last 90 days\./);
     assert.doesNotMatch(html, /report ↗/);
   });
-  test('the overview lists the three latest changes, newest first, as buttons to their place', () => {
-    const latest = ds.details(null).split('class="latest"')[1];
-    assert.match(latest, /Latest changes/);
-    assert.deepEqual([...latest.matchAll(/class="name">([^<]+)</g)].map(m => m[1]), ['Mexico', 'Offshore quake', 'Somalia'], 'one row per place and category');
-    const keys = [...latest.matchAll(/data-key="([^"]+)"/g)].map(m => m[1]);
-    assert.deepEqual(keys, ds.details(null).match(/data-key="([^"]+)"/g).map(k => k.slice(10, -1)));
-    assert.deepEqual(ds.feedTarget(keys[0]), { placeId: 'mx' });
-    assert.match(latest, /Disaster: Normal → High/);
-  });
-  test('an empty window says so and offers the longest one; at the longest it only says so', async () => {
-    await create({ saved: { recentDays: 1, levels: [1, 2] } });
-    assert.match(ds.details(null), /No changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
+  test('a saved 24-hour window (no longer offered) becomes 30 days; an empty list is its heading and 0', async () => {
+    await create({ saved: { recentDays: 1, levels: [1] } });
+    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.recentDays, 30);
     const f = fakeFeed();
     ds.renderFeed(f.el);
-    assert.equal(f.el.innerHTML, '', 'an empty feed is its heading and 0; the card says it once');
-    ds.showWindow(90);
-    assert.equal(changes, 1);
-    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.recentDays, 90);
-    ds.renderFeed(f.el);
-    assert.doesNotMatch(f.el.innerHTML + ds.details(null), /data-show-days/, 'nothing longer to offer');
+    assert.equal(f.el.innerHTML, '', 'an empty feed is its heading and 0');
+    assert.equal(f.count.textContent, 0);
   });
   test('a marker-only event (a USGS quake): its magnitude alone, no level beside it; USGS\'s note; on the map and in the footer', async () => {
     const quake = { id: 'usgs:us1', source: 'usgs', ...DATES, category: 'disaster', type: 'earthquake', level: 1, marker: true, native: { scheme: 'usgs-magnitude', value: 'M6' },
@@ -348,14 +340,12 @@ describe('details card', () => {
     assert.match(ds.details({ eventId: 'gdacs:TC:1' }), /Orange alert · High/, 'a GDACS alert keeps its level beside it');
   });
 
-  test('a category mode\'s overview says what raises its level', async () => {
+  test('a category mode\'s overview counts the alerts on the map', async () => {
     await create({ view: 'category', category: 'disaster', categories: ['disaster', 'wildfire'] });
     const shown = ds.markers().length;   // the markers the map shows, counted
-    assert.match(ds.details(null), new RegExp(`${shown} alerts? on the map\\. Only GDACS Orange and Red alerts raise a level; Green ones, USGS quakes and NASA volcanoes are markers\\.`));
-    assert.doesNotMatch(ds.details(null), /Hover or tap a country/, 'the note replaces the general hint (the card has room for one)');
+    assert.match(ds.details(null), new RegExp(`<p class="block-note">${shown} alerts? on the map</p>`));
     await create();
-    assert.doesNotMatch(ds.details(null), /on the map\. Only GDACS/, 'not in the highest mode');
-    assert.match(ds.details(null), /Hover or tap a country/, 'the highest mode has the general hint instead');
+    assert.doesNotMatch(ds.details(null), /on the map/, 'not in the highest mode (its markers are the major ones only)');
   });
 
   test('a category mode names that category in the badge and marks its row', async () => {
@@ -445,25 +435,17 @@ describe('texts', () => {
   });
 });
 
-describe('settings', () => {
-  test('renders level chips, windows and directions, and applies clicks', () => {
-    const el = { innerHTML: '' };
-    ds.renderSettings(el);
-    assert.equal((el.innerHTML.match(/data-level=/g) ?? []).length, 4);
-    assert.deepEqual([...el.innerHTML.matchAll(/data-days="(\d+)"/g)].map(m => Number(m[1])), WINDOWS);
-    assert.match(el.innerHTML, /data-days="30" aria-checked="true"/);
-    assert.match(el.innerHTML, /24 h/);
-    assert.match(el.innerHTML, /riskDimToggle/);
-    clickOn(el, { level: 3 });
-    assert.equal(ds.style('mx').muted, true);
-    clickOn(el, { days: 1 });
-    assert.equal(ds.style('so').pulse, null, 'last 24 hours only');
-    clickOn(el, { dir: 'down' });
-    clickOn(el, {});
-    assert.equal(changes, 3);
-    el.onchange({ target: { id: 'riskDimToggle', checked: true } });
-    assert.equal(ds.style('jp').dim, true);
-    assert.equal(changes, 4);
+describe('the window switch', () => {
+  test('the Latest changes block offers 7, 30 and 90 days; a click sets the window', () => {
+    const f = fakeFeed();
+    ds.renderFeed(f.el);
+    assert.deepEqual(WINDOWS, [7, 30, 90]);
+    assert.deepEqual([...f.tools.innerHTML.matchAll(/data-days="(\d+)" aria-checked="(\w+)">([^<]+)</g)].map(m => m.slice(1)), [['7', 'false', '7d'], ['30', 'true', '30d'], ['90', 'false', '90d']]);
+    f.tools.onclick({ target: { closest: () => ({ dataset: { days: '7' } }) } });
+    assert.equal(changes, 1);
+    assert.equal(JSON.parse(storage.get('travel-risk-map:settings')).risk.recentDays, 7);
+    f.tools.onclick({ target: { closest: () => null } });
+    assert.equal(changes, 1);
   });
 });
 
@@ -510,24 +492,28 @@ describe('feed', () => {
     const f = fakeFeed();
     ds.renderFeed(f.el);
     assert.equal(f.section.hidden, false);
-    assert.equal(f.title.textContent, 'Changes in the last 30 days');
+    assert.equal(f.title.textContent, 'Latest changes');
     assert.equal(f.count.textContent, 4, 'Mexico\'s level change and its cyclone alert are one row');
+    const first = f.el.innerHTML.match(/data-key="([^"]+)"/)[1];
+    assert.deepEqual(ds.feedTarget(first), { placeId: 'mx' });
     const names = [...f.el.innerHTML.matchAll(/class="name">([^<]+)</g)].map(m => m[1]);
     assert.deepEqual(names, ['Mexico', 'Offshore quake', 'Somalia', 'Kenya']);
     assert.match(f.el.innerHTML, /Disaster: Normal → High<span class="earlier"> · and 1 earlier<\/span>/);
     assert.match(f.el.innerHTML, /GDACS earthquake: lowered to Orange alert/);
     assert.match(f.el.innerHTML, /5h ago/);
   });
-  test('filters by level, direction and the mode\'s category, and says when nothing changed', async () => {
+  test('filters by the shown levels and the mode\'s category; nothing shown is the heading and 0', async () => {
     const f = fakeFeed();
-    await create({ view: 'category', category: 'disaster', saved: { direction: 'down' } });
+    await create({ view: 'category', category: 'disaster' });
     ds.renderFeed(f.el);
-    assert.equal(f.count.textContent, 1);
-    await create({ saved: { recentDays: 1, levels: [1, 2] } });
+    const disaster = f.count.textContent;
+    await create();
     ds.renderFeed(f.el);
-    assert.equal(f.el.innerHTML, '', 'nothing changed: the heading and 0');
+    assert.ok(disaster < f.count.textContent, `the category's changes only (${disaster} of ${f.count.textContent})`);
+    await create({ saved: { levels: [1] } });
+    ds.renderFeed(f.el);
+    assert.equal(f.el.innerHTML, '', 'nothing on the shown levels: the heading and 0');
     assert.equal(f.count.textContent, 0);
-    assert.equal(f.title.textContent, 'Changes in the last 24 hours');
   });
   test('names a change on several places by the first and a count, and caps a long list', async () => {
     // Alerts on no place: a row each (a place's changes would be one row).

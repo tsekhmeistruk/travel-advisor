@@ -37,12 +37,6 @@ for (const source of PROVIDER_IDS) {
         assert.ok(stats.pulses >= 4, `${stats.pulses} pulses`);
         assert.ok(stats.recent >= stats.pulses, `${stats.recent} listed, ${stats.pulses} pulses`);
       });
-      test('keeps the details card one fixed height for every country', () => {
-        assert.equal(stats.heights.length, 1, `heights: ${stats.heights.join(', ')}`);
-      });
-      test('fits the details card content without overflow or cut-off', () => {
-        assert.deepEqual([...stats.overflow, ...stats.cut], []);
-      });
       test('has no horizontal page scroll', () => {
         assert.ok(stats.scrollWidth <= width, `scrollWidth ${stats.scrollWidth}`);
       });
@@ -96,7 +90,7 @@ describe('panel', () => {
     assert.match(await text('details'), /World overview · Canada/);
     assert.match(await text('footer'), /Government of Canada/);
     assert.doesNotMatch(await text('asOf'), /Canada/, 'the agency is no longer in the header');
-    assert.match(await page.evaluate(() => document.getElementById('levelChips').innerText), /Avoid all/);
+    assert.match(await page.evaluate(() => document.getElementById('legend').innerText), /Avoid all/, 'the legend names Canada\'s levels');
     await page.reload();
     await sleep(300);
     await page.waitForSelector('#providerSwitch [aria-checked="true"]');
@@ -114,7 +108,7 @@ describe('panel', () => {
     await page.close();
   });
 
-  test('the window filters the level-change feed', async () => {
+  test('the 7 / 30 / 90 days switch in the Latest level changes block filters it', async () => {
     const changes = withLevelChanges('us');
     const page = await open({ settings: { provider: 'us', recentDays: 90 }, intercept: changes });
     const names = () => page.$$eval('#recentList button', els => els.map(b => b.dataset.key));
@@ -125,9 +119,7 @@ describe('panel', () => {
     await page.click('#recentSeg button[data-days="7"]');
     await sleep(200);
     assert.deepEqual(await ours(), changes.changed.slice(0, 2));
-    await page.click('#recentSeg button[data-days="0"]');
-    await sleep(200);
-    assert.equal(await page.evaluate(() => document.querySelector('.recent').checkVisibility()), false, 'feed hidden when highlighting is off');
+    assert.equal(await page.$$eval('#recentSeg button', els => els.map(b => b.dataset.days).join()), '7,30,90', 'no "off"');
     await page.close();
   });
 
@@ -155,7 +147,7 @@ describe('panel', () => {
     const page = await openRaw({ stored: { source: 'ca', levels: [3, 4], recentDays: 7, dimOthers: true, theme: 'dark' } });
     assert.equal(await page.evaluate(() => document.querySelector('#providerSwitch [aria-checked="true"]')?.dataset.provider), 'ca');
     assert.equal(await page.evaluate(() => document.querySelector('#recentSeg [aria-checked="true"]')?.dataset.days), '7');
-    assert.equal(await page.evaluate(() => document.querySelectorAll('#levelChips [aria-pressed="true"]').length), 2);
+    assert.equal(await page.evaluate(() => document.querySelectorAll('#legend .legend-toggle[aria-pressed="true"]').length), 2, 'levels 3 and 4, in the legend');
     assert.equal(await page.evaluate(() => document.documentElement.dataset.theme), 'dark');
     await page.close();
   });

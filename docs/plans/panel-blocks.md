@@ -37,8 +37,8 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 
 ## Status
 
-- **Current step:** 1.4
-- **Done:** part 0
+- **Current step:** 2.5
+- **Done:** parts 0–1
 - **Last commit of this revision:** (none yet)
 
 ## Every part ends with the same checks
@@ -59,15 +59,15 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 - [x] 1.1 Hovering a country, marker, dot or row changes nothing in the panel: the map highlights it and the tooltip says the essentials (Wars: the deaths and its deadliest war).
 - [x] 1.2 Clicking selects; × in the panel, Escape and the ocean clear the selection.
 - [x] 1.3 Tests: the hover and selection rules (e2e), the tooltips (unit); edited: tests that hovered to read the card.
-- [ ] 1.4 Ship.
+- [x] 1.4 Ship.
 
 ## Part 2: The overview as blocks
 
-- [ ] 2.1 The panel body is a column of blocks (no fixed height); the change feed and the Filters leave the static page.
-- [ ] 2.2 Wars: Wars now, Deadliest, Changing, Tensions.
-- [ ] 2.3 Disasters and All: Now, Latest changes (7 / 30 / 90 days). Travel: Now, Latest changes.
-- [ ] 2.3b The levels are switched on and off in the map's legend at the bottom (the owner, Oct 3, 2026), not in the panel.
-- [ ] 2.4 Tests: the blocks of each mode (unit, e2e), the window switch; deleted: Filters, fixed-height and feed tests.
+- [x] 2.1 The panel body is a column of blocks (no fixed height); the change feed and the Filters leave the static page.
+- [x] 2.2 Wars: Wars now, Deadliest, Changing, Tensions.
+- [x] 2.3 Disasters and All: Now, Latest changes (7 / 30 / 90 days). Travel: Now, Latest changes.
+- [x] 2.3b The levels are switched on and off in the map's legend at the bottom (the owner, Oct 3, 2026), not in the panel.
+- [x] 2.4 Tests: the blocks of each mode (unit, e2e), the window switch; deleted: Filters, fixed-height and feed tests.
 - [ ] 2.5 Ship.
 
 ## Part 3: A selected country, war or alert as blocks
@@ -88,5 +88,4 @@ The owner (Oct 3, 2026): the right panel has too many details. People want a min
 ---
 
 ## Log (one line per finished part: commit, deploy, tests)
-
-- (empty)
+- Part 1: 84448b9, deploy green, live: every mode ok. Tests added: Escape and × clear the selection, the Wars tooltip's war. Edited: hover tests (the panel stays; a click shows), measureCards selects. Deleted: none.

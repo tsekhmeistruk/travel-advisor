@@ -8,17 +8,16 @@
 // names the source facts behind each level (a government's advisory, a GDACS alert).
 
 import { esc, safeUrl } from '../../core/dom.js';
-import { levelOf, levelIn, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, countDirections, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, groupFeed } from './logic.js';
+import { levelOf, levelIn, highest, filterChanges, changesFor, changePlaces, direction, pulseOpacity, countByLevel, cardModel, ageHours, isStale, countryRows, sortRows, LIST_SORTS, PULSE_KINDS, isNews, groupFeed } from './logic.js';
 import { prepareEntries, rankMatches } from '../../ui/search.js';
 import { titleSize } from '../travel-advisories/logic.js';
 import { barRects, conflictName, conflictUrl, windowMonths, sideActors, firstNames } from '../wars/logic.js';
 
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
-export const WINDOWS = [1, 7, 30, 90];
+export const WINDOWS = [7, 30, 90];
 export const HISTORY_WINDOWS = [7, 30, 90, 365];
 const FEED_SHORT = 8;      // the feed shows this many until "Show all"
 const FEED_LIMIT = 50;
-const LATEST = 3;          // changes on the overview card
 const STALE_HOURS = 12;    // updates are hourly: older data means runs were dropped
 const LEVELS = [1, 2, 3, 4];
 
@@ -56,7 +55,9 @@ export function createRiskMode(ctx) {
   // Validate saved settings against what's available now.
   if (!WINDOWS.includes(windowDays())) settings.set('recentDays', 30);
   if (!Array.isArray(levels())) settings.set('levels', LEVELS.slice());
-  if (!['all', 'up', 'down'].includes(settings.get('direction'))) settings.set('direction', 'all');
+  // The Filters are gone (Oct 2026): every direction, and no fading, whatever was saved.
+  settings.set('direction', 'all');
+  settings.set('dimOthers', false);
   if (!HISTORY_WINDOWS.includes(settings.get('historyDays'))) settings.set('historyDays', 90);
   if (!LIST_SORTS.includes(settings.get('listSort'))) settings.set('listSort', 'level');
 
@@ -77,9 +78,6 @@ export function createRiskMode(ctx) {
   const feedItems = () => shown().filter(c => c.to == null || levels().includes(c.to));
   /** The feed's rows: a place's changes in a category grouped (groupFeed). */
   const feedRows = () => groupFeed(feedItems());
-  /** An empty list: says so, and offers the longest window. */
-  const emptyHtml = (text) => `${esc(text)}${windowDays() < WINDOWS.at(-1)
-    ? ` <button class="link-btn" data-show-days="${WINDOWS.at(-1)}">${esc(tr('feed.showDays', { days: WINDOWS.at(-1) }))}</button>` : ''}`;
 
   async function load() {
     const [c, ch, ev, cf] = await Promise.all([
@@ -132,11 +130,12 @@ export function createRiskMode(ctx) {
     return `<span class="badge" style="--c:${swatch(level)}"><span class="swatch"></span>${esc(text)}</span>`;
   }
 
+  /** The overview: one "Now" block (places above Normal by level, the markers on the map); the changes are the block below. */
   function overviewHtml() {
     const counts = countByLevel(places.keys(), viewLevel);
     const desc = [...LEVELS].reverse();
-    const moves = countDirections(filterChanges(changes, { windowDays: windowDays(), categories, now: now() }));
-    return `
+    const markers = view === 'category' ? mapEvents().length : 0;
+    return `<section class="card block">
       <div class="eyebrow">${esc(tr('overview.eyebrow', { mode: modeName() }))}</div>
       <h3>${esc(tr('overview.above', { count: counts[1] + counts[2] + counts[3] }))}</h3>
       <div class="stack" aria-hidden="true">
@@ -145,26 +144,8 @@ export function createRiskMode(ctx) {
       <div class="overview-grid">
         ${desc.map(l => `<div><span class="swatch" style="background:${swatch(l)}"></span>${esc(levelName(l))}<b>${counts[l - 1]}</b></div>`).join('')}
       </div>
-      <p class="moves">${esc(tr('overview.changes', { window: windowText(windowDays()), up: MARK, down: '\u0001' }))
-    .replace(MARK, `${arrow('up')} <strong>${moves.up}</strong>`).replace('\u0001', `${arrow('down')} <strong>${moves.down}</strong>`)}</p>
-      ${latestHtml()}
-      <p class="hint">${esc(view === 'category' && i18n.has(`risk.overview.about.${category}`) ? tr(`overview.about.${category}`, { count: mapEvents().length }) : tr('overview.hint'))}</p>
-      <div class="card-actions"><button class="link link-btn" data-action="list">${esc(tr('list.open'))}</button></div>`;
-  }
-
-  /** The newest changes, one line each; a click selects the place (no hover: it would replace the card). */
-  function latestHtml() {
-    const items = feedRows().slice(0, LATEST).map(g => g.change);
-    const rows = items.map(c => `<li><button data-key="${esc(c.id)}" title="${esc(`${changeName(c)}: ${changeText(c)}`)}">
-        <span class="swatch" style="background:${swatch(c.to)}"></span>
-        <span class="name">${esc(changeName(c))}</span>
-        ${arrow(direction(c))}<span class="what">${esc(changeText(c))}</span>
-        <span class="when">${esc(i18n.shortHours(ageHours(c.at, now())))}</span>
-      </button></li>`).join('');
-    return `<div class="latest">
-        <div class="history-label">${esc(tr('overview.latest'))}</div>
-        ${items.length ? `<ul class="latest-list">${rows}</ul>` : `<p class="latest-empty">${emptyHtml(tr('feed.empty'))}</p>`}
-      </div>`;
+      ${view === 'category' ? `<p class="block-note">${esc(tr('overview.alerts', { count: markers }))}</p>` : ''}
+    </section>`;
   }
 
   function basisText(row) {
@@ -415,6 +396,10 @@ export function createRiskMode(ctx) {
   const targetOf = (e) => ({ eventId: e.id, ...(e.placeIds[0] && { placeId: e.placeIds[0] }) });
   /** The events on the map: the mode's categories, or every major event (Orange and Red) in the highest mode; hidden levels hide theirs. */
   const mapEvents = () => events.filter(e => e.point && (categories ? categories.has(e.category) : (e.level ?? 1) >= 3) && levels().includes(e.level ?? 1));
+  /** The window switch (7 / 30 / 90 days) of the Latest changes block. */
+  const windowSwitch = () => `<div class="segmented" id="riskWindowSeg" role="radiogroup" aria-label="${esc(tr('settings.window'))}">
+      ${WINDOWS.map(d => `<button role="radio" data-days="${d}" aria-checked="${d === windowDays()}">${esc(tr('settings.daysShort', { days: d }))}</button>`).join('')}
+    </div>`;
   /** "How it works": opens the help (main.js), from the footer. */
   const helpButton = () => `<button class="link-btn" data-action="help">${esc(i18n.t('help.short'))}</button>`;
 
@@ -585,62 +570,34 @@ export function createRiskMode(ctx) {
       return `<strong>${esc(placeName(placeId))}</strong>${lines.map(l => `<div class="tt-row">${l}</div>`).join('')}`;
     },
 
+    // Each level in the legend shows or hides its places (main.js calls toggleLevel).
     legend() {
-      return LEVELS.map(l => `<span class="legend-item"><span class="swatch" style="background:${swatch(l)}"></span>${esc(levelName(l))}</span>`).join('')
+      return LEVELS.map(l => `<button class="legend-item legend-toggle" data-level="${l}" aria-pressed="${levels().includes(l)}" title="${esc(i18n.t('panel.levelToggle'))}"><span class="swatch" style="background:${swatch(l)}"></span>${esc(levelName(l))}</button>`).join('')
         + `<span class="legend-item"><span class="swatch none"></span>${esc(tr('legend.none'))}</span>`
         + `<span class="legend-item"><span class="legend-pulse"></span>${esc(tr('legend.recent', { window: windowText(windowDays()) }))}</span>`
         + `<span class="legend-item"><span class="legend-marker"></span>${esc(tr('legend.markers'))}</span>`;
     },
 
-    renderSettings(container) {
-      const dir = settings.get('direction');
-      container.innerHTML = `
-        <div class="setting">
-          <span class="setting-label">${esc(tr('settings.levels'))}</span>
-          <div class="chips" id="riskLevelChips">
-            ${LEVELS.map(l => `<button class="chip" data-level="${l}" style="--c:${swatch(l)}" aria-pressed="${levels().includes(l)}"><span class="swatch"></span>${esc(levelName(l))}</button>`).join('')}
-          </div>
-        </div>
-        <div class="setting">
-          <span class="setting-label">${esc(tr('settings.window'))}</span>
-          <div class="segmented" id="riskWindowSeg" role="radiogroup" aria-label="${esc(tr('settings.window'))}">
-            ${WINDOWS.map(d => `<button role="radio" data-days="${d}" aria-checked="${d === windowDays()}">${esc(d === 1 ? tr('settings.hours24') : tr('settings.days', { days: d }))}</button>`).join('')}
-          </div>
-        </div>
-        <div class="setting">
-          <span class="setting-label">${esc(tr('settings.direction'))}</span>
-          <div class="segmented" id="riskDirectionSeg" role="radiogroup" aria-label="${esc(tr('settings.direction'))}">
-            ${['all', 'up', 'down'].map(d => `<button role="radio" data-dir="${d}" aria-checked="${d === dir}">${esc(tr(`settings.${d}`))}</button>`).join('')}
-          </div>
-        </div>
-        <label class="setting row">
-          <span class="setting-label">${esc(tr('settings.dim'))}</span>
-          <span class="switch"><input type="checkbox" id="riskDimToggle" ${settings.get('dimOthers') ? 'checked' : ''}><span></span></span>
-        </label>`;
-      container.onclick = (e) => {
-        const chip = e.target.closest('.chip');
-        if (chip) {
-          const l = Number(chip.dataset.level);
-          settings.set('levels', levels().includes(l) ? levels().filter(x => x !== l) : [...levels(), l].sort());
-          return ctx.changed();
-        }
-        const seg = e.target.closest('[data-days]');
-        if (seg) { settings.set('recentDays', Number(seg.dataset.days)); return ctx.changed(); }
-        const d = e.target.closest('[data-dir]');
-        if (d) { settings.set('direction', d.dataset.dir); ctx.changed(); }
-      };
-      container.onchange = (e) => {
-        if (e.target.id === 'riskDimToggle') { settings.set('dimOthers', e.target.checked); ctx.changed(); }
-      };
+    toggleLevel(l) {
+      settings.set('levels', levels().includes(l) ? levels().filter(x => x !== l) : [...levels(), l].sort());
+      ctx.changed();
     },
 
-    /** The change feed. Items carry data-key (the change id) for hover/select wiring. */
+    /** The Latest changes block, with its window switch. Items carry data-key (the change id) for hover/select wiring. */
     renderFeed(container) {
       const section = container.closest('.recent');
       section.hidden = false;
       const items = feedRows();
-      section.querySelector('#recentTitle').textContent = tr('feed.title', { window: windowText(windowDays()) });
+      section.querySelector('#recentTitle').textContent = tr('feed.latest');
       section.querySelector('#recentCount').textContent = items.length;
+      const tools = section.querySelector('#recentTools');
+      if (tools) {
+        tools.innerHTML = windowSwitch();
+        tools.onclick = (e) => {
+          const d = e.target.closest('[data-days]');
+          if (d) { settings.set('recentDays', Number(d.dataset.days)); ctx.changed(); }
+        };
+      }
       const limit = feedAll ? FEED_LIMIT : FEED_SHORT;
       const more = items.length - limit;
       const tail = more <= 0 ? ''
@@ -662,7 +619,6 @@ export function createRiskMode(ctx) {
           </button></li>`).join('') + tail
         : '';
     },
-    showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
 
     /** A feed item's target: its first place, and its event when it is about one (the card then shows the event). */
     feedTarget(key) {

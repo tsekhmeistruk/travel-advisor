@@ -8,7 +8,7 @@ import { indexByPlace, isRecent, latestChange, recentRecords, pulseOpacity, noAd
 const ID = 'travel-advisories';
 const MARK = '\u0000';   // placeholder for HTML inserted into an escaped message
 const STALE_DAYS = 7;     // the header warns about data older than this
-const LATEST = 3;         // level changes on the overview card
+const WINDOWS = [7, 30, 90];   // the Latest level changes block's switch
 
 export function createTravelAdvisories(ctx) {
   const { i18n, manifest, places, client } = ctx;
@@ -33,17 +33,13 @@ export function createTravelAdvisories(ctx) {
 
   // Validate saved settings against what's available now.
   if (!manifest.providers.some(p => p.id === settings.get('provider'))) settings.set('provider', manifest.providers[0].id);
-  if (!manifest.recentWindows.includes(windowDays())) settings.set('recentDays', manifest.defaultRecentWindow);
+  // The Filters are gone (Oct 2026): a window of 7, 30 or 90 days (no "off"), no fading.
+  if (!WINDOWS.includes(windowDays())) settings.set('recentDays', WINDOWS.includes(manifest.defaultRecentWindow) ? manifest.defaultRecentWindow : 30);
+  settings.set('dimOthers', false);
   if (!Array.isArray(levels())) settings.set('levels', levelsAll.slice());
 
   /** The records with a level change in the window, on shown levels, newest change first. */
   const changedRecords = () => recentRecords(data.records, { windowDays: windowDays(), levels: levels(), ageDays: i18n.ageDays });
-  /** An empty list: says so, and offers the longest window. */
-  function emptyHtml() {
-    const longest = Math.max(...manifest.recentWindows);
-    return `${esc(tx('feed.empty'))}${windowDays() < longest
-      ? ` <button class="link-btn" data-show-days="${longest}">${esc(tx('feed.showDays', { days: longest }))}</button>` : ''}`;
-  }
 
   async function load() {
     const entry = manifest.providers.find(p => p.id === settings.get('provider'));
@@ -66,11 +62,11 @@ export function createTravelAdvisories(ctx) {
     return `<h3 class="${titleSize(name)}" title="${esc(name)}">${esc(name)}</h3>`;
   }
 
+  /** The overview: one "Now" block (the government's advisories by level); the changes are the block below. */
   function overviewHtml() {
     const counts = levelsAll.map(l => data.records.filter(r => r.level === l).length);
-    const recentCount = windowDays() > 0 ? data.records.filter(recent).length : 0;
     const desc = [...levelsAll].reverse();
-    return `
+    return `<section class="card block">
       <div class="eyebrow">${esc(tx('overview.eyebrow', { provider: tp('name') }))}</div>
       <h3>${esc(tx('overview.count', { count: data.records.length }))}</h3>
       <div class="stack" aria-hidden="true">
@@ -79,28 +75,7 @@ export function createTravelAdvisories(ctx) {
       <div class="overview-grid">
         ${desc.map(l => `<div><span class="swatch" style="background:var(--l${l})"></span>${esc(levelInfo(l).short)}<b>${counts[l - 1]}</b></div>`).join('')}
       </div>
-      ${windowDays() > 0 ? `<p>${esc(tx('overview.recent', { count: MARK, days: windowDays() })).replace(MARK, `<strong>${recentCount}</strong>`)}</p>` : ''}
-      ${windowDays() > 0 ? latestHtml() : ''}
-      <p class="hint">${esc(tx('overview.hint'))}</p>
-      ${ctx.countryView ? `<div class="card-actions"><button class="link link-btn" data-action="list">${esc(tx('overview.list'))}</button></div>` : ''}`;
-  }
-
-  /** The three latest level changes, one line each; a click selects the place (data-key, as in the feed). */
-  function latestHtml() {
-    const items = changedRecords().slice(0, LATEST);
-    const rows = items.map((r) => {
-      const c = latestChange(r);
-      return `<li><button data-key="${esc(r.title)}" title="${esc(`${recordName(r)}: ${changeText(c)}`)}">
-          <span class="swatch" style="background:var(--l${r.level})"></span>
-          <span class="name">${esc(recordName(r))}</span>
-          ${arrow(c)}<span class="what">${esc(changeText(c))}</span>
-          <span class="when">${esc(i18n.shortAge(i18n.ageDays(c.date)))}</span>
-        </button></li>`;
-    }).join('');
-    return `<div class="latest">
-        <div class="history-label">${esc(tx('overview.latest'))}</div>
-        ${items.length ? `<ul class="latest-list">${rows}</ul>` : `<p class="latest-empty">${emptyHtml()}</p>`}
-      </div>`;
+    </section>`;
   }
 
   function noAdvisoryHtml(placeId) {
@@ -243,55 +218,35 @@ export function createTravelAdvisories(ctx) {
       return `<strong>${esc(placeName(placeId))}</strong>${lines.map(l => `<div class="tt-row">${l}</div>`).join('')}`;
     },
 
+    // Each level in the legend shows or hides its places (main.js calls toggleLevel).
     legend() {
-      return levelsAll.map(l => `<span class="legend-item"><span class="swatch" style="background:var(--l${l})"></span>${esc(levelInfo(l).short)}</span>`).join('')
+      return levelsAll.map(l => `<button class="legend-item legend-toggle" data-level="${l}" aria-pressed="${levels().includes(l)}" title="${esc(i18n.t('panel.levelToggle'))}"><span class="swatch" style="background:var(--l${l})"></span>${esc(levelInfo(l).short)}</button>`).join('')
         + `<span class="legend-item"><span class="swatch none"></span>${esc(tx('legend.none'))}</span>`
         + (windowDays() > 0 ? `<span class="legend-item"><span class="legend-pulse"></span>${esc(tx('legend.recent', { days: windowDays() }))}</span>` : '');
     },
 
-    renderSettings(container) {
-      const days = manifest.recentWindows;
-      container.innerHTML = `
-        <div class="setting">
-          <span class="setting-label">${esc(tx('settings.levels'))}</span>
-          <div class="chips" id="levelChips">
-            ${levelsAll.map(l => `<button class="chip" data-level="${l}" style="--c:var(--l${l})" title="${esc(levelInfo(l).name)}"
-              aria-pressed="${levels().includes(l)}"><span class="swatch"></span>${l} · ${esc(levelInfo(l).short)}</button>`).join('')}
-          </div>
-        </div>
-        <div class="setting">
-          <span class="setting-label">${esc(tx('settings.recent'))}</span>
-          <div class="segmented" id="recentSeg" role="radiogroup" aria-label="${esc(tx('settings.recent'))}">
-            ${days.map(d => `<button role="radio" data-days="${d}" aria-checked="${d === windowDays()}">${esc(d ? tx('settings.days', { days: d }) : tx('settings.off'))}</button>`).join('')}
-          </div>
-        </div>
-        <label class="setting row${windowDays() === 0 ? ' is-disabled' : ''}">
-          <span class="setting-label">${esc(tx('settings.dim'))}</span>
-          <span class="switch"><input type="checkbox" id="dimToggle" ${settings.get('dimOthers') ? 'checked' : ''}><span></span></span>
-        </label>`;
-      container.onclick = (e) => {
-        const chip = e.target.closest('.chip');
-        if (chip) {
-          const l = Number(chip.dataset.level);
-          settings.set('levels', levels().includes(l) ? levels().filter(x => x !== l) : [...levels(), l].sort());
-          return ctx.changed();
-        }
-        const seg = e.target.closest('[data-days]');
-        if (seg) { settings.set('recentDays', Number(seg.dataset.days)); ctx.changed(); }
-      };
-      container.onchange = (e) => {
-        if (e.target.id === 'dimToggle') { settings.set('dimOthers', e.target.checked); ctx.changed(); }
-      };
+    toggleLevel(l) {
+      settings.set('levels', levels().includes(l) ? levels().filter(x => x !== l) : [...levels(), l].sort());
+      ctx.changed();
     },
 
-    /** The change feed. Items carry data-key (record title) for hover/select wiring. */
+    /** The Latest level changes block, with its window switch. Items carry data-key (record title) for hover/select wiring. */
     renderFeed(container) {
       const section = container.closest('.recent');
-      section.hidden = windowDays() === 0;
-      if (section.hidden) return;
+      section.hidden = false;
       const items = changedRecords();
-      section.querySelector('#recentTitle').textContent = tx('feed.title', { days: windowDays() });
+      section.querySelector('#recentTitle').textContent = tx('feed.latest');
       section.querySelector('#recentCount').textContent = items.length;
+      const tools = section.querySelector('#recentTools');
+      if (tools) {
+        tools.innerHTML = `<div class="segmented" id="recentSeg" role="radiogroup" aria-label="${esc(tx('settings.recent'))}">
+          ${WINDOWS.map(d => `<button role="radio" data-days="${d}" aria-checked="${d === windowDays()}">${esc(i18n.t('risk.settings.daysShort', { days: d }))}</button>`).join('')}
+        </div>`;
+        tools.onclick = (e) => {
+          const d = e.target.closest('[data-days]');
+          if (d) { settings.set('recentDays', Number(d.dataset.days)); ctx.changed(); }
+        };
+      }
       container.innerHTML = items.length
         ? items.map(r => {
           const c = latestChange(r);
@@ -306,7 +261,6 @@ export function createTravelAdvisories(ctx) {
         }).join('')
         : '';   // the heading and 0 say it; the overview card says so too, and offers more days
     },
-    showWindow(days) { settings.set('recentDays', days); ctx.changed(); },
 
     /** A feed item's target: its first place, or the record itself if it has no place. */
     feedTarget(key) {

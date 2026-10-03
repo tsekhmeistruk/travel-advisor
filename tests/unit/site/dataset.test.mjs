@@ -81,27 +81,32 @@ describe('map style', () => {
     assert.equal(ds.style('so').pulse, null);
     assert.deepEqual(ds.style('aq'), { cls: 'none', muted: false, dim: false, dot: false, pulse: null });
   });
-  test('hidden levels are muted and lose their pulse; fading dims places without recent updates', async () => {
+  test('hidden levels (switched in the legend) are muted and lose their pulse; a saved fading is ignored', async () => {
     await create({ levels: [1, 2, 3], dimOthers: true });
     assert.equal(ds.style('mm').muted, true);
     assert.equal(ds.style('mm').pulse, null);
-    assert.equal(ds.style('so').dim, true);
-    assert.equal(ds.style('fr').dim, true, 'updated recently, but its level did not change');
-    assert.equal(ds.style('aq').dim, true);
-    assert.equal(ds.style('il').dim, false);
+    assert.equal(ds.style('so').dim, false, 'no fading any more (the Filters are gone)');
+    ds.toggleLevel(4);
+    assert.equal(changes, 1);
+    assert.equal(ds.style('mm').muted, false, 'shown again from the legend');
+    assert.match(ds.legend(), /<button class="legend-item legend-toggle" data-level="4" aria-pressed="true"/);
+    ds.toggleLevel(1);
+    assert.match(ds.legend(), /data-level="1" aria-pressed="false"/);
   });
-  test('with highlighting off nothing pulses or dims', async () => {
-    await create({ recentDays: 0, dimOthers: true });
-    assert.equal(ds.style('mm').pulse, null);
-    assert.equal(ds.style('so').dim, false);
+  test('a saved window of 0 (the old "off") becomes 30 days', async () => {
+    await create({ recentDays: 0 });
+    assert.notEqual(ds.style('mm').pulse, null, 'level changes pulse');
+    assert.match(ds.legend(), /Level changed ≤ 30 days/);
   });
 });
 
 describe('details card', () => {
-  test('overview counts advisories and recent level changes', () => {
+  test('the overview is one "Now" block: the government\'s advisories by level (the changes are the block below)', () => {
     const html = ds.details(null);
+    assert.match(html, /^<section class="card block">/);
     assert.match(html, /6 advisories/);
-    assert.match(html, /<strong>2<\/strong> with a level change in the last 30 days/);
+    assert.equal((html.match(/<section/g) ?? []).length, 1);
+    assert.doesNotMatch(html, /Latest level changes|data-action="list"|Hover or tap/, 'no list of changes, link or hint in it');
   });
   test('shows the neutral place name, the level and the official link', () => {
     const html = ds.details({ placeId: 'mm' });
@@ -178,21 +183,6 @@ describe('header, footer, tooltip, legend', () => {
     assert.ok(!ds.footer().includes('href='), 'javascript: link must not be rendered');
     assert.ok(!ds.details({ placeId: 'mm' }).includes('javascript:'));
   });
-  test('the overview lists the latest level changes; an empty window offers the longest; Off hides them', async () => {
-    const latest = ds.details(null).split('class="latest"')[1];
-    assert.match(latest, /Latest level changes/);
-    assert.deepEqual([...latest.matchAll(/data-key="([^"]+)"/g)].map(m => m[1]), ['Burma', 'Israel and Palestine'], 'newest first, the window\'s only');
-    assert.match(latest, /class="name">Myanmar<[\s\S]*?Level 3 → 4/);
-    await create({ levels: [1] });
-    assert.match(ds.details(null), /class="latest-empty">No level changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/);
-    await create({ recentDays: 0 });
-    assert.doesNotMatch(ds.details(null), /class="latest"/, 'highlighting off');
-  });
-  test('the overview opens the countries list when the site has one', async () => {
-    assert.match(ds.details(null), /data-action="list">All countries →</);
-    await create({}, { countryView: false });
-    assert.doesNotMatch(ds.details(null), /data-action="list"/);
-  });
   test('the header shows the data date on one line, with its age (and a warning) once it is over a week old', async () => {
     assert.equal(ds.header(), 'Data as of Sep 26, 2026', 'no agency: it is in the overview and the footer');
     assert.equal(ds.stale(), false);
@@ -208,10 +198,9 @@ describe('header, footer, tooltip, legend', () => {
     assert.equal((ds.tooltip('fr').match(/tt-row/g) ?? []).length, 1, 'no change line without a level change');
     assert.match(ds.tooltip('aq'), /No advisory/);
   });
-  test('the legend shows the level-change marker only while highlighting is on', async () => {
+  test('the legend: each level a switch, and the level-change marker for the window', () => {
     assert.match(ds.legend(), /Level changed ≤ 30 days/);
-    await create({ recentDays: 0 });
-    assert.ok(!ds.legend().includes('Level changed ≤'));
+    assert.equal((ds.legend().match(/legend-toggle/g) ?? []).length, 4);
   });
 });
 
@@ -226,26 +215,21 @@ describe('providers, feed and search', () => {
     await create({ provider: 'xx' });
     assert.equal(ds.provider(), 'us');
   });
-  test('the feed lists recent level changes; an empty one is its heading alone, the card offers the longest window', async () => {
-    const title = { textContent: '' }, count = { textContent: '' };
-    const section = { hidden: true, querySelector: (sel) => (sel === '#recentTitle' ? title : count) };
+  test('the Latest level changes block: the window\'s changes, a 7 / 30 / 90 days switch; an empty one is its heading and 0', async () => {
+    const title = { textContent: '' }, count = { textContent: '' }, tools = { innerHTML: '' };
+    const section = { hidden: true, querySelector: (sel) => ({ '#recentTitle': title, '#recentCount': count, '#recentTools': tools })[sel] };
     const el = { innerHTML: '', closest: () => section };
     ds.renderFeed(el);
     assert.equal(section.hidden, false);
+    assert.equal(title.textContent, 'Latest level changes');
     assert.match(el.innerHTML, /data-key="Burma"/);
+    assert.deepEqual([...tools.innerHTML.matchAll(/data-days="(\d+)" aria-checked="(\w+)">([^<]+)</g)].map(m => m.slice(1)), [['7', 'false', '7d'], ['30', 'true', '30d'], ['90', 'false', '90d']]);
+    tools.onclick({ target: { closest: () => ({ dataset: { days: '90' } }) } });
+    assert.equal(changes, 1);
     await create({ levels: [1], recentDays: 7 });
     ds.renderFeed(el);
     assert.equal(el.innerHTML, '', 'the heading and its 0 say it');
     assert.equal(count.textContent, 0);
-    assert.match(ds.details(null), /No level changes in this period\. <button class="link-btn" data-show-days="90">Show 90 days<\/button>/, 'the card says it once, and offers more');
-    ds.showWindow(90);
-    assert.equal(changes, 1);
-    ds.renderFeed(el);
-    assert.equal(title.textContent, 'Level changes in the last 90 days');
-    assert.doesNotMatch(el.innerHTML, /data-show-days/);
-    await create({ recentDays: 0 });
-    ds.renderFeed(el);
-    assert.equal(section.hidden, true, 'highlighting off: no feed');
   });
   test('feed items map to targets and back', () => {
     assert.deepEqual(ds.feedTarget('Burma'), { placeId: 'mm' });

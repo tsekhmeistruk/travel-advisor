@@ -28,7 +28,8 @@
    "dark": "dark"
   },
   "language": "Language",
-  "clear": "Close (Esc)"
+  "clear": "Close (Esc)",
+  "levelToggle": "Show or hide this level on the map"
  },
  "help": {
   "open": "How levels work",
@@ -126,7 +127,8 @@
    "feed": {
     "title": "Level changes in the last {days} days",
     "empty": "No level changes in this period.",
-    "showDays": "Show {days} days"
+    "showDays": "Show {days} days",
+    "latest": "Latest level changes"
    },
    "legend": {
     "none": "No advisory",
@@ -380,7 +382,11 @@
      "other": "{count} alerts on the map. Only GDACS Orange and Red alerts raise a level; Green ones, USGS quakes and NASA volcanoes are markers."
     }
    },
-   "latest": "Latest changes"
+   "latest": "Latest changes",
+   "alerts": {
+    "one": "{count} alert on the map",
+    "other": "{count} alerts on the map"
+   }
   },
   "card": {
    "eyebrow": "Risk by category",
@@ -473,7 +479,8 @@
    "all": "All",
    "up": "Raised",
    "down": "Lowered",
-   "dim": "Fade places without a recent change"
+   "dim": "Fade places without a recent change",
+   "daysShort": "{days}d"
   },
   "feed": {
    "title": "Changes in the last {window}",
@@ -484,7 +491,8 @@
    "earlier": {
     "one": " · and {count} earlier",
     "other": " · and {count} earlier"
-   }
+   },
+   "latest": "Latest changes"
   },
   "search": {
    "placeholder": "Find a country or alert",
@@ -651,6 +659,7 @@
     "one": "{name} · {deaths}",
     "other": "{name} · {deaths}"
    }
-  }
+  },
+  "changingTitle": "Changing"
  }
 }

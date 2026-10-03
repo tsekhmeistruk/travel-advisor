@@ -207,33 +207,22 @@ describe('map interaction', () => {
 });
 
 describe('settings', () => {
-  test('hiding a level mutes those countries and removes them from the feed', async () => {
+  test('a level in the legend hides those countries (muted) and their changes; a second click shows them', async () => {
     const page = await open({ settings: { provider: 'us', recentDays: 90 }, intercept: withLevelChanges() });
     const feedLevels = () => page.$$eval('#recentList .swatch', els => els.map(e => e.getAttribute('style')));
     assert.ok((await feedLevels()).some(s => s.includes('--l2')), 'feed has level 2 items to begin with');
-    await page.click('#levelChips [data-level="2"]');
+    await page.click('#legend [data-level="2"]');
     await sleep(150);
-    assert.equal(await page.$eval('#levelChips [data-level="2"]', b => b.getAttribute('aria-pressed')), 'false');
+    assert.equal(await page.$eval('#legend [data-level="2"]', b => b.getAttribute('aria-pressed')), 'false');
     assert.ok(await page.$$eval('path.country.l2', els => els.length > 0 && els.every(e => e.classList.contains('is-muted'))));
     assert.ok(!(await feedLevels()).some(s => s.includes('--l2')));
+    await page.click('#legend [data-level="2"]');
+    await sleep(150);
+    assert.equal(await page.$$eval('path.country.l2.is-muted', els => els.length), 0, 'shown again');
+    assert.equal(await page.$$eval('#filters', els => els.length), 0, 'no Filters in the panel');
     await page.close();
   });
 
-  test('fading dims countries without a recent level change, and is disabled when highlighting is off', async () => {
-    const changes = withLevelChanges();
-    const page = await open({ settings: { provider: 'us', recentDays: 30 }, intercept: changes });
-    await page.click('.switch');
-    await sleep(150);
-    assert.ok(await page.$$eval('path.country.is-dim', els => els.length) > 50);
-    // The three changes within 30 days stay bright.
-    assert.equal(await page.$$eval('#recentList button', els => els.length), 3);
-    assert.ok(await page.$$eval('path.country:not(.is-dim)', els => els.filter(e => /\bl[1-4]\b/.test(e.getAttribute('class'))).length) >= 3);
-    await page.click('#recentSeg [data-days="0"]');
-    await sleep(150);
-    assert.equal(await page.$$eval('path.country.is-dim', els => els.length), 0);
-    assert.equal(await page.$eval('#dimToggle', el => el.closest('.setting').classList.contains('is-disabled')), true);
-    await page.close();
-  });
 });
 
 describe('search', () => {
@@ -312,7 +301,7 @@ describe('languages', () => {
     await page.waitForSelector('path.country');
     assert.equal(await page.evaluate(() => document.documentElement.lang), 'ar');
     assert.equal(await page.evaluate(() => document.documentElement.dir), 'rtl');
-    assert.match(await page.$eval('#filters h2', el => el.textContent), /^\[ar\] Filters/);
+    assert.match(await page.$eval('#recentTitle', el => el.textContent), /^\[ar\] /);
     assert.match(await page.$eval('#search', el => el.placeholder), /^\[ar\] /);
     // Country names come from the browser in the chosen language.
     await page.evaluate(() => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === 'fr')
@@ -362,7 +351,7 @@ describe('phone sheet', () => {
     assert.equal((await sheet(page)).shown, false);
     assert.equal(await detailsTitle(page), 'Brazil');
     const top = await page.$eval('#details', el => el.getBoundingClientRect().top);
-    assert.ok(top >= -1 && top < 200, `the card scrolled into view (top ${top})`);
+    assert.ok(top >= -1 && top < 844 / 2, `the card scrolled into view (top ${top})`);
     await page.evaluate(() => scrollTo(0, 0));
     await sleep(400);   // scrolled back, and not a double-click
     await click(page, await anchorOf(page, 'au'));
