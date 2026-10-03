@@ -370,8 +370,10 @@ describe('risk panel', () => {
     assert.match(await page.$eval('#details', el => el.textContent), /Raised in the last 24 hours/);
     await page.keyboard.press('Escape');
     assert.notEqual(await detailsTitle(page), 'Japan', 'Escape clears the selection');
-    await first.click();
-    await page.click('#details [data-action="close"]');
+    // Through the DOM: a mouse click at a position can miss while the map zooms.
+    await page.$eval('#recentList button', b => b.click());
+    await page.waitForSelector('#details [data-action="close"]', { visible: true });
+    await page.$eval('#details [data-action="close"]', b => b.click());
     assert.notEqual(await detailsTitle(page), 'Japan', '× clears it');
     assert.equal(await page.evaluate(() => location.hash), '#mode=disaster');
     await page.close();
