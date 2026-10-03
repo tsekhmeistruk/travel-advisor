@@ -1,36 +1,8 @@
 {
  "source": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson",
- "fetchedAt": "2026-10-03T16:43:41.408Z",
+ "fetchedAt": "2026-10-03T19:50:06.851Z",
  "firstFetchedAt": "2026-10-02T18:22:34.617Z",
  "events": [
-  {
-   "id": "usgs:us6000txur",
-   "code": "EQ",
-   "name": "M 5.0 - 52 km NNW of Ruteng, Indonesia",
-   "country": "Indonesia",
-   "iso3": [],
-   "point": {
-    "lon": 120.329,
-    "lat": -8.158
-   },
-   "native": {
-    "scheme": "usgs-magnitude",
-    "value": "M5"
-   },
-   "severity": "Magnitude 5 mb, depth 10 km",
-   "startedAt": "2026-09-26T19:37:01.212Z",
-   "toDate": "2026-09-26T19:37:01.212Z",
-   "current": false,
-   "url": "https://earthquake.usgs.gov/earthquakes/eventpage/us6000txur",
-   "firstSeen": "2026-10-02T18:22:34.617Z",
-   "revisions": [
-    {
-     "at": "2026-10-02T18:22:34.617Z",
-     "value": "M5"
-    }
-   ],
-   "missingSince": "2026-10-03T16:43:41.408Z"
-  },
   {
    "id": "usgs:us6000txvu",
    "code": "EQ",

@@ -21,17 +21,17 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-10-03T16:43:34.349Z",
-  "lastSuccess": "2026-10-03T16:43:34.349Z",
-  "durationMs": 6545,
-  "records": 250,
+  "lastAttempt": "2026-10-03T19:49:56.738Z",
+  "lastSuccess": "2026-10-03T19:49:56.738Z",
+  "durationMs": 8843,
+  "records": 251,
   "consecutiveFailures": 0
  },
  "gdelt": {
-  "lastAttempt": "2026-10-03T12:32:44.555Z",
-  "lastSuccess": "2026-10-03T12:32:44.555Z",
-  "durationMs": 935,
-  "records": 1,
+  "lastAttempt": "2026-10-03T19:50:05.642Z",
+  "lastSuccess": "2026-10-03T19:50:05.642Z",
+  "durationMs": 19,
+  "records": 0,
   "consecutiveFailures": 0
  },
  "nl": {
@@ -42,9 +42,9 @@
   "consecutiveFailures": 0
  },
  "ucdp": {
-  "lastAttempt": "2026-10-02T17:32:55.609Z",
-  "lastSuccess": "2026-10-02T17:32:55.609Z",
-  "durationMs": 1892,
+  "lastAttempt": "2026-10-03T19:50:05.719Z",
+  "lastSuccess": "2026-10-03T19:50:05.719Z",
+  "durationMs": 1076,
   "records": 32,
   "consecutiveFailures": 0
  },
@@ -63,10 +63,10 @@
   "consecutiveFailures": 0
  },
  "usgs": {
-  "lastAttempt": "2026-10-03T16:43:41.407Z",
-  "lastSuccess": "2026-10-03T16:43:41.407Z",
-  "durationMs": 181,
-  "records": 42,
+  "lastAttempt": "2026-10-03T19:50:06.851Z",
+  "lastSuccess": "2026-10-03T19:50:06.851Z",
+  "durationMs": 140,
+  "records": 41,
   "consecutiveFailures": 0
  },
  "who": {
