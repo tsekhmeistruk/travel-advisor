@@ -10,6 +10,13 @@
 //   the source's lookback window can't appear in a response any more, so it is closed.
 // - an ended event is dropped (returned in `expired`, for the archive) retainEndedDays after
 //   its end
+//
+// Two fields record what we observed, for the build (isActive() in lib/risk.mjs), which trusts
+// them and not the source's own flag or dates:
+// - updatedSeen: the fetch that first had the event, or last had it with another end date or
+//   alert level: when we saw the source extend it. Another episode or flag alone doesn't count.
+// - missingSince: the first fetch whose response didn't have it; gone again once it is back.
+// Both change only when the event's state does, so the stored file still changes only then.
 
 const DAY = 864e5;
 
@@ -33,7 +40,7 @@ export function mergeEvents(previous, incoming, { at, lookbackDays, retainEndedD
     const prev = byId.get(inc.id);
     if (!prev) {
       added.push(inc.id);
-      byId.set(inc.id, { ...inc, firstSeen: at, revisions: [{ at, value: inc.native.value }] });
+      byId.set(inc.id, { ...inc, firstSeen: at, updatedSeen: at, revisions: [{ at, value: inc.native.value }] });
       continue;
     }
     const revisions = [...(prev.revisions ?? [])];
@@ -41,14 +48,19 @@ export function mergeEvents(previous, incoming, { at, lookbackDays, retainEndedD
       revisions.push({ at, value: inc.native.value });
       levelChanged.push(`${inc.id} ${prev.native.value} → ${inc.native.value}`);
     }
-    byId.set(inc.id, { ...inc, firstSeen: prev.firstSeen, revisions });
+    const moved = prev.toDate !== inc.toDate || prev.native.value !== inc.native.value;
+    const updatedSeen = moved ? at : prev.updatedSeen;
+    byId.set(inc.id, { ...inc, firstSeen: prev.firstSeen, ...(updatedSeen && { updatedSeen }), revisions });
   }
 
   for (const e of byId.values()) {
-    if (!seen.has(e.id) && e.current && Date.parse(e.toDate) < now - lookbackDays * DAY) {
-      byId.set(e.id, { ...e, current: false });
+    if (seen.has(e.id)) continue;
+    const missing = { ...e, missingSince: e.missingSince ?? at };
+    if (e.current && Date.parse(e.toDate) < now - lookbackDays * DAY) {
+      missing.current = false;
       closed.push(e.id);
     }
+    byId.set(e.id, missing);
   }
 
   const expired = [];

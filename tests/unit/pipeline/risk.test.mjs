@@ -2,6 +2,7 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
 import { placeIndex } from '../../../scripts/lib/build.mjs';
 import { addDay, addDays, emptyCounts } from '../../../scripts/lib/counts.mjs';
+import { mergeEvents } from '../../../scripts/lib/events.mjs';
 import {
   healthStatus, travelSignals, travelLevel, eventLevel, isActive, eventPlaces, eventSignals, updateSignals, eventChanges,
   advisoryChanges, buildRisk, placeFiles, activitySignals, tensionSignals, CHANGE_WINDOW_DAYS, PLACE_HISTORY_DAYS,
@@ -92,7 +93,7 @@ describe('event levels, activity and places', () => {
     assert.equal(eventLevel(ev(1, 'DR', 'Red'), CONFIG), 2, 'drought caps at Elevated');
     assert.equal(eventLevel(ev(1, 'TC', 'Purple'), CONFIG), null);
   });
-  test('an event counts while current, then for its type\'s tail', () => {
+  test('without `active` in the config, an event counts while the source calls it current, then for its type\'s tail', () => {
     const ended = (code, days) => ev(1, code, 'Orange', { current: false, toDate: hoursAfter(-24 * days) });
     assert.equal(isActive(ev(1, 'TC', 'Orange', { toDate: '2026-01-01T00:00:00.000Z' }), CONFIG, T0), true);
     assert.equal(isActive(ended('EQ', 6), CONFIG, T0), true);
@@ -107,6 +108,115 @@ describe('event levels, activity and places', () => {
     assert.deepEqual(eventPlaces(ev(1, 'EQ', 'Orange', { iso3: [], country: 'Solomon Islands' }), CONFIG, index).placeIds, ['sb']);
     assert.deepEqual(eventPlaces(ev(1, 'EQ', 'Orange', { iso3: [], country: 'Off Coast Of Central Chile' }), CONFIG, index).placeIds, [], 'offshore');
     assert.deepEqual(eventPlaces(ev(1, 'EQ', 'Orange', { iso3: undefined, country: undefined }), CONFIG, index).placeIds, []);
+  });
+});
+
+// Only what we observed counts: GDACS's types have `active`, so an alert that sets a level goes by
+// its listing and by the extensions we saw, never by the source's "current" flag or the age of
+// its end date. The sequences are GDACS's real ones of Sep 27 – Oct 3, 2026.
+describe('active by observation', () => {
+  const OBSERVED = {
+    ...CONFIG, unlistedAfterHours: 24,
+    types: {
+      EQ: { type: 'earthquake', category: 'disaster', active: 'event', tailDays: 7 },
+      VO: { type: 'volcano', category: 'disaster', active: 'event', tailDays: 7 },
+      TC: { type: 'cyclone', category: 'disaster', active: 'observed', quietDays: 3, tailDays: 3 },
+      FL: { type: 'flood', category: 'disaster', active: 'observed', quietDays: 7, tailDays: 3 },
+      DR: { type: 'drought', category: 'disaster', active: 'observed', quietDays: 7, tailDays: 0, maxLevel: 2 },
+    },
+  };
+  // The same types as they were until Oct 3, 2026: by the source's flag and end date.
+  const BY_FLAG = { ...OBSERVED, types: Object.fromEntries(Object.entries(OBSERVED.types).map(([code, { active: _, quietDays: __, ...t }]) => [code, t])) };
+  const z = (stamp) => `2026-${stamp}:00.000Z`;
+  /** What a response says about one alert: [fetch time, end date, the source's "current" flag, alert level]. */
+  const fetches = (code, rows) => rows.map(([at, toDate, current, value = 'Orange']) => ({
+    at: z(at), events: toDate ? [{ id: `gdacs:${code}:1`, code, name: code, native: { scheme: 'gdacs-alert', value }, iso3: ['MEX'], startedAt: '2025-12-21T00:00:00.000Z', toDate: z(toDate), current }] : [],
+  }));
+  /** Feeds the responses, one per fetch, through the merge and the signals: the level changes, and the level at the end. */
+  function replay(responses, config = OBSERVED) {
+    let stored = [];
+    let state;
+    const changes = [];
+    for (const { at, events } of responses) {
+      stored = mergeEvents(stored, events, { at, lookbackDays: 30, retainEndedDays: 90 }).events;
+      const signals = eventSignals('gdacs', { fetchedAt: at, events: stored }, config, index);
+      const r = updateSignals(state, signals.byCategory.get('disaster'), { category: 'disaster', at, confirmFallMinutes: 120, sources: ['gdacs'] });
+      state = r.state;
+      changes.push(...r.changes.map(c => [c.at, c.from, c.to]));
+    }
+    return { changes, level: state.places.mx?.level ?? 1 };
+  }
+
+  test('an ongoing drought the source calls "not current", then "current", is no change', () => {
+    const drought = fetches('DR', [
+      ['09-27T16:25', '09-25T00:00', false], ['09-28T05:21', '09-26T00:00', false], ['09-29T05:42', '09-27T00:00', false],
+      ['09-30T06:43', '09-28T00:00', false], ['09-30T18:26', '09-30T13:47', false], ['10-01T07:53', '09-29T00:00', false],
+      ['10-02T06:13', '09-30T00:00', false], ['10-02T13:11', '10-02T07:08', true], ['10-03T06:24', '10-01T00:00', true],
+    ]);
+    assert.deepEqual(replay(drought), { changes: [], level: 2 });
+    assert.deepEqual(replay(drought, BY_FLAG).changes, [[z('10-02T13:11'), 1, 2]], 'by the flag it "rose" on Oct 2: Europe\'s 29 false changes');
+  });
+
+  test('a flood whose flag flips is no change, and ends when the source has not extended it for its quiet days', () => {
+    const flood = fetches('FL', [
+      ['09-27T16:25', '09-21T01:00', false], ['09-28T11:59', '09-27T01:00', true], ['10-01T01:35', '09-27T01:00', false],
+      ['10-03T06:24', '09-27T01:00', false], ['10-05T11:00', '09-27T01:00', false],
+    ]);
+    assert.deepEqual(replay(flood), { changes: [], level: 3 }, 'extended on Sep 28: still counted on Oct 5, whatever the flag');
+    assert.equal(replay(flood, BY_FLAG).changes.length, 2, 'by the flag it rose and fell (China, Sep 28 and Oct 1)');
+    const quiet = [...flood, ...fetches('FL', [['10-05T13:00', '09-27T01:00', false], ['10-05T16:00', '09-27T01:00', false]])];
+    assert.deepEqual(replay(quiet), { changes: [[z('10-05T16:00'), 3, 1]], level: 1 }, '7 days after the last extension, confirmed by a later fetch');
+  });
+
+  test('a cyclone the source still calls "current" ends when it has not been extended for its quiet days', () => {
+    const cyclone = fetches('TC', [
+      ['09-29T21:23', '09-29T21:00', true, 'Red'], ['09-30T06:41', '09-30T03:00', true, 'Red'], ['10-03T06:00', '09-30T03:00', true, 'Red'],
+    ]);
+    assert.deepEqual(replay(cyclone), { changes: [], level: 4 });
+    const quiet = [...cyclone, ...fetches('TC', [['10-03T07:06', '09-30T03:00', true, 'Red'], ['10-03T10:00', '09-30T03:00', true, 'Red']])];
+    assert.deepEqual(replay(quiet), { changes: [[z('10-03T10:00'), 4, 1]], level: 1 });
+    assert.deepEqual(replay(quiet, BY_FLAG), { changes: [], level: 4 }, 'by the flag Mexico stayed Critical');
+  });
+
+  test('an alert that leaves the list counts for a day more, then falls; one that returns in time is no change', () => {
+    const back = fetches('DR', [['09-27T10:00', '09-25T00:00', false], ['09-27T11:00'], ['09-27T14:00'], ['09-27T15:00', '09-25T00:00', false]]);
+    assert.deepEqual(replay(back), { changes: [], level: 2 }, 'one short response');
+    const gone = fetches('DR', [['09-27T10:00', '09-25T00:00', false], ['09-27T11:00'], ['09-28T10:00'], ['09-28T12:00'], ['09-28T15:00']]);
+    assert.deepEqual(replay(gone.slice(0, 3)), { changes: [], level: 2 }, 'missing for 23 hours');
+    assert.deepEqual(replay(gone), { changes: [[z('09-28T15:00'), 2, 1]], level: 1 }, 'unlisted after 24 hours, the fall confirmed by a later fetch');
+  });
+
+  test('a moment (an earthquake, an eruption report) counts for its tail after its own time, while listed', () => {
+    const at = z('09-27T10:00');
+    const quake = (code, daysAgo, extra = {}) => ev(1, code, 'Orange', { current: false, toDate: hoursAfter(-24 * daysAgo, at), ...extra });
+    for (const code of ['EQ', 'VO']) {
+      assert.equal(isActive(quake(code, 6), OBSERVED, at), true);
+      assert.equal(isActive(quake(code, 8), OBSERVED, at), false);
+      assert.equal(isActive(quake(code, 8, { current: true }), OBSERVED, at), false, 'the source\'s flag is not asked');
+      assert.equal(isActive(quake(code, 1, { missingSince: hoursAfter(-23, at) }), OBSERVED, at), true);
+      assert.equal(isActive(quake(code, 1, { missingSince: hoursAfter(-24, at) }), OBSERVED, at), false, 'no longer listed');
+    }
+  });
+
+  test('a Green marker keeps the old rule, and an alert stored before the rule waits for the source to extend it', () => {
+    const at = z('09-27T10:00');
+    const flood = (value, extra) => ev(1, 'FL', value, { updatedSeen: undefined, ...extra });
+    assert.equal(isActive(flood('Green', { current: true, toDate: hoursAfter(-24 * 20, at) }), OBSERVED, at), true, 'Green: the source\'s flag');
+    assert.equal(isActive(flood('Green', { current: false, toDate: hoursAfter(-24 * 2, at) }), OBSERVED, at), true, 'Green: 3 days after its end');
+    assert.equal(isActive(flood('Green', { current: false, toDate: hoursAfter(-24 * 4, at) }), OBSERVED, at), false);
+    assert.equal(isActive(flood('Orange', { current: true }), OBSERVED, at), false, 'no extension seen yet');
+    assert.equal(isActive(flood('Orange', { current: false, updatedSeen: hoursAfter(-24 * 6, at) }), OBSERVED, at), true);
+    assert.equal(isActive(flood('Purple', { current: true }), OBSERVED, at), true, 'an unknown alert level sets no level: the old rule');
+  });
+
+  test('publishes a counted long-running alert as ongoing, whatever the source\'s flag; a marker with the source\'s flag', () => {
+    const at = z('09-27T10:00');
+    const { events } = eventSignals('gdacs', { fetchedAt: at, events: [
+      ev(1, 'DR', 'Orange', { current: false, updatedSeen: at }),
+      ev(2, 'FL', 'Green', { current: false, toDate: hoursAfter(-24, at) }),
+      ev(3, 'EQ', 'Orange', { current: false, toDate: hoursAfter(-24, at) }),
+    ] }, OBSERVED, index);
+    assert.deepEqual(events.map(e => [e.id, e.current]), [['gdacs:DR:1', true], ['gdacs:FL:2', false], ['gdacs:EQ:3', false]]);
   });
 });
 

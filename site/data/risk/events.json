@@ -4818,7 +4818,7 @@
    },
    "startedAt": "2026-06-21T00:00:00.000Z",
    "toDate": "2026-10-01T00:00:00.000Z",
-   "current": false,
+   "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027450&episodeid=11&eventtype=DR"
   },
   {
@@ -4946,7 +4946,7 @@
    },
    "startedAt": "2026-05-21T00:00:00.000Z",
    "toDate": "2026-10-01T00:00:00.000Z",
-   "current": false,
+   "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027465&episodeid=8&eventtype=DR"
   },
   {
@@ -5131,7 +5131,7 @@
    },
    "startedAt": "2026-04-21T00:00:00.000Z",
    "toDate": "2026-10-01T00:00:00.000Z",
-   "current": false,
+   "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027449&episodeid=11&eventtype=DR"
   },
   {
@@ -5309,7 +5309,7 @@
    },
    "startedAt": "2025-11-21T00:00:00.000Z",
    "toDate": "2026-09-28T00:00:00.000Z",
-   "current": false,
+   "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1018431&episodeid=15&eventtype=DR"
   },
   {

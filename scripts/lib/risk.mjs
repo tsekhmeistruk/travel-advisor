@@ -106,11 +106,36 @@ export function eventLevel(event, config) {
   return Math.min(level, config.types[event.code]?.maxLevel ?? 4);
 }
 
-/** An event counts while the source calls it current, then for its type's tail after its end. */
+/** Whether an event's type goes by what we observed (`active` in the source config), and it sets a level. */
+function byObservation(event, config) {
+  return Boolean(config.types[event.code]?.active) && eventLevel(event, config) > NORMAL;
+}
+
+/**
+ * Whether an event counts at a fetch time. An alert that sets a level, of a type with `active`
+ * in the source config, goes by what we observed, never by the source's own "current" flag or
+ * the age of its end date (GDACS calls an ongoing drought "not current" and an ended cyclone
+ * "current", and its end dates lag by days):
+ *   observed  a long-running alert: while the source lists it, and we saw the source extend it
+ *             (`updatedSeen`, lib/events.mjs) within the type's `quietDays`
+ *   event     a moment (an earthquake, an eruption report): while the source lists it, for the
+ *             type's `tailDays` after the event's own time
+ * "Lists it": not missing from the responses for `unlistedAfterHours` or longer, so one short
+ * response doesn't end every alert.
+ * Any other event (a marker, a source without `active`): while the source calls it current,
+ * then for its type's tail after its end.
+ */
 export function isActive(event, config, at) {
+  const now = Date.parse(at);
+  const type = config.types[event.code];
+  const tail = (type?.tailDays ?? 0) * DAY;
+  if (byObservation(event, config)) {
+    if (event.missingSince && now - Date.parse(event.missingSince) >= (config.unlistedAfterHours ?? 0) * 36e5) return false;
+    if (type.active === 'event') return Date.parse(event.toDate) + tail >= now;
+    return event.updatedSeen != null && Date.parse(event.updatedSeen) + (type.quietDays ?? 0) * DAY >= now;
+  }
   if (event.current) return true;
-  const tail = config.types[event.code]?.tailDays ?? 0;
-  return Date.parse(event.toDate) + tail * DAY >= Date.parse(at);
+  return Date.parse(event.toDate) + tail >= now;
 }
 
 /**
@@ -154,10 +179,12 @@ export function eventSignals(sourceId, data, config, index) {
     if (!isActive(e, config, at)) continue;
     const { placeIds, unknownCodes } = eventPlaces(e, config, index);
     if (unknownCodes.length) warnings.push(`[${sourceId}] ${e.id}: unknown country codes ${unknownCodes.join(', ')}`);
+    // `current` as published is ours: a long-running alert we count is ongoing, whatever the source's flag says.
+    const ongoing = type.active === 'observed' && byObservation(e, config);
     events.push({
       id: e.id, source: sourceId, type: type.type, category: type.category, level, native: e.native,
       name: e.name, country: e.country, severity: e.severity, placeIds, point: e.point,
-      startedAt: e.startedAt, toDate: e.toDate, current: e.current, url: e.url,
+      startedAt: e.startedAt, toDate: e.toDate, current: ongoing || e.current, url: e.url,
     });
     if (level == null) continue;
     const places = byCategory.get(type.category);

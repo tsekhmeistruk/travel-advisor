@@ -9,6 +9,7 @@
  },
  "staleAfterHours": 6,
  "confirmFallMinutes": 120,
+ "unlistedAfterHours": 24,
  "lookbackDays": 30,
  "retainEndedDays": 90,
  "minor": {
@@ -31,32 +32,42 @@
   "EQ": {
    "type": "earthquake",
    "category": "disaster",
+   "active": "event",
    "tailDays": 7
   },
   "TC": {
    "type": "cyclone",
    "category": "disaster",
+   "active": "observed",
+   "quietDays": 3,
    "tailDays": 3
   },
   "FL": {
    "type": "flood",
    "category": "disaster",
+   "active": "observed",
+   "quietDays": 7,
    "tailDays": 3
   },
   "VO": {
    "type": "volcano",
    "category": "disaster",
+   "active": "event",
    "tailDays": 7
   },
   "DR": {
    "type": "drought",
    "category": "disaster",
-   "tailDays": 7,
+   "active": "observed",
+   "quietDays": 7,
+   "tailDays": 0,
    "maxLevel": 2
   },
   "WF": {
    "type": "wildfire",
    "category": "wildfire",
+   "active": "observed",
+   "quietDays": 7,
    "tailDays": 3
   }
  },

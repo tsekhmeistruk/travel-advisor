@@ -54,6 +54,7 @@
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1018332&episodeid=24&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
+   "updatedSeen": "2026-10-03T06:24:26.085Z",
    "revisions": [
     {
      "at": "2026-09-27T16:25:57.372Z",
@@ -84,6 +85,7 @@
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1018431&episodeid=15&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
+   "updatedSeen": "2026-09-30T06:41:45.737Z",
    "revisions": [
     {
      "at": "2026-09-27T16:25:57.372Z",
@@ -124,6 +126,7 @@
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027449&episodeid=11&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
+   "updatedSeen": "2026-10-03T06:24:26.085Z",
    "revisions": [
     {
      "at": "2026-09-27T16:25:57.372Z",
@@ -166,6 +169,7 @@
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027450&episodeid=11&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
+   "updatedSeen": "2026-10-03T06:24:26.085Z",
    "revisions": [
     {
      "at": "2026-09-27T16:25:57.372Z",
@@ -199,6 +203,7 @@
    "current": false,
    "url": "https://www.gdacs.org/report.aspx?eventid=1027465&episodeid=8&eventtype=DR",
    "firstSeen": "2026-09-27T16:25:57.372Z",
+   "updatedSeen": "2026-10-03T06:24:26.085Z",
    "revisions": [
     {
      "at": "2026-09-27T16:25:57.372Z",
@@ -1094,6 +1099,7 @@
    "current": true,
    "url": "https://www.gdacs.org/report.aspx?eventid=1001325&episodeid=38&eventtype=TC",
    "firstSeen": "2026-09-27T16:25:57.372Z",
+   "updatedSeen": "2026-09-30T06:41:45.737Z",
    "revisions": [
     {
      "at": "2026-09-27T16:25:57.372Z",

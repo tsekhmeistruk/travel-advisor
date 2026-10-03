@@ -31,19 +31,21 @@ On Oct 2, 2026 the feed showed 29 European countries going "Normal → Elevated"
 
 An Orange or Red alert of a long-running type is active while both hold:
 - **listed:** it is in the latest response; it counts as gone once it has been missing for 24 hours (`unlistedAfterHours`), so one short response doesn't end every alert;
-- **alive:** we saw GDACS extend it (its end date or alert level differed from our stored copy) within the type's `tailDays`, on our clock. The first time we see an alert counts.
+- **alive:** we saw GDACS extend it (its end date or alert level differed from our stored copy) within the type's `quietDays`, on our clock. The first time we see an alert counts.
 
 Only the fact that the record moved between two of our fetches is used, never the flag or the date's value.
 
-| Type | `active` | `tailDays` | Why |
+| Type | `active` | Days | Why |
 |---|---|---|---|
-| DR drought | observed | 7 | extended daily |
-| FL flood | observed | 7 (was 3) | extended in jumps of 5–6 days; 3 would flap |
-| WF wildfire | observed | 7 (was 3) | no Orange fire seen yet, so the cautious value |
-| TC cyclone | observed | 3 | extended every 6 hours |
-| EQ earthquake, VO volcano | event | 7 | a moment (start = end): the source's event time, while listed |
-| Green alerts | unchanged | – | markers only, never a level or a change |
-| WHO, USGS, EONET | unchanged | – | no `active` key: the rule as it was |
+| DR drought | observed | `quietDays` 7 | extended daily |
+| FL flood | observed | `quietDays` 7 | extended in jumps of 5–6 days; 3 would flap |
+| WF wildfire | observed | `quietDays` 7 | no Orange fire seen yet, so the cautious value |
+| TC cyclone | observed | `quietDays` 3 | extended every 6 hours |
+| EQ earthquake, VO volcano | event | `tailDays` 7 | a moment (start = end): the source's event time, while listed |
+| Green alerts | unchanged | `tailDays` as before | markers only, never a level or a change |
+| WHO, USGS, EONET | unchanged | `tailDays` as before | no `active` key: the rule as it was |
+
+`quietDays` is its own key (decided while building it): `tailDays` stays what it was (the days after the source's end date, 3 for floods and wildfires, 0 again for droughts), because the Green markers still go by it and must not change.
 
 **Choices made in the plan:**
 - Floods and wildfires get 7 days, so a flood stays High for up to a week after GDACS last extended it. A shorter tail would flap.
@@ -54,8 +56,8 @@ Only the fact that the record moved between two of our fetches is used, never th
 
 ## Status
 
-- **Current step:** 1.1
-- **Done:** Part 0
+- **Current step:** 1.6
+- **Done:** Part 0; 1.1-1.5
 - **Last commit of this revision:** none
 
 ## Every part ends with the same checks
@@ -73,18 +75,19 @@ Only the fact that the record moved between two of our fetches is used, never th
 
 ## Part 1: The active rule
 
-- [ ] 1.1 `mergeEvents()` records `updatedSeen` (new, or the end date or alert level moved) and `missingSince` (absent from the response; dropped when it returns).
-- [ ] 1.2 `config/sources/gdacs.json`: `unlistedAfterHours` 24, each type's `active`, floods and wildfires 7 days.
-- [ ] 1.3 `isActive()`: observed (listed and alive), event (listed, the event time plus the tail), otherwise as it was. An alert active by the observed rule is published as `current`.
-- [ ] 1.4 Rollout: `updatedSeen` set from the git history on the alerts that set a level today; a replay of every stored GDACS version shows no false change.
-- [ ] 1.5 Tests:
-  - [ ] unit: `updatedSeen` and `missingSince` in the merge
-  - [ ] unit: the drought's flag flipping gives no change
-  - [ ] unit: a flood whose flag flips ends 7 days after its last extension
-  - [ ] unit: a cyclone stuck at "current" ends 3 days after its last move
-  - [ ] unit: a missing alert stays 24 hours, then falls; one that returns changes nothing
-  - [ ] unit: earthquakes and volcanoes follow their event time; a Green marker keeps the old rule
-  - [ ] data: every GDACS type has a known `active`
+- [x] 1.1 `mergeEvents()` records `updatedSeen` (new, or the end date or alert level moved) and `missingSince` (absent from the response; dropped when it returns).
+- [x] 1.2 `config/sources/gdacs.json`: `unlistedAfterHours` 24, each type's `active`, and `quietDays` (droughts, floods and wildfires 7, cyclones 3).
+- [x] 1.3 `isActive()`: observed (listed and alive), event (listed, the event time plus the tail), otherwise as it was. An alert active by the observed rule is published as `current`.
+- [x] 1.4 Rollout: `updatedSeen` set from the git history on the alerts that set a level today; a replay of every stored GDACS version shows no false change.
+  - The replay (35 fetches, Sep 27 – Oct 3): by the flag 38 level changes, exactly those the site recorded (29 for Europe's drought, China and India up and down); by observation 15: Mexico's four real moves, Japan's old cyclone ending (first seen after it ended: the known limit), and **10 real ones the flag hid**: GDACS added Moldova, Montenegro and Norway to Europe's drought on Sep 30 and Russia on Oct 2, five Central African countries on Sep 30 and Costa Rica on Oct 2. Of the 29 rows removed on Oct 3, Russia's was real. Not restored (the owner's call).
+- [x] 1.5 Tests:
+  - [x] unit: `updatedSeen` and `missingSince` in the merge
+  - [x] unit: the drought's flag flipping gives no change
+  - [x] unit: a flood whose flag flips ends 7 days after its last extension
+  - [x] unit: a cyclone stuck at "current" ends 3 days after its last move
+  - [x] unit: a missing alert stays 24 hours, then falls; one that returns changes nothing
+  - [x] unit: earthquakes and volcanoes follow their event time; a Green marker keeps the old rule
+  - [x] data: every GDACS type has a known `active`
 - [ ] 1.6 Ship, with one GDACS update run.
 
 ## Part 2: Remove the seeded U.S. changes

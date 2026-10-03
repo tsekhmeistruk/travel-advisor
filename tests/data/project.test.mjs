@@ -126,15 +126,19 @@ describe('risk sources are wired up everywhere', () => {
     });
   }
 
-  test('an ongoing GDACS drought stays active while its end date lags', () => {
-    // GDACS calls a months-long drought "not current" for days on end, with an end date up to
-    // 3 days back; with no tail, Europe's 29 countries rose "Normal → Elevated" on Oct 2, 2026
-    // when a new episode came.
+  test('GDACS alerts go by what we observed, never by the source\'s "current" flag', () => {
+    // GDACS calls an ongoing drought "not current" and an ended cyclone "current", and its end
+    // dates lag by days: by the flag, Europe's 29 countries rose "Normal → Elevated" on Oct 2, 2026.
     const cfg = store.source('gdacs');
-    const at = '2026-09-27T16:25:57.372Z';
-    const drought = (toDate) => ({ code: 'DR', current: false, toDate });
-    assert.equal(isActive(drought('2026-09-25T00:00:00.000Z'), cfg, at), true, 'as fetched on Sep 27: still active');
-    assert.equal(isActive(drought('2026-09-10T00:00:00.000Z'), cfg, at), false, 'one that really ended is not');
+    assert.ok(cfg.unlistedAfterHours > 0, 'an alert missing from one response is not gone at once');
+    for (const [code, t] of Object.entries(cfg.types)) {
+      assert.ok(['observed', 'event'].includes(t.active), `${code}: active is "observed" or "event"`);
+      if (t.active === 'observed') assert.ok(t.quietDays >= 3, `${code}: quietDays, longer than the source's gaps between extensions`);
+    }
+    const at = '2026-10-02T06:13:22.734Z';
+    const drought = { code: 'DR', native: { value: 'Orange' }, current: false, toDate: '2026-09-30T00:00:00.000Z', updatedSeen: at };
+    assert.equal(isActive(drought, cfg, at), true, 'as fetched on Oct 2: "not current", and counted');
+    assert.equal(isActive({ ...drought, current: true, updatedSeen: '2026-09-20T00:00:00.000Z' }, cfg, at), false, '"current", and not extended for 12 days');
   });
 
   test('every registered source module has a config', () => {

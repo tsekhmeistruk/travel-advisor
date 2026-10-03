@@ -101,7 +101,7 @@ describe('GDACS fetcher', () => {
     const previous = [{ id: 'gdacs:TC:1', code: 'TC', native: { value: 'Orange' }, current: true, toDate: '2026-09-27T00:00:00.000Z', firstSeen: 'x', revisions: [] }];
     const suspicious = fakeLog({ search: [{ status: 204 }] });
     const { events } = await gdacs.fetch({ log: suspicious, previous, now: NOW, config });
-    assert.deepEqual(events, previous, 'missing is not ended');
+    assert.deepEqual(events, [{ ...previous[0], missingSince: NOW.toISOString() }], 'missing is not ended: kept, with the fetch that missed it');
     assert.match(suspicious.warnings.join(), /No events returned/);
   });
 
