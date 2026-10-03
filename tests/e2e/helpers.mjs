@@ -178,7 +178,7 @@ export function withRiskChanges() {
   return Object.assign(intercept, { places: ['jp', 'cl', 'ye', 'au', 'ph', 'pe', 'it', 'tr'], events: testEvents.map(e => e.id), news });
 }
 
-/** Hover every country and dot, measuring the details card each time, plus map and feed counts. */
+/** Select every country and dot, measuring the details card each time, plus map and feed counts. */
 export const measureCards = (page) => page.evaluate(() => {
   const card = document.getElementById('details');
   const heights = new Set(), overflow = [], cut = [];
@@ -191,11 +191,12 @@ export const measureCards = (page) => page.evaluate(() => {
     for (const el of card.querySelectorAll('h3, .badge, .meta dd, .history-list li, .link, .risk-rows .lvl, .trend')) if (el.scrollWidth > el.clientWidth + 1) cut.push(label);
   };
   measure('overview');
+  // The card shows the selection (hovering only informs): select each place by a click.
   for (const el of document.querySelectorAll('path.country, .dot')) {
-    el.dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'touch' }));
+    el.dispatchEvent(new MouseEvent('click', { bubbles: true }));
     measure(el.__data__.key);
-    el.dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'touch' }));
   }
+  document.querySelector('#details [data-action="close"]')?.click();
   return {
     shapes: document.querySelectorAll('path.country').length,
     colored: [...document.querySelectorAll('path.country')].filter(e => /\b(l[1-4]|r1)\b/.test(e.getAttribute('class'))).length,

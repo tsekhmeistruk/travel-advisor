@@ -406,16 +406,23 @@ describe('risk panel', () => {
     await page.close();
   });
 
-  test('hovering a feed item previews that place; clicking selects it', async () => {
+  test('hovering a feed item outlines its place, the panel stays; clicking selects it; Escape and × clear it', async () => {
     const page = await openMode('disaster', { intercept: withRiskChanges() });
     const first = await page.$('#recentList button');
     await first.hover();
-    assert.equal(await detailsTitle(page), 'Japan');
+    assert.notEqual(await detailsTitle(page), 'Japan', 'hovering only informs');
+    assert.equal(await page.$eval('.hover-outline', el => el.getAttribute('display') !== 'none'), true);
     await first.click();
     await sleep(900);
     await page.hover('#footer');   // off the feed and the map: the selection shows
     assert.equal(await detailsTitle(page), 'Japan');
     assert.match(await page.$eval('#details', el => el.textContent), /Raised in the last 24 hours/);
+    await page.keyboard.press('Escape');
+    assert.notEqual(await detailsTitle(page), 'Japan', 'Escape clears the selection');
+    await first.click();
+    await page.click('#details [data-action="close"]');
+    assert.notEqual(await detailsTitle(page), 'Japan', '× clears it');
+    assert.equal(await page.evaluate(() => location.hash), '#mode=disaster');
     await page.close();
   });
 });
@@ -435,11 +442,11 @@ describe('event markers', () => {
     await page.close();
   });
 
-  test('hovering a marker shows its event; clicking selects it and its place', async () => {
+  test('hovering a marker explains it in the tooltip, the panel stays; clicking selects it and its place', async () => {
     const page = await openMode('disaster', { intercept: withRiskChanges() });
     const el = await page.evaluateHandle(() => [...document.querySelectorAll('.marker')].find(e => e.__data__.id === 'gdacs:EQ:0'));
     await el.hover();
-    assert.match(await detailsTitle(page), /Test earthquake/);
+    assert.doesNotMatch(await detailsTitle(page) ?? '', /Test earthquake/);
     assert.match(await page.$eval('#tooltip', t => t.textContent), /Orange alert · High · earthquake/);
     await el.click();
     await sleep(300);
@@ -695,12 +702,11 @@ describe('Wars: who fights whom', () => {
     await page.close();
   });
 
-  test('hovering a war shows its card and colours its sides; leaving restores the map; a click keeps it, zooms and goes in the URL', async () => {
+  test('hovering a war colours its sides, the panel stays; leaving restores the map; a click shows its card, zooms and goes in the URL', async () => {
     const page = await openMode('wars');
     const row = `#recentList button[data-key="war:${sudanLike}"]`;
     await page.hover(row);
-    assert.equal(await detailsTitle(page), wars.conflicts[sudanLike].title.replace(/\s*\([^()]*\)\s*$/, ''));
-    assert.equal(await page.$$eval('#details .war-side', els => els.length), 2);
+    assert.equal(await page.$$eval('#details .wars-count', els => els.length), 1, 'hovering only informs: the overview stays');
     const shown = await sideClasses(page);
     assert.ok(shown.a >= 1 && shown.muted > 150, JSON.stringify(shown));
     await page.hover('#footer');
@@ -709,6 +715,8 @@ describe('Wars: who fights whom', () => {
     await page.click(row);
     await sleep(900);
     await page.hover('#footer');
+    assert.equal(await detailsTitle(page), wars.conflicts[sudanLike].title.replace(/\s*\([^()]*\)\s*$/, ''));
+    assert.equal(await page.$$eval('#details .war-side', els => els.length), 2);
     assert.equal(await page.evaluate(() => location.hash), `#mode=wars&war=${sudanLike.replace(':', '-')}`);
     assert.ok((await sideClasses(page)).a >= 1, 'kept while the pointer is elsewhere');
     assert.ok(await page.$eval('.viewport', el => !/scale\(1\)$/.test(el.getAttribute('transform') ?? '') && /scale/.test(el.getAttribute('transform') ?? '')), 'zoomed to where it is fought');

@@ -27,7 +27,8 @@
    "light": "light",
    "dark": "dark"
   },
-  "language": "Language"
+  "language": "Language",
+  "clear": "Close (Esc)"
  },
  "help": {
   "open": "How levels work",

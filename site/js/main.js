@@ -4,8 +4,10 @@
 // map, its zoom and the selected place stay.
 //
 // Interaction model: a "target" is { placeId }, { recordKey }, { eventId, placeId? } or, in Wars,
-// { warKey }. Hovering sets a temporary target, clicking sets the selected one; the details card
-// shows hovered ?? selected. A war also colours its sides on the map (dataset.focus).
+// { warKey }. Hovering only informs: the map highlights the target and the tooltip says the
+// essentials; the panel never changes. Clicking selects: the panel shows the selected target
+// until × (data-action="close"), Escape or a click on the ocean. A war also colours its sides on
+// the map (dataset.focus), hovered or selected.
 // The mode and the selected place or war are also kept in the URL (#mode=…&place=…), for links.
 
 import { $ } from './core/dom.js';
@@ -236,6 +238,7 @@ async function main() {
 
   // ---- the full panel views (from a risk mode, borrowed in Travel): a country, and the countries list
   $('details').addEventListener('click', (e) => {
+    if (e.target.closest('[data-action="close"]')) return select(null, { toUrl: true });
     const btn = e.target.closest('[data-action="country"]');
     if (btn) return openCountry(btn.dataset.place, { toUrl: true });
     if (e.target.closest('[data-action="list"]')) return openList({ toUrl: true });
@@ -246,7 +249,12 @@ async function main() {
     onListClick(e);
   });
   $('listOpen').onclick = () => openList({ toUrl: true });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && panelView && !help.open) closeView({ toUrl: true }); });
+  // Escape closes a panel view, else clears the selection.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || help.open) return;
+    if (panelView) closeView({ toUrl: true });
+    else if (selected) select(null, { toUrl: true });
+  });
   // "/" goes to the search, unless the visitor is typing somewhere.
   document.addEventListener('keydown', (e) => {
     if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey || help.open) return;
@@ -375,10 +383,12 @@ async function main() {
       closeView({ all: true });
     }
   });
+  // The panel shows the selection only (hovering informs through the tooltip and the map).
   function renderDetails() {
-    const target = hovered ?? selected;
-    $('details').innerHTML = dataset.details(target);
-    const key = dataset.feedKeyFor(target);
+    const target = selected;
+    const close = target ? `<button class="card-close icon-btn ghost" data-action="close" title="${i18n.t('panel.clear')}" aria-label="${i18n.t('panel.clear')}">×</button>` : '';
+    $('details').innerHTML = close + dataset.details(target);
+    const key = dataset.feedKeyFor(hovered ?? target);
     feed.querySelectorAll('button[data-key]').forEach(b => b.classList.toggle('is-active', b.dataset.key === key));
   }
 

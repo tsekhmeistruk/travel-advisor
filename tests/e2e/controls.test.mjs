@@ -186,15 +186,19 @@ describe('map interaction', () => {
     await page.close();
   });
 
-  test('hovering a feed item previews that place; clicking selects and zooms to it', async () => {
+  test('hovering a feed item outlines its place on the map, the panel stays; clicking selects and zooms to it', async () => {
     const page = await open({ settings: { provider: 'us', recentDays: 90 }, intercept: withLevelChanges() });
     const first = await page.$('#recentList button');
     const name = await first.$eval('.name', el => el.textContent);
+    const before = await page.$eval('#details', el => el.innerHTML);
     await first.hover();
     await sleep(150);
-    assert.equal(await detailsTitle(page), name);
+    assert.equal(await page.$eval('#details', el => el.innerHTML), before, 'hovering only informs: the panel stays');
+    assert.equal(await page.$eval('.hover-outline', el => el.getAttribute('display') !== 'none'), true, 'the place is outlined on the map');
     assert.equal(await page.$eval('#recentList button', b => b.classList.contains('is-active')), true);
     await first.click();
+    await sleep(100);
+    assert.equal(await detailsTitle(page), name, 'a click shows it');
     await sleep(900);
     assert.equal(await isSelected(page), true);
     assert.ok(await scaleOf(page) > 1, 'zoomed to the place');
@@ -312,7 +316,7 @@ describe('languages', () => {
     assert.match(await page.$eval('#search', el => el.placeholder), /^\[ar\] /);
     // Country names come from the browser in the chosen language.
     await page.evaluate(() => [...document.querySelectorAll('path.country')].find(e => e.__data__.key === 'fr')
-      .dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'touch' })));
+      .dispatchEvent(new MouseEvent('click', { bubbles: true })));
     const expected = await page.evaluate(() => new Intl.DisplayNames(['ar'], { type: 'region' }).of('FR'));
     assert.equal(await detailsTitle(page), expected);
     assert.deepEqual(page.errors, []);

@@ -292,6 +292,8 @@ describe('the mode', () => {
   test('the tooltip, the legend by deaths, and the header with the data month', async () => {
     assert.match(ds.tooltip('ye'), /<strong>Yemen<\/strong>.*Critical · 1,871 deaths in 12 months.*Escalating: more deaths/);
     assert.match(ds.tooltip('fr'), /Normal · none recorded/);
+    assert.match(ds.tooltip('ye'), /<div class="tt-row">Yemen vs AQAP · war · 1,871 deaths<\/div>/, 'its deadliest war, who fights whom');
+    assert.match(ds.tooltip('ru'), /Russia vs Ukraine · war · 97,739 deaths/);
     assert.match(ds.legend(), /Deaths, 12 months:.*1,000\+.*100–999.*25–99.*Under 25.*No data.*Level changed ≤ 30 days/);
     assert.equal(ds.header(), 'Conflict data to August 2026');
     assert.equal(ds.stale(), false, 'monthly data: the month says how old it is');

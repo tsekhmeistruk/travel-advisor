@@ -467,7 +467,10 @@ h1, h2 { margin: 0; }
   border-radius: var(--radius);
   padding: 14px;
 }
-/* Fixed height: the card must not resize as the hovered country changes. */
+/* Fixed height: the card must not resize as the selection changes. */
+.details { position: relative; }
+/* × clears the selection (Escape and the ocean too). */
+.details .card-close { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; font-size: 20px; line-height: 1; z-index: 1; }
 .details {
   display: flex; flex-direction: column; align-items: flex-start;
   height: 398px;

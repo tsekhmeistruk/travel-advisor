@@ -337,7 +337,10 @@ export function createWarsMode(ctx) {
       const l = level(placeId);
       const text = l == null ? tr('noData') : p ? tw('badge', { level: tr(`levels.${l}`), count: p.deaths12, deaths: num(p.deaths12) }) : tw('badgeNone', { level: tr(`levels.${l}`) });
       const trend = p?.trend ? `<div class="tt-row">${arrow(p.trend)}${esc(tw(p.trend === 'up' ? 'escalating' : 'calming'))}</div>` : '';
-      return `<strong>${esc(placeName(placeId))}</strong><div class="tt-row"><span class="swatch" style="background:${swatch(l)}"></span>${esc(text)}</div>${trend}`;
+      // Its deadliest conflict, who fights whom (fought there, else one it is a party to).
+      const top = p?.fought[0] ?? p?.elsewhere[0];
+      const war = top ? `<div class="tt-row">${esc(tw(top.war ? 'foughtWar' : 'foughtConflict', { name: conflictVs(top.key), deaths: num(top.deaths12) }))}</div>` : '';
+      return `<strong>${esc(placeName(placeId))}</strong><div class="tt-row"><span class="swatch" style="background:${swatch(l)}"></span>${esc(text)}</div>${war}${trend}`;
     },
     /** A war in the phone's sheet: who fights whom and the deaths. */
     warTooltip(key) {
