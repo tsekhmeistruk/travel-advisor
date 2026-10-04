@@ -131,6 +131,20 @@ for (const [name, make] of Object.entries(STORES)) {
       assert.deepEqual(store.publishedPaths(), [...store.publishedPaths()].sort());
     }));
 
+    test('appends fetch runs and reads them in the order they were logged, all or since a time', () => withStore(make, (store) => {
+      assert.deepEqual(store.fetchRuns(), []);
+      const run = (time, source, more = {}) => ({ time, source, run: 'local', trigger: 'local', result: 'ok', durationMs: 1200, calls: {}, stats: {}, ...more });
+      store.appendFetchRun(run('2025-12-31T23:59:00.000Z', 'us'));
+      store.appendFetchRun(run('2026-09-30T10:00:00.000Z', 'ca', { result: 'error', error: 'boom' }));
+      store.appendFetchRun(run('2026-09-30T09:00:00.000Z', 'gdacs'));
+      store.appendFetchRun(run('2026-10-01T00:00:00.000Z', 'who', { stats: { events: 3 } }));
+      assert.deepEqual(store.fetchRuns().map(e => e.source), ['us', 'ca', 'gdacs', 'who']);
+      assert.deepEqual(store.fetchRuns()[1], run('2026-09-30T10:00:00.000Z', 'ca', { result: 'error', error: 'boom' }));
+      assert.deepEqual(store.fetchRuns({ since: Date.parse('2026-09-30T09:30:00Z') }).map(e => e.source), ['ca', 'who']);
+      assert.deepEqual(store.fetchRuns({ since: Date.parse('2026-10-01T00:00:00Z') }).map(e => e.source), ['who'], 'at the time itself: in');
+      assert.deepEqual(store.fetchRuns({ since: Date.parse('2027-01-01T00:00:00Z') }), []);
+    }));
+
     test('a transaction returns what its function returns, and may hold another', () => withStore(make, (store) => {
       const result = store.transaction(() => {
         store.saveSignals({ n: 1 });
@@ -165,6 +179,21 @@ describe('FileStore: the files it writes', () => {
     assert.equal(readFileSync(join(root, 'data', 'changes', '2025.jsonl'), 'utf8'), '{"id":"a","at":"2025-12-31T23:00:00Z"}\n');
     assert.match(readFileSync(join(root, 'data', 'archive', 'events', 'gdacs', '2026.jsonl'), 'utf8'), /"e1"/);
     assert.match(readFileSync(join(root, 'data', 'archive', 'events', 'gdacs', '2025.jsonl'), 'utf8'), /"e2"/);
+  }));
+
+  test('fetch runs: a file per month, and a damaged line is skipped', () => withStore(STORES.FileStore, (store, root) => {
+    store.appendFetchRun({ time: '2026-08-31T10:00:00.000Z', source: 'us' });
+    store.appendFetchRun({ time: '2026-09-27T10:00:00.000Z', source: 'ca' });
+    assert.equal(readFileSync(join(root, 'logs', 'fetch', '2026', '2026-08.jsonl'), 'utf8'), '{"time":"2026-08-31T10:00:00.000Z","source":"us"}\n');
+    writeFileSync(join(root, 'logs', 'fetch', '2026', '2026-08.jsonl'), 'not json\n\n', { flag: 'a' });
+    assert.deepEqual(store.fetchRuns().map(e => e.source), ['us', 'ca']);
+    assert.deepEqual(store.fetchRuns({ since: Date.parse('2026-09-01T00:00:00Z') }).map(e => e.source), ['ca']);
+  }));
+
+  test('a damaged line of the change log fails the read', () => withStore(STORES.FileStore, (store, root) => {
+    store.appendChanges([{ id: 'a', at: '2026-01-01' }]);
+    writeFileSync(join(root, 'data', 'changes', '2026.jsonl'), 'not json\n', { flag: 'a' });
+    assert.throws(() => store.changes(2026), SyntaxError);
   }));
 
   test('a whole build leaves the other published files where they are', () => withStore(STORES.FileStore, (store) => {

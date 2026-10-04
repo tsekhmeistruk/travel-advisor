@@ -1,6 +1,7 @@
-// Structured log for the fetch scripts. Each script run appends one JSON line to
-// logs/fetch/<YYYY>/<YYYY-MM>.jsonl describing every request it made (status, timing,
-// retries, Cloudflare challenges) and what it produced. See logs/README.md.
+// Structured log for the fetch scripts. Each script run appends one JSON line describing
+// every request it made (status, timing, retries, Cloudflare challenges) and what it produced,
+// through the store: logs/fetch/<YYYY>/<YYYY-MM>.jsonl on files, the fetch_runs table on
+// SQLite. See logs/README.md.
 
 import { appendFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -16,20 +17,30 @@ export function logFile(date = new Date(), root = LOG_ROOT) {
   return join(root, iso.slice(0, 4), `${iso.slice(0, 7)}.jsonl`);
 }
 
-// A GitHub Actions run is identified by id + attempt (a re-run gets a new attempt).
-export function currentRun() {
-  const id = process.env.GITHUB_RUN_ID;
-  return id ? `${id}.${process.env.GITHUB_RUN_ATTEMPT ?? 1}` : 'local';
+// The run a fetch belongs to: RUN_ID (the backend's update job), else a GitHub Actions run's
+// id + attempt (a re-run gets a new attempt), else "local".
+export function currentRun(env = process.env) {
+  if (env.RUN_ID) return env.RUN_ID;
+  const id = env.GITHUB_RUN_ID;
+  return id ? `${id}.${env.GITHUB_RUN_ATTEMPT ?? 1}` : 'local';
 }
 
-/** @param opts.root log folder (tests use a temporary one) */
-export function startRunLog(source, { root = LOG_ROOT } = {}) {
+/** What started the run: RUN_TRIGGER (the backend: "schedule", "manual"), else GitHub's event, else "local". */
+export function currentTrigger(env = process.env) {
+  return env.RUN_TRIGGER ?? env.GITHUB_EVENT_NAME ?? 'local';
+}
+
+/**
+ * @param opts.store where the line is written (store.appendFetchRun); without one, to the log folder
+ * @param opts.root a log folder (tests use a temporary one); it wins over the store
+ */
+export function startRunLog(source, { root, store, env = process.env } = {}) {
   const started = Date.now();
   const entry = {
     time: new Date(started).toISOString(),
     source,
-    run: currentRun(),
-    trigger: process.env.GITHUB_EVENT_NAME ?? 'local',
+    run: currentRun(env),
+    trigger: currentTrigger(env),
     result: 'ok',
     durationMs: 0,
     calls: {},
@@ -73,7 +84,8 @@ export function startRunLog(source, { root = LOG_ROOT } = {}) {
     fail(err) { entry.result = 'error'; entry.error = err.message; },
     write() {
       entry.durationMs = Date.now() - started;
-      const file = logFile(new Date(started), root);
+      if (store && !root) return store.appendFetchRun(entry);
+      const file = logFile(new Date(started), root ?? LOG_ROOT);
       mkdirSync(dirname(file), { recursive: true });
       appendFileSync(file, JSON.stringify(entry) + '\n');
     },

@@ -1,29 +1,16 @@
-// Rendering of the fetch log (logs/fetch/*.jsonl) as Markdown tables. Pure except
-// readEntries/providerLabels, which read files; scripts/log-summary.mjs is the CLI.
+// Rendering of the fetch log (the store's fetch runs) as Markdown tables. Pure except
+// readEntries (the store) and providerLabels (config files); scripts/log-summary.mjs is the CLI.
 
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { logFile } from './fetch-log.mjs';
+import { createStore } from './store.mjs';
 
 // rss and pages: calls of earlier runs (change notes), still in the logs.
 const CALL_LABELS = { api: 'API', rss: 'RSS', feed: 'Feed', table: 'Table', pages: 'Pages', list: 'List', search: 'Search' };
 
-/** Log entries at or after `sinceMs`, reading each monthly file from then until `now`. */
-export function readEntries(sinceMs, { root, now = new Date() } = {}) {
-  const out = [];
-  const end = now.getUTCFullYear() * 12 + now.getUTCMonth();
-  for (let d = new Date(sinceMs); d.getUTCFullYear() * 12 + d.getUTCMonth() <= end; d.setUTCMonth(d.getUTCMonth() + 1, 1)) {
-    const file = root ? logFile(d, root) : logFile(d);
-    if (!existsSync(file)) continue;
-    for (const line of readFileSync(file, 'utf8').split('\n')) {
-      if (!line.trim()) continue;
-      try {
-        const e = JSON.parse(line);
-        if (Date.parse(e.time) >= sinceMs) out.push(e);
-      } catch { /* skip a damaged line rather than fail the summary */ }
-    }
-  }
-  return out.sort((a, b) => b.time.localeCompare(a.time));
+/** The store's fetch runs at or after `sinceMs`, newest first. */
+export function readEntries(sinceMs, { store = createStore() } = {}) {
+  return store.fetchRuns({ since: sinceMs }).sort((a, b) => b.time.localeCompare(a.time));
 }
 
 /** "🇺🇸 U.S." per provider: flag emoji from config/providers, short name from site/i18n/en.json. */

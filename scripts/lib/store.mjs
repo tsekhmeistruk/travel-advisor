@@ -117,6 +117,18 @@ export class FileStore {
   sourcesState() { return this.#readJson('data', 'sources-state.json', { optional: true }) ?? {}; }
   saveSourcesState(state) { this.#writeJson(state, 'data', 'sources-state.json'); }
 
+  // ---- the fetch log (in logs/fetch/, a file per month: see logs/README.md)
+  /** One line per fetch run, in the file of the month it started. */
+  appendFetchRun(entry) { this.#appendLine(entry, 'logs', 'fetch', entry.time.slice(0, 4), `${entry.time.slice(0, 7)}.jsonl`); }
+  /** The runs that started at or after `since` (a time in ms; all of them without it), in the order they were logged. */
+  fetchRuns({ since } = {}) {
+    const from = since == null ? '' : new Date(since).toISOString();
+    return this.#list('logs/fetch', '').filter(year => /^\d{4}$/.test(year) && year >= from.slice(0, 4))
+      .flatMap(year => this.#list(`logs/fetch/${year}`, '.jsonl').filter(month => month >= from.slice(0, 7))
+        .flatMap(month => this.#readLines('logs', 'fetch', year, `${month}.jsonl`, { lenient: true })))
+      .filter(e => e.time >= from);
+  }
+
   // ---- published site data (in site/, served as-is)
   geo() { return this.#readJson('site', 'data', 'geo', 'countries-50m.json'); }
   locales() { return this.#list('site/i18n', '.json'); }
@@ -152,10 +164,19 @@ export class FileStore {
     writeFileSync(file, JSON.stringify(data, null, 1) + '\n');
   }
 
+  /** A .jsonl file's lines; `lenient` skips a damaged line (the log) instead of failing. */
   #readLines(...parts) {
+    const opts = typeof parts.at(-1) === 'object' ? parts.pop() : {};
     const file = this.path(...parts);
     if (!existsSync(file)) return [];
-    return readFileSync(file, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
+    return readFileSync(file, 'utf8').split('\n').filter(l => l.trim()).flatMap(l => {
+      try {
+        return [JSON.parse(l)];
+      } catch (err) {
+        if (opts.lenient) return [];
+        throw err;
+      }
+    });
   }
 
   #appendLine(data, ...parts) {

@@ -147,6 +147,17 @@ export class SqliteStore {
   sourcesState() { return this.#state('sources-state') ?? {}; }
   saveSourcesState(state) { this.#saveState('sources-state', state); }
 
+  // ---- the fetch log (the `fetch_runs` table)
+  appendFetchRun(entry) {
+    this.#sql('INSERT INTO fetch_runs (time, source, result, duration_ms, body) VALUES (?, ?, ?, ?, ?)')
+      .run(entry.time, entry.source, entry.result, entry.durationMs ?? null, JSON.stringify(entry));
+  }
+  /** The runs that started at or after `since` (a time in ms; all of them without it), in the order they were logged. */
+  fetchRuns({ since } = {}) {
+    const from = since == null ? '' : new Date(since).toISOString();
+    return this.#sql('SELECT body FROM fetch_runs WHERE time >= ? ORDER BY seq').all(from).map(r => JSON.parse(r.body));
+  }
+
   // ---- published site data (the `documents` table, served as stored)
   /** A row is rewritten only when its body differs, so an unchanged document keeps its ETag. */
   publish(relPath, data) {

@@ -34,7 +34,7 @@ export async function runFetch(provider, { store = createStore(), logRoot, sleep
       error = err;
       throw err;
     }
-  }, logRoot ? { root: logRoot } : {});
+  }, logRoot ? { root: logRoot } : { store });
   recordOutcome(store, provider.id, { started, finished: now(), records, error });
 }
 

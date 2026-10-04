@@ -21,6 +21,8 @@
     "shots": "node scripts/tools/screenshots.mjs",
     "live-check": "node scripts/tools/live-check.mjs",
     "merge-bot-data": "node scripts/tools/merge-bot-data.mjs",
+    "data:import": "node --disable-warning=ExperimentalWarning scripts/tools/import-files.mjs",
+    "data:pull": "node --disable-warning=ExperimentalWarning scripts/tools/pull-data.mjs",
     "tick": "node scripts/tools/tick.mjs"
   },
   "devDependencies": {

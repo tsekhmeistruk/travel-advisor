@@ -12,6 +12,8 @@ logs/fetch/2026/2026-10.jsonl
 
 The hourly GitHub Actions run commits these files with the data. Runs on your own machine are logged too, with `"run": "local"`.
 
+The line is written through the store (`store.appendFetchRun()`), so with `DB_PATH` set (the backend) it is a row of the database's `fetch_runs` table instead, with the same fields. There `run` and `trigger` come from `RUN_ID` and `RUN_TRIGGER`.
+
 ### Reading the log
 
 ```sh

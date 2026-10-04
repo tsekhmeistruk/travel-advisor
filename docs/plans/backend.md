@@ -60,9 +60,9 @@ GitHub: code, config, tests. Push → tests pass → Railway deploys. Daily: exp
 
 ## Status
 
-- **Current step:** 1.5
-- **Done:** Part 0
-- **Last commit of this revision:** none
+- **Current step:** 2.5
+- **Done:** Parts 0–1
+- **Last commit of this revision:** d9df1a5
 
 ## Every part ends with the same checks
 
@@ -210,17 +210,17 @@ A new section is then one line in `config/schedule.json` (`{ "everyMinutes": 30 
   - [x] added: one contract suite run on both stores (`tests/unit/pipeline/store.test.mjs`): every method, missing data, the order of versions and changes
   - [x] added: SQLite only: a transaction that throws writes nothing; `publishAll` removes a dropped document; an unchanged document keeps its ETag; a second open of the same file reads what the first wrote
   - [x] edited: the store tests in `infrastructure.test.mjs` move into the contract suite
-- [ ] 1.5 Ship.
+- [x] 1.5 Ship.
 
 ## Part 2: Fetch runs through the store, import and export
 
-- [ ] 2.1 `scripts/lib/fetch-log.mjs` writes with `store.appendFetchRun()` (the `root` option keeps working for tests); the run id and trigger come from `RUN_ID` and `RUN_TRIGGER`, then GitHub's variables, then `local`. `runFetch()` passes its store.
-- [ ] 2.2 `scripts/lib/log-summary.mjs` reads runs with `store.fetchRuns()` and health with `store.published()`.
-- [ ] 2.3 `scripts/tools/import-files.mjs` and `scripts/tools/pull-data.mjs` (`importFiles`, `exportFiles`); `npm run data:import`, `npm run data:pull`.
-- [ ] 2.4 Tests.
-  - [ ] added: **a build from the imported database equals a build from the files** (the whole repo's data into `:memory:`)
-  - [ ] added: import then export gives the same files, byte for byte, in a temporary folder
-  - [ ] edited: `fetch-log.test.mjs` and the log-summary tests run on both stores
+- [x] 2.1 `scripts/lib/fetch-log.mjs` writes with `store.appendFetchRun()` (the `root` option keeps working for tests); the run id and trigger come from `RUN_ID` and `RUN_TRIGGER`, then GitHub's variables, then `local`. `runFetch()` passes its store.
+- [x] 2.2 `scripts/lib/log-summary.mjs` reads runs with `store.fetchRuns()` and health with `store.published()`.
+- [x] 2.3 `scripts/tools/import-files.mjs` and `scripts/tools/pull-data.mjs` (`importFiles`, `exportFiles`); `npm run data:import`, `npm run data:pull`.
+- [x] 2.4 Tests.
+  - [x] added: **a build from the imported database equals a build from the files** (the whole repo's data into `:memory:`)
+  - [x] added: import then export gives the same files, byte for byte, in a temporary folder
+  - [x] edited: `fetch-log.test.mjs` and the log-summary tests run on both stores
 - [ ] 2.5 Ship.
 
 ## Part 3: The update job, validation, the schedule
@@ -340,3 +340,4 @@ A section is: a fetcher in `scripts/providers/<id>/` (network in `index.mjs`, pu
 
 ## Log (one line per finished part: commit, deploy, checks, and the tests added, edited and deleted)
 - Part 0: the plan saved in the repo and linked from CLAUDE.md (docs only). Tests added, edited, deleted: none.
+- Part 1: d9df1a5, deploy 37164318474 green, live check ok (5 views), build output unchanged. Tests added: store.test.mjs (the contract on both stores; FileStore's files; SQLite: a failed transaction, publishAll's removal, the ETag, a second open, a newer database; createStore), the workflows' Node version in project.test.mjs; edited: the FileStore tests moved out of infrastructure.test.mjs; deleted: none.

@@ -359,6 +359,9 @@ The published and pipeline files are already shaped like tables, keyed by stable
 - **`createStore()`** (`scripts/lib/store.mjs`) gives a `SqliteStore` when `DB_PATH` names a database file, else the `FileStore`. `fetch.mjs`, `build.mjs` and `due.mjs` use it, so the same scripts run on either.
 - **Both stores** have `transaction(fn)` (SQLite writes all of it or nothing; the files just run it) and `publishAll(files)` (SQLite also removes documents the build no longer makes). One contract suite (`tests/unit/pipeline/store.test.mjs`) runs on both, so they can't drift: a new store method goes into both classes and into that suite.
 
+- **The fetch log goes through the store too:** `appendFetchRun(entry)` and `fetchRuns({ since })` (the monthly `.jsonl` files, or the `fetch_runs` table); `scripts/lib/log-summary.mjs` reads the runs and the health file from the store. A run's id and trigger come from `RUN_ID` and `RUN_TRIGGER` (the backend's job), then GitHub's variables, then `local`.
+- **Import and export** (`scripts/tools/import-files.mjs`: `copyStore()`, `importFiles()`, `exportFiles()`): one copy of everything a store holds into another, in one transaction, refused when the target already has changes, archived events or fetch runs (they are appended). `npm run data:import -- --db <file>` makes a database from the repo's files; `npm run data:pull -- --base <url>` (`scripts/tools/pull-data.mjs`, token in `ADMIN_TOKEN`) downloads the backend's database and replaces `data/`, `logs/fetch/` and `site/data/` (never `geo/`) with it. `tests/data/import.test.mjs` holds the two guarantees on the repo's own data: a build from the imported database equals a build from the files, and import then export gives the same files byte for byte.
+
 Steps:
 1. **Pipeline:** done, see above.
 2. **API:** serve the same JSON shapes (`manifest`, `places`, `<dataset>/<provider>`) from an API, then point `createDataClient({ base })` at it. The site needs no other change.

@@ -8,6 +8,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startRunLog, withRunLog, logFile } from '../../../scripts/lib/fetch-log.mjs';
+import { FileStore } from '../../../scripts/lib/store.mjs';
+import { SqliteStore } from '../../../scripts/lib/sqlite-store.mjs';
 import { runFetch } from '../../../scripts/fetch.mjs';
 import { runDue } from '../../../scripts/due.mjs';
 import { readEntries, renderRunSummary, renderRecent, result, callSummary, describe as describeRun, duration, cell, flagEmoji, providerLabels, renderHealth } from '../../../scripts/lib/log-summary.mjs';
@@ -217,6 +219,13 @@ describe('runFetch', () => {
     rmSync(root, { recursive: true });
   });
 
+  test('without a log folder, the run is logged through the store', async () => {
+    const runs = [];
+    const store = { ...memoryStore({ entries: [] }), appendFetchRun: (entry) => runs.push(entry) };
+    await runFetch(provider(async () => ({ entries: [{ name: 'a' }], stats: { n: 1 } })), { store, now: clock('2026-09-27T10:00:00Z') });
+    assert.deepEqual(runs.map(r => [r.source, r.result, r.stats]), [['xx', 'ok', { n: 1 }]]);
+  });
+
   test('on failure keeps the previous snapshot, logs the error and sets the exit code', async () => {
     const root = tmp();
     const saved = process.exitCode;
@@ -280,12 +289,23 @@ describe('log summary', () => {
     assert.match(renderRecent([ok], { days: 7 }), /\| 2026-09-27 10:00 \| schedule \|/);
     assert.match(renderRecent([], { days: 7 }), /No runs logged/);
   });
-  test('reads entries across monthly files, newest first, skipping damaged lines', () => {
+  for (const [name, make] of Object.entries({ FileStore: (root) => new FileStore(root), SqliteStore: (root) => new SqliteStore(':memory:', { root }) })) {
+    test(`reads the store's runs since a time, newest first (${name})`, () => {
+      const root = tmp();
+      const store = make(root);
+      for (const time of ['2026-08-01T10:00:00.000Z', '2026-08-31T10:00:00.000Z', '2026-09-27T10:00:00.000Z', '2026-09-26T10:00:00.000Z']) store.appendFetchRun({ ...ok, time });
+      const entries = readEntries(Date.parse('2026-08-15T00:00:00Z'), { store });
+      assert.deepEqual(entries.map(e => e.time), ['2026-09-27T10:00:00.000Z', '2026-09-26T10:00:00.000Z', '2026-08-31T10:00:00.000Z']);
+      store.close();
+      rmSync(root, { recursive: true });
+    });
+  }
+  test('reads entries across monthly files, skipping damaged lines', () => {
     const root = tmp();
-    mkdirSync(join(root, '2026'), { recursive: true });
-    writeFileSync(join(root, '2026', '2026-08.jsonl'), JSON.stringify({ ...ok, time: '2026-08-31T10:00:00Z' }) + '\nnot json\n');
-    writeFileSync(join(root, '2026', '2026-09.jsonl'), JSON.stringify(ok) + '\n');
-    const entries = readEntries(Date.parse('2026-08-15T00:00:00Z'), { root, now: new Date('2026-09-27T12:00:00Z') });
+    mkdirSync(join(root, 'logs', 'fetch', '2026'), { recursive: true });
+    writeFileSync(join(root, 'logs', 'fetch', '2026', '2026-08.jsonl'), JSON.stringify({ ...ok, time: '2026-08-31T10:00:00Z' }) + '\nnot json\n');
+    writeFileSync(join(root, 'logs', 'fetch', '2026', '2026-09.jsonl'), JSON.stringify(ok) + '\n');
+    const entries = readEntries(Date.parse('2026-08-15T00:00:00Z'), { store: new FileStore(root) });
     assert.deepEqual(entries.map(e => e.time), ['2026-09-27T10:00:00Z', '2026-08-31T10:00:00Z']);
     rmSync(root, { recursive: true });
   });
