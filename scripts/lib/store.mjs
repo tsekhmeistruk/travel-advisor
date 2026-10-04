@@ -1,13 +1,19 @@
 // Storage for the data pipeline. Every read and write of configuration, snapshots, history
 // and published data goes through this module, so the rest of the pipeline never touches
-// file paths. To move to a database, implement the same methods against it and swap the
-// store passed around (see docs/architecture.md for how the files map to tables).
+// file paths. SqliteStore (sqlite-store.mjs) has the same methods on a database; createStore()
+// picks the one a run uses (see docs/architecture.md for how the files map to tables).
 
 import { readFileSync, writeFileSync, appendFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { dirname, join, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SqliteStore } from './sqlite-store.mjs';
 
 export const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+
+/** The store of this run: SQLite when DB_PATH names a database file (the backend), else the repo's files. */
+export function createStore({ env = process.env, root = ROOT } = {}) {
+  return env.DB_PATH ? new SqliteStore(env.DB_PATH, { root }) : new FileStore(root);
+}
 
 export class FileStore {
   constructor(root = ROOT) {
@@ -15,6 +21,10 @@ export class FileStore {
   }
 
   path(...parts) { return join(this.root, ...parts); }
+
+  close() {}
+  /** Files have no transactions: `fn` runs as it is. (SqliteStore writes all of it or nothing.) */
+  transaction(fn) { return fn(); }
 
   // ---- configuration (hand-edited, in config/)
   places() { return this.#readJson('config', 'places.json'); }
@@ -44,6 +54,10 @@ export class FileStore {
   /** Events that left the current file, one JSON line each, by the year they ended. */
   archiveEvents(source, events) {
     for (const e of events) this.#appendLine(e, 'data', 'archive', 'events', source, `${(e.toDate ?? e.startedAt).slice(0, 4)}.jsonl`);
+  }
+  /** Every archived event of a source, by year, then in the order they were archived. */
+  archivedEvents(source) {
+    return this.#list(`data/archive/events/${source}`, '.jsonl').flatMap(year => this.#readLines('data', 'archive', 'events', source, `${year}.jsonl`));
   }
 
   /** A counts source's daily counts (lib/counts.mjs), or null. */
@@ -92,14 +106,12 @@ export class FileStore {
   saveSignals(signals) { this.#writeJson(signals, 'data', 'signals', 'current.json'); }
 
   /** The risk change log of one year (append-only), oldest first. */
-  changes(year) {
-    const file = this.path('data', 'changes', `${year}.jsonl`);
-    if (!existsSync(file)) return [];
-    return readFileSync(file, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
-  }
+  changes(year) { return this.#readLines('data', 'changes', `${year}.jsonl`); }
   appendChanges(changes) {
     for (const c of changes) this.#appendLine(c, 'data', 'changes', `${c.at.slice(0, 4)}.jsonl`);
   }
+  /** The years the change log has, oldest first. */
+  changeYears() { return this.#list('data/changes', '.jsonl'); }
 
   /** Last attempt and success of every fetch: { id: { lastAttempt, lastSuccess, ... } }. */
   sourcesState() { return this.#readJson('data', 'sources-state.json', { optional: true }) ?? {}; }
@@ -111,6 +123,17 @@ export class FileStore {
   locale(code) { return this.#readJson('site', 'i18n', `${code}.json`); }
   publish(relPath, data) { this.#writeJson(data, 'site', 'data', ...relPath.split('/')); }
   published(relPath) { return this.#readJson('site', 'data', ...relPath.split('/'), { optional: true }); }
+  /** A whole build at once. (SqliteStore also removes the documents the build no longer makes.) */
+  publishAll(files) {
+    for (const [path, data] of Object.entries(files)) this.publish(path, data);
+  }
+  /** Every published file's path, in order; the map's shapes (geo/) are not published data. */
+  publishedPaths() {
+    const dir = this.path('site', 'data');
+    if (!existsSync(dir)) return [];
+    return readdirSync(dir, { recursive: true }).map(f => f.replaceAll('\\', '/'))
+      .filter(f => f.endsWith('.json') && !f.startsWith('geo/')).sort();
+  }
 
   // ---- helpers
   #readJson(...parts) {
@@ -127,6 +150,12 @@ export class FileStore {
     const file = this.path(...parts);
     mkdirSync(dirname(file), { recursive: true });
     writeFileSync(file, JSON.stringify(data, null, 1) + '\n');
+  }
+
+  #readLines(...parts) {
+    const file = this.path(...parts);
+    if (!existsSync(file)) return [];
+    return readFileSync(file, 'utf8').split('\n').filter(Boolean).map(l => JSON.parse(l));
   }
 
   #appendLine(data, ...parts) {

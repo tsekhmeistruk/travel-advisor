@@ -59,7 +59,7 @@ The code is organized so that more providers, other datasets (e.g. flight statis
 
 ## Run locally
 
-Requires Node 22 or newer.
+Requires Node 24 or newer.
 
 ```sh
 npm ci              # dev tools for the tests (the site itself has no dependencies)

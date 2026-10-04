@@ -1,5 +1,5 @@
-// Pipeline infrastructure: run logging to disk, storage, the fetch runner, the log summary
-// and the local server. Everything writes to temporary folders, never the real repo.
+// Pipeline infrastructure: run logging to disk, the fetch runner, the due check, the log summary
+// and the local server (the stores are in store.test.mjs). Everything writes to temporary folders, never the real repo.
 
 import { test, describe, before, after, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
@@ -8,7 +8,6 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { startRunLog, withRunLog, logFile } from '../../../scripts/lib/fetch-log.mjs';
-import { FileStore } from '../../../scripts/lib/store.mjs';
 import { runFetch } from '../../../scripts/fetch.mjs';
 import { runDue } from '../../../scripts/due.mjs';
 import { readEntries, renderRunSummary, renderRecent, result, callSummary, describe as describeRun, duration, cell, flagEmoji, providerLabels, renderHealth } from '../../../scripts/lib/log-summary.mjs';
@@ -70,101 +69,6 @@ describe('run log', () => {
     assert.deepEqual([lines[1].result, lines[1].error], ['error', 'boom']);
     assert.equal(process.exitCode, 1);
     process.exitCode = saved;
-    rmSync(root, { recursive: true });
-  });
-});
-
-describe('FileStore', () => {
-  test('saves and reads snapshots and history, and lists configs and locales', () => {
-    const root = tmp();
-    const store = new FileStore(root);
-    assert.equal(store.snapshot('ds', 'p'), null, 'missing snapshot is null');
-    assert.deepEqual(store.history('ds'), {}, 'missing history is empty');
-    store.saveSnapshot('ds', 'p', { entries: [1] });
-    store.saveHistory('ds', { p: {} });
-    assert.deepEqual(store.snapshot('ds', 'p'), { entries: [1] });
-    assert.deepEqual(store.history('ds'), { p: {} });
-    mkdirSync(join(root, 'config', 'datasets'), { recursive: true });
-    writeFileSync(join(root, 'config', 'datasets', 'b.json'), '{}');
-    writeFileSync(join(root, 'config', 'datasets', 'a.json'), '{}');
-    assert.deepEqual(store.datasetIds(), ['a', 'b']);
-    assert.deepEqual(store.locales(), [], 'no locales folder yet');
-    store.publish('x/y.json', { ok: true });
-    assert.deepEqual(store.published('x/y.json'), { ok: true });
-    assert.throws(() => store.places(), /Missing .*places\.json/);
-    rmSync(root, { recursive: true });
-  });
-
-  test('saves daily counts one line per place, and reads them back', () => {
-    const root = tmp();
-    const store = new FileStore(root);
-    assert.equal(store.counts('gdelt'), null);
-    const data = { first: '2026-09-01', last: '2026-09-02', gaps: ['2026-09-02'], series: { fr: { violence: [0, 1], protest: [3, 0] }, et: { protest: [2, 0], violence: [0, 0] } } };
-    store.saveCounts('gdelt', data);
-    assert.deepEqual(store.counts('gdelt'), data);
-    const lines = readFileSync(join(root, 'data', 'counts', 'gdelt.json'), 'utf8').split('\n');
-    assert.deepEqual(lines.slice(1, 3), [' "et": {"protest": [2,0], "violence": [0,0]},', ' "fr": {"protest": [3,0], "violence": [0,1]}']);
-    store.saveCounts('empty', { first: null, last: null, gaps: [], series: {} });
-    assert.deepEqual(store.counts('empty'), { first: null, last: null, gaps: [], series: {} });
-    rmSync(root, { recursive: true });
-  });
-
-  test('saves conflict versions once each, one event per line, and reads them back in version order', () => {
-    const root = tmp();
-    const store = new FileStore(root);
-    assert.deepEqual([store.conflictVersions('ucdp'), store.conflict('ucdp')], [[], null]);
-    const v = (version, month) => ({ version, month, fetchedAt: `${month}-28T00:00:00.000Z`, format: 2, countries: { 369: 'Ukraine' }, actors: { 57: 'Government of Russia (Soviet Union)', 61: 'Government of Ukraine' }, conflicts: { '1:13243': { name: 'Russia - Ukraine' } }, events: [[1, `${month}-01`, 369, '', '1:13243', 5, 57, 61, 0, 50.45, 30.52, 1], [2, `${month}-02`, 369, 'Kyiv oblast', '1:13243', 1, 57, 61, 1, null, null, 6]] });
-    for (const x of [v('24.0.10', '2024-10'), v('24.0.9', '2024-09'), v('25.0.1', '2025-01')]) store.saveConflictVersion('ucdp', x);
-    assert.deepEqual(store.conflictVersions('ucdp'), ['24.0.9', '24.0.10', '25.0.1'], 'by number, not as text');
-    const all = store.conflict('ucdp');
-    assert.equal(all.fetchedAt, '2025-01-28T00:00:00.000Z', 'the latest version\'s');
-    assert.deepEqual(all.versions[1], v('24.0.10', '2024-10'));
-    const lines = readFileSync(join(root, 'data', 'conflict', 'ucdp', '25.0.1.json'), 'utf8').split('\n');
-    assert.deepEqual(lines.slice(-4), ['[1,"2025-01-01",369,"","1:13243",5,57,61,0,50.45,30.52,1],', '[2,"2025-01-02",369,"Kyiv oblast","1:13243",1,57,61,1,null,null,6]', ']}', '']);
-    assert.equal(lines[0], '{"version": "25.0.1", "month": "2025-01", "fetchedAt": "2025-01-28T00:00:00.000Z", "format": 2,', 'the scalars first');
-    assert.ok(lines.includes('"actors": {') && lines.includes('"61": "Government of Ukraine"'), 'each table one entry per line');
-    rmSync(root, { recursive: true });
-  });
-
-  test('saves and reads a context source\'s articles', () => {
-    const root = tmp();
-    const store = new FileStore(root);
-    assert.equal(store.context('wikipedia'), null);
-    const data = { fetchedAt: '2026-10-02T12:00:00.000Z', articles: { 'Gaza war': { title: 'Gaza war', sides: [] } } };
-    store.saveContext('wikipedia', data);
-    assert.deepEqual(store.context('wikipedia'), data);
-    assert.ok(readFileSync(join(root, 'data', 'context', 'wikipedia.json'), 'utf8').endsWith('\n'));
-    rmSync(root, { recursive: true });
-  });
-
-  test('saves and reads events, signals, the change log by year, and the sources state', () => {
-    const root = tmp();
-    const store = new FileStore(root);
-    assert.equal(store.events('gdacs'), null);
-    assert.equal(store.signals(), null);
-    assert.deepEqual(store.changes(2026), []);
-    assert.deepEqual(store.sourcesState(), {});
-    store.saveEvents('gdacs', { events: [1] });
-    store.saveSignals({ categories: {} });
-    store.saveSourcesState({ us: { lastSuccess: 'x' } });
-    store.appendChanges([{ id: 'a', at: '2025-12-31T23:00:00Z' }, { id: 'b', at: '2026-01-01T00:00:00Z' }]);
-    store.appendChanges([{ id: 'c', at: '2026-02-01' }]);
-    store.archiveEvents('gdacs', [{ id: 'e1', toDate: '2026-03-01T00:00:00Z' }, { id: 'e2', startedAt: '2025-06-01T00:00:00Z' }]);
-    assert.deepEqual(store.events('gdacs'), { events: [1] });
-    assert.deepEqual(store.signals(), { categories: {} });
-    assert.deepEqual(store.sourcesState(), { us: { lastSuccess: 'x' } });
-    assert.deepEqual(store.changes(2025).map(c => c.id), ['a']);
-    assert.deepEqual(store.changes(2026).map(c => c.id), ['b', 'c'], 'appended, oldest first');
-    assert.match(readFileSync(join(root, 'data', 'archive', 'events', 'gdacs', '2026.jsonl'), 'utf8'), /"e1"/);
-    assert.match(readFileSync(join(root, 'data', 'archive', 'events', 'gdacs', '2025.jsonl'), 'utf8'), /"e2"/);
-    mkdirSync(join(root, 'config', 'sources'), { recursive: true });
-    writeFileSync(join(root, 'config', 'sources', 'gdacs.json'), '{"id":"gdacs"}');
-    writeFileSync(join(root, 'config', 'categories.json'), '{"categories":[]}');
-    writeFileSync(join(root, 'config', 'schedule.json'), '{"gdacs":{"everyMinutes":60}}');
-    assert.deepEqual(store.sourceIds(), ['gdacs']);
-    assert.deepEqual(store.source('gdacs'), { id: 'gdacs' });
-    assert.deepEqual(store.categories(), { categories: [] });
-    assert.deepEqual(store.schedule(), { gdacs: { everyMinutes: 60 } });
     rmSync(root, { recursive: true });
   });
 });

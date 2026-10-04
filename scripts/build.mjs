@@ -9,11 +9,11 @@
 import { fileURLToPath } from 'node:url';
 import { buildSite, placeIndex } from './lib/build.mjs';
 import { buildRisk } from './lib/risk.mjs';
-import { FileStore } from './lib/store.mjs';
+import { createStore } from './lib/store.mjs';
 import { SPLIT_SHAPE_NAMES } from '../site/js/map/splits.js';
 
 /** Everything buildAll() needs, read from the store. */
-export function readBuildInput(store = new FileStore()) {
+export function readBuildInput(store = createStore()) {
   const geo = store.geo();
   const shapeNames = new Set([...geo.objects.countries.geometries.map(g => g.properties.name), ...SPLIT_SHAPE_NAMES]);
   const datasets = store.datasetIds().map(id => {
@@ -79,7 +79,7 @@ export function buildAll(input) {
 
 // Run only when executed directly (tests import readBuildInput and buildAll).
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
-  const store = new FileStore();
+  const store = createStore();
   const input = readBuildInput(store);
   const { files, problems, warnings, state, newChanges } = buildAll(input);
   if (problems.length) {
@@ -87,10 +87,12 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     process.exit(1);
   }
   for (const w of warnings) console.warn(w);
-  for (const [path, data] of Object.entries(files)) store.publish(path, data);
-  for (const [id, history] of Object.entries(input.history)) store.saveHistory(id, history);
-  store.saveSignals(state);
-  store.appendChanges(newChanges);
+  store.transaction(() => {
+    store.publishAll(files);
+    for (const [id, history] of Object.entries(input.history)) store.saveHistory(id, history);
+    store.saveSignals(state);
+    store.appendChanges(newChanges);
+  });
 
   for (const d of files['manifest.json'].datasets) {
     for (const p of d.providers) {

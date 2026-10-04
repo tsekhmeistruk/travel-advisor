@@ -14,7 +14,7 @@
 
 import { fileURLToPath } from 'node:url';
 import { withRunLog } from './lib/fetch-log.mjs';
-import { FileStore } from './lib/store.mjs';
+import { createStore } from './lib/store.mjs';
 import { getProvider, PROVIDERS, SOURCES } from './providers/index.mjs';
 
 /**
@@ -22,7 +22,7 @@ import { getProvider, PROVIDERS, SOURCES } from './providers/index.mjs';
  * Never throws: a failure is logged, the previous state is kept, and process.exitCode is set.
  * @param opts.store, opts.logRoot, opts.sleep, opts.now  injectable for tests
  */
-export async function runFetch(provider, { store = new FileStore(), logRoot, sleep, now = () => new Date() } = {}) {
+export async function runFetch(provider, { store = createStore(), logRoot, sleep, now = () => new Date() } = {}) {
   const started = now();
   let records = null;
   let error = null;

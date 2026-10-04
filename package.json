@@ -4,7 +4,7 @@
   "description": "Risk Monitor: world map of official travel advisories, disaster and outbreak alerts and unusual news activity, with recent changes",
   "type": "module",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "scripts": {
     "start": "node scripts/serve.mjs",

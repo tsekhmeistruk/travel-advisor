@@ -60,7 +60,7 @@ GitHub: code, config, tests. Push → tests pass → Railway deploys. Daily: exp
 
 ## Status
 
-- **Current step:** 1.1
+- **Current step:** 1.5
 - **Done:** Part 0
 - **Last commit of this revision:** none
 
@@ -203,13 +203,13 @@ A new section is then one line in `config/schedule.json` (`{ "everyMinutes": 30 
 
 ## Part 1: The store on SQLite
 
-- [ ] 1.1 `scripts/lib/sqlite-store.mjs`: `SqliteStore` with the schema above and every `FileStore` method.
-- [ ] 1.2 `transaction()`, `publishAll()`, `changeYears()`, `archivedEvents()`, `publishedPaths()` on both stores; `createStore()`; `fetch.mjs`, `build.mjs`, `due.mjs` use it.
-- [ ] 1.3 Node 24: `engines` in `package.json`, `node-version` in `deploy.yml` and `update.yml`.
-- [ ] 1.4 Tests.
-  - [ ] added: one contract suite run on both stores (`tests/unit/pipeline/store.test.mjs`): every method, missing data, the order of versions and changes
-  - [ ] added: SQLite only: a transaction that throws writes nothing; `publishAll` removes a dropped document; an unchanged document keeps its ETag; a second open of the same file reads what the first wrote
-  - [ ] edited: the store tests in `infrastructure.test.mjs` move into the contract suite
+- [x] 1.1 `scripts/lib/sqlite-store.mjs`: `SqliteStore` with the schema above and every `FileStore` method.
+- [x] 1.2 `transaction()`, `publishAll()`, `changeYears()`, `archivedEvents()`, `publishedPaths()` on both stores; `createStore()`; `fetch.mjs`, `build.mjs`, `due.mjs` use it.
+- [x] 1.3 Node 24: `engines` in `package.json`, `node-version` in `deploy.yml` and `update.yml`.
+- [x] 1.4 Tests.
+  - [x] added: one contract suite run on both stores (`tests/unit/pipeline/store.test.mjs`): every method, missing data, the order of versions and changes
+  - [x] added: SQLite only: a transaction that throws writes nothing; `publishAll` removes a dropped document; an unchanged document keeps its ETag; a second open of the same file reads what the first wrote
+  - [x] edited: the store tests in `infrastructure.test.mjs` move into the contract suite
 - [ ] 1.5 Ship.
 
 ## Part 2: Fetch runs through the store, import and export

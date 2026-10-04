@@ -11,10 +11,10 @@
 import { appendFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dueSources } from './lib/schedule.mjs';
-import { FileStore } from './lib/store.mjs';
+import { createStore } from './lib/store.mjs';
 
 /** The due list and one summary line per id. */
-export function runDue({ store = new FileStore(), env = process.env, now = new Date() } = {}) {
+export function runDue({ store = createStore(), env = process.env, now = new Date() } = {}) {
   const result = dueSources({
     schedule: store.schedule(), state: store.sourcesState(), now,
     seed: env.SEED ?? 'local', manual: env.EVENT === 'workflow_dispatch' && env.SOURCES?.trim() !== 'due', only: env.SOURCES ?? '',

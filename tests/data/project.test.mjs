@@ -226,6 +226,11 @@ describe('deploy gate', () => {
     assert.ok(updateWorkflow.indexOf('scripts/due.mjs') < updateWorkflow.indexOf('scripts/fetch.mjs'), 'due check before the fetches');
     assert.match(updateWorkflow, /git add data logs site\/data/);
   });
+  test('the workflows run the Node version package.json asks for (node:sqlite needs 24)', () => {
+    const [, major] = JSON.parse(read('package.json')).engines.node.match(/^>=(\d+)$/);
+    assert.ok(Number(major) >= 24);
+    for (const workflow of [deployWorkflow, updateWorkflow]) assert.match(workflow, new RegExp(`node-version: ${major}\\n`));
+  });
   test('npm scripts point at files that exist', () => {
     const scripts = JSON.parse(read('package.json')).scripts;
     for (const [name, cmd] of Object.entries(scripts)) {

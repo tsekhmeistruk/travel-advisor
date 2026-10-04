@@ -9,7 +9,7 @@ This project is a map of the world that shows **data about places**: wars and ar
 - **The map is generic.** It draws places and asks the active dataset how each one should look. It knows nothing about advisories.
 - **Only what we observed is a change.** Fetch the current state, save it, compare the next fetch with it: a change is a difference between two of our own fetches. What a source says about its own past or present status (a change note, an "updated" date, a "current" flag) is shown at most, and never decides a change or a level. So nothing is known from before the first fetch, and the site is quiet until something really changes.
 - **Pure logic, thin I/O.** Parsing, merging, level history and view rules are pure functions with unit tests. Scripts and UI glue only read, write and render.
-- **One storage boundary.** The pipeline touches files only through `scripts/lib/store.mjs`, and the site loads data only through `site/js/core/data-client.js`. These are the two seams where a database or API plugs in.
+- **One storage boundary.** The pipeline touches files only through a store (`FileStore` in `scripts/lib/store.mjs`, or `SqliteStore` when `DB_PATH` is set), and the site loads data only through `site/js/core/data-client.js`. These are the two seams where a database or API plugs in.
 - **Nothing deploys untested.** Every deploy runs the unit, data and browser tests first.
 
 ## Concepts
@@ -48,7 +48,7 @@ data/                          pipeline state (future: database tables)
   changes/<yyyy>.jsonl         the risk change log (append-only)
   sources-state.json           last attempt and last success of every fetch
 logs/fetch/<yyyy>/<yyyy-mm>.jsonl   one line per fetch run (see logs/README.md)
-scripts/                       the data pipeline (Node 22, no dependencies)
+scripts/                       the data pipeline (Node 24, no dependencies)
   fetch.mjs <id>               fetch one provider into its snapshot, or one source into its events
   due.mjs                      which providers and sources are due (for the hourly workflow)
   build.mjs                    build site/data from config + snapshots + history + events
@@ -59,7 +59,7 @@ scripts/                       the data pipeline (Node 22, no dependencies)
                                events.mjs (event upsert), schedule.mjs (due check), text.mjs, conflict.mjs (UCDP
                                figures, war count, bands, trends, sides, dots), wars.mjs (the wars' context from
                                Wikipedia, matched to UCDP's sides), counts.mjs and anomaly.mjs (news activity);
-                               I/O boundary: store.mjs; logging: fetch-log.mjs, log-summary.mjs (Fetch results table)
+                               I/O boundary: store.mjs (the files) and sqlite-store.mjs (a database); logging: fetch-log.mjs, log-summary.mjs (Fetch results table)
   providers/<id>/              index.mjs (network), parse.mjs (pure parsing)
   tools/generate-places.mjs    regenerates config/places.json
   tools/screenshots.mjs        npm run shots: screenshots of any view (serves site/ itself)
@@ -353,8 +353,14 @@ The published and pipeline files are already shaped like tables, keyed by stable
 | `data/changes/*.jsonl` | `changes(id PK, at, kind, category, place_id, from_level, to_level, up, basis, sources)`, indexed by `at` and `place_id` |
 | `data/sources-state.json` | `source_state(id PK, last_attempt, last_success, duration_ms, records, consecutive_failures, error)` |
 
+**The move is under way** (`docs/plans/backend.md`). What exists:
+
+- **`SqliteStore`** (`scripts/lib/sqlite-store.mjs`, on `node:sqlite`, no dependency) has every method of `FileStore`. Configuration stays in git and is read from the files; state and published data are rows. Documents move as they are for now, one row per file of the table above (`state`: key, body; `documents`: path, body, its gzip and ETag, rewritten only when the body differs); `changes`, `archived_events` and `fetch_runs` are real append-only tables. The schema's version is `PRAGMA user_version` (`MIGRATIONS` in the file).
+- **`createStore()`** (`scripts/lib/store.mjs`) gives a `SqliteStore` when `DB_PATH` names a database file, else the `FileStore`. `fetch.mjs`, `build.mjs` and `due.mjs` use it, so the same scripts run on either.
+- **Both stores** have `transaction(fn)` (SQLite writes all of it or nothing; the files just run it) and `publishAll(files)` (SQLite also removes documents the build no longer makes). One contract suite (`tests/unit/pipeline/store.test.mjs`) runs on both, so they can't drift: a new store method goes into both classes and into that suite.
+
 Steps:
-1. **Pipeline:** implement a `DbStore` with the same methods as `FileStore` (`places`, `dataset`, `provider`, `snapshot`/`saveSnapshot`, `history`/`saveHistory`, `publish`) and pass it to the scripts.
+1. **Pipeline:** done, see above.
 2. **API:** serve the same JSON shapes (`manifest`, `places`, `<dataset>/<provider>`) from an API, then point `createDataClient({ base })` at it. The site needs no other change.
 3. **Tests:** keep the data tests. They compare what is served against a fresh build.
 
