@@ -9,6 +9,7 @@ import { readBuildInput, buildAll } from '../../scripts/build.mjs';
 import { SPLIT_SHAPE_NAMES } from '../../site/js/map/splits.js';
 import { rank } from '../../scripts/lib/anomaly.mjs';
 import { travelLevel } from '../../scripts/lib/risk.mjs';
+import { validatePublish } from '../../scripts/lib/validate.mjs';
 
 const store = new FileStore();
 const manifest = store.published('manifest.json');
@@ -27,6 +28,11 @@ describe('published data is up to date', () => {
     for (const [path, expected] of Object.entries(built.files)) {
       assert.deepEqual(store.published(path), expected, `${path} is out of date: run \`npm run build\` and commit the result.`);
     }
+  });
+
+  // The backend has no test gate between a fetch and the live site: it runs this check itself.
+  test('the build passes the checks the backend makes before it publishes', () => {
+    assert.deepEqual(validatePublish(built.files, (path) => store.published(path)), []);
   });
 
   test('the risk signals and change log already include this data', () => {

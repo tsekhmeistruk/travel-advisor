@@ -145,6 +145,16 @@ for (const [name, make] of Object.entries(STORES)) {
       assert.deepEqual(store.fetchRuns({ since: Date.parse('2027-01-01T00:00:00Z') }), []);
     }));
 
+    test('keeps notes about itself by key', () => withStore(make, (store) => {
+      assert.equal(store.meta('lastBuild'), null);
+      const note = { at: '2026-10-03T10:00:00.000Z', ok: false, errors: ['x'] };
+      store.saveMeta('lastBuild', note);
+      note.errors.push('changed after the save');
+      store.saveMeta('seeded', true);
+      store.saveMeta('lastBuild', { ...store.meta('lastBuild'), ok: true });
+      assert.deepEqual([store.meta('lastBuild'), store.meta('seeded')], [{ at: '2026-10-03T10:00:00.000Z', ok: true, errors: ['x'] }, true]);
+    }));
+
     test('a transaction returns what its function returns, and may hold another', () => withStore(make, (store) => {
       const result = store.transaction(() => {
         store.saveSignals({ n: 1 });

@@ -22,6 +22,11 @@ export class FileStore {
 
   path(...parts) { return join(this.root, ...parts); }
 
+  /** Notes of the backend about itself (lastBuild, …). The files keep none: they last as long as this object. */
+  #meta = new Map();
+  meta(key) { return this.#meta.get(key) ?? null; }
+  saveMeta(key, value) { this.#meta.set(key, structuredClone(value)); }
+
   close() {}
   /** Files have no transactions: `fn` runs as it is. (SqliteStore writes all of it or nothing.) */
   transaction(fn) { return fn(); }

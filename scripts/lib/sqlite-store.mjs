@@ -71,6 +71,15 @@ export class SqliteStore {
     }
   }
 
+  /** Notes of the backend about itself (the `meta` table): lastBuild, lastExport, seeded. */
+  meta(key) {
+    const row = this.#sql('SELECT value FROM meta WHERE key = ?').get(key);
+    return row ? JSON.parse(row.value) : null;
+  }
+  saveMeta(key, value) {
+    this.#sql('INSERT INTO meta (key, value) VALUES (?, ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value').run(key, JSON.stringify(value));
+  }
+
   // ---- configuration (in git, read from the files)
   places() { return this.#files.places(); }
   dataset(id) { return this.#files.dataset(id); }

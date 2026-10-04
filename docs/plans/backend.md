@@ -60,9 +60,9 @@ GitHub: code, config, tests. Push → tests pass → Railway deploys. Daily: exp
 
 ## Status
 
-- **Current step:** 2.5
-- **Done:** Parts 0–1
-- **Last commit of this revision:** d9df1a5
+- **Current step:** 3.7
+- **Done:** Parts 0–2
+- **Last commit of this revision:** bd209cd
 
 ## Every part ends with the same checks
 
@@ -221,20 +221,20 @@ A new section is then one line in `config/schedule.json` (`{ "everyMinutes": 30 
   - [x] added: **a build from the imported database equals a build from the files** (the whole repo's data into `:memory:`)
   - [x] added: import then export gives the same files, byte for byte, in a temporary folder
   - [x] edited: `fetch-log.test.mjs` and the log-summary tests run on both stores
-- [ ] 2.5 Ship.
+- [x] 2.5 Ship.
 
 ## Part 3: The update job, validation, the schedule
 
-- [ ] 3.1 `publishBuild()` in `scripts/build.mjs`, used by its CLI block.
-- [ ] 3.2 `scripts/lib/validate.mjs` (`validatePublish()`); `tests/data/data.test.mjs` calls it on the committed data.
-- [ ] 3.3 `scripts/update.mjs` (`runUpdate()`), `npm run update`.
-- [ ] 3.4 `scripts/lib/schedule.mjs`: `precise` (retry spacing, `slotMinute()`, a 2-minute tolerance). The old path, `jitter` and `due.mjs`'s GitHub outputs stay for `update.yml`.
-- [ ] 3.5 `readBuildInput()` takes the year from the data's newest fetch, not from the wall clock (a frozen seed must build the same next year).
-- [ ] 3.6 Tests.
-  - [ ] added: `runUpdate()` with fake fetchers: due only, given ids, `--build`; a failed fetch still builds; problems and validation errors publish nothing and are recorded; a build is one transaction
-  - [ ] added: each rule of `validatePublish()`, and that the committed data passes
-  - [ ] added: retry spacing, the slot minute, the tolerance (`schedule.test.mjs`)
-  - [ ] edited: none of the old schedule tests change (the old path stays)
+- [x] 3.1 `publishBuild()` in `scripts/build.mjs`, used by its CLI block.
+- [x] 3.2 `scripts/lib/validate.mjs` (`validatePublish()`); `tests/data/data.test.mjs` calls it on the committed data.
+- [x] 3.3 `scripts/update.mjs` (`runUpdate()`), `npm run update`.
+- [x] 3.4 `scripts/lib/schedule.mjs`: `precise` (retry spacing, `slotMinute()`, a 2-minute tolerance). The old path, `jitter` and `due.mjs`'s GitHub outputs stay for `update.yml`.
+- [x] 3.5 `readBuildInput()` takes the year from the data's newest fetch, not from the wall clock (a frozen seed must build the same next year).
+- [x] 3.6 Tests.
+  - [x] added: `runUpdate()` with fake fetchers: due only, given ids, `--build`; a failed fetch still builds; problems and validation errors publish nothing and are recorded; a build is one transaction
+  - [x] added: each rule of `validatePublish()`, and that the committed data passes
+  - [x] added: retry spacing, the slot minute, the tolerance (`schedule.test.mjs`)
+  - [x] edited: none of the old schedule tests change (the old path stays)
 - [ ] 3.7 Ship.
 
 ## Part 4: The server and the scheduler
@@ -341,3 +341,4 @@ A section is: a fetcher in `scripts/providers/<id>/` (network in `index.mjs`, pu
 ## Log (one line per finished part: commit, deploy, checks, and the tests added, edited and deleted)
 - Part 0: the plan saved in the repo and linked from CLAUDE.md (docs only). Tests added, edited, deleted: none.
 - Part 1: d9df1a5, deploy 37164318474 green, live check ok (5 views), build output unchanged. Tests added: store.test.mjs (the contract on both stores; FileStore's files; SQLite: a failed transaction, publishAll's removal, the ETag, a second open, a newer database; createStore), the workflows' Node version in project.test.mjs; edited: the FileStore tests moved out of infrastructure.test.mjs; deleted: none.
+- Part 2: bd209cd, deploy 37164941976 green, live check ok, update run 37165269985 (gdacs) green: its log line went through the store; build output unchanged. Tests added: tests/data/import.test.mjs (a build from the imported database equals a build from the files; import then export byte for byte; a second copy refused; a data-only folder; pull-data), fetch runs in the store contract, the run id and trigger, runFetch logging through the store; edited: fetch-log.test.mjs and the log-summary tests run on both stores; deleted: none.

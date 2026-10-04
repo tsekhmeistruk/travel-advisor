@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert/strict';
-import { dueSources, slotHour } from '../../../scripts/lib/schedule.mjs';
+import { dueSources, slotHour, slotMinute } from '../../../scripts/lib/schedule.mjs';
 
 const SEED = 'tsekhmeistruk/travel-advisor';
 const SCHEDULE = { us: { every: 'daily-slot' }, ca: { every: 'daily-slot' }, gdacs: { everyMinutes: 60 } };
@@ -67,5 +67,58 @@ describe('dueSources', () => {
 
   test('rejects a schedule entry without a rule', () => {
     assert.throws(() => dueSources({ schedule: { xx: {} }, state: {}, now: at('01:00'), seed: SEED }), /"xx" needs/);
+    assert.throws(() => dueSources({ schedule: { xx: {} }, state: {}, now: at('01:00'), seed: SEED, precise: true }), /"xx" needs/);
+  });
+});
+
+describe('dueSources, precise (the backend asks every 5 minutes)', () => {
+  const BACKEND = 'risk-monitor';
+  const day = '2026-09-27';
+  const slot = slotMinute(day, BACKEND);
+  const atMinute = (m) => new Date(Date.parse(`${day}T00:00:00Z`) + m * 60000);
+  const due = (opts) => dueSources({ schedule: SCHEDULE, seed: BACKEND, precise: true, state: {}, ...opts });
+  const success = (time) => ({ lastAttempt: time, lastSuccess: time });
+
+  test('the slot minute is a minute of the day before 22:00, differs by day and by seed', () => {
+    const minutes = Array.from({ length: 28 }, (_, i) => slotMinute(`2026-10-${String(i + 1).padStart(2, '0')}`, BACKEND));
+    assert.ok(minutes.every(m => Number.isInteger(m) && m >= 0 && m < 22 * 60), minutes.join());
+    assert.ok(new Set(minutes).size > 20, 'spread over the day');
+    assert.notEqual(slotMinute(day, BACKEND), slotMinute(day, SEED));
+    assert.notEqual(Math.floor(slot / 60), slotHour(day, SEED), 'on this day the backend and the workflow call in different hours');
+  });
+
+  test('a daily-slot source is due from its minute, never with jitter, and catches up later', () => {
+    const early = due({ now: atMinute(slot - 1) });
+    assert.deepEqual(early.due, ['gdacs']);
+    assert.equal(early.reasons.us, `today's slot is ${Math.floor(slot / 60)}:${String(slot % 60).padStart(2, '0')} UTC`);
+    const onTime = due({ now: atMinute(slot) });
+    assert.deepEqual([onTime.due, onTime.jitter, onTime.reasons.us], [['us', 'ca', 'gdacs'], false, "today's slot"]);
+    assert.equal(due({ now: atMinute(slot + 59) }).reasons.us, "today's slot");
+    assert.equal(due({ now: atMinute(slot + 60) }).reasons.us, 'catching up');
+    const done = due({ now: atMinute(slot + 5), state: { us: success(atMinute(slot).toISOString()) } });
+    assert.equal(done.reasons.us, 'already updated today');
+    assert.ok(done.due.includes('ca'));
+  });
+
+  test('an interval source runs 2 minutes early at most, so an hourly source runs hourly', () => {
+    const now = atMinute(600);
+    const state = (min) => ({ gdacs: success(atMinute(600 - min).toISOString()) });
+    assert.ok(!due({ now, state: state(52) }).due.includes('gdacs'), 'the old 10-minute tolerance would run it');
+    assert.ok(!due({ now, state: state(57) }).due.includes('gdacs'));
+    assert.ok(due({ now, state: state(58) }).due.includes('gdacs'));
+    assert.ok(dueSources({ schedule: SCHEDULE, seed: BACKEND, now, state: state(52) }).due.includes('gdacs'), 'the old path is unchanged');
+  });
+
+  test('a source whose last attempt failed is not tried again for 30 minutes', () => {
+    const now = atMinute(slot + 120);
+    const failed = (min, last) => ({ lastAttempt: atMinute(slot + 120 - min).toISOString(), ...(last && { lastSuccess: last }) });
+    const state = { us: failed(5), ca: failed(31), gdacs: failed(29, atMinute(100).toISOString()) };
+    const r = due({ now, state });
+    assert.deepEqual(r.due, ['ca']);
+    assert.equal(r.reasons.us, 'failed 5 min ago, retried after 30');
+    assert.equal(r.reasons.gdacs, 'failed 29 min ago, retried after 30');
+    assert.ok(due({ now, state: { ...state, gdacs: failed(30, atMinute(100).toISOString()) } }).due.includes('gdacs'));
+    assert.deepEqual(dueSources({ schedule: SCHEDULE, seed: BACKEND, now, state }).due.includes('gdacs'), true, 'the old path has no retry spacing');
+    assert.deepEqual(due({ now, state, manual: true, only: 'us' }).due, ['us'], 'a manual run doesn\'t wait');
   });
 });

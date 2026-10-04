@@ -24,22 +24,46 @@ export function readBuildInput(store = createStore()) {
     };
   });
   const history = Object.fromEntries(datasets.map(d => [d.config.id, store.history(d.config.id)]));
-  const year = new Date().getUTCFullYear();
+  const sources = Object.fromEntries(store.sourceIds().map(id => {
+    const config = store.source(id);
+    const read = { counts: () => store.counts(id), conflict: () => store.conflict(id), context: () => store.context(id) }[config.kind] ?? (() => store.events(id));
+    return [id, { config, data: read(), ...(config.pairs && { pairs: store.counts(`${id}-pairs`) }) }];
+  }));
+  const sourcesState = store.sourcesState();
+  // The change log of the data's year and the one before. The year comes from the newest
+  // fetch in the data, never from the wall clock: the same data builds the same next year.
+  const year = dataYear({ datasets, sources, sourcesState });
   return {
     places: store.places(), shapeNames, locales: store.locales(), datasets, history,
     risk: {
       categories: store.categories(),
       schedule: store.schedule(),
-      sources: Object.fromEntries(store.sourceIds().map(id => {
-        const config = store.source(id);
-        const read = { counts: () => store.counts(id), conflict: () => store.conflict(id), context: () => store.context(id) }[config.kind] ?? (() => store.events(id));
-        return [id, { config, data: read(), ...(config.pairs && { pairs: store.counts(`${id}-pairs`) }) }];
-      })),
+      sources,
       state: store.signals(),
-      log: [...store.changes(year - 1), ...store.changes(year)],
-      sourcesState: store.sourcesState(),
+      log: year ? [...store.changes(year - 1), ...store.changes(year)] : [],
+      sourcesState,
     },
   };
+}
+
+/** The year of the newest fetch or attempt in the build's input, or null when nothing was ever fetched. */
+export function dataYear({ datasets, sources, sourcesState }) {
+  const times = [
+    ...Object.values(sourcesState).map(s => s.lastAttempt),
+    ...Object.values(sources).map(s => s.data?.fetchedAt),
+    ...datasets.flatMap(d => d.providers.map(p => p.snapshot?.fetchedAt)),
+  ].filter(Boolean).sort();
+  return times.length ? Number(times.at(-1).slice(0, 4)) : null;
+}
+
+/** Writes a build: the files, the level history, the signals and the new changes, all or nothing. */
+export function publishBuild(store, input, { files, state, newChanges }) {
+  store.transaction(() => {
+    store.publishAll(files);
+    for (const [id, history] of Object.entries(input.history)) store.saveHistory(id, history);
+    store.saveSignals(state);
+    store.appendChanges(newChanges);
+  });
 }
 
 /** The risk files the manifest points at: manifest key -> file name (risk/<name>.json). */
@@ -81,18 +105,14 @@ export function buildAll(input) {
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const store = createStore();
   const input = readBuildInput(store);
-  const { files, problems, warnings, state, newChanges } = buildAll(input);
+  const built = buildAll(input);
+  const { files, problems, warnings, newChanges } = built;
   if (problems.length) {
     console.error(problems.join('\n'));
     process.exit(1);
   }
   for (const w of warnings) console.warn(w);
-  store.transaction(() => {
-    store.publishAll(files);
-    for (const [id, history] of Object.entries(input.history)) store.saveHistory(id, history);
-    store.saveSignals(state);
-    store.appendChanges(newChanges);
-  });
+  publishBuild(store, input, built);
 
   for (const d of files['manifest.json'].datasets) {
     for (const p of d.providers) {
