@@ -21,10 +21,10 @@
   "consecutiveFailures": 0
  },
  "gdacs": {
-  "lastAttempt": "2026-10-03T23:02:14.094Z",
-  "lastSuccess": "2026-10-03T23:02:14.094Z",
-  "durationMs": 7828,
-  "records": 251,
+  "lastAttempt": "2026-10-04T00:32:42.707Z",
+  "lastSuccess": "2026-10-04T00:32:42.707Z",
+  "durationMs": 3812,
+  "records": 233,
   "consecutiveFailures": 0
  },
  "gdelt": {

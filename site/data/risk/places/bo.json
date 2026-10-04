@@ -36,9 +36,7 @@
    "own": true
   }
  },
- "events": [
-  "gdacs:WF:1032473"
- ],
+ "events": [],
  "changes": [
   {
    "id": "bo:violence:2026-10-02",
